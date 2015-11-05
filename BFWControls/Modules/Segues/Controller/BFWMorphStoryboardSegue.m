@@ -30,21 +30,19 @@
     return matchingSubview;
 }
 
-- (UIView *)copyWithSubviews {
+- (UIView *)copyWithSubviews:(NSArray *)subviews {
     UIView *copiedView = [[UIView alloc] initWithFrame:self.frame];
     [copiedView copyPropertiesFromView:self];
-    NSArray *subviews = self.subviews;
-    if ([self isKindOfClass:[UITableViewCell class]]) {
-        copiedView.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:0.2]; // testing
-        UITableViewCell *cell = (UITableViewCell *)self;
-        subviews = @[cell.contentView];
-    }
+    [copiedView copySubviews:subviews];
+    return copiedView;
+}
+
+- (void)copySubviews:(NSArray *)subviews {
     for (UIView* subview in subviews) {
         UIView *copiedSubview = [[[subview class] alloc] initWithFrame:subview.frame];
-        [copiedView addSubview:copiedSubview];
+        [self addSubview:copiedSubview];
         [copiedSubview copyPropertiesFromView:subview];
     }
-    return copiedView;
 }
 
 - (void)copyPropertiesFromView:(UIView *)view {
@@ -142,24 +140,28 @@
     destinationVCView.frame = sourceVCView.frame;
     
     UITableViewCell *cell = nil;
-
-    // Create a copy of the view hierarchy for morphing, so the original is not changed.
+    if ([self.fromView isKindOfClass:[UITableViewCell class]]) {
+        cell = (UITableViewCell *)self.fromView;
+        cell.selected = NO;
+    }
+    
     UIView *morphingView = nil;
+    UIView *contentView = nil;
     BOOL isMorphingCopy = YES;
     if (isMorphingCopy) {
-        if ([self.fromView isKindOfClass:[UITableViewCell class]]) {
-            cell = (UITableViewCell *)self.fromView;
-            cell.selected = NO;
-            morphingView = [[UIView alloc] initWithFrame:self.fromView.frame];
-            [morphingView copyPropertiesFromView:self.fromView];
-            
-            morphingView.backgroundColor = [[UIColor cyanColor] colorWithAlphaComponent:0.2]; // testing
+        // Create a copy of the view hierarchy for morphing, so the original is not changed.
+        if (cell) {
+            morphingView = [cell copyWithSubviews:nil];
+            [morphingView copySubviews:cell.contentView.subviews];
         } else {
-            morphingView = [self.fromView copyWithSubviews];
+            morphingView = [self.fromView copyWithSubviews:self.fromView.subviews];
         }
         [sourceVCView addSubview:morphingView];
+        contentView = morphingView;
     } else {
         morphingView = self.fromView;
+        contentView = cell.contentView;
+        // TODO: finish
     }
 
     [UIView animateWithDuration:self.duration
@@ -167,9 +169,8 @@
                         options:self.animationOptions
                      animations:^{
                          morphingView.frame = sourceVCView.bounds;
-                         UIView *contentView = morphingView;
                          if (cell) {
-                             contentView = cell.contentView;
+                             contentView.frame = morphingView.bounds;
                          }
                          for (UIView *subview in contentView.subviews) {
                              UIView *destinationSubview = [destinationVCView subviewMatchingView:subview];
