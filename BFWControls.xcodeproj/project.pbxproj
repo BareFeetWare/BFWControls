@@ -22,6 +22,8 @@
 		E20256AE1BEB413300095590 /* MorphTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256A21BEB413300095590 /* MorphTableViewController.m */; };
 		E20256AF1BEB413300095590 /* Segues.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20256A31BEB413300095590 /* Segues.storyboard */; };
 		E20256B01BEB413300095590 /* SeguesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256A51BEB413300095590 /* SeguesViewController.m */; };
+		E20256B51BEC94AA00095590 /* BFWNibView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256B41BEC94AA00095590 /* BFWNibView.m */; };
+		E20256B81BEC958500095590 /* UIView+BFW.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256B71BEC958500095590 /* UIView+BFW.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,10 @@
 		E20256A31BEB413300095590 /* Segues.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Segues.storyboard; sourceTree = "<group>"; };
 		E20256A41BEB413300095590 /* SeguesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeguesViewController.h; sourceTree = "<group>"; };
 		E20256A51BEB413300095590 /* SeguesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeguesViewController.m; sourceTree = "<group>"; };
+		E20256B31BEC94AA00095590 /* BFWNibView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWNibView.h; sourceTree = "<group>"; };
+		E20256B41BEC94AA00095590 /* BFWNibView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFWNibView.m; sourceTree = "<group>"; };
+		E20256B61BEC958500095590 /* UIView+BFW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BFW.h"; sourceTree = "<group>"; };
+		E20256B71BEC958500095590 /* UIView+BFW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BFW.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +98,7 @@
 		E202565E1BEAD7BC00095590 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				E20256B11BEC94AA00095590 /* NibView */,
 				E202566F1BEAD92700095590 /* Segues */,
 			);
 			path = Modules;
@@ -154,6 +161,25 @@
 				E20256A51BEB413300095590 /* SeguesViewController.m */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		E20256B11BEC94AA00095590 /* NibView */ = {
+			isa = PBXGroup;
+			children = (
+				E20256B21BEC94AA00095590 /* View */,
+			);
+			path = NibView;
+			sourceTree = "<group>";
+		};
+		E20256B21BEC94AA00095590 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E20256B31BEC94AA00095590 /* BFWNibView.h */,
+				E20256B41BEC94AA00095590 /* BFWNibView.m */,
+				E20256B61BEC958500095590 /* UIView+BFW.h */,
+				E20256B71BEC958500095590 /* UIView+BFW.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,7 +258,9 @@
 			files = (
 				E20256791BEAD92700095590 /* BFWModalStoryboardSegue.m in Sources */,
 				E202567B1BEAD92700095590 /* BFWPushStoryboardSegue.m in Sources */,
+				E20256B51BEC94AA00095590 /* BFWNibView.m in Sources */,
 				E202567C1BEAD92700095590 /* BFWStoryboardReferenceSegue.m in Sources */,
+				E20256B81BEC958500095590 /* UIView+BFW.m in Sources */,
 				E202567A1BEAD92700095590 /* BFWMorphStoryboardSegue.m in Sources */,
 				E20256B01BEB413300095590 /* SeguesViewController.m in Sources */,
 				E20256AA1BEB413300095590 /* main.m in Sources */,
