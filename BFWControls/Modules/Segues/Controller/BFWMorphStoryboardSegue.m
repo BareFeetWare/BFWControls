@@ -135,8 +135,11 @@
     }
     UIView *destinationVCView = destinationViewController.view;
     UIView *sourceVCView = self.sourceViewController.view;
+    
+    // Force frames to match constraints, in case misplaced.
     [destinationVCView setNeedsLayout];
     [destinationVCView layoutIfNeeded];
+    
     destinationVCView.frame = sourceVCView.frame;
     
     UITableViewCell *cell = nil;
