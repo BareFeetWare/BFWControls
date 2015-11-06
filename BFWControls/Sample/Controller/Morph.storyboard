@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Table View Controller-->
@@ -105,13 +106,24 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view tag="3" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wpo-1h-gj4">
+                                <rect key="frame" x="20" y="246" width="46" height="176"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="176" id="XLX-E2-aoN"/>
+                                    <constraint firstAttribute="width" constant="46" id="btJ-pt-bni"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="IRc-PV-pol" firstAttribute="top" secondItem="oMf-53-InT" secondAttribute="bottom" constant="8" id="KwZ-h0-g4o"/>
+                            <constraint firstItem="Wpo-1h-gj4" firstAttribute="leading" secondItem="GlQ-5r-WBt" secondAttribute="leadingMargin" id="Mbd-6i-Z0U"/>
                             <constraint firstItem="wfN-cu-LuC" firstAttribute="centerX" secondItem="GlQ-5r-WBt" secondAttribute="centerX" id="bHr-34-qYf"/>
                             <constraint firstItem="wfN-cu-LuC" firstAttribute="centerY" secondItem="GlQ-5r-WBt" secondAttribute="centerY" id="oHd-qz-cj4"/>
+                            <constraint firstItem="Wpo-1h-gj4" firstAttribute="centerY" secondItem="GlQ-5r-WBt" secondAttribute="centerY" id="sIM-fA-8zv"/>
                             <constraint firstItem="IRc-PV-pol" firstAttribute="centerX" secondItem="GlQ-5r-WBt" secondAttribute="centerX" id="vL5-XW-zST"/>
                         </constraints>
                     </view>
@@ -320,10 +332,19 @@
                             <view tag="1" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T5d-9M-8qO">
                                 <rect key="frame" x="61" y="324" width="97" height="88"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.4155713587" green="0.83589804290000003" blue="0.64045580960000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.84891326580000004" blue="0.23297947329999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="88" id="FSM-CD-bfV"/>
                                     <constraint firstAttribute="width" constant="97" id="uHD-hF-V0x"/>
+                                </constraints>
+                            </view>
+                            <view tag="3" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W5o-Td-vVI">
+                                <rect key="frame" x="309" y="302" width="46" height="64"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.40000000600000002" blue="1" alpha="0.54138513513513509" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="FSE-SX-3im"/>
+                                    <constraint firstAttribute="width" constant="46" id="deD-OO-3u3"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -331,6 +352,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="T5d-9M-8qO" firstAttribute="centerX" secondItem="G4m-HZ-Veh" secondAttribute="centerX" id="E3D-pr-BIH"/>
+                            <constraint firstItem="W5o-Td-vVI" firstAttribute="centerY" secondItem="G4m-HZ-Veh" secondAttribute="centerY" id="OUp-IC-Tqc"/>
+                            <constraint firstItem="W5o-Td-vVI" firstAttribute="trailing" secondItem="G4m-HZ-Veh" secondAttribute="trailingMargin" id="Qyr-ej-Ftv"/>
                             <constraint firstItem="awH-Te-Fsd" firstAttribute="top" secondItem="FPe-7c-0g1" secondAttribute="bottom" constant="58" id="fcK-id-IUR"/>
                             <constraint firstItem="awH-Te-Fsd" firstAttribute="centerX" secondItem="G4m-HZ-Veh" secondAttribute="centerX" id="g4y-Zc-MjI"/>
                             <constraint firstItem="T5d-9M-8qO" firstAttribute="centerY" secondItem="G4m-HZ-Veh" secondAttribute="centerY" id="tMs-4O-PNG"/>
