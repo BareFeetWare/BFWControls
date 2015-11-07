@@ -44,10 +44,10 @@
     UIView *sourceVCView = self.sourceViewController.view;
     
     // Force frames to match constraints, in case misplaced.
-    [destinationVCView setNeedsLayout];
-    [destinationVCView layoutIfNeeded];
-    
-    destinationVCView.frame = sourceVCView.frame;
+//    [destinationVCView setNeedsLayout];
+//    [destinationVCView layoutIfNeeded];
+//    
+//    destinationVCView.frame = sourceVCView.frame;
     
     UITableViewCell *cell = nil;
     if ([self.fromView isKindOfClass:[UITableViewCell class]]) {
@@ -55,49 +55,72 @@
         cell.selected = NO;
     }
     
-    UIView *morphingView = nil;
+//    UIView *morphingView = nil;
     UIView *contentView = nil;
-    BOOL isMorphingCopy = YES;
-    if (isMorphingCopy) {
-        // Create a copy of the view hierarchy for morphing, so the original is not changed.
-        if (cell) {
-            morphingView = [cell copyWithSubviews:nil];
-            [morphingView copySubviews:cell.contentView.subviews];
-        } else {
-            morphingView = [self.fromView copyWithSubviews:self.fromView.subviews];
-        }
-        [sourceVCView addSubview:morphingView];
-        contentView = morphingView;
-    } else {
-        morphingView = self.fromView;
-        contentView = cell.contentView;
-        // TODO: finish
-    }
+    contentView = sourceVCView;
+//    BOOL isMorphingCopy = YES;
+//    if (isMorphingCopy) {
+//        // Create a copy of the view hierarchy for morphing, so the original is not changed.
+//        if (cell) {
+//            morphingView = [cell copyWithSubviews:nil];
+//            [morphingView copySubviews:cell.contentView.subviews];
+//        } else {
+//            morphingView = [self.fromView copyWithSubviews:self.fromView.subviews];
+//        }
+//        [sourceVCView addSubview:morphingView];
+//        contentView = morphingView;
+//    } else {
+//        morphingView = self.fromView;
+//        contentView = cell.contentView;
+//        // TODO: finish
+//    }
 
+    // Add constraints for final positions.
+    NSMutableDictionary *finalForViewDict = [[NSMutableDictionary alloc] init];
+    for (UIView *destinationSubview in destinationVCView.subviews) {
+        NSMutableDictionary *propertyDict = [[NSMutableDictionary alloc] init];
+        UIView *subview = [contentView subviewMatchingView:destinationSubview];
+        if (subview) {
+            destinationSubview.frame = subview.frame;
+            if (destinationSubview.backgroundColor) {
+                finalForViewDict[destinationSubview] = @{@"backgroundColor" : destinationSubview.backgroundColor,
+    //                                          @"transform" : destinationSubview.transform,
+                                              @"alpha" : @(destinationSubview.alpha)};
+            }
+            [destinationSubview copyAnimatablePropertiesFromView:subview];
+        }
+    }
+    [self.sourceViewController.navigationController pushViewController:destinationViewController
+                                                              animated:NO];
+    
     [UIView animateWithDuration:self.duration
                           delay:0.0
                         options:self.animationOptions
                      animations:^{
-                         morphingView.frame = sourceVCView.bounds;
-                         if (cell) {
-                             contentView.frame = morphingView.bounds;
-                         }
-                         for (UIView *subview in contentView.subviews) {
-                             UIView *destinationSubview = [destinationVCView subviewMatchingView:subview];
-                             if (destinationSubview) {
-                                 [subview copyAnimatablePropertiesFromView:destinationSubview];
-                             } else {
-                                 subview.alpha = 0.0;
-                             }
+//                         morphingView.frame = sourceVCView.bounds;
+//                         [destinationVCView setNeedsUpdateConstraints];
+                         [destinationVCView setNeedsLayout];
+                         [destinationVCView layoutIfNeeded];
+//                         if (cell) {
+//                             contentView.frame = morphingView.bounds;
+//                         }
+//                         for (UIView *subview in contentView.subviews) {
+//                             UIView *destinationSubview = [destinationVCView subviewMatchingView:subview];
+//                             if (destinationSubview) {
+//                                 [subview copyAnimatablePropertiesFromView:destinationSubview];
+//                             } else {
+//                                 subview.alpha = 0.0;
+//                             }
+//                         }
+                         for (UIView *destinationSubview in finalForViewDict) {
+                             destinationSubview.backgroundColor = finalForViewDict[destinationSubview];
                          }
                      }
                      completion:^(BOOL finished) {
-                         [self.sourceViewController.navigationController pushViewController:destinationViewController
-                                                                                   animated:NO];
-                         if (isMorphingCopy) {
-                             [morphingView removeFromSuperview];
-//                             morphingView.hidden = YES; // Keep it for reverse animation?
-                         }
+//                         if (isMorphingCopy) {
+//                             [morphingView removeFromSuperview];
+////                             morphingView.hidden = YES; // Keep it for reverse animation?
+//                         }
                      }
      ];
 }

@@ -96,15 +96,16 @@
     [self copyAnimatablePropertiesFromView:view];
     self.tag = view.tag;
     self.userInteractionEnabled = view.userInteractionEnabled;
+    self.frame = view.frame;
 }
 
-- (void)copyAnimatablePropertiesFromView:(UIView *)fromView {
-    self.frame = fromView.frame;
-    self.alpha = fromView.alpha;
-    if (fromView.backgroundColor) {
-        self.backgroundColor = fromView.backgroundColor;
+- (void)copyAnimatablePropertiesFromView:(UIView *)view {
+//    self.frame = view.frame;
+    self.alpha = view.alpha;
+    if (view.backgroundColor) {
+        self.backgroundColor = view.backgroundColor;
     }
-    self.transform = fromView.transform;
+    self.transform = view.transform;
 }
 
 @end
