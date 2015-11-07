@@ -24,6 +24,9 @@
 		E20256B01BEB413300095590 /* SeguesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256A51BEB413300095590 /* SeguesViewController.m */; };
 		E20256B51BEC94AA00095590 /* BFWNibView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256B41BEC94AA00095590 /* BFWNibView.m */; };
 		E20256B81BEC958500095590 /* UIView+BFW.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256B71BEC958500095590 /* UIView+BFW.m */; };
+		E2DE2EF11BEDFE1300636D0D /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */; };
+		E2DE2EF61BEDFE6100636D0D /* BFWBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2EF51BEDFE6100636D0D /* BFWBlurView.m */; };
+		E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2F7C1BEE009200636D0D /* UIImage+BFW.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +58,12 @@
 		E20256B41BEC94AA00095590 /* BFWNibView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFWNibView.m; sourceTree = "<group>"; };
 		E20256B61BEC958500095590 /* UIView+BFW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BFW.h"; sourceTree = "<group>"; };
 		E20256B71BEC958500095590 /* UIView+BFW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BFW.m"; sourceTree = "<group>"; };
+		E2DE2EEF1BEDFE1300636D0D /* UIImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageEffects.h; sourceTree = "<group>"; };
+		E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageEffects.m; sourceTree = "<group>"; };
+		E2DE2EF41BEDFE6100636D0D /* BFWBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWBlurView.h; sourceTree = "<group>"; };
+		E2DE2EF51BEDFE6100636D0D /* BFWBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFWBlurView.m; sourceTree = "<group>"; };
+		E2DE2F7B1BEE009200636D0D /* UIImage+BFW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BFW.h"; sourceTree = "<group>"; };
+		E2DE2F7C1BEE009200636D0D /* UIImage+BFW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BFW.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +82,7 @@
 			children = (
 				E20256461BEAD78200095590 /* BFWControls */,
 				E20256451BEAD78200095590 /* Products */,
+				E2DE2EEC1BEDFE1300636D0D /* Submodules */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,6 +108,7 @@
 		E202565E1BEAD7BC00095590 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				E2DE2EF21BEDFE6100636D0D /* Blur */,
 				E20256B11BEC94AA00095590 /* NibView */,
 				E202566F1BEAD92700095590 /* Segues */,
 			);
@@ -182,6 +193,50 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		E2DE2EEC1BEDFE1300636D0D /* Submodules */ = {
+			isa = PBXGroup;
+			children = (
+				E2DE2EED1BEDFE1300636D0D /* Apple */,
+			);
+			path = Submodules;
+			sourceTree = "<group>";
+		};
+		E2DE2EED1BEDFE1300636D0D /* Apple */ = {
+			isa = PBXGroup;
+			children = (
+				E2DE2EEE1BEDFE1300636D0D /* View */,
+			);
+			path = Apple;
+			sourceTree = "<group>";
+		};
+		E2DE2EEE1BEDFE1300636D0D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E2DE2EEF1BEDFE1300636D0D /* UIImageEffects.h */,
+				E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E2DE2EF21BEDFE6100636D0D /* Blur */ = {
+			isa = PBXGroup;
+			children = (
+				E2DE2EF31BEDFE6100636D0D /* View */,
+			);
+			path = Blur;
+			sourceTree = "<group>";
+		};
+		E2DE2EF31BEDFE6100636D0D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E2DE2EF41BEDFE6100636D0D /* BFWBlurView.h */,
+				E2DE2EF51BEDFE6100636D0D /* BFWBlurView.m */,
+				E2DE2F7B1BEE009200636D0D /* UIImage+BFW.h */,
+				E2DE2F7C1BEE009200636D0D /* UIImage+BFW.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -259,13 +314,16 @@
 				E20256791BEAD92700095590 /* BFWModalStoryboardSegue.m in Sources */,
 				E202567B1BEAD92700095590 /* BFWPushStoryboardSegue.m in Sources */,
 				E20256B51BEC94AA00095590 /* BFWNibView.m in Sources */,
+				E2DE2EF61BEDFE6100636D0D /* BFWBlurView.m in Sources */,
 				E202567C1BEAD92700095590 /* BFWStoryboardReferenceSegue.m in Sources */,
 				E20256B81BEC958500095590 /* UIView+BFW.m in Sources */,
 				E202567A1BEAD92700095590 /* BFWMorphStoryboardSegue.m in Sources */,
+				E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */,
 				E20256B01BEB413300095590 /* SeguesViewController.m in Sources */,
 				E20256AA1BEB413300095590 /* main.m in Sources */,
 				E20256AE1BEB413300095590 /* MorphTableViewController.m in Sources */,
 				E20256A61BEB413300095590 /* AppDelegate.m in Sources */,
+				E2DE2EF11BEDFE1300636D0D /* UIImageEffects.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +474,7 @@
 				E202565D1BEAD78200095590 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
