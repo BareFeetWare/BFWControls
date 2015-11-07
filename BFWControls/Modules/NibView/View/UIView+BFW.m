@@ -77,14 +77,9 @@
     return matchingSubview;
 }
 
-- (UIView *)copyWithoutSubviews {
+- (UIView *)copyWithSubviews:(NSArray *)subviews {
     UIView *copiedView = [[[self class] alloc] initWithFrame:self.frame];
     [copiedView copyPropertiesFromView:self];
-    return copiedView;
-}
-
-- (UIView *)copyWithSubviews:(NSArray *)subviews {
-    UIView *copiedView = [self copyWithoutSubviews];
     [copiedView copySubviews:subviews];
     return copiedView;
 }

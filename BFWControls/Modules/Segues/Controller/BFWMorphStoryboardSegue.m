@@ -81,7 +81,7 @@
     // Start destination views to be the same as the source views
     NSMutableArray *finalViewArray = [[NSMutableArray alloc] init];
     for (UIView *destinationSubview in destinationVCView.subviews) {
-        UIView *finalView = [destinationSubview copyWithoutSubviews];
+        UIView *finalView = [destinationSubview copyWithSubviews:nil];
         [finalViewArray addObject:finalView];
         UIView *subview = [contentView subviewMatchingView:destinationSubview];
         if (subview) {
