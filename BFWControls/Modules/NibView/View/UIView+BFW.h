@@ -12,6 +12,7 @@
 - (NSBundle *)bundle;
 - (UIView *)viewFromNib;
 - (UIView *)subviewMatchingView:(UIView *)view;
+- (UIView *)copyWithoutSubviews;
 - (UIView *)copyWithSubviews:(NSArray *)subviews;
 - (void)copyConstraintsFromView:(UIView *)view;
 - (void)copySubviews:(NSArray *)subviews;

@@ -75,23 +75,20 @@
 //        // TODO: finish
 //    }
 
-    // Add constraints for final positions.
-    NSMutableDictionary *finalForViewDict = [[NSMutableDictionary alloc] init];
+    [self.sourceViewController.navigationController pushViewController:destinationViewController
+                                                              animated:NO];
+
+    // Start destination views to be the same as the source views
+    NSMutableArray *finalViewArray = [[NSMutableArray alloc] init];
     for (UIView *destinationSubview in destinationVCView.subviews) {
-        NSMutableDictionary *propertyDict = [[NSMutableDictionary alloc] init];
+        UIView *finalView = [destinationSubview copyWithoutSubviews];
+        [finalViewArray addObject:finalView];
         UIView *subview = [contentView subviewMatchingView:destinationSubview];
         if (subview) {
             destinationSubview.frame = subview.frame;
-            if (destinationSubview.backgroundColor) {
-                finalForViewDict[destinationSubview] = @{@"backgroundColor" : destinationSubview.backgroundColor,
-    //                                          @"transform" : destinationSubview.transform,
-                                              @"alpha" : @(destinationSubview.alpha)};
-            }
             [destinationSubview copyAnimatablePropertiesFromView:subview];
         }
     }
-    [self.sourceViewController.navigationController pushViewController:destinationViewController
-                                                              animated:NO];
     
     [UIView animateWithDuration:self.duration
                           delay:0.0
@@ -112,8 +109,10 @@
 //                                 subview.alpha = 0.0;
 //                             }
 //                         }
-                         for (UIView *destinationSubview in finalForViewDict) {
-                             destinationSubview.backgroundColor = finalForViewDict[destinationSubview];
+                         for (UIView *destinationSubview in destinationVCView.subviews) {
+                             NSUInteger index = [destinationVCView.subviews indexOfObject:destinationSubview];
+                             UIView *finalView = finalViewArray[index];
+                             [destinationSubview copyAnimatablePropertiesFromView:finalView];
                          }
                      }
                      completion:^(BOOL finished) {
