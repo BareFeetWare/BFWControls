@@ -12,9 +12,11 @@
 - (NSBundle *)bundle;
 - (UIView *)viewFromNib;
 - (UIView *)subviewMatchingView:(UIView *)view;
-- (UIView *)copyWithSubviews:(NSArray *)subviews;
+- (UIView *)copyWithSubviews:(NSArray *)subviews
+          includeConstraints:(BOOL)includeConstraints;
+- (void)copySubviews:(NSArray *)subviews
+  includeConstraints:(BOOL)includeConstraints;
 - (void)copyConstraintsFromView:(UIView *)view;
-- (void)copySubviews:(NSArray *)subviews;
 - (void)copyPropertiesFromView:(UIView *)view;
 - (void)copyAnimatablePropertiesFromView:(UIView *)fromView;
 

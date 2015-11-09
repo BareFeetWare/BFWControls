@@ -77,18 +77,24 @@
     return matchingSubview;
 }
 
-- (UIView *)copyWithSubviews:(NSArray *)subviews {
-    UIView *copiedView = [[UIView alloc] initWithFrame:self.frame];
+- (UIView *)copyWithSubviews:(NSArray *)subviews
+          includeConstraints:(BOOL)includeConstraints {
+    UIView *copiedView = [[[self class] alloc] initWithFrame:self.frame];
     [copiedView copyPropertiesFromView:self];
-    [copiedView copySubviews:subviews];
+    [copiedView copySubviews:subviews
+          includeConstraints:includeConstraints];
     return copiedView;
 }
 
-- (void)copySubviews:(NSArray *)subviews {
+- (void)copySubviews:(NSArray *)subviews
+  includeConstraints:(BOOL)includeConstraints {
     for (UIView* subview in subviews) {
         UIView *copiedSubview = [[[subview class] alloc] initWithFrame:subview.frame];
         [self addSubview:copiedSubview];
         [copiedSubview copyPropertiesFromView:subview];
+        if (includeConstraints) {
+            [copiedSubview copyConstraintsFromView:subview];
+        }
     }
 }
 
@@ -96,15 +102,16 @@
     [self copyAnimatablePropertiesFromView:view];
     self.tag = view.tag;
     self.userInteractionEnabled = view.userInteractionEnabled;
+    self.frame = view.frame;
 }
 
-- (void)copyAnimatablePropertiesFromView:(UIView *)fromView {
-    self.frame = fromView.frame;
-    self.alpha = fromView.alpha;
-    if (fromView.backgroundColor) {
-        self.backgroundColor = fromView.backgroundColor;
+- (void)copyAnimatablePropertiesFromView:(UIView *)view {
+//    self.frame = view.frame;
+    self.alpha = view.alpha;
+    if (view.backgroundColor) {
+        self.backgroundColor = view.backgroundColor;
     }
-    self.transform = fromView.transform;
+    self.transform = view.transform;
 }
 
 @end
