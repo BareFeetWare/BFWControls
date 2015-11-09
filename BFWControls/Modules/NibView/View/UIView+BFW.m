@@ -77,18 +77,24 @@
     return matchingSubview;
 }
 
-- (UIView *)copyWithSubviews:(NSArray *)subviews {
+- (UIView *)copyWithSubviews:(NSArray *)subviews
+          includeConstraints:(BOOL)includeConstraints {
     UIView *copiedView = [[[self class] alloc] initWithFrame:self.frame];
     [copiedView copyPropertiesFromView:self];
-    [copiedView copySubviews:subviews];
+    [copiedView copySubviews:subviews
+          includeConstraints:includeConstraints];
     return copiedView;
 }
 
-- (void)copySubviews:(NSArray *)subviews {
+- (void)copySubviews:(NSArray *)subviews
+  includeConstraints:(BOOL)includeConstraints {
     for (UIView* subview in subviews) {
         UIView *copiedSubview = [[[subview class] alloc] initWithFrame:subview.frame];
         [self addSubview:copiedSubview];
         [copiedSubview copyPropertiesFromView:subview];
+        if (includeConstraints) {
+            [copiedSubview copyConstraintsFromView:subview];
+        }
     }
 }
 
