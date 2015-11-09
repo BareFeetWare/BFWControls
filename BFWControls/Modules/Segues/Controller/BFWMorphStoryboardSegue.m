@@ -78,18 +78,39 @@
     [self.sourceViewController.navigationController pushViewController:destinationViewController
                                                               animated:NO];
 
+    [destinationVCView setNeedsLayout];
+    [destinationVCView layoutIfNeeded];
+
     // Start destination views to be the same as the source views
-    NSMutableArray *finalViewArray = [[NSMutableArray alloc] init];
+    NSMutableArray *restoreViewArray = [[NSMutableArray alloc] init];
+    NSMutableArray *restoreConstraintsArray = [[NSMutableArray alloc] init];
     for (UIView *destinationSubview in destinationVCView.subviews) {
-        UIView *finalView = [destinationSubview copyWithSubviews:nil];
-        [finalViewArray addObject:finalView];
+        NSLog(@"destinationSubview.constraints = %@", destinationSubview.constraints);
+        UIView *restoreView = [destinationSubview copyWithSubviews:nil includeConstraints:NO];
+        [restoreViewArray addObject:restoreView];
+        [restoreConstraintsArray addObject:destinationSubview.constraints];
         UIView *subview = [contentView subviewMatchingView:destinationSubview];
         if (subview) {
-            destinationSubview.frame = subview.frame;
+//            destinationSubview.frame = subview.frame;
+            NSLog(@"removeConstraints:%@", destinationSubview.constraints);
+            [destinationSubview removeConstraints:destinationSubview.constraints];
+            [destinationSubview copyConstraintsFromView:subview];
+            NSLog(@"copiedConstraints = %@", destinationSubview.constraints);
             [destinationSubview copyAnimatablePropertiesFromView:subview];
         }
     }
-    
+
+    [destinationVCView setNeedsLayout];
+    [destinationVCView layoutIfNeeded];
+
+    for (UIView *destinationSubview in destinationVCView.subviews) {
+        NSUInteger index = [destinationVCView.subviews indexOfObject:destinationSubview];
+        [destinationSubview removeConstraints:destinationSubview.constraints];
+        [destinationSubview addConstraints:restoreConstraintsArray[index]];
+//        UIView *restoreView = restoreViewArray[index];
+//        [destinationSubview copyAnimatablePropertiesFromView:restoreView];
+    }
+
     [UIView animateWithDuration:self.duration
                           delay:0.0
                         options:self.animationOptions
@@ -111,8 +132,10 @@
 //                         }
                          for (UIView *destinationSubview in destinationVCView.subviews) {
                              NSUInteger index = [destinationVCView.subviews indexOfObject:destinationSubview];
-                             UIView *finalView = finalViewArray[index];
-                             [destinationSubview copyAnimatablePropertiesFromView:finalView];
+//                             [destinationSubview removeConstraints:destinationSubview.constraints];
+//                             [destinationSubview addConstraints:restoreConstraintsArray[index]];
+                             UIView *restoreView = restoreViewArray[index];
+                             [destinationSubview copyAnimatablePropertiesFromView:restoreView];
                          }
                      }
                      completion:^(BOOL finished) {
