@@ -77,10 +77,15 @@
     return matchingSubview;
 }
 
-- (UIView *)copyWithSubviews:(NSArray *)subviews
-          includeConstraints:(BOOL)includeConstraints {
+- (instancetype)copy {
     UIView *copiedView = [[[self class] alloc] initWithFrame:self.frame];
     [copiedView copyPropertiesFromView:self];
+    return copiedView;
+}
+
+- (UIView *)copyWithSubviews:(NSArray *)subviews
+          includeConstraints:(BOOL)includeConstraints {
+    UIView *copiedView = [self copy];
     [copiedView copySubviews:subviews
           includeConstraints:includeConstraints];
     return copiedView;
