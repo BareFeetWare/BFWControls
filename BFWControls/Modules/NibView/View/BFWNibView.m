@@ -6,7 +6,7 @@
 //
 
 #import "BFWNibView.h"
-#import "UIView+BFW.h"
+#import "UIView+BFWCopy.h"
 
 @implementation BFWNibView
 

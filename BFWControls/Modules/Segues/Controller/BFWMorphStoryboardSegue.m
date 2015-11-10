@@ -8,7 +8,7 @@
 // Work in progress. Unfinished.
 
 #import "BFWMorphStoryboardSegue.h"
-#import "UIView+BFW.h"
+#import "UIView+BFWCopy.h"
 
 @implementation BFWMorphStoryboardSegue
 

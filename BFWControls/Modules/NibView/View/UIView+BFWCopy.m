@@ -1,13 +1,13 @@
 //
-//  UIView+BFW.m
+//  UIView+BFWCopy.m
 //
 //  Created by Tom Brodhurst-Hill on 6/11/2015.
 //  Copyright © 2015 BareFeetWare. All rights reserved.
 //
 
-#import "UIView+BFW.h"
+#import "UIView+BFWCopy.h"
 
-@implementation UIView (BFW)
+@implementation UIView (BFWCopy)
 
 - (NSBundle *)bundle
 {
