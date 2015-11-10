@@ -5,9 +5,9 @@
 //  Copyright (c) 2015 BareFeetWare. Free to use and modify, without warranty.
 //
 
-#import "BFWStoryboardReferenceSegue.h"
+#import <UIKit/UiKit.h>
 
-@interface BFWMorphStoryboardSegue : BFWStoryboardReferenceSegue
+@interface BFWMorphStoryboardSegue : UIStoryboardSegue
 
 @property (nonatomic, weak) IBOutlet UIView *fromView;
 @property (nonatomic, assign) NSTimeInterval duration;
