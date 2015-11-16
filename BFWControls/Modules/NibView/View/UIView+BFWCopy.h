@@ -10,6 +10,7 @@
 @interface UIView (BFWCopy)
 
 - (NSBundle *)bundle;
+- (CGSize)sizeFromNib;
 - (UIView *)viewFromNib;
 - (UIView *)subviewMatchingView:(UIView *)view;
 - (UIView *)copyWithSubviews:(NSArray *)subviews

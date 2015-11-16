@@ -45,6 +45,13 @@
     }
 }
 
+- (CGSize)sizeFromNib {
+    NSArray *nibViews = [self.bundle loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil];
+    UIView *nibView = nibViews.firstObject;
+    CGSize size = nibView.frame.size;
+    return size;
+}
+
 - (UIView *)viewFromNib {
     UIView *nibView = self;
     BOOL hasAlreadyLoadedFromNib = self.subviews.count > 0; // TODO: More rubust test.

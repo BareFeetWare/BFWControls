@@ -27,4 +27,9 @@
     return [self viewFromNib];
 }
 
+- (CGSize)intrinsicContentSize {
+    // TODO: cache per class
+    return [self sizeFromNib];
+}
+
 @end
