@@ -62,12 +62,12 @@
         // Create a copy of the view hierarchy for morphing, so the original is not changed.
         if (cell) {
             morphingView = [cell copyWithSubviews:nil
-                               includeConstraints:NO];
+                               includeConstraints:YES];
             [morphingView copySubviews:cell.contentView.subviews
-                    includeConstraints:NO];
+                    includeConstraints:YES];
         } else {
             morphingView = [self.fromView copyWithSubviews:self.fromView.subviews
-                                        includeConstraints:NO];
+                                        includeConstraints:YES];
         }
         [sourceVCView addSubview:morphingView];
         contentView = morphingView;
@@ -77,18 +77,31 @@
         // TODO: finish
     }
 
+    // Add destination constraints, which will animate frames when layout is updated, inside animation block below.
+    for (UIView *subview in contentView.subviews) {
+        UIView *destinationSubview = [destinationVCView subviewMatchingView:subview];
+        if (destinationSubview) {
+            [subview removeConstraints:subview.constraints];
+            [subview copyConstraintsFromView:destinationSubview];
+        }
+    }
+    
+    
     [UIView animateWithDuration:self.duration
                           delay:0.0
                         options:self.animationOptions
                      animations:^{
-                         morphingView.frame = sourceVCView.bounds;
+//                         morphingView.frame = sourceVCView.bounds;
+                         [morphingView setNeedsLayout];
+                         [morphingView layoutIfNeeded];
                          if (cell) {
                              contentView.frame = morphingView.bounds;
                          }
                          for (UIView *subview in contentView.subviews) {
                              UIView *destinationSubview = [destinationVCView subviewMatchingView:subview];
                              if (destinationSubview) {
-                                 subview.frame = destinationSubview.frame;
+//                                 subview.frame = destinationSubview.frame;
+                                 
                                  [subview copyAnimatablePropertiesFromView:destinationSubview];
                              } else {
                                  subview.alpha = 0.0;
