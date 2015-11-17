@@ -6,7 +6,7 @@
 //
 
 #import "BFWNibView.h"
-#import "UIView+BFW.h"
+#import "UIView+BFWCopy.h"
 
 @implementation BFWNibView
 
@@ -25,6 +25,11 @@
 /// Replaces an instance of view in a storyboard or xib with the full subview structure from its own xib.
 - (id)awakeAfterUsingCoder:(NSCoder *)aDecoder {
     return [self viewFromNib];
+}
+
+- (CGSize)intrinsicContentSize {
+    // TODO: cache per class
+    return [self sizeFromNib];
 }
 
 @end

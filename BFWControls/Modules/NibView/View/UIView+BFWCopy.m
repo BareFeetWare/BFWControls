@@ -1,13 +1,13 @@
 //
-//  UIView+BFW.m
+//  UIView+BFWCopy.m
 //
 //  Created by Tom Brodhurst-Hill on 6/11/2015.
 //  Copyright © 2015 BareFeetWare. All rights reserved.
 //
 
-#import "UIView+BFW.h"
+#import "UIView+BFWCopy.h"
 
-@implementation UIView (BFW)
+@implementation UIView (BFWCopy)
 
 - (NSBundle *)bundle
 {
@@ -45,6 +45,13 @@
     }
 }
 
+- (CGSize)sizeFromNib {
+    NSArray *nibViews = [self.bundle loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil];
+    UIView *nibView = nibViews.firstObject;
+    CGSize size = nibView.frame.size;
+    return size;
+}
+
 - (UIView *)viewFromNib {
     UIView *nibView = self;
     BOOL hasAlreadyLoadedFromNib = self.subviews.count > 0; // TODO: More rubust test.
@@ -77,10 +84,15 @@
     return matchingSubview;
 }
 
-- (UIView *)copyWithSubviews:(NSArray *)subviews
-          includeConstraints:(BOOL)includeConstraints {
+- (instancetype)copy {
     UIView *copiedView = [[[self class] alloc] initWithFrame:self.frame];
     [copiedView copyPropertiesFromView:self];
+    return copiedView;
+}
+
+- (UIView *)copyWithSubviews:(NSArray *)subviews
+          includeConstraints:(BOOL)includeConstraints {
+    UIView *copiedView = [self copy];
     [copiedView copySubviews:subviews
           includeConstraints:includeConstraints];
     return copiedView;

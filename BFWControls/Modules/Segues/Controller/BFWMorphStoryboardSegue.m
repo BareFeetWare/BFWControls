@@ -8,7 +8,7 @@
 // Work in progress. Unfinished.
 
 #import "BFWMorphStoryboardSegue.h"
-#import "UIView+BFW.h"
+#import "UIView+BFWCopy.h"
 
 @implementation BFWMorphStoryboardSegue
 
@@ -17,7 +17,7 @@
 - (instancetype)initWithIdentifier:(NSString *)identifier source:(UIViewController *)source destination:(UIViewController *)destination {
     self = [super initWithIdentifier:identifier source:source destination:destination];
     if (self) {
-        _duration = 5.0;
+        _duration = 1.0;
         _animationOptions = UIViewAnimationOptionCurveEaseInOut;
     }
     return self;
