@@ -32,6 +32,40 @@
     return _fromView;
 }
 
+#pragma mark - move to another class
+
+- (NSArray *)constraintsReplacingConstraints:(NSArray *)oldConstraints
+                                       views:(NSArray *)oldViews
+                                   withViews:(NSArray *)views
+{
+    NSMutableArray *constraints = [[NSMutableArray alloc] init];
+    for (NSLayoutConstraint *oldConstraint in oldConstraints) {
+        UIView *firstItem = oldConstraint.firstItem;
+        UIView *secondItem = oldConstraint.secondItem;
+        BOOL didReplace = NO;
+        if ([oldViews containsObject:firstItem]) {
+            firstItem = views[[oldViews indexOfObject:firstItem]];
+            didReplace = YES;
+        }
+        if ([oldViews containsObject:secondItem]) {
+            secondItem = views[[oldViews indexOfObject:secondItem]];
+            didReplace = YES;
+        }
+        if (didReplace) {
+            NSLayoutConstraint *constraint;
+            constraint = [NSLayoutConstraint constraintWithItem:firstItem
+                                                      attribute:oldConstraint.firstAttribute
+                                                      relatedBy:oldConstraint.relation
+                                                         toItem:secondItem
+                                                      attribute:oldConstraint.secondAttribute
+                                                     multiplier:oldConstraint.multiplier
+                                                       constant:oldConstraint.constant];
+            [constraints addObject:constraint];
+        }
+    }
+    return [constraints copy];
+}
+
 #pragma mark - UIStoryboardSegue
 
 - (void)perform {
@@ -78,14 +112,36 @@
     }
 
     // Add destination constraints, which will animate frames when layout is updated, inside animation block below.
-    for (UIView *subview in contentView.subviews) {
-        UIView *destinationSubview = [destinationVCView subviewMatchingView:subview];
-        if (destinationSubview) {
-            [subview removeConstraints:subview.constraints];
-            [subview copyConstraintsFromView:destinationSubview];
+    NSMutableArray *sourceConstraints = [[NSMutableArray alloc] init];
+    NSMutableArray *destinationConstraints = [[NSMutableArray alloc] init];
+    NSMutableArray *sourceSubviews = [[NSMutableArray alloc] init];
+    NSMutableArray *destinationSubviews = [[NSMutableArray alloc] init];
+    [sourceConstraints addObjectsFromArray:sourceVCView.constraints];
+    [destinationConstraints addObjectsFromArray:destinationVCView.constraints];
+    [sourceSubviews addObject:sourceVCView]; // TODO: add top/bottom guides
+    [destinationSubviews addObject:destinationVCView]; // TODO: add top/bottom guides
+    for (UIView *sourceSubview in contentView.subviews) {
+        UIView *destinationSubview = [destinationVCView subviewMatchingView:sourceSubview];
+        if (destinationSubview && sourceSubview.tag == 1) { // testing using tag
+            [sourceSubviews addObject:sourceSubview];
+            [destinationSubviews addObject:destinationSubview];
+            for (NSLayoutConstraint *constraint in sourceVCView.constraints) {
+                if (constraint.firstItem == sourceSubview || constraint.secondItem == sourceSubview) {
+                    [sourceConstraints addObject:constraint];
+                }
+            }
+            for (NSLayoutConstraint *constraint in destinationVCView.constraints) {
+                if (constraint.firstItem == destinationSubview || constraint.secondItem == destinationSubview) {
+                    [destinationConstraints addObject:constraint];
+                }
+            }
         }
     }
-    
+    NSArray *constraints = [self constraintsReplacingConstraints:destinationConstraints
+                                                           views:destinationSubviews
+                                                       withViews:sourceSubviews];
+    [NSLayoutConstraint deactivateConstraints:sourceConstraints];
+    [NSLayoutConstraint activateConstraints:constraints];
     
     [UIView animateWithDuration:self.duration
                           delay:0.0
