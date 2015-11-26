@@ -45,8 +45,17 @@
     }
 }
 
+- (NSString *)nibName {
+    NSString *fullClassName = NSStringFromClass([self class]);
+    
+    // Remove the <ProjectName>. prefix that Swift adds:
+    NSString *className = [fullClassName componentsSeparatedByString:@"."].lastObject;
+    
+    return className;
+}
+
 - (CGSize)sizeFromNib {
-    NSArray *nibViews = [self.bundle loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil];
+    NSArray *nibViews = [self.bundle loadNibNamed:[self nibName] owner:nil options:nil];
     UIView *nibView = nibViews.firstObject;
     CGSize size = nibView.frame.size;
     return size;
@@ -56,7 +65,7 @@
     UIView *nibView = self;
     BOOL hasAlreadyLoadedFromNib = self.subviews.count > 0; // TODO: More rubust test.
     if (!hasAlreadyLoadedFromNib) {
-        NSArray *nibViews = [self.bundle loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil];
+        NSArray *nibViews = [self.bundle loadNibNamed:[self nibName] owner:nil options:nil];
         nibView = nibViews.firstObject;
         nibView.frame = self.frame;
         nibView.translatesAutoresizingMaskIntoConstraints = self.translatesAutoresizingMaskIntoConstraints;
