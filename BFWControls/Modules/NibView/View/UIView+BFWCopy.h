@@ -9,8 +9,13 @@
 
 @interface UIView (BFWCopy)
 
-- (NSBundle *)bundle;
-- (CGSize)sizeFromNib;
+#pragma mark - class methods
+
++ (NSBundle *)bundle;
++ (CGSize)sizeFromNib;
+
+#pragma mark - instance methods
+
 - (UIView *)viewFromNib;
 - (UIView *)subviewMatchingView:(UIView *)view;
 - (UIView *)copyWithSubviews:(NSArray *)subviews

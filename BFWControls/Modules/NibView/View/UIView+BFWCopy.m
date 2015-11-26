@@ -9,15 +9,39 @@
 
 @implementation UIView (BFWCopy)
 
-- (NSBundle *)bundle
+#pragma mark - class methods
+
++ (NSBundle *)bundle
 {
 #if TARGET_INTERFACE_BUILDER // Rendering in storyboard using IBDesignable.
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    NSBundle *bundle = [NSBundle bundleForClass:self];
 #else
     NSBundle *bundle = [NSBundle mainBundle];
 #endif
     return bundle;
 }
+
++ (NSString *)nibName {
+    NSString *fullClassName = NSStringFromClass(self);
+    
+    // Remove the <ProjectName>. prefix that Swift adds:
+    NSString *className = [fullClassName componentsSeparatedByString:@"."].lastObject;
+    
+    return className;
+}
+
++ (CGSize)sizeFromNib {
+    static CGSize size;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSArray *nibViews = [[self bundle] loadNibNamed:[self nibName] owner:nil options:nil];
+        UIView *nibView = nibViews.firstObject;
+        size = nibView.frame.size;
+    });
+    return size;
+}
+
+#pragma mark - instance methods
 
 - (void)copyConstraintsFromView:(UIView *)view {
     for (NSLayoutConstraint *constraint in view.constraints) {
@@ -45,27 +69,11 @@
     }
 }
 
-- (NSString *)nibName {
-    NSString *fullClassName = NSStringFromClass([self class]);
-    
-    // Remove the <ProjectName>. prefix that Swift adds:
-    NSString *className = [fullClassName componentsSeparatedByString:@"."].lastObject;
-    
-    return className;
-}
-
-- (CGSize)sizeFromNib {
-    NSArray *nibViews = [self.bundle loadNibNamed:[self nibName] owner:nil options:nil];
-    UIView *nibView = nibViews.firstObject;
-    CGSize size = nibView.frame.size;
-    return size;
-}
-
 - (UIView *)viewFromNib {
     UIView *nibView = self;
     BOOL hasAlreadyLoadedFromNib = self.subviews.count > 0; // TODO: More rubust test.
     if (!hasAlreadyLoadedFromNib) {
-        NSArray *nibViews = [self.bundle loadNibNamed:[self nibName] owner:nil options:nil];
+        NSArray *nibViews = [[[self class] bundle] loadNibNamed:[[self class] nibName] owner:nil options:nil];
         nibView = nibViews.firstObject;
         nibView.frame = self.frame;
         nibView.translatesAutoresizingMaskIntoConstraints = self.translatesAutoresizingMaskIntoConstraints;
@@ -108,7 +116,8 @@
 }
 
 - (void)copySubviews:(NSArray *)subviews
-  includeConstraints:(BOOL)includeConstraints {
+  includeConstraints:(BOOL)includeConstraints
+{
     for (UIView* subview in subviews) {
         UIView *copiedSubview = [[[subview class] alloc] initWithFrame:subview.frame];
         [self addSubview:copiedSubview];
