@@ -10,6 +10,14 @@
 #import "BFWMorphStoryboardSegue.h"
 #import "UIView+BFWCopy.h"
 
+@interface BFWMorphStoryboardSegue : UIStoryboardSegue
+
+@property (nonatomic, weak) IBOutlet UIView *fromView;
+@property (nonatomic, assign) NSTimeInterval duration;
+@property (nonatomic, assign) UIViewAnimationOptions animationOptions;
+
+@end
+
 @implementation BFWMorphStoryboardSegue
 
 #pragma mark - init

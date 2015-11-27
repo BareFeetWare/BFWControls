@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E20256791BEAD92700095590 /* BFWModalStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256721BEAD92700095590 /* BFWModalStoryboardSegue.m */; };
-		E202567A1BEAD92700095590 /* BFWMorphStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256741BEAD92700095590 /* BFWMorphStoryboardSegue.m */; };
+		E202567A1BEAD92700095590 /* BFWMorphStoryboardSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20256741BEAD92700095590 /* BFWMorphStoryboardSegue.swift */; };
 		E202567B1BEAD92700095590 /* BFWPushStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256761BEAD92700095590 /* BFWPushStoryboardSegue.m */; };
 		E202567C1BEAD92700095590 /* BFWStoryboardReferenceSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256781BEAD92700095590 /* BFWStoryboardReferenceSegue.m */; };
 		E20256A61BEB413300095590 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256951BEB413300095590 /* AppDelegate.m */; };
@@ -35,8 +35,7 @@
 		E20256581BEAD78200095590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E20256711BEAD92700095590 /* BFWModalStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWModalStoryboardSegue.h; sourceTree = "<group>"; };
 		E20256721BEAD92700095590 /* BFWModalStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFWModalStoryboardSegue.m; sourceTree = "<group>"; };
-		E20256731BEAD92700095590 /* BFWMorphStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWMorphStoryboardSegue.h; sourceTree = "<group>"; };
-		E20256741BEAD92700095590 /* BFWMorphStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFWMorphStoryboardSegue.m; sourceTree = "<group>"; };
+		E20256741BEAD92700095590 /* BFWMorphStoryboardSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BFWMorphStoryboardSegue.swift; sourceTree = "<group>"; };
 		E20256751BEAD92700095590 /* BFWPushStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWPushStoryboardSegue.h; sourceTree = "<group>"; };
 		E20256761BEAD92700095590 /* BFWPushStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFWPushStoryboardSegue.m; sourceTree = "<group>"; };
 		E20256771BEAD92700095590 /* BFWStoryboardReferenceSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWStoryboardReferenceSegue.h; sourceTree = "<group>"; };
@@ -132,8 +131,7 @@
 			children = (
 				E20256711BEAD92700095590 /* BFWModalStoryboardSegue.h */,
 				E20256721BEAD92700095590 /* BFWModalStoryboardSegue.m */,
-				E20256731BEAD92700095590 /* BFWMorphStoryboardSegue.h */,
-				E20256741BEAD92700095590 /* BFWMorphStoryboardSegue.m */,
+				E20256741BEAD92700095590 /* BFWMorphStoryboardSegue.swift */,
 				E20256751BEAD92700095590 /* BFWPushStoryboardSegue.h */,
 				E20256761BEAD92700095590 /* BFWPushStoryboardSegue.m */,
 				E20256771BEAD92700095590 /* BFWStoryboardReferenceSegue.h */,
@@ -325,7 +323,7 @@
 				E2DE2EF61BEDFE6100636D0D /* BFWBlurView.m in Sources */,
 				E234075D1C08399000319D38 /* NSLayoutConstraint+BFWCopy.m in Sources */,
 				E202567C1BEAD92700095590 /* BFWStoryboardReferenceSegue.m in Sources */,
-				E202567A1BEAD92700095590 /* BFWMorphStoryboardSegue.m in Sources */,
+				E202567A1BEAD92700095590 /* BFWMorphStoryboardSegue.swift in Sources */,
 				E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */,
 				E20256B01BEB413300095590 /* SeguesViewController.m in Sources */,
 				E20256AA1BEB413300095590 /* main.m in Sources */,
