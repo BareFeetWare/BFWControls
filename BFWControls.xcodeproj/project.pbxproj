@@ -61,6 +61,7 @@
 		E234075A1C08399000319D38 /* NSLayoutConstraint+BFWCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+BFWCopy.m"; sourceTree = "<group>"; };
 		E234075B1C08399000319D38 /* UIView+BFWCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BFWCopy.h"; sourceTree = "<group>"; };
 		E234075C1C08399000319D38 /* UIView+BFWCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BFWCopy.m"; sourceTree = "<group>"; };
+		E23407611C083C3200319D38 /* BFWControls-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BFWControls-Bridging-Header.h"; sourceTree = "<group>"; };
 		E2DE2EEF1BEDFE1300636D0D /* UIImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageEffects.h; sourceTree = "<group>"; };
 		E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageEffects.m; sourceTree = "<group>"; };
 		E2DE2EF41BEDFE6100636D0D /* BFWBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWBlurView.h; sourceTree = "<group>"; };
@@ -150,6 +151,7 @@
 				E20256971BEB413300095590 /* LaunchScreen.storyboard */,
 				E20256991BEB413300095590 /* Main.storyboard */,
 				E202569B1BEB413300095590 /* main.m */,
+				E23407611C083C3200319D38 /* BFWControls-Bridging-Header.h */,
 			);
 			path = Launch;
 			sourceTree = "<group>";
@@ -441,11 +443,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = BFWControls/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.barefeetware.BFWControls;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BFWControls/Launch/BFWControls-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -453,11 +458,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = BFWControls/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.barefeetware.BFWControls;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BFWControls/Launch/BFWControls-Bridging-Header.h";
 			};
 			name = Release;
 		};
