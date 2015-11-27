@@ -29,7 +29,7 @@
 
 - (CGSize)intrinsicContentSize {
     // TODO: cache per class
-    return [self sizeFromNib];
+    return [[self class] sizeFromNib];
 }
 
 @end
