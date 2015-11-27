@@ -23,7 +23,8 @@
 		E20256AF1BEB413300095590 /* Segues.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20256A31BEB413300095590 /* Segues.storyboard */; };
 		E20256B01BEB413300095590 /* SeguesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256A51BEB413300095590 /* SeguesViewController.m */; };
 		E20256B51BEC94AA00095590 /* BFWNibView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256B41BEC94AA00095590 /* BFWNibView.m */; };
-		E20256B81BEC958500095590 /* UIView+BFW.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256B71BEC958500095590 /* UIView+BFW.m */; };
+		E234075D1C08399000319D38 /* NSLayoutConstraint+BFWCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = E234075A1C08399000319D38 /* NSLayoutConstraint+BFWCopy.m */; };
+		E234075E1C08399000319D38 /* UIView+BFWCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = E234075C1C08399000319D38 /* UIView+BFWCopy.m */; };
 		E2DE2EF11BEDFE1300636D0D /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */; };
 		E2DE2EF61BEDFE6100636D0D /* BFWBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2EF51BEDFE6100636D0D /* BFWBlurView.m */; };
 		E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2F7C1BEE009200636D0D /* UIImage+BFW.m */; };
@@ -56,8 +57,10 @@
 		E20256A51BEB413300095590 /* SeguesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeguesViewController.m; sourceTree = "<group>"; };
 		E20256B31BEC94AA00095590 /* BFWNibView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWNibView.h; sourceTree = "<group>"; };
 		E20256B41BEC94AA00095590 /* BFWNibView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFWNibView.m; sourceTree = "<group>"; };
-		E20256B61BEC958500095590 /* UIView+BFW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BFW.h"; sourceTree = "<group>"; };
-		E20256B71BEC958500095590 /* UIView+BFW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BFW.m"; sourceTree = "<group>"; };
+		E23407591C08399000319D38 /* NSLayoutConstraint+BFWCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+BFWCopy.h"; sourceTree = "<group>"; };
+		E234075A1C08399000319D38 /* NSLayoutConstraint+BFWCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+BFWCopy.m"; sourceTree = "<group>"; };
+		E234075B1C08399000319D38 /* UIView+BFWCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BFWCopy.h"; sourceTree = "<group>"; };
+		E234075C1C08399000319D38 /* UIView+BFWCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BFWCopy.m"; sourceTree = "<group>"; };
 		E2DE2EEF1BEDFE1300636D0D /* UIImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageEffects.h; sourceTree = "<group>"; };
 		E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageEffects.m; sourceTree = "<group>"; };
 		E2DE2EF41BEDFE6100636D0D /* BFWBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWBlurView.h; sourceTree = "<group>"; };
@@ -187,8 +190,10 @@
 			children = (
 				E20256B31BEC94AA00095590 /* BFWNibView.h */,
 				E20256B41BEC94AA00095590 /* BFWNibView.m */,
-				E20256B61BEC958500095590 /* UIView+BFW.h */,
-				E20256B71BEC958500095590 /* UIView+BFW.m */,
+				E23407591C08399000319D38 /* NSLayoutConstraint+BFWCopy.h */,
+				E234075A1C08399000319D38 /* NSLayoutConstraint+BFWCopy.m */,
+				E234075B1C08399000319D38 /* UIView+BFWCopy.h */,
+				E234075C1C08399000319D38 /* UIView+BFWCopy.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -314,9 +319,10 @@
 				E20256791BEAD92700095590 /* BFWModalStoryboardSegue.m in Sources */,
 				E202567B1BEAD92700095590 /* BFWPushStoryboardSegue.m in Sources */,
 				E20256B51BEC94AA00095590 /* BFWNibView.m in Sources */,
+				E234075E1C08399000319D38 /* UIView+BFWCopy.m in Sources */,
 				E2DE2EF61BEDFE6100636D0D /* BFWBlurView.m in Sources */,
+				E234075D1C08399000319D38 /* NSLayoutConstraint+BFWCopy.m in Sources */,
 				E202567C1BEAD92700095590 /* BFWStoryboardReferenceSegue.m in Sources */,
-				E20256B81BEC958500095590 /* UIView+BFW.m in Sources */,
 				E202567A1BEAD92700095590 /* BFWMorphStoryboardSegue.m in Sources */,
 				E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */,
 				E20256B01BEB413300095590 /* SeguesViewController.m in Sources */,
