@@ -32,7 +32,7 @@
 
 /* Begin PBXFileReference section */
 		E20256441BEAD78200095590 /* BFWControls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BFWControls.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E20256581BEAD78200095590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E20256581BEAD78200095590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		E20256711BEAD92700095590 /* BFWModalStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWModalStoryboardSegue.h; sourceTree = "<group>"; };
 		E20256721BEAD92700095590 /* BFWModalStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFWModalStoryboardSegue.m; sourceTree = "<group>"; };
 		E20256731BEAD92700095590 /* BFWMorphStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWMorphStoryboardSegue.h; sourceTree = "<group>"; };
@@ -103,7 +103,6 @@
 				E20256931BEB413300095590 /* Launch */,
 				E202565E1BEAD7BC00095590 /* Modules */,
 				E202569C1BEB413300095590 /* Sample */,
-				E20256581BEAD78200095590 /* Info.plist */,
 			);
 			path = BFWControls;
 			sourceTree = "<group>";
@@ -147,6 +146,7 @@
 				E20256941BEB413300095590 /* AppDelegate.h */,
 				E20256951BEB413300095590 /* AppDelegate.m */,
 				E20256961BEB413300095590 /* Assets.xcassets */,
+				E20256581BEAD78200095590 /* Info.plist */,
 				E20256971BEB413300095590 /* LaunchScreen.storyboard */,
 				E20256991BEB413300095590 /* Main.storyboard */,
 				E202569B1BEB413300095590 /* main.m */,
