@@ -6,7 +6,7 @@
 //
 
 #import "MorphTableViewController.h"
-#import "BFWMorphStoryboardSegue.h"
+#import "BFWControls-Swift.h"
 
 @interface MorphTableViewController ()
 
