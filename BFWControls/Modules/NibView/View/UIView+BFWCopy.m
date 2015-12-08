@@ -31,13 +31,9 @@
 }
 
 + (CGSize)sizeFromNib {
-    static CGSize size;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        NSArray *nibViews = [[self bundle] loadNibNamed:[self nibName] owner:nil options:nil];
-        UIView *nibView = nibViews.firstObject;
-        size = nibView.frame.size;
-    });
+    NSArray *nibViews = [[self bundle] loadNibNamed:[self nibName] owner:nil options:nil];
+    UIView *nibView = nibViews.firstObject;
+    CGSize size = nibView.frame.size;
     return size;
 }
 
