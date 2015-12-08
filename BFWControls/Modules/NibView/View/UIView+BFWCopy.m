@@ -66,6 +66,10 @@
         else {
             NSLog(@"copyConstraintsFromView: error: firstItem == nil");
         }
+        for (UILayoutConstraintAxis axis = UILayoutConstraintAxisHorizontal; axis <= UILayoutConstraintAxisVertical; axis += UILayoutConstraintAxisVertical - UILayoutConstraintAxisHorizontal) {
+            [self setContentCompressionResistancePriority:[view contentCompressionResistancePriorityForAxis:axis] forAxis:axis];
+            [self setContentHuggingPriority:[view contentHuggingPriorityForAxis:axis] forAxis:axis];
+        }
     }
 }
 
