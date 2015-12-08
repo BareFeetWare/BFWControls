@@ -50,22 +50,23 @@
             if (secondItem == view) {
                 secondItem = self;
             }
-            NSLayoutConstraint *copiedConstraint = [NSLayoutConstraint constraintWithItem:firstItem
-                                                                                attribute:constraint.firstAttribute
-                                                                                relatedBy:constraint.relation
-                                                                                   toItem:secondItem
-                                                                                attribute:constraint.secondAttribute
-                                                                               multiplier:constraint.multiplier
-                                                                                 constant:constraint.constant];
+            NSLayoutConstraint *copiedConstraint;
+            copiedConstraint = [NSLayoutConstraint constraintWithItem:firstItem
+                                                            attribute:constraint.firstAttribute
+                                                            relatedBy:constraint.relation
+                                                               toItem:secondItem
+                                                            attribute:constraint.secondAttribute
+                                                           multiplier:constraint.multiplier
+                                                             constant:constraint.constant];
             [self addConstraint:copiedConstraint];
         }
         else {
             NSLog(@"copyConstraintsFromView: error: firstItem == nil");
         }
-        for (UILayoutConstraintAxis axis = UILayoutConstraintAxisHorizontal; axis <= UILayoutConstraintAxisVertical; axis += UILayoutConstraintAxisVertical - UILayoutConstraintAxisHorizontal) {
-            [self setContentCompressionResistancePriority:[view contentCompressionResistancePriorityForAxis:axis] forAxis:axis];
-            [self setContentHuggingPriority:[view contentHuggingPriorityForAxis:axis] forAxis:axis];
-        }
+    }
+    for (UILayoutConstraintAxis axis = UILayoutConstraintAxisHorizontal; axis <= UILayoutConstraintAxisVertical; axis += UILayoutConstraintAxisVertical - UILayoutConstraintAxisHorizontal) {
+        [self setContentCompressionResistancePriority:[view contentCompressionResistancePriorityForAxis:axis] forAxis:axis];
+        [self setContentHuggingPriority:[view contentHuggingPriorityForAxis:axis] forAxis:axis];
     }
 }
 
