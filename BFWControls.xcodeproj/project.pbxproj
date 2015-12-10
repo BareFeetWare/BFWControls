@@ -10,8 +10,6 @@
 		E202567A1BEAD92700095590 /* BFWMorphStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256741BEAD92700095590 /* BFWMorphStoryboardSegue.m */; };
 		E20256A61BEB413300095590 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256951BEB413300095590 /* AppDelegate.m */; };
 		E20256A71BEB413300095590 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E20256961BEB413300095590 /* Assets.xcassets */; };
-		E20256A81BEB413300095590 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20256971BEB413300095590 /* LaunchScreen.storyboard */; };
-		E20256A91BEB413300095590 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20256991BEB413300095590 /* Main.storyboard */; };
 		E20256AA1BEB413300095590 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E202569B1BEB413300095590 /* main.m */; };
 		E20256AC1BEB413300095590 /* Developer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E202569F1BEB413300095590 /* Developer.storyboard */; };
 		E20256AD1BEB413300095590 /* Morph.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20256A01BEB413300095590 /* Morph.storyboard */; };
@@ -32,8 +30,6 @@
 		E20256941BEB413300095590 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E20256951BEB413300095590 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E20256961BEB413300095590 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E20256981BEB413300095590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E202569A1BEB413300095590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E202569B1BEB413300095590 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E202569F1BEB413300095590 /* Developer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Developer.storyboard; sourceTree = "<group>"; };
 		E20256A01BEB413300095590 /* Morph.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Morph.storyboard; sourceTree = "<group>"; };
@@ -127,8 +123,6 @@
 				E20256961BEB413300095590 /* Assets.xcassets */,
 				E23407641C0AD7A100319D38 /* BFWControls-Bridging-Header.h */,
 				E20256581BEAD78200095590 /* Info.plist */,
-				E20256971BEB413300095590 /* LaunchScreen.storyboard */,
-				E20256991BEB413300095590 /* Main.storyboard */,
 				E202569B1BEB413300095590 /* main.m */,
 			);
 			path = Launch;
@@ -275,9 +269,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E20256A91BEB413300095590 /* Main.storyboard in Resources */,
 				E20256A71BEB413300095590 /* Assets.xcassets in Resources */,
-				E20256A81BEB413300095590 /* LaunchScreen.storyboard in Resources */,
 				E20256AC1BEB413300095590 /* Developer.storyboard in Resources */,
 				E20256AD1BEB413300095590 /* Morph.storyboard in Resources */,
 			);
@@ -304,25 +296,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		E20256971BEB413300095590 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E20256981BEB413300095590 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		E20256991BEB413300095590 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E202569A1BEB413300095590 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E20256591BEAD78200095590 /* Debug */ = {
