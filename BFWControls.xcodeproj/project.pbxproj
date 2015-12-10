@@ -7,21 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E20256791BEAD92700095590 /* BFWModalStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256721BEAD92700095590 /* BFWModalStoryboardSegue.m */; };
 		E202567A1BEAD92700095590 /* BFWMorphStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256741BEAD92700095590 /* BFWMorphStoryboardSegue.m */; };
-		E202567B1BEAD92700095590 /* BFWPushStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256761BEAD92700095590 /* BFWPushStoryboardSegue.m */; };
-		E202567C1BEAD92700095590 /* BFWStoryboardReferenceSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256781BEAD92700095590 /* BFWStoryboardReferenceSegue.m */; };
 		E20256A61BEB413300095590 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256951BEB413300095590 /* AppDelegate.m */; };
 		E20256A71BEB413300095590 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E20256961BEB413300095590 /* Assets.xcassets */; };
 		E20256A81BEB413300095590 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20256971BEB413300095590 /* LaunchScreen.storyboard */; };
 		E20256A91BEB413300095590 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20256991BEB413300095590 /* Main.storyboard */; };
 		E20256AA1BEB413300095590 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E202569B1BEB413300095590 /* main.m */; };
-		E20256AB1BEB413300095590 /* Destination.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E202569E1BEB413300095590 /* Destination.storyboard */; };
 		E20256AC1BEB413300095590 /* Developer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E202569F1BEB413300095590 /* Developer.storyboard */; };
 		E20256AD1BEB413300095590 /* Morph.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20256A01BEB413300095590 /* Morph.storyboard */; };
 		E20256AE1BEB413300095590 /* MorphTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256A21BEB413300095590 /* MorphTableViewController.m */; };
-		E20256AF1BEB413300095590 /* Segues.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20256A31BEB413300095590 /* Segues.storyboard */; };
-		E20256B01BEB413300095590 /* SeguesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256A51BEB413300095590 /* SeguesViewController.m */; };
 		E20256B51BEC94AA00095590 /* BFWNibView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256B41BEC94AA00095590 /* BFWNibView.m */; };
 		E234075D1C08399000319D38 /* NSLayoutConstraint+BFWCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = E234075A1C08399000319D38 /* NSLayoutConstraint+BFWCopy.m */; };
 		E234075E1C08399000319D38 /* UIView+BFWCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = E234075C1C08399000319D38 /* UIView+BFWCopy.m */; };
@@ -33,28 +27,18 @@
 /* Begin PBXFileReference section */
 		E20256441BEAD78200095590 /* BFWControls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BFWControls.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E20256581BEAD78200095590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
-		E20256711BEAD92700095590 /* BFWModalStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWModalStoryboardSegue.h; sourceTree = "<group>"; };
-		E20256721BEAD92700095590 /* BFWModalStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFWModalStoryboardSegue.m; sourceTree = "<group>"; };
 		E20256731BEAD92700095590 /* BFWMorphStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWMorphStoryboardSegue.h; sourceTree = "<group>"; };
 		E20256741BEAD92700095590 /* BFWMorphStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFWMorphStoryboardSegue.m; sourceTree = "<group>"; };
-		E20256751BEAD92700095590 /* BFWPushStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWPushStoryboardSegue.h; sourceTree = "<group>"; };
-		E20256761BEAD92700095590 /* BFWPushStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFWPushStoryboardSegue.m; sourceTree = "<group>"; };
-		E20256771BEAD92700095590 /* BFWStoryboardReferenceSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWStoryboardReferenceSegue.h; sourceTree = "<group>"; };
-		E20256781BEAD92700095590 /* BFWStoryboardReferenceSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFWStoryboardReferenceSegue.m; sourceTree = "<group>"; };
 		E20256941BEB413300095590 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E20256951BEB413300095590 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E20256961BEB413300095590 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E20256981BEB413300095590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E202569A1BEB413300095590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E202569B1BEB413300095590 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E202569E1BEB413300095590 /* Destination.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Destination.storyboard; sourceTree = "<group>"; };
 		E202569F1BEB413300095590 /* Developer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Developer.storyboard; sourceTree = "<group>"; };
 		E20256A01BEB413300095590 /* Morph.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Morph.storyboard; sourceTree = "<group>"; };
 		E20256A11BEB413300095590 /* MorphTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MorphTableViewController.h; sourceTree = "<group>"; };
 		E20256A21BEB413300095590 /* MorphTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MorphTableViewController.m; sourceTree = "<group>"; };
-		E20256A31BEB413300095590 /* Segues.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Segues.storyboard; sourceTree = "<group>"; };
-		E20256A41BEB413300095590 /* SeguesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeguesViewController.h; sourceTree = "<group>"; };
-		E20256A51BEB413300095590 /* SeguesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeguesViewController.m; sourceTree = "<group>"; };
 		E20256B31BEC94AA00095590 /* BFWNibView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWNibView.h; sourceTree = "<group>"; };
 		E20256B41BEC94AA00095590 /* BFWNibView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFWNibView.m; sourceTree = "<group>"; };
 		E23407591C08399000319D38 /* NSLayoutConstraint+BFWCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+BFWCopy.h"; sourceTree = "<group>"; };
@@ -129,14 +113,8 @@
 		E20256701BEAD92700095590 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E20256711BEAD92700095590 /* BFWModalStoryboardSegue.h */,
-				E20256721BEAD92700095590 /* BFWModalStoryboardSegue.m */,
 				E20256731BEAD92700095590 /* BFWMorphStoryboardSegue.h */,
 				E20256741BEAD92700095590 /* BFWMorphStoryboardSegue.m */,
-				E20256751BEAD92700095590 /* BFWPushStoryboardSegue.h */,
-				E20256761BEAD92700095590 /* BFWPushStoryboardSegue.m */,
-				E20256771BEAD92700095590 /* BFWStoryboardReferenceSegue.h */,
-				E20256781BEAD92700095590 /* BFWStoryboardReferenceSegue.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -167,14 +145,10 @@
 		E202569D1BEB413300095590 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E202569E1BEB413300095590 /* Destination.storyboard */,
 				E202569F1BEB413300095590 /* Developer.storyboard */,
 				E20256A01BEB413300095590 /* Morph.storyboard */,
 				E20256A11BEB413300095590 /* MorphTableViewController.h */,
 				E20256A21BEB413300095590 /* MorphTableViewController.m */,
-				E20256A31BEB413300095590 /* Segues.storyboard */,
-				E20256A41BEB413300095590 /* SeguesViewController.h */,
-				E20256A51BEB413300095590 /* SeguesViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -303,10 +277,8 @@
 			files = (
 				E20256A91BEB413300095590 /* Main.storyboard in Resources */,
 				E20256A71BEB413300095590 /* Assets.xcassets in Resources */,
-				E20256AF1BEB413300095590 /* Segues.storyboard in Resources */,
 				E20256A81BEB413300095590 /* LaunchScreen.storyboard in Resources */,
 				E20256AC1BEB413300095590 /* Developer.storyboard in Resources */,
-				E20256AB1BEB413300095590 /* Destination.storyboard in Resources */,
 				E20256AD1BEB413300095590 /* Morph.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,16 +290,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E20256791BEAD92700095590 /* BFWModalStoryboardSegue.m in Sources */,
-				E202567B1BEAD92700095590 /* BFWPushStoryboardSegue.m in Sources */,
 				E20256B51BEC94AA00095590 /* BFWNibView.m in Sources */,
 				E234075E1C08399000319D38 /* UIView+BFWCopy.m in Sources */,
 				E2DE2EF61BEDFE6100636D0D /* BFWBlurView.m in Sources */,
 				E234075D1C08399000319D38 /* NSLayoutConstraint+BFWCopy.m in Sources */,
-				E202567C1BEAD92700095590 /* BFWStoryboardReferenceSegue.m in Sources */,
 				E202567A1BEAD92700095590 /* BFWMorphStoryboardSegue.m in Sources */,
 				E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */,
-				E20256B01BEB413300095590 /* SeguesViewController.m in Sources */,
 				E20256AA1BEB413300095590 /* main.m in Sources */,
 				E20256AE1BEB413300095590 /* MorphTableViewController.m in Sources */,
 				E20256A61BEB413300095590 /* AppDelegate.m in Sources */,
@@ -445,7 +413,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = BFWControls/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.barefeetware.BFWControls;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -460,7 +428,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = BFWControls/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.barefeetware.BFWControls;
 				PRODUCT_NAME = "$(TARGET_NAME)";
