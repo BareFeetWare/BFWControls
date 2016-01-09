@@ -17,6 +17,7 @@
 		E20256B51BEC94AA00095590 /* BFWNibView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256B41BEC94AA00095590 /* BFWNibView.m */; };
 		E234075D1C08399000319D38 /* NSLayoutConstraint+BFWCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = E234075A1C08399000319D38 /* NSLayoutConstraint+BFWCopy.m */; };
 		E234075E1C08399000319D38 /* UIView+BFWCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = E234075C1C08399000319D38 /* UIView+BFWCopy.m */; };
+		E257557F1C40E0B4002AB6E6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E257557E1C40E0B4002AB6E6 /* Info.plist */; };
 		E2DE2EF11BEDFE1300636D0D /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */; };
 		E2DE2EF61BEDFE6100636D0D /* BFWBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2EF51BEDFE6100636D0D /* BFWBlurView.m */; };
 		E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2F7C1BEE009200636D0D /* UIImage+BFW.m */; };
@@ -24,7 +25,6 @@
 
 /* Begin PBXFileReference section */
 		E20256441BEAD78200095590 /* BFWControls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BFWControls.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E20256581BEAD78200095590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		E20256731BEAD92700095590 /* BFWMorphStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWMorphStoryboardSegue.h; sourceTree = "<group>"; };
 		E20256741BEAD92700095590 /* BFWMorphStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFWMorphStoryboardSegue.m; sourceTree = "<group>"; };
 		E20256941BEB413300095590 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -42,6 +42,7 @@
 		E234075B1C08399000319D38 /* UIView+BFWCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BFWCopy.h"; sourceTree = "<group>"; };
 		E234075C1C08399000319D38 /* UIView+BFWCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BFWCopy.m"; sourceTree = "<group>"; };
 		E23407641C0AD7A100319D38 /* BFWControls-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BFWControls-Bridging-Header.h"; sourceTree = "<group>"; };
+		E257557E1C40E0B4002AB6E6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2DE2EEF1BEDFE1300636D0D /* UIImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageEffects.h; sourceTree = "<group>"; };
 		E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageEffects.m; sourceTree = "<group>"; };
 		E2DE2EF41BEDFE6100636D0D /* BFWBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWBlurView.h; sourceTree = "<group>"; };
@@ -122,7 +123,7 @@
 				E20256951BEB413300095590 /* AppDelegate.m */,
 				E20256961BEB413300095590 /* Assets.xcassets */,
 				E23407641C0AD7A100319D38 /* BFWControls-Bridging-Header.h */,
-				E20256581BEAD78200095590 /* Info.plist */,
+				E257557E1C40E0B4002AB6E6 /* Info.plist */,
 				E202569B1BEB413300095590 /* main.m */,
 			);
 			path = Launch;
@@ -269,6 +270,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E257557F1C40E0B4002AB6E6 /* Info.plist in Resources */,
 				E20256A71BEB413300095590 /* Assets.xcassets in Resources */,
 				E20256AC1BEB413300095590 /* Developer.storyboard in Resources */,
 				E20256AD1BEB413300095590 /* Morph.storyboard in Resources */,
@@ -385,7 +387,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = BFWControls/Info.plist;
+				INFOPLIST_FILE = BFWControls/Launch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.barefeetware.BFWControls;
@@ -400,7 +402,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = BFWControls/Info.plist;
+				INFOPLIST_FILE = BFWControls/Launch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.barefeetware.BFWControls;
