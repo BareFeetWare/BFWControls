@@ -21,6 +21,9 @@
 		E2DE2EF11BEDFE1300636D0D /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */; };
 		E2DE2EF61BEDFE6100636D0D /* BFWBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2EF51BEDFE6100636D0D /* BFWBlurView.m */; };
 		E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2F7C1BEE009200636D0D /* UIImage+BFW.m */; };
+		E2FF6C7A1C413F37005514B6 /* LayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FF6C791C413F37005514B6 /* LayerView.swift */; };
+		E2FF6C7C1C413F61005514B6 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FF6C7B1C413F61005514B6 /* DesignableView.swift */; };
+		E2FF6C7E1C413FA7005514B6 /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FF6C7D1C413FA7005514B6 /* DesignableButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +52,9 @@
 		E2DE2EF51BEDFE6100636D0D /* BFWBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFWBlurView.m; sourceTree = "<group>"; };
 		E2DE2F7B1BEE009200636D0D /* UIImage+BFW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BFW.h"; sourceTree = "<group>"; };
 		E2DE2F7C1BEE009200636D0D /* UIImage+BFW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BFW.m"; sourceTree = "<group>"; };
+		E2FF6C791C413F37005514B6 /* LayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerView.swift; sourceTree = "<group>"; };
+		E2FF6C7B1C413F61005514B6 /* DesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
+		E2FF6C7D1C413FA7005514B6 /* DesignableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				E2DE2EF21BEDFE6100636D0D /* Blur */,
+				E2FF6C771C413F37005514B6 /* Layer */,
 				E20256B11BEC94AA00095590 /* NibView */,
 				E202566F1BEAD92700095590 /* Segues */,
 			);
@@ -213,6 +220,24 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		E2FF6C771C413F37005514B6 /* Layer */ = {
+			isa = PBXGroup;
+			children = (
+				E2FF6C781C413F37005514B6 /* View */,
+			);
+			path = Layer;
+			sourceTree = "<group>";
+		};
+		E2FF6C781C413F37005514B6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E2FF6C7D1C413FA7005514B6 /* DesignableButton.swift */,
+				E2FF6C7B1C413F61005514B6 /* DesignableView.swift */,
+				E2FF6C791C413F37005514B6 /* LayerView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -291,7 +316,10 @@
 				E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */,
 				E20256AA1BEB413300095590 /* main.m in Sources */,
 				E20256AE1BEB413300095590 /* MorphTableViewController.m in Sources */,
+				E2FF6C7C1C413F61005514B6 /* DesignableView.swift in Sources */,
 				E20256A61BEB413300095590 /* AppDelegate.m in Sources */,
+				E2FF6C7E1C413FA7005514B6 /* DesignableButton.swift in Sources */,
+				E2FF6C7A1C413F37005514B6 /* LayerView.swift in Sources */,
 				E2DE2EF11BEDFE1300636D0D /* UIImageEffects.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
