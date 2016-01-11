@@ -17,9 +17,8 @@
 		E20256B51BEC94AA00095590 /* BFWNibView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256B41BEC94AA00095590 /* BFWNibView.m */; };
 		E234075D1C08399000319D38 /* NSLayoutConstraint+BFWCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = E234075A1C08399000319D38 /* NSLayoutConstraint+BFWCopy.m */; };
 		E234075E1C08399000319D38 /* UIView+BFWCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = E234075C1C08399000319D38 /* UIView+BFWCopy.m */; };
-		E257557F1C40E0B4002AB6E6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E257557E1C40E0B4002AB6E6 /* Info.plist */; };
+		E28F99621C446E20000A0A60 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F99611C446E20000A0A60 /* BlurView.swift */; };
 		E2DE2EF11BEDFE1300636D0D /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */; };
-		E2DE2EF61BEDFE6100636D0D /* BFWBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2EF51BEDFE6100636D0D /* BFWBlurView.m */; };
 		E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2F7C1BEE009200636D0D /* UIImage+BFW.m */; };
 		E2FF6C7A1C413F37005514B6 /* LayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FF6C791C413F37005514B6 /* LayerView.swift */; };
 		E2FF6C7C1C413F61005514B6 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FF6C7B1C413F61005514B6 /* DesignableView.swift */; };
@@ -46,10 +45,9 @@
 		E234075C1C08399000319D38 /* UIView+BFWCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BFWCopy.m"; sourceTree = "<group>"; };
 		E23407641C0AD7A100319D38 /* BFWControls-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BFWControls-Bridging-Header.h"; sourceTree = "<group>"; };
 		E257557E1C40E0B4002AB6E6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E28F99611C446E20000A0A60 /* BlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		E2DE2EEF1BEDFE1300636D0D /* UIImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageEffects.h; sourceTree = "<group>"; };
 		E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageEffects.m; sourceTree = "<group>"; };
-		E2DE2EF41BEDFE6100636D0D /* BFWBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWBlurView.h; sourceTree = "<group>"; };
-		E2DE2EF51BEDFE6100636D0D /* BFWBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFWBlurView.m; sourceTree = "<group>"; };
 		E2DE2F7B1BEE009200636D0D /* UIImage+BFW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BFW.h"; sourceTree = "<group>"; };
 		E2DE2F7C1BEE009200636D0D /* UIImage+BFW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BFW.m"; sourceTree = "<group>"; };
 		E2FF6C791C413F37005514B6 /* LayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerView.swift; sourceTree = "<group>"; };
@@ -212,8 +210,7 @@
 		E2DE2EF31BEDFE6100636D0D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E2DE2EF41BEDFE6100636D0D /* BFWBlurView.h */,
-				E2DE2EF51BEDFE6100636D0D /* BFWBlurView.m */,
+				E28F99611C446E20000A0A60 /* BlurView.swift */,
 				E2DE2F7B1BEE009200636D0D /* UIImage+BFW.h */,
 				E2DE2F7C1BEE009200636D0D /* UIImage+BFW.m */,
 			);
@@ -309,8 +306,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E20256B51BEC94AA00095590 /* BFWNibView.m in Sources */,
+				E28F99621C446E20000A0A60 /* BlurView.swift in Sources */,
 				E234075E1C08399000319D38 /* UIView+BFWCopy.m in Sources */,
-				E2DE2EF61BEDFE6100636D0D /* BFWBlurView.m in Sources */,
 				E234075D1C08399000319D38 /* NSLayoutConstraint+BFWCopy.m in Sources */,
 				E202567A1BEAD92700095590 /* BFWMorphStoryboardSegue.m in Sources */,
 				E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */,

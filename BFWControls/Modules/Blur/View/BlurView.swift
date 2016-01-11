@@ -10,6 +10,8 @@
 
 @interface BFWBlurView ()
 
+@property (nonatomic, assign) IBInspectable CGFloat blurRadius;
+
 @end
 
 @implementation BFWBlurView
