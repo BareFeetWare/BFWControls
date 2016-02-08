@@ -12,14 +12,14 @@
 		E20256AA1BEB413300095590 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E202569B1BEB413300095590 /* main.m */; };
 		E20256AC1BEB413300095590 /* Developer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E202569F1BEB413300095590 /* Developer.storyboard */; };
 		E20256AD1BEB413300095590 /* Morph.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20256A01BEB413300095590 /* Morph.storyboard */; };
-		E20256AE1BEB413300095590 /* MorphTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256A21BEB413300095590 /* MorphTableViewController.m */; };
+		E20256AE1BEB413300095590 /* MorphTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20256A21BEB413300095590 /* MorphTableViewController.swift */; };
 		E20256B51BEC94AA00095590 /* BFWNibView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256B41BEC94AA00095590 /* BFWNibView.m */; };
 		E234075D1C08399000319D38 /* NSLayoutConstraint+BFWCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = E234075A1C08399000319D38 /* NSLayoutConstraint+BFWCopy.m */; };
 		E234075E1C08399000319D38 /* UIView+BFWCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = E234075C1C08399000319D38 /* UIView+BFWCopy.m */; };
 		E28F99621C446E20000A0A60 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F99611C446E20000A0A60 /* BlurView.swift */; };
 		E2DE2EF11BEDFE1300636D0D /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */; };
 		E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2F7C1BEE009200636D0D /* UIImage+BFW.m */; };
-		E2E59EAF1C6939B5005D4559 /* BFWMorphStoryboardSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E59EAE1C6939B5005D4559 /* BFWMorphStoryboardSegue.swift */; };
+		E2E59EAF1C6939B5005D4559 /* MorphSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E59EAE1C6939B5005D4559 /* MorphSegue.swift */; };
 		E2FF6C7A1C413F37005514B6 /* LayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FF6C791C413F37005514B6 /* LayerView.swift */; };
 		E2FF6C7C1C413F61005514B6 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FF6C7B1C413F61005514B6 /* DesignableView.swift */; };
 		E2FF6C7E1C413FA7005514B6 /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FF6C7D1C413FA7005514B6 /* DesignableButton.swift */; };
@@ -33,8 +33,7 @@
 		E202569B1BEB413300095590 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E202569F1BEB413300095590 /* Developer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Developer.storyboard; sourceTree = "<group>"; };
 		E20256A01BEB413300095590 /* Morph.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Morph.storyboard; sourceTree = "<group>"; };
-		E20256A11BEB413300095590 /* MorphTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MorphTableViewController.h; sourceTree = "<group>"; };
-		E20256A21BEB413300095590 /* MorphTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MorphTableViewController.m; sourceTree = "<group>"; };
+		E20256A21BEB413300095590 /* MorphTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorphTableViewController.swift; sourceTree = "<group>"; };
 		E20256B31BEC94AA00095590 /* BFWNibView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWNibView.h; sourceTree = "<group>"; };
 		E20256B41BEC94AA00095590 /* BFWNibView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFWNibView.m; sourceTree = "<group>"; };
 		E23407591C08399000319D38 /* NSLayoutConstraint+BFWCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+BFWCopy.h"; sourceTree = "<group>"; };
@@ -48,7 +47,7 @@
 		E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageEffects.m; sourceTree = "<group>"; };
 		E2DE2F7B1BEE009200636D0D /* UIImage+BFW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BFW.h"; sourceTree = "<group>"; };
 		E2DE2F7C1BEE009200636D0D /* UIImage+BFW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BFW.m"; sourceTree = "<group>"; };
-		E2E59EAE1C6939B5005D4559 /* BFWMorphStoryboardSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BFWMorphStoryboardSegue.swift; sourceTree = "<group>"; };
+		E2E59EAE1C6939B5005D4559 /* MorphSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorphSegue.swift; sourceTree = "<group>"; };
 		E2FF6C791C413F37005514B6 /* LayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerView.swift; sourceTree = "<group>"; };
 		E2FF6C7B1C413F61005514B6 /* DesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		E2FF6C7D1C413FA7005514B6 /* DesignableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableButton.swift; sourceTree = "<group>"; };
@@ -114,7 +113,7 @@
 		E20256701BEAD92700095590 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E2E59EAE1C6939B5005D4559 /* BFWMorphStoryboardSegue.swift */,
+				E2E59EAE1C6939B5005D4559 /* MorphSegue.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -145,8 +144,7 @@
 			children = (
 				E202569F1BEB413300095590 /* Developer.storyboard */,
 				E20256A01BEB413300095590 /* Morph.storyboard */,
-				E20256A11BEB413300095590 /* MorphTableViewController.h */,
-				E20256A21BEB413300095590 /* MorphTableViewController.m */,
+				E20256A21BEB413300095590 /* MorphTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -306,11 +304,11 @@
 				E20256B51BEC94AA00095590 /* BFWNibView.m in Sources */,
 				E28F99621C446E20000A0A60 /* BlurView.swift in Sources */,
 				E234075E1C08399000319D38 /* UIView+BFWCopy.m in Sources */,
-				E2E59EAF1C6939B5005D4559 /* BFWMorphStoryboardSegue.swift in Sources */,
+				E2E59EAF1C6939B5005D4559 /* MorphSegue.swift in Sources */,
 				E234075D1C08399000319D38 /* NSLayoutConstraint+BFWCopy.m in Sources */,
 				E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */,
 				E20256AA1BEB413300095590 /* main.m in Sources */,
-				E20256AE1BEB413300095590 /* MorphTableViewController.m in Sources */,
+				E20256AE1BEB413300095590 /* MorphTableViewController.swift in Sources */,
 				E2FF6C7C1C413F61005514B6 /* DesignableView.swift in Sources */,
 				E20256A61BEB413300095590 /* AppDelegate.m in Sources */,
 				E2FF6C7E1C413FA7005514B6 /* DesignableButton.swift in Sources */,

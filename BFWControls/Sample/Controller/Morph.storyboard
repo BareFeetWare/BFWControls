@@ -119,7 +119,7 @@
                     <navigationItem key="navigationItem" id="UPy-OJ-uuK">
                         <barButtonItem key="rightBarButtonItem" title="Morph" id="Flj-tO-QOE">
                             <connections>
-                                <segue destination="lFr-aQ-1pk" kind="custom" customClass="BFWMorphStoryboardSegue" id="Old-rI-Fgy"/>
+                                <segue destination="lFr-aQ-1pk" kind="custom" customClass="MorphSegue" customModule="BFWControls" customModuleProvider="target" id="Old-rI-Fgy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -171,7 +171,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="yri-IZ-ide" kind="custom" customClass="BFWMorphStoryboardSegue" id="Wk5-cl-mkG"/>
+                                            <segue destination="yri-IZ-ide" kind="custom" customClass="MorphSegue" customModule="BFWControls" customModuleProvider="target" id="Wk5-cl-mkG"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="laX-hK-Sr1" detailTextLabel="wV3-bV-zzV" rowHeight="70" style="IBUITableViewCellStyleValue1" id="FFp-4W-8CT">
@@ -199,7 +199,7 @@
                                             <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.28082770270000001" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="yri-IZ-ide" kind="custom" customClass="BFWMorphStoryboardSegue" id="A3w-sd-2Fq"/>
+                                            <segue destination="yri-IZ-ide" kind="custom" customClass="MorphSegue" customModule="BFWControls" customModuleProvider="target" id="A3w-sd-2Fq"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="X8g-5o-Xp9">
@@ -266,7 +266,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Pz3-yc-wIo">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nLO-Ss-sHl" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="morph navigation" automaticallyAdjustsScrollViewInsets="NO" id="nLO-Ss-sHl" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="55E-xQ-Anj">
@@ -337,6 +337,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Wk5-cl-mkG"/>
+        <segue reference="A3w-sd-2Fq"/>
     </inferredMetricsTieBreakers>
 </document>
