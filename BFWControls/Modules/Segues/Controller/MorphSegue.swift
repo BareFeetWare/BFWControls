@@ -41,10 +41,10 @@ class MorphSegue: UIStoryboardSegue {
         if isMorphingCopy {
             // Create a copy of the view hierarchy for morphing, so the original is not changed.
             if let cell = fromView as? UITableViewCell {
-                morphingView = cell.copyWithSubviews(nil, includeConstraints: false)
-                morphingView?.copySubviews(cell.contentView.subviews, includeConstraints: false)
+                morphingView = cell.copyWithSubviews(nil, includeConstraints: true)
+                morphingView?.copySubviews(cell.contentView.subviews, includeConstraints: true)
             } else {
-                morphingView = fromView?.copyWithSubviews(fromView?.subviews, includeConstraints: false)
+                morphingView = fromView?.copyWithSubviews(fromView?.subviews, includeConstraints: true)
             }
             if let morphingView = morphingView {
                 sourceVCView.addSubview(morphingView)
@@ -59,7 +59,7 @@ class MorphSegue: UIStoryboardSegue {
         }
         
         // Add destination constraints, which will animate frames when layout is updated, inside animation block below.
-//        NSLayoutConstraint.copyDescendantConstraintsFromSourceView(sourceVCView, toDestinationView: destinationVCView)
+        NSLayoutConstraint.copyDescendantConstraintsFromSourceView(sourceVCView, toDestinationView: destinationVCView)
         
         if let morphingView = morphingView {
             UIView.animateWithDuration(
@@ -68,8 +68,8 @@ class MorphSegue: UIStoryboardSegue {
                 options: animationOptions,
                 animations: {
                     morphingView.frame = sourceVCView.bounds;
-//                    morphingView.setNeedsLayout()
-//                    morphingView.layoutIfNeeded()
+                    morphingView.setNeedsLayout()
+                    morphingView.layoutIfNeeded()
                     if let _ = self.fromView as? UITableViewCell {
                         contentView?.frame = morphingView.bounds
                     }
