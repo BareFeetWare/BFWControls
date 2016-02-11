@@ -27,9 +27,27 @@
     return [self viewFromNib];
 }
 
++ (NSMutableDictionary *)sizeForKeyDictionary {
+    static NSMutableDictionary *sizeForKeyDictionary = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sizeForKeyDictionary = [[NSMutableDictionary alloc] init];
+    });
+    return sizeForKeyDictionary;
+}
+
 - (CGSize)intrinsicContentSize {
-    // TODO: cache per class
-    return [[self class] sizeFromNib];
+    CGSize size;
+    NSString *key = NSStringFromClass([self class]);
+    NSMutableDictionary *sizeForKeyDictionary = [[self class] sizeForKeyDictionary];
+    NSString *sizeString = sizeForKeyDictionary[key];
+    if (sizeString) {
+        size = CGSizeFromString(sizeString);
+    } else {
+        size = [[self class] sizeFromNib];
+        sizeForKeyDictionary[key] = NSStringFromCGSize(size);
+    }
+    return size;
 }
 
 @end

@@ -7,66 +7,50 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E20256791BEAD92700095590 /* BFWModalStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256721BEAD92700095590 /* BFWModalStoryboardSegue.m */; };
-		E202567A1BEAD92700095590 /* BFWMorphStoryboardSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20256741BEAD92700095590 /* BFWMorphStoryboardSegue.swift */; };
-		E202567B1BEAD92700095590 /* BFWPushStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256761BEAD92700095590 /* BFWPushStoryboardSegue.m */; };
-		E202567C1BEAD92700095590 /* BFWStoryboardReferenceSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256781BEAD92700095590 /* BFWStoryboardReferenceSegue.m */; };
+		E202567A1BEAD92700095590 /* MorphSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20256741BEAD92700095590 /* MorphSegue.swift */; };
 		E20256A61BEB413300095590 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256951BEB413300095590 /* AppDelegate.m */; };
 		E20256A71BEB413300095590 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E20256961BEB413300095590 /* Assets.xcassets */; };
-		E20256A81BEB413300095590 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20256971BEB413300095590 /* LaunchScreen.storyboard */; };
-		E20256A91BEB413300095590 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20256991BEB413300095590 /* Main.storyboard */; };
 		E20256AA1BEB413300095590 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E202569B1BEB413300095590 /* main.m */; };
-		E20256AB1BEB413300095590 /* Destination.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E202569E1BEB413300095590 /* Destination.storyboard */; };
 		E20256AC1BEB413300095590 /* Developer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E202569F1BEB413300095590 /* Developer.storyboard */; };
 		E20256AD1BEB413300095590 /* Morph.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20256A01BEB413300095590 /* Morph.storyboard */; };
-		E20256AE1BEB413300095590 /* MorphTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256A21BEB413300095590 /* MorphTableViewController.m */; };
-		E20256AF1BEB413300095590 /* Segues.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20256A31BEB413300095590 /* Segues.storyboard */; };
-		E20256B01BEB413300095590 /* SeguesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256A51BEB413300095590 /* SeguesViewController.m */; };
+		E20256AE1BEB413300095590 /* MorphTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20256A21BEB413300095590 /* MorphTableViewController.swift */; };
 		E20256B51BEC94AA00095590 /* BFWNibView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256B41BEC94AA00095590 /* BFWNibView.m */; };
 		E234075D1C08399000319D38 /* NSLayoutConstraint+BFWCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = E234075A1C08399000319D38 /* NSLayoutConstraint+BFWCopy.m */; };
 		E234075E1C08399000319D38 /* UIView+BFWCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = E234075C1C08399000319D38 /* UIView+BFWCopy.m */; };
+		E28F99621C446E20000A0A60 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F99611C446E20000A0A60 /* BlurView.swift */; };
 		E2DE2EF11BEDFE1300636D0D /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */; };
-		E2DE2EF61BEDFE6100636D0D /* BFWBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2EF51BEDFE6100636D0D /* BFWBlurView.m */; };
 		E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2F7C1BEE009200636D0D /* UIImage+BFW.m */; };
+		E2FF6C7A1C413F37005514B6 /* LayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FF6C791C413F37005514B6 /* LayerView.swift */; };
+		E2FF6C7C1C413F61005514B6 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FF6C7B1C413F61005514B6 /* DesignableView.swift */; };
+		E2FF6C7E1C413FA7005514B6 /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FF6C7D1C413FA7005514B6 /* DesignableButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E20256441BEAD78200095590 /* BFWControls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BFWControls.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E20256581BEAD78200095590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E20256711BEAD92700095590 /* BFWModalStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWModalStoryboardSegue.h; sourceTree = "<group>"; };
-		E20256721BEAD92700095590 /* BFWModalStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFWModalStoryboardSegue.m; sourceTree = "<group>"; };
-		E20256741BEAD92700095590 /* BFWMorphStoryboardSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BFWMorphStoryboardSegue.swift; sourceTree = "<group>"; };
-		E20256751BEAD92700095590 /* BFWPushStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWPushStoryboardSegue.h; sourceTree = "<group>"; };
-		E20256761BEAD92700095590 /* BFWPushStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFWPushStoryboardSegue.m; sourceTree = "<group>"; };
-		E20256771BEAD92700095590 /* BFWStoryboardReferenceSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWStoryboardReferenceSegue.h; sourceTree = "<group>"; };
-		E20256781BEAD92700095590 /* BFWStoryboardReferenceSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFWStoryboardReferenceSegue.m; sourceTree = "<group>"; };
+		E20256741BEAD92700095590 /* MorphSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorphSegue.swift; sourceTree = "<group>"; };
 		E20256941BEB413300095590 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E20256951BEB413300095590 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E20256961BEB413300095590 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E20256981BEB413300095590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E202569A1BEB413300095590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E202569B1BEB413300095590 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E202569E1BEB413300095590 /* Destination.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Destination.storyboard; sourceTree = "<group>"; };
 		E202569F1BEB413300095590 /* Developer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Developer.storyboard; sourceTree = "<group>"; };
 		E20256A01BEB413300095590 /* Morph.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Morph.storyboard; sourceTree = "<group>"; };
-		E20256A11BEB413300095590 /* MorphTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MorphTableViewController.h; sourceTree = "<group>"; };
-		E20256A21BEB413300095590 /* MorphTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MorphTableViewController.m; sourceTree = "<group>"; };
-		E20256A31BEB413300095590 /* Segues.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Segues.storyboard; sourceTree = "<group>"; };
-		E20256A41BEB413300095590 /* SeguesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeguesViewController.h; sourceTree = "<group>"; };
-		E20256A51BEB413300095590 /* SeguesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeguesViewController.m; sourceTree = "<group>"; };
+		E20256A21BEB413300095590 /* MorphTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorphTableViewController.swift; sourceTree = "<group>"; };
 		E20256B31BEC94AA00095590 /* BFWNibView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWNibView.h; sourceTree = "<group>"; };
 		E20256B41BEC94AA00095590 /* BFWNibView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFWNibView.m; sourceTree = "<group>"; };
 		E23407591C08399000319D38 /* NSLayoutConstraint+BFWCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+BFWCopy.h"; sourceTree = "<group>"; };
 		E234075A1C08399000319D38 /* NSLayoutConstraint+BFWCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+BFWCopy.m"; sourceTree = "<group>"; };
 		E234075B1C08399000319D38 /* UIView+BFWCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BFWCopy.h"; sourceTree = "<group>"; };
 		E234075C1C08399000319D38 /* UIView+BFWCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BFWCopy.m"; sourceTree = "<group>"; };
-		E23407611C083C3200319D38 /* BFWControls-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BFWControls-Bridging-Header.h"; sourceTree = "<group>"; };
+		E23407641C0AD7A100319D38 /* BFWControls-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BFWControls-Bridging-Header.h"; sourceTree = "<group>"; };
+		E257557E1C40E0B4002AB6E6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E28F99611C446E20000A0A60 /* BlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		E2DE2EEF1BEDFE1300636D0D /* UIImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageEffects.h; sourceTree = "<group>"; };
 		E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageEffects.m; sourceTree = "<group>"; };
-		E2DE2EF41BEDFE6100636D0D /* BFWBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWBlurView.h; sourceTree = "<group>"; };
-		E2DE2EF51BEDFE6100636D0D /* BFWBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFWBlurView.m; sourceTree = "<group>"; };
 		E2DE2F7B1BEE009200636D0D /* UIImage+BFW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BFW.h"; sourceTree = "<group>"; };
 		E2DE2F7C1BEE009200636D0D /* UIImage+BFW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BFW.m"; sourceTree = "<group>"; };
+		E2FF6C791C413F37005514B6 /* LayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerView.swift; sourceTree = "<group>"; };
+		E2FF6C7B1C413F61005514B6 /* DesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
+		E2FF6C7D1C413FA7005514B6 /* DesignableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +87,6 @@
 				E20256931BEB413300095590 /* Launch */,
 				E202565E1BEAD7BC00095590 /* Modules */,
 				E202569C1BEB413300095590 /* Sample */,
-				E20256581BEAD78200095590 /* Info.plist */,
 			);
 			path = BFWControls;
 			sourceTree = "<group>";
@@ -112,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				E2DE2EF21BEDFE6100636D0D /* Blur */,
+				E2FF6C771C413F37005514B6 /* Layer */,
 				E20256B11BEC94AA00095590 /* NibView */,
 				E202566F1BEAD92700095590 /* Segues */,
 			);
@@ -129,13 +113,7 @@
 		E20256701BEAD92700095590 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E20256711BEAD92700095590 /* BFWModalStoryboardSegue.h */,
-				E20256721BEAD92700095590 /* BFWModalStoryboardSegue.m */,
-				E20256741BEAD92700095590 /* BFWMorphStoryboardSegue.swift */,
-				E20256751BEAD92700095590 /* BFWPushStoryboardSegue.h */,
-				E20256761BEAD92700095590 /* BFWPushStoryboardSegue.m */,
-				E20256771BEAD92700095590 /* BFWStoryboardReferenceSegue.h */,
-				E20256781BEAD92700095590 /* BFWStoryboardReferenceSegue.m */,
+				E20256741BEAD92700095590 /* MorphSegue.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -146,10 +124,9 @@
 				E20256941BEB413300095590 /* AppDelegate.h */,
 				E20256951BEB413300095590 /* AppDelegate.m */,
 				E20256961BEB413300095590 /* Assets.xcassets */,
-				E20256971BEB413300095590 /* LaunchScreen.storyboard */,
-				E20256991BEB413300095590 /* Main.storyboard */,
+				E23407641C0AD7A100319D38 /* BFWControls-Bridging-Header.h */,
+				E257557E1C40E0B4002AB6E6 /* Info.plist */,
 				E202569B1BEB413300095590 /* main.m */,
-				E23407611C083C3200319D38 /* BFWControls-Bridging-Header.h */,
 			);
 			path = Launch;
 			sourceTree = "<group>";
@@ -165,14 +142,9 @@
 		E202569D1BEB413300095590 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E202569E1BEB413300095590 /* Destination.storyboard */,
 				E202569F1BEB413300095590 /* Developer.storyboard */,
 				E20256A01BEB413300095590 /* Morph.storyboard */,
-				E20256A11BEB413300095590 /* MorphTableViewController.h */,
-				E20256A21BEB413300095590 /* MorphTableViewController.m */,
-				E20256A31BEB413300095590 /* Segues.storyboard */,
-				E20256A41BEB413300095590 /* SeguesViewController.h */,
-				E20256A51BEB413300095590 /* SeguesViewController.m */,
+				E20256A21BEB413300095590 /* MorphTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -234,10 +206,27 @@
 		E2DE2EF31BEDFE6100636D0D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E2DE2EF41BEDFE6100636D0D /* BFWBlurView.h */,
-				E2DE2EF51BEDFE6100636D0D /* BFWBlurView.m */,
+				E28F99611C446E20000A0A60 /* BlurView.swift */,
 				E2DE2F7B1BEE009200636D0D /* UIImage+BFW.h */,
 				E2DE2F7C1BEE009200636D0D /* UIImage+BFW.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E2FF6C771C413F37005514B6 /* Layer */ = {
+			isa = PBXGroup;
+			children = (
+				E2FF6C781C413F37005514B6 /* View */,
+			);
+			path = Layer;
+			sourceTree = "<group>";
+		};
+		E2FF6C781C413F37005514B6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E2FF6C7D1C413FA7005514B6 /* DesignableButton.swift */,
+				E2FF6C7B1C413F61005514B6 /* DesignableView.swift */,
+				E2FF6C791C413F37005514B6 /* LayerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -299,12 +288,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E20256A91BEB413300095590 /* Main.storyboard in Resources */,
 				E20256A71BEB413300095590 /* Assets.xcassets in Resources */,
-				E20256AF1BEB413300095590 /* Segues.storyboard in Resources */,
-				E20256A81BEB413300095590 /* LaunchScreen.storyboard in Resources */,
 				E20256AC1BEB413300095590 /* Developer.storyboard in Resources */,
-				E20256AB1BEB413300095590 /* Destination.storyboard in Resources */,
 				E20256AD1BEB413300095590 /* Morph.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,43 +301,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E20256791BEAD92700095590 /* BFWModalStoryboardSegue.m in Sources */,
-				E202567B1BEAD92700095590 /* BFWPushStoryboardSegue.m in Sources */,
 				E20256B51BEC94AA00095590 /* BFWNibView.m in Sources */,
+				E28F99621C446E20000A0A60 /* BlurView.swift in Sources */,
 				E234075E1C08399000319D38 /* UIView+BFWCopy.m in Sources */,
-				E2DE2EF61BEDFE6100636D0D /* BFWBlurView.m in Sources */,
 				E234075D1C08399000319D38 /* NSLayoutConstraint+BFWCopy.m in Sources */,
-				E202567C1BEAD92700095590 /* BFWStoryboardReferenceSegue.m in Sources */,
-				E202567A1BEAD92700095590 /* BFWMorphStoryboardSegue.swift in Sources */,
+				E202567A1BEAD92700095590 /* MorphSegue.swift in Sources */,
 				E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */,
-				E20256B01BEB413300095590 /* SeguesViewController.m in Sources */,
 				E20256AA1BEB413300095590 /* main.m in Sources */,
-				E20256AE1BEB413300095590 /* MorphTableViewController.m in Sources */,
+				E20256AE1BEB413300095590 /* MorphTableViewController.swift in Sources */,
+				E2FF6C7C1C413F61005514B6 /* DesignableView.swift in Sources */,
 				E20256A61BEB413300095590 /* AppDelegate.m in Sources */,
+				E2FF6C7E1C413FA7005514B6 /* DesignableButton.swift in Sources */,
+				E2FF6C7A1C413F37005514B6 /* LayerView.swift in Sources */,
 				E2DE2EF11BEDFE1300636D0D /* UIImageEffects.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		E20256971BEB413300095590 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E20256981BEB413300095590 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		E20256991BEB413300095590 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E202569A1BEB413300095590 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E20256591BEAD78200095590 /* Debug */ = {
@@ -442,8 +407,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = BFWControls/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				INFOPLIST_FILE = BFWControls/Launch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.barefeetware.BFWControls;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -457,8 +422,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = BFWControls/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				INFOPLIST_FILE = BFWControls/Launch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.barefeetware.BFWControls;
 				PRODUCT_NAME = "$(TARGET_NAME)";

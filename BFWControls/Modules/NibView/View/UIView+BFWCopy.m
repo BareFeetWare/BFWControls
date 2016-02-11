@@ -31,13 +31,9 @@
 }
 
 + (CGSize)sizeFromNib {
-    static CGSize size;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        NSArray *nibViews = [[self bundle] loadNibNamed:[self nibName] owner:nil options:nil];
-        UIView *nibView = nibViews.firstObject;
-        size = nibView.frame.size;
-    });
+    NSArray *nibViews = [[self bundle] loadNibNamed:[self nibName] owner:nil options:nil];
+    UIView *nibView = nibViews.firstObject;
+    CGSize size = nibView.frame.size;
     return size;
 }
 
@@ -54,18 +50,23 @@
             if (secondItem == view) {
                 secondItem = self;
             }
-            NSLayoutConstraint *copiedConstraint = [NSLayoutConstraint constraintWithItem:firstItem
-                                                                                attribute:constraint.firstAttribute
-                                                                                relatedBy:constraint.relation
-                                                                                   toItem:secondItem
-                                                                                attribute:constraint.secondAttribute
-                                                                               multiplier:constraint.multiplier
-                                                                                 constant:constraint.constant];
+            NSLayoutConstraint *copiedConstraint;
+            copiedConstraint = [NSLayoutConstraint constraintWithItem:firstItem
+                                                            attribute:constraint.firstAttribute
+                                                            relatedBy:constraint.relation
+                                                               toItem:secondItem
+                                                            attribute:constraint.secondAttribute
+                                                           multiplier:constraint.multiplier
+                                                             constant:constraint.constant];
             [self addConstraint:copiedConstraint];
         }
         else {
             NSLog(@"copyConstraintsFromView: error: firstItem == nil");
         }
+    }
+    for (UILayoutConstraintAxis axis = UILayoutConstraintAxisHorizontal; axis <= UILayoutConstraintAxisVertical; axis += UILayoutConstraintAxisVertical - UILayoutConstraintAxisHorizontal) {
+        [self setContentCompressionResistancePriority:[view contentCompressionResistancePriorityForAxis:axis] forAxis:axis];
+        [self setContentHuggingPriority:[view contentHuggingPriorityForAxis:axis] forAxis:axis];
     }
 }
 
@@ -73,8 +74,13 @@
     UIView *nibView = self;
     BOOL hasAlreadyLoadedFromNib = self.subviews.count > 0; // TODO: More rubust test.
     if (!hasAlreadyLoadedFromNib) {
+        NSString *nibName = [[self class] nibName];
         NSArray *nibViews = [[[self class] bundle] loadNibNamed:[[self class] nibName] owner:nil options:nil];
         nibView = nibViews.firstObject;
+        if (![nibView isKindOfClass:[self class]]) {
+            NSLog(@"**** error: first view in \"%@\" xib is class \"%@\", which is not the expected class \"%@\"", nibName, NSStringFromClass([nibView class]), NSStringFromClass([self class]));
+            nibView = nil;
+        }
         nibView.frame = self.frame;
         nibView.translatesAutoresizingMaskIntoConstraints = self.translatesAutoresizingMaskIntoConstraints;
         [nibView copyConstraintsFromView:self];
