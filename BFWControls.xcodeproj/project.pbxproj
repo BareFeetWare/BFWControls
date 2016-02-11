@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E202567A1BEAD92700095590 /* MorphSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20256741BEAD92700095590 /* MorphSegue.swift */; };
 		E20256A61BEB413300095590 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256951BEB413300095590 /* AppDelegate.m */; };
 		E20256A71BEB413300095590 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E20256961BEB413300095590 /* Assets.xcassets */; };
 		E20256AA1BEB413300095590 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E202569B1BEB413300095590 /* main.m */; };
@@ -19,7 +20,6 @@
 		E28F99621C446E20000A0A60 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F99611C446E20000A0A60 /* BlurView.swift */; };
 		E2DE2EF11BEDFE1300636D0D /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */; };
 		E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2F7C1BEE009200636D0D /* UIImage+BFW.m */; };
-		E2E59EAF1C6939B5005D4559 /* MorphSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E59EAE1C6939B5005D4559 /* MorphSegue.swift */; };
 		E2FF6C7A1C413F37005514B6 /* LayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FF6C791C413F37005514B6 /* LayerView.swift */; };
 		E2FF6C7C1C413F61005514B6 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FF6C7B1C413F61005514B6 /* DesignableView.swift */; };
 		E2FF6C7E1C413FA7005514B6 /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FF6C7D1C413FA7005514B6 /* DesignableButton.swift */; };
@@ -27,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		E20256441BEAD78200095590 /* BFWControls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BFWControls.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E20256741BEAD92700095590 /* MorphSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorphSegue.swift; sourceTree = "<group>"; };
 		E20256941BEB413300095590 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E20256951BEB413300095590 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E20256961BEB413300095590 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -47,7 +48,6 @@
 		E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageEffects.m; sourceTree = "<group>"; };
 		E2DE2F7B1BEE009200636D0D /* UIImage+BFW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BFW.h"; sourceTree = "<group>"; };
 		E2DE2F7C1BEE009200636D0D /* UIImage+BFW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BFW.m"; sourceTree = "<group>"; };
-		E2E59EAE1C6939B5005D4559 /* MorphSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorphSegue.swift; sourceTree = "<group>"; };
 		E2FF6C791C413F37005514B6 /* LayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerView.swift; sourceTree = "<group>"; };
 		E2FF6C7B1C413F61005514B6 /* DesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		E2FF6C7D1C413FA7005514B6 /* DesignableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableButton.swift; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 		E20256701BEAD92700095590 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E2E59EAE1C6939B5005D4559 /* MorphSegue.swift */,
+				E20256741BEAD92700095590 /* MorphSegue.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -304,8 +304,8 @@
 				E20256B51BEC94AA00095590 /* BFWNibView.m in Sources */,
 				E28F99621C446E20000A0A60 /* BlurView.swift in Sources */,
 				E234075E1C08399000319D38 /* UIView+BFWCopy.m in Sources */,
-				E2E59EAF1C6939B5005D4559 /* MorphSegue.swift in Sources */,
 				E234075D1C08399000319D38 /* NSLayoutConstraint+BFWCopy.m in Sources */,
+				E202567A1BEAD92700095590 /* MorphSegue.swift in Sources */,
 				E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */,
 				E20256AA1BEB413300095590 /* main.m in Sources */,
 				E20256AE1BEB413300095590 /* MorphTableViewController.swift in Sources */,

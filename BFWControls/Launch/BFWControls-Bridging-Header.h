@@ -6,5 +6,5 @@
 #import "UIImageEffects.h"
 #import "UIImage+BFW.h"
 
-// For MorphingSegue:
+// For MorphSegue.swift:
 #import "UIView+BFWCopy.h"

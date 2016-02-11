@@ -8,7 +8,7 @@
 import UIKit
 
 class MorphTableViewController: UITableViewController {
-    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let morphSegue = segue as? MorphSegue,
             let cell = sender as? UITableViewCell
