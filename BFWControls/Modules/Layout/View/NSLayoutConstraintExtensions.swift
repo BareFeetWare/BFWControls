@@ -61,18 +61,14 @@ extension NSLayoutConstraint {
     }
 
     class func copyDescendantConstraintsFromSourceView(sourceView: UIView, toDestinationView destinationView: UIView) {
-        var sourceConstraints = [NSLayoutConstraint]()
-        var destinationConstraints = [NSLayoutConstraint]()
-        var sourceSubviews = [UIView]()
-        var destinationSubviews = [UIView]()
-        sourceConstraints.appendContentsOf(sourceView.constraints)
-        destinationConstraints.appendContentsOf(destinationView.constraints)
-        sourceSubviews.append(sourceView) // TODO: add top/bottom guides
-        destinationSubviews.append(destinationView) // TODO: add top/bottom guides
+        var sourceConstraints = sourceView.constraints
+        var destinationConstraints = destinationView.constraints
+        var sourceSubviews = [sourceView] // TODO: add top/bottom guides
+        var destinationSubviews = [destinationView] // TODO: add top/bottom guides
 //        for sourceSubview in contentView!.subviews {
         for sourceSubview in sourceView.subviews {
-            if let destinationSubview = destinationView.subviewMatchingView(sourceSubview) {
-                if sourceSubview.tag == 1 { // testing using tag
+            if sourceSubview.tag == 1 { // Testing: only do the object that is tagged with "1"
+                if let destinationSubview = destinationView.subviewMatchingView(sourceSubview) {
                     sourceSubviews.append(sourceSubview)
                     destinationSubviews.append(destinationSubview)
                     for constraint in sourceView.constraints {
@@ -94,7 +90,8 @@ extension NSLayoutConstraint {
             withViews: sourceSubviews
         )
         NSLayoutConstraint.deactivateConstraints(sourceConstraints)
-        NSLayoutConstraint.activateConstraints(constraints)
+//        NSLayoutConstraint.activateConstraints(constraints)
+        destinationView.addConstraints(constraints)
     }
     
 }
