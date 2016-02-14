@@ -17,7 +17,6 @@
 #pragma mark - instance methods
 
 - (UIView *)viewFromNib;
-- (UIView *)subviewMatchingView:(UIView *)view;
 - (UIView *)copyWithSubviews:(NSArray *)subviews
           includeConstraints:(BOOL)includeConstraints;
 - (void)copySubviews:(NSArray *)subviews

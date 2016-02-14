@@ -88,25 +88,6 @@
     return nibView;
 }
 
-- (UIView *)subviewMatchingView:(UIView *)view {
-    UIView *matchingSubview = nil;
-    for (UIView *subview in self.subviews) {
-        if (subview.tag != 0 && subview.tag == view.tag) {
-            matchingSubview = subview;
-        } else if ([subview isKindOfClass:[UILabel class]] && [view isKindOfClass:[UILabel class]]) {
-            UILabel *possibleLabel = (UILabel *)subview;
-            UILabel *subviewLabel = (UILabel *)view;
-            if ([possibleLabel.text isEqualToString:subviewLabel.text]) {
-                matchingSubview = subview;
-            }
-        }
-        if (matchingSubview) {
-            break;
-        }
-    }
-    return matchingSubview;
-}
-
 - (instancetype)copy {
     UIView *copiedView = [[[self class] alloc] initWithFrame:self.frame];
     [copiedView copyPropertiesFromView:self];

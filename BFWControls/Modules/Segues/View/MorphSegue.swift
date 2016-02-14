@@ -17,7 +17,7 @@ class MorphSegue: UIStoryboardSegue {
         return self.sourceViewController.view
     }()
     
-    var duration: NSTimeInterval = 1.0
+    @IBInspectable var duration: NSTimeInterval = 1.0
     var animationOptions = UIViewAnimationOptions.CurveEaseInOut
     
     // MARK: - UIStoryboardSegue
@@ -51,23 +51,24 @@ class MorphSegue: UIStoryboardSegue {
                 contentView = morphingView
             }
         } else {
-            // morphingView = fromView
+            morphingView = fromView
             // if let cell = fromView as? UITableViewCell {
             //     contentView = cell.contentView
             // }
             // TODO: finish
         }
         
-        // Add destination constraints, which will animate frames when layout is updated, inside animation block below.
-        NSLayoutConstraint.copyDescendantConstraintsFromSourceView(sourceVCView, toDestinationView: destinationVCView)
-        
         if let morphingView = morphingView {
+            
+            // Add destination constraints, which will animate frames when layout is updated, inside animation block below.
+            morphingView.copyDescendantConstraintsFromView(destinationVCView)
+
             UIView.animateWithDuration(
                 duration,
                 delay: 0.0,
                 options: animationOptions,
                 animations: {
-                    morphingView.frame = sourceVCView.bounds;
+                    morphingView.frame = sourceVCView.bounds
                     morphingView.setNeedsLayout()
                     morphingView.layoutIfNeeded()
                     if let _ = self.fromView as? UITableViewCell {
@@ -89,7 +90,7 @@ class MorphSegue: UIStoryboardSegue {
                         animated: false)
                     if isMorphingCopy {
                         morphingView.removeFromSuperview()
-                        // morphingView.hidden = YES; // Keep it for reverse animation?
+                        // morphingView.hidden = true // Keep it for reverse animation?
                     }
             }
         }

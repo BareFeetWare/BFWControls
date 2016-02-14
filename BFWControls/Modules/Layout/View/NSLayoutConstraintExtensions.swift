@@ -8,6 +8,31 @@
 
 import UIKit
 
+extension UIView {
+    
+    func copyDescendantConstraintsFromView(fromView: UIView) {
+        var fromItems: [NSObject] = [fromView]
+        var toItems: [NSObject] = [self]
+        var toSubviewConstraints = [NSLayoutConstraint]()
+        for fromSubview in fromView.subviews {
+            if let toSubview = subviewMatchingView(fromSubview) {
+                fromItems.append(fromSubview)
+                toItems.append(toSubview)
+                toSubviewConstraints += toSubview.constraints
+            }
+        }
+        let oldConstraints = (self.constraints + toSubviewConstraints).filter { constraint in
+            constraint.onlyIncludesItems(toItems)
+        }
+        let copiedConstraints = oldConstraints.map { oldConstraint in
+            oldConstraint.constraintByReplacingItems(toItems, withNewItems: fromItems)
+        }
+        NSLayoutConstraint.deactivateConstraints(oldConstraints)
+        NSLayoutConstraint.activateConstraints(copiedConstraints)
+    }
+
+}
+
 extension NSLayoutConstraint {
     
     func constraintWithMultiplier(multiplier: CGFloat) -> NSLayoutConstraint {
@@ -22,76 +47,48 @@ extension NSLayoutConstraint {
         )
         return constraint;
     }
-
-    class func constraintsReplacingConstraints(
-        oldConstraints: [NSLayoutConstraint],
-        views oldViews: [UIView],
-        withViews views: [UIView]
-        ) -> [NSLayoutConstraint]
-    {
-        var constraints = [NSLayoutConstraint]()
-        for oldConstraint in oldConstraints {
-            if var firstItem = oldConstraint.firstItem as? UIView,
-                var secondItem = oldConstraint.secondItem as? UIView
-            {
-                var didReplace = false
-                if oldViews.contains(firstItem) {
-                    firstItem = views[oldViews.indexOf(firstItem)!];
-                    didReplace = true
-                }
-                if oldViews.contains(secondItem) {
-                    secondItem = views[oldViews.indexOf(secondItem)!]
-                    didReplace = true
-                }
-                if didReplace {
-                    let constraint = NSLayoutConstraint(
-                        item: firstItem,
-                        attribute: oldConstraint.firstAttribute,
-                        relatedBy: oldConstraint.relation,
-                        toItem: secondItem,
-                        attribute: oldConstraint.secondAttribute,
-                        multiplier: oldConstraint.multiplier,
-                        constant: oldConstraint.constant
-                    )
-                    constraints.append(constraint)
-                }
+    
+    func constraintByReplacingItems(oldItems: [NSObject], withNewItems newItems: [NSObject]) -> NSLayoutConstraint {
+        let firstIndex = oldItems.indexOf(self.firstItem as! NSObject)!
+        let firstItem = newItems[firstIndex]
+        var newSecondItem: NSObject?
+        if let secondItem = secondItem {
+            if let secondIndex = oldItems.indexOf(secondItem as! NSObject) {
+                newSecondItem = newItems[secondIndex]
             }
         }
-        return constraints
-    }
-
-    class func copyDescendantConstraintsFromSourceView(sourceView: UIView, toDestinationView destinationView: UIView) {
-        var sourceConstraints = sourceView.constraints
-        var destinationConstraints = destinationView.constraints
-        var sourceSubviews = [sourceView] // TODO: add top/bottom guides
-        var destinationSubviews = [destinationView] // TODO: add top/bottom guides
-//        for sourceSubview in contentView!.subviews {
-        for sourceSubview in sourceView.subviews {
-            if sourceSubview.tag == 1 { // Testing: only do the object that is tagged with "1"
-                if let destinationSubview = destinationView.subviewMatchingView(sourceSubview) {
-                    sourceSubviews.append(sourceSubview)
-                    destinationSubviews.append(destinationSubview)
-                    for constraint in sourceView.constraints {
-                        if constraint.firstItem as? UIView == sourceSubview || constraint.secondItem as? UIView == sourceSubview {
-                            sourceConstraints.append(constraint)
-                        }
-                    }
-                    for constraint in destinationView.constraints {
-                        if constraint.firstItem as? UIView == destinationSubview || constraint.secondItem as? UIView == destinationSubview {
-                            destinationConstraints.append(constraint)
-                        }
-                    }
-                }
-            }
-        }
-        let constraints = constraintsReplacingConstraints(
-            destinationConstraints,
-            views: destinationSubviews,
-            withViews: sourceSubviews
+        let constraint = NSLayoutConstraint(
+            item: firstItem,
+            attribute: firstAttribute,
+            relatedBy: relation,
+            toItem: newSecondItem,
+            attribute: secondAttribute,
+            multiplier: multiplier,
+            constant: constant
         )
-        NSLayoutConstraint.deactivateConstraints(sourceConstraints)
-//        NSLayoutConstraint.activateConstraints(constraints)
-        destinationView.addConstraints(constraints)
+        return constraint
+    }
+    
+    func otherItemIfView(view: UIView) -> AnyObject? {
+        var otherItem: AnyObject?
+        if firstItem as? UIView == view {
+            otherItem = secondItem
+        } else if secondItem as? UIView == view {
+            otherItem = firstItem
+        }
+        return otherItem
+    }
+    
+    func onlyIncludesItems(items: [NSObject]) -> Bool {
+        var include = false
+        if let firstItem = firstItem as? NSObject where items.contains(firstItem) {
+            if secondItem == nil {
+                include = true
+            } else if let secondItem = secondItem as? NSObject where items.contains(secondItem) {
+                include = true
+            }
+        }
+        return include
     }
     
 }
