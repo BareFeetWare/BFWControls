@@ -48,6 +48,7 @@ class MorphSegue: UIStoryboardSegue {
             }
             if let morphingView = morphingView {
                 sourceVCView.addSubview(morphingView)
+                morphingView.pinToSuperviewEdges()
                 contentView = morphingView
             }
         } else {
@@ -68,10 +69,10 @@ class MorphSegue: UIStoryboardSegue {
                 delay: 0.0,
                 options: animationOptions,
                 animations: {
-                    morphingView.frame = sourceVCView.bounds
 //                    morphingView.setNeedsLayout()
 //                    morphingView.layoutIfNeeded()
                     if let _ = self.fromView as? UITableViewCell {
+                        morphingView.frame = sourceVCView.bounds
                         contentView?.frame = morphingView.bounds
                     }
                     if let subviews = contentView?.subviews {
