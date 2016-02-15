@@ -32,17 +32,35 @@ extension UIView {
     }
 
     func pinToSuperviewEdges() {
-        let attributes: [NSLayoutAttribute] = [.Left, .Right, .Top, .Bottom]
-        let constraints = attributes.map { attribute in
-            NSLayoutConstraint(
+        pinToView(superview!,
+            attributes: [.Left, .Right, .Top, .Bottom],
+            secondAttributes: [.Left, .Right, .Top, .Bottom]
+        )
+    }
+
+    func pinToSuperviewMargins() {
+        pinToView(superview!,
+            attributes: [.Left, .Right, .Top, .Bottom],
+            secondAttributes: [.LeftMargin, .RightMargin, .TopMargin, .BottomMargin]
+        )
+    }
+
+    func pinToView(view: UIView,
+        attributes: [NSLayoutAttribute],
+        secondAttributes: [NSLayoutAttribute])
+    {
+        var constraints = [NSLayoutConstraint]()
+        for attributeN in 0 ..< attributes.count {
+            let constraint = NSLayoutConstraint(
                 item: self,
-                attribute: attribute,
+                attribute: attributes[attributeN],
                 relatedBy: .Equal,
-                toItem: superview,
-                attribute: attribute,
+                toItem: view,
+                attribute: secondAttributes[attributeN],
                 multiplier: 1.0,
                 constant: 0.0
             )
+            constraints.append(constraint)
         }
         NSLayoutConstraint.activateConstraints(constraints)
     }
