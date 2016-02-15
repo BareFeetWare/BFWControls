@@ -21,7 +21,7 @@ extension UIView {
                 toSubviewConstraints += toSubview.constraints
             }
         }
-        let oldConstraints = (self.constraints + toSubviewConstraints).filter { constraint in
+        let oldConstraints = (constraints + toSubviewConstraints).filter { constraint in
             constraint.onlyIncludesItems(toItems)
         }
         let copiedConstraints = oldConstraints.map { oldConstraint in
@@ -29,6 +29,22 @@ extension UIView {
         }
         NSLayoutConstraint.deactivateConstraints(oldConstraints)
         NSLayoutConstraint.activateConstraints(copiedConstraints)
+    }
+
+    func pinToSuperviewEdges() {
+        let attributes: [NSLayoutAttribute] = [.Left, .Right, .Top, .Bottom]
+        let constraints = attributes.map { attribute in
+            NSLayoutConstraint(
+                item: self,
+                attribute: attribute,
+                relatedBy: .Equal,
+                toItem: superview,
+                attribute: attribute,
+                multiplier: 1.0,
+                constant: 0.0
+            )
+        }
+        NSLayoutConstraint.activateConstraints(constraints)
     }
 
 }
@@ -42,7 +58,7 @@ extension NSLayoutConstraint {
             relatedBy: relation,
             toItem: secondItem,
             attribute: secondAttribute,
-            multiplier:multiplier,
+            multiplier: multiplier,
             constant: constant
         )
         return constraint;
