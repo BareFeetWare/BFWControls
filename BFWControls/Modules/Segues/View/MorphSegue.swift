@@ -37,14 +37,14 @@ class MorphSegue: UIStoryboardSegue {
         
         var morphingView: UIView?
         var contentView: UIView?
-        let isMorphingCopy = true
-        if isMorphingCopy {
+        let useCopyForMorphingView = true
+        if useCopyForMorphingView {
             // Create a copy of the view hierarchy for morphing, so the original is not changed.
             if let cell = fromView as? UITableViewCell {
-                morphingView = cell.copyWithSubviews(nil, includeConstraints: true)
-                morphingView?.copySubviews(cell.contentView.subviews, includeConstraints: true)
+                morphingView = cell.copyWithSubviews(nil, includeConstraints: false)
+                morphingView?.copySubviews(cell.contentView.subviews, includeConstraints: false)
             } else {
-                morphingView = fromView?.copyWithSubviews(fromView?.subviews, includeConstraints: true)
+                morphingView = fromView?.copyWithSubviews(fromView?.subviews, includeConstraints: false)
             }
             if let morphingView = morphingView {
                 sourceVCView.addSubview(morphingView)
@@ -69,8 +69,8 @@ class MorphSegue: UIStoryboardSegue {
                 options: animationOptions,
                 animations: {
                     morphingView.frame = sourceVCView.bounds
-                    morphingView.setNeedsLayout()
-                    morphingView.layoutIfNeeded()
+//                    morphingView.setNeedsLayout()
+//                    morphingView.layoutIfNeeded()
                     if let _ = self.fromView as? UITableViewCell {
                         contentView?.frame = morphingView.bounds
                     }
@@ -88,7 +88,7 @@ class MorphSegue: UIStoryboardSegue {
                 { finished in
                     self.sourceViewController.navigationController?.pushViewController(self.destinationViewController,
                         animated: false)
-                    if isMorphingCopy {
+                    if useCopyForMorphingView {
                         morphingView.removeFromSuperview()
                         // morphingView.hidden = true // Keep it for reverse animation?
                     }
