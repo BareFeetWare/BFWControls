@@ -146,7 +146,7 @@
         self.lineBreakMode = view.lineBreakMode;
         self.attributedText = view.attributedText;
         self.highlightedTextColor = view.highlightedTextColor;
-        self.numberOfLines = view.enabled;
+        self.numberOfLines = view.numberOfLines;
         self.adjustsFontSizeToFitWidth = view.adjustsFontSizeToFitWidth;
         self.baselineAdjustment = view.baselineAdjustment;
         self.minimumScaleFactor = view.minimumScaleFactor;
