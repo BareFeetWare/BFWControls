@@ -12,7 +12,7 @@ extension UIView {
     
     func isMorphableTo(view: UIView) -> Bool {
         var isMorphable = false
-        if tag == view.tag {
+        if tag != 0 && tag == view.tag {
             isMorphable = true
         } else if view is UILayoutSupport && self is UILayoutSupport {
             if CGPointEqualToPoint(view.frame.origin, CGPointZero) == CGPointEqualToPoint(frame.origin, CGPointZero) {
