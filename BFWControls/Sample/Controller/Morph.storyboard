@@ -409,15 +409,23 @@
                                     <constraint firstAttribute="height" constant="176" id="pFs-0u-MEm"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This should fade out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khJ-Sj-czN">
+                                <rect key="frame" x="110" y="624" width="156" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kEV-jN-u9O" firstAttribute="centerX" secondItem="gnT-gC-tEh" secondAttribute="centerX" id="Wud-i3-aS5"/>
+                            <constraint firstItem="khJ-Sj-czN" firstAttribute="centerX" secondItem="gnT-gC-tEh" secondAttribute="centerX" id="hEq-TP-iy4"/>
                             <constraint firstItem="LcL-va-5Tt" firstAttribute="centerY" secondItem="gnT-gC-tEh" secondAttribute="centerY" id="hwL-Ar-YVL"/>
                             <constraint firstItem="kEV-jN-u9O" firstAttribute="centerY" secondItem="gnT-gC-tEh" secondAttribute="centerY" id="lwi-YZ-0iv"/>
                             <constraint firstItem="LcL-va-5Tt" firstAttribute="leading" secondItem="gnT-gC-tEh" secondAttribute="leading" constant="8" id="ntH-a6-hAS"/>
                             <constraint firstItem="gJ2-kW-95E" firstAttribute="centerX" secondItem="gnT-gC-tEh" secondAttribute="centerX" id="oub-iU-mp5"/>
                             <constraint firstItem="gJ2-kW-95E" firstAttribute="top" secondItem="OlY-bR-r9j" secondAttribute="bottom" constant="8" id="qQX-8i-pOJ"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="khJ-Sj-czN" secondAttribute="bottomMargin" constant="30" id="v2X-k2-vBc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5zM-dz-T8d">
