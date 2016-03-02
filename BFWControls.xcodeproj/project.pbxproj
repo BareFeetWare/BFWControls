@@ -14,6 +14,7 @@
 		E20256AD1BEB413300095590 /* Morph.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20256A01BEB413300095590 /* Morph.storyboard */; };
 		E20256AE1BEB413300095590 /* MorphTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20256A21BEB413300095590 /* MorphTableViewController.swift */; };
 		E20256B51BEC94AA00095590 /* BFWNibView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256B41BEC94AA00095590 /* BFWNibView.m */; };
+		E22A5E961C879BCB00AE9389 /* NibButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22A5E951C879BCB00AE9389 /* NibButton.swift */; };
 		E234075E1C08399000319D38 /* UIView+BFWCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = E234075C1C08399000319D38 /* UIView+BFWCopy.m */; };
 		E25687C41C6C5B8E00DD14D5 /* NSLayoutConstraintExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25687C31C6C5B8E00DD14D5 /* NSLayoutConstraintExtensions.swift */; };
 		E25687EB1C70ACC500DD14D5 /* MorphSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25687EA1C70ACC500DD14D5 /* MorphSegue.swift */; };
@@ -37,6 +38,7 @@
 		E20256A21BEB413300095590 /* MorphTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorphTableViewController.swift; sourceTree = "<group>"; };
 		E20256B31BEC94AA00095590 /* BFWNibView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWNibView.h; sourceTree = "<group>"; };
 		E20256B41BEC94AA00095590 /* BFWNibView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFWNibView.m; sourceTree = "<group>"; };
+		E22A5E951C879BCB00AE9389 /* NibButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibButton.swift; sourceTree = "<group>"; };
 		E234075B1C08399000319D38 /* UIView+BFWCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BFWCopy.h"; sourceTree = "<group>"; };
 		E234075C1C08399000319D38 /* UIView+BFWCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BFWCopy.m"; sourceTree = "<group>"; };
 		E23407641C0AD7A100319D38 /* BFWControls-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BFWControls-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			children = (
 				E20256B31BEC94AA00095590 /* BFWNibView.h */,
 				E20256B41BEC94AA00095590 /* BFWNibView.m */,
+				E22A5E951C879BCB00AE9389 /* NibButton.swift */,
 				E234075B1C08399000319D38 /* UIView+BFWCopy.h */,
 				E234075C1C08399000319D38 /* UIView+BFWCopy.m */,
 			);
@@ -318,6 +321,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E22A5E961C879BCB00AE9389 /* NibButton.swift in Sources */,
 				E20256B51BEC94AA00095590 /* BFWNibView.m in Sources */,
 				E28F99621C446E20000A0A60 /* BlurView.swift in Sources */,
 				E25687EB1C70ACC500DD14D5 /* MorphSegue.swift in Sources */,

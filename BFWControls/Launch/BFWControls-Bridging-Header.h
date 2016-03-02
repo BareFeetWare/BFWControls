@@ -8,3 +8,6 @@
 
 // For MorphSegue.swift:
 #import "UIView+BFWCopy.h"
+
+// For BFWNibView
+#import "BFWNibView.h"
