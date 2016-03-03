@@ -8,10 +8,13 @@
 import UIKit
 
 class NibButton: UIButton {
-
+    
     // MARK: - Variables
     
-    var contentView: BFWNibView!
+    /// Override in subclass
+    var contentView: BFWNibView? {
+        return nil
+    }
     
     // MARK: - Init
     
@@ -26,10 +29,12 @@ class NibButton: UIButton {
     }
     
     func commonInit() {
-        addSubview(contentView)
-        contentView.pinToSuperviewEdges()
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.userInteractionEnabled = false
+        if let contentView = contentView {
+            addSubview(contentView)
+            contentView.pinToSuperviewEdges()
+            contentView.translatesAutoresizingMaskIntoConstraints = false
+            contentView.userInteractionEnabled = false
+        }
     }
     
     override func awakeFromNib() {
@@ -46,5 +51,5 @@ class NibButton: UIButton {
         titleLabel?.text = titleForState(.Normal)
         setTitle(nil, forState: .Normal)
     }
-
+    
 }
