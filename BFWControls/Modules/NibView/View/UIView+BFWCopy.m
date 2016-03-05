@@ -75,7 +75,7 @@
     BOOL hasAlreadyLoadedFromNib = self.subviews.count > 0; // TODO: More rubust test.
     if (!hasAlreadyLoadedFromNib) {
         NSString *nibName = [[self class] nibName];
-        NSArray *nibViews = [[[self class] bundle] loadNibNamed:[[self class] nibName] owner:nil options:nil];
+        NSArray *nibViews = [[[self class] bundle] loadNibNamed:nibName owner:nil options:nil];
         nibView = nibViews.firstObject;
         if (![nibView isKindOfClass:[self class]]) {
             NSLog(@"**** error: first view in \"%@\" xib is class \"%@\", which is not the expected class \"%@\"", nibName, NSStringFromClass([nibView class]), NSStringFromClass([self class]));
