@@ -10,6 +10,8 @@
 
 @implementation BFWNibView
 
+#pragma mark - Init
+
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -27,6 +29,8 @@
     return [self viewFromNib];
 }
 
+#pragma mark - Caching
+
 + (NSMutableDictionary *)sizeForKeyDictionary {
     static NSMutableDictionary *sizeForKeyDictionary = nil;
     static dispatch_once_t onceToken;
@@ -35,6 +39,8 @@
     });
     return sizeForKeyDictionary;
 }
+
+#pragma mark - UIView
 
 - (CGSize)intrinsicContentSize {
     CGSize size;
@@ -48,6 +54,13 @@
         sizeForKeyDictionary[key] = NSStringFromCGSize(size);
     }
     return size;
+}
+
+- (void)setBackgroundColor:(UIColor *)backgroundColor {
+    // If storyboard instance is "default" (nil) then use the backgroundColor already set in xib or awakeFromNib (ie don't set it again).
+    if (backgroundColor) {
+        [super setBackgroundColor:backgroundColor];
+    }
 }
 
 @end
