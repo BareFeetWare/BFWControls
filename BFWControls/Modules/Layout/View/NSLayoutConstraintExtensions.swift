@@ -44,10 +44,18 @@ extension UIView {
             secondAttributes: [.LeftMargin, .RightMargin, .TopMargin, .BottomMargin]
         )
     }
-
+    
+    func pinToSuperviewWithInset(inset: CGFloat) {
+        pinToView(superview!,
+            attributes: [.Left, .Right, .Top, .Bottom],
+            secondAttributes: [.Left, .Right, .Top, .Bottom],
+            constants: [inset, -inset, inset, -inset])
+    }
+    
     func pinToView(view: UIView,
         attributes: [NSLayoutAttribute],
-        secondAttributes: [NSLayoutAttribute])
+        secondAttributes: [NSLayoutAttribute],
+        constants: [CGFloat] = [0, 0, 0, 0])
     {
         var constraints = [NSLayoutConstraint]()
         for attributeN in 0 ..< attributes.count {
@@ -58,7 +66,7 @@ extension UIView {
                 toItem: view,
                 attribute: secondAttributes[attributeN],
                 multiplier: 1.0,
-                constant: 0.0
+                constant: constants[attributeN]
             )
             constraints.append(constraint)
         }
