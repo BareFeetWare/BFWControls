@@ -73,6 +73,68 @@ extension UIView {
         NSLayoutConstraint.activateConstraints(constraints)
     }
 
+    func activateOnlyConstraintsWithFirstVisibleInViews(views: [UIView]) {
+        var firstMatchedView: UIView?
+        for view in views {
+            let isFirstMatch = firstMatchedView == nil && !(view.hidden)
+            if let constraints = constraintsWithView(view) {
+                if isFirstMatch {
+                    firstMatchedView = view
+                    NSLayoutConstraint.activateConstraints(constraints)
+                } else {
+                    NSLayoutConstraint.deactivateConstraints(constraints)
+                }
+            }
+        }
+    }
+    
+    func commonAncestorWithView(view: UIView) -> UIView? {
+        var ancestor: UIView?
+        if isDescendantOfView(view) {
+            ancestor = view
+        } else if view.isDescendantOfView(self) {
+            ancestor = self
+        } else {
+            var superview: UIView? = self
+            while ancestor == nil && superview != nil {
+                superview = superview!.superview
+                if view.isDescendantOfView(superview!) {
+                    ancestor = superview
+                }
+            }
+        }
+        return ancestor
+    }
+    
+    func constraintsWithView(view: UIView) -> [NSLayoutConstraint]? {
+        return commonAncestorWithView(view)?.constraints.filter { constraint in
+            constraint.isBetweenItem(self, otherItem: view)
+        }
+    }
+    
+    var siblingAndSuperviewConstraints: [NSLayoutConstraint]? {
+        return superview?.constraints.filter { constraint in
+            var include = false
+            if let firstItem = constraint.firstItem as? NSObject,
+                let secondItem = constraint.secondItem as? NSObject
+                where firstItem == self || secondItem == self
+            {
+                include = true
+            }
+            return include
+        }
+    }
+    
+    func deactivateConstraintsIfHidden() {
+        if let siblingAndSuperviewConstraints = siblingAndSuperviewConstraints {
+            if hidden {
+                NSLayoutConstraint.deactivateConstraints(siblingAndSuperviewConstraints)
+            } else {
+                NSLayoutConstraint.activateConstraints(siblingAndSuperviewConstraints)
+            }
+        }
+    }
+
 }
 
 extension NSLayoutConstraint {
@@ -111,6 +173,17 @@ extension NSLayoutConstraint {
         return constraint
     }
     
+    func isBetweenItem(item: NSObject, otherItem: NSObject) -> Bool {
+        var isBetween = false
+        if let firstItem = firstItem as? NSObject,
+            let secondItem = secondItem as? NSObject
+        {
+            isBetween = (firstItem == item && secondItem == otherItem)
+                || (firstItem == otherItem && secondItem == item)
+        }
+        return isBetween
+    }
+
     func otherItemIfView(view: UIView) -> AnyObject? {
         var otherItem: AnyObject?
         if firstItem as? UIView == view {
