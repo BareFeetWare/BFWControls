@@ -71,6 +71,7 @@ extension UIView {
             constraints.append(constraint)
         }
         NSLayoutConstraint.activateConstraints(constraints)
+        translatesAutoresizingMaskIntoConstraints = false
     }
 
     func activateOnlyConstraintsWithFirstVisibleInViews(views: [UIView]) {

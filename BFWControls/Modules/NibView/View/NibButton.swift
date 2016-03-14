@@ -32,7 +32,6 @@ class NibButton: UIButton {
         if let contentView = contentView {
             addSubview(contentView)
             contentView.pinToSuperviewEdges()
-            contentView.translatesAutoresizingMaskIntoConstraints = false
             contentView.userInteractionEnabled = false
         }
     }
