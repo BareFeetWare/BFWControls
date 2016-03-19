@@ -20,6 +20,7 @@
 		E25687EB1C70ACC500DD14D5 /* MorphSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25687EA1C70ACC500DD14D5 /* MorphSegue.swift */; };
 		E25687ED1C70AD0600DD14D5 /* UIViewMorphExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25687EC1C70AD0600DD14D5 /* UIViewMorphExtensions.swift */; };
 		E28F99621C446E20000A0A60 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F99611C446E20000A0A60 /* BlurView.swift */; };
+		E293CB631C9D7913006BB8D7 /* NibCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E293CB621C9D7913006BB8D7 /* NibCellView.swift */; };
 		E2DE2EF11BEDFE1300636D0D /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */; };
 		E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2F7C1BEE009200636D0D /* UIImage+BFW.m */; };
 		E2FF6C7A1C413F37005514B6 /* LayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FF6C791C413F37005514B6 /* LayerView.swift */; };
@@ -47,6 +48,7 @@
 		E25687EC1C70AD0600DD14D5 /* UIViewMorphExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewMorphExtensions.swift; sourceTree = "<group>"; };
 		E257557E1C40E0B4002AB6E6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E28F99611C446E20000A0A60 /* BlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		E293CB621C9D7913006BB8D7 /* NibCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibCellView.swift; sourceTree = "<group>"; };
 		E2DE2EEF1BEDFE1300636D0D /* UIImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageEffects.h; sourceTree = "<group>"; };
 		E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageEffects.m; sourceTree = "<group>"; };
 		E2DE2F7B1BEE009200636D0D /* UIImage+BFW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BFW.h"; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				E20256B31BEC94AA00095590 /* BFWNibView.h */,
 				E20256B41BEC94AA00095590 /* BFWNibView.m */,
 				E22A5E951C879BCB00AE9389 /* NibButton.swift */,
+				E293CB621C9D7913006BB8D7 /* NibCellView.swift */,
 				E234075B1C08399000319D38 /* UIView+BFWCopy.h */,
 				E234075C1C08399000319D38 /* UIView+BFWCopy.m */,
 			);
@@ -321,6 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E293CB631C9D7913006BB8D7 /* NibCellView.swift in Sources */,
 				E22A5E961C879BCB00AE9389 /* NibButton.swift in Sources */,
 				E20256B51BEC94AA00095590 /* BFWNibView.m in Sources */,
 				E28F99621C446E20000A0A60 /* BlurView.swift in Sources */,
