@@ -16,12 +16,40 @@ class NibCellView: BFWNibView {
     @IBOutlet weak var iconView: UIView?
     @IBOutlet weak var accessoryView: UIView?
 
-    // MARK: - Variables
+    // MARK: - Variables and functions
 
     @IBInspectable var showAccessory: Bool = false {
         didSet {
-            accessoryView?.hidden = !showAccessory
+            needsUpdateView = true
         }
     }
     
+    func updateView() {
+        accessoryView?.hidden = !showAccessory
+    }
+    
+    var needsUpdateView = true {
+        didSet {
+            if needsUpdateView {
+                setNeedsLayout()
+            }
+        }
+    }
+    
+    // MARK: - Private variables and functions
+    
+    private func updateViewIfNeeded() {
+        if needsUpdateView {
+            needsUpdateView = false
+            updateView()
+        }
+    }
+
+    // MARK: - UIView
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        updateViewIfNeeded()
+    }
+
 }
