@@ -1,5 +1,5 @@
 //
-//  TransitionManager.swift
+//  SideMenuTransitioningController.swift
 //
 //  Created by Tom Brodhurst-Hill on 21/03/2016.
 //  Copyright © 2016 BareFeetWare. All rights reserved.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TransitionManager: NSObject, UIViewControllerTransitioningDelegate {
+class SideMenuTransitioningController: NSObject, UIViewControllerTransitioningDelegate {
     
     // MARK: - UIViewControllerTransitioningDelegate
     
@@ -17,19 +17,22 @@ class TransitionManager: NSObject, UIViewControllerTransitioningDelegate {
         sourceController source: UIViewController
         ) -> UIViewControllerAnimatedTransitioning?
     {
-        return SideMenuTransition()
+        return SideMenuAnimationController()
     }
     
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return SideMenuDismissTransition()
+        return SideMenuDismissAnimationController()
     }
     
 }
 
-class SideMenuTransition: NSObject, UIViewControllerAnimatedTransitioning {
+class SideMenuAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
     
+    let duration = 0.5
+    let peekWidth: CGFloat = 44.0
+
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-        return 3.0
+        return duration
     }
     
     @objc func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
@@ -38,7 +41,6 @@ class SideMenuTransition: NSObject, UIViewControllerAnimatedTransitioning {
             let presentedView = presentedViewController.view
         {
             containerView.addSubview(presentedView)
-            let peekWidth: CGFloat = 44.0
             let sideMenuWidth = containerView.frame.size.width - peekWidth
             presentedView.frame = CGRect(
                 x: -sideMenuWidth,
@@ -47,7 +49,7 @@ class SideMenuTransition: NSObject, UIViewControllerAnimatedTransitioning {
                 height: containerView.frame.size.height
             )
             UIView.animateWithDuration(
-                0.5,
+                duration,
                 delay: 0.0,
                 options: UIViewAnimationOptions.CurveEaseInOut,
                 animations: {
@@ -62,10 +64,12 @@ class SideMenuTransition: NSObject, UIViewControllerAnimatedTransitioning {
     
 }
 
-class SideMenuDismissTransition: NSObject, UIViewControllerAnimatedTransitioning {
+class SideMenuDismissAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
     
+    let duration = 0.5
+
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-        return 3.0
+        return duration
     }
     
     @objc func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
@@ -73,7 +77,7 @@ class SideMenuDismissTransition: NSObject, UIViewControllerAnimatedTransitioning
             let presentedView = presentedViewController.view
         {
             UIView.animateWithDuration(
-                0.5,
+                duration,
                 delay: 0.0,
                 options: UIViewAnimationOptions.CurveEaseInOut,
                 animations: {
