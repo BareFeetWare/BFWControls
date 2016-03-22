@@ -8,11 +8,6 @@
 import UIKit
 
 class TransitionManager: NSObject, UIViewControllerTransitioningDelegate {
-
-    // MARK: - Singleton
-
-    // TODO: Make this an instance in another object, not a singleton.
-    static var sharedTransitionManager = TransitionManager()
     
     // MARK: - UIViewControllerTransitioningDelegate
     
