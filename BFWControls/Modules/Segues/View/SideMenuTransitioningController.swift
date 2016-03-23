@@ -11,8 +11,8 @@ class SideMenuTransitioningController: NSObject, UIViewControllerTransitioningDe
     
     // MARK: - Variables
     
-    @IBInspectable var presentDuration: Double = 0.5
-    @IBInspectable var dismissDuration: Double = 0.5
+    @IBInspectable var presentDuration: Double = 0.3
+    @IBInspectable var dismissDuration: Double = 0.3
     
     // MARK: - UIViewControllerTransitioningDelegate
     
@@ -101,3 +101,17 @@ class SideMenuDismissAnimationController: NSObject, UIViewControllerAnimatedTran
     }
 
 }
+
+extension UIViewController {
+    
+    @IBOutlet var transitioningDelegateOutlet: NSObject? {
+        get {
+            return transitioningDelegate as? NSObject
+        }
+        set {
+            transitioningDelegate = newValue as? UIViewControllerTransitioningDelegate
+        }
+    }
+    
+}
+
