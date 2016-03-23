@@ -9,6 +9,11 @@ import UIKit
 
 class SideMenuTransitioningController: NSObject, UIViewControllerTransitioningDelegate {
     
+    // MARK: - Variables
+    
+    @IBInspectable var presentDuration: Double = 0.5
+    @IBInspectable var dismissDuration: Double = 0.5
+    
     // MARK: - UIViewControllerTransitioningDelegate
     
     func animationControllerForPresentedController(
@@ -17,18 +22,22 @@ class SideMenuTransitioningController: NSObject, UIViewControllerTransitioningDe
         sourceController source: UIViewController
         ) -> UIViewControllerAnimatedTransitioning?
     {
-        return SideMenuAnimationController()
+        let sideMenuAnimationController = SideMenuAnimationController()
+        sideMenuAnimationController.duration = presentDuration
+        return sideMenuAnimationController
     }
     
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return SideMenuDismissAnimationController()
+        let sideMenuDismissAnimationController = SideMenuDismissAnimationController()
+        sideMenuDismissAnimationController.duration = dismissDuration
+        return sideMenuDismissAnimationController
     }
     
 }
 
 class SideMenuAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
     
-    let duration = 0.5
+    var duration: NSTimeInterval = 0.5
     let peekWidth: CGFloat = 44.0
 
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
@@ -66,7 +75,7 @@ class SideMenuAnimationController: NSObject, UIViewControllerAnimatedTransitioni
 
 class SideMenuDismissAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
     
-    let duration = 0.5
+    var duration: NSTimeInterval = 0.5
 
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return duration
