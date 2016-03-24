@@ -1,5 +1,5 @@
 //
-//  NibDrawButton.swift
+//  DrawNibButton.swift
 //
 //  Created by Tom Brodhurst-Hill on 3/03/2016.
 //  Copyright © 2016 BareFeetWare. All rights reserved.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NibDrawButton: NibButton {
+class DrawNibButton: NibButton {
 
     // MARK: - Variables
     
