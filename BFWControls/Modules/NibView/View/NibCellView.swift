@@ -18,6 +18,24 @@ class NibCellView: BFWNibView {
 
     // MARK: - Variables and functions
 
+    @IBInspectable var text: String? {
+        get {
+            return textLabel?.text
+        }
+        set {
+            textLabel?.text = newValue
+        }
+    }
+    
+    @IBInspectable var detailText: String? {
+        get {
+            return detailTextLabel?.text
+        }
+        set {
+            detailTextLabel?.text = newValue
+        }
+    }
+    
     @IBInspectable var showAccessory: Bool = false {
         didSet {
             needsUpdateView = true
