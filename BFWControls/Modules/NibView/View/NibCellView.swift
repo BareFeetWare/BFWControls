@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NibCellView: BFWNibView {
+class NibCellView: NibView {
 
     // MARK: - IBOutlets
     
@@ -38,36 +38,15 @@ class NibCellView: BFWNibView {
     
     @IBInspectable var showAccessory: Bool = false {
         didSet {
-            needsUpdateView = true
+            setNeedsUpdateView()
         }
     }
     
-    func updateView() {
+    // MARK: - NibView
+    
+    override func updateView() {
+        super.updateView()
         accessoryView?.hidden = !showAccessory
-    }
-    
-    var needsUpdateView = true {
-        didSet {
-            if needsUpdateView {
-                setNeedsLayout()
-            }
-        }
-    }
-    
-    // MARK: - Private variables and functions
-    
-    private func updateViewIfNeeded() {
-        if needsUpdateView {
-            needsUpdateView = false
-            updateView()
-        }
-    }
-
-    // MARK: - UIView
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        updateViewIfNeeded()
     }
 
 }

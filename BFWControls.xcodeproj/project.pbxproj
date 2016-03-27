@@ -20,6 +20,7 @@
 		E25687C41C6C5B8E00DD14D5 /* NSLayoutConstraintExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25687C31C6C5B8E00DD14D5 /* NSLayoutConstraintExtensions.swift */; };
 		E25687EB1C70ACC500DD14D5 /* MorphSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25687EA1C70ACC500DD14D5 /* MorphSegue.swift */; };
 		E25687ED1C70AD0600DD14D5 /* UIViewMorphExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25687EC1C70AD0600DD14D5 /* UIViewMorphExtensions.swift */; };
+		E2589EFA1CA7CB8E00BDD44F /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2589EF91CA7CB8E00BDD44F /* NibView.swift */; };
 		E28F99621C446E20000A0A60 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F99611C446E20000A0A60 /* BlurView.swift */; };
 		E293CB631C9D7913006BB8D7 /* NibCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E293CB621C9D7913006BB8D7 /* NibCellView.swift */; };
 		E2A5E3B61CA512C200368EFA /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5E3B51CA512C200368EFA /* UIViewExtensions.swift */; };
@@ -50,6 +51,7 @@
 		E25687EA1C70ACC500DD14D5 /* MorphSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorphSegue.swift; sourceTree = "<group>"; };
 		E25687EC1C70AD0600DD14D5 /* UIViewMorphExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewMorphExtensions.swift; sourceTree = "<group>"; };
 		E257557E1C40E0B4002AB6E6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E2589EF91CA7CB8E00BDD44F /* NibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
 		E28F99611C446E20000A0A60 /* BlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		E293CB621C9D7913006BB8D7 /* NibCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibCellView.swift; sourceTree = "<group>"; };
 		E2A5E3B51CA512C200368EFA /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				E20256B41BEC94AA00095590 /* BFWNibView.m */,
 				E22A5E951C879BCB00AE9389 /* NibButton.swift */,
 				E293CB621C9D7913006BB8D7 /* NibCellView.swift */,
+				E2589EF91CA7CB8E00BDD44F /* NibView.swift */,
 				E234075B1C08399000319D38 /* UIView+BFWCopy.h */,
 				E234075C1C08399000319D38 /* UIView+BFWCopy.m */,
 			);
@@ -335,6 +338,7 @@
 				E20256B51BEC94AA00095590 /* BFWNibView.m in Sources */,
 				E28F99621C446E20000A0A60 /* BlurView.swift in Sources */,
 				E25687EB1C70ACC500DD14D5 /* MorphSegue.swift in Sources */,
+				E2589EFA1CA7CB8E00BDD44F /* NibView.swift in Sources */,
 				E25687ED1C70AD0600DD14D5 /* UIViewMorphExtensions.swift in Sources */,
 				E234075E1C08399000319D38 /* UIView+BFWCopy.m in Sources */,
 				E20E10CE1CA1EA9300F35C82 /* SideMenuTransitioningController.swift in Sources */,
