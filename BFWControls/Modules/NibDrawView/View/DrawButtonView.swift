@@ -7,7 +7,7 @@
 
 import UIKit
 
-@IBDesignable class DrawButtonView: BFWNibView {
+@IBDesignable class DrawButtonView: NibView {
 
     @IBOutlet weak var iconView: BFWDrawView?
     @IBOutlet weak var titleLabel: UILabel?
