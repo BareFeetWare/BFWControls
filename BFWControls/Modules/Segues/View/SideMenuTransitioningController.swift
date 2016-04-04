@@ -87,7 +87,7 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
             return direction.rawValue
         }
         set {
-            direction = Direction(rawValue: direction_) ?? .Left
+            direction = Direction(rawValue: newValue) ?? .Left
         }
     }
     
@@ -157,7 +157,7 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
         case .Up:
             frame.origin.y += containerView.frame.size.height
         case .Down:
-            frame.origin.y += containerView.frame.size.height
+            frame.origin.y -= containerView.frame.size.height
         }
         return frame
     }
