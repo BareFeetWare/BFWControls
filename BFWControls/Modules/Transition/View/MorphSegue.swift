@@ -52,7 +52,7 @@ class MorphSegue: UIStoryboardSegue {
                 contentView = morphingView
             }
         } else {
-            morphingView = fromView
+            // morphingView = fromView
             // if let cell = fromView as? UITableViewCell {
             //     contentView = cell.contentView
             // }
