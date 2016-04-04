@@ -1,5 +1,5 @@
 //
-//  SideMenuTransitioningController.swift
+//  TranslationTransitioningController.swift
 //
 //  Created by Tom Brodhurst-Hill on 21/03/2016.
 //  Copyright © 2016 BareFeetWare. All rights reserved.
@@ -12,51 +12,6 @@ enum Direction: Int {
     case Right = 1
     case Up = 2
     case Down = 3
-}
-
-class SideMenuTransitioningController: AbstractTransitioningController {
-    
-    // MARK: - Variables
-    
-    @IBInspectable var duration: Double = 0.3
-    @IBInspectable var rightInset: CGFloat = 44.0
-    
-    // MARK: - Init
-
-    override init() {
-        super.init()
-        transitioningController.duration = duration
-        transitioningController.rightInset = rightInset
-        transitioningController.direction = .Right
-    }
-    
-}
-
-/// Subclass AbstractTransitioningController and customise properties of its transitioningDelegate.
-class AbstractTransitioningController: NSObject, UIViewControllerTransitioningDelegate {
-
-    // MARK: - Variables
-
-    var transitioningController = TranslationTransitioningController()
-
-    // MARK: - UIViewControllerTransitioningDelegate
-    
-    func animationControllerForPresentedController(
-        presented: UIViewController,
-        presentingController presenting: UIViewController,
-                             sourceController source: UIViewController
-        ) -> UIViewControllerAnimatedTransitioning?
-    {
-        return transitioningController.animationControllerForPresentedController(presented,
-                                                                                 presentingController: presenting,
-                                                                                 sourceController: source)
-    }
-    
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning?
-    {
-        return transitioningController.animationControllerForDismissedController(dismissed)
-    }
-
 }
 
 class TranslationTransitioningController: NSObject, UIViewControllerTransitioningDelegate {
