@@ -28,21 +28,31 @@ enum Direction: Int {
     
 }
 
-class SideMenuTransitioningController: NSObject, UIViewControllerTransitioningDelegate {
+class SideMenuTransitioningController: AbstractTransitioningController {
     
     // MARK: - Variables
     
     @IBInspectable var duration: Double = 0.3
     @IBInspectable var rightInset: CGFloat = 64.0
     
-    lazy var transitioningController: TranslationTransitioningController = {
-        let transitioningController = TranslationTransitioningController()
-        transitioningController.duration = self.duration
-        transitioningController.rightInset = self.rightInset
+    // MARK: - Init
+
+    override init() {
+        super.init()
+        transitioningController.duration = duration
+        transitioningController.rightInset = rightInset
         transitioningController.direction = .Right
-        return transitioningController
-    }()
+    }
     
+}
+
+/// Subclass AbstractTransitioningController and customise properties of its transitioningDelegate.
+class AbstractTransitioningController: NSObject, UIViewControllerTransitioningDelegate {
+
+    // MARK: - Variables
+
+    var transitioningController = TranslationTransitioningController()
+
     // MARK: - UIViewControllerTransitioningDelegate
     
     func animationControllerForPresentedController(
