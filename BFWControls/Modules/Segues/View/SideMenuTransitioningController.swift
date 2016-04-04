@@ -33,7 +33,7 @@ class SideMenuTransitioningController: AbstractTransitioningController {
     // MARK: - Variables
     
     @IBInspectable var duration: Double = 0.3
-    @IBInspectable var rightInset: CGFloat = 64.0
+    @IBInspectable var rightInset: CGFloat = 44.0
     
     // MARK: - Init
 
@@ -114,13 +114,13 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
         ) -> UIViewControllerAnimatedTransitioning?
     {
         let animationController = self.animationController()
-        animationController.isDismissing = false
+        animationController.isPresenting = true
         return animationController
     }
     
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let animationController = self.animationController()
-        animationController.isDismissing = true
+        animationController.isPresenting = false
         return animationController
     }
     
@@ -128,7 +128,7 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
 
 class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
 
-    @IBInspectable var isDismissing: Bool = true
+    @IBInspectable var isPresenting: Bool = true
     @IBInspectable var duration: NSTimeInterval = 0.3
     @IBInspectable var leftInset: CGFloat = 0.0
     @IBInspectable var rightInset: CGFloat = 0.0
@@ -167,51 +167,37 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
     }
     
     @objc func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        if !isDismissing {
-            if let containerView = transitionContext.containerView(),
-                let presentedViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey),
-                let presentedView = presentedViewController.view
-            {
+        let key = isPresenting ? UITransitionContextToViewControllerKey : UITransitionContextFromViewControllerKey
+        if let presentedViewController = transitionContext.viewControllerForKey(key),
+            let presentedView = presentedViewController.view,
+            let containerView = isPresenting ? transitionContext.containerView() : presentedView.superview
+        {
+            let dismissedFrame = dismissedFrameInContainerView(containerView)
+            var endFrame: CGRect
+            if isPresenting {
                 containerView.addSubview(presentedView)
-                let sideMenuWidth = containerView.frame.size.width - rightInset
-                presentedView.frame = CGRect(
-                    x: -sideMenuWidth,
-                    y: 0.0,
-                    width: sideMenuWidth,
-                    height: containerView.frame.size.height
-                )
-                UIView.animateWithDuration(
-                    duration,
-                    delay: 0.0,
-                    options: UIViewAnimationOptions.CurveEaseInOut,
-                    animations: {
-                        presentedView.frame.origin.x = 0.0
-                    }
-                    )
-                { finished in
-                    transitionContext.completeTransition(true)
-                }
+                presentedView.frame = dismissedFrame
+                endFrame = presentedFrameInContainerView(containerView)
+            } else {
+                endFrame = dismissedFrame
             }
-        } else {
-            if let presentedViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey),
-                let presentedView = presentedViewController.view
-            {
-                UIView.animateWithDuration(
-                    duration,
-                    delay: 0.0,
-                    options: UIViewAnimationOptions.CurveEaseInOut,
-                    animations: {
-                        presentedView.frame.origin.x = -presentedView.frame.size.width
-                    }
-                    )
-                { finished in
-                    transitionContext.completeTransition(true)
+            UIView.animateWithDuration(
+                duration,
+                delay: 0.0,
+                options: UIViewAnimationOptions.CurveEaseInOut,
+                animations: {
+                    presentedView.frame = endFrame
+                }
+                )
+            { finished in
+                transitionContext.completeTransition(true)
+                if !self.isPresenting {
                     presentedView.removeFromSuperview()
                 }
             }
         }
     }
-    
+
 }
 
 extension UIViewController {
