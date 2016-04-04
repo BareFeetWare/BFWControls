@@ -75,12 +75,15 @@ class AbstractTransitioningController: NSObject, UIViewControllerTransitioningDe
 
 class TranslationTransitioningController: NSObject, UIViewControllerTransitioningDelegate {
     
+    // MARK: - Variables
+
     @IBInspectable var duration: NSTimeInterval = 0.3
     @IBInspectable var leftInset: CGFloat = 0.0
     @IBInspectable var rightInset: CGFloat = 0.0
     @IBInspectable var topInset: CGFloat = 0.0
     @IBInspectable var bottomInset: CGFloat = 0.0
     @IBInspectable var belowTopGuide: Bool = false
+    var direction: Direction = .Left // Direction to which it presents. Dismiss direction defaults to opposite.
     
     @IBInspectable var direction_: Int {
         get {
@@ -91,7 +94,7 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
         }
     }
     
-    var direction: Direction = .Left // Direction to which it presents. Dismiss direction defaults to opposite.
+    // MARK: - Private functions
     
     private func animationController() -> TranslationAnimationController {
         let animationController = TranslationAnimationController()
@@ -128,6 +131,8 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
 
 class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
 
+    // MARK: - Variables
+    
     @IBInspectable var isPresenting: Bool = true
     @IBInspectable var duration: NSTimeInterval = 0.3
     @IBInspectable var leftInset: CGFloat = 0.0
@@ -136,6 +141,8 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
     @IBInspectable var bottomInset: CGFloat = 0.0
     @IBInspectable var belowTopGuide: Bool = false
     var direction: Direction = .Left // Direction to which it presents. Dismiss direction defaults to opposite.
+
+    // MARK: - Private functions
 
     private func presentedFrameInContainerView(containerView: UIView) -> CGRect {
         // TODO: Use AutoLayout
@@ -162,6 +169,8 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
         return frame
     }
     
+    // MARK: - UIViewControllerAnimatedTransitioning
+
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return duration
     }
