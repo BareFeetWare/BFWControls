@@ -19,7 +19,7 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
     @IBInspectable var topInset: CGFloat = 0.0
     @IBInspectable var bottomInset: CGFloat = 0.0
     @IBInspectable var belowTopGuide: Bool = false
-    var direction: Direction = .Left // Direction to which it presents. Dismiss direction defaults to opposite.
+    var direction: Direction = .Left // Direction to which it presents. Dismiss direction defaults to reverse.
     
     // MARK: - Private functions
     
@@ -55,10 +55,11 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
     }
     
     @objc func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        let key = isPresenting ? UITransitionContextToViewControllerKey : UITransitionContextFromViewControllerKey
-        if let presentedViewController = transitionContext.viewControllerForKey(key),
-            let presentedView = presentedViewController.view,
-            let containerView = isPresenting ? transitionContext.containerView() : presentedView.superview
+        let containerView = transitionContext.containerView()!
+        let toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
+        let fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
+        let presentedViewController = isPresenting ? toViewController : fromViewController
+        if let presentedView = presentedViewController.view
         {
             let dismissedFrame = dismissedFrameInContainerView(containerView)
             var endFrame: CGRect
