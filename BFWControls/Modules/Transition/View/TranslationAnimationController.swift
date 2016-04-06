@@ -19,11 +19,12 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
     @IBInspectable var topInset: CGFloat = 0.0
     @IBInspectable var bottomInset: CGFloat = 0.0
     @IBInspectable var belowTopGuide: Bool = false
+    @IBInspectable var animatePresenter = false // TODO: Determine automatically
     var direction: Direction = .Left // Direction to which it presents. Dismiss direction defaults to reverse.
     
     // MARK: - Private functions
     
-    private func presentedFrameInContainerView(containerView: UIView) -> CGRect {
+    private func presentedFrameInContainerView(containerView: UIView, direction: Direction) -> CGRect {
         // TODO: Use AutoLayout
         var frame = containerView.bounds
         frame.origin.x += leftInset
@@ -33,8 +34,8 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
         return frame
     }
     
-    private func dismissedFrameInContainerView(containerView: UIView) -> CGRect {
-        var frame = presentedFrameInContainerView(containerView)
+    private func dismissedFrameInContainerView(containerView: UIView, direction: Direction) -> CGRect {
+        var frame = presentedFrameInContainerView(containerView, direction: direction)
         switch direction {
         case .Left:
             frame.origin.x += containerView.frame.size.width
@@ -56,34 +57,26 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
     
     @objc func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView()!
-        let toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
-        let fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
-        let presentedViewController = isPresenting ? toViewController : fromViewController
-        if let presentedView = presentedViewController.view
-        {
-            let dismissedFrame = dismissedFrameInContainerView(containerView)
-            var endFrame: CGRect
-            if isPresenting {
-                containerView.addSubview(presentedView)
-                presentedView.frame = dismissedFrame
-                endFrame = presentedFrameInContainerView(containerView)
-            } else {
-                endFrame = dismissedFrame
+        let animateToView = animatePresenter || isPresenting
+        let animateFromView = animatePresenter || !isPresenting
+        let toViewController = animateToView ? transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) : nil
+        let fromViewController = animateFromView ? transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) : nil
+        if toViewController != nil {
+            containerView.addSubview(toViewController!.view)
+        }
+        toViewController?.view.frame = dismissedFrameInContainerView(containerView, direction: direction)
+        UIView.animateWithDuration(
+            duration,
+            delay: 0.0,
+            options: UIViewAnimationOptions.CurveEaseInOut,
+            animations: {
+                fromViewController?.view.frame = self.dismissedFrameInContainerView(containerView, direction: self.direction)
+                toViewController?.view.frame = self.presentedFrameInContainerView(containerView, direction: self.direction)
             }
-            UIView.animateWithDuration(
-                duration,
-                delay: 0.0,
-                options: UIViewAnimationOptions.CurveEaseInOut,
-                animations: {
-                    presentedView.frame = endFrame
-                }
-                )
-            { finished in
-                transitionContext.completeTransition(true)
-                if !self.isPresenting {
-                    presentedView.removeFromSuperview()
-                }
-            }
+            )
+        { finished in
+            fromViewController?.view.removeFromSuperview()
+            transitionContext.completeTransition(true)
         }
     }
     
