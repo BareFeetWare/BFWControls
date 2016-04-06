@@ -46,7 +46,7 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
     
     // MARK: - Private functions
     
-    private func presentedFrameInContainerView(containerView: UIView, direction: Direction) -> CGRect {
+    private func presentedFrameInContainerView(containerView: UIView) -> CGRect {
         // TODO: Use AutoLayout
         var frame = containerView.bounds
         frame.origin.x += leftInset
@@ -57,7 +57,7 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
     }
     
     private func dismissedFrameInContainerView(containerView: UIView, direction: Direction) -> CGRect {
-        var frame = presentedFrameInContainerView(containerView, direction: direction)
+        var frame = presentedFrameInContainerView(containerView)
         switch direction {
         case .Left:
             frame.origin.x += containerView.frame.size.width
@@ -86,6 +86,7 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
         if toViewController != nil {
             containerView.addSubview(toViewController!.view)
         }
+        
         toViewController?.view.frame = dismissedFrameInContainerView(containerView, direction: direction)
         UIView.animateWithDuration(
             duration,
@@ -93,7 +94,7 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
             options: UIViewAnimationOptions.CurveEaseInOut,
             animations: {
                 fromViewController?.view.frame = self.dismissedFrameInContainerView(containerView, direction: self.direction)
-                toViewController?.view.frame = self.presentedFrameInContainerView(containerView, direction: self.direction)
+                toViewController?.view.frame = self.presentedFrameInContainerView(containerView)
             }
             )
         { finished in
