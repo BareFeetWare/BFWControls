@@ -80,6 +80,7 @@
     }
     nibView.frame = self.frame;
     nibView.translatesAutoresizingMaskIntoConstraints = self.translatesAutoresizingMaskIntoConstraints;
+    nibView.tag = self.tag;
     [nibView copyConstraintsFromView:self];
     return nibView;
 }
@@ -116,6 +117,7 @@
     self.frame = view.frame;
     self.tag = view.tag;
     self.userInteractionEnabled = view.userInteractionEnabled;
+    self.hidden = view.hidden;
 }
 
 - (void)copyAnimatablePropertiesFromView:(UIView *)view {
