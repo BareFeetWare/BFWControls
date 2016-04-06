@@ -42,6 +42,7 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
     @IBInspectable var bottomInset: CGFloat = 0.0
     @IBInspectable var belowTopGuide: Bool = false
     @IBInspectable var animatePresenter = false // TODO: Determine automatically
+    @IBInspectable var fadeFirst: Bool = false // Fade out/in the first view controller, instead of moving.
     var direction: Direction = .Left // Direction to which it presents. Dismiss direction defaults to reverse.
     
     // MARK: - Private functions
@@ -83,10 +84,23 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
         let animateFromView = animatePresenter || !isPresenting
         let toViewController = animateToView ? transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) : nil
         let fromViewController = animateFromView ? transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) : nil
+        let fadeFrom = fadeFirst && isPresenting && fromViewController?.navigationController?.viewControllers.count == 2
+        let fadeTo = fadeFirst && !isPresenting && fromViewController?.navigationController?.viewControllers.count == 1
         if toViewController != nil {
-            containerView.addSubview(toViewController!.view)
-            let toDirection = animatePresenter && !isPresenting ? direction.reverse : direction
-            toViewController?.view.frame = dismissedFrameInContainerView(containerView, direction: toDirection)
+            if fromViewController == nil {
+                containerView.addSubview(toViewController!.view)
+            } else if isPresenting {
+                containerView.insertSubview(toViewController!.view, aboveSubview: fromViewController!.view)
+            } else {
+                containerView.insertSubview(toViewController!.view, belowSubview: fromViewController!.view)
+            }
+            if fadeTo {
+                toViewController?.view.frame = presentedFrameInContainerView(containerView)
+                toViewController?.view.alpha = 0.0
+            } else {
+                let toDirection = animatePresenter && !isPresenting ? direction.reverse : direction
+                toViewController?.view.frame = dismissedFrameInContainerView(containerView, direction: toDirection)
+            }
         }
         let fromDirection = animatePresenter && isPresenting ? direction.reverse : direction
         UIView.animateWithDuration(
@@ -94,8 +108,16 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
             delay: 0.0,
             options: UIViewAnimationOptions.CurveEaseInOut,
             animations: {
-                fromViewController?.view.frame = self.dismissedFrameInContainerView(containerView, direction: fromDirection)
-                toViewController?.view.frame = self.presentedFrameInContainerView(containerView)
+                if fadeFrom {
+                    fromViewController?.view.alpha = 0.0
+                } else {
+                    fromViewController?.view.frame = self.dismissedFrameInContainerView(containerView, direction: fromDirection)
+                }
+                if fadeTo {
+                    toViewController?.view.alpha = 1.0
+                } else {
+                    toViewController?.view.frame = self.presentedFrameInContainerView(containerView)
+                }
             }
             )
         { finished in
