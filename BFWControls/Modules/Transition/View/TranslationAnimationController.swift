@@ -85,15 +85,16 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
         let fromViewController = animateFromView ? transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) : nil
         if toViewController != nil {
             containerView.addSubview(toViewController!.view)
+            let toDirection = animatePresenter && !isPresenting ? direction.reverse : direction
+            toViewController?.view.frame = dismissedFrameInContainerView(containerView, direction: toDirection)
         }
-        
-        toViewController?.view.frame = dismissedFrameInContainerView(containerView, direction: direction)
+        let fromDirection = animatePresenter && isPresenting ? direction.reverse : direction
         UIView.animateWithDuration(
             duration,
             delay: 0.0,
             options: UIViewAnimationOptions.CurveEaseInOut,
             animations: {
-                fromViewController?.view.frame = self.dismissedFrameInContainerView(containerView, direction: self.direction)
+                fromViewController?.view.frame = self.dismissedFrameInContainerView(containerView, direction: fromDirection)
                 toViewController?.view.frame = self.presentedFrameInContainerView(containerView)
             }
             )
