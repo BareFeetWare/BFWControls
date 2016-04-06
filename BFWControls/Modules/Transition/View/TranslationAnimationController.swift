@@ -8,6 +8,28 @@
 
 import UIKit
 
+enum Direction: Int {
+    
+    case Left = 0
+    case Right = 1
+    case Up = 2
+    case Down = 3
+    
+    var reverse: Direction {
+        switch self {
+        case .Left:
+            return .Right
+        case .Right:
+            return .Left
+        case .Up:
+            return .Down
+        case .Down:
+            return .Up
+        }
+    }
+    
+}
+
 class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
     
     // MARK: - Variables
