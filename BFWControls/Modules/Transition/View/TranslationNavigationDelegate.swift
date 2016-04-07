@@ -17,7 +17,12 @@ class TranslationNavigationDelegate: NSObject, UINavigationControllerDelegate {
     @IBInspectable var topInset: CGFloat = 0.0
     @IBInspectable var bottomInset: CGFloat = 5.0
     @IBInspectable var belowTopGuide: Bool = false
-    @IBInspectable var fadeFirst: Bool = true // Fade out/in the first view controller, instead of moving.
+    
+    /// Fade out/in the first view controller, instead of moving.
+    @IBInspectable var fadeFirst: Bool = true
+    
+    /// Clears background of view controllers so navigation background shows through.
+    @IBInspectable var clearBackgrounds: Bool = true
 
     // MARK: - UINavigationControllerDelegate
 
@@ -46,10 +51,12 @@ class TranslationNavigationDelegate: NSObject, UINavigationControllerDelegate {
                                                      animated: Bool)
     {
         viewController.automaticallyAdjustsScrollViewInsets = !belowTopGuide
-        viewController.view.backgroundColor = UIColor.clearColor() // TODO: Attribute
-        if let tableViewController = viewController as? UITableViewController {
-            tableViewController.tableView.backgroundView = nil
-            tableViewController.tableView.backgroundColor = UIColor.clearColor()
+        if clearBackgrounds {
+            viewController.view.backgroundColor = UIColor.clearColor() // TODO: Attribute
+            if let tableViewController = viewController as? UITableViewController {
+                tableViewController.tableView.backgroundView = nil
+                tableViewController.tableView.backgroundColor = UIColor.clearColor()
+            }
         }
     }
 
