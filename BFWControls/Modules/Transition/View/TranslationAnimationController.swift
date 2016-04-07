@@ -86,20 +86,20 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
         let fromViewController = animateFromView ? transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) : nil
         let fadeFrom = fadeFirst && isPresenting && fromViewController?.navigationController?.viewControllers.count == 2
         let fadeTo = fadeFirst && !isPresenting && fromViewController?.navigationController?.viewControllers.count == 1
-        if toViewController != nil {
+        if let toViewController = toViewController {
             if fromViewController == nil {
-                containerView.addSubview(toViewController!.view)
+                containerView.addSubview(toViewController.view)
             } else if isPresenting {
-                containerView.insertSubview(toViewController!.view, aboveSubview: fromViewController!.view)
+                containerView.insertSubview(toViewController.view, aboveSubview: fromViewController!.view)
             } else {
-                containerView.insertSubview(toViewController!.view, belowSubview: fromViewController!.view)
+                containerView.insertSubview(toViewController.view, belowSubview: fromViewController!.view)
             }
             if fadeTo {
-                toViewController?.view.frame = presentedFrameInContainerView(containerView)
-                toViewController?.view.alpha = 0.0
+                toViewController.view.frame = containerView.bounds
+                toViewController.view.alpha = 0.0
             } else {
                 let toDirection = animatePresenter && !isPresenting ? direction.reverse : direction
-                toViewController?.view.frame = dismissedFrameInContainerView(containerView, direction: toDirection)
+                toViewController.view.frame = dismissedFrameInContainerView(containerView, direction: toDirection)
             }
         }
         let fromDirection = animatePresenter && isPresenting ? direction.reverse : direction
