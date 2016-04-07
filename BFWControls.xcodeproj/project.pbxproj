@@ -21,6 +21,7 @@
 		E25687EB1C70ACC500DD14D5 /* MorphSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25687EA1C70ACC500DD14D5 /* MorphSegue.swift */; };
 		E25687ED1C70AD0600DD14D5 /* UIViewMorphExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25687EC1C70AD0600DD14D5 /* UIViewMorphExtensions.swift */; };
 		E2589EFA1CA7CB8E00BDD44F /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2589EF91CA7CB8E00BDD44F /* NibView.swift */; };
+		E287E54F1CB61F1E0071E87C /* TranslationNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E287E54E1CB61F1E0071E87C /* TranslationNavigationDelegate.swift */; };
 		E28F99621C446E20000A0A60 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F99611C446E20000A0A60 /* BlurView.swift */; };
 		E293CB631C9D7913006BB8D7 /* NibCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E293CB621C9D7913006BB8D7 /* NibCellView.swift */; };
 		E29D4CBE1CB23B9400A0C7C4 /* TranslationAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D4CBD1CB23B9400A0C7C4 /* TranslationAnimationController.swift */; };
@@ -54,6 +55,7 @@
 		E25687EC1C70AD0600DD14D5 /* UIViewMorphExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewMorphExtensions.swift; sourceTree = "<group>"; };
 		E257557E1C40E0B4002AB6E6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2589EF91CA7CB8E00BDD44F /* NibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
+		E287E54E1CB61F1E0071E87C /* TranslationNavigationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationNavigationDelegate.swift; sourceTree = "<group>"; };
 		E28F99611C446E20000A0A60 /* BlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		E293CB621C9D7913006BB8D7 /* NibCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibCellView.swift; sourceTree = "<group>"; };
 		E29D4CBD1CB23B9400A0C7C4 /* TranslationAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationAnimationController.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			children = (
 				E25687EA1C70ACC500DD14D5 /* MorphSegue.swift */,
 				E29D4CBD1CB23B9400A0C7C4 /* TranslationAnimationController.swift */,
+				E287E54E1CB61F1E0071E87C /* TranslationNavigationDelegate.swift */,
 				E20E10CD1CA1EA9300F35C82 /* TranslationTransitioningController.swift */,
 				E25687EC1C70AD0600DD14D5 /* UIViewMorphExtensions.swift */,
 			);
@@ -349,6 +352,7 @@
 			files = (
 				E293CB631C9D7913006BB8D7 /* NibCellView.swift in Sources */,
 				E22A5E961C879BCB00AE9389 /* NibButton.swift in Sources */,
+				E287E54F1CB61F1E0071E87C /* TranslationNavigationDelegate.swift in Sources */,
 				E20256B51BEC94AA00095590 /* BFWNibView.m in Sources */,
 				E28F99621C446E20000A0A60 /* BlurView.swift in Sources */,
 				E25687EB1C70ACC500DD14D5 /* MorphSegue.swift in Sources */,
