@@ -36,6 +36,7 @@ class TranslationNavigationDelegate: NSObject, UINavigationControllerDelegate {
         let animationController = TranslationAnimationController()
         animationController.leftInset = leftInset
         animationController.rightInset = rightInset
+        animationController.topInset = topInset
         animationController.belowTopGuide = belowTopGuide
         animationController.bottomInset = bottomInset
         animationController.animatePresenter = true
