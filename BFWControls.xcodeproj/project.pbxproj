@@ -28,6 +28,11 @@
 		E29D4CBE1CB23B9400A0C7C4 /* TranslationAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D4CBD1CB23B9400A0C7C4 /* TranslationAnimationController.swift */; };
 		E29D4CD51CB35CA100A0C7C4 /* AutoNextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D4CD41CB35CA100A0C7C4 /* AutoNextViewController.swift */; };
 		E2A5E3B61CA512C200368EFA /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5E3B51CA512C200368EFA /* UIViewExtensions.swift */; };
+		E2B170121CBC562D00D391B4 /* Alerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2B1700C1CBC562D00D391B4 /* Alerts.storyboard */; };
+		E2B170131CBC562D00D391B4 /* MockAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B1700E1CBC562D00D391B4 /* MockAlertView.swift */; };
+		E2B170141CBC562D00D391B4 /* MockAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2B1700F1CBC562D00D391B4 /* MockAlertView.xib */; };
+		E2B170151CBC562D00D391B4 /* StaticAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B170101CBC562D00D391B4 /* StaticAlertView.swift */; };
+		E2B170161CBC562D00D391B4 /* StaticAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2B170111CBC562D00D391B4 /* StaticAlertView.xib */; };
 		E2DE2EF11BEDFE1300636D0D /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */; };
 		E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2F7C1BEE009200636D0D /* UIImage+BFW.m */; };
 		E2FF6C7A1C413F37005514B6 /* LayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FF6C791C413F37005514B6 /* LayerView.swift */; };
@@ -63,6 +68,11 @@
 		E29D4CBD1CB23B9400A0C7C4 /* TranslationAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationAnimationController.swift; sourceTree = "<group>"; };
 		E29D4CD41CB35CA100A0C7C4 /* AutoNextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoNextViewController.swift; sourceTree = "<group>"; };
 		E2A5E3B51CA512C200368EFA /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		E2B1700C1CBC562D00D391B4 /* Alerts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Alerts.storyboard; sourceTree = "<group>"; };
+		E2B1700E1CBC562D00D391B4 /* MockAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAlertView.swift; sourceTree = "<group>"; };
+		E2B1700F1CBC562D00D391B4 /* MockAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MockAlertView.xib; sourceTree = "<group>"; };
+		E2B170101CBC562D00D391B4 /* StaticAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticAlertView.swift; sourceTree = "<group>"; };
+		E2B170111CBC562D00D391B4 /* StaticAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaticAlertView.xib; sourceTree = "<group>"; };
 		E2DE2EEF1BEDFE1300636D0D /* UIImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageEffects.h; sourceTree = "<group>"; };
 		E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageEffects.m; sourceTree = "<group>"; };
 		E2DE2F7B1BEE009200636D0D /* UIImage+BFW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BFW.h"; sourceTree = "<group>"; };
@@ -113,6 +123,7 @@
 		E202565E1BEAD7BC00095590 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				E2B1700A1CBC562D00D391B4 /* Alert */,
 				E2DE2EF21BEDFE6100636D0D /* Blur */,
 				E2FF6C771C413F37005514B6 /* Layer */,
 				E25687C11C6C5B6000DD14D5 /* Layout */,
@@ -220,6 +231,34 @@
 				E29D4CD41CB35CA100A0C7C4 /* AutoNextViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		E2B1700A1CBC562D00D391B4 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				E2B1700B1CBC562D00D391B4 /* Controller */,
+				E2B1700D1CBC562D00D391B4 /* View */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		E2B1700B1CBC562D00D391B4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E2B1700C1CBC562D00D391B4 /* Alerts.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E2B1700D1CBC562D00D391B4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E2B1700E1CBC562D00D391B4 /* MockAlertView.swift */,
+				E2B1700F1CBC562D00D391B4 /* MockAlertView.xib */,
+				E2B170101CBC562D00D391B4 /* StaticAlertView.swift */,
+				E2B170111CBC562D00D391B4 /* StaticAlertView.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		E2DE2EEC1BEDFE1300636D0D /* Submodules */ = {
@@ -341,8 +380,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E20256A71BEB413300095590 /* Assets.xcassets in Resources */,
+				E2B170161CBC562D00D391B4 /* StaticAlertView.xib in Resources */,
 				E20256AC1BEB413300095590 /* Developer.storyboard in Resources */,
 				E20256AD1BEB413300095590 /* Morph.storyboard in Resources */,
+				E2B170121CBC562D00D391B4 /* Alerts.storyboard in Resources */,
+				E2B170141CBC562D00D391B4 /* MockAlertView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +398,7 @@
 				E293CB631C9D7913006BB8D7 /* NibCellView.swift in Sources */,
 				E22A5E961C879BCB00AE9389 /* NibButton.swift in Sources */,
 				E287E54F1CB61F1E0071E87C /* TranslationNavigationDelegate.swift in Sources */,
+				E2B170131CBC562D00D391B4 /* MockAlertView.swift in Sources */,
 				E20256B51BEC94AA00095590 /* BFWNibView.m in Sources */,
 				E28F99621C446E20000A0A60 /* BlurView.swift in Sources */,
 				E25687EB1C70ACC500DD14D5 /* MorphSegue.swift in Sources */,
@@ -366,6 +409,7 @@
 				E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */,
 				E287E5551CB63EB60071E87C /* DismissAndPushSegue.swift in Sources */,
 				E20256AA1BEB413300095590 /* main.m in Sources */,
+				E2B170151CBC562D00D391B4 /* StaticAlertView.swift in Sources */,
 				E20256AE1BEB413300095590 /* MorphTableViewController.swift in Sources */,
 				E2FF6C7C1C413F61005514B6 /* DesignableView.swift in Sources */,
 				E20256A61BEB413300095590 /* AppDelegate.m in Sources */,

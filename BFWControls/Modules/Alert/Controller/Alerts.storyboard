@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="42x-sm-w2i">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Alerts-->
+        <scene sceneID="Ff1-EV-Huh">
+            <objects>
+                <tableViewController id="42x-sm-w2i" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Z0e-N8-wjP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="BX6-tl-qL0">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="jyK-RT-My8" style="IBUITableViewCellStyleDefault" id="3kl-2V-myh">
+                                        <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3kl-2V-myh" id="vLW-iH-xZv">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="MockAlertView using xib" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jyK-RT-My8">
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="82U-m9-gMW" kind="presentation" modalPresentationStyle="overFullScreen" id="Izq-Us-OvO"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="XWH-mG-pfR" style="IBUITableViewCellStyleDefault" id="izN-HR-mWH">
+                                        <rect key="frame" x="0.0" y="108" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="izN-HR-mWH" id="TQQ-tp-ghQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="StaticAlertView using xib" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XWH-mG-pfR">
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="ryg-dX-d7h" kind="presentation" trigger="accessoryAction" modalPresentationStyle="overFullScreen" id="dh6-CX-bUp"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="42x-sm-w2i" id="Rbv-JO-nEr"/>
+                            <outlet property="delegate" destination="42x-sm-w2i" id="kJ6-tu-EXu"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Alerts" id="g4f-ZQ-pod"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dql-tJ-hy1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-349" y="362"/>
+        </scene>
+        <!--Mock Alert View-->
+        <scene sceneID="ik1-0F-noD">
+            <objects>
+                <viewController id="82U-m9-gMW" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Oum-NR-WPM"/>
+                        <viewControllerLayoutGuide type="bottom" id="IgA-SK-9dY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oou-JP-9g5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LAr-38-6iK" customClass="MockAlertView" customModule="BFWControls" customModuleProvider="target">
+                                <rect key="frame" x="10" y="197" width="356" height="273"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Longish Title"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="message" value="Really long message. Really long message. Really long message. Really long message. Really long message. Really long message. "/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="button1Title" value="1"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="button2Title" value="2"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="button3Title" value="3"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="0.8447265625" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="LAr-38-6iK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Oum-NR-WPM" secondAttribute="bottom" constant="8" id="9DF-LA-vED"/>
+                            <constraint firstItem="LAr-38-6iK" firstAttribute="centerX" secondItem="oou-JP-9g5" secondAttribute="centerX" id="9xD-T7-3Zq"/>
+                            <constraint firstItem="LAr-38-6iK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oou-JP-9g5" secondAttribute="leading" constant="8" id="HWF-Nx-X4i"/>
+                            <constraint firstItem="LAr-38-6iK" firstAttribute="centerY" secondItem="oou-JP-9g5" secondAttribute="centerY" id="q4u-fi-2Hl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Mock Alert View" id="dUr-U9-yGW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q4X-fJ-XaC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="199.5" y="361.5"/>
+        </scene>
+        <!--Mock Alert View-->
+        <scene sceneID="TAR-Hb-0Pv">
+            <objects>
+                <viewController id="ryg-dX-d7h" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Iug-Pu-o4e"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fj0-Vc-MX5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gH3-2y-Av3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZQZ-Fn-6l5" customClass="StaticAlertView" customModule="BFWControls" customModuleProvider="target">
+                                <rect key="frame" x="10" y="254" width="356" height="159"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Longish Title"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="message">
+                                        <string key="value">Really long message. Really long message. Really long message. Really long message. Really long message. Really long message. Really long message. Really long message. Really long message. Really long message. </string>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="button0Title" value="0"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="0.8447265625" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ZQZ-Fn-6l5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gH3-2y-Av3" secondAttribute="leading" constant="8" id="99K-sT-P6n"/>
+                            <constraint firstItem="ZQZ-Fn-6l5" firstAttribute="centerX" secondItem="gH3-2y-Av3" secondAttribute="centerX" id="hJz-81-EZF"/>
+                            <constraint firstItem="ZQZ-Fn-6l5" firstAttribute="centerY" secondItem="gH3-2y-Av3" secondAttribute="centerY" id="pAj-Xc-R2T"/>
+                            <constraint firstItem="ZQZ-Fn-6l5" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Iug-Pu-o4e" secondAttribute="bottom" constant="8" id="q9C-7V-4xp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Mock Alert View" id="gIw-vN-awH"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MIl-bz-V9Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="199.5" y="1220.5"/>
+        </scene>
+    </scenes>
+</document>

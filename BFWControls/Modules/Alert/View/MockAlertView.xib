@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MockAlertView" customModule="CBA_Lego" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="356" height="273"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgI-ea-qva">
+                    <rect key="frame" x="8" y="8" width="340" height="21"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="100" text="Message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UR6-Zp-fuR">
+                    <rect key="frame" x="8" y="37" width="340" height="84"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBu-vS-Rij">
+                    <rect key="frame" x="0.0" y="243" width="356" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="Cancel"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bj8-j2-abu">
+                    <rect key="frame" x="0.0" y="167" width="356" height="30"/>
+                    <state key="normal" title="Action2"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aiY-Ga-q7C">
+                    <rect key="frame" x="0.0" y="129" width="356" height="30"/>
+                    <state key="normal" title="Action3"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHI-xr-e81">
+                    <rect key="frame" x="0.0" y="205" width="356" height="30"/>
+                    <state key="normal" title="Action1"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="DHI-xr-e81" firstAttribute="top" secondItem="UR6-Zp-fuR" secondAttribute="bottom" priority="750" constant="8" symbolic="YES" id="3zs-oX-8cB"/>
+                <constraint firstItem="bj8-j2-abu" firstAttribute="top" secondItem="aiY-Ga-q7C" secondAttribute="bottom" constant="8" id="4mh-6T-mf9"/>
+                <constraint firstAttribute="trailing" secondItem="aiY-Ga-q7C" secondAttribute="trailing" id="4rH-GI-gJY"/>
+                <constraint firstItem="aiY-Ga-q7C" firstAttribute="top" secondItem="UR6-Zp-fuR" secondAttribute="bottom" constant="8" symbolic="YES" id="6Mo-Gq-VVo"/>
+                <constraint firstItem="UR6-Zp-fuR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="6vQ-9L-ebY"/>
+                <constraint firstItem="OBu-vS-Rij" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7sJ-hr-eRk"/>
+                <constraint firstItem="OBu-vS-Rij" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" priority="750" id="8qN-fc-hTd"/>
+                <constraint firstAttribute="trailing" secondItem="OBu-vS-Rij" secondAttribute="trailing" priority="800" id="96d-mt-3ip"/>
+                <constraint firstItem="OBu-vS-Rij" firstAttribute="top" secondItem="DHI-xr-e81" secondAttribute="bottom" priority="800" constant="8" id="9RT-dc-DIz"/>
+                <constraint firstItem="qgI-ea-qva" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="BBz-ba-aUS"/>
+                <constraint firstAttribute="bottom" secondItem="OBu-vS-Rij" secondAttribute="bottom" id="Cwv-VA-Aro"/>
+                <constraint firstAttribute="trailing" secondItem="bj8-j2-abu" secondAttribute="trailing" id="EJr-ZR-WZ8"/>
+                <constraint firstItem="OBu-vS-Rij" firstAttribute="top" secondItem="UR6-Zp-fuR" secondAttribute="bottom" priority="750" constant="8" symbolic="YES" id="K55-e8-dos"/>
+                <constraint firstItem="DHI-xr-e81" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" priority="800" id="OYT-rf-3Za"/>
+                <constraint firstItem="UR6-Zp-fuR" firstAttribute="top" secondItem="qgI-ea-qva" secondAttribute="bottom" constant="8" id="TRI-LS-epR"/>
+                <constraint firstItem="bj8-j2-abu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cnz-OG-VZo"/>
+                <constraint firstItem="DHI-xr-e81" firstAttribute="top" secondItem="bj8-j2-abu" secondAttribute="bottom" constant="8" id="dMe-dL-1p6"/>
+                <constraint firstAttribute="trailing" secondItem="DHI-xr-e81" secondAttribute="trailing" id="eqH-R5-Vfy"/>
+                <constraint firstItem="bj8-j2-abu" firstAttribute="top" secondItem="UR6-Zp-fuR" secondAttribute="bottom" priority="750" constant="8" symbolic="YES" id="fYo-R6-ROP"/>
+                <constraint firstAttribute="bottom" secondItem="DHI-xr-e81" secondAttribute="bottom" priority="750" id="gSf-lf-IUr"/>
+                <constraint firstItem="qgI-ea-qva" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="i76-zI-Hhv"/>
+                <constraint firstItem="DHI-xr-e81" firstAttribute="leading" secondItem="OBu-vS-Rij" secondAttribute="trailing" priority="750" constant="2" id="o0i-ri-FhW"/>
+                <constraint firstItem="aiY-Ga-q7C" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="s74-qo-TzX"/>
+                <constraint firstItem="UR6-Zp-fuR" firstAttribute="centerX" secondItem="qgI-ea-qva" secondAttribute="centerX" id="wO6-kh-9qS"/>
+                <constraint firstItem="qgI-ea-qva" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="wfT-kh-M1V"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="5"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="button0" destination="OBu-vS-Rij" id="Fww-Fl-sdh"/>
+                <outlet property="button1" destination="DHI-xr-e81" id="IvO-sg-pKi"/>
+                <outlet property="button2" destination="bj8-j2-abu" id="8ez-ue-IFs"/>
+                <outlet property="button3" destination="aiY-Ga-q7C" id="mgY-cz-Ff6"/>
+                <outlet property="messageButton0Constraint" destination="K55-e8-dos" id="Ssv-gM-ODo"/>
+                <outlet property="messageButton1Constraint" destination="3zs-oX-8cB" id="url-lC-i5W"/>
+                <outlet property="messageButton2Constraint" destination="fYo-R6-ROP" id="lDI-u2-tqh"/>
+                <outlet property="messageButton3Constraint" destination="6Mo-Gq-VVo" id="eSY-eY-1bz"/>
+                <outlet property="messageLabel" destination="UR6-Zp-fuR" id="R8c-f1-dCE"/>
+                <outlet property="titleLabel" destination="qgI-ea-qva" id="dqq-s2-1fc"/>
+                <outletCollection property="horizontalButtonsLayoutConstraints" destination="8qN-fc-hTd" collectionClass="NSMutableArray" id="ZhU-ed-8mo"/>
+                <outletCollection property="horizontalButtonsLayoutConstraints" destination="gSf-lf-IUr" collectionClass="NSMutableArray" id="ani-fU-nkR"/>
+                <outletCollection property="horizontalButtonsLayoutConstraints" destination="o0i-ri-FhW" collectionClass="NSMutableArray" id="1hL-do-PIo"/>
+                <outletCollection property="verticalButtonsLayoutConstraints" destination="9RT-dc-DIz" collectionClass="NSMutableArray" id="0FN-JC-1ev"/>
+                <outletCollection property="verticalButtonsLayoutConstraints" destination="96d-mt-3ip" collectionClass="NSMutableArray" id="1KX-he-JoE"/>
+                <outletCollection property="verticalButtonsLayoutConstraints" destination="OYT-rf-3Za" collectionClass="NSMutableArray" id="M90-8t-W8N"/>
+            </connections>
+            <point key="canvasLocation" x="213" y="283.5"/>
+        </view>
+    </objects>
+</document>
