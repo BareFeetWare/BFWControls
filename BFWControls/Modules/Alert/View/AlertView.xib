@@ -8,7 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MockAlertView" customModule="CBA_Lego" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AlertView" customModule="BFWControls" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="356" height="273"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -28,18 +28,30 @@
                     <rect key="frame" x="0.0" y="243" width="356" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" title="Cancel"/>
+                    <connections>
+                        <action selector="action0Button:" destination="iN0-l3-epB" eventType="primaryActionTriggered" id="lig-9w-9Jl"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bj8-j2-abu">
                     <rect key="frame" x="0.0" y="167" width="356" height="30"/>
                     <state key="normal" title="Action2"/>
+                    <connections>
+                        <action selector="action2Button:" destination="iN0-l3-epB" eventType="primaryActionTriggered" id="AZn-dp-dVe"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aiY-Ga-q7C">
                     <rect key="frame" x="0.0" y="129" width="356" height="30"/>
                     <state key="normal" title="Action3"/>
+                    <connections>
+                        <action selector="action3Button:" destination="iN0-l3-epB" eventType="primaryActionTriggered" id="wDq-FF-qkp"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHI-xr-e81">
                     <rect key="frame" x="0.0" y="205" width="356" height="30"/>
                     <state key="normal" title="Action1"/>
+                    <connections>
+                        <action selector="action1Button:" destination="iN0-l3-epB" eventType="primaryActionTriggered" id="xJg-wS-Gyo"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
