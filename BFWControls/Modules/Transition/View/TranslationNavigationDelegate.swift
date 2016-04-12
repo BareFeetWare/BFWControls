@@ -18,6 +18,28 @@ class TranslationNavigationDelegate: NSObject, UINavigationControllerDelegate {
     @IBInspectable var bottomInset: CGFloat = 5.0
     @IBInspectable var belowTopGuide: Bool = false
     
+    var direction: Direction = .Left
+    
+    @IBInspectable var direction_: Int {
+        get {
+            return direction.rawValue
+        }
+        set {
+            direction = Direction(rawValue: newValue) ?? .Left
+        }
+    }
+
+    var firstDirection: Direction?
+    
+    @IBInspectable var firstDirection_: Int {
+        get {
+            return firstDirection?.rawValue ?? direction.rawValue
+        }
+        set {
+            firstDirection = Direction(rawValue: newValue) ?? .Left
+        }
+    }
+
     /// Fade out/in the first view controller, instead of moving.
     @IBInspectable var fadeFirst: Bool = true
     
@@ -43,7 +65,7 @@ class TranslationNavigationDelegate: NSObject, UINavigationControllerDelegate {
         animationController.isPresenting = operation != .Pop
         animationController.fadeFirst = fadeFirst
         let viewControllerAfterTransitionCount = navigationController.viewControllers.count - (operation == .Pop ? 0 : 1)
-        animationController.direction = viewControllerAfterTransitionCount == 1 ? .Up : .Left
+        animationController.direction = viewControllerAfterTransitionCount == 1 ? (firstDirection ?? direction) : direction
         return animationController
     }
     
