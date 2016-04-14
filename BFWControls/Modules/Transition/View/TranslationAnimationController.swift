@@ -121,9 +121,12 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
             }
             )
         { finished in
-            fromViewController?.view.removeFromSuperview()
-            transitionContext.completeTransition(true)
-        }
+            if transitionContext.transitionWasCancelled() {
+                toViewController?.view.removeFromSuperview()
+            } else {
+                fromViewController?.view.removeFromSuperview()
+            }
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled())        }
     }
     
 }
