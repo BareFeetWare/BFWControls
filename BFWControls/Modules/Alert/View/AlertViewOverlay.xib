@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10116"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AlertViewOverlay" customModule="BFWControls" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LWu-kZ-qI7" customClass="AlertView" customModule="BFWControls" customModuleProvider="target">
+                    <rect key="frame" x="9" y="197.5" width="356" height="273"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75084459459459463" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="LWu-kZ-qI7" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Zyr-lI-hrN"/>
+                <constraint firstItem="LWu-kZ-qI7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="b3X-CT-hlb"/>
+                <constraint firstItem="LWu-kZ-qI7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="bX4-4a-QHH"/>
+                <constraint firstItem="LWu-kZ-qI7" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="rEm-Ib-yuJ"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <connections>
+                <outlet property="alertView" destination="LWu-kZ-qI7" id="iIl-Tu-H0o"/>
+            </connections>
+        </view>
+    </objects>
+</document>
