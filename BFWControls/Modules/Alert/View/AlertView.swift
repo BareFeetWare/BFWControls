@@ -44,8 +44,8 @@ protocol AlertViewDelegate {
     @IBOutlet weak var messageButton2Constraint: NSLayoutConstraint!
     @IBOutlet weak var messageButton3Constraint: NSLayoutConstraint!
 
-    @IBOutlet var horizontalButtonsLayoutConstraints: [NSLayoutConstraint]!
-    @IBOutlet var verticalButtonsLayoutConstraints: [NSLayoutConstraint]!
+    @IBOutlet var horizontalButtonsLayoutConstraints: [NSLayoutConstraint]?
+    @IBOutlet var verticalButtonsLayoutConstraints: [NSLayoutConstraint]?
     
     // MARK: - Variables
 
@@ -117,7 +117,7 @@ protocol AlertViewDelegate {
         protocolDelegate?.action3Button(button)
     }
     
-    // MARK: - Private variables
+    // MARK: - Private variables and functions
 
     private var isHorizontalLayout: Bool {
         var isHorizontalLayout = false
@@ -134,23 +134,30 @@ protocol AlertViewDelegate {
         return isHorizontalLayout
     }
     
+    private func hideUnused() {
+        button1.hidden = button1Title == nil
+        button2.hidden = button2Title == nil
+        button3.hidden = button3Title == nil
+        messageLabel.activateOnlyConstraintsWithFirstVisibleInViews([button3, button2, button1, button0])
+        if let horizontalButtonsLayoutConstraints = horizontalButtonsLayoutConstraints,
+            let verticalButtonsLayoutConstraints = verticalButtonsLayoutConstraints {
+            if isHorizontalLayout {
+                NSLayoutConstraint.activateConstraints(horizontalButtonsLayoutConstraints)
+                NSLayoutConstraint.deactivateConstraints(verticalButtonsLayoutConstraints)
+            } else {
+                NSLayoutConstraint.activateConstraints(verticalButtonsLayoutConstraints)
+                NSLayoutConstraint.deactivateConstraints(horizontalButtonsLayoutConstraints)
+            }
+        }
+    }
+    
     // MARK: - NibView
 
     override func updateView() {
         super.updateView()
         let buttonTitle = button0Title ?? (hasCancel ? ButtonTitle.cancel : ButtonTitle.ok)
         button0.setTitle(buttonTitle, forState: .Normal)
-        button1.hidden = button1Title == nil
-        button2.hidden = button2Title == nil
-        button3.hidden = button3Title == nil
-        messageLabel.activateOnlyConstraintsWithFirstVisibleInViews([button3, button2, button1, button0])
-        if isHorizontalLayout {
-            NSLayoutConstraint.activateConstraints(horizontalButtonsLayoutConstraints)
-            NSLayoutConstraint.deactivateConstraints(verticalButtonsLayoutConstraints)
-        } else {
-            NSLayoutConstraint.activateConstraints(verticalButtonsLayoutConstraints)
-            NSLayoutConstraint.deactivateConstraints(horizontalButtonsLayoutConstraints)
-        }
+        hideUnused()
     }
     
 }
