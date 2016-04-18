@@ -10,9 +10,6 @@
 		E20256A61BEB413300095590 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256951BEB413300095590 /* AppDelegate.m */; };
 		E20256A71BEB413300095590 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E20256961BEB413300095590 /* Assets.xcassets */; };
 		E20256AA1BEB413300095590 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E202569B1BEB413300095590 /* main.m */; };
-		E20256AC1BEB413300095590 /* Developer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E202569F1BEB413300095590 /* Developer.storyboard */; };
-		E20256AD1BEB413300095590 /* Morph.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20256A01BEB413300095590 /* Morph.storyboard */; };
-		E20256AE1BEB413300095590 /* MorphTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20256A21BEB413300095590 /* MorphTableViewController.swift */; };
 		E20256B51BEC94AA00095590 /* BFWNibView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256B41BEC94AA00095590 /* BFWNibView.m */; };
 		E20E10CE1CA1EA9300F35C82 /* TranslationTransitioningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20E10CD1CA1EA9300F35C82 /* TranslationTransitioningController.swift */; };
 		E22A5E961C879BCB00AE9389 /* NibButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22A5E951C879BCB00AE9389 /* NibButton.swift */; };
@@ -21,15 +18,18 @@
 		E25687EB1C70ACC500DD14D5 /* MorphSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25687EA1C70ACC500DD14D5 /* MorphSegue.swift */; };
 		E25687ED1C70AD0600DD14D5 /* UIViewMorphExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25687EC1C70AD0600DD14D5 /* UIViewMorphExtensions.swift */; };
 		E2589EFA1CA7CB8E00BDD44F /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2589EF91CA7CB8E00BDD44F /* NibView.swift */; };
+		E274E0741CC5A1B600262254 /* AlertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E274E06B1CC5A1B600262254 /* AlertsViewController.swift */; };
+		E274E0751CC5A1B600262254 /* Developer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E274E06E1CC5A1B600262254 /* Developer.storyboard */; };
+		E274E0761CC5A1B600262254 /* Morph.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E274E0711CC5A1B600262254 /* Morph.storyboard */; };
+		E274E0781CC5A1B600262254 /* MorphTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E274E0731CC5A1B600262254 /* MorphTableViewController.swift */; };
+		E274E07A1CC5A1EE00262254 /* Alerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E274E0791CC5A1EE00262254 /* Alerts.storyboard */; };
 		E287E54F1CB61F1E0071E87C /* TranslationNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E287E54E1CB61F1E0071E87C /* TranslationNavigationDelegate.swift */; };
 		E287E5551CB63EB60071E87C /* DismissAndPushSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E287E5541CB63EB60071E87C /* DismissAndPushSegue.swift */; };
 		E28F99621C446E20000A0A60 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F99611C446E20000A0A60 /* BlurView.swift */; };
 		E293CB631C9D7913006BB8D7 /* NibCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E293CB621C9D7913006BB8D7 /* NibCellView.swift */; };
 		E29D4CBE1CB23B9400A0C7C4 /* TranslationAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D4CBD1CB23B9400A0C7C4 /* TranslationAnimationController.swift */; };
 		E29D4CD51CB35CA100A0C7C4 /* AutoNextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D4CD41CB35CA100A0C7C4 /* AutoNextViewController.swift */; };
-		E29F1C4D1CBC78FA005DA3CA /* AlertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29F1C4C1CBC78FA005DA3CA /* AlertsViewController.swift */; };
 		E2A5E3B61CA512C200368EFA /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5E3B51CA512C200368EFA /* UIViewExtensions.swift */; };
-		E2B170121CBC562D00D391B4 /* Alerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2B1700C1CBC562D00D391B4 /* Alerts.storyboard */; };
 		E2B170131CBC562D00D391B4 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B1700E1CBC562D00D391B4 /* AlertView.swift */; };
 		E2B170141CBC562D00D391B4 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2B1700F1CBC562D00D391B4 /* AlertView.xib */; };
 		E2B170151CBC562D00D391B4 /* StaticAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B170101CBC562D00D391B4 /* StaticAlertView.swift */; };
@@ -48,9 +48,6 @@
 		E20256951BEB413300095590 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E20256961BEB413300095590 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E202569B1BEB413300095590 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E202569F1BEB413300095590 /* Developer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Developer.storyboard; sourceTree = "<group>"; };
-		E20256A01BEB413300095590 /* Morph.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Morph.storyboard; sourceTree = "<group>"; };
-		E20256A21BEB413300095590 /* MorphTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorphTableViewController.swift; sourceTree = "<group>"; };
 		E20256B31BEC94AA00095590 /* BFWNibView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWNibView.h; sourceTree = "<group>"; };
 		E20256B41BEC94AA00095590 /* BFWNibView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFWNibView.m; sourceTree = "<group>"; };
 		E20E10CD1CA1EA9300F35C82 /* TranslationTransitioningController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationTransitioningController.swift; sourceTree = "<group>"; };
@@ -63,15 +60,18 @@
 		E25687EC1C70AD0600DD14D5 /* UIViewMorphExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewMorphExtensions.swift; sourceTree = "<group>"; };
 		E257557E1C40E0B4002AB6E6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2589EF91CA7CB8E00BDD44F /* NibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
+		E274E06B1CC5A1B600262254 /* AlertsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertsViewController.swift; sourceTree = "<group>"; };
+		E274E06E1CC5A1B600262254 /* Developer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Developer.storyboard; sourceTree = "<group>"; };
+		E274E0711CC5A1B600262254 /* Morph.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Morph.storyboard; sourceTree = "<group>"; };
+		E274E0731CC5A1B600262254 /* MorphTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorphTableViewController.swift; sourceTree = "<group>"; };
+		E274E0791CC5A1EE00262254 /* Alerts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Alerts.storyboard; sourceTree = "<group>"; };
 		E287E54E1CB61F1E0071E87C /* TranslationNavigationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationNavigationDelegate.swift; sourceTree = "<group>"; };
 		E287E5541CB63EB60071E87C /* DismissAndPushSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissAndPushSegue.swift; sourceTree = "<group>"; };
 		E28F99611C446E20000A0A60 /* BlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		E293CB621C9D7913006BB8D7 /* NibCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibCellView.swift; sourceTree = "<group>"; };
 		E29D4CBD1CB23B9400A0C7C4 /* TranslationAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationAnimationController.swift; sourceTree = "<group>"; };
 		E29D4CD41CB35CA100A0C7C4 /* AutoNextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoNextViewController.swift; sourceTree = "<group>"; };
-		E29F1C4C1CBC78FA005DA3CA /* AlertsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertsViewController.swift; sourceTree = "<group>"; };
 		E2A5E3B51CA512C200368EFA /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
-		E2B1700C1CBC562D00D391B4 /* Alerts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Alerts.storyboard; sourceTree = "<group>"; };
 		E2B1700E1CBC562D00D391B4 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		E2B1700F1CBC562D00D391B4 /* AlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		E2B170101CBC562D00D391B4 /* StaticAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticAlertView.swift; sourceTree = "<group>"; };
@@ -162,20 +162,11 @@
 		E202569C1BEB413300095590 /* Sample */ = {
 			isa = PBXGroup;
 			children = (
-				E202569D1BEB413300095590 /* Controller */,
+				E274E0691CC5A1B600262254 /* Alert */,
+				E274E06C1CC5A1B600262254 /* Developer */,
+				E274E06F1CC5A1B600262254 /* Morph */,
 			);
 			path = Sample;
-			sourceTree = "<group>";
-		};
-		E202569D1BEB413300095590 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				E29F1C4C1CBC78FA005DA3CA /* AlertsViewController.swift */,
-				E202569F1BEB413300095590 /* Developer.storyboard */,
-				E20256A01BEB413300095590 /* Morph.storyboard */,
-				E20256A21BEB413300095590 /* MorphTableViewController.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		E20256B11BEC94AA00095590 /* NibView */ = {
@@ -230,6 +221,56 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		E274E0691CC5A1B600262254 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				E274E06A1CC5A1B600262254 /* Controller */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		E274E06A1CC5A1B600262254 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E274E0791CC5A1EE00262254 /* Alerts.storyboard */,
+				E274E06B1CC5A1B600262254 /* AlertsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E274E06C1CC5A1B600262254 /* Developer */ = {
+			isa = PBXGroup;
+			children = (
+				E274E06D1CC5A1B600262254 /* Controller */,
+			);
+			path = Developer;
+			sourceTree = "<group>";
+		};
+		E274E06D1CC5A1B600262254 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E274E06E1CC5A1B600262254 /* Developer.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E274E06F1CC5A1B600262254 /* Morph */ = {
+			isa = PBXGroup;
+			children = (
+				E274E0701CC5A1B600262254 /* Controller */,
+			);
+			path = Morph;
+			sourceTree = "<group>";
+		};
+		E274E0701CC5A1B600262254 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E274E0711CC5A1B600262254 /* Morph.storyboard */,
+				E274E0731CC5A1B600262254 /* MorphTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		E29D4CD31CB35CA100A0C7C4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,7 +291,6 @@
 		E2B1700B1CBC562D00D391B4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E2B1700C1CBC562D00D391B4 /* Alerts.storyboard */,
 				E2F71A601CBC5DEA008B6A68 /* AlertViewController.swift */,
 			);
 			path = Controller;
@@ -387,10 +427,10 @@
 			files = (
 				E20256A71BEB413300095590 /* Assets.xcassets in Resources */,
 				E2B170161CBC562D00D391B4 /* StaticAlertView.xib in Resources */,
-				E20256AC1BEB413300095590 /* Developer.storyboard in Resources */,
-				E20256AD1BEB413300095590 /* Morph.storyboard in Resources */,
-				E2B170121CBC562D00D391B4 /* Alerts.storyboard in Resources */,
+				E274E0751CC5A1B600262254 /* Developer.storyboard in Resources */,
 				E2B170141CBC562D00D391B4 /* AlertView.xib in Resources */,
+				E274E07A1CC5A1EE00262254 /* Alerts.storyboard in Resources */,
+				E274E0761CC5A1B600262254 /* Morph.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,13 +452,13 @@
 				E25687ED1C70AD0600DD14D5 /* UIViewMorphExtensions.swift in Sources */,
 				E234075E1C08399000319D38 /* UIView+BFWCopy.m in Sources */,
 				E20E10CE1CA1EA9300F35C82 /* TranslationTransitioningController.swift in Sources */,
+				E274E0741CC5A1B600262254 /* AlertsViewController.swift in Sources */,
 				E2F71A611CBC5DEA008B6A68 /* AlertViewController.swift in Sources */,
 				E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */,
-				E29F1C4D1CBC78FA005DA3CA /* AlertsViewController.swift in Sources */,
 				E287E5551CB63EB60071E87C /* DismissAndPushSegue.swift in Sources */,
 				E20256AA1BEB413300095590 /* main.m in Sources */,
 				E2B170151CBC562D00D391B4 /* StaticAlertView.swift in Sources */,
-				E20256AE1BEB413300095590 /* MorphTableViewController.swift in Sources */,
+				E274E0781CC5A1B600262254 /* MorphTableViewController.swift in Sources */,
 				E2FF6C7C1C413F61005514B6 /* DesignableView.swift in Sources */,
 				E20256A61BEB413300095590 /* AppDelegate.m in Sources */,
 				E29D4CBE1CB23B9400A0C7C4 /* TranslationAnimationController.swift in Sources */,
