@@ -33,6 +33,10 @@ class AlertViewController: UIViewController, AlertViewDelegate {
     func actionButton(button: UIButton, segueIdentifier: String) {
         if canPerformSegueWithIdentifier(segueIdentifier) {
             performSegueWithIdentifier(segueIdentifier, sender: button)
+        } else if let segueIdentifier = button.currentTitle
+            where canPerformSegueWithIdentifier(segueIdentifier)
+        {
+            performSegueWithIdentifier(segueIdentifier, sender: button)
         } else {
             actionCancelButton(button)
         }
@@ -50,9 +54,11 @@ class AlertViewController: UIViewController, AlertViewDelegate {
 
 extension UIViewController {
     
-    func canPerformSegueWithIdentifier(identifier: NSString) -> Bool {
+    func canPerformSegueWithIdentifier(identifier: NSString?) -> Bool {
         var can = false
-        if let templates = self.valueForKey("storyboardSegueTemplates") as? NSArray {
+        if let identifier = identifier,
+            let templates = self.valueForKey("storyboardSegueTemplates") as? NSArray
+        {
             let predicate = NSPredicate(format: "identifier=%@", identifier)
             let filteredtemplates = templates.filteredArrayUsingPredicate(predicate)
             can = !filteredtemplates.isEmpty

@@ -175,9 +175,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="jgn-v9-qrR" kind="custom" identifier="action1" customClass="DismissAndPushSegue" customModule="BFWControls" customModuleProvider="target" id="nvw-hy-lN3"/>
-                        <segue destination="62w-50-ziJ" kind="custom" identifier="action2" customClass="DismissAndPushSegue" customModule="BFWControls" customModuleProvider="target" id="CfR-nx-dnE"/>
-                        <segue destination="xxm-g4-fSr" kind="custom" identifier="action3" customClass="DismissAndPushSegue" customModule="BFWControls" customModuleProvider="target" id="6s3-eO-0dE"/>
+                        <segue destination="jgn-v9-qrR" kind="custom" identifier="Action 1" customClass="DismissAndPushSegue" customModule="BFWControls" customModuleProvider="target" id="nvw-hy-lN3"/>
+                        <segue destination="62w-50-ziJ" kind="custom" identifier="Action 2" customClass="DismissAndPushSegue" customModule="BFWControls" customModuleProvider="target" id="CfR-nx-dnE"/>
+                        <segue destination="xxm-g4-fSr" kind="custom" identifier="Action 3" customClass="DismissAndPushSegue" customModule="BFWControls" customModuleProvider="target" id="6s3-eO-0dE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mvs-se-Bxf" userLabel="First Responder" sceneMemberID="firstResponder"/>
