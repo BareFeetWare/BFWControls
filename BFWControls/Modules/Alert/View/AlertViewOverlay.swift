@@ -12,7 +12,11 @@ import UIKit
 
     // MARK: - IBOutlets
     
-    @IBOutlet var alertView: AlertView!
+    @IBOutlet lazy var alertView: AlertView! = {
+        return self.subviews.filter { subview in
+            subview is AlertView
+        }.first as? AlertView
+    }()
     
     @IBOutlet weak var delegate: NSObject? {
         get {
