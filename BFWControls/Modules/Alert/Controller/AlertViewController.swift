@@ -10,60 +10,31 @@ import UIKit
 
 class AlertViewController: UIViewController, AlertViewDelegate {
     
+    @IBInspectable var action0Segue: String?
+    @IBInspectable var action1Segue: String?
+    @IBInspectable var action2Segue: String?
+    @IBInspectable var action3Segue: String?
+    
     // MARK: - AlertViewDelegate
     
-    func action0Button(button: UIButton) {
-        actionButton(button, segueIdentifier: "action0")
-    }
-    
-    func action1Button(button: UIButton) {
-        actionButton(button, segueIdentifier: "action1")
-    }
-    
-    func action2Button(button: UIButton) {
-        actionButton(button, segueIdentifier: "action2")
-    }
-    
-    func action3Button(button: UIButton) {
-        actionButton(button, segueIdentifier: "action3")
+    func alertView(alertView: AlertView, clickedButtonAtIndex index: Int) {
+        if alertView.hasCancel && index == 0 {
+            dismissAlertView()
+        } else {
+            let identifer = [action0Segue, action1Segue, action2Segue, action3Segue][index]
+            ?? alertView.buttonTitleAtIndex(index)!
+            performSegueWithIdentifier(identifer, sender: alertView)
+        }
     }
     
     // MARK: - Actions
     
-    func actionButton(button: UIButton, segueIdentifier: String) {
-        if canPerformSegueWithIdentifier(segueIdentifier) {
-            performSegueWithIdentifier(segueIdentifier, sender: button)
-        } else if let segueIdentifier = button.currentTitle
-            where canPerformSegueWithIdentifier(segueIdentifier)
-        {
-            performSegueWithIdentifier(segueIdentifier, sender: button)
-        } else {
-            actionCancelButton(button)
-        }
-    }
-    
-    func actionCancelButton(sender: UIButton) {
+    func dismissAlertView() {
         if presentingViewController != nil {
             dismissViewControllerAnimated(true, completion: nil)
         } else {
             navigationController?.popViewControllerAnimated(true)
         }
-    }
-    
-}
-
-extension UIViewController {
-    
-    func canPerformSegueWithIdentifier(identifier: NSString?) -> Bool {
-        var can = false
-        if let identifier = identifier,
-            let templates = self.valueForKey("storyboardSegueTemplates") as? NSArray
-        {
-            let predicate = NSPredicate(format: "identifier=%@", identifier)
-            let filteredtemplates = templates.filteredArrayUsingPredicate(predicate)
-            can = !filteredtemplates.isEmpty
-        }
-        return can
     }
     
 }

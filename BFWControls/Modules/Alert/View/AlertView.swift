@@ -10,10 +10,7 @@ import UIKit
 
 protocol AlertViewDelegate {
     
-    func action0Button(button: UIButton)
-    func action1Button(button: UIButton)
-    func action2Button(button: UIButton)
-    func action3Button(button: UIButton)
+    func alertView(alertView: AlertView, clickedButtonAtIndex index: Int)
     
 }
 
@@ -95,26 +92,26 @@ protocol AlertViewDelegate {
         return delegate as? AlertViewDelegate
     }
     
+    // MARK: - Functions
+    
+    func buttonTitleAtIndex(index: Int) -> String? {
+        let button = buttons[index]
+        return button.currentTitle
+    }
+    
     // MARK: - Actions
     
-    @IBAction func action0Button(button: UIButton) {
-        protocolDelegate?.action0Button(button)
-    }
-    
-    @IBAction func action1Button(button: UIButton) {
-        protocolDelegate?.action1Button(button)
-    }
-    
-    @IBAction func action2Button(button: UIButton) {
-        protocolDelegate?.action2Button(button)
-    }
-    
-    @IBAction func action3Button(button: UIButton) {
-        protocolDelegate?.action3Button(button)
+    @IBAction func actionButton(button: UIButton) {
+        let index = buttons.indexOf(button)!
+        protocolDelegate?.alertView(self, clickedButtonAtIndex: index)
     }
     
     // MARK: - Private variables and functions
 
+    private var buttons: [UIButton] {
+        return [button0, button1, button2, button3]
+    }
+    
     private var isHorizontalLayout: Bool {
         var isHorizontalLayout = false
         if button2Title == nil && button3Title == nil {

@@ -25,6 +25,7 @@
 		E274E07A1CC5A1EE00262254 /* Alerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E274E0791CC5A1EE00262254 /* Alerts.storyboard */; };
 		E274E07C1CC5A3D100262254 /* AlertViewOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = E274E07B1CC5A3D100262254 /* AlertViewOverlay.xib */; };
 		E274E07E1CC5A98C00262254 /* AlertViewOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E274E07D1CC5A98C00262254 /* AlertViewOverlay.swift */; };
+		E27736761CC8954C0033941A /* UIViewController+Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27736751CC8954C0033941A /* UIViewController+Segue.swift */; };
 		E287E54F1CB61F1E0071E87C /* TranslationNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E287E54E1CB61F1E0071E87C /* TranslationNavigationDelegate.swift */; };
 		E287E5551CB63EB60071E87C /* DismissAndPushSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E287E5541CB63EB60071E87C /* DismissAndPushSegue.swift */; };
 		E28F99621C446E20000A0A60 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F99611C446E20000A0A60 /* BlurView.swift */; };
@@ -69,6 +70,7 @@
 		E274E0791CC5A1EE00262254 /* Alerts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Alerts.storyboard; sourceTree = "<group>"; };
 		E274E07B1CC5A3D100262254 /* AlertViewOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewOverlay.xib; sourceTree = "<group>"; };
 		E274E07D1CC5A98C00262254 /* AlertViewOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewOverlay.swift; sourceTree = "<group>"; };
+		E27736751CC8954C0033941A /* UIViewController+Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Segue.swift"; sourceTree = "<group>"; };
 		E287E54E1CB61F1E0071E87C /* TranslationNavigationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationNavigationDelegate.swift; sourceTree = "<group>"; };
 		E287E5541CB63EB60071E87C /* DismissAndPushSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissAndPushSegue.swift; sourceTree = "<group>"; };
 		E28F99611C446E20000A0A60 /* BlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				E29D4CBD1CB23B9400A0C7C4 /* TranslationAnimationController.swift */,
 				E287E54E1CB61F1E0071E87C /* TranslationNavigationDelegate.swift */,
 				E20E10CD1CA1EA9300F35C82 /* TranslationTransitioningController.swift */,
+				E27736751CC8954C0033941A /* UIViewController+Segue.swift */,
 				E25687EC1C70AD0600DD14D5 /* UIViewMorphExtensions.swift */,
 			);
 			path = View;
@@ -476,6 +479,7 @@
 				E2DE2EF11BEDFE1300636D0D /* UIImageEffects.m in Sources */,
 				E2A5E3B61CA512C200368EFA /* UIViewExtensions.swift in Sources */,
 				E25687C41C6C5B8E00DD14D5 /* NSLayoutConstraintExtensions.swift in Sources */,
+				E27736761CC8954C0033941A /* UIViewController+Segue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

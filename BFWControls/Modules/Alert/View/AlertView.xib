@@ -29,28 +29,28 @@
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" title="Cancel"/>
                     <connections>
-                        <action selector="action0Button:" destination="iN0-l3-epB" eventType="primaryActionTriggered" id="lig-9w-9Jl"/>
+                        <action selector="actionButton:" destination="iN0-l3-epB" eventType="primaryActionTriggered" id="3Op-UF-diP"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bj8-j2-abu">
                     <rect key="frame" x="0.0" y="167" width="356" height="30"/>
                     <state key="normal" title="Action2"/>
                     <connections>
-                        <action selector="action2Button:" destination="iN0-l3-epB" eventType="primaryActionTriggered" id="AZn-dp-dVe"/>
+                        <action selector="actionButton:" destination="iN0-l3-epB" eventType="primaryActionTriggered" id="SIG-bG-6m4"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aiY-Ga-q7C">
                     <rect key="frame" x="0.0" y="129" width="356" height="30"/>
                     <state key="normal" title="Action3"/>
                     <connections>
-                        <action selector="action3Button:" destination="iN0-l3-epB" eventType="primaryActionTriggered" id="wDq-FF-qkp"/>
+                        <action selector="actionButton:" destination="iN0-l3-epB" eventType="primaryActionTriggered" id="9y5-BE-bxo"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHI-xr-e81">
                     <rect key="frame" x="0.0" y="205" width="356" height="30"/>
                     <state key="normal" title="Action1"/>
                     <connections>
-                        <action selector="action1Button:" destination="iN0-l3-epB" eventType="primaryActionTriggered" id="xJg-wS-Gyo"/>
+                        <action selector="actionButton:" destination="iN0-l3-epB" eventType="primaryActionTriggered" id="rxY-2X-myY"/>
                     </connections>
                 </button>
             </subviews>
