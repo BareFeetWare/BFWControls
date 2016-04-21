@@ -94,10 +94,6 @@
                 <outlet property="button1" destination="DHI-xr-e81" id="IvO-sg-pKi"/>
                 <outlet property="button2" destination="bj8-j2-abu" id="8ez-ue-IFs"/>
                 <outlet property="button3" destination="aiY-Ga-q7C" id="mgY-cz-Ff6"/>
-                <outlet property="messageButton0Constraint" destination="K55-e8-dos" id="Ssv-gM-ODo"/>
-                <outlet property="messageButton1Constraint" destination="3zs-oX-8cB" id="url-lC-i5W"/>
-                <outlet property="messageButton2Constraint" destination="fYo-R6-ROP" id="lDI-u2-tqh"/>
-                <outlet property="messageButton3Constraint" destination="6Mo-Gq-VVo" id="eSY-eY-1bz"/>
                 <outlet property="messageLabel" destination="UR6-Zp-fuR" id="R8c-f1-dCE"/>
                 <outlet property="titleLabel" destination="qgI-ea-qva" id="dqq-s2-1fc"/>
                 <outletCollection property="horizontalButtonsLayoutConstraints" destination="8qN-fc-hTd" collectionClass="NSMutableArray" id="ZhU-ed-8mo"/>

@@ -39,10 +39,6 @@ protocol AlertViewDelegate {
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var delegate: NSObject?
-    @IBOutlet weak var messageButton0Constraint: NSLayoutConstraint!
-    @IBOutlet weak var messageButton1Constraint: NSLayoutConstraint!
-    @IBOutlet weak var messageButton2Constraint: NSLayoutConstraint!
-    @IBOutlet weak var messageButton3Constraint: NSLayoutConstraint!
 
     @IBOutlet var horizontalButtonsLayoutConstraints: [NSLayoutConstraint]?
     @IBOutlet var verticalButtonsLayoutConstraints: [NSLayoutConstraint]?
@@ -128,7 +124,7 @@ protocol AlertViewDelegate {
                 where button0Title.characters.count <= Constant.maxHorizontalButtonTitleCharacterCount
                     && button1Title.characters.count <= Constant.maxHorizontalButtonTitleCharacterCount
             {
-                    isHorizontalLayout = true
+                isHorizontalLayout = true
             }
         }
         return isHorizontalLayout
