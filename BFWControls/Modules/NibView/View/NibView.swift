@@ -9,26 +9,33 @@ import UIKit
 
 class NibView: BFWNibView {
 
-    // MARK: - updateView mechanism
+    // MARK: - UpdateView mechanism
     
     /// Override in subclasses and call super. Update view and subview properties that are affected by properties of this class.
     func updateView() {
     }
     
-    private var needsUpdateView = true
-        
     func setNeedsUpdateView() {
         needsUpdateView = true
         setNeedsLayout()
+    }
+    
+    // MARK: - Private variables and functions.
+    
+    private var needsUpdateView = true
+        
+    private func updateViewIfNeeded() {
+        if needsUpdateView {
+            needsUpdateView = false
+            updateView()
+        }
     }
     
     // MARK: - UIView
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        if needsUpdateView {
-            updateView()
-        }
+        updateViewIfNeeded()
     }
 
 }
