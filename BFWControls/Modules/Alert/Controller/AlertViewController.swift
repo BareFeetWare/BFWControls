@@ -10,16 +10,30 @@ import UIKit
 
 class AlertViewController: UIViewController, AlertViewDelegate {
     
+    // MARK: - Variables
+
     @IBInspectable var action0Segue: String?
     @IBInspectable var action1Segue: String?
     @IBInspectable var action2Segue: String?
     @IBInspectable var action3Segue: String?
     
+    var delegate: AlertViewDelegate?
+    
+    @IBOutlet lazy var alertView: AlertView! = {
+        let alertViewOverlay = self.view.subviews.filter { subview in
+            subview is AlertViewOverlay
+        }.first as! AlertViewOverlay
+        return alertViewOverlay.alertView
+    }()
+    
     // MARK: - AlertViewDelegate
     
     func alertView(alertView: AlertView, clickedButtonAtIndex index: Int) {
+        dismissAlertView()
         if alertView.hasCancel && index == 0 {
-            dismissAlertView()
+            // Just dismiss.
+        } else if let delegate = delegate {
+            delegate.alertView(alertView, clickedButtonAtIndex: index)
         } else {
             let identifer = [action0Segue, action1Segue, action2Segue, action3Segue][index]
             ?? alertView.buttonTitleAtIndex(index)!
