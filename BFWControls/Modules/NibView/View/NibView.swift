@@ -34,8 +34,8 @@ class NibView: BFWNibView {
     // MARK: - UIView
     
     override func layoutSubviews() {
-        super.layoutSubviews()
         updateViewIfNeeded()
+        super.layoutSubviews()
     }
 
 }
