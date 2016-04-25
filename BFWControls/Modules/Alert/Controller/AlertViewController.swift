@@ -25,22 +25,32 @@ class AlertViewController: UIViewController, AlertViewDelegate {
         }.first as! AlertViewOverlay
         return alertViewOverlay.alertView
     }()
+
+    // MARK: - Private variables
+    
+    private var isInNavigationController: Bool {
+        return presentingViewController?.presentedViewController is UINavigationController
+    }
     
     // MARK: - AlertViewDelegate
     
     func alertView(alertView: AlertView, clickedButtonAtIndex index: Int) {
-        dismissAlertView()
         if alertView.hasCancel && index == 0 {
-            // Just dismiss.
-        } else if let delegate = delegate {
-            delegate.alertView(alertView, clickedButtonAtIndex: index)
+            dismissAlertView()
         } else {
-            let identifer = [action0Segue, action1Segue, action2Segue, action3Segue][index]
-            ?? alertView.buttonTitleAtIndex(index)!
-            performSegueWithIdentifier(identifer, sender: alertView)
+            if !isInNavigationController {
+                dismissAlertView()
+            }
+            if let delegate = delegate {
+                delegate.alertView(alertView, clickedButtonAtIndex: index)
+            } else {
+                let identifer = [action0Segue, action1Segue, action2Segue, action3Segue][index]
+                    ?? alertView.buttonTitleAtIndex(index)!
+                performSegueWithIdentifier(identifer, sender: alertView)
+            }
         }
     }
-    
+
     // MARK: - Actions
     
     func dismissAlertView() {
