@@ -34,7 +34,7 @@ class DrawNibButton: NibButton {
         }
     }
     
-    var iconView: BFWDrawView? {
+    var iconView: DrawingView? {
         get {
             return buttonView?.iconView
         }

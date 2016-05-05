@@ -10,8 +10,8 @@ import UIKit
 
 class DrawNibCellView: NibCellView {
 
-    var iconDrawView: BFWDrawView? {
-        return iconView as? BFWDrawView
+    var iconDrawView: DrawingView? {
+        return iconView as? DrawingView
     }
     
     @IBInspectable var iconName: String? {
