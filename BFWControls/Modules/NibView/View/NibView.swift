@@ -2,7 +2,7 @@
 //  NibView.swift
 //
 //  Created by Tom Brodhurst-Hill on 27/03/2016.
-//  Copyright © 2016 BareFeetWare. All rights reserved.
+//  Copyright © 2016 BareFeetWare. Free to use and modify, without warranty.
 //
 
 import UIKit

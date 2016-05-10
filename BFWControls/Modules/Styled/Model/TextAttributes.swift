@@ -11,5 +11,5 @@ typealias TextAttributes = [String: AnyObject]
 
 // extension TextAttributes
 extension Dictionary where Key: StringLiteralConvertible, Value: AnyObject {
-        
+    
 }

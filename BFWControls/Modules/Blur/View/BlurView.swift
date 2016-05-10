@@ -2,7 +2,7 @@
 //  BlurView.swift
 //
 //  Created by Tom Brodhurst-Hill on 13/10/2015.
-//  Copyright (c) 2015 BareFeetWare. All rights reserved.
+//  Copyright © 2016 BareFeetWare.
 //  Free to use at your own risk, with acknowledgement to BareFeetWare.
 //
 

@@ -2,7 +2,7 @@
 //  UIView+BFWCopy.m
 //
 //  Created by Tom Brodhurst-Hill on 6/11/2015.
-//  Copyright © 2015 BareFeetWare. All rights reserved.
+//  Copyright © 2016 BareFeetWare. Free to use and modify, without warranty.
 //
 
 #import "UIView+BFWCopy.h"
