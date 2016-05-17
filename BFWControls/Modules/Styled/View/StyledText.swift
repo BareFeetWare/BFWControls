@@ -46,6 +46,19 @@ class StyledText {
         return attributesForSection(Section.style, key: style)
     }
     
+    class func attributesForStyles(styles: [String]) -> TextAttributes? {
+        var attributes: TextAttributes?
+        for style in styles {
+            if let extraAttributes = attributesForStyle(style) {
+                if attributes == nil {
+                    attributes = TextAttributes()
+                }
+                attributes!.updateWithDictionary(extraAttributes)
+            }
+        }
+        return attributes
+    }
+    
     class func attributesForLevel(level: Int) -> TextAttributes? {
         return attributesForSection(Section.level, key: String(level))
     }
