@@ -2,7 +2,8 @@
 //  DrawNibButton.swift
 //
 //  Created by Tom Brodhurst-Hill on 3/03/2016.
-//  Copyright © 2016 BareFeetWare. All rights reserved.
+//  Copyright © 2016 BareFeetWare.
+//  Free to use at your own risk, with acknowledgement to BareFeetWare.
 //
 
 import UIKit
