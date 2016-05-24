@@ -10,18 +10,21 @@ import UIKit
 enum ControlStatus: Int {
     
     case None = 0
-    case Success = 1
-    case Warning = 2
-    case Error = 3
+    case Editing = 1
+    case Success = 2
+    case Warning = 3
+    case Error = 4
     
     var color: UIColor {
         switch self {
         case .None:
             return UIColor.grayColor()
+        case .Editing:
+            return UIColor(red: 255.0, green: 200.0, blue: 0.0, alpha: 1.0)
         case .Success:
             return UIColor.greenColor()
         case .Warning:
-            return UIColor.yellowColor()
+            return UIColor.orangeColor()
         case .Error:
             return UIColor.redColor()
         }
@@ -29,7 +32,7 @@ enum ControlStatus: Int {
     
 }
 
-class StatusTextField: NibTextField, UITextFieldDelegate {
+class StatusTextField: NibTextField {
 
     // MARK: - Variables
 
@@ -68,7 +71,6 @@ class StatusTextField: NibTextField, UITextFieldDelegate {
         statusTextFieldNibView?.titleLabel?.text = nil
         message = nil
         status = .None
-        super.delegate = self
     }
     
     // MARK: - updateView
@@ -77,55 +79,34 @@ class StatusTextField: NibTextField, UITextFieldDelegate {
         super.updateView()
         statusTextFieldNibView?.iconView?.hidden = status == .None
         statusTextFieldNibView?.iconView?.tintColor = status.color
-        statusTextFieldNibView?.borderView?.backgroundColor = status.color
+        var borderStatus = status
+        if borderStatus == .None && editing {
+            borderStatus = .Editing
+        }
+        statusTextFieldNibView?.borderView?.backgroundColor = borderStatus.color
         statusTextFieldNibView?.messageLabel?.textColor = status.color
     }
 
-    // MARK: - UITextFieldDelegate
-    
-    private var externalDelegate: UITextFieldDelegate?
-    
-    override var delegate: UITextFieldDelegate? {
-        get {
-            return externalDelegate
-        }
-        set {
-            externalDelegate = newValue
-        }
-    }
-    
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        var should = true
-        if let externalShould = externalDelegate?.textFieldShouldBeginEditing?(textField) {
-            should = externalShould
-        }
-        return should
-    }
+    // MARK: - UIResponder
 
-    func textFieldDidBeginEditing(textField: UITextField) {
-        externalDelegate?.textFieldDidBeginEditing?(textField)
-        statusTextFieldNibView?.titleLabel?.text = placeholder
-        placeholder = nil // TODO: animate
-    }
-
-    func textFieldDidEndEditing(textField: UITextField) {
-        externalDelegate?.textFieldDidEndEditing?(textField)
-        placeholder = statusTextFieldNibView?.titleLabel?.text // TODO: animate
-        statusTextFieldNibView?.titleLabel?.text = nil
+    override func becomeFirstResponder() -> Bool {
+        let success = super.becomeFirstResponder()
+        if success {
+            statusTextFieldNibView?.titleLabel?.text = placeholder
+            placeholder = nil // TODO: animate
+            setNeedsUpdateView()
+        }
+        return success
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        var should = true
-        if let externalShould = externalDelegate?.textField?(textField,
-                                                             shouldChangeCharactersInRange: range,
-                                                             replacementString: string)
-        {
-            should = externalShould
+    override func resignFirstResponder() -> Bool {
+        let success = super.resignFirstResponder()
+        if success {
+            placeholder = statusTextFieldNibView?.titleLabel?.text // TODO: animate
+            statusTextFieldNibView?.titleLabel?.text = nil
+            setNeedsUpdateView()
         }
-        if should {
-
-        }
-        return should
+        return success
     }
     
 }
