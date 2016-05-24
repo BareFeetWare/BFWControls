@@ -87,7 +87,8 @@ class StyledText {
         return [Section.style, Section.level, Section.emphasis]
     }
     
-    private class func attributesForSection(section: String, key: String) -> TextAttributes? {
+    // TODO: Make this private by providing alernative func.
+    class func attributesForSection(section: String, key: String) -> TextAttributes? {
         var attributes: TextAttributes?
         if let sectionDict = plistDict[section] as? [String : AnyObject],
             let lookupDict = sectionDict[key] as? [String: AnyObject]
