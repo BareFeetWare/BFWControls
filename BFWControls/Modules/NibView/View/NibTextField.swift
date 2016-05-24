@@ -12,7 +12,7 @@ class NibTextField: UITextField {
     // MARK: - Variables
     
     /// Override in subclass
-    var contentView: BFWNibView? {
+    var contentView: NibView? {
         return nil
     }
     
@@ -59,11 +59,11 @@ class NibTextField: UITextField {
     func updateView() {
     }
     
-    private var needsUpdateView = true
-    
-    private func setNeedsUpdateView() {
+    func setNeedsUpdateView() {
         needsUpdateView = true
     }
+    
+    private var needsUpdateView = true
     
     private func updateViewIfNeeded() {
         if needsUpdateView {
