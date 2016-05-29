@@ -39,15 +39,15 @@ class AlertViewController: UIViewController, AlertViewDelegate {
         if alertView.hasCancel && index == 0 {
             dismissAlertView()
         } else {
-            if !isInNavigationController {
-                dismissAlertView()
-            }
             if let delegate = delegate {
                 delegate.alertView(alertView, clickedButtonAtIndex: index)
             } else {
                 let identifer = [action0Segue, action1Segue, action2Segue, action3Segue][index]
                     ?? alertView.buttonTitleAtIndex(index)!
                 performSegueWithIdentifier(identifer, sender: alertView)
+            }
+            if !isInNavigationController {
+                dismissAlertView()
             }
         }
     }
