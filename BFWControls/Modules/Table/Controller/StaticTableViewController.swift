@@ -18,9 +18,9 @@ class StaticTableViewController: UITableViewController {
     // MARK: - UITableViewDataSource
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let numberOfExcludedCellsInThisSection = excludedCells?.filter { cell in
-            tableView.indexPathForCell(cell)?.section == section
-            }.count ?? 0
+        let numberOfRowsInSection = super.tableView(tableView, numberOfRowsInSection: section)
+        let indexPath = NSIndexPath(forRow: numberOfRowsInSection - 1, inSection: section)
+        let numberOfExcludedCellsInThisSection = numberOfExcludedRowsBeforeIndexPath(indexPath)
         return super.tableView(tableView, numberOfRowsInSection: section) - numberOfExcludedCellsInThisSection
     }
     
@@ -34,7 +34,7 @@ class StaticTableViewController: UITableViewController {
     
     // MARK: - Private functions
     
-    private func numberOfRowsBeforeIndexPath(indexPath: NSIndexPath) -> Int {
+    private func numberOfExcludedRowsBeforeIndexPath(indexPath: NSIndexPath) -> Int {
         var numberOfExcludedRows = 0
         if let excludedCells = excludedCells {
             let superSection = indexPath.section
@@ -52,7 +52,7 @@ class StaticTableViewController: UITableViewController {
     }
     
     private func superIndexPathForIndexPath(indexPath: NSIndexPath) -> NSIndexPath {
-        return NSIndexPath(forRow: indexPath.row + numberOfRowsBeforeIndexPath(indexPath),
+        return NSIndexPath(forRow: indexPath.row + numberOfExcludedRowsBeforeIndexPath(indexPath),
                            inSection: indexPath.section)
     }
     
