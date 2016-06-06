@@ -50,6 +50,7 @@ class NibTextField: UITextField {
             if let attributes = innerTextField?.defaultTextAttributes {
                 defaultTextAttributes = attributes
             }
+            borderStyle = .None
         }
     }
     
