@@ -7,33 +7,35 @@
 
 import UIKit
 
-enum ControlStatus: Int {
-    
-    case None = 0
-    case Editing = 1
-    case Success = 2
-    case Warning = 3
-    case Error = 4
-    
-    var color: UIColor {
-        switch self {
-        case .None:
-            return UIColor.grayColor()
-        case .Editing:
-            return UIColor(red: 255.0, green: 200.0, blue: 0.0, alpha: 1.0)
-        case .Success:
-            return UIColor.greenColor()
-        case .Warning:
-            return UIColor.orangeColor()
-        case .Error:
-            return UIColor.redColor()
-        }
-    }
-    
-}
-
 class StatusTextField: NibTextField {
 
+    // MARK: - Enum
+
+    enum ControlStatus: Int {
+        
+        case None = 0
+        case Editing = 1
+        case Success = 2
+        case Warning = 3
+        case Error = 4
+        
+        var color: UIColor {
+            switch self {
+            case .None:
+                return UIColor.grayColor()
+            case .Editing:
+                return UIColor(red: 255.0, green: 200.0, blue: 0.0, alpha: 1.0)
+            case .Success:
+                return UIColor.greenColor()
+            case .Warning:
+                return UIColor.orangeColor()
+            case .Error:
+                return UIColor.redColor()
+            }
+        }
+        
+    }
+    
     // MARK: - Variables
 
     var status: ControlStatus = .None { didSet { setNeedsUpdateView() }}
