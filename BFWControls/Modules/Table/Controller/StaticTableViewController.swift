@@ -15,6 +15,26 @@ class StaticTableViewController: UITableViewController {
         return nil
     }
     
+    // MARK: - Functions
+    
+    func indexPathsToInsertCells(cells: [UITableViewCell]) -> [NSIndexPath] {
+        var indexPaths = [NSIndexPath]()
+        for section in 0 ..< super.numberOfSectionsInTableView(tableView) {
+            var numberOfExcludedRows = 0
+            for row in 0 ..< super.tableView(tableView, numberOfRowsInSection: section) {
+                let superIndexPath = NSIndexPath(forRow: row, inSection: section)
+                let superCell = super.tableView(tableView, cellForRowAtIndexPath: superIndexPath)
+                if cells.contains(superCell) && tableView.indexPathForCell(superCell) == nil {
+                    let indexPath = NSIndexPath(forRow: row - numberOfExcludedRows, inSection: section)
+                    indexPaths += [indexPath]
+                } else if excludedCells?.contains(superCell) ?? false {
+                    numberOfExcludedRows += 1
+                }
+            }
+        }
+        return indexPaths
+    }
+    
     // MARK: - UITableViewDataSource
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

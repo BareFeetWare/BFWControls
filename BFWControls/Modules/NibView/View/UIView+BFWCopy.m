@@ -109,6 +109,8 @@
         if (includeConstraints) {
             [copiedSubview copyConstraintsFromView:subview];
         }
+        [copiedSubview copySubviews:subview.subviews
+                 includeConstraints:includeConstraints];
     }
 }
 
