@@ -30,12 +30,12 @@ protocol AlertViewDelegate {
 
     // MARK: - IBOutlets
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var button0: UIButton!
-    @IBOutlet weak var button1: UIButton!
-    @IBOutlet weak var button2: UIButton!
-    @IBOutlet weak var button3: UIButton!
+    @IBOutlet weak var titleLabel: UILabel?
+    @IBOutlet weak var messageLabel: UILabel?
+    @IBOutlet weak var button0: UIButton?
+    @IBOutlet weak var button1: UIButton?
+    @IBOutlet weak var button2: UIButton?
+    @IBOutlet weak var button3: UIButton?
     @IBOutlet weak var delegate: NSObject?
 
     @IBOutlet var horizontalButtonsLayoutConstraints: [NSLayoutConstraint]?
@@ -45,13 +45,13 @@ protocol AlertViewDelegate {
 
     @IBInspectable var title: String? {
         didSet {
-            titleLabel.text = title
+            titleLabel?.text = title
         }
     }
     
     @IBInspectable var message: String? {
         didSet {
-            messageLabel.text = message
+            messageLabel?.text = message
         }
     }
     
@@ -69,21 +69,21 @@ protocol AlertViewDelegate {
 
     @IBInspectable var button1Title: String? {
         didSet {
-            button1.setTitle(button1Title, forState: .Normal)
+            button1?.setTitle(button1Title, forState: .Normal)
             setNeedsUpdateView()
         }
     }
 
     @IBInspectable var button2Title: String? {
         didSet {
-            button2.setTitle(button2Title, forState: .Normal)
+            button2?.setTitle(button2Title, forState: .Normal)
             setNeedsUpdateView()
         }
     }
 
     @IBInspectable var button3Title: String? {
         didSet {
-            button3.setTitle(button3Title, forState: .Normal)
+            button3?.setTitle(button3Title, forState: .Normal)
             setNeedsUpdateView()
         }
     }
@@ -110,7 +110,7 @@ protocol AlertViewDelegate {
     // MARK: - Private variables and functions
 
     private var buttons: [UIButton] {
-        return [button0, button1, button2, button3]
+        return [button0, button1, button2, button3].flatMap{ $0 }
     }
     
     private var isHorizontalLayout: Bool {
@@ -129,10 +129,10 @@ protocol AlertViewDelegate {
     }
     
     private func hideUnused() {
-        button1.hidden = button1Title == nil
-        button2.hidden = button2Title == nil
-        button3.hidden = button3Title == nil
-        messageLabel.activateOnlyConstraintsWithFirstVisibleInViews([button3, button2, button1, button0])
+        button1?.hidden = button1Title == nil
+        button2?.hidden = button2Title == nil
+        button3?.hidden = button3Title == nil
+        messageLabel?.activateOnlyConstraintsWithFirstVisibleInViews([button3, button2, button1, button0].flatMap{ $0 })
         if let horizontalButtonsLayoutConstraints = horizontalButtonsLayoutConstraints,
             let verticalButtonsLayoutConstraints = verticalButtonsLayoutConstraints {
             if isHorizontalLayout {
@@ -150,7 +150,7 @@ protocol AlertViewDelegate {
     override func updateView() {
         super.updateView()
         let buttonTitle = button0Title ?? (hasCancel ? ButtonTitle.cancel : ButtonTitle.ok)
-        button0.setTitle(buttonTitle, forState: .Normal)
+        button0?.setTitle(buttonTitle, forState: .Normal)
         hideUnused()
     }
     
