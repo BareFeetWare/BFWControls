@@ -25,10 +25,14 @@ extension UIView {
     
     func subviewMatchingView(view: UIView) -> UIView? {
         var matchingSubview: UIView?
-        for subview in subviews {
-            if subview.isMorphableTo(view) {
-                matchingSubview = subview
-                break
+        if view.tag != 0 {
+            matchingSubview = viewWithTag(view.tag)
+        } else {
+            for subview in subviews {
+                if subview.isMorphableTo(view) {
+                    matchingSubview = subview
+                    break
+                }
             }
         }
         return matchingSubview;
