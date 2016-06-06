@@ -78,7 +78,8 @@ class MorphSegue: UIStoryboardSegue {
                     if let subviews = contentView?.subviews {
                         for subview in subviews {
                             if let destinationSubview = destinationVCView.subviewMatchingView(subview) {
-                                subview.frame = destinationSubview.frame
+                                subview.frame = destinationSubview.superview!.convertRect(destinationSubview.frame, toView: destinationVCView)
+//                                subview.frame.origin.y += 64.0 // Nav bar hack
                                 subview.copyAnimatablePropertiesFromView(destinationSubview)
                             } else {
                                 subview.alpha = 0.0
