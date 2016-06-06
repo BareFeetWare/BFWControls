@@ -87,15 +87,29 @@ class StatusTextField: NibTextField {
         }
         statusTextFieldNibView?.borderView?.backgroundColor = borderStatus.color
         statusTextFieldNibView?.messageLabel?.textColor = status.color
+        let placeHolderAsTitle = text?.characters.count > 0
+        if placeHolderAsTitle {
+            statusTextFieldNibView?.titleLabel?.text = placeholder
+            placeholder = nil // TODO: animate
+        } else {
+            placeholder = statusTextFieldNibView?.titleLabel?.text // TODO: animate
+            statusTextFieldNibView?.titleLabel?.text = nil
+        }
     }
 
+    // MARK: - UITextField
+
+    override var text: String? {
+        didSet {
+            setNeedsUpdateView()
+        }
+    }
+    
     // MARK: - UIResponder
 
     override func becomeFirstResponder() -> Bool {
         let success = super.becomeFirstResponder()
         if success {
-            statusTextFieldNibView?.titleLabel?.text = placeholder
-            placeholder = nil // TODO: animate
             setNeedsUpdateView()
         }
         return success
@@ -104,8 +118,6 @@ class StatusTextField: NibTextField {
     override func resignFirstResponder() -> Bool {
         let success = super.resignFirstResponder()
         if success {
-            placeholder = statusTextFieldNibView?.titleLabel?.text // TODO: animate
-            statusTextFieldNibView?.titleLabel?.text = nil
             setNeedsUpdateView()
         }
         return success
