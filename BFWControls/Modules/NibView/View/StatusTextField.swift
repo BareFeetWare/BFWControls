@@ -39,7 +39,13 @@ class StatusTextField: NibTextField {
     // MARK: - Variables
 
     var status: ControlStatus = .None { didSet { setNeedsUpdateView() }}
+
+    private var externalDelegate: UITextFieldDelegate?
     
+    private var isPlaceholderAtTitle: Bool {
+        return text?.characters.count > 0
+    }
+
     private var statusTextFieldNibView: StatusTextFieldNibView? {
         return contentView as? StatusTextFieldNibView
     }
@@ -73,6 +79,7 @@ class StatusTextField: NibTextField {
         statusTextFieldNibView?.titleLabel?.text = nil
         message = nil
         status = .None
+        super.delegate = self
     }
     
     // MARK: - updateView
@@ -87,40 +94,68 @@ class StatusTextField: NibTextField {
         }
         statusTextFieldNibView?.borderView?.backgroundColor = borderStatus.color
         statusTextFieldNibView?.messageLabel?.textColor = status.color
-        let placeHolderAsTitle = text?.characters.count > 0
-        if placeHolderAsTitle {
-            statusTextFieldNibView?.titleLabel?.text = placeholder
-            placeholder = nil // TODO: animate
+        // TODO: Animate:
+        if isPlaceholderAtTitle {
+            statusTextFieldNibView?.titleLabel?.text = super.placeholder
         } else {
-            placeholder = statusTextFieldNibView?.titleLabel?.text // TODO: animate
             statusTextFieldNibView?.titleLabel?.text = nil
         }
     }
 
     // MARK: - UITextField
 
-    override var text: String? {
-        didSet {
-            setNeedsUpdateView()
+    override var placeholder: String? {
+        get {
+            return isPlaceholderAtTitle ? nil : super.placeholder
+        }
+        set {
+            super.placeholder = newValue
         }
     }
-    
-    // MARK: - UIResponder
 
-    override func becomeFirstResponder() -> Bool {
-        let success = super.becomeFirstResponder()
-        if success {
-            setNeedsUpdateView()
+}
+
+extension StatusTextField: UITextFieldDelegate {
+    
+    override var delegate: UITextFieldDelegate? {
+        get {
+            return externalDelegate
         }
-        return success
+        set {
+            externalDelegate = newValue
+        }
     }
     
-    override func resignFirstResponder() -> Bool {
-        let success = super.resignFirstResponder()
-        if success {
-            setNeedsUpdateView()
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        var should = true
+        if let externalShould = externalDelegate?.textFieldShouldBeginEditing?(textField) {
+            should = externalShould
         }
-        return success
+        return should
     }
     
+    func textFieldDidBeginEditing(textField: UITextField) {
+        setNeedsUpdateView()
+        externalDelegate?.textFieldDidBeginEditing?(textField)
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        setNeedsUpdateView()
+        externalDelegate?.textFieldDidEndEditing?(textField)
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        var should = true
+        if let externalShould = externalDelegate?.textField?(textField,
+                                                             shouldChangeCharactersInRange: range,
+                                                             replacementString: string)
+        {
+            should = externalShould
+        }
+        if should {
+            setNeedsUpdateView()
+        }
+        return should
+    }
+
 }
