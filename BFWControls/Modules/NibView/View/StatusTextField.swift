@@ -98,7 +98,7 @@ class StatusTextField: NibTextField {
         if isPlaceholderAtTitle {
             statusTextFieldNibView?.titleLabel?.text = super.placeholder
         } else {
-            statusTextFieldNibView?.titleLabel?.text = nil
+            statusTextFieldNibView?.titleLabel?.text = " " // Needs some text for AutoLayout positioning.
         }
     }
 
@@ -112,7 +112,7 @@ class StatusTextField: NibTextField {
             super.placeholder = newValue
         }
     }
-
+    
 }
 
 extension StatusTextField: UITextFieldDelegate {
