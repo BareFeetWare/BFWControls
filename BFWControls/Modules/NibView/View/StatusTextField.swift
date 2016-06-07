@@ -157,5 +157,15 @@ extension StatusTextField: UITextFieldDelegate {
         }
         return should
     }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        var should = true
+        if let externalDelegate = externalDelegate {
+            should = externalDelegate.textFieldShouldReturn?(textField) ?? true
+        } else {
+            resignFirstResponder()
+        }
+        return should
+    }
 
 }
