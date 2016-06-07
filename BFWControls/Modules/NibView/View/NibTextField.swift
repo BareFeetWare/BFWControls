@@ -76,11 +76,13 @@ class NibTextField: UITextField {
     // MARK: - UITextField
     
     override func textRectForBounds(bounds: CGRect) -> CGRect {
-        return innerTextField?.frame ?? bounds
+        let rect = innerTextField?.frame ?? super.textRectForBounds(bounds)
+        return rect
     }
     
-    override func borderRectForBounds(bounds: CGRect) -> CGRect {
-        return CGRect(origin: CGPointZero, size: intrinsicContentSize())
+    override func editingRectForBounds(bounds: CGRect) -> CGRect {
+        let rect = innerTextField?.frame ?? super.editingRectForBounds(bounds)
+        return rect
     }
     
     // MARK: UIView
