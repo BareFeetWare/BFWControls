@@ -12,44 +12,24 @@ class StatusTextField: NibTextField {
     // MARK: - Enum
 
     enum ControlStatus: Int {
-        
-        case None = 0
+        case Normal = 0
         case Editing = 1
         case Success = 2
         case Warning = 3
         case Error = 4
-        
-        var color: UIColor {
-            switch self {
-            case .None:
-                return UIColor.grayColor()
-            case .Editing:
-                return UIColor(red: 255.0, green: 200.0, blue: 0.0, alpha: 1.0)
-            case .Success:
-                return UIColor.greenColor()
-            case .Warning:
-                return UIColor.orangeColor()
-            case .Error:
-                return UIColor.redColor()
-            }
-        }
-        
     }
     
     // MARK: - Variables
 
-    var status: ControlStatus = .None { didSet { setNeedsUpdateView() }}
-
-    private var externalDelegate: UITextFieldDelegate?
-    
-    private var isPlaceholderAtTitle: Bool {
-        return text?.characters.count > 0
-    }
-
-    private var statusTextFieldNibView: StatusTextFieldNibView? {
-        return contentView as? StatusTextFieldNibView
+    /// Leave as nil to have placeholder animate into title when text entered in field.
+    @IBInspectable var title: String? {
+        didSet {
+            statusTextFieldNibView?.titleLabel?.text = title
+        }
     }
     
+    var status: ControlStatus = .Normal { didSet { setNeedsUpdateView() }}
+
     // MARK: - IBInspectable mapping to contentView Nib
 
     @IBInspectable var message: String? {
@@ -68,17 +48,39 @@ class StatusTextField: NibTextField {
             return status.rawValue
         }
         set {
-            status = ControlStatus(rawValue: newValue) ?? .None
+            status = ControlStatus(rawValue: newValue) ?? .Normal
         }
     }
 
+    // MARK: - Computed variables
+    
+    var messageColor: UIColor {
+        return status.color
+    }
+    
+    var borderStatus: ControlStatus {
+        return status == .Normal && editing ? .Editing : status
+    }
+    
+    // MARK: - Private variables
+    
+    private var externalDelegate: UITextFieldDelegate?
+    
+    private var isPlaceholderAtTitle: Bool {
+        return text?.characters.count > 0
+    }
+    
+    private var statusTextFieldNibView: StatusTextFieldNibView? {
+        return contentView as? StatusTextFieldNibView
+    }
+    
     // MARK: - Init
 
     override func commonInit() {
         super.commonInit()
         statusTextFieldNibView?.titleLabel?.text = nil
         message = nil
-        status = .None
+        status = .Normal
         super.delegate = self
     }
     
@@ -86,19 +88,17 @@ class StatusTextField: NibTextField {
 
     override func updateView() {
         super.updateView()
-        statusTextFieldNibView?.iconView?.hidden = status == .None
+        statusTextFieldNibView?.iconView?.hidden = status == .Normal
         statusTextFieldNibView?.iconView?.tintColor = status.color
-        var borderStatus = status
-        if borderStatus == .None && editing {
-            borderStatus = .Editing
-        }
         statusTextFieldNibView?.borderView?.backgroundColor = borderStatus.color
-        statusTextFieldNibView?.messageLabel?.textColor = status.color
-        // TODO: Animate:
-        if isPlaceholderAtTitle {
-            statusTextFieldNibView?.titleLabel?.text = super.placeholder
-        } else {
-            statusTextFieldNibView?.titleLabel?.text = " " // Needs some text for AutoLayout positioning.
+        statusTextFieldNibView?.messageLabel?.textColor = messageColor
+        if title == nil {
+            // TODO: Animate:
+            if isPlaceholderAtTitle {
+                statusTextFieldNibView?.titleLabel?.text = super.placeholder
+            } else {
+                statusTextFieldNibView?.titleLabel?.text = " " // Needs some text for AutoLayout positioning.
+            }
         }
     }
 
@@ -106,10 +106,24 @@ class StatusTextField: NibTextField {
 
     override var placeholder: String? {
         get {
-            return isPlaceholderAtTitle ? nil : super.placeholder
+            return isPlaceholderAtTitle && title == nil ? nil : super.placeholder
         }
         set {
             super.placeholder = newValue
+        }
+    }
+    
+}
+
+private extension StatusTextField.ControlStatus {
+    
+    var color: UIColor {
+        switch self {
+        case .Normal: return UIColor.grayColor()
+        case .Editing: return UIColor(red: 255.0, green: 200.0, blue: 0.0, alpha: 1.0)
+        case .Success: return UIColor.greenColor()
+        case .Warning: return UIColor.orangeColor()
+        case .Error: return UIColor.redColor()
         }
     }
     
