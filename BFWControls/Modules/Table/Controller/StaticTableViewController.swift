@@ -45,7 +45,9 @@ class StaticTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return super.tableView(tableView, cellForRowAtIndexPath: superIndexPathForIndexPath(indexPath))
+        let cell = super.tableView(tableView, cellForRowAtIndexPath: superIndexPathForIndexPath(indexPath))
+        cell.layoutIfNeeded()
+        return cell
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
