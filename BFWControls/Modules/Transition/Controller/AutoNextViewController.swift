@@ -20,7 +20,7 @@ class AutoNextViewController: UIViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
         dispatch_after(dispatchTime, dispatch_get_main_queue()) {
             self.performSegueWithIdentifier(self.segueIdentifier, sender: self)
         }
