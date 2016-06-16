@@ -62,6 +62,7 @@ class NibTextField: UITextField {
     
     func setNeedsUpdateView() {
         needsUpdateView = true
+        setNeedsLayout()
     }
     
     private var needsUpdateView = true
