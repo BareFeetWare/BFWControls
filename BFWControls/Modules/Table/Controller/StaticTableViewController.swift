@@ -10,6 +10,10 @@ import UIKit
 
 class StaticTableViewController: UITableViewController {
     
+    // MARK: - Variables
+
+    @IBInspectable var fillUsingLastCell = true
+    
     /// Override in subclass, usually by connecting to an IBOutlet collection.
     var excludedCells: [UITableViewCell]? {
         return nil
@@ -51,7 +55,22 @@ class StaticTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return super.tableView(tableView, heightForRowAtIndexPath: superIndexPathForIndexPath(indexPath))
+        var height = super.tableView(tableView, heightForRowAtIndexPath: superIndexPathForIndexPath(indexPath))
+        if fillUsingLastCell
+            && numberOfSectionsInTableView(tableView) == 1
+            && indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1
+        {
+            var beforeCellheight: CGFloat = 0.0
+            for row in 0 ..< indexPath.row {
+                let beforeIndexPath = NSIndexPath(forRow: row, inSection: indexPath.section)
+                beforeCellheight += self.tableView(tableView, heightForRowAtIndexPath: beforeIndexPath)
+            }
+            let maxHeight = tableView.frame.size.height - beforeCellheight
+            if height < maxHeight {
+                height = maxHeight
+            }
+        }
+        return height
     }
     
     // MARK: - Private functions
