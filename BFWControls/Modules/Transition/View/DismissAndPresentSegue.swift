@@ -12,16 +12,12 @@ class DismissAndPresentSegue: UIStoryboardSegue {
 
     override func perform() {
         if let presentingViewController = sourceViewController.presentingViewController {
+            destinationViewController.modalPresentationStyle = .OverFullScreen
             presentingViewController.dismissViewControllerAnimated(true, completion: {
                 if let presentingNavigationController = presentingViewController as? UINavigationController ?? presentingViewController.navigationController {
-                    var destinationViewController = self.destinationViewController
-                    if let destinationNavigationController = destinationViewController as? UINavigationController {
-                        destinationViewController = destinationNavigationController.viewControllers.first!
-                    }
-                    presentingNavigationController.presentViewController(destinationViewController, animated: true, completion: nil)
+                    presentingNavigationController.presentViewController(self.destinationViewController, animated: true, completion: nil)
                 }
             })
         }
     }
-
 }
