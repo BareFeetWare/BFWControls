@@ -29,10 +29,11 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
         }
     }
 
+    private let animationController = TranslationAnimationController()
+
     // MARK: - Private functions
 
-    private lazy var animationController: TranslationAnimationController  = {
-        let animationController = TranslationAnimationController()
+    private func updateAnimationController() {
         animationController.duration = self.duration
         animationController.leftInset = self.leftInset
         animationController.rightInset = self.rightInset
@@ -40,8 +41,7 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
         animationController.bottomInset = self.bottomInset
         animationController.belowTopGuide = self.belowTopGuide
         animationController.direction = self.direction
-        return animationController
-    }()
+    }
 
     // MARK: - UIViewControllerTransitioningDelegate
 
@@ -52,12 +52,14 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
         ) -> UIViewControllerAnimatedTransitioning?
     {
         let animationController = self.animationController
+        updateAnimationController()
         animationController.isPresenting = true
         return animationController
     }
 
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let animationController = self.animationController
+        updateAnimationController()
         animationController.isPresenting = false
         return animationController
     }
