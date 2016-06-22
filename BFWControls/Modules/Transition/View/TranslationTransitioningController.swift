@@ -9,7 +9,7 @@
 import UIKit
 
 class TranslationTransitioningController: NSObject, UIViewControllerTransitioningDelegate {
-    
+
     // MARK: - Variables
 
     @IBInspectable var duration: NSTimeInterval = 0.3
@@ -19,7 +19,7 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
     @IBInspectable var bottomInset: CGFloat = 0.0
     @IBInspectable var belowTopGuide: Bool = false
     var direction: Direction = .Left // Direction to which it presents. Dismiss direction defaults to opposite.
-    
+
     @IBInspectable var direction_: Int {
         get {
             return direction.rawValue
@@ -28,44 +28,46 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
             direction = Direction(rawValue: newValue) ?? .Left
         }
     }
-    
+
+    private let animationController = TranslationAnimationController()
+
     // MARK: - Private functions
-    
-    private func animationController() -> TranslationAnimationController {
-        let animationController = TranslationAnimationController()
-        animationController.duration = duration
-        animationController.leftInset = leftInset
-        animationController.rightInset = rightInset
-        animationController.topInset = topInset
-        animationController.bottomInset = bottomInset
-        animationController.belowTopGuide = belowTopGuide
-        animationController.direction = direction
-        return animationController
+
+    private func updateAnimationController() {
+        animationController.duration = self.duration
+        animationController.leftInset = self.leftInset
+        animationController.rightInset = self.rightInset
+        animationController.topInset = self.topInset
+        animationController.bottomInset = self.bottomInset
+        animationController.belowTopGuide = self.belowTopGuide
+        animationController.direction = self.direction
     }
-    
+
     // MARK: - UIViewControllerTransitioningDelegate
-    
+
     func animationControllerForPresentedController(
         presented: UIViewController,
         presentingController presenting: UIViewController,
                              sourceController source: UIViewController
         ) -> UIViewControllerAnimatedTransitioning?
     {
-        let animationController = self.animationController()
+        let animationController = self.animationController
+        updateAnimationController()
         animationController.isPresenting = true
         return animationController
     }
-    
+
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let animationController = self.animationController()
+        let animationController = self.animationController
+        updateAnimationController()
         animationController.isPresenting = false
         return animationController
     }
-    
+
 }
 
 extension UIViewController {
-    
+
     @IBOutlet var transitioningDelegateOutlet: NSObject? {
         get {
             return transitioningDelegate as? NSObject
@@ -74,6 +76,5 @@ extension UIViewController {
             transitioningDelegate = newValue as? UIViewControllerTransitioningDelegate
         }
     }
-    
-}
 
+}
