@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="42x-sm-w2i">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="42x-sm-w2i">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -52,7 +52,7 @@
             </objects>
             <point key="canvasLocation" x="-349" y="362"/>
         </scene>
-        <!--Delegate-->
+        <!--Alert View Controller-->
         <scene sceneID="9PS-9c-bfF">
             <objects>
                 <viewController id="pbM-x2-7Ow" customClass="AlertViewController" customModule="BFWControls" customModuleProvider="target" sceneMemberID="viewController">
@@ -73,9 +73,6 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="button2Title" value="Action 2"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="button3Title" value="Action 3"/>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outlet property="delegate" destination="pbM-x2-7Ow" id="IMd-hh-Dx9"/>
-                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

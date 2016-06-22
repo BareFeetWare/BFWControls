@@ -9,12 +9,6 @@
 
 import UIKit
 
-protocol AlertViewDelegate {
-    
-    func alertView(alertView: AlertView, clickedButtonAtIndex index: Int)
-    
-}
-
 @IBDesignable class AlertView: NibView {
 
     // MARK: - Structs
@@ -36,7 +30,6 @@ protocol AlertViewDelegate {
     @IBOutlet weak var button1: UIButton?
     @IBOutlet weak var button2: UIButton?
     @IBOutlet weak var button3: UIButton?
-    @IBOutlet weak var delegate: NSObject?
 
     @IBOutlet var horizontalButtonsLayoutConstraints: [NSLayoutConstraint]?
     @IBOutlet var verticalButtonsLayoutConstraints: [NSLayoutConstraint]?
@@ -88,11 +81,6 @@ protocol AlertViewDelegate {
         }
     }
 
-    var protocolDelegate: AlertViewDelegate? {
-        // Workaround since Swift won't allow IBOutlet on a protocol.
-        return delegate as? AlertViewDelegate
-    }
-    
     // MARK: - Functions
     
     func buttonTitleAtIndex(index: Int) -> String? {
@@ -100,11 +88,8 @@ protocol AlertViewDelegate {
         return button.currentTitle
     }
     
-    // MARK: - Actions
-    
-    @IBAction func actionButton(button: UIButton) {
-        let index = buttons.indexOf(button)!
-        protocolDelegate?.alertView(self, clickedButtonAtIndex: index)
+    func indexOfButton(button: UIButton) -> Int? {
+        return buttons.indexOf(button)
     }
     
     // MARK: - Private variables and functions

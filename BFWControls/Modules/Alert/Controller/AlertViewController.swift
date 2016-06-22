@@ -9,10 +9,16 @@
 
 import UIKit
 
-class AlertViewController: UIViewController, AlertViewDelegate {
+protocol AlertViewDelegate {
+    
+    func alertView(alertView: AlertView, clickedButtonAtIndex index: Int)
+    
+}
+
+class AlertViewController: UIViewController {
     
     // MARK: - Variables
-
+    
     @IBInspectable var action0Segue: String?
     @IBInspectable var action1Segue: String?
     @IBInspectable var action2Segue: String?
@@ -26,16 +32,17 @@ class AlertViewController: UIViewController, AlertViewDelegate {
         }.first as! AlertViewOverlay
         return alertViewOverlay.alertView
     }()
-
+    
     // MARK: - Private variables
     
     private var isInNavigationController: Bool {
         return presentingViewController?.presentedViewController is UINavigationController
     }
+
+    // MARK: - Actions
     
-    // MARK: - AlertViewDelegate
-    
-    func alertView(alertView: AlertView, clickedButtonAtIndex index: Int) {
+    @IBAction func actionButton(button: UIButton) {
+        let index = alertView.indexOfButton(button)!
         if alertView.hasCancel && index == 0 {
             dismissAlertView()
         } else {

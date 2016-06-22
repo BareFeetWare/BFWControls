@@ -19,15 +19,6 @@ import UIKit
         }.first as? AlertView
     }()
     
-    @IBOutlet weak var delegate: NSObject? {
-        get {
-            return alertView.delegate
-        }
-        set {
-            alertView.delegate = newValue
-        }
-    }
-
     // MARK: - Variables mapping to AlertView variables
     
     @IBInspectable var title: String? {
