@@ -44,7 +44,9 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
     @IBInspectable var belowTopGuide: Bool = false
     @IBInspectable var animatePresenter = false // TODO: Determine automatically
     @IBInspectable var fadeFirst: Bool = false // Fade out/in the first view controller, instead of moving.
+    @IBInspectable var backdropAlpha: CGFloat = 0.6
     var direction: Direction = .Left // Direction to which it presents. Dismiss direction defaults to reverse.
+    let backdropView = UIView()
     
     // MARK: - Private functions
     
@@ -102,6 +104,12 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
                 let toDirection = animatePresenter && !isPresenting ? direction.reverse : direction
                 toViewController.view.frame = dismissedFrameInContainerView(containerView, direction: toDirection)
             }
+            if !containerView.subviews.contains(backdropView) {
+                containerView.insertSubview(backdropView, belowSubview: toViewController.view)
+                backdropView.backgroundColor = UIColor.blackColor()
+                backdropView.alpha = 0.0
+                backdropView.pinToView(containerView, attributes: [.Top, .Left, .Right, .Bottom], secondAttributes: [.Top, .Left, .Right, .Bottom], constants: [20.0, 0, 0, 0])
+            }
         }
         let fromDirection = animatePresenter && isPresenting ? direction.reverse : direction
         UIView.animateWithDuration(
@@ -118,6 +126,11 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
                     toViewController?.view.alpha = 1.0
                 } else {
                     toViewController?.view.frame = self.presentedFrameInContainerView(containerView)
+                }
+                if self.isPresenting {
+                   self.backdropView.alpha = self.backdropAlpha
+                } else {
+                    self.backdropView.alpha = 0.0
                 }
             }
             )
