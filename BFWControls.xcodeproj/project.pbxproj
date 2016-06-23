@@ -41,6 +41,8 @@
 		E2B170141CBC562D00D391B4 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2B1700F1CBC562D00D391B4 /* AlertView.xib */; };
 		E2B170151CBC562D00D391B4 /* StaticAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B170101CBC562D00D391B4 /* StaticAlertView.swift */; };
 		E2B170161CBC562D00D391B4 /* StaticAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2B170111CBC562D00D391B4 /* StaticAlertView.xib */; };
+		E2CFD5A51D1B96E400882597 /* ActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CFD5A31D1B96E400882597 /* ActionSheetView.swift */; };
+		E2CFD5A61D1B96E400882597 /* ActionSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2CFD5A41D1B96E400882597 /* ActionSheetView.xib */; };
 		E2DE2EF11BEDFE1300636D0D /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */; };
 		E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2F7C1BEE009200636D0D /* UIImage+BFW.m */; };
 		E2F71A611CBC5DEA008B6A68 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F71A601CBC5DEA008B6A68 /* AlertViewController.swift */; };
@@ -90,6 +92,8 @@
 		E2B1700F1CBC562D00D391B4 /* AlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		E2B170101CBC562D00D391B4 /* StaticAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticAlertView.swift; sourceTree = "<group>"; };
 		E2B170111CBC562D00D391B4 /* StaticAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaticAlertView.xib; sourceTree = "<group>"; };
+		E2CFD5A31D1B96E400882597 /* ActionSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetView.swift; sourceTree = "<group>"; };
+		E2CFD5A41D1B96E400882597 /* ActionSheetView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionSheetView.xib; sourceTree = "<group>"; };
 		E2DE2EEF1BEDFE1300636D0D /* UIImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageEffects.h; sourceTree = "<group>"; };
 		E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageEffects.m; sourceTree = "<group>"; };
 		E2DE2F7B1BEE009200636D0D /* UIImage+BFW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BFW.h"; sourceTree = "<group>"; };
@@ -342,6 +346,8 @@
 		E2B1700D1CBC562D00D391B4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E2CFD5A31D1B96E400882597 /* ActionSheetView.swift */,
+				E2CFD5A41D1B96E400882597 /* ActionSheetView.xib */,
 				E2B1700E1CBC562D00D391B4 /* AlertView.swift */,
 				E2B1700F1CBC562D00D391B4 /* AlertView.xib */,
 				E274E07D1CC5A98C00262254 /* AlertViewOverlay.swift */,
@@ -476,6 +482,7 @@
 				E274E07C1CC5A3D100262254 /* AlertViewOverlay.xib in Resources */,
 				E2B170141CBC562D00D391B4 /* AlertView.xib in Resources */,
 				E274E07A1CC5A1EE00262254 /* Alerts.storyboard in Resources */,
+				E2CFD5A61D1B96E400882597 /* ActionSheetView.xib in Resources */,
 				E274E0761CC5A1B600262254 /* Morph.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -509,6 +516,7 @@
 				E2FF6C7C1C413F61005514B6 /* DesignableView.swift in Sources */,
 				E26F2AE61CE1807600B56416 /* Dictionary+StyledText.swift in Sources */,
 				E20256A61BEB413300095590 /* AppDelegate.m in Sources */,
+				E2CFD5A51D1B96E400882597 /* ActionSheetView.swift in Sources */,
 				E29D4CBE1CB23B9400A0C7C4 /* TranslationAnimationController.swift in Sources */,
 				E2FF6C7E1C413FA7005514B6 /* DesignableButton.swift in Sources */,
 				E274E07E1CC5A98C00262254 /* AlertViewOverlay.swift in Sources */,
