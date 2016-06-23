@@ -26,12 +26,20 @@ class AlertViewController: UIViewController {
     
     var delegate: AlertViewDelegate?
     
-    @IBOutlet lazy var alertView: AlertView! = {
+    private var alertView: AlertView {
+        let foundAlertView: AlertView
         let alertViewOverlay = self.view.subviews.filter { subview in
             subview is AlertViewOverlay
-        }.first as! AlertViewOverlay
-        return alertViewOverlay.alertView
-    }()
+        }.first as? AlertViewOverlay
+        if let alertViewOverlay = alertViewOverlay {
+            foundAlertView = alertViewOverlay.alertView
+        } else {
+            foundAlertView = self.view.subviews.filter { subview in
+                subview is AlertView
+                }.first as! AlertView
+        }
+        return foundAlertView
+    }
     
     // MARK: - Private variables
     
