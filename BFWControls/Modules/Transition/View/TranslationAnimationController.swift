@@ -10,12 +10,12 @@
 import UIKit
 
 enum Direction: Int {
-    
+
     case Left = 0
     case Right = 1
     case Up = 2
     case Down = 3
-    
+
     var reverse: Direction {
         switch self {
         case .Left:
@@ -28,13 +28,13 @@ enum Direction: Int {
             return .Up
         }
     }
-    
+
 }
 
 class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
-    
+
     // MARK: - Variables
-    
+
     @IBInspectable var isPresenting: Bool = true
     @IBInspectable var duration: NSTimeInterval = 0.3
     @IBInspectable var leftInset: CGFloat = 0.0
@@ -44,12 +44,12 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
     @IBInspectable var belowTopGuide: Bool = false
     @IBInspectable var animatePresenter = false // TODO: Determine automatically
     @IBInspectable var fadeFirst: Bool = false // Fade out/in the first view controller, instead of moving.
-    @IBInspectable var backdropAlpha: CGFloat = 0.6
+    @IBInspectable var backdropAlpha: CGFloat = 0.0
     var direction: Direction = .Left // Direction to which it presents. Dismiss direction defaults to reverse.
     let backdropView = UIView()
-    
+
     // MARK: - Private functions
-    
+
     private func presentedFrameInContainerView(containerView: UIView) -> CGRect {
         // TODO: Use AutoLayout
         var frame = containerView.bounds
@@ -59,7 +59,7 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
         frame.size.height -= frame.origin.y + bottomInset
         return frame
     }
-    
+
     private func dismissedFrameInContainerView(containerView: UIView, direction: Direction) -> CGRect {
         var frame = presentedFrameInContainerView(containerView)
         switch direction {
@@ -74,13 +74,13 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
         }
         return frame
     }
-    
+
     // MARK: - UIViewControllerAnimatedTransitioning
-    
+
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return duration
     }
-    
+
     @objc func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView()!
         let animateToView = animatePresenter || isPresenting
@@ -104,11 +104,15 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
                 let toDirection = animatePresenter && !isPresenting ? direction.reverse : direction
                 toViewController.view.frame = dismissedFrameInContainerView(containerView, direction: toDirection)
             }
-            if !containerView.subviews.contains(backdropView) {
-                containerView.insertSubview(backdropView, belowSubview: toViewController.view)
-                backdropView.backgroundColor = UIColor.blackColor()
-                backdropView.alpha = 0.0
-                backdropView.pinToView(containerView, attributes: [.Top, .Left, .Right, .Bottom], secondAttributes: [.Top, .Left, .Right, .Bottom], constants: [20.0, 0, 0, 0])
+            if backdropAlpha > 0.0 {
+                if containerView.subviews.contains(backdropView) {
+                    backdropView.alpha = backdropAlpha
+                } else {
+                    containerView.insertSubview(backdropView, belowSubview: toViewController.view)
+                    backdropView.backgroundColor = UIColor.blackColor()
+                    backdropView.alpha = 0.0
+                    backdropView.pinToView(containerView, attributes: [.Top, .Left, .Right, .Bottom], secondAttributes: [.Top, .Left, .Right, .Bottom], constants: [20.0, 0, 0, 0])
+                }
             }
         }
         let fromDirection = animatePresenter && isPresenting ? direction.reverse : direction

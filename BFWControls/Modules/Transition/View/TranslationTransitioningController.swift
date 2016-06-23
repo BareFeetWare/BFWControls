@@ -18,6 +18,7 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
     @IBInspectable var topInset: CGFloat = 0.0
     @IBInspectable var bottomInset: CGFloat = 0.0
     @IBInspectable var belowTopGuide: Bool = false
+    @IBInspectable var backdropAlpha: CGFloat = 0.0
     var direction: Direction = .Left // Direction to which it presents. Dismiss direction defaults to opposite.
 
     @IBInspectable var direction_: Int {
@@ -41,6 +42,7 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
         animationController.bottomInset = self.bottomInset
         animationController.belowTopGuide = self.belowTopGuide
         animationController.direction = self.direction
+        animationController.backdropAlpha = self.backdropAlpha
     }
 
     // MARK: - UIViewControllerTransitioningDelegate
