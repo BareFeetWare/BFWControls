@@ -26,7 +26,7 @@ class AlertViewController: UIViewController {
     
     var delegate: AlertViewDelegate?
     
-    private var alertView: AlertView {
+    lazy var alertView: AlertView = {
         let foundAlertView: AlertView
         let alertViewOverlay = self.view.subviews.filter { subview in
             subview is AlertViewOverlay
@@ -39,7 +39,7 @@ class AlertViewController: UIViewController {
                 }.first as! AlertView
         }
         return foundAlertView
-    }
+    }()
     
     // MARK: - Private variables
     
