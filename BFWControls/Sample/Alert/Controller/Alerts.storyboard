@@ -23,7 +23,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="AlertViewOverlay using xib" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gCr-OV-3F5">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="AlertViewOverlay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gCr-OV-3F5">
                                                     <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -34,6 +34,26 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="pbM-x2-7Ow" kind="presentation" modalPresentationStyle="overFullScreen" id="o1H-qm-W94"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="K1p-Kw-Dbh" style="IBUITableViewCellStyleDefault" id="Y0X-dh-Kfq">
+                                        <rect key="frame" x="0.0" y="108" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y0X-dh-Kfq" id="U3y-WB-kem">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="ActionSheet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="K1p-Kw-Dbh">
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Dpk-7F-Zdz" kind="presentation" modalPresentationStyle="overFullScreen" id="WgK-j8-4cA"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -50,7 +70,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dql-tJ-hy1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-349" y="362"/>
+            <point key="canvasLocation" x="-351.5" y="770.5"/>
         </scene>
         <!--Alert View Controller-->
         <scene sceneID="9PS-9c-bfF">
@@ -102,17 +122,18 @@
                         <viewControllerLayoutGuide type="bottom" id="2GC-dd-emt"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1xK-De-TQz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Action 1" id="TI6-HN-OWv"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="200"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x59-zB-Kxu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="806.5" y="361.5"/>
+            <point key="canvasLocation" x="946.5" y="362"/>
         </scene>
         <!--Action 2-->
         <scene sceneID="eRJ-kN-kiG">
@@ -123,17 +144,60 @@
                         <viewControllerLayoutGuide type="bottom" id="zER-Rd-2ha"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8Fo-i4-NIe">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Action 2" id="Jbe-eU-hdl"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="200"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AsA-zB-zyE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="806.5" y="1307.5"/>
+            <point key="canvasLocation" x="946.5" y="772"/>
+        </scene>
+        <!--Alert View Controller-->
+        <scene sceneID="h65-mA-pCs">
+            <objects>
+                <viewController id="Dpk-7F-Zdz" customClass="AlertViewController" customModule="BFWControls" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ukx-D1-GV5"/>
+                        <viewControllerLayoutGuide type="bottom" id="nYa-US-Vgf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MAP-R3-R35">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tsv-Al-s7h" customClass="ActionSheetView" customModule="BFWControls" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Action Sheet"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="message" value="Add a message here"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="button1Title" value="Action 1"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="button2Title" value="Action 2"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="button3Title" value="Action 3"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nYa-US-Vgf" firstAttribute="top" secondItem="Tsv-Al-s7h" secondAttribute="bottom" id="PFF-qo-HhQ"/>
+                            <constraint firstItem="Tsv-Al-s7h" firstAttribute="top" secondItem="MAP-R3-R35" secondAttribute="top" id="Thz-Xy-Phb"/>
+                            <constraint firstItem="Tsv-Al-s7h" firstAttribute="leading" secondItem="MAP-R3-R35" secondAttribute="leading" id="tDt-Bq-8tZ"/>
+                            <constraint firstAttribute="trailing" secondItem="Tsv-Al-s7h" secondAttribute="trailing" id="wdn-F1-ouD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="jgn-v9-qrR" kind="custom" identifier="Action 1" customClass="DismissAndPushSegue" customModule="BFWControls" customModuleProvider="target" id="5dA-NI-Cyp"/>
+                        <segue destination="62w-50-ziJ" kind="custom" identifier="Action 2" customClass="DismissAndPushSegue" customModule="BFWControls" customModuleProvider="target" id="Ygs-SA-7Ra"/>
+                        <segue destination="xxm-g4-fSr" kind="custom" identifier="Action 3" customClass="DismissAndPushSegue" customModule="BFWControls" customModuleProvider="target" id="SFH-sI-0uj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Buk-hf-qjX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="241.5" y="1200.5"/>
         </scene>
         <!--Action 3-->
         <scene sceneID="txn-cO-udF">
@@ -144,17 +208,23 @@
                         <viewControllerLayoutGuide type="bottom" id="13Q-ql-FIJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eUh-PT-NTr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Action 3" id="sZm-ZO-vpI"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="200"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QX6-KD-Xdr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="806.5" y="2204.5"/>
+            <point key="canvasLocation" x="946.5" y="1179"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="CfR-nx-dnE"/>
+        <segue reference="SFH-sI-0uj"/>
+        <segue reference="nvw-hy-lN3"/>
+    </inferredMetricsTieBreakers>
 </document>
