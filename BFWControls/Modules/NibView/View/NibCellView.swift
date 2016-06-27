@@ -15,6 +15,7 @@ class NibCellView: NibView {
     @IBOutlet weak var detailTextLabel: UILabel?
     @IBOutlet weak var iconView: UIView?
     @IBOutlet weak var accessoryView: UIView?
+    @IBOutlet weak var separatorView: UIView?
 
     // MARK: - Variables and functions
 
@@ -42,11 +43,18 @@ class NibCellView: NibView {
         }
     }
     
+    @IBInspectable var showSeparator: Bool = true {
+        didSet {
+            setNeedsUpdateView()
+        }
+    }
+    
     // MARK: - NibView
     
     override func updateView() {
         super.updateView()
         accessoryView?.hidden = !showAccessory
+        separatorView?.hidden = !showSeparator
     }
 
 }
