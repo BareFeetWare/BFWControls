@@ -9,6 +9,15 @@ import UIKit
 
 class NibCellView: NibView {
 
+    // MARK: - Init
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Replace placeholders (eg [Text]) with blank text:
+        textLabel?.removePlaceholderText()
+        detailTextLabel?.removePlaceholderText()
+    }
+
     // MARK: - IBOutlets
     
     @IBOutlet weak var textLabel: UILabel?
@@ -57,4 +66,14 @@ class NibCellView: NibView {
         separatorView?.hidden = !showSeparator
     }
 
+}
+
+private extension UILabel {
+    
+    func removePlaceholderText() {
+        if let text = text where text.hasPrefix("[") && text.hasSuffix("]") {
+            self.text = nil
+        }
+    }
+    
 }
