@@ -109,9 +109,9 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
                     backdropView.alpha = backdropAlpha
                 } else {
                     containerView.insertSubview(backdropView, belowSubview: toViewController.view)
+                    backdropView.pinToSuperviewEdges()
                     backdropView.backgroundColor = UIColor.blackColor()
                     backdropView.alpha = 0.0
-                    backdropView.pinToView(containerView, attributes: [.Top, .Left, .Right, .Bottom], secondAttributes: [.Top, .Left, .Right, .Bottom], constants: [20.0, 0, 0, 0])
                 }
             }
         }
