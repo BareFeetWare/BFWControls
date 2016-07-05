@@ -73,15 +73,21 @@
 - (UIView *)viewFromNib {
     NSString *nibName = [[self class] nibName];
     NSArray *nibViews = [[[self class] bundle] loadNibNamed:nibName owner:nil options:nil];
-    UIView *nibView = nibViews.firstObject;
-    if (![nibView isKindOfClass:[self class]]) {
-        NSLog(@"**** error: first view in \"%@\" xib is class \"%@\", which is not the expected class \"%@\"", nibName, NSStringFromClass([nibView class]), NSStringFromClass([self class]));
-        nibView = nil;
+    UIView *nibView = nil;
+    for (UIView *view in nibViews) {
+        if ([view isKindOfClass:[self class]]) {
+            nibView = view;
+            break;
+        }
     }
-    nibView.frame = self.frame;
-    nibView.translatesAutoresizingMaskIntoConstraints = self.translatesAutoresizingMaskIntoConstraints;
-    nibView.tag = self.tag;
-    [nibView copyConstraintsFromView:self];
+    if (!nibView) {
+        NSLog(@"**** error: Could not find an instance of class \"%@\" in \"%@\" xib", NSStringFromClass([self class]), nibName);
+    } else {
+        nibView.frame = self.frame;
+        nibView.translatesAutoresizingMaskIntoConstraints = self.translatesAutoresizingMaskIntoConstraints;
+        nibView.tag = self.tag;
+        [nibView copyConstraintsFromView:self];
+    }
     return nibView;
 }
 

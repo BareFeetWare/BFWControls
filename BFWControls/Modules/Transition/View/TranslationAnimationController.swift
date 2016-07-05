@@ -44,7 +44,7 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
     @IBInspectable var belowTopGuide: Bool = false
     @IBInspectable var animatePresenter = false // TODO: Determine automatically
     @IBInspectable var fadeFirst: Bool = false // Fade out/in the first view controller, instead of moving.
-    @IBInspectable var backdropAlpha: CGFloat = 0.0
+    @IBInspectable var backdropColor: UIColor?
     var direction: Direction = .Left // Direction to which it presents. Dismiss direction defaults to reverse.
     let backdropView = UIView()
 
@@ -104,14 +104,12 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
                 let toDirection = animatePresenter && !isPresenting ? direction.reverse : direction
                 toViewController.view.frame = dismissedFrameInContainerView(containerView, direction: toDirection)
             }
-            if backdropAlpha > 0.0 {
-                if containerView.subviews.contains(backdropView) {
-                    backdropView.alpha = backdropAlpha
-                } else {
+            if let backdropColor = backdropColor {
+                if !containerView.subviews.contains(backdropView) {
                     containerView.insertSubview(backdropView, belowSubview: toViewController.view)
-                    backdropView.backgroundColor = UIColor.blackColor()
+                    backdropView.pinToSuperviewEdges()
+                    backdropView.backgroundColor = backdropColor
                     backdropView.alpha = 0.0
-                    backdropView.pinToView(containerView, attributes: [.Top, .Left, .Right, .Bottom], secondAttributes: [.Top, .Left, .Right, .Bottom], constants: [20.0, 0, 0, 0])
                 }
             }
         }
@@ -132,7 +130,7 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
                     toViewController?.view.frame = self.presentedFrameInContainerView(containerView)
                 }
                 if self.isPresenting {
-                   self.backdropView.alpha = self.backdropAlpha
+                    self.backdropView.alpha = 1.0
                 } else {
                     self.backdropView.alpha = 0.0
                 }
