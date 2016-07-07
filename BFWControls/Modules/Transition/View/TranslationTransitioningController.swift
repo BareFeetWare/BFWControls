@@ -19,14 +19,14 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
     @IBInspectable var bottomInset: CGFloat = 0.0
     @IBInspectable var belowTopGuide: Bool = false
     @IBInspectable var backdropColor: UIColor?
-    var direction: Direction = .Left // Direction to which it presents. Dismiss direction defaults to opposite.
+    var direction: Direction = .Up // Direction to which it presents. Dismiss direction defaults to opposite.
 
     @IBInspectable var direction_: Int {
         get {
             return direction.rawValue
         }
         set {
-            direction = Direction(rawValue: newValue) ?? .Left
+            direction = Direction(rawValue: newValue) ?? .Up
         }
     }
 
