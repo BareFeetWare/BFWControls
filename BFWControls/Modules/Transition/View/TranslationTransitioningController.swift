@@ -19,6 +19,10 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
     @IBInspectable var bottomInset: CGFloat = 0.0
     @IBInspectable var belowTopGuide: Bool = false
     @IBInspectable var backdropColor: UIColor?
+
+    /// Fade out/in the first view controller, instead of moving.
+    @IBInspectable var fadeFirst: Bool = false
+
     var direction: Direction = .Up // Direction to which it presents. Dismiss direction defaults to opposite.
 
     @IBInspectable var direction_: Int {
@@ -50,12 +54,13 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
     func animationControllerForPresentedController(
         presented: UIViewController,
         presentingController presenting: UIViewController,
-                             sourceController source: UIViewController
+        sourceController source: UIViewController
         ) -> UIViewControllerAnimatedTransitioning?
     {
         let animationController = self.animationController
         updateAnimationController()
         animationController.isPresenting = true
+        animationController.fadeFirst = fadeFirst
         return animationController
     }
 
@@ -63,6 +68,7 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
         let animationController = self.animationController
         updateAnimationController()
         animationController.isPresenting = false
+        animationController.fadeFirst = fadeFirst
         return animationController
     }
 
