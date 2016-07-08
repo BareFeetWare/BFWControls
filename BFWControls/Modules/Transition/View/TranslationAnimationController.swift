@@ -87,8 +87,12 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
         let animateFromView = animatePresenter || !isPresenting
         let toViewController = animateToView ? transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) : nil
         let fromViewController = animateFromView ? transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) : nil
-        let fadeFrom = fadeFirst && isPresenting && fromViewController?.navigationController?.viewControllers.count == 2
-        let fadeTo = fadeFirst && !isPresenting && fromViewController?.navigationController?.viewControllers.count == 1
+        let presentingViewController = isPresenting ? fromViewController : toViewController
+        let presentingNavigationController = presentingViewController as? UINavigationController ?? presentingViewController?.navigationController
+        let presentingChildViewController = presentingViewController is UINavigationController ? presentingNavigationController?.topViewController : presentingViewController
+        let isFirst = presentingChildViewController == presentingNavigationController?.topViewController ?? true
+        let fadeFrom = fadeFirst && isPresenting && isFirst
+        let fadeTo = fadeFirst && !isPresenting && isFirst
         if let toViewController = toViewController {
             if fromViewController == nil {
                 containerView.addSubview(toViewController.view)
