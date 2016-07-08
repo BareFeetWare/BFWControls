@@ -10,6 +10,8 @@ import UIKit
 
 class StaticTableViewController: UITableViewController {
     
+    @IBInspectable var stretchLastCell: Bool = false
+    
     /// Override in subclass, usually by connecting to an IBOutlet collection.
     var excludedCells: [UITableViewCell]? {
         return nil
@@ -50,8 +52,23 @@ class StaticTableViewController: UITableViewController {
         return cell
     }
     
+    // MARK: - UITableViewDelegate
+
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return super.tableView(tableView, heightForRowAtIndexPath: superIndexPathForIndexPath(indexPath))
+        var height = super.tableView(tableView, heightForRowAtIndexPath: superIndexPathForIndexPath(indexPath))
+        if stretchLastCell && indexPath.section == tableView.numberOfSections - 1 && indexPath.row == tableView.numberOfRowsInSection(0) - 1 {
+            var cellTop: CGFloat = 0.0
+            for row in 0 ..< tableView.numberOfRowsInSection(0) - 1 {
+                let indexPath = NSIndexPath(forRow: row, inSection: 0)
+                let cellHeight = self.tableView(tableView, heightForRowAtIndexPath: indexPath)
+                cellTop += cellHeight
+            }
+            let stretchedHeight = tableView.frame.size.height - cellTop
+            if stretchedHeight > height {
+                height = stretchedHeight
+            }
+        }
+        return height
     }
     
     // MARK: - Private functions
