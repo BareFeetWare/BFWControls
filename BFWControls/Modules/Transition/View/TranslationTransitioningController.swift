@@ -23,7 +23,8 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
     /// Fade out/in the first view controller, instead of moving.
     @IBInspectable var fadeFirst: Bool = false
 
-    var direction: Direction = .Up // Direction to which it presents. Dismiss direction defaults to opposite.
+    /// Direction to which it presents. Dismiss direction defaults to opposite.
+    var direction: Direction = .Up
 
     @IBInspectable var direction_: Int {
         get {
