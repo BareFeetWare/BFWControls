@@ -39,14 +39,14 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
     // MARK: - Private functions
 
     private func updateAnimationController() {
-        animationController.duration = self.duration
-        animationController.leftInset = self.leftInset
-        animationController.rightInset = self.rightInset
-        animationController.topInset = self.topInset
-        animationController.bottomInset = self.bottomInset
-        animationController.belowTopGuide = self.belowTopGuide
-        animationController.direction = self.direction
-        animationController.backdropColor = self.backdropColor
+        animationController.duration = duration
+        animationController.leftInset = leftInset
+        animationController.rightInset = rightInset
+        animationController.topInset = topInset
+        animationController.bottomInset = bottomInset
+        animationController.belowTopGuide = belowTopGuide
+        animationController.direction = direction
+        animationController.backdropColor = backdropColor
     }
 
     // MARK: - UIViewControllerTransitioningDelegate
