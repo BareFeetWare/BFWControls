@@ -83,9 +83,7 @@
     if (!nibView) {
         NSLog(@"**** error: Could not find an instance of class \"%@\" in \"%@\" xib", NSStringFromClass([self class]), nibName);
     } else {
-        nibView.frame = self.frame;
-        nibView.translatesAutoresizingMaskIntoConstraints = self.translatesAutoresizingMaskIntoConstraints;
-        nibView.tag = self.tag;
+        [nibView copyPropertiesFromView:self];
         [nibView copyConstraintsFromView:self];
     }
     return nibView;
@@ -122,6 +120,7 @@
 
 - (void)copyPropertiesFromView:(UIView *)view {
     [self copyAnimatablePropertiesFromView:view];
+    self.translatesAutoresizingMaskIntoConstraints = view.translatesAutoresizingMaskIntoConstraints;
     self.frame = view.frame;
     self.tag = view.tag;
     self.userInteractionEnabled = view.userInteractionEnabled;
