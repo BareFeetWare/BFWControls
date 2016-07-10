@@ -13,10 +13,10 @@ class TranslationNavigationDelegate: NSObject, UINavigationControllerDelegate {
     // MARK: - Variables
 
     @IBInspectable var duration: NSTimeInterval = 0.3
-    @IBInspectable var leftInset: CGFloat = 5.0
-    @IBInspectable var rightInset: CGFloat = 5.0
+    @IBInspectable var leftInset: CGFloat = 0.0
+    @IBInspectable var rightInset: CGFloat = 0.0
     @IBInspectable var topInset: CGFloat = 0.0
-    @IBInspectable var bottomInset: CGFloat = 5.0
+    @IBInspectable var bottomInset: CGFloat = 0.0
     @IBInspectable var belowTopGuide: Bool = false
     
     var direction: Direction = .Left
@@ -42,10 +42,10 @@ class TranslationNavigationDelegate: NSObject, UINavigationControllerDelegate {
     }
 
     /// Fade out/in the first view controller, instead of moving.
-    @IBInspectable var fadeFirst: Bool = true
+    @IBInspectable var fadeFirst: Bool = false
     
     /// Clears background of view controllers so navigation background shows through.
-    @IBInspectable var clearBackgrounds: Bool = true
+    @IBInspectable var clearBackgrounds: Bool = false
 
     // MARK: - UINavigationControllerDelegate
 
