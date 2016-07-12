@@ -40,6 +40,7 @@
 #pragma mark - instance methods
 
 - (void)copyConstraintsFromView:(UIView *)view {
+    self.translatesAutoresizingMaskIntoConstraints = view.translatesAutoresizingMaskIntoConstraints;
     for (NSLayoutConstraint *constraint in view.constraints) {
         id firstItem = constraint.firstItem;
         id secondItem = constraint.secondItem;
@@ -120,7 +121,6 @@
 
 - (void)copyPropertiesFromView:(UIView *)view {
     [self copyAnimatablePropertiesFromView:view];
-    self.translatesAutoresizingMaskIntoConstraints = view.translatesAutoresizingMaskIntoConstraints;
     self.frame = view.frame;
     self.tag = view.tag;
     self.userInteractionEnabled = view.userInteractionEnabled;
