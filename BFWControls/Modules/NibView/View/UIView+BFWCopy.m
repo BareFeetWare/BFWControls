@@ -40,6 +40,7 @@
 #pragma mark - instance methods
 
 - (void)copyConstraintsFromView:(UIView *)view {
+    self.translatesAutoresizingMaskIntoConstraints = view.translatesAutoresizingMaskIntoConstraints;
     for (NSLayoutConstraint *constraint in view.constraints) {
         id firstItem = constraint.firstItem;
         id secondItem = constraint.secondItem;
@@ -83,9 +84,7 @@
     if (!nibView) {
         NSLog(@"**** error: Could not find an instance of class \"%@\" in \"%@\" xib", NSStringFromClass([self class]), nibName);
     } else {
-        nibView.frame = self.frame;
-        nibView.translatesAutoresizingMaskIntoConstraints = self.translatesAutoresizingMaskIntoConstraints;
-        nibView.tag = self.tag;
+        [nibView copyPropertiesFromView:self];
         [nibView copyConstraintsFromView:self];
     }
     return nibView;
