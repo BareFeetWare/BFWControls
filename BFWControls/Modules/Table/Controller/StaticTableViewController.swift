@@ -11,7 +11,7 @@ import UIKit
 
 class StaticTableViewController: UITableViewController {
     
-    @IBInspectable var stretchLastCell: Bool = false
+    @IBInspectable var fillUsingLastCell: Bool = false
     
     /// Override in subclass, usually by connecting to an IBOutlet collection.
     var excludedCells: [UITableViewCell]? {
@@ -57,7 +57,7 @@ class StaticTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         var height = super.tableView(tableView, heightForRowAtIndexPath: superIndexPathForIndexPath(indexPath))
-        if stretchLastCell && indexPath.section == tableView.numberOfSections - 1 && indexPath.row == tableView.numberOfRowsInSection(0) - 1 {
+        if fillUsingLastCell && indexPath.section == tableView.numberOfSections - 1 && indexPath.row == tableView.numberOfRowsInSection(0) - 1 {
             var cellTop: CGFloat = 0.0
             for row in 0 ..< tableView.numberOfRowsInSection(0) - 1 {
                 let indexPath = NSIndexPath(forRow: row, inSection: 0)
