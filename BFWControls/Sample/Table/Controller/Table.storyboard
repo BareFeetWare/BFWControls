@@ -32,21 +32,34 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="8hk-32-xVU" style="IBUITableViewCellStyleDefault" id="JAg-HN-Szs">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="JAg-HN-Szs">
                                         <rect key="frame" x="0.0" y="152" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JAg-HN-Szs" id="BZQ-Td-snF">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Last cell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8hk-32-xVU">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last cell" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clK-Cz-v8D">
+                                                    <rect key="frame" x="8" y="11" width="63.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8kr-yE-sDf">
+                                                    <rect key="frame" x="0.0" y="41.5" width="375" height="2"/>
+                                                    <color key="backgroundColor" red="1" green="0.0" blue="0.50196081400000003" alpha="0.49992081929999999" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="2" id="nsv-E6-14b"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="8kr-yE-sDf" firstAttribute="leading" secondItem="BZQ-Td-snF" secondAttribute="leading" id="4Tc-tU-nEK"/>
+                                                <constraint firstItem="clK-Cz-v8D" firstAttribute="leading" secondItem="BZQ-Td-snF" secondAttribute="leading" constant="8" id="HBY-ze-vut"/>
+                                                <constraint firstItem="clK-Cz-v8D" firstAttribute="centerY" secondItem="BZQ-Td-snF" secondAttribute="centerY" id="fdg-I9-jeJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="8kr-yE-sDf" secondAttribute="bottom" id="ueE-t4-pIp"/>
+                                                <constraint firstAttribute="trailing" secondItem="8kr-yE-sDf" secondAttribute="trailing" id="xVh-PV-Eyo"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -66,7 +79,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8D-46-BCW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="232" y="379"/>
+            <point key="canvasLocation" x="231.5" y="378.5"/>
         </scene>
     </scenes>
 </document>
