@@ -33,7 +33,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="pbM-x2-7Ow" kind="presentation" modalPresentationStyle="overFullScreen" id="o1H-qm-W94"/>
+                                            <segue destination="pbM-x2-7Ow" kind="presentation" id="o1H-qm-W94"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="K1p-Kw-Dbh" style="IBUITableViewCellStyleDefault" id="Y0X-dh-Kfq">
@@ -53,7 +53,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Dpk-7F-Zdz" kind="presentation" modalPresentationStyle="overFullScreen" id="WgK-j8-4cA"/>
+                                            <segue destination="Dpk-7F-Zdz" kind="presentation" id="WgK-j8-4cA"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>

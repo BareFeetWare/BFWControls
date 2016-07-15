@@ -47,7 +47,7 @@ class AlertViewController: UIViewController {
         return presentingViewController?.presentedViewController is UINavigationController
     }
 
-    // MARK: - Actions
+    // MARK: - IBActions
     
     @IBAction func actionButton(button: UIButton) {
         let index = alertView.indexOfButton(button)!
@@ -75,6 +75,18 @@ class AlertViewController: UIViewController {
         } else {
             navigationController?.popViewControllerAnimated(true)
         }
+    }
+    
+    // MARK: - Init
+    
+    override init(nibName: String?, bundle: NSBundle?) {
+        super.init(nibName: nibName, bundle: bundle)
+        modalPresentationStyle = .OverFullScreen
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        modalPresentationStyle = .OverFullScreen
     }
     
 }
