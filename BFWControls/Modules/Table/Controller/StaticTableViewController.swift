@@ -38,42 +38,6 @@ class StaticTableViewController: UITableViewController {
         return indexPaths
     }
     
-    // MARK: - UITableViewDataSource
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let numberOfRowsInSection = super.tableView(tableView, numberOfRowsInSection: section)
-        let indexPath = NSIndexPath(forRow: numberOfRowsInSection - 1, inSection: section)
-        let numberOfExcludedCellsInThisSection = numberOfExcludedRowsBeforeIndexPath(indexPath)
-        return super.tableView(tableView, numberOfRowsInSection: section) - numberOfExcludedCellsInThisSection
-    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = super.tableView(tableView, cellForRowAtIndexPath: superIndexPathForIndexPath(indexPath))
-        cell.layoutIfNeeded()
-        return cell
-    }
-    
-    // MARK: - UITableViewDelegate
-
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        var height = super.tableView(tableView, heightForRowAtIndexPath: superIndexPathForIndexPath(indexPath))
-        if fillUsingLastCell
-            && numberOfSectionsInTableView(tableView) == 1
-            && indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1
-        {
-            var cellTop: CGFloat = 0.0
-            for row in 0 ..< indexPath.row {
-                let beforeIndexPath = NSIndexPath(forRow: row, inSection: indexPath.section)
-                cellTop += self.tableView(tableView, heightForRowAtIndexPath: beforeIndexPath)
-            }
-            let maxHeight = tableView.frame.size.height - cellTop
-            if height < maxHeight {
-                height = maxHeight
-            }
-        }
-        return height
-    }
-    
     // MARK: - Private functions
     
     private func numberOfExcludedRowsBeforeIndexPath(indexPath: NSIndexPath) -> Int {
@@ -96,6 +60,42 @@ class StaticTableViewController: UITableViewController {
     private func superIndexPathForIndexPath(indexPath: NSIndexPath) -> NSIndexPath {
         return NSIndexPath(forRow: indexPath.row + numberOfExcludedRowsBeforeIndexPath(indexPath),
                            inSection: indexPath.section)
+    }
+    
+    // MARK: - UITableViewDataSource
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let numberOfRowsInSection = super.tableView(tableView, numberOfRowsInSection: section)
+        let indexPath = NSIndexPath(forRow: numberOfRowsInSection - 1, inSection: section)
+        let numberOfExcludedCellsInThisSection = numberOfExcludedRowsBeforeIndexPath(indexPath)
+        return super.tableView(tableView, numberOfRowsInSection: section) - numberOfExcludedCellsInThisSection
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = super.tableView(tableView, cellForRowAtIndexPath: superIndexPathForIndexPath(indexPath))
+        cell.layoutIfNeeded()
+        return cell
+    }
+    
+    // MARK: - UITableViewDelegate
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        var height = super.tableView(tableView, heightForRowAtIndexPath: superIndexPathForIndexPath(indexPath))
+        if fillUsingLastCell
+            && numberOfSectionsInTableView(tableView) == 1
+            && indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1
+        {
+            var cellTop = tableView.contentInset.top
+            for row in 0 ..< indexPath.row {
+                let beforeIndexPath = NSIndexPath(forRow: row, inSection: indexPath.section)
+                cellTop += self.tableView(tableView, heightForRowAtIndexPath: beforeIndexPath)
+            }
+            let maxHeight = tableView.frame.size.height - cellTop
+            if height < maxHeight {
+                height = maxHeight
+            }
+        }
+        return height
     }
     
 }
