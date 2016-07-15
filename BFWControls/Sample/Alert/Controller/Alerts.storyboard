@@ -199,7 +199,6 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tsv-Al-s7h" customClass="ActionSheetView" customModule="BFWControls" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Action Sheet"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="message" value="Add a message here"/>
@@ -209,7 +208,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="nYa-US-Vgf" firstAttribute="top" secondItem="Tsv-Al-s7h" secondAttribute="bottom" id="PFF-qo-HhQ"/>
                             <constraint firstItem="Tsv-Al-s7h" firstAttribute="top" secondItem="MAP-R3-R35" secondAttribute="top" id="Thz-Xy-Phb"/>
