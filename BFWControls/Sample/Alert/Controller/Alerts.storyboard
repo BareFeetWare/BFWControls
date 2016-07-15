@@ -33,7 +33,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="pbM-x2-7Ow" kind="presentation" modalPresentationStyle="overFullScreen" id="o1H-qm-W94"/>
+                                            <segue destination="pbM-x2-7Ow" kind="presentation" id="o1H-qm-W94"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="K1p-Kw-Dbh" style="IBUITableViewCellStyleDefault" id="Y0X-dh-Kfq">
@@ -53,8 +53,36 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Dpk-7F-Zdz" kind="presentation" modalPresentationStyle="overFullScreen" id="WgK-j8-4cA"/>
+                                            <segue destination="Dpk-7F-Zdz" kind="presentation" id="WgK-j8-4cA"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="cvR-Uv-5EZ">
+                                        <rect key="frame" x="0.0" y="152" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cvR-Uv-5EZ" id="i5R-14-RXB">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U6R-jc-NOt">
+                                                    <rect key="frame" x="224" y="8" width="143" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test first responder active" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qga-Ay-AQ4">
+                                                    <rect key="frame" x="16" y="11" width="200" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="U6R-jc-NOt" firstAttribute="baseline" secondItem="qga-Ay-AQ4" secondAttribute="baseline" id="BYL-LL-IVS"/>
+                                                <constraint firstItem="qga-Ay-AQ4" firstAttribute="leading" secondItem="i5R-14-RXB" secondAttribute="leading" constant="16" id="cds-Wn-w4k"/>
+                                                <constraint firstItem="qga-Ay-AQ4" firstAttribute="centerY" secondItem="i5R-14-RXB" secondAttribute="centerY" id="hGV-hV-3hS"/>
+                                                <constraint firstItem="U6R-jc-NOt" firstAttribute="leading" secondItem="qga-Ay-AQ4" secondAttribute="trailing" constant="8" id="ulL-SI-Z15"/>
+                                                <constraint firstAttribute="trailing" secondItem="U6R-jc-NOt" secondAttribute="trailing" constant="8" id="zYW-5J-UGV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -171,7 +199,6 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tsv-Al-s7h" customClass="ActionSheetView" customModule="BFWControls" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Action Sheet"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="message" value="Add a message here"/>
@@ -181,7 +208,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="nYa-US-Vgf" firstAttribute="top" secondItem="Tsv-Al-s7h" secondAttribute="bottom" id="PFF-qo-HhQ"/>
                             <constraint firstItem="Tsv-Al-s7h" firstAttribute="top" secondItem="MAP-R3-R35" secondAttribute="top" id="Thz-Xy-Phb"/>
@@ -223,8 +250,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="CfR-nx-dnE"/>
-        <segue reference="SFH-sI-0uj"/>
         <segue reference="nvw-hy-lN3"/>
+        <segue reference="CfR-nx-dnE"/>
+        <segue reference="6s3-eO-0dE"/>
     </inferredMetricsTieBreakers>
 </document>
