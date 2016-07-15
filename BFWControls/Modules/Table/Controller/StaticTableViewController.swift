@@ -11,7 +11,8 @@ import UIKit
 
 class StaticTableViewController: UITableViewController {
     
-    @IBInspectable var fillUsingLastCell: Bool = false
+    @IBInspectable var filledUsingLastCell: Bool = false
+    @IBInspectable var automaticCellHeights: Bool = false
     
     /// Override in subclass, usually by connecting to an IBOutlet collection.
     var excludedCells: [UITableViewCell]? {
@@ -62,17 +63,14 @@ class StaticTableViewController: UITableViewController {
                            inSection: indexPath.section)
     }
     
-    private func updateCellHeights() {
-        tableView.beginUpdates()
-        tableView.endUpdates()
-    }
-    
     // MARK: - UIViewController
     
-    // TODO: Implement with new callback methods.
+    // TODO: Implement with newer callback methods.
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         super.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
-        updateCellHeights()
+        // Adjust cell heights:
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
     
     // MARK: - UITableViewDataSource
@@ -94,19 +92,28 @@ class StaticTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         var height = super.tableView(tableView, heightForRowAtIndexPath: superIndexPathForIndexPath(indexPath))
-        if fillUsingLastCell
-            && numberOfSectionsInTableView(tableView) == 1
-            && indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1
-        {
-            var cellTop = tableView.contentInset.top
-            for row in 0 ..< indexPath.row {
-                let beforeIndexPath = NSIndexPath(forRow: row, inSection: indexPath.section)
-                cellTop += self.tableView(tableView, heightForRowAtIndexPath: beforeIndexPath)
+        if filledUsingLastCell {
+            let lastSection = numberOfSectionsInTableView(tableView) - 1
+            let lastRow = self.tableView(tableView, numberOfRowsInSection: lastSection) - 1
+            let lastIndexPath = NSIndexPath(forRow: lastRow, inSection: lastSection)
+            let isLastCell = indexPath == lastIndexPath
+            if isLastCell {
+                var lastCellTop = tableView.contentInset.top
+                for section in 0 ... lastSection {
+                    for row in 0 ... self.tableView(tableView, numberOfRowsInSection: section) - 1 {
+                        let indexPath = NSIndexPath(forRow: row, inSection: section)
+                        if indexPath != lastIndexPath {
+                            lastCellTop += self.tableView(tableView, heightForRowAtIndexPath: indexPath)
+                        }
+                    }
+                }
+                let maxHeight = tableView.frame.size.height - lastCellTop
+                if height < maxHeight {
+                    height = maxHeight
+                }
             }
-            let maxHeight = tableView.frame.size.height - cellTop
-            if height < maxHeight {
-                height = maxHeight
-            }
+        } else if automaticCellHeights {
+            height = UITableViewAutomaticDimension
         }
         return height
     }

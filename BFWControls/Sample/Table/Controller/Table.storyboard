@@ -74,7 +74,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="fillUsingLastCell" value="YES"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="filledUsingLastCell" value="YES"/>
                     </userDefinedRuntimeAttributes>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8D-46-BCW" userLabel="First Responder" sceneMemberID="firstResponder"/>
