@@ -89,4 +89,12 @@ class AlertViewController: UIViewController {
         modalPresentationStyle = .OverFullScreen
     }
     
+    // MARK: - UIViewController
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        // TODO: Fix responder chain for button taps when presenter still have text field as first responder. Following is a workaround.
+        presentingViewController?.view.endEditing(true)
+    }
+    
 }
