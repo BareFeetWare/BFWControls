@@ -57,16 +57,18 @@ class StaticTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         var height = super.tableView(tableView, heightForRowAtIndexPath: superIndexPathForIndexPath(indexPath))
-        if fillUsingLastCell && indexPath.section == tableView.numberOfSections - 1 && indexPath.row == tableView.numberOfRowsInSection(0) - 1 {
+        if fillUsingLastCell
+            && numberOfSectionsInTableView(tableView) == 1
+            && indexPath.row == self.tableView(tableView, numberOfRowsInSection: indexPath.section) - 1
+        {
             var cellTop: CGFloat = 0.0
-            for row in 0 ..< tableView.numberOfRowsInSection(0) - 1 {
-                let indexPath = NSIndexPath(forRow: row, inSection: 0)
-                let cellHeight = self.tableView(tableView, heightForRowAtIndexPath: indexPath)
-                cellTop += cellHeight
+            for row in 0 ..< indexPath.row {
+                let beforeIndexPath = NSIndexPath(forRow: row, inSection: indexPath.section)
+                cellTop += self.tableView(tableView, heightForRowAtIndexPath: beforeIndexPath)
             }
-            let stretchedHeight = tableView.frame.size.height - cellTop
-            if stretchedHeight > height {
-                height = stretchedHeight
+            let maxHeight = tableView.frame.size.height - cellTop
+            if height < maxHeight {
+                height = maxHeight
             }
         }
         return height
