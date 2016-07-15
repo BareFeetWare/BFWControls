@@ -62,6 +62,19 @@ class StaticTableViewController: UITableViewController {
                            inSection: indexPath.section)
     }
     
+    private func updateCellHeights() {
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    
+    // MARK: - UIViewController
+    
+    // TODO: Implement with new callback methods.
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        super.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
+        updateCellHeights()
+    }
+    
     // MARK: - UITableViewDataSource
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
