@@ -32,6 +32,8 @@
 		E277367B1CC8CC930033941A /* OpenURLSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E277367A1CC8CC930033941A /* OpenURLSegue.swift */; };
 		E287E54F1CB61F1E0071E87C /* TranslationNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E287E54E1CB61F1E0071E87C /* TranslationNavigationDelegate.swift */; };
 		E287E5551CB63EB60071E87C /* DismissAndPushSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E287E5541CB63EB60071E87C /* DismissAndPushSegue.swift */; };
+		E28D6A6C1D388825007EE85F /* StaticTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28D6A6B1D388825007EE85F /* StaticTableViewController.swift */; };
+		E28D6A701D3888B8007EE85F /* Table.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E28D6A6F1D3888B8007EE85F /* Table.storyboard */; };
 		E28F99621C446E20000A0A60 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F99611C446E20000A0A60 /* BlurView.swift */; };
 		E293CB631C9D7913006BB8D7 /* NibCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E293CB621C9D7913006BB8D7 /* NibCellView.swift */; };
 		E29D4CBE1CB23B9400A0C7C4 /* TranslationAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D4CBD1CB23B9400A0C7C4 /* TranslationAnimationController.swift */; };
@@ -83,6 +85,8 @@
 		E277367A1CC8CC930033941A /* OpenURLSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenURLSegue.swift; sourceTree = "<group>"; };
 		E287E54E1CB61F1E0071E87C /* TranslationNavigationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationNavigationDelegate.swift; sourceTree = "<group>"; };
 		E287E5541CB63EB60071E87C /* DismissAndPushSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissAndPushSegue.swift; sourceTree = "<group>"; };
+		E28D6A6B1D388825007EE85F /* StaticTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticTableViewController.swift; sourceTree = "<group>"; };
+		E28D6A6F1D3888B8007EE85F /* Table.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Table.storyboard; sourceTree = "<group>"; };
 		E28F99611C446E20000A0A60 /* BlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		E293CB621C9D7913006BB8D7 /* NibCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibCellView.swift; sourceTree = "<group>"; };
 		E29D4CBD1CB23B9400A0C7C4 /* TranslationAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationAnimationController.swift; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 				E25687C11C6C5B6000DD14D5 /* Layout */,
 				E20256B11BEC94AA00095590 /* NibView */,
 				E26F2AE01CE1807600B56416 /* Styled */,
+				E28D6A691D388825007EE85F /* Table */,
 				E202566F1BEAD92700095590 /* Transition */,
 			);
 			path = Modules;
@@ -184,6 +189,7 @@
 				E274E0691CC5A1B600262254 /* Alert */,
 				E274E06C1CC5A1B600262254 /* Developer */,
 				E274E06F1CC5A1B600262254 /* Morph */,
+				E28D6A6D1D38889D007EE85F /* Table */,
 			);
 			path = Sample;
 			sourceTree = "<group>";
@@ -314,6 +320,38 @@
 			children = (
 				E274E0711CC5A1B600262254 /* Morph.storyboard */,
 				E274E0731CC5A1B600262254 /* MorphTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E28D6A691D388825007EE85F /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				E28D6A6A1D388825007EE85F /* Controller */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
+		E28D6A6A1D388825007EE85F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E28D6A6B1D388825007EE85F /* StaticTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E28D6A6D1D38889D007EE85F /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				E28D6A6E1D38889D007EE85F /* Controller */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
+		E28D6A6E1D38889D007EE85F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E28D6A6F1D3888B8007EE85F /* Table.storyboard */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -479,6 +517,7 @@
 				E20256A71BEB413300095590 /* Assets.xcassets in Resources */,
 				E2B170161CBC562D00D391B4 /* StaticAlertView.xib in Resources */,
 				E274E0751CC5A1B600262254 /* Developer.storyboard in Resources */,
+				E28D6A701D3888B8007EE85F /* Table.storyboard in Resources */,
 				E274E07C1CC5A3D100262254 /* AlertViewOverlay.xib in Resources */,
 				E2B170141CBC562D00D391B4 /* AlertView.xib in Resources */,
 				E274E07A1CC5A1EE00262254 /* Alerts.storyboard in Resources */,
@@ -522,6 +561,7 @@
 				E274E07E1CC5A98C00262254 /* AlertViewOverlay.swift in Sources */,
 				E29D4CD51CB35CA100A0C7C4 /* AutoNextViewController.swift in Sources */,
 				E2FF6C7A1C413F37005514B6 /* LayerView.swift in Sources */,
+				E28D6A6C1D388825007EE85F /* StaticTableViewController.swift in Sources */,
 				E277367B1CC8CC930033941A /* OpenURLSegue.swift in Sources */,
 				E26F2AE71CE1807600B56416 /* TextAttributes.swift in Sources */,
 				E2DE2EF11BEDFE1300636D0D /* UIImageEffects.m in Sources */,

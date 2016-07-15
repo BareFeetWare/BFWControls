@@ -1,9 +1,10 @@
 //
 //  StaticTableViewController.swift
-//  Spring
+//  BFWControls
 //
 //  Created by Tom Brodhurst-Hill on 29/05/2016.
-//  Copyright © 2016 Optus. All rights reserved.
+//  Copyright © 2016 BareFeetWare.
+//  Free to use at your own risk, with acknowledgement to BareFeetWare.
 //
 
 import UIKit
