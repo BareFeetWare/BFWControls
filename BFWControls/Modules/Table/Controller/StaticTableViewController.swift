@@ -11,12 +11,28 @@ import UIKit
 
 class StaticTableViewController: UITableViewController {
     
+    // MARK: - Variables
+
     @IBInspectable var filledUsingLastCell: Bool = false
-    @IBInspectable var automaticCellHeights: Bool = false
     
     /// Override in subclass, usually by connecting to an IBOutlet collection.
     var excludedCells: [UITableViewCell]? {
         return nil
+    }
+    
+    // TODO: Move to UITableView and use indexPath so it works with dynamic cells?
+    var lastCell: UITableViewCell? {
+        var lastCell: UITableViewCell?
+        for wrapperView in tableView.subviews {
+            for subview in wrapperView.subviews {
+                if let cell = subview as? UITableViewCell {
+                    if lastCell == nil || cell.frame.origin.y > lastCell!.frame.origin.y {
+                        lastCell = cell
+                    }
+                }
+            }
+        }
+        return lastCell
     }
     
     // MARK: - Functions
@@ -65,12 +81,16 @@ class StaticTableViewController: UITableViewController {
     
     // MARK: - UIViewController
     
-    // TODO: Implement with newer callback methods.
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        super.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
-        // Adjust cell heights:
-        tableView.beginUpdates()
-        tableView.endUpdates()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // TODO: Check that lastCell isn't called if filledUsingLastCell == false
+        if let lastCell = lastCell where filledUsingLastCell {
+            let adjustment = tableView.frame.height + tableView.contentInset.top - CGRectGetMaxY(lastCell.frame)
+            if adjustment > 0 {
+                lastCell.frame.size.height += adjustment
+                lastCell.setNeedsLayout()
+            }
+        }
     }
     
     // MARK: - UITableViewDataSource
@@ -86,36 +106,6 @@ class StaticTableViewController: UITableViewController {
         let cell = super.tableView(tableView, cellForRowAtIndexPath: superIndexPathForIndexPath(indexPath))
         cell.layoutIfNeeded()
         return cell
-    }
-    
-    // MARK: - UITableViewDelegate
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        var height = super.tableView(tableView, heightForRowAtIndexPath: superIndexPathForIndexPath(indexPath))
-        if filledUsingLastCell {
-            let lastSection = numberOfSectionsInTableView(tableView) - 1
-            let lastRow = self.tableView(tableView, numberOfRowsInSection: lastSection) - 1
-            let lastIndexPath = NSIndexPath(forRow: lastRow, inSection: lastSection)
-            let isLastCell = indexPath == lastIndexPath
-            if isLastCell {
-                var lastCellTop = tableView.contentInset.top
-                for section in 0 ... lastSection {
-                    for row in 0 ... self.tableView(tableView, numberOfRowsInSection: section) - 1 {
-                        let indexPath = NSIndexPath(forRow: row, inSection: section)
-                        if indexPath != lastIndexPath {
-                            lastCellTop += self.tableView(tableView, heightForRowAtIndexPath: indexPath)
-                        }
-                    }
-                }
-                let maxHeight = tableView.frame.size.height - lastCellTop
-                if height < maxHeight {
-                    height = maxHeight
-                }
-            }
-        } else if automaticCellHeights {
-            height = UITableViewAutomaticDimension
-        }
-        return height
     }
     
 }
