@@ -108,4 +108,8 @@ class StaticTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return super.tableView(tableView, heightForRowAtIndexPath: superIndexPathForIndexPath(indexPath))
+    }
+    
 }
