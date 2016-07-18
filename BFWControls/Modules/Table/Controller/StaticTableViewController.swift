@@ -20,18 +20,12 @@ class StaticTableViewController: UITableViewController {
         return nil
     }
     
-    // TODO: Move to UITableView and use indexPath so it works with dynamic cells?
+    // TODO: Move to UITableView?
     var lastCell: UITableViewCell? {
-        var lastCell: UITableViewCell?
-        for wrapperView in tableView.subviews {
-            for subview in wrapperView.subviews {
-                if let cell = subview as? UITableViewCell {
-                    if lastCell == nil || cell.frame.origin.y > lastCell!.frame.origin.y {
-                        lastCell = cell
-                    }
-                }
-            }
-        }
+        let lastSection = numberOfSectionsInTableView(tableView) - 1
+        let lastRow = self.tableView(tableView, numberOfRowsInSection: lastSection) - 1
+        let indexPath = NSIndexPath(forRow: lastRow, inSection: lastSection)
+        let lastCell = tableView.cellForRowAtIndexPath(indexPath)
         return lastCell
     }
     
@@ -108,6 +102,8 @@ class StaticTableViewController: UITableViewController {
         return cell
     }
     
+    // MARK: - UITableViewDelegate
+
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return super.tableView(tableView, heightForRowAtIndexPath: superIndexPathForIndexPath(indexPath))
     }
