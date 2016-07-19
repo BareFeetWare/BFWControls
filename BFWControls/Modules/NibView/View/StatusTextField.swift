@@ -67,7 +67,7 @@ class StatusTextField: NibTextField {
     private var externalDelegate: UITextFieldDelegate?
     
     private var isPlaceholderAtTitle: Bool {
-        return text?.characters.count > 0
+        return !(text?.isEmpty ?? true)
     }
     
     private var statusTextFieldNibView: StatusTextFieldNibView? {
