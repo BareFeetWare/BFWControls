@@ -23,6 +23,7 @@ class AlertViewController: UIViewController {
     @IBInspectable var action1Segue: String?
     @IBInspectable var action2Segue: String?
     @IBInspectable var action3Segue: String?
+    @IBInspectable var autoDismisses: Bool = true
     
     var delegate: AlertViewDelegate?
     
@@ -61,12 +62,12 @@ class AlertViewController: UIViewController {
                     ?? alertView.buttonTitleAtIndex(index)!
                 performSegueWithIdentifier(identifer, sender: alertView)
             }
-            if !isInNavigationController {
+            if !isInNavigationController && autoDismisses {
                 dismissAlertView()
             }
         }
     }
-
+    
     // MARK: - Actions
     
     func dismissAlertView() {
@@ -93,7 +94,7 @@ class AlertViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        // TODO: Fix responder chain for button taps when presenter still have text field as first responder. Following is a workaround.
+        // TODO: Fix responder chain for button taps when presenter still has text field as first responder. The following is a workaround.
         presentingViewController?.view.endEditing(true)
     }
     
