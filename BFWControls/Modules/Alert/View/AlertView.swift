@@ -95,16 +95,19 @@ import UIKit
     // MARK: - Private variables and functions
 
     private var buttons: [UIButton] {
-        return [button0, button1, button2, button3].flatMap{ $0 }
+        return [button0, button1, button2, button3].flatMap { $0 }
+    }
+    
+    private var displayedButton0Title: String {
+        return button0Title ?? (hasCancel ? ButtonTitle.cancel : ButtonTitle.ok)
     }
     
     private var isHorizontalLayout: Bool {
         var isHorizontalLayout = false
         if button2Title == nil && button3Title == nil {
-            if let button0Title = button0Title,
-                let button1Title = button1Title
+            if let button1Title = button1Title
                 // TODO: Use total width of characters instead of count.
-                where button0Title.characters.count <= Constant.maxHorizontalButtonTitleCharacterCount
+                where displayedButton0Title.characters.count <= Constant.maxHorizontalButtonTitleCharacterCount
                     && button1Title.characters.count <= Constant.maxHorizontalButtonTitleCharacterCount
             {
                 isHorizontalLayout = true
@@ -134,8 +137,7 @@ import UIKit
 
     override func updateView() {
         super.updateView()
-        let buttonTitle = button0Title ?? (hasCancel ? ButtonTitle.cancel : ButtonTitle.ok)
-        button0?.setTitle(buttonTitle, forState: .Normal)
+        button0?.setTitle(displayedButton0Title, forState: .Normal)
         hideUnused()
     }
     
