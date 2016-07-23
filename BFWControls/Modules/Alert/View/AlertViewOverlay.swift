@@ -84,4 +84,13 @@ import UIKit
         }
     }
     
+    @IBInspectable var maxHorizontalButtonTitleCharacterCount: Int {
+        get {
+            return alertView.maxHorizontalButtonTitleCharacterCount
+        }
+        set {
+            alertView.maxHorizontalButtonTitleCharacterCount = newValue
+        }
+    }
+
 }

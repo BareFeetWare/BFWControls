@@ -18,10 +18,6 @@ import UIKit
         static let ok = "OK"
     }
 
-    struct Constant {
-        static let maxHorizontalButtonTitleCharacterCount = 9
-    }
-
     // MARK: - IBOutlets
 
     @IBOutlet weak var titleLabel: UILabel?
@@ -80,7 +76,13 @@ import UIKit
             setNeedsUpdateView()
         }
     }
-
+    
+    @IBInspectable var maxHorizontalButtonTitleCharacterCount: Int = 9 {
+        didSet {
+            setNeedsUpdateView()
+        }
+    }
+    
     // MARK: - Functions
     
     func buttonTitleAtIndex(index: Int) -> String? {
@@ -107,8 +109,8 @@ import UIKit
         if button2Title == nil && button3Title == nil {
             if let button1Title = button1Title
                 // TODO: Use total width of characters instead of count.
-                where displayedButton0Title.characters.count <= Constant.maxHorizontalButtonTitleCharacterCount
-                    && button1Title.characters.count <= Constant.maxHorizontalButtonTitleCharacterCount
+                where displayedButton0Title.characters.count <= maxHorizontalButtonTitleCharacterCount
+                    && button1Title.characters.count <= maxHorizontalButtonTitleCharacterCount
             {
                 isHorizontalLayout = true
             }
@@ -120,7 +122,7 @@ import UIKit
         button1?.hidden = button1Title == nil
         button2?.hidden = button2Title == nil
         button3?.hidden = button3Title == nil
-        messageLabel?.activateOnlyConstraintsWithFirstVisibleInViews([button3, button2, button1, button0].flatMap{ $0 })
+        messageLabel?.activateOnlyConstraintsWithFirstVisibleInViews(buttons)
         if let horizontalButtonsLayoutConstraints = horizontalButtonsLayoutConstraints,
             let verticalButtonsLayoutConstraints = verticalButtonsLayoutConstraints {
             if isHorizontalLayout {
