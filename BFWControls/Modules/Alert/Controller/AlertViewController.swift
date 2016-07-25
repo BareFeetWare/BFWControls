@@ -53,7 +53,7 @@ class AlertViewController: UIViewController {
     @IBAction func actionButton(button: UIButton) {
         let index = alertView.indexOfButton(button)!
         if alertView.hasCancel && index == 0 {
-            dismissAlertView()
+            dismissAlert(button)
         } else {
             if let delegate = delegate {
                 delegate.alertView(alertView, clickedButtonAtIndex: index)
@@ -63,14 +63,14 @@ class AlertViewController: UIViewController {
                 performSegueWithIdentifier(identifer, sender: alertView)
             }
             if !isInNavigationController && autoDismisses {
-                dismissAlertView()
+                dismissAlert(button)
             }
         }
     }
     
     // MARK: - Actions
     
-    func dismissAlertView() {
+    @IBAction func dismissAlert(sender: AnyObject?) {
         if presentingViewController != nil {
             dismissViewControllerAnimated(true, completion: nil)
         } else {
