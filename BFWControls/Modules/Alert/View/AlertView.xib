@@ -59,8 +59,11 @@
                 <constraint firstAttribute="trailing" secondItem="QFr-wE-oRA" secondAttribute="trailing" constant="8" id="5pA-BF-E4d"/>
                 <constraint firstItem="l6w-Kv-MGK" firstAttribute="top" secondItem="XwE-ND-HJR" secondAttribute="bottom" id="64t-rO-aiO"/>
                 <constraint firstItem="scg-Tb-F35" firstAttribute="leading" secondItem="ZxU-1y-cua" secondAttribute="leading" id="9mK-9E-o4b"/>
+                <constraint firstItem="scg-Tb-F35" firstAttribute="bottom" secondItem="6JV-dh-beq" secondAttribute="bottom" id="Ah4-rC-jh1"/>
                 <constraint firstAttribute="trailing" secondItem="6JV-dh-beq" secondAttribute="trailing" id="BkZ-j0-MUF"/>
+                <constraint firstItem="scg-Tb-F35" firstAttribute="width" secondItem="6JV-dh-beq" secondAttribute="width" id="CFA-Vf-GLf"/>
                 <constraint firstAttribute="bottom" secondItem="scg-Tb-F35" secondAttribute="bottom" id="F6D-L5-uHj"/>
+                <constraint firstItem="6JV-dh-beq" firstAttribute="leading" secondItem="scg-Tb-F35" secondAttribute="trailing" constant="2" id="GRp-W4-c4u"/>
                 <constraint firstItem="6JV-dh-beq" firstAttribute="top" secondItem="l6w-Kv-MGK" secondAttribute="bottom" id="Hj4-qA-eet"/>
                 <constraint firstItem="scg-Tb-F35" firstAttribute="top" secondItem="6JV-dh-beq" secondAttribute="bottom" id="HjK-9L-0J4"/>
                 <constraint firstItem="l6w-Kv-MGK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uZ3-Hb-Y6u" secondAttribute="bottom" constant="8" id="Ifm-N3-z5n"/>
@@ -84,6 +87,12 @@
                     <integer key="value" value="5"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="GRp-W4-c4u"/>
+                    <exclude reference="Ah4-rC-jh1"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="button0" destination="scg-Tb-F35" id="gdH-DS-yNr"/>
                 <outlet property="button1" destination="6JV-dh-beq" id="V3P-uS-L57"/>
@@ -91,6 +100,11 @@
                 <outlet property="button3" destination="XwE-ND-HJR" id="Nyl-cy-Dlt"/>
                 <outlet property="messageLabel" destination="uZ3-Hb-Y6u" id="HZ8-ld-2gW"/>
                 <outlet property="titleLabel" destination="QFr-wE-oRA" id="CQW-1X-yze"/>
+                <outletCollection property="horizontalButtonsLayoutConstraints" destination="GRp-W4-c4u" collectionClass="NSMutableArray" id="Gbp-eB-fQr"/>
+                <outletCollection property="horizontalButtonsLayoutConstraints" destination="Ah4-rC-jh1" collectionClass="NSMutableArray" id="crv-wd-gWk"/>
+                <outletCollection property="verticalButtonsLayoutConstraints" destination="HjK-9L-0J4" collectionClass="NSMutableArray" id="n8W-7g-mDc"/>
+                <outletCollection property="verticalButtonsLayoutConstraints" destination="lVD-MD-0Mn" collectionClass="NSMutableArray" id="bRG-YW-eew"/>
+                <outletCollection property="verticalButtonsLayoutConstraints" destination="xsJ-SW-zuq" id="LA0-Xi-ahW"/>
             </connections>
             <point key="canvasLocation" x="214" y="239.5"/>
         </view>
