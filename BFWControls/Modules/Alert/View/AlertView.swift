@@ -122,7 +122,7 @@ import UIKit
         button1?.hidden = button1Title == nil
         button2?.hidden = button2Title == nil
         button3?.hidden = button3Title == nil
-        messageLabel?.activateOnlyConstraintsWithFirstVisibleInViews(buttons)
+        messageLabel?.activateOnlyConstraintsWithFirstVisibleInViews(buttons.reverse())
         if let horizontalButtonsLayoutConstraints = horizontalButtonsLayoutConstraints,
             let verticalButtonsLayoutConstraints = verticalButtonsLayoutConstraints {
             if isHorizontalLayout {
