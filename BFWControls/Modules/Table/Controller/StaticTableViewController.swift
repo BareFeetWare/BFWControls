@@ -77,12 +77,13 @@ class StaticTableViewController: UITableViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        // TODO: Check that lastCell isn't called if filledUsingLastCell == false
-        if let lastCell = lastCell where filledUsingLastCell {
-            let adjustment = tableView.frame.height + tableView.contentInset.top - CGRectGetMaxY(lastCell.frame)
-            if adjustment > 0 {
-                lastCell.frame.size.height += adjustment
-                lastCell.setNeedsLayout()
+        if filledUsingLastCell {
+            if let lastCell = lastCell {
+                let adjustment = tableView.frame.height + tableView.contentInset.top - CGRectGetMaxY(lastCell.frame)
+                if adjustment > 0 {
+                    lastCell.frame.size.height += adjustment
+                    lastCell.setNeedsLayout()
+                }
             }
         }
     }
