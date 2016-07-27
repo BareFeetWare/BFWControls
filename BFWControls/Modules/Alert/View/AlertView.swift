@@ -143,7 +143,11 @@ import UIKit
     }
     
     // MARK: - NibView
-
+    
+    override var placeholderLabels: [UILabel]? {
+        return [titleLabel, messageLabel].flatMap { $0 }
+    }
+    
     override func updateView() {
         super.updateView()
         button0?.setTitle(displayedButton0Title, forState: .Normal)

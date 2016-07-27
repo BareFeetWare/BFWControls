@@ -9,6 +9,13 @@ import UIKit
 
 class NibView: BFWNibView {
 
+    // MARK: - Variables
+    
+    /// Labels which should remove enclosing [] from text after awakeFromNib.
+    var placeholderLabels: [UILabel]? {
+        return nil
+    }
+
     // MARK: - UpdateView mechanism
     
     /// Override in subclasses and call super. Update view and subview properties that are affected by properties of this class.
@@ -20,8 +27,24 @@ class NibView: BFWNibView {
         setNeedsLayout()
     }
     
+    // MARK: - Init
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        removePlaceHolderText()
+    }
+
     // MARK: - Private variables and functions.
     
+    /// Replace placeholders (eg [Text]) with blank text.
+    private func removePlaceHolderText() {
+        if let labels = placeholderLabels {
+            for label in labels {
+                label.removePlaceholderText()
+            }
+        }
+    }
+
     private var needsUpdateView = true
         
     private func updateViewIfNeeded() {
@@ -38,4 +61,14 @@ class NibView: BFWNibView {
         super.layoutSubviews()
     }
 
+}
+
+private extension UILabel {
+    
+    func removePlaceholderText() {
+        if let text = text where text.hasPrefix("[") && text.hasSuffix("]") {
+            self.text = nil
+        }
+    }
+    
 }

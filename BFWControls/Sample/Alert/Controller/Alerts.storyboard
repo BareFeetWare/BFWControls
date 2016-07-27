@@ -153,11 +153,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="epX-r6-FVA" customClass="AlertView" customModule="BFWControls" customModuleProvider="target">
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="342" placeholderIntrinsicHeight="185" translatesAutoresizingMaskIntoConstraints="NO" id="epX-r6-FVA" customClass="AlertView" customModule="BFWControls" customModuleProvider="target">
                                 <rect key="frame" x="16" y="241" width="342" height="185"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="button1Title" value="Button 1"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Title"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="message" value="Message"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
@@ -189,9 +191,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tRE-FY-qeK" customClass="AlertViewOverlay" customModule="BFWControls" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Alert View Overlay"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="message" value="Message "/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="button1Title" value="Action 1"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="message" value="Message"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Title"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>

@@ -9,15 +9,6 @@ import UIKit
 
 class NibCellView: NibView {
 
-    // MARK: - Init
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Replace placeholders (eg [Text]) with blank text:
-        textLabel?.removePlaceholderText()
-        detailTextLabel?.removePlaceholderText()
-    }
-
     // MARK: - IBOutlets
     
     @IBOutlet weak var textLabel: UILabel?
@@ -60,20 +51,16 @@ class NibCellView: NibView {
     
     // MARK: - NibView
     
+    override var placeholderLabels: [UILabel]? {
+        return [textLabel, detailTextLabel].flatMap { $0 }
+    }
+    
     override func updateView() {
         super.updateView()
         accessoryView?.hidden = !showAccessory
         separatorView?.hidden = !showSeparator
     }
 
-}
-
-private extension UILabel {
     
-    func removePlaceholderText() {
-        if let text = text where text.hasPrefix("[") && text.hasSuffix("]") {
-            self.text = nil
-        }
-    }
     
 }

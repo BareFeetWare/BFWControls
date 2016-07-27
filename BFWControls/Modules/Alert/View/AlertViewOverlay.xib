@@ -11,9 +11,13 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LWu-kZ-qI7" customClass="AlertView" customModule="BFWControls" customModuleProvider="target">
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LWu-kZ-qI7" customClass="AlertView" customModule="BFWControls" customModuleProvider="target">
                     <rect key="frame" x="8" y="241.5" width="358" height="185"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="[Title]"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="message" value="[Message]"/>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75084459459459463" colorSpace="calibratedRGB"/>
