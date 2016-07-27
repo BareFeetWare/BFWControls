@@ -354,7 +354,7 @@
                                         <rect key="frame" x="0.0" y="155" width="358" height="30"/>
                                         <state key="normal" title="Button 0"/>
                                         <connections>
-                                            <action selector="dismissAlertView:" destination="cHl-b9-Cae" eventType="touchUpInside" id="bY5-dW-l4u"/>
+                                            <action selector="dismissAlert:" destination="cHl-b9-Cae" eventType="touchUpInside" id="1fq-ZR-fBX"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XuJ-Ff-sJw">
