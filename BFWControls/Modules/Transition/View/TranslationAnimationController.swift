@@ -92,7 +92,8 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
             } else if isPresenting {
                 containerView.insertSubview(toViewController.view, aboveSubview: fromViewController!.view)
             } else {
-                containerView.insertSubview(toViewController.view, belowSubview: fromViewController!.view)
+                // TODO: Remove following line once transition animation is accepted
+                //containerView.insertSubview(toViewController.view, belowSubview: fromViewController!.view)
             }
             if fadeTo {
                 toViewController.view.frame = containerView.bounds
