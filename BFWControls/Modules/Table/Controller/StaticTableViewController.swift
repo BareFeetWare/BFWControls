@@ -14,6 +14,7 @@ class StaticTableViewController: UITableViewController {
     // MARK: - Variables
 
     @IBInspectable var filledUsingLastCell: Bool = false
+    @IBInspectable var intrinsicHeightCells: Bool = false
     
     /// Override in subclass, usually by connecting to an IBOutlet collection.
     var excludedCells: [UITableViewCell]? {
@@ -75,6 +76,13 @@ class StaticTableViewController: UITableViewController {
     
     // MARK: - UIViewController
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if intrinsicHeightCells {
+            tableView.estimatedRowHeight = 44.0
+        }
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if filledUsingLastCell {
@@ -106,7 +114,10 @@ class StaticTableViewController: UITableViewController {
     // MARK: - UITableViewDelegate
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return super.tableView(tableView, heightForRowAtIndexPath: superIndexPathForIndexPath(indexPath))
+        let height = intrinsicHeightCells
+            ? UITableViewAutomaticDimension
+            : super.tableView(tableView, heightForRowAtIndexPath: superIndexPathForIndexPath(indexPath))
+        return height
     }
     
 }
