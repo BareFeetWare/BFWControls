@@ -39,6 +39,9 @@
 		E29D4CBE1CB23B9400A0C7C4 /* TranslationAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D4CBD1CB23B9400A0C7C4 /* TranslationAnimationController.swift */; };
 		E29D4CD51CB35CA100A0C7C4 /* AutoNextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29D4CD41CB35CA100A0C7C4 /* AutoNextViewController.swift */; };
 		E2A5E3B61CA512C200368EFA /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A5E3B51CA512C200368EFA /* UIViewExtensions.swift */; };
+		E2A7BE491D4B15DA00F1A629 /* NibTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A7BE461D4B15DA00F1A629 /* NibTextField.swift */; };
+		E2A7BE4A1D4B15DA00F1A629 /* StatusTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A7BE471D4B15DA00F1A629 /* StatusTextField.swift */; };
+		E2A7BE4B1D4B15DA00F1A629 /* StatusTextFieldNibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A7BE481D4B15DA00F1A629 /* StatusTextFieldNibView.swift */; };
 		E2B170131CBC562D00D391B4 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B1700E1CBC562D00D391B4 /* AlertView.swift */; };
 		E2B170141CBC562D00D391B4 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2B1700F1CBC562D00D391B4 /* AlertView.xib */; };
 		E2B170151CBC562D00D391B4 /* StaticAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B170101CBC562D00D391B4 /* StaticAlertView.swift */; };
@@ -92,6 +95,9 @@
 		E29D4CBD1CB23B9400A0C7C4 /* TranslationAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationAnimationController.swift; sourceTree = "<group>"; };
 		E29D4CD41CB35CA100A0C7C4 /* AutoNextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoNextViewController.swift; sourceTree = "<group>"; };
 		E2A5E3B51CA512C200368EFA /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		E2A7BE461D4B15DA00F1A629 /* NibTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibTextField.swift; sourceTree = "<group>"; };
+		E2A7BE471D4B15DA00F1A629 /* StatusTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusTextField.swift; sourceTree = "<group>"; };
+		E2A7BE481D4B15DA00F1A629 /* StatusTextFieldNibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusTextFieldNibView.swift; sourceTree = "<group>"; };
 		E2B1700E1CBC562D00D391B4 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		E2B1700F1CBC562D00D391B4 /* AlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		E2B170101CBC562D00D391B4 /* StaticAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticAlertView.swift; sourceTree = "<group>"; };
@@ -209,7 +215,10 @@
 				E20256B41BEC94AA00095590 /* BFWNibView.m */,
 				E22A5E951C879BCB00AE9389 /* NibButton.swift */,
 				E293CB621C9D7913006BB8D7 /* NibCellView.swift */,
+				E2A7BE461D4B15DA00F1A629 /* NibTextField.swift */,
 				E2589EF91CA7CB8E00BDD44F /* NibView.swift */,
+				E2A7BE471D4B15DA00F1A629 /* StatusTextField.swift */,
+				E2A7BE481D4B15DA00F1A629 /* StatusTextFieldNibView.swift */,
 				E234075B1C08399000319D38 /* UIView+BFWCopy.h */,
 				E234075C1C08399000319D38 /* UIView+BFWCopy.m */,
 			);
@@ -555,11 +564,14 @@
 				E2FF6C7C1C413F61005514B6 /* DesignableView.swift in Sources */,
 				E26F2AE61CE1807600B56416 /* Dictionary+StyledText.swift in Sources */,
 				E20256A61BEB413300095590 /* AppDelegate.m in Sources */,
+				E2A7BE4B1D4B15DA00F1A629 /* StatusTextFieldNibView.swift in Sources */,
 				E2CFD5A51D1B96E400882597 /* ActionSheetView.swift in Sources */,
 				E29D4CBE1CB23B9400A0C7C4 /* TranslationAnimationController.swift in Sources */,
 				E2FF6C7E1C413FA7005514B6 /* DesignableButton.swift in Sources */,
 				E274E07E1CC5A98C00262254 /* AlertViewOverlay.swift in Sources */,
+				E2A7BE4A1D4B15DA00F1A629 /* StatusTextField.swift in Sources */,
 				E29D4CD51CB35CA100A0C7C4 /* AutoNextViewController.swift in Sources */,
+				E2A7BE491D4B15DA00F1A629 /* NibTextField.swift in Sources */,
 				E2FF6C7A1C413F37005514B6 /* LayerView.swift in Sources */,
 				E28D6A6C1D388825007EE85F /* StaticTableViewController.swift in Sources */,
 				E277367B1CC8CC930033941A /* OpenURLSegue.swift in Sources */,
