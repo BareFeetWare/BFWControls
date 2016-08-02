@@ -88,10 +88,6 @@ class NibTextField: UITextField {
     
     // MARK: UIView
     
-    override func intrinsicContentSize() -> CGSize {
-        return contentView?.intrinsicContentSize() ?? super.intrinsicContentSize()
-    }
-    
     override func layoutSubviews() {
         updateViewIfNeeded()
         super.layoutSubviews()
