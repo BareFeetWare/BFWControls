@@ -15,20 +15,7 @@ class NibTextField: UITextField {
     var contentView: NibView? {
         return nil
     }
-    
-    private var innerTextField: UITextField? {
-        var innerTextField: UITextField?
-        if let contentView = contentView {
-            for subview in contentView.subviews {
-                if let textField = subview as? UITextField {
-                    innerTextField = textField
-                    break
-                }
-            }
-        }
-        return innerTextField
-    }
-    
+        
     // MARK: - Init
     
     override init(frame: CGRect) {
@@ -46,11 +33,15 @@ class NibTextField: UITextField {
             addSubview(contentView)
             contentView.pinToSuperviewEdges()
             contentView.userInteractionEnabled = false
-            innerTextField?.hidden = true
-            if let attributes = innerTextField?.defaultTextAttributes {
-                defaultTextAttributes = attributes
-            }
             borderStyle = .None
+            absorbInnerTextField()
+        }
+    }
+    
+    private func absorbInnerTextField() {
+        if let innerTextField = subviewTextField {
+            innerTextField.hidden = true
+            defaultTextAttributes = innerTextField.defaultTextAttributes
         }
     }
     
@@ -78,12 +69,17 @@ class NibTextField: UITextField {
     
     override func textRectForBounds(bounds: CGRect) -> CGRect {
         let rect = innerTextField?.frame ?? super.textRectForBounds(bounds)
+        var rect: CGRect
+        if let innerTextField = subviewTextField {
+            rect = innerTextField.superview!.convertRect(innerTextField.frame, toView: self)
+        } else {
+            rect = super.textRectForBounds(bounds)
+        }
         return rect
     }
     
     override func editingRectForBounds(bounds: CGRect) -> CGRect {
-        let rect = innerTextField?.frame ?? super.editingRectForBounds(bounds)
-        return rect
+        return textRectForBounds(bounds)
     }
     
     // MARK: UIView
@@ -97,4 +93,23 @@ class NibTextField: UITextField {
         super.layoutSubviews()
     }
 
+}
+
+private extension UIView {
+    
+    var subviewTextField: UITextField? {
+        var textField: UITextField?
+        for subview in subviews {
+            if let possible = subview as? UITextField {
+                textField = possible
+            } else if let possible = subview.subviewTextField {
+                textField = possible
+            }
+            if textField != nil {
+                break
+            }
+        }
+        return textField
+    }
+    
 }
