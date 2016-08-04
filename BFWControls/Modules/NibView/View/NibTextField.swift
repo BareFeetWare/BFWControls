@@ -86,11 +86,19 @@ class NibTextField: UITextField {
         return textRectForBounds(bounds)
     }
     
-    // MARK: UIView
-    
-    override func intrinsicContentSize() -> CGSize {
-        return contentView?.intrinsicContentSize() ?? super.intrinsicContentSize()
+    /// Locate active text editor for debugging.
+    private var fieldEditor: UIScrollView? {
+        var fieldEditor: UIScrollView?
+        for subview in subviews {
+            if let possible = subview as? UIScrollView {
+                fieldEditor = possible
+                break
+            }
+        }
+        return fieldEditor
     }
+    
+    // MARK: UIView
     
     override func layoutSubviews() {
         updateViewIfNeeded()
