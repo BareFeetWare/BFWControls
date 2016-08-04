@@ -11,6 +11,8 @@ class NibTextField: UITextField {
 
     // MARK: - Variables
     
+    @IBInspectable var autoUpdateCellHeights: Bool = true
+    
     /// Override in subclass
     var contentView: NibView? {
         return nil
@@ -65,6 +67,15 @@ class NibTextField: UITextField {
         }
     }
     
+    // MARK: - Actions
+    
+    private func updateCellHeights() {
+        if let tableView = superviewTableView {
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }
+    }
+    
     // MARK: - UITextField
     
     override func placeholderRectForBounds(bounds: CGRect) -> CGRect {
@@ -107,6 +118,9 @@ class NibTextField: UITextField {
     override func layoutSubviews() {
         updateViewIfNeeded()
         super.layoutSubviews()
+        if autoUpdateCellHeights {
+            updateCellHeights()
+        }
     }
 
 }
