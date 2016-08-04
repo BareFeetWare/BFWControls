@@ -72,10 +72,14 @@ class NibTextField: UITextField {
     }
     
     override func textRectForBounds(bounds: CGRect) -> CGRect {
-        let rect = innerTextField?.frame ?? super.textRectForBounds(bounds)
+        // TODO: Calculate the adjustment.
+        let magicAdjustment: CGFloat = 50.0
         var rect: CGRect
         if let innerTextField = subviewTextField {
             rect = innerTextField.superview!.convertRect(innerTextField.frame, toView: self)
+            let adjustment = bounds.height / 2 - magicAdjustment
+            rect.origin.y -= adjustment
+            rect.size.height += adjustment
         } else {
             rect = super.textRectForBounds(bounds)
         }
