@@ -9,13 +9,17 @@ import UIKit
 
 class NibView: BFWNibView {
 
-    // MARK: - Variables
+    // MARK: - Variables & Functions
     
     /// Labels which should remove enclosing [] from text after awakeFromNib.
-    var placeholderLabels: [UILabel]? {
+    var placeholderViews: [UIView]? {
         return nil
     }
 
+    func isPlaceholderString(string: String?) -> Bool {
+        return string != nil && string!.isPlaceholder
+    }
+    
     // MARK: - UpdateView mechanism
     
     /// Override in subclasses and call super. Update view and subview properties that are affected by properties of this class.
@@ -31,16 +35,25 @@ class NibView: BFWNibView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        removePlaceHolderText()
+        removePlaceHolders()
     }
 
     // MARK: - Private variables and functions.
     
     /// Replace placeholders (eg [Text]) with blank text.
-    private func removePlaceHolderText() {
-        if let labels = placeholderLabels {
-            for label in labels {
-                label.removePlaceholderText()
+    private func removePlaceHolders() {
+        if let views = placeholderViews {
+            for view in views {
+                if let label = view as? UILabel,
+                    let text = label.text
+                    where text.isPlaceholder
+                {
+                    label.text = nil
+                } else if let button = view as? UIButton {
+                    if button.titleForState(.Normal)?.isPlaceholder ?? false {
+                        button.setTitle(nil, forState: .Normal)
+                    }
+                }
             }
         }
     }
@@ -63,12 +76,10 @@ class NibView: BFWNibView {
 
 }
 
-private extension UILabel {
+private extension String {
     
-    func removePlaceholderText() {
-        if let text = text where text.hasPrefix("[") && text.hasSuffix("]") {
-            self.text = nil
-        }
+    var isPlaceholder: Bool {
+        return hasPrefix("[") && hasSuffix("]")
     }
     
 }

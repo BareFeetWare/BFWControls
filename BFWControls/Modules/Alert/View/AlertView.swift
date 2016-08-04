@@ -144,7 +144,7 @@ import UIKit
     
     // MARK: - NibView
     
-    override var placeholderLabels: [UILabel]? {
+    override var placeholderViews: [UIView]? {
         return [titleLabel, messageLabel].flatMap { $0 }
     }
     
