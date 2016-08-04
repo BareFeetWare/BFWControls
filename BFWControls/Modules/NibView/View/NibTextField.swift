@@ -67,6 +67,10 @@ class NibTextField: UITextField {
     
     // MARK: - UITextField
     
+    override func placeholderRectForBounds(bounds: CGRect) -> CGRect {
+        return textRectForBounds(bounds)
+    }
+    
     override func textRectForBounds(bounds: CGRect) -> CGRect {
         let rect = innerTextField?.frame ?? super.textRectForBounds(bounds)
         var rect: CGRect
