@@ -67,15 +67,6 @@ class NibTextField: UITextField {
         }
     }
     
-    // MARK: - Actions
-    
-    private func updateCellHeights() {
-        if let tableView = superviewTableView {
-            tableView.beginUpdates()
-            tableView.endUpdates()
-        }
-    }
-    
     // MARK: - UITextField
     
     override func placeholderRectForBounds(bounds: CGRect) -> CGRect {
@@ -119,7 +110,7 @@ class NibTextField: UITextField {
         updateViewIfNeeded()
         super.layoutSubviews()
         if autoUpdateCellHeights {
-            updateCellHeights()
+            updateTableViewCellHeights()
         }
     }
 

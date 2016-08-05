@@ -40,4 +40,11 @@ extension UIView {
         return result
     }
     
+    func updateTableViewCellHeights() {
+        if let tableView = superviewTableView {
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }
+    }
+
 }
