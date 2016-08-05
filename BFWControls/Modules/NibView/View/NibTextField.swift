@@ -108,10 +108,10 @@ class NibTextField: UITextField {
     
     override func layoutSubviews() {
         updateViewIfNeeded()
-        super.layoutSubviews()
         if autoUpdateCellHeights {
             updateTableViewCellHeights()
         }
+        super.layoutSubviews()
     }
 
 }
