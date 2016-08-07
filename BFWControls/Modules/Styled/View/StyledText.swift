@@ -19,8 +19,10 @@ class StyledText {
     
     struct Key {
         static let fontName = "fontName"
+        static let familyName = "familyName"
         static let fontSize = "fontSize"
         static let textColor = "textColor"
+        static let weight = "weight"
     }
     
     private static let styledTextPlist = "StyledText"
@@ -66,7 +68,14 @@ class StyledText {
     class func attributesForLookupDict(lookupDict: [String: AnyObject]) -> TextAttributes? {
         var attributes = TextAttributes()
         let flatDict = flatLookupDict(lookupDict)
-        if let fontName = flatDict[Key.fontName] as? String,
+        if let familyName = flatDict[Key.familyName] as? String {
+            attributes[UIFontDescriptorFamilyAttribute] = familyName
+            if let weight = flatDict[Key.weight] as? CGFloat {
+                let validWeight = weight.validWeight
+                let traits = [UIFontWeightTrait: validWeight]
+                attributes[UIFontDescriptorTraitsAttribute] = traits
+            }
+        } else if let fontName = flatDict[Key.fontName] as? String,
             let fontSize = flatDict[Key.fontSize] as? CGFloat,
             let font = UIFont(name: fontName, size: fontSize)
         {
@@ -135,6 +144,46 @@ private extension UIColor {
             color = colorWithHexValue(hexValue, alpha: alpha)
         }
         return color
+    }
+    
+}
+
+private extension UIFont {
+    
+    func fontWithWeight(weight: CGFloat) -> UIFont {
+        let traits = [UIFontWeightTrait: weight.validWeight]
+        let attributes: TextAttributes = [UIFontDescriptorFamilyAttribute: familyName, UIFontDescriptorTraitsAttribute: traits]
+        let descriptor = UIFontDescriptor(fontAttributes: attributes)
+        let font = UIFont(descriptor: descriptor, size: pointSize)
+        return font
+    }
+    
+}
+
+private extension CGFloat {
+    
+    var validWeight: CGFloat {
+        let validWeights = [UIFontWeightUltraLight,
+                            UIFontWeightThin,
+                            UIFontWeightLight,
+                            UIFontWeightRegular,
+                            UIFontWeightMedium,
+                            UIFontWeightSemibold,
+                            UIFontWeightBold,
+                            UIFontWeightHeavy,
+                            UIFontWeightBlack]
+        let validWeight = closestInArray(validWeights)
+        return validWeight
+    }
+    
+    func closestInArray(array: [CGFloat]) -> CGFloat {
+        var closest: CGFloat?
+        for possible in array {
+            if closest == nil || abs(possible - self) < abs(closest! - self) {
+                closest = possible
+            }
+        }
+        return closest!
     }
     
 }
