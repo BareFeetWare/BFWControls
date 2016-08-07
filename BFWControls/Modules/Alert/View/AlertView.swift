@@ -119,9 +119,11 @@ import UIKit
     }
     
     private func hideUnused() {
-        button1?.hidden = button1Title == nil
-        button2?.hidden = button2Title == nil
-        button3?.hidden = button3Title == nil
+        let forwardButtons = [button1, button2, button3].flatMap { $0 }
+        for button in forwardButtons {
+            let title = button.titleForState(.Normal)
+            button.hidden = title == nil || isPlaceholderString(title)
+        }
         messageLabel?.activateOnlyConstraintsWithFirstVisibleInViews(buttons.reverse())
         if let horizontalButtonsLayoutConstraints = horizontalButtonsLayoutConstraints,
             let verticalButtonsLayoutConstraints = verticalButtonsLayoutConstraints {
@@ -136,7 +138,7 @@ import UIKit
     }
     
     // MARK: - UIView
-
+    
     // Override NibView which copies size from xib. Forces calculation using contents.
     override func intrinsicContentSize() -> CGSize {
         return CGSize(width: UIViewNoIntrinsicMetric, height: UIViewNoIntrinsicMetric)
@@ -144,7 +146,7 @@ import UIKit
     
     // MARK: - NibView
     
-    override var placeholderLabels: [UILabel]? {
+    override var placeholderViews: [UIView]? {
         return [titleLabel, messageLabel].flatMap { $0 }
     }
     

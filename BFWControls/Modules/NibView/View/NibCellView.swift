@@ -51,7 +51,7 @@ class NibCellView: NibView {
     
     // MARK: - NibView
     
-    override var placeholderLabels: [UILabel]? {
+    override var placeholderViews: [UIView]? {
         return [textLabel, detailTextLabel].flatMap { $0 }
     }
     

@@ -24,28 +24,28 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="scg-Tb-F35">
                     <rect key="frame" x="0.0" y="155" width="358" height="30"/>
-                    <state key="normal" title="Button 0"/>
+                    <state key="normal" title="[Button 0]"/>
                     <connections>
                         <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="Qle-If-d3l"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6JV-dh-beq">
                     <rect key="frame" x="0.0" y="125" width="358" height="30"/>
-                    <state key="normal" title="Button 1"/>
+                    <state key="normal" title="[Button 1]"/>
                     <connections>
                         <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="f8T-Rh-lXv"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6w-Kv-MGK">
                     <rect key="frame" x="0.0" y="95" width="358" height="30"/>
-                    <state key="normal" title="Button 2"/>
+                    <state key="normal" title="[Button 2]"/>
                     <connections>
                         <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="pEB-l8-IEr"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XwE-ND-HJR">
                     <rect key="frame" x="0.0" y="65" width="358" height="30"/>
-                    <state key="normal" title="Button 3"/>
+                    <state key="normal" title="[Button 3]"/>
                     <connections>
                         <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="TRm-06-fnC"/>
                     </connections>
