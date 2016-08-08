@@ -71,7 +71,8 @@ class StyledText {
         if let familyName = flatDict[Key.familyName] as? String {
             attributes[UIFontDescriptorFamilyAttribute] = familyName
             if let weight = flatDict[Key.weight] as? CGFloat {
-                let validWeight = weight.validWeight
+                let fontWeight = FontWeight.fontWeightForApproximateWeight(weight)
+                let validWeight = fontWeight.rawValue
                 let traits = [UIFontWeightTrait: validWeight]
                 attributes[UIFontDescriptorTraitsAttribute] = traits
             }
@@ -209,9 +210,20 @@ enum FontWeight {
     /// Arbitrary value out of range -1.0 to 1.0.
     static let notSet: CGFloat = -2.0
     
-    static func weightForName(name: String) -> FontWeight? {
+    static func fontWeightForName(name: String) -> FontWeight? {
         return all.filter { $0.name == name }.first
     }
+    
+    static func fontWeightForApproximateWeight(approximateWeight: CGFloat) -> FontWeight {
+        var closest: FontWeight = .medium
+        for possible in all {
+            if abs(possible.rawValue - approximateWeight) < abs(closest.rawValue - approximateWeight) {
+                closest = possible
+            }
+        }
+        return closest
+    }
+
     
 }
 
@@ -219,31 +231,12 @@ enum FontWeight {
 extension UIFont {
     
     func fontWithWeight(weight: CGFloat) -> UIFont {
-        let traits = [UIFontWeightTrait: weight.validWeight]
+        let fontWeight = FontWeight.fontWeightForApproximateWeight(weight)
+        let traits = [UIFontWeightTrait: fontWeight.rawValue]
         let attributes: TextAttributes = [UIFontDescriptorFamilyAttribute: familyName, UIFontDescriptorTraitsAttribute: traits]
         let descriptor = UIFontDescriptor(fontAttributes: attributes)
         let font = UIFont(descriptor: descriptor, size: pointSize)
         return font
-    }
-    
-}
-
-private extension CGFloat {
-    
-    var validWeight: CGFloat {
-        let validWeights = FontWeight.rawValues
-        let validWeight = closestInArray(validWeights)
-        return validWeight
-    }
-    
-    func closestInArray(array: [CGFloat]) -> CGFloat {
-        var closest: CGFloat?
-        for possible in array {
-            if closest == nil || abs(possible - self) < abs(closest! - self) {
-                closest = possible
-            }
-        }
-        return closest!
     }
     
 }
