@@ -51,7 +51,7 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
     // MARK: - Private functions
 
     private func presentedFrameInContainerView(containerView: UIView) -> CGRect {
-        // TODO: Use AutoLayout
+        // TODO: Use AutoLayout?
         var frame = containerView.bounds
         frame.origin.x += leftInset
         frame.origin.y += topInset + (belowTopGuide ? 64.0 : 0.0) // TODO: Get layout guide y
@@ -100,6 +100,8 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
                 containerView.insertSubview(toViewController.view, aboveSubview: fromViewController!.view)
             } else {
                 containerView.insertSubview(toViewController.view, belowSubview: fromViewController!.view)
+                // Force layout of subviews in final positions (eg view controllers inset inside a navigation controller):
+                toViewController.viewDidAppear(false)
             }
             if fadeTo {
                 toViewController.view.frame = containerView.bounds
@@ -114,6 +116,7 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
                     backdropView.pinToSuperviewEdges()
                     backdropView.backgroundColor = backdropColor
                     backdropView.alpha = 0.0
+//                    backdropView.addGestureRecognizer(tapGestureRecognizer)
                 }
             }
         }
@@ -149,4 +152,5 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
         }
     }
+    
 }
