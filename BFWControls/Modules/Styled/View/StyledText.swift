@@ -174,6 +174,20 @@ enum FontWeight {
         }
     }
     
+    var name: String {
+        switch self {
+        case ultraLight: return "ultraLight"
+        case thin: return "thin"
+        case light: return "light"
+        case regular: return "regular"
+        case medium: return "medium"
+        case semibold: return "semibold"
+        case bold: return "bold"
+        case heavy: return "heavy"
+        case black: return "black"
+        }
+    }
+    
     static let all: [FontWeight] = [.ultraLight,
                                     .thin,
                                     .light,
@@ -188,8 +202,16 @@ enum FontWeight {
         return all.map { $0.rawValue }
     }
     
+    static var names: [String] {
+        return all.map { $0.name }
+    }
+    
     /// Arbitrary value out of range -1.0 to 1.0.
     static let notSet: CGFloat = -2.0
+    
+    static func weightForName(name: String) -> FontWeight? {
+        return all.filter { $0.name == name }.first
+    }
     
 }
 
