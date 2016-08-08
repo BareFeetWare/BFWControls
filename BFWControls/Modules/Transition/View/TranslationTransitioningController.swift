@@ -8,17 +8,26 @@
 
 import UIKit
 
-class TranslationTransitioningController: NSObject, UIViewControllerTransitioningDelegate {
+class TranslationTransitioningController: UIPercentDrivenInteractiveTransition {
 
     // MARK: - Variables
 
-    @IBInspectable var duration: NSTimeInterval = 0.3
+    private var storedDuration: CGFloat = 0.3
+    @IBInspectable override var duration: CGFloat {
+        get {
+            return storedDuration
+        }
+        set {
+            storedDuration = newValue
+        }
+    }
     @IBInspectable var leftInset: CGFloat = 0.0
     @IBInspectable var rightInset: CGFloat = 0.0
     @IBInspectable var topInset: CGFloat = 0.0
     @IBInspectable var bottomInset: CGFloat = 0.0
     @IBInspectable var belowTopGuide: Bool = false
     @IBInspectable var backdropColor: UIColor?
+    @IBInspectable var interactive: Bool = true
 
     /// Fade out/in the first view controller, instead of moving.
     @IBInspectable var fadeFirst: Bool = false
@@ -36,18 +45,24 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
     }
 
     private let animationController = TranslationAnimationController()
+    private let interactionController = UIPercentDrivenInteractiveTransition()
 
     // MARK: - Private functions
 
     private func updateAnimationController() {
-        animationController.duration = duration
+        animationController.duration = NSTimeInterval(duration)
         animationController.leftInset = leftInset
         animationController.rightInset = rightInset
         animationController.topInset = topInset
         animationController.bottomInset = bottomInset
         animationController.belowTopGuide = belowTopGuide
         animationController.direction = direction
+        animationController.fadeFirst = fadeFirst
         animationController.backdropColor = backdropColor
+        if interactive {
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(interactiveDismiss(_:)))
+            animationController.backdropView.addGestureRecognizer(tapGestureRecognizer)
+        }
     }
 
     // MARK: - UIViewControllerTransitioningDelegate
@@ -61,7 +76,6 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
         let animationController = self.animationController
         updateAnimationController()
         animationController.isPresenting = true
-        animationController.fadeFirst = fadeFirst
         return animationController
     }
 
@@ -69,10 +83,27 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
         let animationController = self.animationController
         updateAnimationController()
         animationController.isPresenting = false
-        animationController.fadeFirst = fadeFirst
         return animationController
     }
+    
+}
 
+// MARK: - UIViewControllerInteractiveTransitioning
+
+extension TranslationTransitioningController {
+
+    func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        if interactive {
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(interactiveDismiss(_:)))
+            animationController.backdropView.addGestureRecognizer(tapGestureRecognizer)
+        }
+        return interactionController
+    }
+    
+    func interactiveDismiss(gestureRecognizer: UITapGestureRecognizer) {
+        interactionController.finishInteractiveTransition()
+    }
+    
 }
 
 extension UIViewController {
