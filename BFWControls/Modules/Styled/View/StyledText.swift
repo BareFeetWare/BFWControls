@@ -71,8 +71,13 @@ class StyledText {
         if let familyName = flatDict[Key.familyName] as? String {
             attributes[UIFontDescriptorFamilyAttribute] = familyName
             if let weight = flatDict[Key.weight] as? CGFloat {
-                let fontWeight = FontWeight.fontWeightForApproximateWeight(weight)
-                let validWeight = fontWeight.rawValue
+                let validWeight: CGFloat
+                if #available(iOS 8.2, *) {
+                    let fontWeight = FontWeight.fontWeightForApproximateWeight(weight)
+                    validWeight = fontWeight.rawValue
+                } else {
+                    validWeight = weight
+                }
                 let traits = [UIFontWeightTrait: validWeight]
                 attributes[UIFontDescriptorTraitsAttribute] = traits
             }
@@ -149,6 +154,7 @@ private extension UIColor {
     
 }
 
+@available(iOS 8.2, *)
 enum FontWeight {
     
     case ultraLight
@@ -224,15 +230,20 @@ enum FontWeight {
         return closest
     }
 
-    
 }
 
 // TODO: move extension to separate file.
 extension UIFont {
     
     func fontWithWeight(weight: CGFloat) -> UIFont {
-        let fontWeight = FontWeight.fontWeightForApproximateWeight(weight)
-        let traits = [UIFontWeightTrait: fontWeight.rawValue]
+        let validWeight: CGFloat
+        if #available(iOS 8.2, *) {
+            let fontWeight = FontWeight.fontWeightForApproximateWeight(weight)
+            validWeight = fontWeight.rawValue
+        } else {
+            validWeight = weight
+        }
+        let traits = [UIFontWeightTrait: validWeight]
         let attributes: TextAttributes = [UIFontDescriptorFamilyAttribute: familyName, UIFontDescriptorTraitsAttribute: traits]
         let descriptor = UIFontDescriptor(fontAttributes: attributes)
         let font = UIFont(descriptor: descriptor, size: pointSize)
