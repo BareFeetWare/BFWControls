@@ -148,7 +148,8 @@ private extension UIColor {
     
 }
 
-private extension UIFont {
+// TODO: move extension to separate file.
+extension UIFont {
     
     func fontWithWeight(weight: CGFloat) -> UIFont {
         let traits = [UIFontWeightTrait: weight.validWeight]
