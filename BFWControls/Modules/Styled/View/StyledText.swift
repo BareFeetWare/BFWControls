@@ -148,6 +148,51 @@ private extension UIColor {
     
 }
 
+enum FontWeight {
+    
+    case ultraLight
+    case thin
+    case light
+    case regular
+    case medium
+    case semibold
+    case bold
+    case heavy
+    case black
+    
+    var rawValue: CGFloat {
+        switch self {
+        case ultraLight: return UIFontWeightUltraLight
+        case thin: return UIFontWeightThin
+        case light: return UIFontWeightLight
+        case regular: return UIFontWeightRegular
+        case medium: return UIFontWeightMedium
+        case semibold: return UIFontWeightSemibold
+        case bold: return UIFontWeightBold
+        case heavy: return UIFontWeightHeavy
+        case black: return UIFontWeightBlack
+        }
+    }
+    
+    static let all: [FontWeight] = [.ultraLight,
+                                    .thin,
+                                    .light,
+                                    .regular,
+                                    .medium,
+                                    .semibold,
+                                    .bold,
+                                    .heavy,
+                                    .black]
+    
+    static var rawValues: [CGFloat] {
+        return all.map { $0.rawValue }
+    }
+    
+    /// Arbitrary value out of range -1.0 to 1.0.
+    static let notSet: CGFloat = -2.0
+    
+}
+
 // TODO: move extension to separate file.
 extension UIFont {
     
@@ -164,15 +209,7 @@ extension UIFont {
 private extension CGFloat {
     
     var validWeight: CGFloat {
-        let validWeights = [UIFontWeightUltraLight,
-                            UIFontWeightThin,
-                            UIFontWeightLight,
-                            UIFontWeightRegular,
-                            UIFontWeightMedium,
-                            UIFontWeightSemibold,
-                            UIFontWeightBold,
-                            UIFontWeightHeavy,
-                            UIFontWeightBlack]
+        let validWeights = FontWeight.rawValues
         let validWeight = closestInArray(validWeights)
         return validWeight
     }
