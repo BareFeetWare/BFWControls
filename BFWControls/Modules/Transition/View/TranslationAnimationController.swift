@@ -43,11 +43,13 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
     @IBInspectable var bottomInset: CGFloat = 0.0
     @IBInspectable var belowTopGuide: Bool = false
     @IBInspectable var animatePresenter = false // TODO: Determine automatically
-    @IBInspectable var fadeFirst: Bool = false // Fade out/in the first view controller, instead of moving.
+    /// Fade out/in the first view controller, instead of moving.
+    @IBInspectable var fadeFirst: Bool = false
     @IBInspectable var backdropColor: UIColor?
-    var direction: Direction = .Left // Direction to which it presents. Dismiss direction defaults to reverse.
+    /// Direction to which it presents. Dismiss direction defaults to reverse.
+    var direction: Direction = .Left
     let backdropView = UIView()
-
+    
     // MARK: - Private functions
 
     private func presentedFrameInContainerView(containerView: UIView) -> CGRect {
@@ -116,7 +118,6 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
                     backdropView.pinToSuperviewEdges()
                     backdropView.backgroundColor = backdropColor
                     backdropView.alpha = 0.0
-//                    backdropView.addGestureRecognizer(tapGestureRecognizer)
                 }
             }
         }
