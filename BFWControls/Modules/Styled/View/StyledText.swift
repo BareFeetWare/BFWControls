@@ -19,8 +19,10 @@ class StyledText {
     
     struct Key {
         static let fontName = "fontName"
+        static let familyName = "familyName"
         static let fontSize = "fontSize"
         static let textColor = "textColor"
+        static let weight = "weight"
     }
     
     private static let styledTextPlist = "StyledText"
@@ -66,7 +68,15 @@ class StyledText {
     class func attributesForLookupDict(lookupDict: [String: AnyObject]) -> TextAttributes? {
         var attributes = TextAttributes()
         let flatDict = flatLookupDict(lookupDict)
-        if let fontName = flatDict[Key.fontName] as? String,
+        if let familyName = flatDict[Key.familyName] as? String {
+            attributes[UIFontDescriptorFamilyAttribute] = familyName
+            if let weight = flatDict[Key.weight] as? CGFloat {
+                let fontWeight = FontWeight.fontWeightForApproximateWeight(weight)
+                let validWeight = fontWeight.rawValue
+                let traits = [UIFontWeightTrait: validWeight]
+                attributes[UIFontDescriptorTraitsAttribute] = traits
+            }
+        } else if let fontName = flatDict[Key.fontName] as? String,
             let fontSize = flatDict[Key.fontSize] as? CGFloat,
             let font = UIFont(name: fontName, size: fontSize)
         {
@@ -135,6 +145,98 @@ private extension UIColor {
             color = colorWithHexValue(hexValue, alpha: alpha)
         }
         return color
+    }
+    
+}
+
+enum FontWeight {
+    
+    case ultraLight
+    case thin
+    case light
+    case regular
+    case medium
+    case semibold
+    case bold
+    case heavy
+    case black
+    
+    var rawValue: CGFloat {
+        switch self {
+        case ultraLight: return UIFontWeightUltraLight
+        case thin: return UIFontWeightThin
+        case light: return UIFontWeightLight
+        case regular: return UIFontWeightRegular
+        case medium: return UIFontWeightMedium
+        case semibold: return UIFontWeightSemibold
+        case bold: return UIFontWeightBold
+        case heavy: return UIFontWeightHeavy
+        case black: return UIFontWeightBlack
+        }
+    }
+    
+    var name: String {
+        switch self {
+        case ultraLight: return "ultraLight"
+        case thin: return "thin"
+        case light: return "light"
+        case regular: return "regular"
+        case medium: return "medium"
+        case semibold: return "semibold"
+        case bold: return "bold"
+        case heavy: return "heavy"
+        case black: return "black"
+        }
+    }
+    
+    static let all: [FontWeight] = [.ultraLight,
+                                    .thin,
+                                    .light,
+                                    .regular,
+                                    .medium,
+                                    .semibold,
+                                    .bold,
+                                    .heavy,
+                                    .black]
+    
+    static var rawValues: [CGFloat] {
+        return all.map { $0.rawValue }
+    }
+    
+    static var names: [String] {
+        return all.map { $0.name }
+    }
+    
+    /// Arbitrary value out of range -1.0 to 1.0.
+    static let notSet: CGFloat = -2.0
+    
+    static func fontWeightForName(name: String) -> FontWeight? {
+        return all.filter { $0.name == name }.first
+    }
+    
+    static func fontWeightForApproximateWeight(approximateWeight: CGFloat) -> FontWeight {
+        var closest: FontWeight = .medium
+        for possible in all {
+            if abs(possible.rawValue - approximateWeight) < abs(closest.rawValue - approximateWeight) {
+                closest = possible
+            }
+        }
+        return closest
+    }
+
+    
+}
+
+// TODO: move extension to separate file.
+extension UIFont {
+    
+    func fontWithWeight(weight: CGFloat) -> UIFont {
+        let fontWeight = FontWeight.fontWeightForApproximateWeight(weight)
+        let traits = [UIFontWeightTrait: fontWeight.rawValue]
+        let attributes: TextAttributes = [UIFontDescriptorFamilyAttribute: familyName, UIFontDescriptorTraitsAttribute: traits]
+        let descriptor = UIFontDescriptor(fontAttributes: attributes)
+        let font = UIFont(descriptor: descriptor, size: pointSize)
+        return font
     }
     
 }
