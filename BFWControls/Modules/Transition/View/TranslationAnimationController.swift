@@ -43,15 +43,17 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
     @IBInspectable var bottomInset: CGFloat = 0.0
     @IBInspectable var belowTopGuide: Bool = false
     @IBInspectable var animatePresenter = false // TODO: Determine automatically
-    @IBInspectable var fadeFirst: Bool = false // Fade out/in the first view controller, instead of moving.
+    /// Fade out/in the first view controller, instead of moving.
+    @IBInspectable var fadeFirst: Bool = false
     @IBInspectable var backdropColor: UIColor?
-    var direction: Direction = .Left // Direction to which it presents. Dismiss direction defaults to reverse.
+    /// Direction to which it presents. Dismiss direction defaults to reverse.
+    var direction: Direction = .Left
     let backdropView = UIView()
-
+    
     // MARK: - Private functions
 
     private func presentedFrameInContainerView(containerView: UIView) -> CGRect {
-        // TODO: Use AutoLayout
+        // TODO: Use AutoLayout?
         var frame = containerView.bounds
         frame.origin.x += leftInset
         frame.origin.y += topInset + (belowTopGuide ? 64.0 : 0.0) // TODO: Get layout guide y
@@ -100,6 +102,8 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
                 containerView.insertSubview(toViewController.view, aboveSubview: fromViewController!.view)
             } else {
                 containerView.insertSubview(toViewController.view, belowSubview: fromViewController!.view)
+                // Force layout of subviews in final positions (eg view controllers inset inside a navigation controller):
+                toViewController.viewDidAppear(false)
             }
             if fadeTo {
                 toViewController.view.frame = containerView.bounds
@@ -149,4 +153,5 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
         }
     }
+    
 }
