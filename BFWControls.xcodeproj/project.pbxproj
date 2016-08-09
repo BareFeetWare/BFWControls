@@ -49,10 +49,11 @@
 		E2B170161CBC562D00D391B4 /* StaticAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2B170111CBC562D00D391B4 /* StaticAlertView.xib */; };
 		E2CFD5A51D1B96E400882597 /* ActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CFD5A31D1B96E400882597 /* ActionSheetView.swift */; };
 		E2CFD5A61D1B96E400882597 /* ActionSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2CFD5A41D1B96E400882597 /* ActionSheetView.xib */; };
+		E2DAF9331D596FE600ECA235 /* UIView+Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DAF9311D596FE600ECA235 /* UIView+Layer.swift */; };
+		E2DAF9341D596FE600ECA235 /* UIView+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DAF9321D596FE600ECA235 /* UIView+Transform.swift */; };
 		E2DE2EF11BEDFE1300636D0D /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */; };
 		E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2F7C1BEE009200636D0D /* UIImage+BFW.m */; };
 		E2F71A611CBC5DEA008B6A68 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F71A601CBC5DEA008B6A68 /* AlertViewController.swift */; };
-		E2FF6C7A1C413F37005514B6 /* LayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FF6C791C413F37005514B6 /* LayerView.swift */; };
 		E2FF6C7C1C413F61005514B6 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FF6C7B1C413F61005514B6 /* DesignableView.swift */; };
 		E2FF6C7E1C413FA7005514B6 /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FF6C7D1C413FA7005514B6 /* DesignableButton.swift */; };
 /* End PBXBuildFile section */
@@ -106,12 +107,13 @@
 		E2B170111CBC562D00D391B4 /* StaticAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaticAlertView.xib; sourceTree = "<group>"; };
 		E2CFD5A31D1B96E400882597 /* ActionSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetView.swift; sourceTree = "<group>"; };
 		E2CFD5A41D1B96E400882597 /* ActionSheetView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionSheetView.xib; sourceTree = "<group>"; };
+		E2DAF9311D596FE600ECA235 /* UIView+Layer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layer.swift"; sourceTree = "<group>"; };
+		E2DAF9321D596FE600ECA235 /* UIView+Transform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Transform.swift"; sourceTree = "<group>"; };
 		E2DE2EEF1BEDFE1300636D0D /* UIImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageEffects.h; sourceTree = "<group>"; };
 		E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageEffects.m; sourceTree = "<group>"; };
 		E2DE2F7B1BEE009200636D0D /* UIImage+BFW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BFW.h"; sourceTree = "<group>"; };
 		E2DE2F7C1BEE009200636D0D /* UIImage+BFW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BFW.m"; sourceTree = "<group>"; };
 		E2F71A601CBC5DEA008B6A68 /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
-		E2FF6C791C413F37005514B6 /* LayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerView.swift; sourceTree = "<group>"; };
 		E2FF6C7B1C413F61005514B6 /* DesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		E2FF6C7D1C413FA7005514B6 /* DesignableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -472,7 +474,8 @@
 			children = (
 				E2FF6C7D1C413FA7005514B6 /* DesignableButton.swift */,
 				E2FF6C7B1C413F61005514B6 /* DesignableView.swift */,
-				E2FF6C791C413F37005514B6 /* LayerView.swift */,
+				E2DAF9311D596FE600ECA235 /* UIView+Layer.swift */,
+				E2DAF9321D596FE600ECA235 /* UIView+Transform.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				E25687EB1C70ACC500DD14D5 /* MorphSegue.swift in Sources */,
 				E2589EFA1CA7CB8E00BDD44F /* NibView.swift in Sources */,
 				E25687ED1C70AD0600DD14D5 /* UIViewMorphExtensions.swift in Sources */,
+				E2DAF9341D596FE600ECA235 /* UIView+Transform.swift in Sources */,
 				E234075E1C08399000319D38 /* UIView+BFWCopy.m in Sources */,
 				E20E10CE1CA1EA9300F35C82 /* TranslationTransitioningController.swift in Sources */,
 				E274E0741CC5A1B600262254 /* AlertsViewController.swift in Sources */,
@@ -584,7 +588,7 @@
 				E2A7BE4A1D4B15DA00F1A629 /* StatusTextField.swift in Sources */,
 				E29D4CD51CB35CA100A0C7C4 /* AutoNextViewController.swift in Sources */,
 				E2A7BE491D4B15DA00F1A629 /* NibTextField.swift in Sources */,
-				E2FF6C7A1C413F37005514B6 /* LayerView.swift in Sources */,
+				E2DAF9331D596FE600ECA235 /* UIView+Layer.swift in Sources */,
 				E28D6A6C1D388825007EE85F /* StaticTableViewController.swift in Sources */,
 				E277367B1CC8CC930033941A /* OpenURLSegue.swift in Sources */,
 				E26F2AE71CE1807600B56416 /* TextAttributes.swift in Sources */,
