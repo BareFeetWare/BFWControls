@@ -84,7 +84,11 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
     }
 
     @objc func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        let containerView = transitionContext.containerView()!
+        #if swift(>=2.3)
+            let containerView = transitionContext.containerView()
+        #else
+            let containerView = transitionContext.containerView()!
+        #endif
         let animateToView = animatePresenter || fadeFirst || isPresenting
         let animateFromView = animatePresenter || fadeFirst || !isPresenting
         let toViewController = animateToView ? transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) : nil
