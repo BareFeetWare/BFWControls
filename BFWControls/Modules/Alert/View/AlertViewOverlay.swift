@@ -83,7 +83,43 @@ import UIKit
             alertView.button3Title = newValue
         }
     }
-    
+
+    @IBInspectable var button4Title: String? {
+        get {
+            return alertView.button4Title
+        }
+        set {
+            alertView.button4Title = newValue
+        }
+    }
+
+    @IBInspectable var button5Title: String? {
+        get {
+            return alertView.button5Title
+        }
+        set {
+            alertView.button5Title = newValue
+        }
+    }
+
+    @IBInspectable var button6Title: String? {
+        get {
+            return alertView.button6Title
+        }
+        set {
+            alertView.button6Title = newValue
+        }
+    }
+
+    @IBInspectable var button7Title: String? {
+        get {
+            return alertView.button7Title
+        }
+        set {
+            alertView.button7Title = newValue
+        }
+    }
+
     @IBInspectable var maxHorizontalButtonTitleCharacterCount: Int {
         get {
             return alertView.maxHorizontalButtonTitleCharacterCount

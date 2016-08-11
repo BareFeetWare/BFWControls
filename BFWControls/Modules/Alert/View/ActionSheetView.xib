@@ -31,29 +31,29 @@
                         <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="d7D-9R-WdR"/>
                     </connections>
                 </button>
-                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TOB-kH-ygy" userLabel="Rounded Group">
-                    <rect key="frame" x="8" y="405" width="359" height="198"/>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TOB-kH-ygy" userLabel="Rounded Group" customClass="DesignableView" customModule="BFWControls" customModuleProvider="target">
+                    <rect key="frame" x="8" y="213" width="359" height="390"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fm-UF-2Jf" customClass="DesignableButton" customModule="BFWControls" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="150" width="359" height="48"/>
+                            <rect key="frame" x="0.0" y="342" width="359" height="48"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <state key="normal" title="Button1"/>
+                            <state key="normal" title="[Button 1]"/>
                             <connections>
                                 <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="1GU-g4-7Hi"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XC2-Cj-gEL" customClass="DesignableButton" customModule="BFWControls" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="102" width="359" height="48"/>
+                            <rect key="frame" x="0.0" y="294" width="359" height="48"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <state key="normal" title="Button2"/>
+                            <state key="normal" title="[Button 2]"/>
                             <connections>
                                 <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="nr9-yL-xy9"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Nk-6c-CT3" customClass="DesignableButton" customModule="BFWControls" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="54" width="359" height="48"/>
+                            <rect key="frame" x="0.0" y="246" width="359" height="48"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <state key="normal" title="Button3"/>
+                            <state key="normal" title="[Button 3]"/>
                             <connections>
                                 <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="KIR-D0-onw"/>
                             </connections>
@@ -70,26 +70,74 @@
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l3K-wo-XSp" customClass="DesignableButton" customModule="BFWControls" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="198" width="359" height="48"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="[Button 4]"/>
+                            <connections>
+                                <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="RO1-so-Udd"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VLN-mK-vnU" customClass="DesignableButton" customModule="BFWControls" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="150" width="359" height="48"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="[Button 5]"/>
+                            <connections>
+                                <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="JH5-Gk-BCf"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmc-Tp-5UI" customClass="DesignableButton" customModule="BFWControls" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="102" width="359" height="48"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="[Button 6]"/>
+                            <connections>
+                                <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="lIu-vI-H51"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1Y-uz-cdy" customClass="DesignableButton" customModule="BFWControls" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="54" width="359" height="48"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="[Button 7]"/>
+                            <connections>
+                                <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="2bd-3U-lS6"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="ce1-Oh-rdr" firstAttribute="top" secondItem="TOB-kH-ygy" secondAttribute="top" constant="8" id="1aE-7e-o62"/>
+                        <constraint firstAttribute="trailing" secondItem="VLN-mK-vnU" secondAttribute="trailing" id="2LA-Dj-vgJ"/>
                         <constraint firstAttribute="trailing" secondItem="ce1-Oh-rdr" secondAttribute="trailing" constant="16" id="2cZ-pf-udf"/>
-                        <constraint firstItem="3Nk-6c-CT3" firstAttribute="top" secondItem="1ei-71-77l" secondAttribute="bottom" constant="8" id="35I-Zo-b47"/>
+                        <constraint firstItem="3Nk-6c-CT3" firstAttribute="top" secondItem="1ei-71-77l" secondAttribute="bottom" priority="930" constant="8" id="35I-Zo-b47"/>
                         <constraint firstItem="3Nk-6c-CT3" firstAttribute="leading" secondItem="TOB-kH-ygy" secondAttribute="leading" id="3vv-Ds-3Ba"/>
+                        <constraint firstItem="h1Y-uz-cdy" firstAttribute="leading" secondItem="TOB-kH-ygy" secondAttribute="leading" id="6lk-Ki-xAN"/>
+                        <constraint firstItem="VLN-mK-vnU" firstAttribute="top" secondItem="1ei-71-77l" secondAttribute="bottom" priority="950" constant="8" id="7r6-jm-SZY"/>
                         <constraint firstItem="XC2-Cj-gEL" firstAttribute="leading" secondItem="TOB-kH-ygy" secondAttribute="leading" id="9j5-xi-O9r"/>
                         <constraint firstItem="8fm-UF-2Jf" firstAttribute="top" secondItem="XC2-Cj-gEL" secondAttribute="bottom" id="AFy-KH-hlT"/>
+                        <constraint firstItem="jmc-Tp-5UI" firstAttribute="top" secondItem="1ei-71-77l" secondAttribute="bottom" priority="960" constant="8" id="FOA-fj-ysT"/>
                         <constraint firstAttribute="trailing" secondItem="3Nk-6c-CT3" secondAttribute="trailing" id="Fqp-eT-duh"/>
                         <constraint firstAttribute="trailing" secondItem="1ei-71-77l" secondAttribute="trailing" constant="16" id="IUS-5N-ApD"/>
-                        <constraint firstItem="8fm-UF-2Jf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="1ei-71-77l" secondAttribute="bottom" constant="8" id="JfV-0t-OnY"/>
+                        <constraint firstItem="8fm-UF-2Jf" firstAttribute="top" secondItem="1ei-71-77l" secondAttribute="bottom" priority="910" constant="8" id="JfV-0t-OnY"/>
                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="1ei-71-77l" secondAttribute="bottom" constant="8" id="NfU-Dj-YMr"/>
+                        <constraint firstItem="l3K-wo-XSp" firstAttribute="top" secondItem="1ei-71-77l" secondAttribute="bottom" priority="940" constant="8" id="Okt-4p-RSg"/>
+                        <constraint firstItem="VLN-mK-vnU" firstAttribute="top" secondItem="jmc-Tp-5UI" secondAttribute="bottom" id="Omq-Wk-7Sz"/>
+                        <constraint firstItem="VLN-mK-vnU" firstAttribute="leading" secondItem="TOB-kH-ygy" secondAttribute="leading" id="Ozl-7X-cO9"/>
+                        <constraint firstItem="l3K-wo-XSp" firstAttribute="leading" secondItem="TOB-kH-ygy" secondAttribute="leading" id="QYQ-Id-BZi"/>
                         <constraint firstAttribute="bottom" secondItem="8fm-UF-2Jf" secondAttribute="bottom" id="S0s-8O-q9R"/>
                         <constraint firstAttribute="trailing" secondItem="XC2-Cj-gEL" secondAttribute="trailing" id="X4W-uh-Mfc"/>
-                        <constraint firstItem="XC2-Cj-gEL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="1ei-71-77l" secondAttribute="bottom" constant="8" id="fuY-Lq-P8z"/>
+                        <constraint firstAttribute="trailing" secondItem="h1Y-uz-cdy" secondAttribute="trailing" id="Yq5-K2-dh9"/>
+                        <constraint firstItem="jmc-Tp-5UI" firstAttribute="top" secondItem="h1Y-uz-cdy" secondAttribute="bottom" id="ZjD-VX-dEB"/>
+                        <constraint firstItem="3Nk-6c-CT3" firstAttribute="top" secondItem="l3K-wo-XSp" secondAttribute="bottom" id="d8v-o7-ckB"/>
+                        <constraint firstAttribute="trailing" secondItem="l3K-wo-XSp" secondAttribute="trailing" id="dYZ-pD-p4v"/>
+                        <constraint firstItem="h1Y-uz-cdy" firstAttribute="top" secondItem="1ei-71-77l" secondAttribute="bottom" constant="8" id="fkC-cL-ntr"/>
+                        <constraint firstItem="l3K-wo-XSp" firstAttribute="top" secondItem="VLN-mK-vnU" secondAttribute="bottom" id="fqh-od-rg4"/>
+                        <constraint firstItem="XC2-Cj-gEL" firstAttribute="top" secondItem="1ei-71-77l" secondAttribute="bottom" priority="920" constant="8" id="fuY-Lq-P8z"/>
+                        <constraint firstItem="jmc-Tp-5UI" firstAttribute="leading" secondItem="TOB-kH-ygy" secondAttribute="leading" id="iI0-7M-1Ge"/>
                         <constraint firstItem="8fm-UF-2Jf" firstAttribute="leading" secondItem="TOB-kH-ygy" secondAttribute="leading" id="ixO-3F-lKH"/>
                         <constraint firstAttribute="trailing" secondItem="8fm-UF-2Jf" secondAttribute="trailing" id="lA8-ln-ocW"/>
                         <constraint firstItem="ce1-Oh-rdr" firstAttribute="leading" secondItem="TOB-kH-ygy" secondAttribute="leading" constant="16" id="oOL-3S-TkQ"/>
                         <constraint firstItem="1ei-71-77l" firstAttribute="leading" secondItem="TOB-kH-ygy" secondAttribute="leading" constant="16" id="s3G-pP-ySb"/>
+                        <constraint firstAttribute="trailing" secondItem="jmc-Tp-5UI" secondAttribute="trailing" id="yEa-Ia-kmm"/>
                         <constraint firstItem="XC2-Cj-gEL" firstAttribute="top" secondItem="3Nk-6c-CT3" secondAttribute="bottom" id="yMA-fq-jkT"/>
                         <constraint firstItem="1ei-71-77l" firstAttribute="top" secondItem="ce1-Oh-rdr" secondAttribute="bottom" constant="8" id="zX2-cq-03q"/>
                     </constraints>
@@ -110,10 +158,14 @@
                 <constraint firstAttribute="trailing" secondItem="IFU-vR-qkJ" secondAttribute="trailing" constant="8" id="FaL-MK-EBa"/>
                 <constraint firstItem="IFU-vR-qkJ" firstAttribute="height" secondItem="8fm-UF-2Jf" secondAttribute="height" id="PZp-Rw-1kH"/>
                 <constraint firstAttribute="bottom" secondItem="OGM-j9-juj" secondAttribute="bottom" id="Xc5-8d-rj0"/>
+                <constraint firstItem="jmc-Tp-5UI" firstAttribute="height" secondItem="IFU-vR-qkJ" secondAttribute="height" id="ZPB-w2-NFy"/>
                 <constraint firstAttribute="trailing" secondItem="TOB-kH-ygy" secondAttribute="trailing" constant="8" id="agG-Pu-caD"/>
+                <constraint firstItem="l3K-wo-XSp" firstAttribute="height" secondItem="IFU-vR-qkJ" secondAttribute="height" id="ctl-8S-SBG"/>
                 <constraint firstItem="IFU-vR-qkJ" firstAttribute="height" secondItem="3Nk-6c-CT3" secondAttribute="height" id="d0Q-Le-Hak"/>
                 <constraint firstAttribute="trailing" secondItem="OGM-j9-juj" secondAttribute="trailing" id="keH-7c-E0H"/>
                 <constraint firstItem="OGM-j9-juj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="lrS-Do-MUQ"/>
+                <constraint firstItem="VLN-mK-vnU" firstAttribute="height" secondItem="IFU-vR-qkJ" secondAttribute="height" id="pGl-Oc-9yq"/>
+                <constraint firstItem="h1Y-uz-cdy" firstAttribute="height" secondItem="IFU-vR-qkJ" secondAttribute="height" id="rPZ-jh-cvA"/>
                 <constraint firstItem="TOB-kH-ygy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="wQe-YQ-W98"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -123,6 +175,10 @@
                 <outlet property="button1" destination="8fm-UF-2Jf" id="FGa-Jd-qyu"/>
                 <outlet property="button2" destination="XC2-Cj-gEL" id="0Ln-wK-77a"/>
                 <outlet property="button3" destination="3Nk-6c-CT3" id="hzW-qm-Vcs"/>
+                <outlet property="button4" destination="l3K-wo-XSp" id="4ba-GQ-mim"/>
+                <outlet property="button5" destination="VLN-mK-vnU" id="bgO-hm-47k"/>
+                <outlet property="button6" destination="jmc-Tp-5UI" id="bBH-ED-loq"/>
+                <outlet property="button7" destination="h1Y-uz-cdy" id="iWP-Nt-axA"/>
                 <outlet property="messageLabel" destination="1ei-71-77l" id="9db-6b-f5v"/>
                 <outlet property="titleLabel" destination="ce1-Oh-rdr" id="f7U-9V-jYr"/>
             </connections>

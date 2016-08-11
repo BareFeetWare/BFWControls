@@ -26,6 +26,10 @@ import UIKit
     @IBOutlet weak var button1: UIButton?
     @IBOutlet weak var button2: UIButton?
     @IBOutlet weak var button3: UIButton?
+    @IBOutlet weak var button4: UIButton?
+    @IBOutlet weak var button5: UIButton?
+    @IBOutlet weak var button6: UIButton?
+    @IBOutlet weak var button7: UIButton?
 
     @IBOutlet var horizontalButtonsLayoutConstraints: [NSLayoutConstraint]?
     @IBOutlet var verticalButtonsLayoutConstraints: [NSLayoutConstraint]?
@@ -77,6 +81,34 @@ import UIKit
         }
     }
     
+    @IBInspectable var button4Title: String? {
+        didSet {
+            button4?.setTitle(button4Title, forState: .Normal)
+            setNeedsUpdateView()
+        }
+    }
+    
+    @IBInspectable var button5Title: String? {
+        didSet {
+            button5?.setTitle(button5Title, forState: .Normal)
+            setNeedsUpdateView()
+        }
+    }
+    
+    @IBInspectable var button6Title: String? {
+        didSet {
+            button6?.setTitle(button6Title, forState: .Normal)
+            setNeedsUpdateView()
+        }
+    }
+    
+    @IBInspectable var button7Title: String? {
+        didSet {
+            button7?.setTitle(button7Title, forState: .Normal)
+            setNeedsUpdateView()
+        }
+    }
+    
     @IBInspectable var maxHorizontalButtonTitleCharacterCount: Int = 9 {
         didSet {
             setNeedsUpdateView()
@@ -97,7 +129,7 @@ import UIKit
     // MARK: - Private variables and functions
 
     private var buttons: [UIButton] {
-        return [button0, button1, button2, button3].flatMap { $0 }
+        return [button0, button1, button2, button3, button4, button5, button6, button7].flatMap { $0 }
     }
     
     private var displayedButton0Title: String {
@@ -106,6 +138,7 @@ import UIKit
     
     private var isHorizontalLayout: Bool {
         var isHorizontalLayout = false
+        // TODO: Check all titles.
         if button2Title == nil && button3Title == nil {
             if let button1Title = button1Title
                 // TODO: Use total width of characters instead of count.
@@ -119,7 +152,7 @@ import UIKit
     }
     
     private func hideUnused() {
-        let forwardButtons = [button1, button2, button3].flatMap { $0 }
+        let forwardButtons = buttons.filter { $0 != button0 }
         for button in forwardButtons {
             let title = button.titleForState(.Normal)
             button.hidden = title == nil || isPlaceholderString(title)

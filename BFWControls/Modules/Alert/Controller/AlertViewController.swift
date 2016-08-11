@@ -23,6 +23,9 @@ class AlertViewController: UIViewController {
     @IBInspectable var action1Segue: String?
     @IBInspectable var action2Segue: String?
     @IBInspectable var action3Segue: String?
+    @IBInspectable var action4Segue: String?
+    @IBInspectable var action6Segue: String?
+    @IBInspectable var action7Segue: String?
     @IBInspectable var autoDismisses: Bool = true
     
     var delegate: AlertViewDelegate?
@@ -47,6 +50,10 @@ class AlertViewController: UIViewController {
     private var isInNavigationController: Bool {
         return presentingViewController?.presentedViewController is UINavigationController
     }
+    
+    private var segueIdentifiers: [String] {
+        return [action0Segue, action1Segue, action2Segue, action3Segue, action4Segue, action6Segue, action7Segue].flatMap { $0 }
+    }
 
     // MARK: - IBActions
     
@@ -58,7 +65,7 @@ class AlertViewController: UIViewController {
             if let delegate = delegate {
                 delegate.alertView(alertView, clickedButtonAtIndex: index)
             } else {
-                let identifer = [action0Segue, action1Segue, action2Segue, action3Segue][index]
+                let identifer = segueIdentifiers[index]
                     ?? alertView.buttonTitleAtIndex(index)!
                 performSegueWithIdentifier(identifer, sender: alertView)
             }
