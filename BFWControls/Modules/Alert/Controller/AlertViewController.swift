@@ -54,8 +54,20 @@ class AlertViewController: UIViewController {
     private var segueIdentifiers: [String] {
         return [action0Segue, action1Segue, action2Segue, action3Segue, action4Segue, action6Segue, action7Segue].flatMap { $0 }
     }
+    
+    private let translationTransitioningController = TranslationTransitioningController()
+    
+    private var overlayView: UIView? {
+        let overlayView = view.subviews.filter { subview in
+            var white: CGFloat = 0.0
+            var alpha: CGFloat = 0.0
+            subview.backgroundColor?.getWhite(&white, alpha: &alpha)
+            return alpha < 1.0
+            }.first
+        return overlayView
+    }
 
-    // MARK: - IBActions
+    // MARK: - Actions
     
     @IBAction func actionButton(button: UIButton) {
         let index = alertView.indexOfButton(button)!
@@ -75,8 +87,6 @@ class AlertViewController: UIViewController {
         }
     }
     
-    // MARK: - Actions
-    
     @IBAction func dismissAlert(sender: AnyObject?) {
         if presentingViewController != nil {
             dismissViewControllerAnimated(true, completion: nil)
@@ -85,15 +95,26 @@ class AlertViewController: UIViewController {
         }
     }
     
+    private func hideOverlay() {
+        overlayView?.backgroundColor = .clearColor()
+    }
+    
     // MARK: - Init
     
     override init(nibName: String?, bundle: NSBundle?) {
         super.init(nibName: nibName, bundle: bundle)
-        modalPresentationStyle = .OverFullScreen
+        commonInit()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        commonInit()
+    }
+    
+    func commonInit() {
+        translationTransitioningController.backdropColor = UIColor.blackColor().colorWithAlphaComponent(0.75)
+        translationTransitioningController.direction = .Up
+        transitioningDelegate = translationTransitioningController
         modalPresentationStyle = .OverFullScreen
     }
     
@@ -101,6 +122,7 @@ class AlertViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        hideOverlay()
         // TODO: Fix responder chain for button taps when presenter still has text field as first responder. The following is a workaround.
         presentingViewController?.view.endEditing(true)
     }

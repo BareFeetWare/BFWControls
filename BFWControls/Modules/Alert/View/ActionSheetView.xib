@@ -11,10 +11,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OGM-j9-juj">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75050147804054057" colorSpace="calibratedRGB"/>
-                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IFU-vR-qkJ" customClass="DesignableButton" customModule="BFWControls" customModuleProvider="target">
                     <rect key="frame" x="8" y="611" width="359" height="48"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -149,22 +145,18 @@
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.750501478" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="IFU-vR-qkJ" firstAttribute="top" secondItem="TOB-kH-ygy" secondAttribute="bottom" constant="8" id="0hv-Ye-muY"/>
                 <constraint firstItem="IFU-vR-qkJ" firstAttribute="height" secondItem="XC2-Cj-gEL" secondAttribute="height" id="3U1-0F-8jc"/>
-                <constraint firstItem="OGM-j9-juj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8wU-jK-07s"/>
                 <constraint firstItem="IFU-vR-qkJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="9Uu-UJ-kH6"/>
                 <constraint firstAttribute="bottom" secondItem="IFU-vR-qkJ" secondAttribute="bottom" constant="8" id="AqV-AR-Oh9"/>
                 <constraint firstAttribute="trailing" secondItem="IFU-vR-qkJ" secondAttribute="trailing" constant="8" id="FaL-MK-EBa"/>
                 <constraint firstItem="IFU-vR-qkJ" firstAttribute="height" secondItem="8fm-UF-2Jf" secondAttribute="height" id="PZp-Rw-1kH"/>
-                <constraint firstAttribute="bottom" secondItem="OGM-j9-juj" secondAttribute="bottom" id="Xc5-8d-rj0"/>
                 <constraint firstItem="jmc-Tp-5UI" firstAttribute="height" secondItem="IFU-vR-qkJ" secondAttribute="height" id="ZPB-w2-NFy"/>
                 <constraint firstAttribute="trailing" secondItem="TOB-kH-ygy" secondAttribute="trailing" constant="8" id="agG-Pu-caD"/>
                 <constraint firstItem="l3K-wo-XSp" firstAttribute="height" secondItem="IFU-vR-qkJ" secondAttribute="height" id="ctl-8S-SBG"/>
                 <constraint firstItem="IFU-vR-qkJ" firstAttribute="height" secondItem="3Nk-6c-CT3" secondAttribute="height" id="d0Q-Le-Hak"/>
-                <constraint firstAttribute="trailing" secondItem="OGM-j9-juj" secondAttribute="trailing" id="keH-7c-E0H"/>
-                <constraint firstItem="OGM-j9-juj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="lrS-Do-MUQ"/>
                 <constraint firstItem="VLN-mK-vnU" firstAttribute="height" secondItem="IFU-vR-qkJ" secondAttribute="height" id="pGl-Oc-9yq"/>
                 <constraint firstItem="h1Y-uz-cdy" firstAttribute="height" secondItem="IFU-vR-qkJ" secondAttribute="height" id="rPZ-jh-cvA"/>
                 <constraint firstItem="TOB-kH-ygy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="wQe-YQ-W98"/>
