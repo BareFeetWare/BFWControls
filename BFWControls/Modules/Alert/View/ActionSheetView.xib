@@ -21,6 +21,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="m6Q-7c-pwT"/>
                     </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <state key="normal" title="Cancel"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
