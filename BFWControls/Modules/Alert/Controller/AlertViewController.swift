@@ -51,8 +51,8 @@ class AlertViewController: UIViewController {
         return presentingViewController?.presentedViewController is UINavigationController
     }
     
-    private var segueIdentifiers: [String] {
-        return [action0Segue, action1Segue, action2Segue, action3Segue, action4Segue, action6Segue, action7Segue].flatMap { $0 }
+    private var segueIdentifiers: [String?] {
+        return [action0Segue, action1Segue, action2Segue, action3Segue, action4Segue, action6Segue, action7Segue]
     }
     
     private let translationTransitioningController = TranslationTransitioningController()
