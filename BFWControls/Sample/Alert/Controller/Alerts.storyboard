@@ -197,7 +197,6 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="tRE-FY-qeK" firstAttribute="top" secondItem="WXF-Gv-kla" secondAttribute="top" id="0wL-cI-YPm"/>
                             <constraint firstItem="6a2-KK-EJE" firstAttribute="top" secondItem="tRE-FY-qeK" secondAttribute="bottom" id="eQf-to-wBc"/>
@@ -282,7 +281,6 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="nYa-US-Vgf" firstAttribute="top" secondItem="Tsv-Al-s7h" secondAttribute="bottom" id="PFF-qo-HhQ"/>
                             <constraint firstItem="Tsv-Al-s7h" firstAttribute="top" secondItem="MAP-R3-R35" secondAttribute="top" id="Thz-Xy-Phb"/>
@@ -415,8 +413,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="nvw-hy-lN3"/>
         <segue reference="CfR-nx-dnE"/>
         <segue reference="6s3-eO-0dE"/>
+        <segue reference="nvw-hy-lN3"/>
     </inferredMetricsTieBreakers>
 </document>

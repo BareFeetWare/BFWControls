@@ -96,6 +96,7 @@ class AlertViewController: UIViewController {
     }
     
     private func hideOverlay() {
+        view.backgroundColor = .clearColor()
         overlayView?.backgroundColor = .clearColor()
     }
     
