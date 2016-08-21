@@ -19,6 +19,9 @@
 		E25687EB1C70ACC500DD14D5 /* MorphSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25687EA1C70ACC500DD14D5 /* MorphSegue.swift */; };
 		E25687ED1C70AD0600DD14D5 /* UIViewMorphExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25687EC1C70AD0600DD14D5 /* UIViewMorphExtensions.swift */; };
 		E2589EFA1CA7CB8E00BDD44F /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2589EF91CA7CB8E00BDD44F /* NibView.swift */; };
+		E25FC1441D68083B001C7495 /* CarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25FC1431D68083B001C7495 /* CarouselViewController.swift */; };
+		E25FC14C1D680A79001C7495 /* Carousel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E25FC14B1D680A79001C7495 /* Carousel.storyboard */; };
+		E25FC1581D682C5D001C7495 /* SampleCarousel.plist in Resources */ = {isa = PBXBuildFile; fileRef = E25FC1571D682C5D001C7495 /* SampleCarousel.plist */; };
 		E26F2AE61CE1807600B56416 /* Dictionary+StyledText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26F2AE21CE1807600B56416 /* Dictionary+StyledText.swift */; };
 		E26F2AE71CE1807600B56416 /* TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26F2AE31CE1807600B56416 /* TextAttributes.swift */; };
 		E26F2AE81CE1807600B56416 /* StyledText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26F2AE51CE1807600B56416 /* StyledText.swift */; };
@@ -77,6 +80,9 @@
 		E25687EC1C70AD0600DD14D5 /* UIViewMorphExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewMorphExtensions.swift; sourceTree = "<group>"; };
 		E257557E1C40E0B4002AB6E6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2589EF91CA7CB8E00BDD44F /* NibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
+		E25FC1431D68083B001C7495 /* CarouselViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselViewController.swift; sourceTree = "<group>"; };
+		E25FC14B1D680A79001C7495 /* Carousel.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Carousel.storyboard; sourceTree = "<group>"; };
+		E25FC1571D682C5D001C7495 /* SampleCarousel.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SampleCarousel.plist; sourceTree = "<group>"; };
 		E26F2AE21CE1807600B56416 /* Dictionary+StyledText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+StyledText.swift"; sourceTree = "<group>"; };
 		E26F2AE31CE1807600B56416 /* TextAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAttributes.swift; sourceTree = "<group>"; };
 		E26F2AE51CE1807600B56416 /* StyledText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyledText.swift; sourceTree = "<group>"; };
@@ -161,6 +167,7 @@
 			children = (
 				E2B1700A1CBC562D00D391B4 /* Alert */,
 				E2DE2EF21BEDFE6100636D0D /* Blur */,
+				E25FC1411D6807F3001C7495 /* Carousel */,
 				E2FF6C771C413F37005514B6 /* Layer */,
 				E25687C11C6C5B6000DD14D5 /* Layout */,
 				E20256B11BEC94AA00095590 /* NibView */,
@@ -197,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				E274E0691CC5A1B600262254 /* Alert */,
+				E25FC1491D680A5F001C7495 /* Carousel */,
 				E274E06C1CC5A1B600262254 /* Developer */,
 				E274E06F1CC5A1B600262254 /* Morph */,
 				E28D6A6D1D38889D007EE85F /* Table */,
@@ -267,6 +275,39 @@
 				E25687EC1C70AD0600DD14D5 /* UIViewMorphExtensions.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		E25FC1411D6807F3001C7495 /* Carousel */ = {
+			isa = PBXGroup;
+			children = (
+				E25FC1421D6807F3001C7495 /* Controller */,
+			);
+			path = Carousel;
+			sourceTree = "<group>";
+		};
+		E25FC1421D6807F3001C7495 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E25FC1431D68083B001C7495 /* CarouselViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E25FC1491D680A5F001C7495 /* Carousel */ = {
+			isa = PBXGroup;
+			children = (
+				E25FC14A1D680A5F001C7495 /* Controller */,
+			);
+			path = Carousel;
+			sourceTree = "<group>";
+		};
+		E25FC14A1D680A5F001C7495 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E25FC14B1D680A79001C7495 /* Carousel.storyboard */,
+				E25FC1571D682C5D001C7495 /* SampleCarousel.plist */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		E26F2AE01CE1807600B56416 /* Styled */ = {
@@ -539,7 +580,9 @@
 			files = (
 				E20256A71BEB413300095590 /* Assets.xcassets in Resources */,
 				E2B170161CBC562D00D391B4 /* StaticAlertView.xib in Resources */,
+				E25FC14C1D680A79001C7495 /* Carousel.storyboard in Resources */,
 				E274E0751CC5A1B600262254 /* Developer.storyboard in Resources */,
+				E25FC1581D682C5D001C7495 /* SampleCarousel.plist in Resources */,
 				E28D6A701D3888B8007EE85F /* Table.storyboard in Resources */,
 				E274E07C1CC5A3D100262254 /* AlertViewOverlay.xib in Resources */,
 				E2B170141CBC562D00D391B4 /* AlertView.xib in Resources */,
@@ -573,6 +616,7 @@
 				E2F71A611CBC5DEA008B6A68 /* AlertViewController.swift in Sources */,
 				E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */,
 				E287E5551CB63EB60071E87C /* DismissAndPushSegue.swift in Sources */,
+				E25FC1441D68083B001C7495 /* CarouselViewController.swift in Sources */,
 				E20256AA1BEB413300095590 /* main.m in Sources */,
 				E218A36B1D5384E5000B5B34 /* UIView+Table.swift in Sources */,
 				E2B170151CBC562D00D391B4 /* StaticAlertView.swift in Sources */,
