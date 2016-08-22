@@ -25,6 +25,7 @@
 		E26F2AE61CE1807600B56416 /* Dictionary+StyledText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26F2AE21CE1807600B56416 /* Dictionary+StyledText.swift */; };
 		E26F2AE71CE1807600B56416 /* TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26F2AE31CE1807600B56416 /* TextAttributes.swift */; };
 		E26F2AE81CE1807600B56416 /* StyledText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26F2AE51CE1807600B56416 /* StyledText.swift */; };
+		E26F45D81D6B12C9005ECA07 /* ImageNibCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26F45D71D6B12C9005ECA07 /* ImageNibCellView.swift */; };
 		E274E0741CC5A1B600262254 /* AlertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E274E06B1CC5A1B600262254 /* AlertsViewController.swift */; };
 		E274E0751CC5A1B600262254 /* Developer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E274E06E1CC5A1B600262254 /* Developer.storyboard */; };
 		E274E0761CC5A1B600262254 /* Morph.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E274E0711CC5A1B600262254 /* Morph.storyboard */; };
@@ -86,6 +87,7 @@
 		E26F2AE21CE1807600B56416 /* Dictionary+StyledText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+StyledText.swift"; sourceTree = "<group>"; };
 		E26F2AE31CE1807600B56416 /* TextAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAttributes.swift; sourceTree = "<group>"; };
 		E26F2AE51CE1807600B56416 /* StyledText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyledText.swift; sourceTree = "<group>"; };
+		E26F45D71D6B12C9005ECA07 /* ImageNibCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageNibCellView.swift; sourceTree = "<group>"; };
 		E274E06B1CC5A1B600262254 /* AlertsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertsViewController.swift; sourceTree = "<group>"; };
 		E274E06E1CC5A1B600262254 /* Developer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Developer.storyboard; sourceTree = "<group>"; };
 		E274E0711CC5A1B600262254 /* Morph.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Morph.storyboard; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			children = (
 				E20256B31BEC94AA00095590 /* BFWNibView.h */,
 				E20256B41BEC94AA00095590 /* BFWNibView.m */,
+				E26F45D71D6B12C9005ECA07 /* ImageNibCellView.swift */,
 				E22A5E951C879BCB00AE9389 /* NibButton.swift */,
 				E293CB621C9D7913006BB8D7 /* NibCellView.swift */,
 				E2A7BE461D4B15DA00F1A629 /* NibTextField.swift */,
@@ -603,6 +606,7 @@
 				E22A5E961C879BCB00AE9389 /* NibButton.swift in Sources */,
 				E287E54F1CB61F1E0071E87C /* TranslationNavigationDelegate.swift in Sources */,
 				E2B170131CBC562D00D391B4 /* AlertView.swift in Sources */,
+				E26F45D81D6B12C9005ECA07 /* ImageNibCellView.swift in Sources */,
 				E20256B51BEC94AA00095590 /* BFWNibView.m in Sources */,
 				E28F99621C446E20000A0A60 /* BlurView.swift in Sources */,
 				E25687EB1C70ACC500DD14D5 /* MorphSegue.swift in Sources */,
