@@ -11,37 +11,29 @@ import UIKit
 
 class ImageNibCellView: NibCellView {
     
+    var iconImageView: UIImageView? {
+        return iconView as? UIImageView
+    }
+    
     @IBInspectable var iconImage: UIImage? {
         get {
-            let image: UIImage?
-            if let imageView = iconView as? UIImageView {
-                image = imageView.image
-            } else {
-                image = nil
-            }
-            return image
+            return iconImageView?.image
         }
         set {
-            if let imageView = iconView as? UIImageView {
-                imageView.image = newValue
-            }
+            iconImageView?.image = newValue
         }
     }
 
+    var accessoryImageView: UIImageView? {
+        return accessoryView as? UIImageView
+    }
+    
     @IBInspectable var accessoryImage: UIImage? {
         get {
-            let image: UIImage?
-            if let imageView = accessoryView as? UIImageView {
-                image = imageView.image
-            } else {
-                image = nil
-            }
-            return image
+            return accessoryImageView?.image
         }
         set {
-            if let imageView = accessoryView as? UIImageView {
-                imageView.image = newValue
-            }
+            accessoryImageView?.image = newValue
         }
     }
     
