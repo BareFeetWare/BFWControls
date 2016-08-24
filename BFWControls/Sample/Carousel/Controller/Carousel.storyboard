@@ -76,7 +76,7 @@
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="cell0Identifier" value="first"/>
                         <userDefinedRuntimeAttribute type="string" keyPath="cell1Identifier" value="second"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="cell2Identifier" value="first"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="looped" value="YES"/>
                     </userDefinedRuntimeAttributes>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ry-Ds-XKv" userLabel="First Responder" sceneMemberID="firstResponder"/>
