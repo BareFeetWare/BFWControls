@@ -64,6 +64,28 @@
                                     <constraint firstItem="qhK-1M-T3U" firstAttribute="centerX" secondItem="TNv-OA-4P9" secondAttribute="centerX" id="oRG-Zu-sQ1"/>
                                 </constraints>
                             </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="third" id="3Xc-6G-qhU">
+                                <rect key="frame" x="750" y="32" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Third" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8NX-rj-gh3">
+                                            <rect key="frame" x="158.5" y="323" width="58.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="0.25060705239999997" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="8NX-rj-gh3" firstAttribute="centerX" secondItem="3Xc-6G-qhU" secondAttribute="centerX" id="IWA-03-4oW"/>
+                                    <constraint firstItem="8NX-rj-gh3" firstAttribute="centerY" secondItem="3Xc-6G-qhU" secondAttribute="centerY" id="pah-iL-aq6"/>
+                                </constraints>
+                            </collectionViewCell>
                         </cells>
                         <connections>
                             <outlet property="dataSource" destination="of3-iq-yAT" id="pUy-G3-PFF"/>
@@ -77,6 +99,7 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="cell0Identifier" value="first"/>
                         <userDefinedRuntimeAttribute type="string" keyPath="cell1Identifier" value="second"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="looped" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="cell2Identifier" value="third"/>
                     </userDefinedRuntimeAttributes>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ry-Ds-XKv" userLabel="First Responder" sceneMemberID="firstResponder"/>
