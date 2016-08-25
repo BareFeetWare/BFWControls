@@ -81,7 +81,7 @@ class CarouselViewController: UICollectionViewController {
     }
     
     private var looping: Bool {
-        return looped && (cellIdentifiers?.count ?? 0) > 1
+        return looped && cellIdentifiers?.count > 1
     }
     
     private var scrolledPage: Int {
