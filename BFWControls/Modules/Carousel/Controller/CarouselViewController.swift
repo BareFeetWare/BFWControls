@@ -87,7 +87,7 @@ class CarouselViewController: UICollectionViewController {
     }
     
     private var looping: Bool {
-        return looped && (cellIdentifiers?.count ?? 0) > 1
+        return looped && pageCount > 1
     }
     
     private var scrolledPage: Int {
@@ -110,6 +110,12 @@ class CarouselViewController: UICollectionViewController {
     
     @IBAction func changedPageControl(pageControl: UIPageControl) {
         scrollToPage(pageControl.currentPage, animated: true)
+    }
+    
+    private func updatePageControl() {
+        pageControl.frame.origin.x = (collectionView!.bounds.width - pageControl.frame.width) / 2 + collectionView!.contentOffset.x
+        pageControl.frame.origin.y = collectionView!.bounds.height - pageControl.frame.height + collectionView!.contentOffset.y - controlInsetBottom
+        pageControl.currentPage = loopedPageForPage(page)
     }
     
     private func scrollToPage(page: Int, animated: Bool) {
@@ -137,14 +143,15 @@ class CarouselViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addPageControl()
         collectionView?.pagingEnabled = true
         collectionView?.showsHorizontalScrollIndicator = false
         if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .Horizontal
             layout.minimumInteritemSpacing = 0.0
         }
-        addPageControl()
         scrollToPage(0, animated: false)
+        updatePageControl()
     }
     
     override func viewDidLayoutSubviews() {
@@ -203,12 +210,10 @@ extension CarouselViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - UIScrollViewDelegate
 
 extension CarouselViewController {
-
+    
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         if scrollView == collectionView {
-            pageControl.frame.origin.x = (scrollView.bounds.width - pageControl.frame.width) / 2 + scrollView.contentOffset.x
-            pageControl.frame.origin.y = scrollView.bounds.height - pageControl.frame.height + scrollView.contentOffset.y - controlInsetBottom
-            pageControl.currentPage = loopedPageForPage(page)
+            updatePageControl()
         }
     }
     
