@@ -44,6 +44,9 @@ class CarouselViewController: UICollectionViewController {
         return cellIdentifiers?.count ?? 0
     }
     
+    var pageControl = UIPageControl()
+    var collectionViewSize: CGSize?
+    
     // MARK: - Constants
     
     private struct Key {
@@ -65,15 +68,9 @@ class CarouselViewController: UICollectionViewController {
     }
     
     private var plistDict: [String: AnyObject]? {
-        let plistDict: [String: AnyObject]?
-        if let plistPath = NSBundle.mainBundle().pathForResource(dataSourcePlistName, ofType: "plist"),
-            let dict = NSDictionary(contentsOfFile: plistPath) as? [String: AnyObject]
-        {
-            plistDict = dict
-        } else {
-            plistDict = nil
+        return NSBundle.mainBundle().pathForResource(dataSourcePlistName, ofType: "plist").flatMap {
+            NSDictionary(contentsOfFile: $0) as? [String: AnyObject]
         }
-        return plistDict
     }
     
     private var loopedCellIdentifiers: [String]? {
@@ -86,16 +83,13 @@ class CarouselViewController: UICollectionViewController {
         return identifiers
     }
     
-    private var looping: Bool {
+    var looping: Bool {
         return looped && pageCount > 1
     }
     
     private var scrolledPage: Int {
         return Int(round(collectionView!.contentOffset.x / collectionView!.bounds.size.width))
     }
-    
-    private var collectionViewSize: CGSize?
-    private var pageControl = UIPageControl()
     
     // MARK: - Actions
     
@@ -151,7 +145,6 @@ class CarouselViewController: UICollectionViewController {
             layout.minimumInteritemSpacing = 0.0
         }
         scrollToPage(0, animated: false)
-        updatePageControl()
     }
     
     override func viewDidLayoutSubviews() {
@@ -160,6 +153,7 @@ class CarouselViewController: UICollectionViewController {
         if collectionViewSize != collectionView?.bounds.size {
             collectionViewSize = collectionView?.bounds.size
             collectionView?.reloadData()
+            updatePageControl()
         }
     }
     
