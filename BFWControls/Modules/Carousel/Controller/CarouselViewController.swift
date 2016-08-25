@@ -65,15 +65,9 @@ class CarouselViewController: UICollectionViewController {
     }
     
     private var plistDict: [String: AnyObject]? {
-        let plistDict: [String: AnyObject]?
-        if let plistPath = NSBundle.mainBundle().pathForResource(dataSourcePlistName, ofType: "plist"),
-            let dict = NSDictionary(contentsOfFile: plistPath) as? [String: AnyObject]
-        {
-            plistDict = dict
-        } else {
-            plistDict = nil
+        return NSBundle.mainBundle().pathForResource(dataSourcePlistName, ofType: "plist").flatMap {
+            NSDictionary(contentsOfFile: $0) as? [String: AnyObject]
         }
-        return plistDict
     }
     
     private var loopedCellIdentifiers: [String]? {
