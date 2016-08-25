@@ -44,6 +44,9 @@ class CarouselViewController: UICollectionViewController {
         return cellIdentifiers?.count ?? 0
     }
     
+    var pageControl = UIPageControl()
+    var collectionViewSize: CGSize?
+    
     // MARK: - Constants
     
     private struct Key {
@@ -65,15 +68,9 @@ class CarouselViewController: UICollectionViewController {
     }
     
     private var plistDict: [String: AnyObject]? {
-        let plistDict: [String: AnyObject]?
-        if let plistPath = NSBundle.mainBundle().pathForResource(dataSourcePlistName, ofType: "plist"),
-            let dict = NSDictionary(contentsOfFile: plistPath) as? [String: AnyObject]
-        {
-            plistDict = dict
-        } else {
-            plistDict = nil
+        return NSBundle.mainBundle().pathForResource(dataSourcePlistName, ofType: "plist").flatMap {
+            NSDictionary(contentsOfFile: $0) as? [String: AnyObject]
         }
-        return plistDict
     }
     
     private var loopedCellIdentifiers: [String]? {
@@ -86,16 +83,13 @@ class CarouselViewController: UICollectionViewController {
         return identifiers
     }
     
-    private var looping: Bool {
-        return looped && (cellIdentifiers?.count ?? 0) > 1
+    var looping: Bool {
+        return looped && cellIdentifiers?.count > 1
     }
     
     private var scrolledPage: Int {
         return Int(round(collectionView!.contentOffset.x / collectionView!.bounds.size.width))
     }
-    
-    private var collectionViewSize: CGSize?
-    private var pageControl = UIPageControl()
     
     // MARK: - Actions
     
@@ -121,16 +115,17 @@ class CarouselViewController: UICollectionViewController {
                                                 animated: animated)
     }
     
+    private func updatePageControl() {
+        pageControl.frame.origin.x = (collectionView!.bounds.width - pageControl.frame.width) / 2 + collectionView!.contentOffset.x
+        pageControl.frame.origin.y = collectionView!.bounds.height - pageControl.frame.height + collectionView!.contentOffset.y - controlInsetBottom
+        pageControl.currentPage = loopedPageForPage(page + 1)
+    }
+    
     // MARK: - Functions
     
     private func loopedPageForPage(page: Int) -> Int {
-        var loopedPage = page
-        if page > pageCount - 1 {
-            loopedPage = 0
-        } else if page < 0 {
-            loopedPage = pageCount - 1
-        }
-        return loopedPage
+        let loopedPage = page % pageCount
+        return loopedPage >= 0 ? loopedPage : pageCount + loopedPage
     }
     
     // MARK: - UIViewController
@@ -153,6 +148,7 @@ class CarouselViewController: UICollectionViewController {
         if collectionViewSize != collectionView?.bounds.size {
             collectionViewSize = collectionView?.bounds.size
             collectionView?.reloadData()
+            updatePageControl()
         }
     }
     
@@ -206,9 +202,7 @@ extension CarouselViewController {
 
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         if scrollView == collectionView {
-            pageControl.frame.origin.x = (scrollView.bounds.width - pageControl.frame.width) / 2 + scrollView.contentOffset.x
-            pageControl.frame.origin.y = scrollView.bounds.height - pageControl.frame.height + scrollView.contentOffset.y - controlInsetBottom
-            pageControl.currentPage = loopedPageForPage(page)
+            updatePageControl()
         }
     }
     
