@@ -80,13 +80,13 @@ class CarouselViewController: UICollectionViewController {
     // MARK: - Variables
     
     var currentPage: Int {
-        return Int(round(currentPageFloat))
+        return loopedPageForPage(Int(round(currentPageFloat)))
     }
     
     var currentPageFloat: CGFloat {
-        return currentCellItem - (shouldLoop ? 1 : 0)
+        let page = currentCellItem - (shouldLoop ? 1 : 0)
+        return page < 0 || pageCount == 0 ? CGFloat(pageCount) + page : page % CGFloat(pageCount)
     }
-    
     lazy var pageControl: UIPageControl! = {
         /* If this carousel is embedded as a container in another view controller, find a page control already
          existing in that view controller, otherwise create a new one.
@@ -108,7 +108,7 @@ class CarouselViewController: UICollectionViewController {
     }
     
     private var currentCellItem: CGFloat {
-        return collectionView!.contentOffset.x / collectionViewSize!.width
+        return collectionViewSize.map { size in collectionView!.contentOffset.x / size.width } ?? 0
     }
     
     // MARK: - Actions
@@ -130,11 +130,9 @@ class CarouselViewController: UICollectionViewController {
     
     private func updatePageControl() {
         if let collectionViewSize = collectionViewSize {
-            if pageControl.superview == collectionView {
-                pageControl.frame.origin.x = (collectionViewSize.width - pageControl.frame.width) / 2 + collectionView!.contentOffset.x
-                pageControl.frame.origin.y = collectionViewSize.height - pageControl.frame.height + collectionView!.contentOffset.y - controlInsetBottom
-            }
-            pageControl.currentPage = loopedPageForPage(currentPage)
+            pageControl.frame.origin.x = (collectionViewSize.width - pageControl.frame.width) / 2 + collectionView!.contentOffset.x
+            pageControl.frame.origin.y = collectionViewSize.height - pageControl.frame.height + collectionView!.contentOffset.y - controlInsetBottom
+            pageControl.currentPage = currentPage
         }
     }
     
