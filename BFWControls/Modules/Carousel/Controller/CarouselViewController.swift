@@ -80,15 +80,16 @@ class CarouselViewController: UICollectionViewController {
     // MARK: - Variables
     
     var currentPage: Int {
-        return Int(round(currentPageFloat))
+        return loopedPageForPage(Int(round(currentCellItem)) - 1)
     }
     
     var currentPageFloat: CGFloat {
-        return currentCellItem - (shouldLoop ? 1 : 0)
+        let page = currentCellItem - (shouldLoop ? 1 : 0)
+        return page < 0 || pageCount == 0 ? CGFloat(pageCount) + page : page % CGFloat(pageCount)
     }
     
     var pageControl = UIPageControl()
-    var collectionViewSize: CGSize?
+    private var collectionViewSize: CGSize?
     
     // MARK: - Private variables
     
@@ -97,7 +98,7 @@ class CarouselViewController: UICollectionViewController {
     }
     
     private var currentCellItem: CGFloat {
-        return collectionView!.contentOffset.x / collectionViewSize!.width
+        return collectionViewSize.map { size in collectionView!.contentOffset.x / size.width } ?? 0
     }
     
     // MARK: - Actions
@@ -119,7 +120,7 @@ class CarouselViewController: UICollectionViewController {
         if let collectionViewSize = collectionViewSize {
             pageControl.frame.origin.x = (collectionViewSize.width - pageControl.frame.width) / 2 + collectionView!.contentOffset.x
             pageControl.frame.origin.y = collectionViewSize.height - pageControl.frame.height + collectionView!.contentOffset.y - controlInsetBottom
-            pageControl.currentPage = loopedPageForPage(currentPage)
+            pageControl.currentPage = currentPage
         }
     }
     
