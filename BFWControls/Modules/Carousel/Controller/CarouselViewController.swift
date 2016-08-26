@@ -80,7 +80,7 @@ class CarouselViewController: UICollectionViewController {
     // MARK: - Variables
     
     var currentPage: Int {
-        return loopedPageForPage(Int(round(currentCellItem)) - 1)
+        return loopedPageForPage(Int(round(currentPageFloat)))
     }
     
     var currentPageFloat: CGFloat {
