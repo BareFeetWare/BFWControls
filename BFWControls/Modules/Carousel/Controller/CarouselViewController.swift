@@ -18,6 +18,8 @@ class CarouselViewController: UICollectionViewController {
     /// Looped from last back to first page.
     @IBInspectable var looped: Bool = false
     
+    // MARK: - Static content
+    
     /// Cell identifiers for finite static content.
     @IBInspectable var cell0Identifier: String?
     @IBInspectable var cell1Identifier: String?
@@ -36,25 +38,10 @@ class CarouselViewController: UICollectionViewController {
         return plistDict?[Key.cellIdentifiers] as? [String] ?? ibCellIdentifiers
     }
     
-    var page: Int {
-        return scrolledPage - (looping ? 1 : 0)
-    }
-    
-    var pageCount: Int {
-        return cellIdentifiers?.count ?? 0
-    }
-    
-    var pageControl = UIPageControl()
-    var collectionViewSize: CGSize?
-    
-    // MARK: - Constants
-    
     private struct Key {
         static let cellIdentifiers = "cellIdentifiers"
     }
     
-    // MARK: - Private Variables
-
     private var ibCellIdentifiers: [String] {
         return [cell0Identifier,
             cell1Identifier,
@@ -73,22 +60,44 @@ class CarouselViewController: UICollectionViewController {
         }
     }
     
-    private var loopedCellIdentifiers: [String]? {
-        let identifiers: [String]?
-        if let cellIdentifiers = cellIdentifiers where looping {
-            identifiers = [cellIdentifiers.last!] + cellIdentifiers + [cellIdentifiers.first!]
-        } else {
-            identifiers = cellIdentifiers
-        }
-        return identifiers
+    // MARK: - Override in subclass for dynamic content
+
+    /// Override in subclass for dynamic content or use default implementation for static content.
+    var pageCount: Int {
+        return cellIdentifiers?.count ?? 0
     }
     
-    var looping: Bool {
+    /// Override in subclass for dynamic content or use default implementation for static content.
+    override func collectionView(collectionView: UICollectionView,
+                                 cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
+    {
+        let page = pageForIndexPath(indexPath)
+        let cellIdentifier = cellIdentifiers![page]
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath)
+        return cell
+    }
+    
+    // MARK: - Variables
+    
+    var currentPage: Int {
+        return Int(round(currentPageFloat))
+    }
+    
+    var currentPageFloat: CGFloat {
+        return currentCellItem - (shouldLoop ? 1 : 0)
+    }
+    
+    var pageControl = UIPageControl()
+    var collectionViewSize: CGSize?
+    
+    // MARK: - Private variables
+    
+    private var shouldLoop: Bool {
         return looped && pageCount > 1
     }
     
-    private var scrolledPage: Int {
-        return Int(round(collectionView!.contentOffset.x / collectionView!.bounds.size.width))
+    private var currentCellItem: CGFloat {
+        return collectionView!.contentOffset.x / collectionViewSize!.width
     }
     
     // MARK: - Actions
@@ -107,14 +116,16 @@ class CarouselViewController: UICollectionViewController {
     }
     
     private func updatePageControl() {
-        pageControl.frame.origin.x = (collectionView!.bounds.width - pageControl.frame.width) / 2 + collectionView!.contentOffset.x
-        pageControl.frame.origin.y = collectionView!.bounds.height - pageControl.frame.height + collectionView!.contentOffset.y - controlInsetBottom
-        pageControl.currentPage = loopedPageForPage(page)
+        if let collectionViewSize = collectionViewSize {
+            pageControl.frame.origin.x = (collectionViewSize.width - pageControl.frame.width) / 2 + collectionView!.contentOffset.x
+            pageControl.frame.origin.y = collectionViewSize.height - pageControl.frame.height + collectionView!.contentOffset.y - controlInsetBottom
+            pageControl.currentPage = loopedPageForPage(currentPage)
+        }
     }
     
     private func scrollToPage(page: Int, animated: Bool) {
         let loopedPage = loopedPageForPage(page)
-        let scrolledPage = loopedPage + (looping ? 1 : 0)
+        let scrolledPage = loopedPage + (shouldLoop ? 1 : 0)
         let indexPath = NSIndexPath(forItem: scrolledPage, inSection: 0)
         collectionView?.scrollToItemAtIndexPath(indexPath,
                                                 atScrollPosition: .CenteredHorizontally,
@@ -124,13 +135,16 @@ class CarouselViewController: UICollectionViewController {
     // MARK: - Functions
     
     private func loopedPageForPage(page: Int) -> Int {
-        var loopedPage = page
-        if page > pageCount - 1 {
-            loopedPage = 0
-        } else if page < 0 {
-            loopedPage = pageCount - 1
+        return page < 0 || pageCount == 0 ? pageCount + page : page % pageCount
+    }
+    
+    func pageForIndexPath(indexPath: NSIndexPath) -> Int {
+        var page = indexPath.row
+        if shouldLoop {
+            page -= 1
+            page = loopedPageForPage(page)
         }
-        return loopedPage
+        return page
     }
     
     // MARK: - UIViewController
@@ -144,7 +158,6 @@ class CarouselViewController: UICollectionViewController {
             layout.scrollDirection = .Horizontal
             layout.minimumInteritemSpacing = 0.0
         }
-        scrollToPage(0, animated: false)
     }
     
     override func viewDidLayoutSubviews() {
@@ -153,6 +166,7 @@ class CarouselViewController: UICollectionViewController {
         if collectionViewSize != collectionView?.bounds.size {
             collectionViewSize = collectionView?.bounds.size
             collectionView?.reloadData()
+            scrollToPage(0, animated: false)
             updatePageControl()
         }
     }
@@ -170,15 +184,7 @@ extension CarouselViewController {
     override func collectionView(collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int
     {
-        return loopedCellIdentifiers?.count ?? 0
-    }
-    
-    override func collectionView(collectionView: UICollectionView,
-                                 cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
-    {
-        let reuseIdentifier = loopedCellIdentifiers![indexPath.row]
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
-        return cell
+        return pageCount + (shouldLoop ? 2 : 0)
     }
     
 }
@@ -212,8 +218,8 @@ extension CarouselViewController {
     }
     
     override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        if looping {
-            scrollToPage(page, animated: false)
+        if shouldLoop {
+            scrollToPage(currentPage, animated: false)
         }
     }
     
