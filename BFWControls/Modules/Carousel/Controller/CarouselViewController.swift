@@ -87,12 +87,22 @@ class CarouselViewController: UICollectionViewController {
         let page = currentCellItem - (shouldLoop ? 1 : 0)
         return page < 0 || pageCount == 0 ? CGFloat(pageCount) + page : page % CGFloat(pageCount)
     }
-    
-    var pageControl = UIPageControl()
-    private var collectionViewSize: CGSize?
+    lazy var pageControl: UIPageControl! = {
+        /* If this carousel is embedded as a container in another view controller, find a page control already
+         existing in that view controller, otherwise create a new one.
+         */
+        let pageControl = self.view.superview?.superview?.subviews.flatMap { subview in
+            subview as? UIPageControl
+        }.first ?? UIPageControl()
+        pageControl.numberOfPages = self.pageCount
+        pageControl.sizeToFit()
+        return pageControl
+    }()
     
     // MARK: - Private variables
     
+    private var collectionViewSize: CGSize?
+
     private var shouldLoop: Bool {
         return looped && pageCount > 1
     }
@@ -104,12 +114,14 @@ class CarouselViewController: UICollectionViewController {
     // MARK: - Actions
     
     private func addPageControl() {
-        collectionView?.addSubview(pageControl)
+        if pageControl.superview == nil {
+            collectionView?.addSubview(pageControl)
+            pageControl.sizeToFit()
+        }
         pageControl.addTarget(self,
                               action: #selector(changedPageControl(_:)),
                               forControlEvents: .ValueChanged)
         pageControl.numberOfPages = pageCount
-        pageControl.sizeToFit()
     }
     
     @IBAction func changedPageControl(pageControl: UIPageControl) {
@@ -152,13 +164,17 @@ class CarouselViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addPageControl()
         collectionView?.pagingEnabled = true
         collectionView?.showsHorizontalScrollIndicator = false
         if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .Horizontal
             layout.minimumInteritemSpacing = 0.0
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        addPageControl()
     }
     
     override func viewDidLayoutSubviews() {
