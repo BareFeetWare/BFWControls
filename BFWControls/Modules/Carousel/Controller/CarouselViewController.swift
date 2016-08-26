@@ -87,6 +87,7 @@ class CarouselViewController: UICollectionViewController {
         let page = currentCellItem - (shouldLoop ? 1 : 0)
         return page < 0 || pageCount == 0 ? CGFloat(pageCount) + page : page % CGFloat(pageCount)
     }
+    
     lazy var pageControl: UIPageControl! = {
         /* If this carousel is embedded as a container in another view controller, find a page control already
          existing in that view controller, otherwise create a new one.
@@ -130,8 +131,10 @@ class CarouselViewController: UICollectionViewController {
     
     private func updatePageControl() {
         if let collectionViewSize = collectionViewSize {
-            pageControl.frame.origin.x = (collectionViewSize.width - pageControl.frame.width) / 2 + collectionView!.contentOffset.x
-            pageControl.frame.origin.y = collectionViewSize.height - pageControl.frame.height + collectionView!.contentOffset.y - controlInsetBottom
+            if pageControl.superview == collectionView {
+                pageControl.frame.origin.x = (collectionViewSize.width - pageControl.frame.width) / 2 + collectionView!.contentOffset.x
+                pageControl.frame.origin.y = collectionViewSize.height - pageControl.frame.height + collectionView!.contentOffset.y - controlInsetBottom
+            }
             pageControl.currentPage = currentPage
         }
     }
