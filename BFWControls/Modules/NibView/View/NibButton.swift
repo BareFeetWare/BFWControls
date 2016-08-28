@@ -12,7 +12,7 @@ class NibButton: UIButton {
     // MARK: - Variables
     
     /// Override in subclass
-    var contentView: BFWNibView? {
+    var contentView: NibView? {
         return nil
     }
     

@@ -46,7 +46,7 @@ class DrawNibButton: NibButton {
     
     // MARK: - NibButton
     
-    override var contentView: BFWNibView? {
+    override var contentView: NibView? {
         return buttonView
     }
     
