@@ -51,12 +51,12 @@
     CGSize size;
     NSString *key = NSStringFromClass([self class]);
     NSMutableDictionary *sizeForKeyDictionary = [[self class] sizeForKeyDictionary];
-    NSString *sizeString = sizeForKeyDictionary[key];
-    if (sizeString) {
-        size = CGSizeFromString(sizeString);
+    NSValue *sizeValue = sizeForKeyDictionary[key];
+    if (sizeValue) {
+        size = [sizeValue CGSizeValue];
     } else {
         size = [[self class] sizeFromNib];
-        sizeForKeyDictionary[key] = NSStringFromCGSize(size);
+        sizeForKeyDictionary[key] = [NSValue valueWithCGSize:size];
     }
     return size;
 }
