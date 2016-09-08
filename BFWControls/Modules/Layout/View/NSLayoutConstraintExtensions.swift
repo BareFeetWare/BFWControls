@@ -137,6 +137,44 @@ extension UIView {
         }
     }
 
+    var widthMultiplier: CGFloat? {
+        get {
+            return widthConstraint?.multiplier
+        }
+        set {
+            if let widthConstraint = widthConstraint {
+                if let width = newValue {
+                    let newConstraint = widthConstraint.constraintWithMultiplier(width)
+                    superview!.removeConstraint(widthConstraint)
+                    superview!.addConstraint(newConstraint)
+                }
+            }
+        }
+    }
+    
+    var widthConstraint: NSLayoutConstraint? {
+        get {
+            var widthConstraint: NSLayoutConstraint?
+            if let superview = superview {
+                for constraint in superview.constraints {
+                    if let firstItem = constraint.firstItem as? UIView,
+                        let secondItem = constraint.secondItem as? UIView
+                    {
+                        if [firstItem, secondItem].contains(self)
+                            && [firstItem, secondItem].contains(superview)
+                            && constraint.firstAttribute == .Width
+                            && constraint.secondAttribute == .Width
+                        {
+                            widthConstraint = constraint
+                            break
+                        }
+                    }
+                }
+            }
+            return widthConstraint
+        }
+    }
+
 }
 
 extension NSLayoutConstraint {
@@ -151,7 +189,7 @@ extension NSLayoutConstraint {
             multiplier: multiplier,
             constant: constant
         )
-        return constraint;
+        return constraint
     }
     
     func constraintByReplacingItems(oldItems: [NSObject], withNewItems newItems: [NSObject]) -> NSLayoutConstraint {
