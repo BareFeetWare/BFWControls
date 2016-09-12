@@ -49,6 +49,20 @@ import UIKit
         }
     }
     
+    @IBInspectable var textFieldLines: UInt = 0 {
+        didSet {
+            self.textLabel?.numberOfLines = Int(textFieldLines)
+            setNeedsUpdateView()
+        }
+    }
+    
+    @IBInspectable var detailTextFieldLines: UInt = 0 {
+        didSet {
+            self.detailTextLabel?.numberOfLines = Int(detailTextFieldLines)
+            setNeedsUpdateView()
+        }
+    }
+    
     // MARK: - NibView
     
     override var placeholderViews: [UIView]? {
