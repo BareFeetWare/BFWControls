@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StatusTextFieldNibView: NibView {
+@IBDesignable class StatusTextFieldNibView: NibView {
 
     // MARK: - IBOutlets
 

@@ -9,6 +9,6 @@
 
 import UIKit
 
-class ActionSheetView: AlertView {
+@IBDesignable class ActionSheetView: AlertView {
 
 }
