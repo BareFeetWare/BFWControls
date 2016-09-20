@@ -12,8 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LWu-kZ-qI7" customClass="AlertView" customModule="BFWControls" customModuleProvider="target">
-                    <frame key="frameInset" minX="8" minY="241.5" width="358" height="185"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LWu-kZ-qI7" customClass="AlertView" customModule="BFWControls" customModuleProvider="target">
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="[Title]"/>
@@ -28,6 +27,7 @@
                 <constraint firstItem="LWu-kZ-qI7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="bX4-4a-QHH"/>
                 <constraint firstItem="LWu-kZ-qI7" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="rEm-Ib-yuJ"/>
             </constraints>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
     </objects>
 </document>
