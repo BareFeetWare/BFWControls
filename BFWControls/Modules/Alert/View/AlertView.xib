@@ -44,10 +44,36 @@
                         <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="TRm-06-fnC"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RpR-KS-etR">
+                    <state key="normal" title="[Button 4]"/>
+                    <connections>
+                        <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="yj7-WO-WhD"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Va2-nQ-GBe">
+                    <state key="normal" title="[Button 5]"/>
+                    <connections>
+                        <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="sOy-bs-AnL"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8y6-17-sql">
+                    <state key="normal" title="[Button 6]"/>
+                    <connections>
+                        <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="iGs-FZ-ivy"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhq-aX-3mS">
+                    <state key="normal" title="[Button 7]"/>
+                    <connections>
+                        <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="Hgw-NK-Geg"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Va2-nQ-GBe" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uZ3-Hb-Y6u" secondAttribute="bottom" constant="8" id="0ej-YU-LNT"/>
                 <constraint firstAttribute="trailing" secondItem="uZ3-Hb-Y6u" secondAttribute="trailing" constant="8" id="22F-ae-lbr"/>
+                <constraint firstItem="XwE-ND-HJR" firstAttribute="top" secondItem="RpR-KS-etR" secondAttribute="bottom" id="3rf-dg-lgk"/>
                 <constraint firstItem="QFr-wE-oRA" firstAttribute="top" secondItem="ZxU-1y-cua" secondAttribute="top" constant="8" id="478-Aa-1kp"/>
                 <constraint firstItem="l6w-Kv-MGK" firstAttribute="leading" secondItem="ZxU-1y-cua" secondAttribute="leading" id="52P-ap-cCh"/>
                 <constraint firstAttribute="trailing" secondItem="QFr-wE-oRA" secondAttribute="trailing" constant="8" id="5pA-BF-E4d"/>
@@ -57,20 +83,34 @@
                 <constraint firstAttribute="trailing" secondItem="6JV-dh-beq" secondAttribute="trailing" id="BkZ-j0-MUF"/>
                 <constraint firstItem="scg-Tb-F35" firstAttribute="width" secondItem="6JV-dh-beq" secondAttribute="width" id="CFA-Vf-GLf"/>
                 <constraint firstAttribute="bottom" secondItem="scg-Tb-F35" secondAttribute="bottom" id="F6D-L5-uHj"/>
+                <constraint firstItem="zhq-aX-3mS" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uZ3-Hb-Y6u" secondAttribute="bottom" constant="8" id="Flg-Fo-7t9"/>
                 <constraint firstItem="6JV-dh-beq" firstAttribute="leading" secondItem="scg-Tb-F35" secondAttribute="trailing" constant="2" id="GRp-W4-c4u"/>
+                <constraint firstItem="zhq-aX-3mS" firstAttribute="bottom" secondItem="8y6-17-sql" secondAttribute="top" id="HPN-su-hRe"/>
                 <constraint firstItem="6JV-dh-beq" firstAttribute="top" secondItem="l6w-Kv-MGK" secondAttribute="bottom" id="Hj4-qA-eet"/>
                 <constraint firstItem="scg-Tb-F35" firstAttribute="top" secondItem="6JV-dh-beq" secondAttribute="bottom" id="HjK-9L-0J4"/>
+                <constraint firstAttribute="trailing" secondItem="Va2-nQ-GBe" secondAttribute="trailing" id="IUi-DV-h84"/>
                 <constraint firstItem="l6w-Kv-MGK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uZ3-Hb-Y6u" secondAttribute="bottom" constant="8" id="Ifm-N3-z5n"/>
+                <constraint firstAttribute="trailing" secondItem="RpR-KS-etR" secondAttribute="trailing" id="Jg1-BH-MbE"/>
                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="KCb-PH-Yb2"/>
+                <constraint firstAttribute="trailing" secondItem="zhq-aX-3mS" secondAttribute="trailing" id="M4c-UW-9ra"/>
+                <constraint firstItem="RpR-KS-etR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uZ3-Hb-Y6u" secondAttribute="bottom" constant="8" id="NB9-gm-mF5"/>
+                <constraint firstItem="8y6-17-sql" firstAttribute="leading" secondItem="ZxU-1y-cua" secondAttribute="leading" id="Ncw-oR-k0P"/>
                 <constraint firstItem="6JV-dh-beq" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uZ3-Hb-Y6u" secondAttribute="bottom" constant="8" id="Z5Y-vc-10g"/>
                 <constraint firstAttribute="trailing" secondItem="l6w-Kv-MGK" secondAttribute="trailing" id="ZHO-JH-2xs"/>
                 <constraint firstAttribute="trailing" secondItem="XwE-ND-HJR" secondAttribute="trailing" id="aeg-FI-hkm"/>
                 <constraint firstItem="QFr-wE-oRA" firstAttribute="leading" secondItem="ZxU-1y-cua" secondAttribute="leading" constant="8" id="e3f-GI-0m3"/>
                 <constraint firstItem="scg-Tb-F35" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uZ3-Hb-Y6u" secondAttribute="bottom" constant="8" id="evW-6m-gl4"/>
+                <constraint firstItem="8y6-17-sql" firstAttribute="bottom" secondItem="Va2-nQ-GBe" secondAttribute="top" id="exj-VJ-SSL"/>
+                <constraint firstItem="RpR-KS-etR" firstAttribute="leading" secondItem="ZxU-1y-cua" secondAttribute="leading" id="hDW-E9-OhU"/>
                 <constraint firstItem="XwE-ND-HJR" firstAttribute="leading" secondItem="ZxU-1y-cua" secondAttribute="leading" id="jSu-7m-jIM"/>
+                <constraint firstItem="Va2-nQ-GBe" firstAttribute="leading" secondItem="ZxU-1y-cua" secondAttribute="leading" id="k0A-8n-4lD"/>
                 <constraint firstItem="6JV-dh-beq" firstAttribute="leading" secondItem="ZxU-1y-cua" secondAttribute="leading" id="lVD-MD-0Mn"/>
+                <constraint firstAttribute="trailing" secondItem="8y6-17-sql" secondAttribute="trailing" id="oJW-32-rc9"/>
+                <constraint firstItem="RpR-KS-etR" firstAttribute="top" secondItem="Va2-nQ-GBe" secondAttribute="bottom" id="pN5-ke-vSb"/>
                 <constraint firstItem="uZ3-Hb-Y6u" firstAttribute="leading" secondItem="ZxU-1y-cua" secondAttribute="leading" constant="8" id="pOk-mv-s2X"/>
                 <constraint firstItem="XwE-ND-HJR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uZ3-Hb-Y6u" secondAttribute="bottom" constant="8" id="rJL-yc-Ydg"/>
+                <constraint firstItem="zhq-aX-3mS" firstAttribute="leading" secondItem="ZxU-1y-cua" secondAttribute="leading" id="rLx-FS-aWo"/>
+                <constraint firstItem="8y6-17-sql" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uZ3-Hb-Y6u" secondAttribute="bottom" constant="8" id="sFo-5l-y2a"/>
                 <constraint firstItem="uZ3-Hb-Y6u" firstAttribute="top" secondItem="QFr-wE-oRA" secondAttribute="bottom" constant="8" id="vzK-Sk-4vn"/>
                 <constraint firstAttribute="trailing" secondItem="scg-Tb-F35" secondAttribute="trailing" id="xsJ-SW-zuq"/>
             </constraints>
@@ -92,6 +132,10 @@
                 <outlet property="button1" destination="6JV-dh-beq" id="V3P-uS-L57"/>
                 <outlet property="button2" destination="l6w-Kv-MGK" id="9B5-pG-C5J"/>
                 <outlet property="button3" destination="XwE-ND-HJR" id="Nyl-cy-Dlt"/>
+                <outlet property="button4" destination="RpR-KS-etR" id="Siv-TO-2NO"/>
+                <outlet property="button5" destination="Va2-nQ-GBe" id="ivn-o9-suO"/>
+                <outlet property="button6" destination="8y6-17-sql" id="HD2-ru-8sg"/>
+                <outlet property="button7" destination="zhq-aX-3mS" id="7iN-cs-jI9"/>
                 <outlet property="messageLabel" destination="uZ3-Hb-Y6u" id="HZ8-ld-2gW"/>
                 <outlet property="titleLabel" destination="QFr-wE-oRA" id="CQW-1X-yze"/>
                 <outletCollection property="horizontalButtonsLayoutConstraints" destination="GRp-W4-c4u" collectionClass="NSMutableArray" id="Gbp-eB-fQr"/>
@@ -100,7 +144,7 @@
                 <outletCollection property="verticalButtonsLayoutConstraints" destination="lVD-MD-0Mn" collectionClass="NSMutableArray" id="bRG-YW-eew"/>
                 <outletCollection property="verticalButtonsLayoutConstraints" destination="xsJ-SW-zuq" collectionClass="NSMutableArray" id="LA0-Xi-ahW"/>
             </connections>
-            <point key="canvasLocation" x="-141" y="-164"/>
+            <point key="canvasLocation" x="-141" y="-93.5"/>
         </view>
     </objects>
 </document>
