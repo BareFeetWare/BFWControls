@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -12,8 +13,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IFU-vR-qkJ" customClass="DesignableButton" customModule="BFWControls" customModuleProvider="target">
-                    <rect key="frame" x="8" y="611" width="359" height="48"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="m6Q-7c-pwT"/>
                     </constraints>
@@ -29,78 +29,68 @@
                     </connections>
                 </button>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TOB-kH-ygy" userLabel="Rounded Group" customClass="DesignableView" customModule="BFWControls" customModuleProvider="target">
-                    <rect key="frame" x="8" y="213" width="359" height="390"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fm-UF-2Jf" customClass="DesignableButton" customModule="BFWControls" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="342" width="359" height="48"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="[Button 1]"/>
                             <connections>
                                 <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="1GU-g4-7Hi"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XC2-Cj-gEL" customClass="DesignableButton" customModule="BFWControls" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="294" width="359" height="48"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="[Button 2]"/>
                             <connections>
                                 <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="nr9-yL-xy9"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Nk-6c-CT3" customClass="DesignableButton" customModule="BFWControls" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="246" width="359" height="48"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="[Button 3]"/>
                             <connections>
                                 <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="KIR-D0-onw"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[Title]" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ce1-Oh-rdr">
-                            <rect key="frame" x="16" y="8" width="327" height="15"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[Message]" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ei-71-77l">
-                            <rect key="frame" x="16" y="31" width="327" height="15"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l3K-wo-XSp" customClass="DesignableButton" customModule="BFWControls" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="198" width="359" height="48"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="[Button 4]"/>
                             <connections>
                                 <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="RO1-so-Udd"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VLN-mK-vnU" customClass="DesignableButton" customModule="BFWControls" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="150" width="359" height="48"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="[Button 5]"/>
                             <connections>
                                 <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="JH5-Gk-BCf"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmc-Tp-5UI" customClass="DesignableButton" customModule="BFWControls" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="102" width="359" height="48"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="[Button 6]"/>
                             <connections>
                                 <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="lIu-vI-H51"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1Y-uz-cdy" customClass="DesignableButton" customModule="BFWControls" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="54" width="359" height="48"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="[Button 7]"/>
                             <connections>
                                 <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="2bd-3U-lS6"/>
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="ce1-Oh-rdr" firstAttribute="top" secondItem="TOB-kH-ygy" secondAttribute="top" constant="8" id="1aE-7e-o62"/>
                         <constraint firstAttribute="trailing" secondItem="VLN-mK-vnU" secondAttribute="trailing" id="2LA-Dj-vgJ"/>
@@ -145,7 +135,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.750501478" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.750501478" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="IFU-vR-qkJ" firstAttribute="top" secondItem="TOB-kH-ygy" secondAttribute="bottom" constant="8" id="0hv-Ye-muY"/>
                 <constraint firstItem="IFU-vR-qkJ" firstAttribute="height" secondItem="XC2-Cj-gEL" secondAttribute="height" id="3U1-0F-8jc"/>
@@ -162,7 +152,6 @@
                 <constraint firstItem="TOB-kH-ygy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="wQe-YQ-W98"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <connections>
                 <outlet property="button0" destination="IFU-vR-qkJ" id="wYv-SJ-Qgv"/>
                 <outlet property="button1" destination="8fm-UF-2Jf" id="FGa-Jd-qyu"/>
