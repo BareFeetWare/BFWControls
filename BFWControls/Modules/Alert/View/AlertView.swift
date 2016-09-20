@@ -61,50 +61,71 @@ import UIKit
     }
 
     @IBInspectable var button1Title: String? {
-        didSet {
-            button1?.setTitle(button1Title, forState: .Normal)
+        get {
+            return button1?.titleForState(.Normal)
+        }
+        set {
+            button1?.setTitle(newValue, forState: .Normal)
             setNeedsUpdateView()
         }
     }
 
     @IBInspectable var button2Title: String? {
-        didSet {
-            button2?.setTitle(button2Title, forState: .Normal)
+        get {
+            return button2?.titleForState(.Normal)
+        }
+        set {
+            button2?.setTitle(newValue, forState: .Normal)
             setNeedsUpdateView()
         }
     }
 
     @IBInspectable var button3Title: String? {
-        didSet {
-            button3?.setTitle(button3Title, forState: .Normal)
+        get {
+            return button3?.titleForState(.Normal)
+        }
+        set {
+            button3?.setTitle(newValue, forState: .Normal)
             setNeedsUpdateView()
         }
     }
     
     @IBInspectable var button4Title: String? {
-        didSet {
-            button4?.setTitle(button4Title, forState: .Normal)
+        get {
+            return button4?.titleForState(.Normal)
+        }
+        set {
+            button4?.setTitle(newValue, forState: .Normal)
             setNeedsUpdateView()
         }
     }
     
     @IBInspectable var button5Title: String? {
-        didSet {
-            button5?.setTitle(button5Title, forState: .Normal)
+        get {
+            return button5?.titleForState(.Normal)
+        }
+        set {
+            button5?.setTitle(newValue, forState: .Normal)
             setNeedsUpdateView()
         }
     }
     
     @IBInspectable var button6Title: String? {
-        didSet {
-            button6?.setTitle(button6Title, forState: .Normal)
+        get {
+            return button6?.titleForState(.Normal)
+        }
+        set {
+            button6?.setTitle(newValue, forState: .Normal)
             setNeedsUpdateView()
         }
     }
     
     @IBInspectable var button7Title: String? {
-        didSet {
-            button7?.setTitle(button7Title, forState: .Normal)
+        get {
+            return button7?.titleForState(.Normal)
+        }
+        set {
+            button7?.setTitle(newValue, forState: .Normal)
             setNeedsUpdateView()
         }
     }
@@ -140,12 +161,13 @@ import UIKit
         var isHorizontalLayout = false
         // TODO: Check all titles.
         if button2Title == nil && button3Title == nil {
-            if let button1Title = button1Title
+            if let button1Title = button1Title {
                 // TODO: Use total width of characters instead of count.
-                where displayedButton0Title.characters.count <= maxHorizontalButtonTitleCharacterCount
+                if displayedButton0Title.characters.count <= maxHorizontalButtonTitleCharacterCount
                     && button1Title.characters.count <= maxHorizontalButtonTitleCharacterCount
-            {
-                isHorizontalLayout = true
+                {
+                    isHorizontalLayout = true
+                }
             }
         }
         return isHorizontalLayout
@@ -159,7 +181,8 @@ import UIKit
         }
         messageLabel?.activateOnlyConstraintsWithFirstVisibleInViews(buttons.reverse())
         if let horizontalButtonsLayoutConstraints = horizontalButtonsLayoutConstraints,
-            let verticalButtonsLayoutConstraints = verticalButtonsLayoutConstraints {
+            let verticalButtonsLayoutConstraints = verticalButtonsLayoutConstraints
+        {
             if isHorizontalLayout {
                 NSLayoutConstraint.activateConstraints(horizontalButtonsLayoutConstraints)
                 NSLayoutConstraint.deactivateConstraints(verticalButtonsLayoutConstraints)
