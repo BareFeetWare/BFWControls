@@ -17,6 +17,10 @@ import UIKit
         static let cancel = "Cancel"
         static let ok = "OK"
     }
+    
+    struct Minimum {
+        static let height: CGFloat = 50.0
+    }
 
     // MARK: - IBOutlets
 
@@ -197,7 +201,7 @@ import UIKit
     
     // Override NibView which copies size from xib. Forces calculation using contents.
     override func intrinsicContentSize() -> CGSize {
-        return CGSize(width: UIViewNoIntrinsicMetric, height: UIViewNoIntrinsicMetric)
+        return CGSize(width: UIViewNoIntrinsicMetric, height: Minimum.height)
     }
     
     // MARK: - NibView
