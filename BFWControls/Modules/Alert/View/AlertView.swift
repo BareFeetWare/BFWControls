@@ -161,10 +161,16 @@ import UIKit
         return button0Title ?? (hasCancel ? ButtonTitle.cancel : ButtonTitle.ok)
     }
     
+    private func shouldDisplayButton(button: UIButton) -> Bool {
+        let title = button.titleForState(.Normal)
+        return title != nil && !title!.isEmpty && !isPlaceholderString(title)
+    }
+    
     private var isHorizontalLayout: Bool {
         var isHorizontalLayout = false
-        // TODO: Check all titles.
-        if button2Title == nil && button3Title == nil {
+        let otherButtons = buttons.filter { $0 != button0 && $0 != button1 }
+        let hasNoOtherTitles = otherButtons.filter { shouldDisplayButton($0) }.count == 0
+        if hasNoOtherTitles {
             if let button1Title = button1Title {
                 // TODO: Use total width of characters instead of count.
                 if displayedButton0Title.characters.count <= maxHorizontalButtonTitleCharacterCount
