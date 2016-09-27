@@ -119,7 +119,11 @@ import UIKit
     
     private var isHorizontalLayout: Bool {
         let hasTopTitles = topActions.flatMap { $0.title }.count > 0
-        let hasShortBottomTitles = bottomActions.filter { $0.title?.characters.count <= maxHorizontalButtonTitleCharacterCount }.count == 2
+        let hasShortBottomTitles = bottomActions.flatMap { action in
+            action.title
+            }.filter { title in
+                title.characters.count <= maxHorizontalButtonTitleCharacterCount
+            }.count == 2
         return hasShortBottomTitles && !hasTopTitles
     }
     
