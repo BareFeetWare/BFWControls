@@ -13,12 +13,12 @@ import UIKit
 
     // MARK: - Structs
 
-    struct ButtonTitle {
+    private struct ButtonTitle {
         static let cancel = "Cancel"
         static let ok = "OK"
     }
     
-    struct Minimum {
+    private struct Minimum {
         static let height: CGFloat = 50.0
     }
 
