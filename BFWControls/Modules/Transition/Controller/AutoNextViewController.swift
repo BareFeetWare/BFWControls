@@ -18,15 +18,15 @@ class AutoNextViewController: UIViewController {
     
     // MARK: - UIViewController
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
-        dispatch_after(dispatchTime, dispatch_get_main_queue()) {
-            self.performSegueWithIdentifier(self.segueIdentifier, sender: self)
+        let dispatchTime = DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
+            self.performSegue(withIdentifier: self.segueIdentifier, sender: self)
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let morphSegue = segue as? MorphSegue {
             morphSegue.duration = duration
         }

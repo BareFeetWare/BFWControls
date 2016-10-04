@@ -11,7 +11,7 @@ import UIKit
 
 class AlertsViewController: UIViewController {
 
-    @IBAction func unwindToAlertsSampleWithSegue(segue: UIStoryboardSegue) {
+    @IBAction func unwindToAlertsSampleWithSegue(_ segue: UIStoryboardSegue) {
         // Unwind to this view controller.
     }
 

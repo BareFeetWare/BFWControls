@@ -21,12 +21,12 @@ class BlurView: UIView {
     var blurredImage: UIImage? {
         var blurredImage: UIImage? = nil;
         if let subviews = superview?.subviews,
-            selfIndex = subviews.indexOf(self) {
+            let selfIndex = subviews.index(of: self) {
             if selfIndex > 0 {
                 let previousView = subviews[selfIndex - 1];
-                let contentImage = UIImage(ofView: previousView,
+                let contentImage = UIImage(of: previousView,
                                            size: bounds.size)
-                blurredImage = UIImageEffects.imageByApplyingBlurToImage(contentImage,
+                blurredImage = UIImageEffects.imageByApplyingBlur(to: contentImage,
                                                                          withRadius: blurRadius,
                                                                          tintColor: backgroundColor,
                                                                          saturationDeltaFactor: 1.8,
@@ -41,9 +41,9 @@ class BlurView: UIView {
     #if TARGET_INTERFACE_BUILDER
     // Dont draw anything, so it is transparent.
     #else
-    override func drawRect(_: CGRect) {
+    override func draw(_: CGRect) {
         if let image = blurredImage {
-            image.drawInRect(bounds)
+            image.draw(in: bounds)
         }
     }
     #endif

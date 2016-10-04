@@ -11,7 +11,7 @@ import UIKit
 
 protocol AlertViewDelegate {
     
-    func alertView(alertView: AlertView, clickedButtonAtIndex index: Int)
+    func alertView(_ alertView: AlertView, clickedButtonAtIndex index: Int)
     
 }
 
@@ -47,17 +47,17 @@ class AlertViewController: UIViewController {
     
     // MARK: - Private variables
     
-    private var isInNavigationController: Bool {
+    fileprivate var isInNavigationController: Bool {
         return presentingViewController?.presentedViewController is UINavigationController
     }
     
-    private var segueIdentifiers: [String?] {
+    fileprivate var segueIdentifiers: [String?] {
         return [action0Segue, action1Segue, action2Segue, action3Segue, action4Segue, action6Segue, action7Segue]
     }
     
-    private let translationTransitioningController = TranslationTransitioningController()
+    fileprivate let translationTransitioningController = TranslationTransitioningController()
     
-    private var overlayView: UIView? {
+    fileprivate var overlayView: UIView? {
         let overlayView = view.subviews.filter { subview in
             var white: CGFloat = 0.0
             var alpha: CGFloat = 0.0
@@ -69,7 +69,7 @@ class AlertViewController: UIViewController {
 
     // MARK: - Actions
     
-    @IBAction func actionButton(button: UIButton) {
+    @IBAction func actionButton(_ button: UIButton) {
         let index = alertView.indexOfButton(button)!
         if alertView.hasCancel && index == 0 {
             dismissAlert(button)
@@ -79,7 +79,7 @@ class AlertViewController: UIViewController {
             } else {
                 let identifer = segueIdentifiers[index]
                     ?? alertView.buttonTitleAtIndex(index)!
-                performSegueWithIdentifier(identifer, sender: alertView)
+                performSegue(withIdentifier: identifer, sender: alertView)
             }
             if !isInNavigationController && autoDismisses {
                 dismissAlert(button)
@@ -87,22 +87,22 @@ class AlertViewController: UIViewController {
         }
     }
     
-    @IBAction func dismissAlert(sender: AnyObject?) {
+    @IBAction func dismissAlert(_ sender: AnyObject?) {
         if presentingViewController != nil {
-            dismissViewControllerAnimated(true, completion: nil)
+            dismiss(animated: true, completion: nil)
         } else {
-            navigationController?.popViewControllerAnimated(true)
+            let _ = navigationController?.popViewController(animated: true)
         }
     }
     
-    private func hideOverlay() {
-        view.backgroundColor = .clearColor()
-        overlayView?.backgroundColor = .clearColor()
+    fileprivate func hideOverlay() {
+        view.backgroundColor = .clear
+        overlayView?.backgroundColor = .clear
     }
     
     // MARK: - Init
     
-    override init(nibName: String?, bundle: NSBundle?) {
+    override init(nibName: String?, bundle: Bundle?) {
         super.init(nibName: nibName, bundle: bundle)
         commonInit()
     }
@@ -113,15 +113,15 @@ class AlertViewController: UIViewController {
     }
     
     func commonInit() {
-        translationTransitioningController.backdropColor = UIColor.blackColor().colorWithAlphaComponent(0.75)
-        translationTransitioningController.direction = .Up
+        translationTransitioningController.backdropColor = UIColor.black.withAlphaComponent(0.75)
+        translationTransitioningController.direction = .up
         transitioningDelegate = translationTransitioningController
-        modalPresentationStyle = .OverFullScreen
+        modalPresentationStyle = .overFullScreen
     }
     
     // MARK: - UIViewController
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hideOverlay()
         // TODO: Fix responder chain for button taps when presenter still has text field as first responder. The following is a workaround.

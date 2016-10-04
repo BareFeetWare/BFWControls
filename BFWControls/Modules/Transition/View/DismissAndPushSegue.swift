@@ -11,10 +11,10 @@ import UIKit
 class DismissAndPushSegue: UIStoryboardSegue {
 
     override func perform() {
-        if let presentingViewController = sourceViewController.presentingViewController {
-            presentingViewController.dismissViewControllerAnimated(true, completion: {
+        if let presentingViewController = source.presentingViewController {
+            presentingViewController.dismiss(animated: true, completion: {
                 if let presentingNavigationController = presentingViewController as? UINavigationController ?? presentingViewController.navigationController {
-                    var destinationViewController = self.destinationViewController
+                    var destinationViewController = self.destination
                     if let destinationNavigationController = destinationViewController as? UINavigationController {
                         destinationViewController = destinationNavigationController.viewControllers.first!
                     }

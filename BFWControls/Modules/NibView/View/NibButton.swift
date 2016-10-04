@@ -32,7 +32,7 @@ class NibButton: UIButton {
         if let contentView = contentView {
             addSubview(contentView)
             contentView.pinToSuperviewEdges()
-            contentView.userInteractionEnabled = false
+            contentView.isUserInteractionEnabled = false
         }
     }
     
@@ -47,8 +47,8 @@ class NibButton: UIButton {
     }
     
     func commonAwake() {
-        titleLabel?.text = titleForState(.Normal)
-        setTitle(nil, forState: .Normal)
+        titleLabel?.text = title(for: UIControlState())
+        setTitle(nil, for: UIControlState())
     }
     
 }

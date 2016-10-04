@@ -23,24 +23,24 @@ class StaticTableViewController: UITableViewController {
     
     // TODO: Move to UITableView?
     var lastCell: UITableViewCell? {
-        let lastSection = numberOfSectionsInTableView(tableView) - 1
+        let lastSection = numberOfSections(in: tableView) - 1
         let lastRow = self.tableView(tableView, numberOfRowsInSection: lastSection) - 1
-        let indexPath = NSIndexPath(forRow: lastRow, inSection: lastSection)
-        let lastCell = tableView.cellForRowAtIndexPath(indexPath)
+        let indexPath = IndexPath(row: lastRow, section: lastSection)
+        let lastCell = tableView.cellForRow(at: indexPath)
         return lastCell
     }
     
     // MARK: - Functions
     
-    func indexPathsToInsertCells(cells: [UITableViewCell]) -> [NSIndexPath] {
-        var indexPaths = [NSIndexPath]()
-        for section in 0 ..< super.numberOfSectionsInTableView(tableView) {
+    func indexPathsToInsertCells(_ cells: [UITableViewCell]) -> [IndexPath] {
+        var indexPaths = [IndexPath]()
+        for section in 0 ..< super.numberOfSections(in: tableView) {
             var numberOfExcludedRows = 0
             for row in 0 ..< super.tableView(tableView, numberOfRowsInSection: section) {
-                let superIndexPath = NSIndexPath(forRow: row, inSection: section)
-                let superCell = super.tableView(tableView, cellForRowAtIndexPath: superIndexPath)
-                if cells.contains(superCell) && tableView.indexPathForCell(superCell) == nil {
-                    let indexPath = NSIndexPath(forRow: row - numberOfExcludedRows, inSection: section)
+                let superIndexPath = IndexPath(row: row, section: section)
+                let superCell = super.tableView(tableView, cellForRowAt: superIndexPath)
+                if cells.contains(superCell) && tableView.indexPath(for: superCell) == nil {
+                    let indexPath = IndexPath(row: row - numberOfExcludedRows, section: section)
                     indexPaths += [indexPath]
                 } else if excludedCells?.contains(superCell) ?? false {
                     numberOfExcludedRows += 1
@@ -52,16 +52,16 @@ class StaticTableViewController: UITableViewController {
     
     // MARK: - Private functions
     
-    private func numberOfExcludedRowsBeforeIndexPath(indexPath: NSIndexPath) -> Int {
+    fileprivate func numberOfExcludedRowsBeforeIndexPath(_ indexPath: IndexPath) -> Int {
         var numberOfExcludedRows = 0
         if let excludedCells = excludedCells {
-            let superSection = indexPath.section
+            let superSection = (indexPath as NSIndexPath).section
             for superRow in 0 ..< super.tableView(tableView, numberOfRowsInSection: superSection) {
-                let superIndexPath = NSIndexPath(forRow: superRow, inSection: superSection)
-                let cell = super.tableView(tableView, cellForRowAtIndexPath: superIndexPath)
+                let superIndexPath = IndexPath(row: superRow, section: superSection)
+                let cell = super.tableView(tableView, cellForRowAt: superIndexPath)
                 if excludedCells.contains(cell) {
                     numberOfExcludedRows += 1
-                } else if superRow - numberOfExcludedRows == indexPath.row {
+                } else if superRow - numberOfExcludedRows == (indexPath as NSIndexPath).row {
                     break
                 }
             }
@@ -69,9 +69,9 @@ class StaticTableViewController: UITableViewController {
         return numberOfExcludedRows
     }
     
-    private func superIndexPathForIndexPath(indexPath: NSIndexPath) -> NSIndexPath {
-        return NSIndexPath(forRow: indexPath.row + numberOfExcludedRowsBeforeIndexPath(indexPath),
-                           inSection: indexPath.section)
+    fileprivate func superIndexPathForIndexPath(_ indexPath: IndexPath) -> IndexPath {
+        return IndexPath(row: (indexPath as NSIndexPath).row + numberOfExcludedRowsBeforeIndexPath(indexPath),
+                           section: (indexPath as NSIndexPath).section)
     }
     
     // MARK: - UIViewController
@@ -87,7 +87,7 @@ class StaticTableViewController: UITableViewController {
         super.viewDidLayoutSubviews()
         if filledUsingLastCell {
             if let lastCell = lastCell {
-                let adjustment = tableView.frame.height + tableView.contentInset.top - CGRectGetMaxY(lastCell.frame)
+                let adjustment = tableView.frame.height + tableView.contentInset.top - lastCell.frame.maxY
                 if adjustment > 0 {
                     lastCell.frame.size.height += adjustment
                     lastCell.setNeedsLayout()
@@ -98,25 +98,25 @@ class StaticTableViewController: UITableViewController {
     
     // MARK: - UITableViewDataSource
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numberOfRowsInSection = super.tableView(tableView, numberOfRowsInSection: section)
-        let indexPath = NSIndexPath(forRow: numberOfRowsInSection - 1, inSection: section)
+        let indexPath = IndexPath(row: numberOfRowsInSection - 1, section: section)
         let numberOfExcludedCellsInThisSection = numberOfExcludedRowsBeforeIndexPath(indexPath)
         return super.tableView(tableView, numberOfRowsInSection: section) - numberOfExcludedCellsInThisSection
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = super.tableView(tableView, cellForRowAtIndexPath: superIndexPathForIndexPath(indexPath))
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = super.tableView(tableView, cellForRowAt: superIndexPathForIndexPath(indexPath))
         cell.layoutIfNeeded()
         return cell
     }
     
     // MARK: - UITableViewDelegate
 
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let height = intrinsicHeightCells
             ? UITableViewAutomaticDimension
-            : super.tableView(tableView, heightForRowAtIndexPath: superIndexPathForIndexPath(indexPath))
+            : super.tableView(tableView, heightForRowAt: superIndexPathForIndexPath(indexPath))
         return height
     }
     

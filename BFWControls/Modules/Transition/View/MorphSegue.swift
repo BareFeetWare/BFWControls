@@ -14,25 +14,25 @@ class MorphSegue: UIStoryboardSegue {
     // MARK: - Public variables
 
     @IBOutlet lazy var fromView: UIView? = {
-        return self.sourceViewController.view
+        return self.source.view
     }()
     
-    @IBInspectable var duration: NSTimeInterval = 1.0
-    var animationOptions = UIViewAnimationOptions.CurveEaseInOut
+    @IBInspectable var duration: TimeInterval = 1.0
+    var animationOptions = UIViewAnimationOptions()
     
     // MARK: - UIStoryboardSegue
     
     override func perform() {
-        let destinationVCView = destinationViewController.view
-        let sourceVCView = sourceViewController.view
+        let destinationVCView = destination.view!
+        let sourceVCView = source.view
         
         // Force frames to match constraints, in case misplaced.
         destinationVCView.setNeedsLayout()
         destinationVCView.layoutIfNeeded()
         
-        destinationVCView.frame = sourceVCView.frame
+        destinationVCView.frame = (sourceVCView?.frame)!
         if let cell = fromView as? UITableViewCell {
-            cell.selected = false
+            cell.isSelected = false
         }
         
         var morphingView: UIView?
@@ -41,13 +41,13 @@ class MorphSegue: UIStoryboardSegue {
         if useCopyForMorphingView {
             // Create a copy of the view hierarchy for morphing, so the original is not changed.
             if let cell = fromView as? UITableViewCell {
-                morphingView = cell.copyWithSubviews(nil, includeConstraints: false)
+                morphingView = cell.copy(withSubviews: nil, includeConstraints: false)
                 morphingView?.copySubviews(cell.contentView.subviews, includeConstraints: false)
             } else {
-                morphingView = fromView?.copyWithSubviews(fromView?.subviews, includeConstraints: false)
+                morphingView = fromView?.copy(withSubviews: fromView?.subviews, includeConstraints: false)
             }
             if let morphingView = morphingView {
-                sourceVCView.addSubview(morphingView)
+                sourceVCView?.addSubview(morphingView)
                 morphingView.pinToSuperviewEdges()
                 contentView = morphingView
             }
@@ -64,23 +64,23 @@ class MorphSegue: UIStoryboardSegue {
             // Add destination constraints, which will animate frames when layout is updated, inside animation block below.
             morphingView.copyDescendantConstraintsFromView(destinationVCView)
 
-            UIView.animateWithDuration(
-                duration,
+            UIView.animate(
+                withDuration: duration,
                 delay: 0.0,
                 options: animationOptions,
                 animations: {
 //                    morphingView.setNeedsLayout()
 //                    morphingView.layoutIfNeeded()
                     if let _ = self.fromView as? UITableViewCell {
-                        morphingView.frame = sourceVCView.bounds
+                        morphingView.frame = (sourceVCView?.bounds)!
                         contentView?.frame = morphingView.bounds
                     }
                     if let subviews = contentView?.subviews {
                         for subview in subviews {
                             if let destinationSubview = destinationVCView.subviewMatchingView(subview) {
-                                subview.frame = destinationSubview.superview!.convertRect(destinationSubview.frame, toView: destinationVCView)
+                                subview.frame = destinationSubview.superview!.convert(destinationSubview.frame, to: destinationVCView)
 //                                subview.frame.origin.y += 64.0 // Nav bar hack
-                                subview.copyAnimatablePropertiesFromView(destinationSubview)
+                                subview.copyAnimatableProperties(from: destinationSubview)
                             } else {
                                 subview.alpha = 0.0
                             }
@@ -88,7 +88,7 @@ class MorphSegue: UIStoryboardSegue {
                     }
                 })
                 { finished in
-                    self.sourceViewController.navigationController?.pushViewController(self.destinationViewController,
+                    self.source.navigationController?.pushViewController(self.destination,
                         animated: false)
                     if useCopyForMorphingView {
                         morphingView.removeFromSuperview()

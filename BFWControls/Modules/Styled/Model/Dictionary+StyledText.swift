@@ -9,7 +9,7 @@ import Foundation
 
 extension Dictionary {
     
-    mutating func updateWithDictionary(dictionary: Dictionary) {
+    mutating func updateWithDictionary(_ dictionary: Dictionary) {
         for (key, value) in dictionary {
             self[key] = value
         }

@@ -11,21 +11,21 @@ import UIKit
 
 enum Direction: Int {
 
-    case Left = 0
-    case Right = 1
-    case Up = 2
-    case Down = 3
+    case left = 0
+    case right = 1
+    case up = 2
+    case down = 3
 
     var reverse: Direction {
         switch self {
-        case .Left:
-            return .Right
-        case .Right:
-            return .Left
-        case .Up:
-            return .Down
-        case .Down:
-            return .Up
+        case .left:
+            return .right
+        case .right:
+            return .left
+        case .up:
+            return .down
+        case .down:
+            return .up
         }
     }
 
@@ -36,7 +36,7 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
     // MARK: - Variables
 
     @IBInspectable var isPresenting: Bool = true
-    @IBInspectable var duration: NSTimeInterval = 0.3
+    @IBInspectable var duration: TimeInterval = 0.3
     @IBInspectable var leftInset: CGFloat = 0.0
     @IBInspectable var rightInset: CGFloat = 0.0
     @IBInspectable var topInset: CGFloat = 0.0
@@ -47,12 +47,12 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
     @IBInspectable var fadeFirst: Bool = false
     @IBInspectable var backdropColor: UIColor?
     /// Direction to which it presents. Dismiss direction defaults to reverse.
-    var direction: Direction = .Left
+    var direction: Direction = .left
     let backdropView = UIView()
     
     // MARK: - Private functions
 
-    private func presentedFrameInContainerView(containerView: UIView) -> CGRect {
+    fileprivate func presentedFrameInContainerView(_ containerView: UIView) -> CGRect {
         // TODO: Use AutoLayout?
         var frame = containerView.bounds
         frame.origin.x += leftInset
@@ -62,16 +62,16 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
         return frame
     }
 
-    private func dismissedFrameInContainerView(containerView: UIView, direction: Direction) -> CGRect {
+    fileprivate func dismissedFrameInContainerView(_ containerView: UIView, direction: Direction) -> CGRect {
         var frame = presentedFrameInContainerView(containerView)
         switch direction {
-        case .Left:
+        case .left:
             frame.origin.x += containerView.frame.size.width
-        case .Right:
+        case .right:
             frame.origin.x -= containerView.frame.size.width
-        case .Up:
+        case .up:
             frame.origin.y += containerView.frame.size.height
-        case .Down:
+        case .down:
             frame.origin.y -= containerView.frame.size.height
         }
         return frame
@@ -79,24 +79,28 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
 
     // MARK: - UIViewControllerAnimatedTransitioning
 
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return duration
     }
 
-    @objc func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        #if swift(>=2.3)
-            let containerView = transitionContext.containerView()
-        #else
-            let containerView = transitionContext.containerView()!
-        #endif
+    @objc func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        let containerView = transitionContext.containerView
         let animateToView = animatePresenter || fadeFirst || isPresenting
         let animateFromView = animatePresenter || fadeFirst || !isPresenting
-        let toViewController = animateToView ? transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) : nil
-        let fromViewController = animateFromView ? transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) : nil
+        let toViewController = animateToView ? transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) : nil
+        let fromViewController = animateFromView ? transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) : nil
         let presentingViewController = isPresenting ? fromViewController : toViewController
         let presentingNavigationController = presentingViewController as? UINavigationController ?? presentingViewController?.navigationController
-        let isPush = fromViewController?.navigationController == toViewController?.navigationController ?? false
-        let isFirst = !isPush || (presentingNavigationController?.viewControllers.count == (isPresenting ? 2 : 1)) ?? true
+        let isPush: Bool
+        if let fromNavigationController = fromViewController?.navigationController,
+            let toNavigationController = toViewController?.navigationController,
+            fromNavigationController == toNavigationController
+        {
+            isPush = true
+        } else {
+            isPush = false
+        }
+        let isFirst = !isPush || (presentingNavigationController?.viewControllers.count == (isPresenting ? 2 : 1))
         let fadeFrom = fadeFirst && isPresenting && isFirst
         let fadeTo = fadeFirst && !isPresenting && isFirst
         if let toViewController = toViewController {
@@ -126,10 +130,10 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
             }
         }
         let fromDirection = animatePresenter && isPresenting ? direction.reverse : direction
-        UIView.animateWithDuration(
-            duration,
+        UIView.animate(
+            withDuration: duration,
             delay: 0.0,
-            options: UIViewAnimationOptions.CurveEaseInOut,
+            options: UIViewAnimationOptions(),
             animations: {
                 if fadeFrom {
                     fromViewController?.view.alpha = 0.0
@@ -149,13 +153,14 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
             }
             )
         { finished in
-            if transitionContext.transitionWasCancelled() {
+            if transitionContext.transitionWasCancelled {
                 toViewController?.view.removeFromSuperview()
             } else {
                 fromViewController?.view.removeFromSuperview()
             }
-            transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
+        
     }
     
 }
