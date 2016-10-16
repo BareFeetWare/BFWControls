@@ -47,8 +47,8 @@ class NibButton: UIButton {
     }
     
     func commonAwake() {
-        titleLabel?.text = title(for: UIControlState())
-        setTitle(nil, for: UIControlState())
+        titleLabel?.text = title(for: .normal)
+        setTitle(nil, for: .normal)
     }
     
 }

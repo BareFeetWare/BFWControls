@@ -161,7 +161,7 @@ import UIKit
     override func updateView() {
         super.updateView()
         for action in actions {
-            action.button?.setTitle(action.title, for: UIControlState())
+            action.button?.setTitle(action.title, for: .normal)
         }
         hideUnused()
     }

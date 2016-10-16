@@ -33,14 +33,14 @@ import UIKit
 
     @IBInspectable var button0Title: String? {
         didSet {
-            button0.setTitle(button0Title, for: UIControlState())
+            button0.setTitle(button0Title, for: .normal)
             setNeedsUpdateView()
         }
     }
 
     @IBInspectable var button1Title: String? {
         didSet {
-            button1.setTitle(button1Title, for: UIControlState())
+            button1.setTitle(button1Title, for: .normal)
             setNeedsUpdateView()
         }
     }
