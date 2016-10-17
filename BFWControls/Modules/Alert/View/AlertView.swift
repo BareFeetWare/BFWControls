@@ -75,12 +75,12 @@ import UIKit
     
     // MARK: - Functions
     
-    func buttonTitleAtIndex(_ index: Int) -> String? {
+    func buttonTitleAt(index: Int) -> String? {
         let button = buttons[index]
         return button.currentTitle
     }
     
-    func indexOfButton(_ button: UIButton) -> Int? {
+    func index(of button: UIButton) -> Int? {
         return buttons.index(of: button)
     }
     
@@ -131,7 +131,7 @@ import UIKit
         for action in actions {
             action.button?.isHidden = action.title == nil || isPlaceholderString(action.title)
         }
-        messageLabel?.activateOnlyConstraintsWithFirstVisibleInViews(buttons.reversed())
+        messageLabel?.activateOnlyConstraintsWithFirstVisible(in: buttons.reversed())
         if let horizontalButtonsLayoutConstraints = horizontalButtonsLayoutConstraints,
             let verticalButtonsLayoutConstraints = verticalButtonsLayoutConstraints
         {

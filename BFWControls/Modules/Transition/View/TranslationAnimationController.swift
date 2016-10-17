@@ -52,7 +52,7 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
     
     // MARK: - Private functions
 
-    fileprivate func presentedFrameInContainerView(_ containerView: UIView) -> CGRect {
+    fileprivate func presentedFrame(in containerView: UIView) -> CGRect {
         // TODO: Use AutoLayout?
         var frame = containerView.bounds
         frame.origin.x += leftInset
@@ -62,8 +62,8 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
         return frame
     }
 
-    fileprivate func dismissedFrameInContainerView(_ containerView: UIView, direction: Direction) -> CGRect {
-        var frame = presentedFrameInContainerView(containerView)
+    fileprivate func dismissedFrame(in containerView: UIView, direction: Direction) -> CGRect {
+        var frame = presentedFrame(in: containerView)
         switch direction {
         case .left:
             frame.origin.x += containerView.frame.size.width
@@ -118,7 +118,7 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
                 toViewController.view.alpha = 0.0
             } else {
                 let toDirection = animatePresenter && !isPresenting ? direction.reverse : direction
-                toViewController.view.frame = dismissedFrameInContainerView(containerView, direction: toDirection)
+                toViewController.view.frame = dismissedFrame(in: containerView, direction: toDirection)
             }
             if let backdropColor = backdropColor {
                 if !containerView.subviews.contains(backdropView) {
@@ -138,12 +138,12 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
                 if fadeFrom {
                     fromViewController?.view.alpha = 0.0
                 } else {
-                    fromViewController?.view.frame = self.dismissedFrameInContainerView(containerView, direction: fromDirection)
+                    fromViewController?.view.frame = self.dismissedFrame(in: containerView, direction: fromDirection)
                 }
                 if fadeTo {
                     toViewController?.view.alpha = 1.0
                 } else {
-                    toViewController?.view.frame = self.presentedFrameInContainerView(containerView)
+                    toViewController?.view.frame = self.presentedFrame(in: containerView)
                 }
                 if self.isPresenting {
                     self.backdropView.alpha = 1.0

@@ -11,7 +11,7 @@ import UIKit
 
 protocol AlertViewDelegate {
     
-    func alertView(_ alertView: AlertView, clickedButtonAtIndex index: Int)
+    func alertView(_ alertView: AlertView, clickedButtonAt index: Int)
     
 }
 
@@ -70,15 +70,15 @@ class AlertViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func actionButton(_ button: UIButton) {
-        let index = alertView.indexOfButton(button)!
+        let index = alertView.index(of: button)!
         if alertView.hasCancel && index == 0 {
             dismissAlert(button)
         } else {
             if let delegate = delegate {
-                delegate.alertView(alertView, clickedButtonAtIndex: index)
+                delegate.alertView(alertView, clickedButtonAt: index)
             } else {
                 let identifer = segueIdentifiers[index]
-                    ?? alertView.buttonTitleAtIndex(index)!
+                    ?? alertView.buttonTitleAt(index: index)!
                 performSegue(withIdentifier: identifer, sender: alertView)
             }
             if !isInNavigationController && autoDismisses {

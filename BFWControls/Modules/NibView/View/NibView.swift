@@ -45,8 +45,8 @@ import UIKit
         if let views = placeholderViews {
             for view in views {
                 if let label = view as? UILabel,
-                    let text = label.text
-                    , text.isPlaceholder
+                    let text = label.text,
+                    text.isPlaceholder
                 {
                     label.text = nil
                 } else if let button = view as? UIButton {

@@ -11,52 +11,52 @@ import UIKit
 
 extension UIView {
     
-    func copyDescendantConstraintsFromView(_ fromView: UIView) {
+    func copyDescendantConstraints(from fromView: UIView) {
         var fromItems: [NSObject] = [fromView]
         var toItems: [NSObject] = [self]
         var toSubviewConstraints = [NSLayoutConstraint]()
         for fromSubview in fromView.subviews {
-            if let toSubview = subviewMatchingView(fromSubview) {
+            if let toSubview = subview(matching: fromSubview) {
                 fromItems.append(fromSubview)
                 toItems.append(toSubview)
                 toSubviewConstraints += toSubview.constraints
             }
         }
         let oldConstraints = (constraints + toSubviewConstraints).filter { constraint in
-            constraint.onlyIncludesItems(toItems)
+            constraint.onlyIncludes(items: toItems)
         }
         let copiedConstraints = oldConstraints.map { oldConstraint in
-            oldConstraint.constraintByReplacingItems(toItems, withNewItems: fromItems)
+            oldConstraint.constraint(byReplacing: toItems, with: fromItems)
         }
         NSLayoutConstraint.deactivate(oldConstraints)
         NSLayoutConstraint.activate(copiedConstraints)
     }
 
     func pinToSuperviewEdges() {
-        pinToView(superview!,
+        pin(to: superview!,
             attributes: [.left, .right, .top, .bottom],
             secondAttributes: [.left, .right, .top, .bottom]
         )
     }
 
     func pinToSuperviewMargins() {
-        pinToView(superview!,
+        pin(to: superview!,
             attributes: [.left, .right, .top, .bottom],
             secondAttributes: [.leftMargin, .rightMargin, .topMargin, .bottomMargin]
         )
     }
     
-    func pinToSuperviewWithInset(_ inset: CGFloat) {
-        pinToView(superview!,
+    func pinToSuperview(with inset: CGFloat) {
+        pin(to: superview!,
             attributes: [.left, .right, .top, .bottom],
             secondAttributes: [.left, .right, .top, .bottom],
             constants: [inset, -inset, inset, -inset])
     }
     
-    func pinToView(_ view: UIView,
-        attributes: [NSLayoutAttribute],
-        secondAttributes: [NSLayoutAttribute],
-        constants: [CGFloat] = [0, 0, 0, 0])
+    func pin(to view: UIView,
+             attributes: [NSLayoutAttribute],
+             secondAttributes: [NSLayoutAttribute],
+             constants: [CGFloat] = [0, 0, 0, 0])
     {
         var constraints = [NSLayoutConstraint]()
         for attributeN in 0 ..< attributes.count {
@@ -75,11 +75,11 @@ extension UIView {
         translatesAutoresizingMaskIntoConstraints = false
     }
 
-    func activateOnlyConstraintsWithFirstVisibleInViews(_ views: [UIView]) {
+    func activateOnlyConstraintsWithFirstVisible(in views: [UIView]) {
         var firstMatchedView: UIView?
         for view in views {
             let isFirstMatch = firstMatchedView == nil && !(view.isHidden)
-            if let constraints = constraintsWithView(view) {
+            if let constraints = constraints(with: view) {
                 if isFirstMatch {
                     firstMatchedView = view
                     NSLayoutConstraint.activate(constraints)
@@ -90,7 +90,7 @@ extension UIView {
         }
     }
     
-    func commonAncestorWithView(_ view: UIView) -> UIView? {
+    func commonAncestor(with view: UIView) -> UIView? {
         var ancestor: UIView?
         if isDescendant(of: view) {
             ancestor = view
@@ -108,9 +108,9 @@ extension UIView {
         return ancestor
     }
     
-    func constraintsWithView(_ view: UIView) -> [NSLayoutConstraint]? {
-        return commonAncestorWithView(view)?.constraints.filter { constraint in
-            constraint.isBetweenItem(self, otherItem: view)
+    func constraints(with view: UIView) -> [NSLayoutConstraint]? {
+        return commonAncestor(with: view)?.constraints.filter { constraint in
+            constraint.isBetween(item: self, otherItem: view)
         }
     }
     
@@ -118,8 +118,8 @@ extension UIView {
         return superview?.constraints.filter { constraint in
             var include = false
             if let firstItem = constraint.firstItem as? NSObject,
-                let secondItem = constraint.secondItem as? NSObject
-                , firstItem == self || secondItem == self
+                let secondItem = constraint.secondItem as? NSObject,
+                firstItem == self || secondItem == self
             {
                 include = true
             }
@@ -144,7 +144,7 @@ extension UIView {
         set {
             if let widthConstraint = widthConstraint {
                 if let width = newValue {
-                    let newConstraint = widthConstraint.constraintWithMultiplier(width)
+                    let newConstraint = widthConstraint.constraint(with: width)
                     superview!.removeConstraint(widthConstraint)
                     superview!.addConstraint(newConstraint)
                 }
@@ -179,7 +179,7 @@ extension UIView {
 
 extension NSLayoutConstraint {
     
-    func constraintWithMultiplier(_ multiplier: CGFloat) -> NSLayoutConstraint {
+    func constraint(with multiplier: CGFloat) -> NSLayoutConstraint {
         let constraint = NSLayoutConstraint(
             item: firstItem,
             attribute: firstAttribute,
@@ -192,7 +192,7 @@ extension NSLayoutConstraint {
         return constraint
     }
     
-    func constraintByReplacingItems(_ oldItems: [NSObject], withNewItems newItems: [NSObject]) -> NSLayoutConstraint {
+    func constraint(byReplacing oldItems: [NSObject], with newItems: [NSObject]) -> NSLayoutConstraint {
         let firstIndex = oldItems.index(of: self.firstItem as! NSObject)!
         let firstItem = newItems[firstIndex]
         var newSecondItem: NSObject?
@@ -213,7 +213,7 @@ extension NSLayoutConstraint {
         return constraint
     }
     
-    func isBetweenItem(_ item: NSObject, otherItem: NSObject) -> Bool {
+    func isBetween(item: NSObject, otherItem: NSObject) -> Bool {
         var isBetween = false
         if let firstItem = firstItem as? NSObject,
             let secondItem = secondItem as? NSObject
@@ -224,7 +224,7 @@ extension NSLayoutConstraint {
         return isBetween
     }
 
-    func otherItemIfView(_ view: UIView) -> AnyObject? {
+    func otherItem(if view: UIView) -> AnyObject? {
         var otherItem: AnyObject?
         if firstItem as? UIView == view {
             otherItem = secondItem
@@ -234,12 +234,16 @@ extension NSLayoutConstraint {
         return otherItem
     }
     
-    func onlyIncludesItems(_ items: [NSObject]) -> Bool {
+    func onlyIncludes(items: [NSObject]) -> Bool {
         var include = false
-        if let firstItem = firstItem as? NSObject , items.contains(firstItem) {
+        if let firstItem = firstItem as? NSObject,
+            items.contains(firstItem)
+        {
             if secondItem == nil {
                 include = true
-            } else if let secondItem = secondItem as? NSObject , items.contains(secondItem) {
+            } else if let secondItem = secondItem as? NSObject,
+                items.contains(secondItem)
+            {
                 include = true
             }
         }

@@ -62,7 +62,7 @@ class MorphSegue: UIStoryboardSegue {
         if let morphingView = morphingView {
             
             // Add destination constraints, which will animate frames when layout is updated, inside animation block below.
-            morphingView.copyDescendantConstraintsFromView(destinationVCView)
+            morphingView.copyDescendantConstraints(from: destinationVCView)
 
             UIView.animate(
                 withDuration: duration,
@@ -77,7 +77,7 @@ class MorphSegue: UIStoryboardSegue {
                     }
                     if let subviews = contentView?.subviews {
                         for subview in subviews {
-                            if let destinationSubview = destinationVCView.subviewMatchingView(subview) {
+                            if let destinationSubview = destinationVCView.subview(matching: subview) {
                                 subview.frame = destinationSubview.superview!.convert(destinationSubview.frame, to: destinationVCView)
 //                                subview.frame.origin.y += 64.0 // Nav bar hack
                                 subview.copyAnimatableProperties(from: destinationSubview)
