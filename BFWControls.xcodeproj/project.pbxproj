@@ -26,7 +26,6 @@
 		E26F2AE71CE1807600B56416 /* TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26F2AE31CE1807600B56416 /* TextAttributes.swift */; };
 		E26F2AE81CE1807600B56416 /* StyledText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26F2AE51CE1807600B56416 /* StyledText.swift */; };
 		E26F45D81D6B12C9005ECA07 /* ImageNibCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26F45D71D6B12C9005ECA07 /* ImageNibCellView.swift */; };
-		E274E0741CC5A1B600262254 /* AlertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E274E06B1CC5A1B600262254 /* AlertsViewController.swift */; };
 		E274E0751CC5A1B600262254 /* Developer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E274E06E1CC5A1B600262254 /* Developer.storyboard */; };
 		E274E0761CC5A1B600262254 /* Morph.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E274E0711CC5A1B600262254 /* Morph.storyboard */; };
 		E274E0781CC5A1B600262254 /* MorphTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E274E0731CC5A1B600262254 /* MorphTableViewController.swift */; };
@@ -88,7 +87,6 @@
 		E26F2AE31CE1807600B56416 /* TextAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAttributes.swift; sourceTree = "<group>"; };
 		E26F2AE51CE1807600B56416 /* StyledText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyledText.swift; sourceTree = "<group>"; };
 		E26F45D71D6B12C9005ECA07 /* ImageNibCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageNibCellView.swift; sourceTree = "<group>"; };
-		E274E06B1CC5A1B600262254 /* AlertsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertsViewController.swift; sourceTree = "<group>"; };
 		E274E06E1CC5A1B600262254 /* Developer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Developer.storyboard; sourceTree = "<group>"; };
 		E274E0711CC5A1B600262254 /* Morph.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Morph.storyboard; sourceTree = "<group>"; };
 		E274E0731CC5A1B600262254 /* MorphTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorphTableViewController.swift; sourceTree = "<group>"; };
@@ -351,7 +349,6 @@
 			isa = PBXGroup;
 			children = (
 				E274E0791CC5A1EE00262254 /* Alerts.storyboard */,
-				E274E06B1CC5A1B600262254 /* AlertsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -616,7 +613,6 @@
 				E2DAF9341D596FE600ECA235 /* UIView+Transform.swift in Sources */,
 				E234075E1C08399000319D38 /* UIView+BFWCopy.m in Sources */,
 				E20E10CE1CA1EA9300F35C82 /* TranslationTransitioningController.swift in Sources */,
-				E274E0741CC5A1B600262254 /* AlertsViewController.swift in Sources */,
 				E26F2AE81CE1807600B56416 /* StyledText.swift in Sources */,
 				E2F71A611CBC5DEA008B6A68 /* AlertViewController.swift in Sources */,
 				E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */,
