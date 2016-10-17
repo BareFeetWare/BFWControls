@@ -133,7 +133,7 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
         UIView.animate(
             withDuration: duration,
             delay: 0.0,
-            options: UIViewAnimationOptions(),
+            options: [.curveEaseInOut],
             animations: {
                 if fadeFrom {
                     fromViewController?.view.alpha = 0.0
