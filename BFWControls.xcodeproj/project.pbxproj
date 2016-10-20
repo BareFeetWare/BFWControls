@@ -15,6 +15,9 @@
 		E218A36B1D5384E5000B5B34 /* UIView+Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = E218A36A1D5384E5000B5B34 /* UIView+Table.swift */; };
 		E22A5E961C879BCB00AE9389 /* NibButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22A5E951C879BCB00AE9389 /* NibButton.swift */; };
 		E234075E1C08399000319D38 /* UIView+BFWCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = E234075C1C08399000319D38 /* UIView+BFWCopy.m */; };
+		E23BFBA01DB4945C00D877EF /* AvatarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E23BFB9F1DB4945C00D877EF /* AvatarView.xib */; };
+		E23BFBA21DB4959F00D877EF /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23BFBA11DB4959F00D877EF /* AvatarView.swift */; };
+		E23BFBA41DB4960700D877EF /* NibView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E23BFBA31DB4960700D877EF /* NibView.storyboard */; };
 		E25687C41C6C5B8E00DD14D5 /* NSLayoutConstraintExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25687C31C6C5B8E00DD14D5 /* NSLayoutConstraintExtensions.swift */; };
 		E25687EB1C70ACC500DD14D5 /* MorphSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25687EA1C70ACC500DD14D5 /* MorphSegue.swift */; };
 		E25687ED1C70AD0600DD14D5 /* UIViewMorphExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25687EC1C70AD0600DD14D5 /* UIViewMorphExtensions.swift */; };
@@ -75,6 +78,9 @@
 		E234075B1C08399000319D38 /* UIView+BFWCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BFWCopy.h"; sourceTree = "<group>"; };
 		E234075C1C08399000319D38 /* UIView+BFWCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BFWCopy.m"; sourceTree = "<group>"; };
 		E23407641C0AD7A100319D38 /* BFWControls-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BFWControls-Bridging-Header.h"; sourceTree = "<group>"; };
+		E23BFB9F1DB4945C00D877EF /* AvatarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AvatarView.xib; sourceTree = "<group>"; };
+		E23BFBA11DB4959F00D877EF /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		E23BFBA31DB4960700D877EF /* NibView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NibView.storyboard; sourceTree = "<group>"; };
 		E25687C31C6C5B8E00DD14D5 /* NSLayoutConstraintExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintExtensions.swift; sourceTree = "<group>"; };
 		E25687EA1C70ACC500DD14D5 /* MorphSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorphSegue.swift; sourceTree = "<group>"; };
 		E25687EC1C70AD0600DD14D5 /* UIViewMorphExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewMorphExtensions.swift; sourceTree = "<group>"; };
@@ -207,6 +213,7 @@
 				E25FC1491D680A5F001C7495 /* Carousel */,
 				E274E06C1CC5A1B600262254 /* Developer */,
 				E274E06F1CC5A1B600262254 /* Morph */,
+				E23BFB9C1DB4942500D877EF /* NibView */,
 				E28D6A6D1D38889D007EE85F /* Table */,
 			);
 			path = Sample;
@@ -242,6 +249,32 @@
 			isa = PBXGroup;
 			children = (
 				E218A36A1D5384E5000B5B34 /* UIView+Table.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E23BFB9C1DB4942500D877EF /* NibView */ = {
+			isa = PBXGroup;
+			children = (
+				E23BFB9D1DB4942500D877EF /* Controller */,
+				E23BFB9E1DB4943700D877EF /* View */,
+			);
+			path = NibView;
+			sourceTree = "<group>";
+		};
+		E23BFB9D1DB4942500D877EF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E23BFBA31DB4960700D877EF /* NibView.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E23BFB9E1DB4943700D877EF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E23BFBA11DB4959F00D877EF /* AvatarView.swift */,
+				E23BFB9F1DB4945C00D877EF /* AvatarView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -582,12 +615,14 @@
 				E20256A71BEB413300095590 /* Assets.xcassets in Resources */,
 				E2B170161CBC562D00D391B4 /* StaticAlertView.xib in Resources */,
 				E25FC14C1D680A79001C7495 /* Carousel.storyboard in Resources */,
+				E23BFBA41DB4960700D877EF /* NibView.storyboard in Resources */,
 				E274E0751CC5A1B600262254 /* Developer.storyboard in Resources */,
 				E25FC1581D682C5D001C7495 /* SampleCarousel.plist in Resources */,
 				E28D6A701D3888B8007EE85F /* Table.storyboard in Resources */,
 				E274E07C1CC5A3D100262254 /* AlertViewOverlay.xib in Resources */,
 				E2B170141CBC562D00D391B4 /* AlertView.xib in Resources */,
 				E274E07A1CC5A1EE00262254 /* Alerts.storyboard in Resources */,
+				E23BFBA01DB4945C00D877EF /* AvatarView.xib in Resources */,
 				E2CFD5A61D1B96E400882597 /* ActionSheetView.xib in Resources */,
 				E274E0761CC5A1B600262254 /* Morph.storyboard in Resources */,
 			);
@@ -637,6 +672,7 @@
 				E28D6A6C1D388825007EE85F /* StaticTableViewController.swift in Sources */,
 				E277367B1CC8CC930033941A /* OpenURLSegue.swift in Sources */,
 				E26F2AE71CE1807600B56416 /* TextAttributes.swift in Sources */,
+				E23BFBA21DB4959F00D877EF /* AvatarView.swift in Sources */,
 				E2DE2EF11BEDFE1300636D0D /* UIImageEffects.m in Sources */,
 				E2A5E3B61CA512C200368EFA /* UIViewExtensions.swift in Sources */,
 				E25687C41C6C5B8E00DD14D5 /* NSLayoutConstraintExtensions.swift in Sources */,
