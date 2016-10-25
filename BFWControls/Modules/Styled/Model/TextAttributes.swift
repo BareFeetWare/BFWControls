@@ -10,6 +10,6 @@ import Foundation
 typealias TextAttributes = [String: AnyObject]
 
 // extension TextAttributes
-extension Dictionary where Key: StringLiteralConvertible, Value: AnyObject {
+extension Dictionary where Key: ExpressibleByStringLiteral, Value: AnyObject {
     
 }

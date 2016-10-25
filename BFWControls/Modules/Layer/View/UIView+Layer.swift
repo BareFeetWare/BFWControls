@@ -33,12 +33,12 @@ extension UIView {
         get {
             var color: UIColor?
             if let layerBorderColor = layer.borderColor {
-                color = UIColor(CGColor: layerBorderColor)
+                color = UIColor(cgColor: layerBorderColor)
             }
             return color
         }
         set {
-            layer.borderColor = newValue?.CGColor
+            layer.borderColor = newValue?.cgColor
         }
     }
     
@@ -46,12 +46,12 @@ extension UIView {
         get {
             var color: UIColor?
             if let layerColor = layer.shadowColor {
-                color = UIColor(CGColor: layerColor)
+                color = UIColor(cgColor: layerColor)
             }
             return color
         }
         set {
-            layer.shadowColor = newValue?.CGColor
+            layer.shadowColor = newValue?.cgColor
         }
     }
     

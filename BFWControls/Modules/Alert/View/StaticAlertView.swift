@@ -33,14 +33,14 @@ import UIKit
 
     @IBInspectable var button0Title: String? {
         didSet {
-            button0.setTitle(button0Title, forState: .Normal)
+            button0.setTitle(button0Title, for: UIControlState())
             setNeedsUpdateView()
         }
     }
 
     @IBInspectable var button1Title: String? {
         didSet {
-            button1.setTitle(button1Title, forState: .Normal)
+            button1.setTitle(button1Title, for: UIControlState())
             setNeedsUpdateView()
         }
     }
@@ -49,7 +49,7 @@ import UIKit
     
     override func updateView() {
         super.updateView()
-        button1.hidden = button1Title == nil
+        button1.isHidden = button1Title == nil
         messageLabel.activateOnlyConstraintsWithFirstVisibleInViews([button1, button0])
     }
     

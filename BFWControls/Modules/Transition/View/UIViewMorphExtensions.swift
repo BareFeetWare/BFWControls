@@ -11,19 +11,19 @@ import UIKit
 
 extension UIView {
     
-    func isMorphableTo(view: UIView) -> Bool {
+    func isMorphableTo(_ view: UIView) -> Bool {
         var isMorphable = false
         if tag != 0 && tag == view.tag {
             isMorphable = true
         } else if view is UILayoutSupport && self is UILayoutSupport {
-            if CGPointEqualToPoint(view.frame.origin, CGPointZero) == CGPointEqualToPoint(frame.origin, CGPointZero) {
+            if view.frame.origin.equalTo(CGPoint.zero) == frame.origin.equalTo(CGPoint.zero) {
                 isMorphable = true
             }
         }
         return isMorphable
     }
     
-    func subviewMatchingView(view: UIView) -> UIView? {
+    func subviewMatchingView(_ view: UIView) -> UIView? {
         var matchingSubview: UIView?
         if view.tag != 0 {
             matchingSubview = viewWithTag(view.tag)
@@ -42,7 +42,7 @@ extension UIView {
 
 extension UILabel {
     
-    override func isMorphableTo(view: UIView) -> Bool {
+    override func isMorphableTo(_ view: UIView) -> Bool {
         var isMorphable = super.isMorphableTo(view)
         if !isMorphable {
             if let label = view as? UILabel {
@@ -56,7 +56,7 @@ extension UILabel {
 
 extension UIImageView {
     
-    override func isMorphableTo(view: UIView) -> Bool {
+    override func isMorphableTo(_ view: UIView) -> Bool {
         var isMorphable = super.isMorphableTo(view)
         if !isMorphable {
             if let imageView = view as? UIImageView,

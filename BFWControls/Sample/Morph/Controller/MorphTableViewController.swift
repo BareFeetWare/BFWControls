@@ -9,7 +9,7 @@ import UIKit
 
 class MorphTableViewController: UITableViewController {
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let morphSegue = segue as? MorphSegue,
             let cell = sender as? UITableViewCell
         {

@@ -57,8 +57,8 @@ import UIKit
     
     override func updateView() {
         super.updateView()
-        accessoryView?.hidden = !showAccessory
-        separatorView?.hidden = !showSeparator
+        accessoryView?.isHidden = !showAccessory
+        separatorView?.isHidden = !showSeparator
     }
 
     

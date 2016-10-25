@@ -34,15 +34,15 @@ class NibTextField: UITextField {
         if let contentView = contentView {
             addSubview(contentView)
             contentView.pinToSuperviewEdges()
-            contentView.userInteractionEnabled = false
-            borderStyle = .None
+            contentView.isUserInteractionEnabled = false
+            borderStyle = .none
             absorbInnerTextField()
         }
     }
     
-    private func absorbInnerTextField() {
+    fileprivate func absorbInnerTextField() {
         if let innerTextField = subviewTextField {
-            innerTextField.hidden = true
+            innerTextField.isHidden = true
             defaultTextAttributes = innerTextField.defaultTextAttributes
         }
     }
@@ -58,9 +58,9 @@ class NibTextField: UITextField {
         setNeedsLayout()
     }
     
-    private var needsUpdateView = true
+    fileprivate var needsUpdateView = true
     
-    private func updateViewIfNeeded() {
+    fileprivate func updateViewIfNeeded() {
         if needsUpdateView {
             needsUpdateView = false
             updateView()
@@ -69,31 +69,31 @@ class NibTextField: UITextField {
     
     // MARK: - UITextField
     
-    override func placeholderRectForBounds(bounds: CGRect) -> CGRect {
-        return textRectForBounds(bounds)
+    override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        return textRect(forBounds: bounds)
     }
     
-    override func textRectForBounds(bounds: CGRect) -> CGRect {
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
         // TODO: Calculate the adjustment.
         let magicAdjustment: CGFloat = 50.0
         var rect: CGRect
         if let innerTextField = subviewTextField {
-            rect = innerTextField.superview!.convertRect(innerTextField.frame, toView: self)
+            rect = innerTextField.superview!.convert(innerTextField.frame, to: self)
             let adjustment = bounds.height / 2 - magicAdjustment
             rect.origin.y -= adjustment
             rect.size.height += adjustment
         } else {
-            rect = super.textRectForBounds(bounds)
+            rect = super.textRect(forBounds: bounds)
         }
         return rect
     }
     
-    override func editingRectForBounds(bounds: CGRect) -> CGRect {
-        return textRectForBounds(bounds)
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return textRect(forBounds: bounds)
     }
     
     /// Locate active text editor for debugging.
-    private var fieldEditor: UIScrollView? {
+    fileprivate var fieldEditor: UIScrollView? {
         var fieldEditor: UIScrollView?
         for subview in subviews {
             if let possible = subview as? UIScrollView {

@@ -12,11 +12,11 @@ import UIKit
 class OpenURLSegue: UIStoryboardSegue {
 
     override func perform() {
-        let title = destinationViewController.navigationItem.title ?? destinationViewController.title
+        let title = destination.navigationItem.title ?? destination.title
         if let urlString = title,
-            let url = NSURL(string: urlString)
+            let url = URL(string: urlString)
         {
-            UIApplication.sharedApplication().openURL(url)
+            UIApplication.shared.openURL(url)
         } else {
             print("OpenURLSegue could not make a URL out of the title \"\(title)\"")
         }

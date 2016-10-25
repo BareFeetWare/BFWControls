@@ -38,11 +38,11 @@ class CarouselViewController: UICollectionViewController {
         return plistDict?[Key.cellIdentifiers] as? [String] ?? ibCellIdentifiers
     }
     
-    private struct Key {
+    fileprivate struct Key {
         static let cellIdentifiers = "cellIdentifiers"
     }
     
-    private var ibCellIdentifiers: [String] {
+    fileprivate var ibCellIdentifiers: [String] {
         return [cell0Identifier,
             cell1Identifier,
             cell2Identifier,
@@ -54,8 +54,8 @@ class CarouselViewController: UICollectionViewController {
             ].flatMap { $0 }
     }
     
-    private var plistDict: [String: AnyObject]? {
-        return NSBundle.mainBundle().pathForResource(dataSourcePlistName, ofType: "plist").flatMap {
+    fileprivate var plistDict: [String: AnyObject]? {
+        return Bundle.main.path(forResource: dataSourcePlistName, ofType: "plist").flatMap {
             NSDictionary(contentsOfFile: $0) as? [String: AnyObject]
         }
     }
@@ -68,12 +68,12 @@ class CarouselViewController: UICollectionViewController {
     }
     
     /// Override in subclass for dynamic content or use default implementation for static content.
-    override func collectionView(collectionView: UICollectionView,
-                                 cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
+    override func collectionView(_ collectionView: UICollectionView,
+                                 cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let page = pageForIndexPath(indexPath)
         let cellIdentifier = cellIdentifiers![page]
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
         return cell
     }
     
@@ -85,7 +85,7 @@ class CarouselViewController: UICollectionViewController {
     
     var currentPageFloat: CGFloat {
         let page = currentCellItem - (shouldLoop ? 1 : 0)
-        return page < 0 || pageCount == 0 ? CGFloat(pageCount) + page : page % CGFloat(pageCount)
+        return page < 0 || pageCount == 0 ? CGFloat(pageCount) + page : page.truncatingRemainder(dividingBy: CGFloat(pageCount))
     }
     
     lazy var pageControl: UIPageControl! = {
@@ -102,34 +102,34 @@ class CarouselViewController: UICollectionViewController {
     
     // MARK: - Private variables
     
-    private var collectionViewSize: CGSize?
+    fileprivate var collectionViewSize: CGSize?
 
-    private var shouldLoop: Bool {
+    fileprivate var shouldLoop: Bool {
         return looped && pageCount > 1
     }
     
-    private var currentCellItem: CGFloat {
+    fileprivate var currentCellItem: CGFloat {
         return collectionViewSize.map { size in collectionView!.contentOffset.x / size.width } ?? 0
     }
     
     // MARK: - Actions
     
-    private func addPageControl() {
+    fileprivate func addPageControl() {
         if pageControl.superview == nil {
             collectionView?.addSubview(pageControl)
             pageControl.sizeToFit()
         }
         pageControl.addTarget(self,
                               action: #selector(changedPageControl(_:)),
-                              forControlEvents: .ValueChanged)
+                              for: .valueChanged)
         pageControl.numberOfPages = pageCount
     }
     
-    @IBAction func changedPageControl(pageControl: UIPageControl) {
+    @IBAction func changedPageControl(_ pageControl: UIPageControl) {
         scrollToPage(pageControl.currentPage, animated: true)
     }
     
-    private func updatePageControl() {
+    fileprivate func updatePageControl() {
         if let collectionViewSize = collectionViewSize {
             if pageControl.superview == collectionView {
                 pageControl.frame.origin.x = (collectionViewSize.width - pageControl.frame.width) / 2 + collectionView!.contentOffset.x
@@ -139,22 +139,22 @@ class CarouselViewController: UICollectionViewController {
         }
     }
     
-    private func scrollToPage(page: Int, animated: Bool) {
+    fileprivate func scrollToPage(_ page: Int, animated: Bool) {
         let loopedPage = loopedPageForPage(page)
         let scrolledPage = loopedPage + (shouldLoop ? 1 : 0)
-        let indexPath = NSIndexPath(forItem: scrolledPage, inSection: 0)
-        collectionView?.scrollToItemAtIndexPath(indexPath,
-                                                atScrollPosition: .CenteredHorizontally,
+        let indexPath = IndexPath(item: scrolledPage, section: 0)
+        collectionView?.scrollToItem(at: indexPath,
+                                                at: .centeredHorizontally,
                                                 animated: animated)
     }
     
     // MARK: - Functions
     
-    private func loopedPageForPage(page: Int) -> Int {
+    fileprivate func loopedPageForPage(_ page: Int) -> Int {
         return page < 0 || pageCount == 0 ? pageCount + page : page % pageCount
     }
     
-    func pageForIndexPath(indexPath: NSIndexPath) -> Int {
+    func pageForIndexPath(_ indexPath: IndexPath) -> Int {
         var page = indexPath.row
         if shouldLoop {
             page -= 1
@@ -167,15 +167,15 @@ class CarouselViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView?.pagingEnabled = true
+        collectionView?.isPagingEnabled = true
         collectionView?.showsHorizontalScrollIndicator = false
         if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.scrollDirection = .Horizontal
+            layout.scrollDirection = .horizontal
             layout.minimumInteritemSpacing = 0.0
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addPageControl()
     }
@@ -197,11 +197,11 @@ class CarouselViewController: UICollectionViewController {
 
 extension CarouselViewController {
     
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    override func collectionView(collectionView: UICollectionView,
+    override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int
     {
         return pageCount + (shouldLoop ? 2 : 0)
@@ -211,16 +211,16 @@ extension CarouselViewController {
 
 extension CarouselViewController: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(collectionView: UICollectionView,
+    func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
+                        sizeForItemAt indexPath: IndexPath) -> CGSize
     {
         return collectionView.frame.size
     }
     
-    func collectionView(collectionView: UICollectionView,
+    func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat
     {
         return 0.0
     }
@@ -231,13 +231,13 @@ extension CarouselViewController: UICollectionViewDelegateFlowLayout {
 
 extension CarouselViewController {
     
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == collectionView {
             updatePageControl()
         }
     }
     
-    override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if shouldLoop {
             scrollToPage(currentPage, animated: false)
         }

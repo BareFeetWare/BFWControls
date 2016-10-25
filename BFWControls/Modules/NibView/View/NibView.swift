@@ -16,7 +16,7 @@ import UIKit
         return nil
     }
 
-    func isPlaceholderString(string: String?) -> Bool {
+    func isPlaceholderString(_ string: String?) -> Bool {
         return string != nil && string!.isPlaceholder
     }
     
@@ -41,26 +41,25 @@ import UIKit
     // MARK: - Private variables and functions.
     
     /// Replace placeholders (eg [Text]) with blank text.
-    private func removePlaceHolders() {
+    fileprivate func removePlaceHolders() {
         if let views = placeholderViews {
             for view in views {
                 if let label = view as? UILabel,
-                    let text = label.text
-                    where text.isPlaceholder
+                    let text = label.text, text.isPlaceholder
                 {
                     label.text = nil
                 } else if let button = view as? UIButton {
-                    if button.titleForState(.Normal)?.isPlaceholder ?? false {
-                        button.setTitle(nil, forState: .Normal)
+                    if button.title(for: UIControlState())?.isPlaceholder ?? false {
+                        button.setTitle(nil, for: UIControlState())
                     }
                 }
             }
         }
     }
 
-    private var needsUpdateView = true
+    fileprivate var needsUpdateView = true
         
-    private func updateViewIfNeeded() {
+    fileprivate func updateViewIfNeeded() {
         if needsUpdateView {
             needsUpdateView = false
             updateView()

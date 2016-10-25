@@ -25,30 +25,30 @@ class StyledText {
         static let weight = "weight"
     }
     
-    private static let styledTextPlist = "StyledText"
+    fileprivate static let styledTextPlist = "StyledText"
     
-    private static var classBundle: NSBundle {
+    fileprivate static var classBundle: Bundle {
         #if TARGET_INTERFACE_BUILDER // Rendering in storyboard using IBDesignable.
             let bundle = NSBundle(forClass: self)
         #else
-            let bundle = NSBundle.mainBundle()
+            let bundle = Bundle.main
         #endif
         return bundle;
     }
     
-    private static var plistDict: [String: AnyObject] = {
-        let plistPath = classBundle.pathForResource(styledTextPlist, ofType: "plist")!
+    fileprivate static var plistDict: [String: AnyObject] = {
+        let plistPath = classBundle.path(forResource: styledTextPlist, ofType: "plist")!
         let dictionary = NSDictionary(contentsOfFile: plistPath) as! [String: AnyObject]
         return dictionary
     }()
     
     // MARK: - Functions
     
-    class func attributesForStyle(style: String) -> TextAttributes? {
+    class func attributesForStyle(_ style: String) -> TextAttributes? {
         return attributesForSection(Section.style, key: style)
     }
     
-    class func attributesForStyles(styles: [String]) -> TextAttributes? {
+    class func attributesForStyles(_ styles: [String]) -> TextAttributes? {
         var attributes: TextAttributes?
         for style in styles {
             if let extraAttributes = attributesForStyle(style) {
@@ -61,15 +61,15 @@ class StyledText {
         return attributes
     }
     
-    class func attributesForLevel(level: Int) -> TextAttributes? {
+    class func attributesForLevel(_ level: Int) -> TextAttributes? {
         return attributesForSection(Section.level, key: String(level))
     }
     
-    class func attributesForLookupDict(lookupDict: [String: AnyObject]) -> TextAttributes? {
+    class func attributesForLookupDict(_ lookupDict: [String: AnyObject]) -> TextAttributes? {
         var attributes = TextAttributes()
         let flatDict = flatLookupDict(lookupDict)
         if let familyName = flatDict[Key.familyName] as? String {
-            attributes[UIFontDescriptorFamilyAttribute] = familyName
+            attributes[UIFontDescriptorFamilyAttribute] = familyName as AnyObject?
             if let weight = flatDict[Key.weight] as? CGFloat {
                 let validWeight: CGFloat
                 if #available(iOS 8.2, *) {
@@ -79,7 +79,7 @@ class StyledText {
                     validWeight = weight
                 }
                 let traits = [UIFontWeightTrait: validWeight]
-                attributes[UIFontDescriptorTraitsAttribute] = traits
+                attributes[UIFontDescriptorTraitsAttribute] = traits as AnyObject?
             }
         } else if let fontName = flatDict[Key.fontName] as? String,
             let fontSize = flatDict[Key.fontSize] as? CGFloat,
@@ -98,12 +98,12 @@ class StyledText {
     
     // MARK: - Private variables and functions
     
-    private class var sections: [String] {
+    fileprivate class var sections: [String] {
         return [Section.style, Section.level, Section.emphasis]
     }
     
     // TODO: Make this private by providing alernative func.
-    class func attributesForSection(section: String, key: String) -> TextAttributes? {
+    class func attributesForSection(_ section: String, key: String) -> TextAttributes? {
         var attributes: TextAttributes?
         if let sectionDict = plistDict[section] as? [String : AnyObject],
             let lookupDict = sectionDict[key] as? [String: AnyObject]
@@ -113,12 +113,12 @@ class StyledText {
         return attributes
     }
     
-    private class func flatLookupDict(lookupDict: [String: AnyObject]) -> [String: AnyObject] {
+    fileprivate class func flatLookupDict(_ lookupDict: [String: AnyObject]) -> [String: AnyObject] {
         var combined = [String: AnyObject]()
         for section in sections {
             if let key = lookupDict[section],
                 let sectionDict = plistDict[section] as? [String : AnyObject],
-                let dict = sectionDict[String(key)] as? [String: AnyObject]
+                let dict = sectionDict[String(describing: key)] as? [String: AnyObject]
             {
                 combined.updateWithDictionary(flatLookupDict(dict))
             }
@@ -135,18 +135,18 @@ class StyledText {
 
 private extension UIColor {
     
-    class func colorWithHexValue(hexValue: UInt32, alpha: CGFloat) -> UIColor {
+    class func colorWithHexValue(_ hexValue: UInt32, alpha: CGFloat) -> UIColor {
         return UIColor(red: CGFloat((hexValue & 0xFF0000) >> 16) / 255.0,
                        green: CGFloat((hexValue & 0xFF00) >> 8) / 255.0,
                        blue: CGFloat(hexValue & 0xFF) / 255.0,
                        alpha: alpha)
     }
     
-    class func colorWithHexString(hexString: String, alpha: CGFloat) -> UIColor? {
+    class func colorWithHexString(_ hexString: String, alpha: CGFloat) -> UIColor? {
         var color: UIColor?
-        let cleanHexString = hexString.stringByReplacingOccurrencesOfString("#", withString: "0x")
+        let cleanHexString = hexString.replacingOccurrences(of: "#", with: "0x")
         var hexValue: UInt32 = 0
-        if NSScanner(string: cleanHexString).scanHexInt(&hexValue) {
+        if Scanner(string: cleanHexString).scanHexInt32(&hexValue) {
             color = colorWithHexValue(hexValue, alpha: alpha)
         }
         return color
@@ -169,29 +169,29 @@ enum FontWeight {
     
     var rawValue: CGFloat {
         switch self {
-        case ultraLight: return UIFontWeightUltraLight
-        case thin: return UIFontWeightThin
-        case light: return UIFontWeightLight
-        case regular: return UIFontWeightRegular
-        case medium: return UIFontWeightMedium
-        case semibold: return UIFontWeightSemibold
-        case bold: return UIFontWeightBold
-        case heavy: return UIFontWeightHeavy
-        case black: return UIFontWeightBlack
+        case .ultraLight: return UIFontWeightUltraLight
+        case .thin: return UIFontWeightThin
+        case .light: return UIFontWeightLight
+        case .regular: return UIFontWeightRegular
+        case .medium: return UIFontWeightMedium
+        case .semibold: return UIFontWeightSemibold
+        case .bold: return UIFontWeightBold
+        case .heavy: return UIFontWeightHeavy
+        case .black: return UIFontWeightBlack
         }
     }
     
     var name: String {
         switch self {
-        case ultraLight: return "ultraLight"
-        case thin: return "thin"
-        case light: return "light"
-        case regular: return "regular"
-        case medium: return "medium"
-        case semibold: return "semibold"
-        case bold: return "bold"
-        case heavy: return "heavy"
-        case black: return "black"
+        case .ultraLight: return "ultraLight"
+        case .thin: return "thin"
+        case .light: return "light"
+        case .regular: return "regular"
+        case .medium: return "medium"
+        case .semibold: return "semibold"
+        case .bold: return "bold"
+        case .heavy: return "heavy"
+        case .black: return "black"
         }
     }
     
@@ -216,11 +216,11 @@ enum FontWeight {
     /// Arbitrary value out of range -1.0 to 1.0.
     static let notSet: CGFloat = -2.0
     
-    static func fontWeightForName(name: String) -> FontWeight? {
+    static func fontWeightForName(_ name: String) -> FontWeight? {
         return all.filter { $0.name == name }.first
     }
     
-    static func fontWeightForApproximateWeight(approximateWeight: CGFloat) -> FontWeight {
+    static func fontWeightForApproximateWeight(_ approximateWeight: CGFloat) -> FontWeight {
         var closest: FontWeight = .medium
         for possible in all {
             if abs(possible.rawValue - approximateWeight) < abs(closest.rawValue - approximateWeight) {
@@ -235,7 +235,7 @@ enum FontWeight {
 // TODO: move extension to separate file.
 extension UIFont {
     
-    func fontWithWeight(weight: CGFloat) -> UIFont {
+    func fontWithWeight(_ weight: CGFloat) -> UIFont {
         let validWeight: CGFloat
         if #available(iOS 8.2, *) {
             let fontWeight = FontWeight.fontWeightForApproximateWeight(weight)
@@ -244,7 +244,7 @@ extension UIFont {
             validWeight = weight
         }
         let traits = [UIFontWeightTrait: validWeight]
-        let attributes: TextAttributes = [UIFontDescriptorFamilyAttribute: familyName, UIFontDescriptorTraitsAttribute: traits]
+        let attributes: TextAttributes = [UIFontDescriptorFamilyAttribute: familyName as AnyObject, UIFontDescriptorTraitsAttribute: traits as AnyObject]
         let descriptor = UIFontDescriptor(fontAttributes: attributes)
         let font = UIFont(descriptor: descriptor, size: pointSize)
         return font

@@ -12,11 +12,11 @@ class StatusTextField: NibTextField {
     // MARK: - Enum
 
     enum ControlStatus: Int {
-        case Normal = 0
-        case Editing = 1
-        case Success = 2
-        case Warning = 3
-        case Error = 4
+        case normal = 0
+        case editing = 1
+        case success = 2
+        case warning = 3
+        case error = 4
     }
     
     // MARK: - Variables
@@ -28,7 +28,7 @@ class StatusTextField: NibTextField {
         }
     }
     
-    var status: ControlStatus = .Normal { didSet { setNeedsUpdateView() }}
+    var status: ControlStatus = .normal { didSet { setNeedsUpdateView() }}
 
     // MARK: - IBInspectable mapping to contentView Nib
 
@@ -48,7 +48,7 @@ class StatusTextField: NibTextField {
             return status.rawValue
         }
         set {
-            status = ControlStatus(rawValue: newValue) ?? .Normal
+            status = ControlStatus(rawValue: newValue) ?? .normal
         }
     }
 
@@ -59,18 +59,18 @@ class StatusTextField: NibTextField {
     }
     
     var borderStatus: ControlStatus {
-        return status == .Normal && editing ? .Editing : status
+        return status == .normal && isEditing ? .editing : status
     }
     
     // MARK: - Private variables
     
-    private var externalDelegate: UITextFieldDelegate?
+    fileprivate var externalDelegate: UITextFieldDelegate?
     
-    private var isPlaceholderAtTitle: Bool {
+    fileprivate var isPlaceholderAtTitle: Bool {
         return !(text?.isEmpty ?? true)
     }
     
-    private var statusTextFieldNibView: StatusTextFieldNibView? {
+    fileprivate var statusTextFieldNibView: StatusTextFieldNibView? {
         return contentView as? StatusTextFieldNibView
     }
     
@@ -80,7 +80,7 @@ class StatusTextField: NibTextField {
         super.commonInit()
         statusTextFieldNibView?.titleLabel?.text = nil
         message = nil
-        status = .Normal
+        status = .normal
         super.delegate = self
     }
     
@@ -88,7 +88,7 @@ class StatusTextField: NibTextField {
 
     override func updateView() {
         super.updateView()
-        statusTextFieldNibView?.iconView?.hidden = status == .Normal
+        statusTextFieldNibView?.iconView?.isHidden = status == .normal
         statusTextFieldNibView?.iconView?.tintColor = status.color
         statusTextFieldNibView?.borderView?.backgroundColor = borderStatus.color
         statusTextFieldNibView?.messageLabel?.textColor = messageColor
@@ -119,11 +119,11 @@ private extension StatusTextField.ControlStatus {
     
     var color: UIColor {
         switch self {
-        case .Normal: return UIColor.grayColor()
-        case .Editing: return UIColor(red: 255.0, green: 200.0, blue: 0.0, alpha: 1.0)
-        case .Success: return UIColor.greenColor()
-        case .Warning: return UIColor.orangeColor()
-        case .Error: return UIColor.redColor()
+        case .normal: return UIColor.gray
+        case .editing: return UIColor(red: 255.0, green: 200.0, blue: 0.0, alpha: 1.0)
+        case .success: return UIColor.green
+        case .warning: return UIColor.orange
+        case .error: return UIColor.red
         }
     }
     
@@ -140,7 +140,7 @@ extension StatusTextField: UITextFieldDelegate {
         }
     }
     
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         var should = true
         if let externalShould = externalDelegate?.textFieldShouldBeginEditing?(textField) {
             should = externalShould
@@ -148,20 +148,20 @@ extension StatusTextField: UITextFieldDelegate {
         return should
     }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         setNeedsUpdateView()
         externalDelegate?.textFieldDidBeginEditing?(textField)
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         setNeedsUpdateView()
         externalDelegate?.textFieldDidEndEditing?(textField)
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         var should = true
         if let externalShould = externalDelegate?.textField?(textField,
-                                                             shouldChangeCharactersInRange: range,
+                                                             shouldChangeCharactersIn: range,
                                                              replacementString: string)
         {
             should = externalShould
@@ -172,7 +172,7 @@ extension StatusTextField: UITextFieldDelegate {
         return should
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         var should = true
         if let externalDelegate = externalDelegate {
             should = externalDelegate.textFieldShouldReturn?(textField) ?? true
