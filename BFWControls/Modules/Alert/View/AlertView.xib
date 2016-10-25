@@ -1,68 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZxU-1y-cua" customClass="AlertView" customModule="BFWControls" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="[Title]" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFr-wE-oRA">
+                    <rect key="frame" x="8" y="8" width="284" height="20.5"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="[Message]" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZ3-Hb-Y6u">
+                    <rect key="frame" x="8" y="36.5" width="284" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="scg-Tb-F35">
+                    <rect key="frame" x="0.0" y="370" width="300" height="30"/>
                     <state key="normal" title="[Button 0]"/>
                     <connections>
                         <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="Qle-If-d3l"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6JV-dh-beq">
+                    <rect key="frame" x="0.0" y="340" width="300" height="30"/>
                     <state key="normal" title="[Button 1]"/>
                     <connections>
                         <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="f8T-Rh-lXv"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6w-Kv-MGK">
+                    <rect key="frame" x="0.0" y="310" width="300" height="30"/>
                     <state key="normal" title="[Button 2]"/>
                     <connections>
                         <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="pEB-l8-IEr"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XwE-ND-HJR">
+                    <rect key="frame" x="0.0" y="280" width="300" height="30"/>
                     <state key="normal" title="[Button 3]"/>
                     <connections>
                         <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="TRm-06-fnC"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RpR-KS-etR">
+                    <rect key="frame" x="0.0" y="250" width="300" height="30"/>
                     <state key="normal" title="[Button 4]"/>
                     <connections>
                         <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="yj7-WO-WhD"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Va2-nQ-GBe">
+                    <rect key="frame" x="0.0" y="220" width="300" height="30"/>
                     <state key="normal" title="[Button 5]"/>
                     <connections>
                         <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="sOy-bs-AnL"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8y6-17-sql">
+                    <rect key="frame" x="0.0" y="190" width="300" height="30"/>
                     <state key="normal" title="[Button 6]"/>
                     <connections>
                         <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="iGs-FZ-ivy"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhq-aX-3mS">
+                    <rect key="frame" x="0.0" y="160" width="300" height="30"/>
                     <state key="normal" title="[Button 7]"/>
                     <connections>
                         <action selector="actionButton:" destination="-2" eventType="touchUpInside" id="Hgw-NK-Geg"/>
