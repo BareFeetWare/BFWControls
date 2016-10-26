@@ -49,8 +49,8 @@ import UIKit
                 {
                     label.text = nil
                 } else if let button = view as? UIButton {
-                    if button.title(for: UIControlState())?.isPlaceholder ?? false {
-                        button.setTitle(nil, for: UIControlState())
+                    if button.title(for: .normal)?.isPlaceholder ?? false {
+                        button.setTitle(nil, for: .normal)
                     }
                 }
             }
