@@ -23,14 +23,14 @@ class MorphSegue: UIStoryboardSegue {
     // MARK: - UIStoryboardSegue
     
     override func perform() {
-        let destinationVCView = destination.view
+        guard let destinationVCView = destination.view else { return }
         let sourceVCView = source.view
         
         // Force frames to match constraints, in case misplaced.
-        destinationVCView?.setNeedsLayout()
-        destinationVCView?.layoutIfNeeded()
+        destinationVCView.setNeedsLayout()
+        destinationVCView.layoutIfNeeded()
         
-        destinationVCView?.frame = (sourceVCView?.frame)!
+        destinationVCView.frame = (sourceVCView?.frame)!
         if let cell = fromView as? UITableViewCell {
             cell.isSelected = false
         }
@@ -77,7 +77,7 @@ class MorphSegue: UIStoryboardSegue {
                     }
                     if let subviews = contentView?.subviews {
                         for subview in subviews {
-                            if let destinationSubview = destinationVCView?.subviewMatchingView(subview) {
+                            if let destinationSubview = destinationVCView.subviewMatchingView(subview) {
                                 subview.frame = destinationSubview.superview!.convert(destinationSubview.frame, to: destinationVCView)
 //                                subview.frame.origin.y += 64.0 // Nav bar hack
                                 subview.copyAnimatableProperties(from: destinationSubview)

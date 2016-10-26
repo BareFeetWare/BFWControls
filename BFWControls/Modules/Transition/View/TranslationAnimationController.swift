@@ -84,19 +84,18 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
     }
 
     @objc func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        #if swift(>=2.3)
-            let containerView = transitionContext.containerView()
-        #else
-            let containerView = transitionContext.containerView!
-        #endif
+        let containerView = transitionContext.containerView
         let animateToView = animatePresenter || fadeFirst || isPresenting
         let animateFromView = animatePresenter || fadeFirst || !isPresenting
         let toViewController = animateToView ? transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) : nil
         let fromViewController = animateFromView ? transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) : nil
         let presentingViewController = isPresenting ? fromViewController : toViewController
         let presentingNavigationController = presentingViewController as? UINavigationController ?? presentingViewController?.navigationController
-        let isPush = fromViewController?.navigationController == toViewController?.navigationController ?? false
-        let isFirst = !isPush || (presentingNavigationController?.viewControllers.count == (isPresenting ? 2 : 1)) ?? true
+        let isPush: Bool = {
+            guard let fromViewController = fromViewController, let toViewController = toViewController else { return false }
+            return fromViewController.navigationController == toViewController.navigationController
+        }()
+        let isFirst = !isPush || (presentingNavigationController?.viewControllers.count == (isPresenting ? 2 : 1)) 
         let fadeFrom = fadeFirst && isPresenting && isFirst
         let fadeTo = fadeFirst && !isPresenting && isFirst
         if let toViewController = toViewController {

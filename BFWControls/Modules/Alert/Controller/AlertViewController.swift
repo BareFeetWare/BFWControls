@@ -91,7 +91,7 @@ class AlertViewController: UIViewController {
         if presentingViewController != nil {
             dismiss(animated: true, completion: nil)
         } else {
-            navigationController?.popViewController(animated: true)
+            let _ = navigationController?.popViewController(animated: true)
         }
     }
     
