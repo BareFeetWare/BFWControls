@@ -139,13 +139,14 @@ class CarouselViewController: UICollectionViewController {
         }
     }
     
-    private func scrollToPage(page: Int, animated: Bool) {
+    func scrollToPage(page: Int, animated: Bool) {
         let loopedPage = loopedPageForPage(page)
         let scrolledPage = loopedPage + (shouldLoop ? 1 : 0)
         let indexPath = NSIndexPath(forItem: scrolledPage, inSection: 0)
         collectionView?.scrollToItemAtIndexPath(indexPath,
                                                 atScrollPosition: .CenteredHorizontally,
                                                 animated: animated)
+        updatePageControl()
     }
     
     // MARK: - Functions
@@ -187,7 +188,6 @@ class CarouselViewController: UICollectionViewController {
             collectionViewSize = collectionView?.bounds.size
             collectionView?.reloadData()
             scrollToPage(0, animated: false)
-            updatePageControl()
         }
     }
     
