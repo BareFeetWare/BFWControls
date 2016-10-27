@@ -135,6 +135,7 @@ class CarouselViewController: UICollectionViewController {
                 pageControl.frame.origin.x = (collectionViewSize.width - pageControl.frame.width) / 2 + collectionView!.contentOffset.x
                 pageControl.frame.origin.y = collectionViewSize.height - pageControl.frame.height + collectionView!.contentOffset.y - controlInsetBottom
             }
+            pageControl.numberOfPages = pageCount
             pageControl.currentPage = currentPage
         }
     }
