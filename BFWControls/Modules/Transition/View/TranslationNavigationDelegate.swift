@@ -52,8 +52,8 @@ class TranslationNavigationDelegate: NSObject, UINavigationControllerDelegate {
     func navigationController(
         _ navigationController: UINavigationController,
         animationControllerFor operation: UINavigationControllerOperation,
-                                        from fromViewController: UIViewController,
-                                        to toViewController: UIViewController
+        from fromViewController: UIViewController,
+        to toViewController: UIViewController
         ) -> UIViewControllerAnimatedTransitioning?
     {
         let animationController = TranslationAnimationController()
@@ -72,14 +72,14 @@ class TranslationNavigationDelegate: NSObject, UINavigationControllerDelegate {
     
     func navigationController(_ navigationController: UINavigationController,
                               willShow viewController: UIViewController,
-                                                     animated: Bool)
+                              animated: Bool)
     {
         viewController.automaticallyAdjustsScrollViewInsets = !belowTopGuide
         if clearBackgrounds {
-            viewController.view.backgroundColor = UIColor.clear // TODO: Attribute
+            viewController.view.backgroundColor = .clear // TODO: Attribute
             if let tableViewController = viewController as? UITableViewController {
                 tableViewController.tableView.backgroundView = nil
-                tableViewController.tableView.backgroundColor = UIColor.clear
+                tableViewController.tableView.backgroundColor = .clear
             }
         }
     }

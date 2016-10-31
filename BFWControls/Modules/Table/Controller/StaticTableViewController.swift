@@ -32,7 +32,7 @@ class StaticTableViewController: UITableViewController {
     
     // MARK: - Functions
     
-    func indexPathsToInsertCells(_ cells: [UITableViewCell]) -> [IndexPath] {
+    func indexPaths(toInsert cells: [UITableViewCell]) -> [IndexPath] {
         var indexPaths = [IndexPath]()
         for section in 0 ..< super.numberOfSections(in: tableView) {
             var numberOfExcludedRows = 0
@@ -52,16 +52,16 @@ class StaticTableViewController: UITableViewController {
     
     // MARK: - Private functions
     
-    fileprivate func numberOfExcludedRowsBeforeIndexPath(_ indexPath: IndexPath) -> Int {
+    fileprivate func numberOfExcludedRows(before indexPath: IndexPath) -> Int {
         var numberOfExcludedRows = 0
         if let excludedCells = excludedCells {
-            let superSection = indexPath.section
+            let superSection = (indexPath as NSIndexPath).section
             for superRow in 0 ..< super.tableView(tableView, numberOfRowsInSection: superSection) {
                 let superIndexPath = IndexPath(row: superRow, section: superSection)
                 let cell = super.tableView(tableView, cellForRowAt: superIndexPath)
                 if excludedCells.contains(cell) {
                     numberOfExcludedRows += 1
-                } else if superRow - numberOfExcludedRows == indexPath.row {
+                } else if superRow - numberOfExcludedRows == (indexPath as NSIndexPath).row {
                     break
                 }
             }
@@ -69,9 +69,9 @@ class StaticTableViewController: UITableViewController {
         return numberOfExcludedRows
     }
     
-    fileprivate func superIndexPathForIndexPath(_ indexPath: IndexPath) -> IndexPath {
-        return IndexPath(row: indexPath.row + numberOfExcludedRowsBeforeIndexPath(indexPath),
-                           section: indexPath.section)
+    fileprivate func superIndexPath(for indexPath: IndexPath) -> IndexPath {
+        return IndexPath(row: (indexPath as NSIndexPath).row + numberOfExcludedRows(before: indexPath),
+                         section: (indexPath as NSIndexPath).section)
     }
     
     // MARK: - UIViewController
@@ -101,12 +101,12 @@ class StaticTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numberOfRowsInSection = super.tableView(tableView, numberOfRowsInSection: section)
         let indexPath = IndexPath(row: numberOfRowsInSection - 1, section: section)
-        let numberOfExcludedCellsInThisSection = numberOfExcludedRowsBeforeIndexPath(indexPath)
+        let numberOfExcludedCellsInThisSection = numberOfExcludedRows(before: indexPath)
         return super.tableView(tableView, numberOfRowsInSection: section) - numberOfExcludedCellsInThisSection
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = super.tableView(tableView, cellForRowAt: superIndexPathForIndexPath(indexPath))
+        let cell = super.tableView(tableView, cellForRowAt: superIndexPath(for: indexPath))
         cell.layoutIfNeeded()
         return cell
     }
@@ -116,7 +116,7 @@ class StaticTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let height = intrinsicHeightCells
             ? UITableViewAutomaticDimension
-            : super.tableView(tableView, heightForRowAt: superIndexPathForIndexPath(indexPath))
+            : super.tableView(tableView, heightForRowAt: superIndexPath(for: indexPath))
         return height
     }
     

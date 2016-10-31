@@ -44,36 +44,36 @@ class StyledText {
     
     // MARK: - Functions
     
-    class func attributesForStyle(_ style: String) -> TextAttributes? {
-        return attributesForSection(Section.style, key: style)
+    class func attributes(for style: String) -> TextAttributes? {
+        return attributes(forSection: Section.style, key: style)
     }
     
-    class func attributesForStyles(_ styles: [String]) -> TextAttributes? {
-        var attributes: TextAttributes?
+    class func attributes(for styles: [String]) -> TextAttributes? {
+        var textAttributes: TextAttributes?
         for style in styles {
-            if let extraAttributes = attributesForStyle(style) {
-                if attributes == nil {
-                    attributes = TextAttributes()
+            if let extraAttributes = attributes(for: style) {
+                if textAttributes == nil {
+                    textAttributes = TextAttributes()
                 }
-                attributes!.updateWithDictionary(extraAttributes)
+                textAttributes!.update(with: extraAttributes)
             }
         }
-        return attributes
+        return textAttributes
     }
     
-    class func attributesForLevel(_ level: Int) -> TextAttributes? {
-        return attributesForSection(Section.level, key: String(level))
+    class func attributes(forLevel level: Int) -> TextAttributes? {
+        return attributes(forSection: Section.level, key: String(level))
     }
     
-    class func attributesForLookupDict(_ lookupDict: [String: AnyObject]) -> TextAttributes? {
+    class func attributes(for lookupDict: [String: AnyObject]) -> TextAttributes? {
         var attributes = TextAttributes()
-        let flatDict = flatLookupDict(lookupDict)
+        let flatDict = flatLookup(dict: lookupDict)
         if let familyName = flatDict[Key.familyName] as? String {
             attributes[UIFontDescriptorFamilyAttribute] = familyName as AnyObject?
             if let weight = flatDict[Key.weight] as? CGFloat {
                 let validWeight: CGFloat
                 if #available(iOS 8.2, *) {
-                    let fontWeight = FontWeight.fontWeightForApproximateWeight(weight)
+                    let fontWeight = FontWeight(approximateWeight: weight)
                     validWeight = fontWeight.rawValue
                 } else {
                     validWeight = weight
@@ -89,7 +89,7 @@ class StyledText {
         }
         if let textColorString = flatDict[Key.textColor] as? String,
             // TODO: Facilitate alpha ≠ 1.0
-            let textColor = UIColor.colorWithHexString(textColorString, alpha: 1.0)
+            let textColor = UIColor(hexString: textColorString, alpha: 1.0)
         {
             attributes[NSForegroundColorAttributeName] = textColor
         }
@@ -103,24 +103,24 @@ class StyledText {
     }
     
     // TODO: Make this private by providing alernative func.
-    class func attributesForSection(_ section: String, key: String) -> TextAttributes? {
-        var attributes: TextAttributes?
+    class func attributes(forSection section: String, key: String) -> TextAttributes? {
+        var textAttributes: TextAttributes?
         if let sectionDict = plistDict[section] as? [String : AnyObject],
             let lookupDict = sectionDict[key] as? [String: AnyObject]
         {
-            attributes = attributesForLookupDict(lookupDict)
+            textAttributes = attributes(for: lookupDict)
         }
-        return attributes
+        return textAttributes
     }
     
-    fileprivate class func flatLookupDict(_ lookupDict: [String: AnyObject]) -> [String: AnyObject] {
+    fileprivate class func flatLookup(dict lookupDict: [String: AnyObject]) -> [String: AnyObject] {
         var combined = [String: AnyObject]()
         for section in sections {
             if let key = lookupDict[section],
                 let sectionDict = plistDict[section] as? [String : AnyObject],
                 let dict = sectionDict[String(describing: key)] as? [String: AnyObject]
             {
-                combined.updateWithDictionary(flatLookupDict(dict))
+                combined.update(with: flatLookup(dict: dict))
             }
         }
         for (key, value) in lookupDict {
@@ -135,21 +135,21 @@ class StyledText {
 
 private extension UIColor {
     
-    class func colorWithHexValue(_ hexValue: UInt32, alpha: CGFloat) -> UIColor {
-        return UIColor(red: CGFloat((hexValue & 0xFF0000) >> 16) / 255.0,
-                       green: CGFloat((hexValue & 0xFF00) >> 8) / 255.0,
-                       blue: CGFloat(hexValue & 0xFF) / 255.0,
-                       alpha: alpha)
+    convenience init(hexValue: UInt32, alpha: CGFloat) {
+        self.init(red: CGFloat((hexValue & 0xFF0000) >> 16) / 255.0,
+                  green: CGFloat((hexValue & 0xFF00) >> 8) / 255.0,
+                  blue: CGFloat(hexValue & 0xFF) / 255.0,
+                  alpha: alpha)
     }
     
-    class func colorWithHexString(_ hexString: String, alpha: CGFloat) -> UIColor? {
-        var color: UIColor?
+    convenience init?(hexString: String, alpha: CGFloat) {
         let cleanHexString = hexString.replacingOccurrences(of: "#", with: "0x")
         var hexValue: UInt32 = 0
         if Scanner(string: cleanHexString).scanHexInt32(&hexValue) {
-            color = colorWithHexValue(hexValue, alpha: alpha)
+            self.init(hexValue: hexValue, alpha: alpha)
+        } else {
+            return nil
         }
-        return color
     }
     
 }
@@ -216,18 +216,15 @@ enum FontWeight {
     /// Arbitrary value out of range -1.0 to 1.0.
     static let notSet: CGFloat = -2.0
     
-    static func fontWeightForName(_ name: String) -> FontWeight? {
-        return all.filter { $0.name == name }.first
+    init(name: String) {
+        self = FontWeight.all.filter { $0.name == name }.first!
     }
     
-    static func fontWeightForApproximateWeight(_ approximateWeight: CGFloat) -> FontWeight {
-        var closest: FontWeight = .medium
-        for possible in all {
-            if abs(possible.rawValue - approximateWeight) < abs(closest.rawValue - approximateWeight) {
-                closest = possible
-            }
+    init(approximateWeight: CGFloat) {
+        self = FontWeight.all.reduce(FontWeight.medium) { closest, possible in
+            return abs(possible.rawValue - approximateWeight) < abs(closest.rawValue - approximateWeight)
+                ? possible : closest
         }
-        return closest
     }
 
 }
@@ -235,10 +232,10 @@ enum FontWeight {
 // TODO: move extension to separate file.
 extension UIFont {
     
-    func fontWithWeight(_ weight: CGFloat) -> UIFont {
+    func font(weight: CGFloat) -> UIFont {
         let validWeight: CGFloat
         if #available(iOS 8.2, *) {
-            let fontWeight = FontWeight.fontWeightForApproximateWeight(weight)
+            let fontWeight = FontWeight(approximateWeight: weight)
             validWeight = fontWeight.rawValue
         } else {
             validWeight = weight

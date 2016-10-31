@@ -50,7 +50,7 @@ import UIKit
     override func updateView() {
         super.updateView()
         button1.isHidden = button1Title == nil
-        messageLabel.activateOnlyConstraintsWithFirstVisibleInViews([button1, button0])
+        messageLabel.activateOnlyConstraintsWithFirstVisible(in: [button1, button0])
     }
     
 }

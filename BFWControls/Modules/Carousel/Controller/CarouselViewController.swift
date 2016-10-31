@@ -71,8 +71,8 @@ class CarouselViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        let page = pageForIndexPath(indexPath)
-        let cellIdentifier = cellIdentifiers![page]
+        let aPage = page(for: indexPath)
+        let cellIdentifier = cellIdentifiers![aPage]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
         return cell
     }
@@ -80,7 +80,7 @@ class CarouselViewController: UICollectionViewController {
     // MARK: - Variables
     
     var currentPage: Int {
-        return loopedPageForPage(Int(round(currentPageFloat)))
+        return loopedPage(for: Int(round(currentPageFloat)))
     }
     
     var currentPageFloat: CGFloat {
@@ -120,12 +120,12 @@ class CarouselViewController: UICollectionViewController {
             pageControl.sizeToFit()
         }
         pageControl.addTarget(self,
-                              action: #selector(changedPageControl(_:)),
+                              action: #selector(changed(pageControl:)),
                               for: .valueChanged)
         pageControl.numberOfPages = pageCount
     }
     
-    @IBAction func changedPageControl(_ pageControl: UIPageControl) {
+    @IBAction func changed(pageControl: UIPageControl) {
         scroll(to: pageControl.currentPage, animated: true)
     }
     
@@ -141,26 +141,26 @@ class CarouselViewController: UICollectionViewController {
     }
     
     func scroll(to page: Int, animated: Bool) {
-        let loopedPage = loopedPageForPage(page)
-        let scrolledPage = loopedPage + (shouldLoop ? 1 : 0)
+        let loopPage = loopedPage(for: page)
+        let scrolledPage = loopPage + (shouldLoop ? 1 : 0)
         let indexPath = IndexPath(item: scrolledPage, section: 0)
         collectionView?.scrollToItem(at: indexPath,
-                                                at: .centeredHorizontally,
-                                                animated: animated)
+                                     at: .centeredHorizontally,
+                                     animated: animated)
         updatePageControl()
     }
     
     // MARK: - Functions
     
-    fileprivate func loopedPageForPage(_ page: Int) -> Int {
+    fileprivate func loopedPage(for page: Int) -> Int {
         return page < 0 || pageCount == 0 ? pageCount + page : page % pageCount
     }
     
-    func pageForIndexPath(_ indexPath: IndexPath) -> Int {
-        var page = indexPath.row
+    func page(for indexPath: IndexPath) -> Int {
+        var page = (indexPath as NSIndexPath).row
         if shouldLoop {
             page -= 1
-            page = loopedPageForPage(page)
+            page = loopedPage(for: page)
         }
         return page
     }

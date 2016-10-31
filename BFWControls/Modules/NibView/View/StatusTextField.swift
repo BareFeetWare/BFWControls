@@ -119,11 +119,11 @@ private extension StatusTextField.ControlStatus {
     
     var color: UIColor {
         switch self {
-        case .normal: return UIColor.gray
+        case .normal: return .gray
         case .editing: return UIColor(red: 255.0, green: 200.0, blue: 0.0, alpha: 1.0)
-        case .success: return UIColor.green
-        case .warning: return UIColor.orange
-        case .error: return UIColor.red
+        case .success: return .green
+        case .warning: return .orange
+        case .error: return .red
         }
     }
     
