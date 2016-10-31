@@ -126,7 +126,7 @@ class CarouselViewController: UICollectionViewController {
     }
     
     @IBAction func changedPageControl(_ pageControl: UIPageControl) {
-        scrollToPage(pageControl.currentPage, animated: true)
+        scroll(to: pageControl.currentPage, animated: true)
     }
     
     fileprivate func updatePageControl() {
@@ -135,17 +135,19 @@ class CarouselViewController: UICollectionViewController {
                 pageControl.frame.origin.x = (collectionViewSize.width - pageControl.frame.width) / 2 + collectionView!.contentOffset.x
                 pageControl.frame.origin.y = collectionViewSize.height - pageControl.frame.height + collectionView!.contentOffset.y - controlInsetBottom
             }
+            pageControl.numberOfPages = pageCount
             pageControl.currentPage = currentPage
         }
     }
     
-    fileprivate func scrollToPage(_ page: Int, animated: Bool) {
+    func scroll(to page: Int, animated: Bool) {
         let loopedPage = loopedPageForPage(page)
         let scrolledPage = loopedPage + (shouldLoop ? 1 : 0)
         let indexPath = IndexPath(item: scrolledPage, section: 0)
         collectionView?.scrollToItem(at: indexPath,
                                                 at: .centeredHorizontally,
                                                 animated: animated)
+        updatePageControl()
     }
     
     // MARK: - Functions
@@ -186,8 +188,7 @@ class CarouselViewController: UICollectionViewController {
         if collectionViewSize != collectionView?.bounds.size {
             collectionViewSize = collectionView?.bounds.size
             collectionView?.reloadData()
-            scrollToPage(0, animated: false)
-            updatePageControl()
+            scroll(to: 0, animated: false)
         }
     }
     
@@ -239,7 +240,7 @@ extension CarouselViewController {
     
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if shouldLoop {
-            scrollToPage(currentPage, animated: false)
+            scroll(to: currentPage, animated: false)
         }
     }
     
