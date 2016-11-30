@@ -53,6 +53,8 @@
 		E2B170141CBC562D00D391B4 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2B1700F1CBC562D00D391B4 /* AlertView.xib */; };
 		E2B170151CBC562D00D391B4 /* StaticAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B170101CBC562D00D391B4 /* StaticAlertView.swift */; };
 		E2B170161CBC562D00D391B4 /* StaticAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2B170111CBC562D00D391B4 /* StaticAlertView.xib */; };
+		E2C9FF5F1DE7D8AE003A33FA /* Layout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2C9FF5E1DE7D8AE003A33FA /* Layout.storyboard */; };
+		E2C9FF611DE7D9A3003A33FA /* PileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C9FF601DE7D9A3003A33FA /* PileView.swift */; };
 		E2CFD5A51D1B96E400882597 /* ActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CFD5A31D1B96E400882597 /* ActionSheetView.swift */; };
 		E2CFD5A61D1B96E400882597 /* ActionSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2CFD5A41D1B96E400882597 /* ActionSheetView.xib */; };
 		E2DAF9331D596FE600ECA235 /* UIView+Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DAF9311D596FE600ECA235 /* UIView+Layer.swift */; };
@@ -117,6 +119,8 @@
 		E2B1700F1CBC562D00D391B4 /* AlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		E2B170101CBC562D00D391B4 /* StaticAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticAlertView.swift; sourceTree = "<group>"; };
 		E2B170111CBC562D00D391B4 /* StaticAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaticAlertView.xib; sourceTree = "<group>"; };
+		E2C9FF5E1DE7D8AE003A33FA /* Layout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Layout.storyboard; sourceTree = "<group>"; };
+		E2C9FF601DE7D9A3003A33FA /* PileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PileView.swift; sourceTree = "<group>"; };
 		E2CFD5A31D1B96E400882597 /* ActionSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetView.swift; sourceTree = "<group>"; };
 		E2CFD5A41D1B96E400882597 /* ActionSheetView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionSheetView.xib; sourceTree = "<group>"; };
 		E2DAF9311D596FE600ECA235 /* UIView+Layer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layer.swift"; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 				E274E0691CC5A1B600262254 /* Alert */,
 				E25FC1491D680A5F001C7495 /* Carousel */,
 				E274E06C1CC5A1B600262254 /* Developer */,
+				E2C9FF5C1DE7D892003A33FA /* Layout */,
 				E274E06F1CC5A1B600262254 /* Morph */,
 				E23BFB9C1DB4942500D877EF /* NibView */,
 				E28D6A6D1D38889D007EE85F /* Table */,
@@ -291,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				E25687C31C6C5B8E00DD14D5 /* NSLayoutConstraintExtensions.swift */,
+				E2C9FF601DE7D9A3003A33FA /* PileView.swift */,
 				E2A5E3B51CA512C200368EFA /* UIViewExtensions.swift */,
 			);
 			path = View;
@@ -492,6 +498,22 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		E2C9FF5C1DE7D892003A33FA /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				E2C9FF5D1DE7D892003A33FA /* Controller */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		E2C9FF5D1DE7D892003A33FA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E2C9FF5E1DE7D8AE003A33FA /* Layout.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		E2DE2EEC1BEDFE1300636D0D /* Submodules */ = {
 			isa = PBXGroup;
 			children = (
@@ -620,6 +642,7 @@
 				E25FC1581D682C5D001C7495 /* SampleCarousel.plist in Resources */,
 				E28D6A701D3888B8007EE85F /* Table.storyboard in Resources */,
 				E274E07C1CC5A3D100262254 /* AlertViewOverlay.xib in Resources */,
+				E2C9FF5F1DE7D8AE003A33FA /* Layout.storyboard in Resources */,
 				E2B170141CBC562D00D391B4 /* AlertView.xib in Resources */,
 				E274E07A1CC5A1EE00262254 /* Alerts.storyboard in Resources */,
 				E23BFBA01DB4945C00D877EF /* AvatarView.xib in Resources */,
@@ -648,6 +671,7 @@
 				E2DAF9341D596FE600ECA235 /* UIView+Transform.swift in Sources */,
 				E234075E1C08399000319D38 /* UIView+BFWCopy.m in Sources */,
 				E20E10CE1CA1EA9300F35C82 /* TranslationTransitioningController.swift in Sources */,
+				E2C9FF611DE7D9A3003A33FA /* PileView.swift in Sources */,
 				E26F2AE81CE1807600B56416 /* StyledText.swift in Sources */,
 				E2F71A611CBC5DEA008B6A68 /* AlertViewController.swift in Sources */,
 				E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */,
