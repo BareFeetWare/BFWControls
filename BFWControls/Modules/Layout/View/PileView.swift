@@ -47,6 +47,7 @@ import UIKit
     }
     
     override func layoutSubviews() {
+        invalidateIntrinsicContentSize()
         for (index, subview) in subviews.enumerate() {
             let origin = isHorizontal
                 ? CGPoint(x: (subviewWidth + gapWidth) * CGFloat(index),
