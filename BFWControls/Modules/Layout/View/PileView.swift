@@ -39,7 +39,7 @@ import UIKit
     
     // MARK: - UIView
     
-    override func intrinsicContentSize() -> CGSize {
+    override var intrinsicContentSize: CGSize {
         return CGSize(width: UIViewNoIntrinsicMetric,
                       height: isHorizontal
                         ? subviewHeight
@@ -48,7 +48,7 @@ import UIKit
     
     override func layoutSubviews() {
         invalidateIntrinsicContentSize()
-        for (index, subview) in subviews.enumerate() {
+        for (index, subview) in subviews.enumerated() {
             let origin = isHorizontal
                 ? CGPoint(x: (subviewWidth + gapWidth) * CGFloat(index),
                           y: 0.0)
