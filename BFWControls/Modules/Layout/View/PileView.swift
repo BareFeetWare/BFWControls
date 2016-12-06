@@ -20,13 +20,18 @@ import UIKit
     }
     
     private var subviewMaxWidth: CGFloat {
-        return (bounds.size.width - (subviewCount - 1) * gapWidth) / subviewCount
+        return (bounds.width - (subviewCount - 1) * gapWidth) / subviewCount
     }
     
-    // TODO: Dynamic
-    var subviewHeight: CGFloat = 44.0
+    private var contentHeight: CGFloat {
+        let heights = subviews.map { $0.intrinsicContentSize().height }
+        return isHorizontal
+            ? heights.maxElement()!
+            : heights.reduce (0) { $0 + $1 } + (subviewCount - 1) * gapHeight
+    }
     
     var isHorizontal: Bool {
+        let subviewMaxWidth = self.subviewMaxWidth
         let isHorizontal = subviews.reduce(true) { (doesFit, subview) in
             return doesFit && subview.sizeThatFits(bounds.size).width <= subviewMaxWidth
         }
@@ -41,19 +46,24 @@ import UIKit
     
     override func intrinsicContentSize() -> CGSize {
         return CGSize(width: UIViewNoIntrinsicMetric,
-                      height: isHorizontal
-                        ? subviewHeight
-                        : subviewCount * subviewHeight + (subviewCount - 1) * gapHeight)
+                      height: contentHeight)
     }
     
     override func layoutSubviews() {
         invalidateIntrinsicContentSize()
+        let isHorizontal = self.isHorizontal
+        var sumOfHeight: CGFloat = 0.0
         for (index, subview) in subviews.enumerate() {
-            let origin = isHorizontal
-                ? CGPoint(x: (subviewWidth + gapWidth) * CGFloat(index),
-                          y: 0.0)
-                : CGPoint(x: 0.0,
-                          y: (subviewHeight + gapHeight) * CGFloat(index))
+            let origin: CGPoint
+            let subviewHeight = subview.sizeThatFits(bounds.size).height
+            if isHorizontal {
+                origin = CGPoint(x: (subviewWidth + gapWidth) * CGFloat(index),
+                                 y: 0.0)
+            } else {
+                origin = CGPoint(x: 0.0,
+                                 y: sumOfHeight)
+                sumOfHeight += subviewHeight + gapHeight
+            }
             subview.frame = CGRect(origin: origin,
                                    size: CGSize(width: subviewWidth,
                                                 height: subviewHeight))
