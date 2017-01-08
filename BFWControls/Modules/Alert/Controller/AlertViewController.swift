@@ -66,7 +66,9 @@ class AlertViewController: UIViewController {
             }.first
         return overlayView
     }
-
+    
+    private var onCompletion: (() -> Void)?
+    
     // MARK: - Actions
     
     @IBAction func actionButton(_ button: UIButton) {
@@ -74,23 +76,29 @@ class AlertViewController: UIViewController {
         if alertView.hasCancel && index == 0 {
             dismissAlert(button)
         } else {
-            if let delegate = delegate {
-                delegate.alertView(alertView, clickedButtonAt: index)
-            } else {
-                let identifer = segueIdentifiers[index]
-                    ?? alertView.buttonTitle(at: index)!
-                performSegue(withIdentifier: identifer, sender: alertView)
+            onCompletion = { [weak self] _ in
+                guard let strongSelf = self else { return }
+                if let delegate = strongSelf.delegate {
+                    delegate.alertView(strongSelf.alertView, clickedButtonAt: index)
+                } else {
+                    let identifer = strongSelf.segueIdentifiers[index]
+                        ?? strongSelf.alertView.buttonTitle(at: index)!
+                    strongSelf.performSegue(withIdentifier: identifer, sender: strongSelf.alertView)
+                }
             }
             if !isInNavigationController && autoDismisses {
                 dismissAlert(button)
+            } else {
+                onCompletion?()
             }
         }
     }
     
     @IBAction func dismissAlert(_ sender: AnyObject?) {
         if presentingViewController != nil {
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: onCompletion)
         } else {
+            onCompletion?()
             let _ = navigationController?.popViewController(animated: true)
         }
     }
