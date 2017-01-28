@@ -7,7 +7,7 @@
 
 import UIKit
 
-@IBDesignable class NibView: BFWNibView {
+@IBDesignable class NibView: UIView {
 
     // MARK: - Variables & Functions
     
@@ -33,6 +33,27 @@ import UIKit
     
     // MARK: - Init
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        if super.subviews.count == 0 { // Prevents loading nib in nib itself.
+            let nibView = fromNib()!
+            nibView.frame = bounds
+            addSubview(nibView)
+            nibView.pinToSuperviewEdges()
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    /// Replaces an instance of view in a storyboard or xib with the full subview structure from its own xib.
+    override func awakeAfter(using aDecoder: NSCoder) -> Any? {
+        let hasAlreadyLoadedFromNib = subviews.count > 0 // TODO: More rubust test.
+        let view = hasAlreadyLoadedFromNib ? self : fromNib()
+        return view
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         removePlaceHolders()
@@ -67,11 +88,40 @@ import UIKit
         }
     }
     
+    // MARK: - Caching
+    
+    static var sizeForKeyDictionary = [String: CGSize]()
+
     // MARK: - UIView
     
     override func layoutSubviews() {
         updateViewIfNeeded()
         super.layoutSubviews()
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        let size: CGSize
+        let type = type(of: self)
+        let key = NSStringFromClass(type)
+        if let reuseSize = type.sizeForKeyDictionary[key] {
+            size = reuseSize
+        } else {
+            size = type.sizeFromNib()
+            type.sizeForKeyDictionary[key] = size
+        }
+        return size
+    }
+    
+    override var backgroundColor: UIColor? {
+        get {
+            return super.backgroundColor
+        }
+        set {
+            // If storyboard instance is "default" (nil) then use the backgroundColor already set in xib or awakeFromNib (ie don't set it again).
+            if let backgroundColor = newValue {
+                super.backgroundColor = backgroundColor
+            }
+        }
     }
 
 }
