@@ -80,11 +80,13 @@ class AlertViewController: UIViewController {
                 guard let strongSelf = self else { return }
                 if let delegate = strongSelf.delegate {
                     delegate.alertView(strongSelf.alertView, clickedButtonAt: index)
-                } else {
-                    let identifer = strongSelf.segueIdentifiers[index]
-                        ?? strongSelf.alertView.buttonTitle(at: index)!
-                    strongSelf.performSegue(withIdentifier: identifer, sender: strongSelf.alertView)
                 }
+            }
+            if delegate == nil,
+                let identifier = segueIdentifiers[index]
+                    ?? alertView.buttonTitle(at: index)
+            {
+                performSegue(withIdentifier: identifier, sender: alertView)
             }
             if !isInNavigationController && autoDismisses {
                 dismissAlert(button)
