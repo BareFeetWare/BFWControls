@@ -23,8 +23,11 @@ class StatusTextField: NibTextField {
 
     /// Leave as nil to have placeholder animate into title when text entered in field.
     @IBInspectable var title: String? {
-        didSet {
-            statusTextFieldNibView?.titleLabel?.text = title
+        get {
+            return statusTextFieldNibView?.titleLabel?.text
+        }
+        set {
+            statusTextFieldNibView?.titleLabel?.text = newValue
         }
     }
     
