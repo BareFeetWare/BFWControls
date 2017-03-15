@@ -29,10 +29,17 @@ class StyledText {
     
     fileprivate static var classBundle: Bundle {
         #if TARGET_INTERFACE_BUILDER // Rendering in storyboard using IBDesignable.
-            let bundle = Bundle(for: self)
+            let isInterfaceBuilder = true
         #else
-            let bundle = Bundle.main
+            let isInterfaceBuilder = false
         #endif
+        return bundle(isInterfaceBuilder: isInterfaceBuilder)
+    }
+    
+    fileprivate static func bundle(isInterfaceBuilder: Bool) -> Bundle {
+        let bundle = isInterfaceBuilder
+            ? Bundle(for: self)
+            : Bundle.main
         return bundle;
     }
     
