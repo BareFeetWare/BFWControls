@@ -29,7 +29,7 @@ class StyledText {
     
     fileprivate static var classBundle: Bundle {
         #if TARGET_INTERFACE_BUILDER // Rendering in storyboard using IBDesignable.
-            let bundle = NSBundle(forClass: self)
+            let bundle = Bundle(for: self)
         #else
             let bundle = Bundle.main
         #endif
