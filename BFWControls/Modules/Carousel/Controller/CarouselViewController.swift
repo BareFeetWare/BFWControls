@@ -92,9 +92,9 @@ class CarouselViewController: UICollectionViewController {
         /* If this carousel is embedded as a container in another view controller, find a page control already
          existing in that view controller, otherwise create a new one.
          */
-        let pageControl = self.view.superview?.superview?.subviews.flatMap { subview in
-            subview as? UIPageControl
-        }.first ?? UIPageControl()
+        let pageControl = self.view.superview?.superview?.subviews.first { subview in
+            subview is UIPageControl
+        } as? UIPageControl ?? UIPageControl()
         pageControl.numberOfPages = self.pageCount
         pageControl.sizeToFit()
         return pageControl

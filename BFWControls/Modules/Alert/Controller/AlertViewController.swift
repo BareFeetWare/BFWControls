@@ -32,15 +32,15 @@ class AlertViewController: UIViewController {
     
     lazy var alertView: AlertView = {
         let foundAlertView: AlertView
-        let alertViewOverlay = self.view.subviews.filter { subview in
+        let alertViewOverlay = self.view.subviews.first { subview in
             subview is AlertViewOverlay
-        }.first as? AlertViewOverlay
+        } as? AlertViewOverlay
         if let alertViewOverlay = alertViewOverlay {
             foundAlertView = alertViewOverlay.alertView
         } else {
-            foundAlertView = self.view.subviews.filter { subview in
+            foundAlertView = self.view.subviews.first { subview in
                 subview is AlertView
-                }.first as! AlertView
+                } as! AlertView
         }
         return foundAlertView
     }()
@@ -58,12 +58,12 @@ class AlertViewController: UIViewController {
     fileprivate let translationTransitioningController = TranslationTransitioningController()
     
     fileprivate var overlayView: UIView? {
-        let overlayView = view.subviews.filter { subview in
+        let overlayView = view.subviews.first { subview in
             var white: CGFloat = 0.0
             var alpha: CGFloat = 0.0
             subview.backgroundColor?.getWhite(&white, alpha: &alpha)
             return alpha < 1.0
-            }.first
+            }
         return overlayView
     }
     

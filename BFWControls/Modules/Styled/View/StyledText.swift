@@ -224,7 +224,7 @@ enum FontWeight {
     static let notSet: CGFloat = -2.0
     
     init(name: String) {
-        self = FontWeight.all.filter { $0.name == name }.first!
+        self = FontWeight.all.first { $0.name == name }!
     }
     
     init(approximateWeight: CGFloat) {
