@@ -94,14 +94,7 @@ class NibTextField: UITextField {
     
     /// Locate active text editor for debugging.
     fileprivate var fieldEditor: UIScrollView? {
-        var fieldEditor: UIScrollView?
-        for subview in subviews {
-            if let possible = subview as? UIScrollView {
-                fieldEditor = possible
-                break
-            }
-        }
-        return fieldEditor
+        return subviews.first { $0 is UIScrollView } as? UIScrollView
     }
     
     // MARK: UIView
@@ -119,18 +112,10 @@ class NibTextField: UITextField {
 private extension UIView {
     
     var subviewTextField: UITextField? {
-        var textField: UITextField?
-        for subview in subviews {
-            if let possible = subview as? UITextField {
-                textField = possible
-            } else if let possible = subview.subviewTextField {
-                textField = possible
-            }
-            if textField != nil {
-                break
-            }
-        }
-        return textField
+        return subviews.first
+            { subview in
+                subview is UITextField || subview.subviewTextField != nil
+            } as? UITextField
     }
     
 }

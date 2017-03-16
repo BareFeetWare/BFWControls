@@ -144,11 +144,7 @@ extension StatusTextField: UITextFieldDelegate {
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        var should = true
-        if let externalShould = externalDelegate?.textFieldShouldBeginEditing?(textField) {
-            should = externalShould
-        }
-        return should
+        return externalDelegate?.textFieldShouldBeginEditing?(textField) ?? true
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -162,13 +158,10 @@ extension StatusTextField: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        var should = true
-        if let externalShould = externalDelegate?.textField?(textField,
-                                                             shouldChangeCharactersIn: range,
-                                                             replacementString: string)
-        {
-            should = externalShould
-        }
+        let should = externalDelegate?.textField?(textField,
+                                                  shouldChangeCharactersIn: range,
+                                                  replacementString: string)
+            ?? true
         if should {
             setNeedsUpdateView()
         }
@@ -176,10 +169,8 @@ extension StatusTextField: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        var should = true
-        if let externalDelegate = externalDelegate {
-            should = externalDelegate.textFieldShouldReturn?(textField) ?? true
-        } else {
+        let should = externalDelegate?.textFieldShouldReturn?(textField) ?? true
+        if should {
             resignFirstResponder()
         }
         return should

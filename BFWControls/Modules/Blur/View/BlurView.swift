@@ -27,10 +27,10 @@ class BlurView: UIView {
                 let contentImage = UIImage(of: previousView,
                                            size: bounds.size)
                 blurredImage = UIImageEffects.imageByApplyingBlur(to: contentImage,
-                                                                         withRadius: blurRadius,
-                                                                         tintColor: backgroundColor,
-                                                                         saturationDeltaFactor: 1.8,
-                                                                         maskImage: nil)
+                                                                  withRadius: blurRadius,
+                                                                  tintColor: backgroundColor,
+                                                                  saturationDeltaFactor: 1.8,
+                                                                  maskImage: nil)
             }
         }
         return blurredImage

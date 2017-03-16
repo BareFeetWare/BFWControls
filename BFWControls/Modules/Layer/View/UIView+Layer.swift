@@ -31,11 +31,7 @@ extension UIView {
     
     var borderColor: UIColor? {
         get {
-            var color: UIColor?
-            if let layerBorderColor = layer.borderColor {
-                color = UIColor(cgColor: layerBorderColor)
-            }
-            return color
+            return layer.borderColor.map { UIColor(cgColor: $0) }
         }
         set {
             layer.borderColor = newValue?.cgColor
@@ -44,11 +40,7 @@ extension UIView {
     
     var shadowColor: UIColor? {
         get {
-            var color: UIColor?
-            if let layerColor = layer.shadowColor {
-                color = UIColor(cgColor: layerColor)
-            }
-            return color
+            return layer.shadowColor.map { UIColor(cgColor: $0) }
         }
         set {
             layer.shadowColor = newValue?.cgColor
