@@ -24,14 +24,4 @@
     return self;
 }
 
-/// Replaces an instance of view in a storyboard or xib with the full subview structure from its own xib.
-- (id)awakeAfterUsingCoder:(NSCoder *)aDecoder {
-    UIView *view = self;
-    BOOL hasAlreadyLoadedFromNib = self.subviews.count > 0; // TODO: More rubust test.
-    if (!hasAlreadyLoadedFromNib) {
-        view = [self viewFromNib];
-    }
-    return view;
-}
-
 @end
