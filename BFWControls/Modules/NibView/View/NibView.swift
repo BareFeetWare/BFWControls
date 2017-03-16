@@ -7,7 +7,7 @@
 
 import UIKit
 
-@IBDesignable class NibView: UIView {
+@IBDesignable class NibView: BFWNibView {
 
     // MARK: - Variables & Functions
     
@@ -31,34 +31,6 @@ import UIKit
         setNeedsLayout()
     }
     
-    // MARK: - Init
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        if super.subviews.count == 0 { // Prevents loading nib in nib itself.
-            let nibView = fromNib()!
-            nibView.frame = bounds
-            addSubview(nibView)
-            nibView.pinToSuperviewEdges()
-        }
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
-    /// Replaces an instance of view in a storyboard or xib with the full subview structure from its own xib.
-    override func awakeAfter(using aDecoder: NSCoder) -> Any? {
-        let hasAlreadyLoadedFromNib = subviews.count > 0 // TODO: More rubust test.
-        let view = hasAlreadyLoadedFromNib ? self : fromNib()
-        return view
-    }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        removePlaceHolders()
-    }
-
     // MARK: - Private variables and functions.
     
     /// Replace placeholders (eg [Text]) with blank text.
@@ -88,15 +60,22 @@ import UIKit
         }
     }
     
-    // MARK: - Caching
-    
-    static var sizeForKeyDictionary = [String: CGSize]()
+}
 
-    // MARK: - UIView
+/// UIView overrides
+extension NibView {
     
-    override func layoutSubviews() {
-        updateViewIfNeeded()
-        super.layoutSubviews()
+    private static var sizeForKeyDictionary = [String: CGSize]()
+    
+    /// Replaces an instance of view in a storyboard or xib with the full subview structure from its own xib.
+    override func awakeAfter(using coder: NSCoder) -> Any? {
+        let hasAlreadyLoadedFromNib = subviews.count > 0 // TODO: More rubust test.
+        return hasAlreadyLoadedFromNib ? self : fromNib()
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        removePlaceHolders()
     }
     
     override var intrinsicContentSize: CGSize {
@@ -118,12 +97,17 @@ import UIKit
         }
         set {
             // If storyboard instance is "default" (nil) then use the backgroundColor already set in xib or awakeFromNib (ie don't set it again).
-            if let backgroundColor = newValue {
-                super.backgroundColor = backgroundColor
+            if newValue != nil {
+                super.backgroundColor = newValue
             }
         }
     }
-
+    
+    override func layoutSubviews() {
+        updateViewIfNeeded()
+        super.layoutSubviews()
+    }
+    
 }
 
 private extension String {

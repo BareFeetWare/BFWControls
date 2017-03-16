@@ -22,7 +22,7 @@ class AutoNextViewController: UIViewController {
         super.viewDidAppear(animated)
         let dispatchTime = DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
         DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
-            self.performSegue(withIdentifier: self.segueIdentifier, sender: self)
+            self.performSegue(withIdentifier: self.segueIdentifier, sender: nil)
         }
     }
     

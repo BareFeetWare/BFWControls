@@ -71,8 +71,8 @@ class CarouselViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        let aPage = page(for: indexPath)
-        let cellIdentifier = cellIdentifiers![aPage]
+        let page = self.page(for: indexPath)
+        let cellIdentifier = cellIdentifiers![page]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
         return cell
     }
@@ -80,7 +80,7 @@ class CarouselViewController: UICollectionViewController {
     // MARK: - Variables
     
     var currentPage: Int {
-        return loopedPage(for: Int(round(currentPageFloat)))
+        return loopedPage(forPage: Int(round(currentPageFloat)))
     }
     
     var currentPageFloat: CGFloat {
@@ -92,9 +92,9 @@ class CarouselViewController: UICollectionViewController {
         /* If this carousel is embedded as a container in another view controller, find a page control already
          existing in that view controller, otherwise create a new one.
          */
-        let pageControl = self.view.superview?.superview?.subviews.flatMap { subview in
-            subview as? UIPageControl
-        }.first ?? UIPageControl()
+        let pageControl = self.view.superview?.superview?.subviews.first { subview in
+            subview is UIPageControl
+        } as? UIPageControl ?? UIPageControl()
         pageControl.numberOfPages = self.pageCount
         pageControl.sizeToFit()
         return pageControl
@@ -126,7 +126,7 @@ class CarouselViewController: UICollectionViewController {
     }
     
     @IBAction func changed(pageControl: UIPageControl) {
-        scroll(to: pageControl.currentPage, animated: true)
+        scroll(toPage: pageControl.currentPage, animated: true)
     }
     
     fileprivate func updatePageControl() {
@@ -140,8 +140,8 @@ class CarouselViewController: UICollectionViewController {
         }
     }
     
-    func scroll(to page: Int, animated: Bool) {
-        let loopPage = loopedPage(for: page)
+    func scroll(toPage page: Int, animated: Bool) {
+        let loopPage = loopedPage(forPage: page)
         let scrolledPage = loopPage + (shouldLoop ? 1 : 0)
         let indexPath = IndexPath(item: scrolledPage, section: 0)
         collectionView?.scrollToItem(at: indexPath,
@@ -152,7 +152,7 @@ class CarouselViewController: UICollectionViewController {
     
     // MARK: - Functions
     
-    fileprivate func loopedPage(for page: Int) -> Int {
+    fileprivate func loopedPage(forPage page: Int) -> Int {
         return page < 0 || pageCount == 0 ? pageCount + page : page % pageCount
     }
     
@@ -160,7 +160,7 @@ class CarouselViewController: UICollectionViewController {
         var page = (indexPath as NSIndexPath).row
         if shouldLoop {
             page -= 1
-            page = loopedPage(for: page)
+            page = loopedPage(forPage: page)
         }
         return page
     }
@@ -188,7 +188,7 @@ class CarouselViewController: UICollectionViewController {
         if collectionViewSize != collectionView?.bounds.size {
             collectionViewSize = collectionView?.bounds.size
             collectionView?.reloadData()
-            scroll(to: 0, animated: false)
+            scroll(toPage: 0, animated: false)
         }
     }
     
@@ -240,7 +240,7 @@ extension CarouselViewController {
     
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if shouldLoop {
-            scroll(to: currentPage, animated: false)
+            scroll(toPage: currentPage, animated: false)
         }
     }
     

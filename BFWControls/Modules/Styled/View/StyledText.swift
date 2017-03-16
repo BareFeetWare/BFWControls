@@ -29,10 +29,17 @@ class StyledText {
     
     fileprivate static var classBundle: Bundle {
         #if TARGET_INTERFACE_BUILDER // Rendering in storyboard using IBDesignable.
-            let bundle = NSBundle(forClass: self)
+            let isInterfaceBuilder = true
         #else
-            let bundle = Bundle.main
+            let isInterfaceBuilder = false
         #endif
+        return bundle(isInterfaceBuilder: isInterfaceBuilder)
+    }
+    
+    fileprivate static func bundle(isInterfaceBuilder: Bool) -> Bundle {
+        let bundle = isInterfaceBuilder
+            ? Bundle(for: self)
+            : Bundle.main
         return bundle;
     }
     
@@ -217,7 +224,7 @@ enum FontWeight {
     static let notSet: CGFloat = -2.0
     
     init(name: String) {
-        self = FontWeight.all.filter { $0.name == name }.first!
+        self = FontWeight.all.first { $0.name == name }!
     }
     
     init(approximateWeight: CGFloat) {

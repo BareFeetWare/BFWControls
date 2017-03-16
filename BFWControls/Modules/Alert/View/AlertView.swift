@@ -41,14 +41,20 @@ import UIKit
     // MARK: - Variables
 
     @IBInspectable var title: String? {
-        didSet {
-            titleLabel?.text = title
+        get {
+            return titleLabel?.text
+        }
+        set {
+            titleLabel?.text = newValue
         }
     }
     
     @IBInspectable var message: String? {
-        didSet {
-            messageLabel?.text = message
+        get {
+            return messageLabel?.text
+        }
+        set {
+            messageLabel?.text = newValue
         }
     }
     

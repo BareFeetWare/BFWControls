@@ -14,10 +14,13 @@
 + (NSBundle *)bundle
 {
 #if TARGET_INTERFACE_BUILDER // Rendering in storyboard using IBDesignable.
-    NSBundle *bundle = [NSBundle bundleForClass:self];
+    BOOL isInterfaceBuilder = YES;
 #else
-    NSBundle *bundle = [NSBundle mainBundle];
+    BOOL isInterfaceBuilder = NO;
 #endif
+    NSBundle *bundle = isInterfaceBuilder
+    ? [NSBundle bundleForClass:self]
+    : [NSBundle mainBundle];
     return bundle;
 }
 

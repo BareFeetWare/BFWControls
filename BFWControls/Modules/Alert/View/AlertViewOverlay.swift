@@ -14,9 +14,9 @@ import UIKit
     // MARK: - IBOutlets
     
     lazy var alertView: AlertView! = {
-        return self.subviews.filter { subview in
+        return self.subviews.first { subview in
             subview is AlertView
-        }.first as? AlertView
+        } as? AlertView
     }()
     
     // MARK: - Variables mapping to AlertView variables

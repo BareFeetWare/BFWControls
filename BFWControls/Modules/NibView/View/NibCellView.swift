@@ -37,15 +37,22 @@ import UIKit
         }
     }
     
-    @IBInspectable var showAccessory: Bool = false {
-        didSet {
-            setNeedsUpdateView()
+    @IBInspectable var showAccessory: Bool {
+        get {
+            return !(accessoryView?.isHidden ?? true)
+        }
+        set {
+            accessoryView?.isHidden = !newValue
+            accessoryView?.deactivateConstraintsIfHidden()
         }
     }
     
-    @IBInspectable var showSeparator: Bool = true {
-        didSet {
-            setNeedsUpdateView()
+    @IBInspectable var showSeparator: Bool {
+        get {
+            return !(separatorView?.isHidden ?? true)
+        }
+        set {
+            separatorView?.isHidden = !newValue
         }
     }
     
@@ -54,13 +61,5 @@ import UIKit
     override var placeholderViews: [UIView]? {
         return [textLabel, detailTextLabel].flatMap { $0 }
     }
-    
-    override func updateView() {
-        super.updateView()
-        accessoryView?.isHidden = !showAccessory
-        separatorView?.isHidden = !showSeparator
-    }
-
-    
     
 }

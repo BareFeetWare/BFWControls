@@ -12,32 +12,12 @@ import UIKit
 extension UIView {
     
     var superviewCell: UITableViewCell? {
-        var result: UITableViewCell?
-        var view: UIView? = self
-        while view != nil {
-            if let possible = view as? UITableViewCell {
-                result = possible
-                break
-            } else {
-                view = view?.superview
-            }
-        }
-        return result
+        return superview as? UITableViewCell ?? superview?.superviewCell
     }
     
     // TODO: Consolidate with superviewCell using generics.
     var superviewTableView: UITableView? {
-        var result: UITableView?
-        var view: UIView? = self
-        while view != nil {
-            if let possible = view as? UITableView {
-                result = possible
-                break
-            } else {
-                view = view?.superview
-            }
-        }
-        return result
+        return superview as? UITableView ?? superview?.superviewTableView
     }
     
     func updateTableViewCellHeights() {
