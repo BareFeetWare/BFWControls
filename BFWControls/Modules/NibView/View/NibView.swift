@@ -31,13 +31,6 @@ import UIKit
         setNeedsLayout()
     }
     
-    // MARK: - Init
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        removePlaceHolders()
-    }
-
     // MARK: - Private variables and functions.
     
     /// Replace placeholders (eg [Text]) with blank text.
@@ -67,13 +60,48 @@ import UIKit
         }
     }
     
-    // MARK: - UIView
+}
+
+/// UIView overrides
+extension NibView {
+    
+    private static var sizeForKeyDictionary = [String: CGSize]()
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        removePlaceHolders()
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        let size: CGSize
+        let type = type(of: self)
+        let key = NSStringFromClass(type)
+        if let reuseSize = type.sizeForKeyDictionary[key] {
+            size = reuseSize
+        } else {
+            size = type.sizeFromNib()
+            type.sizeForKeyDictionary[key] = size
+        }
+        return size
+    }
+    
+    override var backgroundColor: UIColor? {
+        get {
+            return super.backgroundColor
+        }
+        set {
+            // If storyboard instance is "default" (nil) then use the backgroundColor already set in xib or awakeFromNib (ie don't set it again).
+            if newValue != nil {
+                super.backgroundColor = newValue
+            }
+        }
+    }
     
     override func layoutSubviews() {
         updateViewIfNeeded()
         super.layoutSubviews()
     }
-
+    
 }
 
 private extension String {
