@@ -67,12 +67,6 @@ extension NibView {
     
     private static var sizeForKeyDictionary = [String: CGSize]()
     
-    /// Replaces an instance of view in a storyboard or xib with the full subview structure from its own xib.
-    override func awakeAfter(using coder: NSCoder) -> Any? {
-        let hasAlreadyLoadedFromNib = subviews.count > 0 // TODO: More rubust test.
-        return hasAlreadyLoadedFromNib ? self : fromNib()
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         removePlaceHolders()
