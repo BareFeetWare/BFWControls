@@ -37,13 +37,21 @@ import UIKit
         }
     }
     
+    fileprivate var accessoryConstraints = [NSLayoutConstraint]()
+    
     @IBInspectable var showAccessory: Bool {
         get {
             return !(accessoryView?.isHidden ?? true)
         }
         set {
-            accessoryView?.isHidden = !newValue
-            accessoryView?.deactivateConstraintsIfHidden()
+            guard let accessoryView = accessoryView else { return }
+            accessoryView.isHidden = !newValue
+            if newValue {
+                NSLayoutConstraint.activate(accessoryConstraints)
+            } else {
+                accessoryConstraints = accessoryView.siblingAndSuperviewConstraints ?? []
+                NSLayoutConstraint.deactivate(accessoryConstraints)
+            }
         }
     }
     
