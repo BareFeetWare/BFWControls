@@ -49,8 +49,12 @@ import UIKit
             if newValue {
                 NSLayoutConstraint.activate(accessoryConstraints)
             } else {
-                accessoryConstraints = accessoryView.siblingAndSuperviewConstraints ?? []
-                NSLayoutConstraint.deactivate(accessoryConstraints)
+                if let siblingAndSuperviewConstraints = accessoryView.siblingAndSuperviewConstraints,
+                    !siblingAndSuperviewConstraints.isEmpty
+                {
+                    accessoryConstraints = siblingAndSuperviewConstraints
+                    NSLayoutConstraint.deactivate(accessoryConstraints)
+                }
             }
         }
     }
