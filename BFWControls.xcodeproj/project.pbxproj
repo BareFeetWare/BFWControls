@@ -53,6 +53,7 @@
 		E2B170141CBC562D00D391B4 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2B1700F1CBC562D00D391B4 /* AlertView.xib */; };
 		E2B170151CBC562D00D391B4 /* StaticAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B170101CBC562D00D391B4 /* StaticAlertView.swift */; };
 		E2B170161CBC562D00D391B4 /* StaticAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2B170111CBC562D00D391B4 /* StaticAlertView.xib */; };
+		E2C6752D1E8625C600210173 /* SegueHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C6752C1E8625C600210173 /* SegueHandler.swift */; };
 		E2C9FF5F1DE7D8AE003A33FA /* Layout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2C9FF5E1DE7D8AE003A33FA /* Layout.storyboard */; };
 		E2C9FF611DE7D9A3003A33FA /* PileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C9FF601DE7D9A3003A33FA /* PileView.swift */; };
 		E2CFD5A51D1B96E400882597 /* ActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CFD5A31D1B96E400882597 /* ActionSheetView.swift */; };
@@ -119,6 +120,7 @@
 		E2B1700F1CBC562D00D391B4 /* AlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		E2B170101CBC562D00D391B4 /* StaticAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticAlertView.swift; sourceTree = "<group>"; };
 		E2B170111CBC562D00D391B4 /* StaticAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaticAlertView.xib; sourceTree = "<group>"; };
+		E2C6752C1E8625C600210173 /* SegueHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandler.swift; sourceTree = "<group>"; };
 		E2C9FF5E1DE7D8AE003A33FA /* Layout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Layout.storyboard; sourceTree = "<group>"; };
 		E2C9FF601DE7D9A3003A33FA /* PileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PileView.swift; sourceTree = "<group>"; };
 		E2CFD5A31D1B96E400882597 /* ActionSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetView.swift; sourceTree = "<group>"; };
@@ -462,6 +464,7 @@
 			isa = PBXGroup;
 			children = (
 				E29D4CD41CB35CA100A0C7C4 /* AutoNextViewController.swift */,
+				E2C6752C1E8625C600210173 /* SegueHandler.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -698,6 +701,7 @@
 				E26F2AE71CE1807600B56416 /* TextAttributes.swift in Sources */,
 				E23BFBA21DB4959F00D877EF /* AvatarView.swift in Sources */,
 				E2DE2EF11BEDFE1300636D0D /* UIImageEffects.m in Sources */,
+				E2C6752D1E8625C600210173 /* SegueHandler.swift in Sources */,
 				E2A5E3B61CA512C200368EFA /* UIViewExtensions.swift in Sources */,
 				E25687C41C6C5B8E00DD14D5 /* NSLayoutConstraintExtensions.swift in Sources */,
 				E27736761CC8954C0033941A /* UIViewController+Segue.swift in Sources */,
