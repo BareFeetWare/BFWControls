@@ -84,10 +84,7 @@ public extension SegueHandler where Self: UIViewController, SegueIdentifier.RawV
     }
     
     func segueIdentifier(for identifier: String?) -> SegueIdentifier? {
-        guard let identifier = identifier,
-            let segueIdentifier = SegueIdentifier(rawValue: identifier)
-            else { return nil }
-        return segueIdentifier
+        return identifier.flatMap { SegueIdentifier(rawValue: $0) }
     }
     
 }
