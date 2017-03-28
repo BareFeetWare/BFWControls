@@ -17,7 +17,7 @@ extension UIView {
             return 0.0
         }
         set {
-            transform = CGAffineTransform(rotationAngle: CGFloat(M_PI) / 180.0 * newValue)
+            transform = CGAffineTransform(rotationAngle: .pi / 180.0 * newValue)
         }
     }
     
