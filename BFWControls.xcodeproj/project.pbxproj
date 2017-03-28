@@ -61,6 +61,9 @@
 		E2CFD5A61D1B96E400882597 /* ActionSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2CFD5A41D1B96E400882597 /* ActionSheetView.xib */; };
 		E2DAF9331D596FE600ECA235 /* UIView+Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DAF9311D596FE600ECA235 /* UIView+Layer.swift */; };
 		E2DAF9341D596FE600ECA235 /* UIView+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DAF9321D596FE600ECA235 /* UIView+Transform.swift */; };
+		E2DCF31D1E89E4E300999746 /* NibTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DCF31B1E89E4E300999746 /* NibTableViewHeaderFooterView.swift */; };
+		E2DCF31E1E89E4E300999746 /* NibReplaceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DCF31C1E89E4E300999746 /* NibReplaceable.swift */; };
+		E2DCF3201E89E52200999746 /* NibTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DCF31F1E89E52200999746 /* NibTableViewCell.swift */; };
 		E2DE2EF11BEDFE1300636D0D /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */; };
 		E2DE2F7D1BEE009200636D0D /* UIImage+BFW.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DE2F7C1BEE009200636D0D /* UIImage+BFW.m */; };
 		E2F71A611CBC5DEA008B6A68 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F71A601CBC5DEA008B6A68 /* AlertViewController.swift */; };
@@ -129,6 +132,9 @@
 		E2CFD5A41D1B96E400882597 /* ActionSheetView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionSheetView.xib; sourceTree = "<group>"; };
 		E2DAF9311D596FE600ECA235 /* UIView+Layer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layer.swift"; sourceTree = "<group>"; };
 		E2DAF9321D596FE600ECA235 /* UIView+Transform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Transform.swift"; sourceTree = "<group>"; };
+		E2DCF31B1E89E4E300999746 /* NibTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
+		E2DCF31C1E89E4E300999746 /* NibReplaceable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibReplaceable.swift; sourceTree = "<group>"; };
+		E2DCF31F1E89E52200999746 /* NibTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibTableViewCell.swift; sourceTree = "<group>"; };
 		E2DE2EEF1BEDFE1300636D0D /* UIImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageEffects.h; sourceTree = "<group>"; };
 		E2DE2EF01BEDFE1300636D0D /* UIImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageEffects.m; sourceTree = "<group>"; };
 		E2DE2F7B1BEE009200636D0D /* UIImage+BFW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BFW.h"; sourceTree = "<group>"; };
@@ -245,6 +251,9 @@
 				E26F45D71D6B12C9005ECA07 /* ImageNibCellView.swift */,
 				E22A5E951C879BCB00AE9389 /* NibButton.swift */,
 				E293CB621C9D7913006BB8D7 /* NibCellView.swift */,
+				E2DCF31C1E89E4E300999746 /* NibReplaceable.swift */,
+				E2DCF31F1E89E52200999746 /* NibTableViewCell.swift */,
+				E2DCF31B1E89E4E300999746 /* NibTableViewHeaderFooterView.swift */,
 				E2A7BE461D4B15DA00F1A629 /* NibTextField.swift */,
 				E2589EF91CA7CB8E00BDD44F /* NibView.swift */,
 				E2A7BE471D4B15DA00F1A629 /* StatusTextField.swift */,
@@ -693,6 +702,7 @@
 				E2DAF9341D596FE600ECA235 /* UIView+Transform.swift in Sources */,
 				E234075E1C08399000319D38 /* UIView+BFWCopy.m in Sources */,
 				E20E10CE1CA1EA9300F35C82 /* TranslationTransitioningController.swift in Sources */,
+				E2DCF3201E89E52200999746 /* NibTableViewCell.swift in Sources */,
 				E2C9FF611DE7D9A3003A33FA /* PileView.swift in Sources */,
 				E26F2AE81CE1807600B56416 /* StyledText.swift in Sources */,
 				E2F71A611CBC5DEA008B6A68 /* AlertViewController.swift in Sources */,
@@ -710,6 +720,7 @@
 				E2A7BE4B1D4B15DA00F1A629 /* StatusTextFieldNibView.swift in Sources */,
 				E2CFD5A51D1B96E400882597 /* ActionSheetView.swift in Sources */,
 				E29D4CBE1CB23B9400A0C7C4 /* TranslationAnimationController.swift in Sources */,
+				E2DCF31E1E89E4E300999746 /* NibReplaceable.swift in Sources */,
 				E2FF6C7E1C413FA7005514B6 /* DesignableButton.swift in Sources */,
 				E274E07E1CC5A98C00262254 /* AlertViewOverlay.swift in Sources */,
 				E2A7BE4A1D4B15DA00F1A629 /* StatusTextField.swift in Sources */,
@@ -724,6 +735,7 @@
 				E2C6752D1E8625C600210173 /* SegueHandler.swift in Sources */,
 				E2A5E3B61CA512C200368EFA /* UIViewExtensions.swift in Sources */,
 				E25687C41C6C5B8E00DD14D5 /* NSLayoutConstraintExtensions.swift in Sources */,
+				E2DCF31D1E89E4E300999746 /* NibTableViewHeaderFooterView.swift in Sources */,
 				E27736761CC8954C0033941A /* UIViewController+Segue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
