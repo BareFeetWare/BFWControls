@@ -978,6 +978,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = BFWControls/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.barefeetware.BFWControls;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -996,6 +997,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = BFWControls/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.barefeetware.BFWControls;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1047,6 +1049,7 @@
 				E28BA91B1E963F7900D5DE3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E28BA9C91E964BED00D5DE3D /* Build configuration list for PBXNativeTarget "BFWControls Demo" */ = {
 			isa = XCConfigurationList;
@@ -1055,6 +1058,7 @@
 				E28BA9CB1E964BED00D5DE3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
