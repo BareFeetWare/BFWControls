@@ -15,7 +15,7 @@ protocol AlertViewDelegate {
     
 }
 
-class AlertViewController: UIViewController {
+open class AlertViewController: UIViewController {
     
     // MARK: - Variables
     
@@ -117,7 +117,7 @@ class AlertViewController: UIViewController {
         commonInit()
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
     }
@@ -131,7 +131,7 @@ class AlertViewController: UIViewController {
     
     // MARK: - UIViewController
     
-    override func viewWillAppear(_ animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hideOverlay()
         // TODO: Fix responder chain for button taps when presenter still has text field as first responder. The following is a workaround.

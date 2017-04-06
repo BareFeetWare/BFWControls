@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="42x-sm-w2i">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="42x-sm-w2i">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -147,7 +147,7 @@
         <!--Alert View Controller-->
         <scene sceneID="dMl-4Y-vcF">
             <objects>
-                <viewController id="ywr-fT-NsY" customClass="AlertViewController" customModule="BFWControls" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ywr-fT-NsY" customClass="AlertViewController" customModule="BFWControls_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ERd-or-Lov"/>
                         <viewControllerLayoutGuide type="bottom" id="aN7-9k-jb2"/>
@@ -156,8 +156,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="342" placeholderIntrinsicHeight="185" translatesAutoresizingMaskIntoConstraints="NO" id="epX-r6-FVA" customClass="AlertView" customModule="BFWControls" customModuleProvider="target">
-                                <rect key="frame" x="16.5" y="181" width="342" height="305"/>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="342" placeholderIntrinsicHeight="185" translatesAutoresizingMaskIntoConstraints="NO" id="epX-r6-FVA" customClass="AlertView" customModule="BFWControls_Demo" customModuleProvider="target">
+                                <rect key="frame" x="16.5" y="241" width="342" height="185"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="button1Title" value="Button 1"/>
@@ -182,7 +182,7 @@
         <!--Alert View Controller-->
         <scene sceneID="9PS-9c-bfF">
             <objects>
-                <viewController id="pbM-x2-7Ow" customClass="AlertViewController" customModule="BFWControls" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pbM-x2-7Ow" customClass="AlertViewController" customModule="BFWControls_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="T0d-x8-gj1"/>
                         <viewControllerLayoutGuide type="bottom" id="6a2-KK-EJE"/>
@@ -191,7 +191,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tRE-FY-qeK" customClass="AlertViewOverlay" customModule="BFWControls" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tRE-FY-qeK" customClass="AlertViewOverlay" customModule="BFWControls_Demo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="button1Title" value="Action 1"/>
@@ -208,9 +208,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="jgn-v9-qrR" kind="custom" identifier="Action 1" customClass="DismissAndPushSegue" customModule="BFWControls" customModuleProvider="target" id="nvw-hy-lN3"/>
-                        <segue destination="62w-50-ziJ" kind="custom" identifier="Action 2" customClass="DismissAndPushSegue" customModule="BFWControls" customModuleProvider="target" id="CfR-nx-dnE"/>
-                        <segue destination="xxm-g4-fSr" kind="custom" identifier="Action 3" customClass="DismissAndPushSegue" customModule="BFWControls" customModuleProvider="target" id="6s3-eO-0dE"/>
+                        <segue destination="jgn-v9-qrR" kind="custom" identifier="Action 1" customClass="DismissAndPushSegue" customModule="BFWControls_Demo" customModuleProvider="target" id="nvw-hy-lN3"/>
+                        <segue destination="62w-50-ziJ" kind="custom" identifier="Action 2" customClass="DismissAndPushSegue" customModule="BFWControls_Demo" customModuleProvider="target" id="CfR-nx-dnE"/>
+                        <segue destination="xxm-g4-fSr" kind="custom" identifier="Action 3" customClass="DismissAndPushSegue" customModule="BFWControls_Demo" customModuleProvider="target" id="6s3-eO-0dE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mvs-se-Bxf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -264,7 +264,7 @@
         <!--Alert View Controller-->
         <scene sceneID="h65-mA-pCs">
             <objects>
-                <viewController id="Dpk-7F-Zdz" customClass="AlertViewController" customModule="BFWControls" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Dpk-7F-Zdz" customClass="AlertViewController" customModule="BFWControls_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ukx-D1-GV5"/>
                         <viewControllerLayoutGuide type="bottom" id="nYa-US-Vgf"/>
@@ -273,7 +273,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tsv-Al-s7h" customClass="ActionSheetView" customModule="BFWControls" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tsv-Al-s7h" customClass="ActionSheetView" customModule="BFWControls_Demo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Action Sheet"/>
@@ -292,9 +292,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="jgn-v9-qrR" kind="custom" identifier="Action 1" customClass="DismissAndPushSegue" customModule="BFWControls" customModuleProvider="target" id="5dA-NI-Cyp"/>
-                        <segue destination="62w-50-ziJ" kind="custom" identifier="Action 2" customClass="DismissAndPushSegue" customModule="BFWControls" customModuleProvider="target" id="Ygs-SA-7Ra"/>
-                        <segue destination="xxm-g4-fSr" kind="custom" identifier="Action 3" customClass="DismissAndPushSegue" customModule="BFWControls" customModuleProvider="target" id="SFH-sI-0uj"/>
+                        <segue destination="jgn-v9-qrR" kind="custom" identifier="Action 1" customClass="DismissAndPushSegue" customModule="BFWControls_Demo" customModuleProvider="target" id="5dA-NI-Cyp"/>
+                        <segue destination="62w-50-ziJ" kind="custom" identifier="Action 2" customClass="DismissAndPushSegue" customModule="BFWControls_Demo" customModuleProvider="target" id="Ygs-SA-7Ra"/>
+                        <segue destination="xxm-g4-fSr" kind="custom" identifier="Action 3" customClass="DismissAndPushSegue" customModule="BFWControls_Demo" customModuleProvider="target" id="SFH-sI-0uj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Buk-hf-qjX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -326,7 +326,7 @@
         <!--Alert View Controller-->
         <scene sceneID="3en-Gt-9cH">
             <objects>
-                <viewController id="cHl-b9-Cae" customClass="AlertViewController" customModule="BFWControls" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cHl-b9-Cae" customClass="AlertViewController" customModule="BFWControls_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="R2G-pn-flO"/>
                         <viewControllerLayoutGuide type="bottom" id="IFy-C5-35J"/>

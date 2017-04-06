@@ -7,7 +7,7 @@
 
 import UIKit
 
-@IBDesignable class NibView: BFWNibView {
+@IBDesignable open class NibView: BFWNibView {
 
     // MARK: - Variables & Functions
     
@@ -60,19 +60,16 @@ import UIKit
         }
     }
     
-}
-
-/// UIView overrides
-extension NibView {
+    /// UIView overrides
     
     private static var sizeForKeyDictionary = [String: CGSize]()
     
-    override func awakeFromNib() {
+    open override func awakeFromNib() {
         super.awakeFromNib()
         removePlaceHolders()
     }
     
-    override var intrinsicContentSize: CGSize {
+    open override var intrinsicContentSize: CGSize {
         let size: CGSize
         let type = type(of: self)
         let key = NSStringFromClass(type)
@@ -85,7 +82,7 @@ extension NibView {
         return size
     }
     
-    override var backgroundColor: UIColor? {
+    open override var backgroundColor: UIColor? {
         get {
             return super.backgroundColor
         }
@@ -97,7 +94,7 @@ extension NibView {
         }
     }
     
-    override func layoutSubviews() {
+    open override func layoutSubviews() {
         updateViewIfNeeded()
         super.layoutSubviews()
     }

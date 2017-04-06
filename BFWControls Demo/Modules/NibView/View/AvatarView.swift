@@ -8,6 +8,7 @@
 //
 
 import UIKit
+import BFWControls
 
 @IBDesignable class AvatarView: NibCellView {
     
