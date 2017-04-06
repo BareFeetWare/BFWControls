@@ -103,7 +103,6 @@ class StaticTableViewController: UITableViewController {
         var height = intrinsicHeightCells
             ? UITableViewAutomaticDimension
             : super.tableView(tableView, heightForRowAt: superIndexPath(for: indexPath))
-        // Check filledUsingLastCell attribute.
         if filledUsingLastCell && indexPath == lastCellIndexPath {
             let previousRowFrame = tableView.rectForRow(at: IndexPath(row: indexPath.row - 1, section: indexPath.section))
             // Get height of empty spaces to fill
