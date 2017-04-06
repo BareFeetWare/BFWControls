@@ -77,8 +77,9 @@ class StaticTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Always set estimatedRowHeight
-        tableView.estimatedRowHeight = 44.0
+        if intrinsicHeightCells || filledUsingLastCell {
+            tableView.estimatedRowHeight = 44.0
+        }
     }
     
     // MARK: - UITableViewDataSource
@@ -103,15 +104,12 @@ class StaticTableViewController: UITableViewController {
             ? UITableViewAutomaticDimension
             : super.tableView(tableView, heightForRowAt: superIndexPath(for: indexPath))
         // Check filledUsingLastCell attribute.
-        if filledUsingLastCell {
-            // Is this last cell?
-            if indexPath == lastCellIndexPath {
-                let previousRowFrame = tableView.rectForRow(at: IndexPath(row: indexPath.row-1, section: indexPath.section))
-                // Get height of empty spaces to fill
-                let adjustment = tableView.frame.size.height - (previousRowFrame.origin.y + previousRowFrame.size.height)
-                if adjustment > 0 {
-                    height = adjustment
-                }
+        if filledUsingLastCell && indexPath == lastCellIndexPath {
+            let previousRowFrame = tableView.rectForRow(at: IndexPath(row: indexPath.row - 1, section: indexPath.section))
+            // Get height of empty spaces to fill
+            let adjustment = tableView.frame.size.height - (previousRowFrame.origin.y + previousRowFrame.size.height)
+            if adjustment > 0 {
+                height = adjustment
             }
         }
         return height
