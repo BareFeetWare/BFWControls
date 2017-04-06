@@ -208,9 +208,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="jgn-v9-qrR" kind="custom" identifier="Action 1" customClass="DismissAndPushSegue" customModule="BFWControls_Demo" customModuleProvider="target" id="nvw-hy-lN3"/>
-                        <segue destination="62w-50-ziJ" kind="custom" identifier="Action 2" customClass="DismissAndPushSegue" customModule="BFWControls_Demo" customModuleProvider="target" id="CfR-nx-dnE"/>
-                        <segue destination="xxm-g4-fSr" kind="custom" identifier="Action 3" customClass="DismissAndPushSegue" customModule="BFWControls_Demo" customModuleProvider="target" id="6s3-eO-0dE"/>
+                        <segue destination="jgn-v9-qrR" kind="custom" identifier="Action 1" customClass="DismissAndPushSegue" customModule="BFWControls" id="nvw-hy-lN3"/>
+                        <segue destination="62w-50-ziJ" kind="custom" identifier="Action 2" customClass="DismissAndPushSegue" customModule="BFWControls" id="CfR-nx-dnE"/>
+                        <segue destination="xxm-g4-fSr" kind="custom" identifier="Action 3" customClass="DismissAndPushSegue" customModule="BFWControls" id="6s3-eO-0dE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mvs-se-Bxf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -292,9 +292,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="jgn-v9-qrR" kind="custom" identifier="Action 1" customClass="DismissAndPushSegue" customModule="BFWControls_Demo" customModuleProvider="target" id="5dA-NI-Cyp"/>
-                        <segue destination="62w-50-ziJ" kind="custom" identifier="Action 2" customClass="DismissAndPushSegue" customModule="BFWControls_Demo" customModuleProvider="target" id="Ygs-SA-7Ra"/>
-                        <segue destination="xxm-g4-fSr" kind="custom" identifier="Action 3" customClass="DismissAndPushSegue" customModule="BFWControls_Demo" customModuleProvider="target" id="SFH-sI-0uj"/>
+                        <segue destination="jgn-v9-qrR" kind="custom" identifier="Action 1" customClass="DismissAndPushSegue" customModule="BFWControls" id="5dA-NI-Cyp"/>
+                        <segue destination="62w-50-ziJ" kind="custom" identifier="Action 2" customClass="DismissAndPushSegue" customModule="BFWControls" id="Ygs-SA-7Ra"/>
+                        <segue destination="xxm-g4-fSr" kind="custom" identifier="Action 3" customClass="DismissAndPushSegue" customModule="BFWControls" id="SFH-sI-0uj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Buk-hf-qjX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -416,8 +416,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5dA-NI-Cyp"/>
-        <segue reference="SFH-sI-0uj"/>
-        <segue reference="Ygs-SA-7Ra"/>
+        <segue reference="nvw-hy-lN3"/>
+        <segue reference="CfR-nx-dnE"/>
+        <segue reference="6s3-eO-0dE"/>
     </inferredMetricsTieBreakers>
 </document>
