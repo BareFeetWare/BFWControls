@@ -13,13 +13,17 @@
 
 + (NSBundle *)bundle
 {
+    BOOL isInterfaceBuilder;
 #if TARGET_INTERFACE_BUILDER // Rendering in storyboard using IBDesignable.
-    BOOL isInterfaceBuilder = YES;
+    isInterfaceBuilder = YES;
 #else
-    BOOL isInterfaceBuilder = NO;
+    isInterfaceBuilder = NO;
 #endif
     NSBundle *bundle = isInterfaceBuilder
     ? [NSBundle bundleForClass:self]
+    // TODO: Dynamic strings:
+    : [self.moduleName isEqualToString:@"BFWControls"]
+    ? [NSBundle bundleWithIdentifier:@"com.barefeetware.BFWControls"]
     : [NSBundle mainBundle];
     return bundle;
 }
@@ -31,6 +35,15 @@
     NSString *className = [fullClassName componentsSeparatedByString:@"."].lastObject;
     
     return className;
+}
+
++ (NSString *)moduleName {
+    NSString *fullClassName = NSStringFromClass(self);
+    NSArray* components = [fullClassName componentsSeparatedByString:@"."];
+    NSString *moduleName = components.count > 1
+    ? components.firstObject
+    : nil;
+    return moduleName;
 }
 
 + (CGSize)sizeFromNib {
