@@ -11,8 +11,7 @@
 
 #pragma mark - class methods
 
-+ (NSBundle *)bundle
-{
++ (NSBundle *)bundle {
     BOOL isInterfaceBuilder;
 #if TARGET_INTERFACE_BUILDER // Rendering in storyboard using IBDesignable.
     isInterfaceBuilder = YES;
@@ -28,22 +27,21 @@
     return bundle;
 }
 
-+ (NSString *)nibName {
++ (NSArray *)classNameComponents {
     NSString *fullClassName = NSStringFromClass(self);
-    
+    return [fullClassName componentsSeparatedByString:@"."];
+}
+
++ (NSString *)nibName {
     // Remove the <ProjectName>. prefix that Swift adds:
-    NSString *className = [fullClassName componentsSeparatedByString:@"."].lastObject;
-    
-    return className;
+    return self.classNameComponents.lastObject;
 }
 
 + (NSString *)moduleName {
-    NSString *fullClassName = NSStringFromClass(self);
-    NSArray* components = [fullClassName componentsSeparatedByString:@"."];
-    NSString *moduleName = components.count > 1
+    NSArray* components = self.classNameComponents;
+    return components.count > 1
     ? components.firstObject
     : nil;
-    return moduleName;
 }
 
 + (CGSize)sizeFromNib {
