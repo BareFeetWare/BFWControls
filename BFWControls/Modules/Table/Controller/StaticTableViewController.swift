@@ -22,12 +22,11 @@ class StaticTableViewController: UITableViewController {
     }
     
     // TODO: Move to UITableView?
-    var lastCell: UITableViewCell? {
+    var lastCellIndexPath: IndexPath {
         let lastSection = numberOfSections(in: tableView) - 1
         let lastRow = self.tableView(tableView, numberOfRowsInSection: lastSection) - 1
         let indexPath = IndexPath(row: lastRow, section: lastSection)
-        let lastCell = tableView.cellForRow(at: indexPath)
-        return lastCell
+        return indexPath
     }
     
     // MARK: - Functions
@@ -78,21 +77,8 @@ class StaticTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if intrinsicHeightCells {
+        if intrinsicHeightCells || filledUsingLastCell {
             tableView.estimatedRowHeight = 44.0
-        }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        if filledUsingLastCell {
-            if let lastCell = lastCell {
-                let adjustment = tableView.frame.height + tableView.contentInset.top - lastCell.frame.maxY
-                if adjustment > 0 {
-                    lastCell.frame.size.height += adjustment
-                    lastCell.setNeedsLayout()
-                }
-            }
         }
     }
     
@@ -114,9 +100,17 @@ class StaticTableViewController: UITableViewController {
     // MARK: - UITableViewDelegate
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let height = intrinsicHeightCells
+        var height = intrinsicHeightCells
             ? UITableViewAutomaticDimension
             : super.tableView(tableView, heightForRowAt: superIndexPath(for: indexPath))
+        if filledUsingLastCell && indexPath == lastCellIndexPath {
+            let previousRowFrame = tableView.rectForRow(at: IndexPath(row: indexPath.row - 1, section: indexPath.section))
+            // Get height of empty spaces to fill
+            let adjustment = tableView.frame.size.height - (previousRowFrame.origin.y + previousRowFrame.size.height)
+            if adjustment > 0 {
+                height = adjustment
+            }
+        }
         return height
     }
     
