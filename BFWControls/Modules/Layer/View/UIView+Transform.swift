@@ -13,8 +13,8 @@ extension UIView {
     
     var rotationDegrees: CGFloat {
         get {
-            // TODO: Reverse engineer angle from transform.
-            return 0.0
+            let angleInRadians = atan2(transform.b, transform.a)
+            return angleInRadians * 180.0 / .pi
         }
         set {
             transform = CGAffineTransform(rotationAngle: .pi / 180.0 * newValue)
