@@ -8,14 +8,14 @@
 
 import UIKit
 
-class NibTableViewHeaderFooterView: UITableViewHeaderFooterView {
+open class NibTableViewHeaderFooterView: UITableViewHeaderFooterView {
     
-    override init(reuseIdentifier: String?) {
+    public override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         addNib()
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         addNib()
     }
@@ -24,7 +24,7 @@ class NibTableViewHeaderFooterView: UITableViewHeaderFooterView {
 
 extension NibTableViewHeaderFooterView: NibReplaceable {
     
-    var nibView: NibView {
+    public var nibView: NibView {
         fatalError("nibView must be implemented in subclass")
     }
     

@@ -8,17 +8,17 @@
 
 import UIKit
 
-class BlurView: UIView {
-
-    @IBInspectable var blurRadius: CGFloat = 10.0 {
+open class BlurView: UIView {
+    
+    @IBInspectable open var blurRadius: CGFloat = 10.0 {
         didSet {
             setNeedsDisplay()
         }
     }
-
+    
     //MARK: Accessors
-
-    var blurredImage: UIImage? {
+    
+    open var blurredImage: UIImage? {
         var blurredImage: UIImage? = nil;
         if let subviews = superview?.subviews,
             let selfIndex = subviews.index(of: self) {
@@ -35,13 +35,13 @@ class BlurView: UIView {
         }
         return blurredImage
     }
-
+    
     //MARK: UIView
-
+    
     #if TARGET_INTERFACE_BUILDER
     // Dont draw anything, so it is transparent.
     #else
-    override func draw(_: CGRect) {
+    open override func draw(_: CGRect) {
         if let image = blurredImage {
             image.draw(in: bounds)
         }

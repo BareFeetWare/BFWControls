@@ -12,21 +12,21 @@ import UIKit
     // MARK: - Variables & Functions
     
     /// Labels which should remove enclosing [] from text after awakeFromNib.
-    var placeholderViews: [UIView]? {
+    open var placeholderViews: [UIView]? {
         return nil
     }
 
-    func isPlaceholderString(_ string: String?) -> Bool {
+    open func isPlaceholderString(_ string: String?) -> Bool {
         return string != nil && string!.isPlaceholder
     }
     
     // MARK: - UpdateView mechanism
     
     /// Override in subclasses and call super. Update view and subview properties that are affected by properties of this class.
-    func updateView() {
+    open func updateView() {
     }
     
-    func setNeedsUpdateView() {
+    open func setNeedsUpdateView() {
         needsUpdateView = true
         setNeedsLayout()
     }

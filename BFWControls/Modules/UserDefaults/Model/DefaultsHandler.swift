@@ -9,7 +9,7 @@
 
 import Foundation
 
-protocol DefaultsHandler {
+public protocol DefaultsHandler {
     
     associatedtype Key: RawRepresentable
     
@@ -17,29 +17,29 @@ protocol DefaultsHandler {
     
 }
 
-extension DefaultsHandler where Key.RawValue == String {
+public extension DefaultsHandler where Key.RawValue == String {
     
-    static func setValue(_ value: Any?, for key: Key) {
+    public static func setValue(_ value: Any?, for key: Key) {
         defaults.setValue(value, forKey: key.rawValue)
     }
 
-    static func value(for key: Key) -> Any? {
+    public static func value(for key: Key) -> Any? {
         return defaults.value(forKey: key.rawValue) as Any?
     }
     
-    static func string(for key: Key) -> String? {
+    public static func string(for key: Key) -> String? {
         return defaults.string(forKey: key.rawValue)
     }
     
-    static func date(for key: Key) -> Date? {
+    public static func date(for key: Key) -> Date? {
         return defaults.value(forKey: key.rawValue) as? Date
     }
 
-    static func double(for key: Key) -> Double? {
+    public static func double(for key: Key) -> Double? {
         return defaults.double(forKey: key.rawValue)
     }
     
-    static func bool(for key: Key) -> Bool {
+    public static func bool(for key: Key) -> Bool {
         return defaults.bool(forKey: key.rawValue)
     }
     

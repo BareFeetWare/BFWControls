@@ -8,45 +8,45 @@
 
 import UIKit
 
-@IBDesignable class PileView: UIView {
+@IBDesignable open class PileView: UIView {
     
     // MARK: - Variables
     
-    @IBInspectable var gapWidth: CGFloat = 0.0 { didSet { setNeedsLayout() }}
-    @IBInspectable var gapHeight: CGFloat = 0.0 { didSet { setNeedsLayout() }}
+    @IBInspectable open var gapWidth: CGFloat = 0.0 { didSet { setNeedsLayout() }}
+    @IBInspectable open var gapHeight: CGFloat = 0.0 { didSet { setNeedsLayout() }}
     
-    private var subviewCount: CGFloat {
+    fileprivate var subviewCount: CGFloat {
         return CGFloat(subviews.count)
     }
     
-    private var subviewMaxWidth: CGFloat {
+    fileprivate var subviewMaxWidth: CGFloat {
         return (bounds.size.width - (subviewCount - 1) * gapWidth) / subviewCount
     }
     
     // TODO: Dynamic
-    var subviewHeight: CGFloat = 44.0
+    open var subviewHeight: CGFloat = 44.0
     
-    var isHorizontal: Bool {
+    open var isHorizontal: Bool {
         let isHorizontal = subviews.reduce(true) { (doesFit, subview) in
             return doesFit && subview.sizeThatFits(bounds.size).width <= subviewMaxWidth
         }
         return isHorizontal
     }
     
-    private var subviewWidth: CGFloat {
+    fileprivate var subviewWidth: CGFloat {
         return isHorizontal ? subviewMaxWidth : bounds.width
     }
     
     // MARK: - UIView
     
-    override var intrinsicContentSize: CGSize {
+    open override var intrinsicContentSize: CGSize {
         return CGSize(width: UIViewNoIntrinsicMetric,
                       height: isHorizontal
                         ? subviewHeight
                         : subviewCount * subviewHeight + (subviewCount - 1) * gapHeight)
     }
     
-    override func layoutSubviews() {
+    open override func layoutSubviews() {
         invalidateIntrinsicContentSize()
         for (index, subview) in subviews.enumerated() {
             let origin = isHorizontal

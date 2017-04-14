@@ -7,14 +7,14 @@
 
 import UIKit
 
-class StyledText {
+open class StyledText {
     
     // MARK: - Constants
     
-    struct Section {
-        static let level = "level"
-        static let emphasis = "emphasis"
-        static let style = "style"
+    public struct Section {
+        public static let level = "level"
+        public static let emphasis = "emphasis"
+        public static let style = "style"
     }
     
     struct Key {
@@ -51,11 +51,11 @@ class StyledText {
     
     // MARK: - Functions
     
-    class func attributes(for style: String) -> TextAttributes? {
+    open class func attributes(for style: String) -> TextAttributes? {
         return attributes(forSection: Section.style, key: style)
     }
     
-    class func attributes(for styles: [String]) -> TextAttributes? {
+    open class func attributes(for styles: [String]) -> TextAttributes? {
         var textAttributes: TextAttributes?
         for style in styles {
             if let extraAttributes = attributes(for: style) {
@@ -68,11 +68,11 @@ class StyledText {
         return textAttributes
     }
     
-    class func attributes(forLevel level: Int) -> TextAttributes? {
+    open class func attributes(forLevel level: Int) -> TextAttributes? {
         return attributes(forSection: Section.level, key: String(level))
     }
     
-    class func attributes(for lookupDict: [String: AnyObject]) -> TextAttributes? {
+    open class func attributes(for lookupDict: [String: AnyObject]) -> TextAttributes? {
         var attributes = TextAttributes()
         let flatDict = flatLookup(dict: lookupDict)
         if let familyName = flatDict[Key.familyName] as? String {
@@ -110,7 +110,7 @@ class StyledText {
     }
     
     // TODO: Make this private by providing alernative func.
-    class func attributes(forSection section: String, key: String) -> TextAttributes? {
+    open class func attributes(forSection section: String, key: String) -> TextAttributes? {
         var textAttributes: TextAttributes?
         if let sectionDict = plistDict[section] as? [String : AnyObject],
             let lookupDict = sectionDict[key] as? [String: AnyObject]

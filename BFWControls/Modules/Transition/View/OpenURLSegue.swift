@@ -9,9 +9,9 @@
 
 import UIKit
 
-class OpenURLSegue: UIStoryboardSegue {
+open class OpenURLSegue: UIStoryboardSegue {
 
-    override func perform() {
+    open override func perform() {
         guard let title = destination.navigationItem.title ?? destination.title,
             let url = URL(string: title)
             else { return }

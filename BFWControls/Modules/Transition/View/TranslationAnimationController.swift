@@ -9,7 +9,7 @@
 
 import UIKit
 
-enum Direction: Int {
+public enum Direction: Int {
 
     case left = 0
     case right = 1
@@ -31,23 +31,23 @@ enum Direction: Int {
 
 }
 
-class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
+open class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
 
     // MARK: - Variables
 
-    @IBInspectable var isPresenting: Bool = true
-    @IBInspectable var duration: TimeInterval = 0.3
-    @IBInspectable var leftInset: CGFloat = 0.0
-    @IBInspectable var rightInset: CGFloat = 0.0
-    @IBInspectable var topInset: CGFloat = 0.0
-    @IBInspectable var bottomInset: CGFloat = 0.0
-    @IBInspectable var belowTopGuide: Bool = false
-    @IBInspectable var animatePresenter = false // TODO: Determine automatically
+    @IBInspectable open var isPresenting: Bool = true
+    @IBInspectable open var duration: TimeInterval = 0.3
+    @IBInspectable open var leftInset: CGFloat = 0.0
+    @IBInspectable open var rightInset: CGFloat = 0.0
+    @IBInspectable open var topInset: CGFloat = 0.0
+    @IBInspectable open var bottomInset: CGFloat = 0.0
+    @IBInspectable open var belowTopGuide: Bool = false
+    @IBInspectable open var animatePresenter = false // TODO: Determine automatically
     /// Fade out/in the first view controller, instead of moving.
-    @IBInspectable var fadeFirst: Bool = false
-    @IBInspectable var backdropColor: UIColor?
+    @IBInspectable open var fadeFirst: Bool = false
+    @IBInspectable open var backdropColor: UIColor?
     /// Direction to which it presents. Dismiss direction defaults to reverse.
-    var direction: Direction = .left
+    open var direction: Direction = .left
     let backdropView = UIView()
     
     // MARK: - Private functions
@@ -79,11 +79,11 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
 
     // MARK: - UIViewControllerAnimatedTransitioning
 
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    open func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return duration
     }
 
-    @objc func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    @objc open func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
         let animateToView = animatePresenter || fadeFirst || isPresenting
         let animateFromView = animatePresenter || fadeFirst || !isPresenting

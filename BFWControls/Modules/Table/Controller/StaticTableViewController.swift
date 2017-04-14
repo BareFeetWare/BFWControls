@@ -9,27 +9,27 @@
 
 import UIKit
 
-class StaticTableViewController: UITableViewController {
+open class StaticTableViewController: UITableViewController {
     
     // MARK: - Variables
 
-    @IBInspectable var filledUsingLastCell: Bool = false
-    @IBInspectable var intrinsicHeightCells: Bool = false
+    @IBInspectable open var filledUsingLastCell: Bool = false
+    @IBInspectable open var intrinsicHeightCells: Bool = false
     
     /// Override in subclass, usually by connecting to an IBOutlet collection.
-    var excludedCells: [UITableViewCell]? {
+    open var excludedCells: [UITableViewCell]? {
         return nil
     }
     
     // TODO: Move to UITableView?
-    var lastCellIndexPath: IndexPath {
+    open var lastCellIndexPath: IndexPath {
         let lastSection = numberOfSections(in: tableView) - 1
         let lastRow = self.tableView(tableView, numberOfRowsInSection: lastSection) - 1
         let indexPath = IndexPath(row: lastRow, section: lastSection)
         return indexPath
     }
     
-    lazy var lastCellIntrinsicHeight: CGFloat = {
+    open lazy var lastCellIntrinsicHeight: CGFloat = {
         let lastCell: UITableViewCell
         if let cell = self.tableView.cellForRow(at: self.lastCellIndexPath) {
             // Already on screen or static table view controller
@@ -40,11 +40,11 @@ class StaticTableViewController: UITableViewController {
         }
         lastCell.layoutIfNeeded()
         return lastCell.frame.height
-    } ()
+    }()
     
     // MARK: - Functions
     
-    func indexPaths(toInsert cells: [UITableViewCell]) -> [IndexPath] {
+    open func indexPaths(toInsert cells: [UITableViewCell]) -> [IndexPath] {
         var indexPaths = [IndexPath]()
         for section in 0 ..< super.numberOfSections(in: tableView) {
             var numberOfExcludedRows = 0
@@ -88,7 +88,7 @@ class StaticTableViewController: UITableViewController {
     
     // MARK: - UIViewController
     
-    override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         if intrinsicHeightCells || filledUsingLastCell {
             tableView.estimatedRowHeight = 44.0
@@ -97,14 +97,14 @@ class StaticTableViewController: UITableViewController {
     
     // MARK: - UITableViewDataSource
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numberOfRowsInSection = super.tableView(tableView, numberOfRowsInSection: section)
         let indexPath = IndexPath(row: numberOfRowsInSection - 1, section: section)
         let numberOfExcludedCellsInThisSection = numberOfExcludedRows(before: indexPath)
         return super.tableView(tableView, numberOfRowsInSection: section) - numberOfExcludedCellsInThisSection
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: superIndexPath(for: indexPath))
         cell.layoutIfNeeded()
         return cell
@@ -112,7 +112,7 @@ class StaticTableViewController: UITableViewController {
     
     // MARK: - UITableViewDelegate
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    open override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         var height = intrinsicHeightCells
             ? UITableViewAutomaticDimension
             : super.tableView(tableView, heightForRowAt: superIndexPath(for: indexPath))

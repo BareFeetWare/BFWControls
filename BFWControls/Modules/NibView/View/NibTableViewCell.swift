@@ -8,14 +8,14 @@
 
 import UIKit
 
-class NibTableViewCell: UITableViewCell {
+open class NibTableViewCell: UITableViewCell {
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addNib()
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         addNib()
     }
@@ -24,7 +24,7 @@ class NibTableViewCell: UITableViewCell {
 
 extension NibTableViewCell: NibReplaceable {
     
-    var nibView: NibView {
+    public var nibView: NibView {
         fatalError("nibView must be implemented in subclass")
     }
     

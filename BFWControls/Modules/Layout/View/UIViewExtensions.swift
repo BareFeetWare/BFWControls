@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIView {
+public extension UIView {
     
     struct Threshold {
         static let alpha: CGFloat = 0.5
@@ -17,7 +17,7 @@ extension UIView {
     }
     
     /// Color that shows through background of the view. Recursively checks superview if view background is clear.
-    var visibleBackgroundColor: UIColor? {
+    public var visibleBackgroundColor: UIColor? {
         get {
             var color: UIColor?
             var superview: UIView? = self
@@ -38,7 +38,7 @@ extension UIView {
     }
     
     /// True if background color is closer to white than black. Recursively checks superview if view background is clear.
-    var isBackgroundLight: Bool? {
+    public var isBackgroundLight: Bool? {
         var isBackgroundLight: Bool?
         var white: CGFloat = 0.0
         var alpha: CGFloat = 0.0
