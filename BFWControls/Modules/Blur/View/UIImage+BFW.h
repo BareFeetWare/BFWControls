@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIImage (BFW)
+@interface UIImage (BFWControls)
 
 - (UIImage*)maskWithImage:(UIImage*)maskImage;
 + (UIImage*)imageOfView:(UIView*)view size:(CGSize)size;
