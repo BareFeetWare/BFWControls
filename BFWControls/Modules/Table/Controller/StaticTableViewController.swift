@@ -89,7 +89,7 @@ class StaticTableViewController: UITableViewController {
                          section: (indexPath as NSIndexPath).section)
     }
 	
-	fileprivate func refreshTableView() {
+	fileprivate func refreshCellHeights() {
 		tableView.beginUpdates()
 		tableView.endUpdates()
 	}
@@ -100,7 +100,7 @@ class StaticTableViewController: UITableViewController {
 			? UITableViewAutomaticDimension
 			: super.tableView(tableView, heightForRowAt: superIndexPath(for: lastCellIndexPath))
 		// Use default height when last cell is not on the screen.
-		guard tableView.indexPathsForVisibleRows?.contains(lastCellIndexPath) == true
+		guard tableView.indexPathsForVisibleRows?.contains(lastCellIndexPath) ?? false
 			else { return }
 		let previousRowFrame = tableView.rectForRow(at: IndexPath(row: lastCellIndexPath.row - 1, section: lastCellIndexPath.section))
 		// Get height of empty spaces to fill
@@ -138,7 +138,7 @@ class StaticTableViewController: UITableViewController {
     
     // MARK: - UITableViewDelegate
 	override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-		if filledUsingLastCell && isDynamicLastCell && (self.dynamicLastCellHeight == nil) {
+		if filledUsingLastCell && dynamicLastCellHeight == nil {
 			if let indexPathsForVisibleRows = tableView.indexPathsForVisibleRows,
 				let lastIndexPath = indexPathsForVisibleRows.last,
 				lastIndexPath.row == indexPath.row
@@ -146,7 +146,7 @@ class StaticTableViewController: UITableViewController {
 				// Calculate height of last cell
 				DispatchQueue.main.async {
 					self.updateFillUsingLastCell()
-					self.refreshTableView()
+					self.refreshCellHeights()
 				}
 			}
 		}
