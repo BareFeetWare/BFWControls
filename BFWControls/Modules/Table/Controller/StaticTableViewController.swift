@@ -29,6 +29,19 @@ class StaticTableViewController: UITableViewController {
         return indexPath
     }
     
+    lazy var lastCellIntrinsicHeight: CGFloat = {
+        let lastCell: UITableViewCell
+        if let cell = self.tableView.cellForRow(at: self.lastCellIndexPath) {
+            // Already on screen or static table view controller
+            lastCell = cell
+        } else {
+            // Hasn't loaded yet in cellForRowAt, so load a copy
+            lastCell = self.tableView(self.tableView, cellForRowAt: self.lastCellIndexPath)
+        }
+        lastCell.layoutIfNeeded()
+        return lastCell.frame.height
+    } ()
+    
     // MARK: - Functions
     
     func indexPaths(toInsert cells: [UITableViewCell]) -> [IndexPath] {
@@ -106,9 +119,9 @@ class StaticTableViewController: UITableViewController {
         if filledUsingLastCell && indexPath == lastCellIndexPath {
             let previousRowFrame = tableView.rectForRow(at: IndexPath(row: indexPath.row - 1, section: indexPath.section))
             // Get height of empty spaces to fill
-            let adjustment = tableView.frame.size.height - (previousRowFrame.origin.y + previousRowFrame.size.height)
-            if adjustment > 0 {
-                height = adjustment
+            let availableHeight = tableView.frame.size.height - previousRowFrame.maxY
+            if availableHeight > lastCellIntrinsicHeight {
+                height = availableHeight
             }
         }
         return height
