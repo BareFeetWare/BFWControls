@@ -23,8 +23,8 @@ class BlurView: UIView {
             let previousIndex = subviews.index(of: self).map({ $0 - 1 }),
             subviews.indices.contains(previousIndex)
             else { return nil }
-        let contentImage = UIImage(of: subviews[previousIndex],
-                                   size: bounds.size)
+        let contentImage = UIImage.snapshot(of: subviews[previousIndex],
+                                            size: bounds.size)
         return UIImageEffects
             .imageByApplyingBlur(to: contentImage,
                                  withRadius: blurRadius,
@@ -39,9 +39,7 @@ class BlurView: UIView {
     // Dont draw anything, so it is transparent.
     #else
     override func draw(_: CGRect) {
-        if let image = blurredImage {
-            image.draw(in: bounds)
-        }
+        blurredImage?.draw(in: bounds)
     }
     #endif
 }
