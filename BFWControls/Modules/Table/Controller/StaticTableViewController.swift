@@ -15,7 +15,10 @@ class StaticTableViewController: UITableViewController {
 
     @IBInspectable var filledUsingLastCell: Bool = false
     @IBInspectable var intrinsicHeightCells: Bool = false
-    
+	
+	fileprivate var isDynamicLastCell: Bool = false
+	fileprivate var dynamicLastCellHeight: CGFloat?
+	
     /// Override in subclass, usually by connecting to an IBOutlet collection.
     var excludedCells: [UITableViewCell]? {
         return nil
@@ -29,21 +32,21 @@ class StaticTableViewController: UITableViewController {
         return indexPath
     }
     
-    lazy var lastCellIntrinsicHeight: CGFloat = {
-        let lastCell: UITableViewCell
-        if let cell = self.tableView.cellForRow(at: self.lastCellIndexPath) {
-            // Already on screen or static table view controller
-            lastCell = cell
-        } else {
-            // Hasn't loaded yet in cellForRowAt, so load a copy
-            lastCell = self.tableView(self.tableView, cellForRowAt: self.lastCellIndexPath)
-        }
-        lastCell.layoutIfNeeded()
-        return lastCell.frame.height
-    } ()
-    
+	lazy var lastCellIntrinsicHeight: CGFloat = {
+		var height = self.tableView.estimatedRowHeight
+		if let cell = self.tableView.cellForRow(at: self.lastCellIndexPath) {
+			// Already on screen or static table view controller
+			cell.layoutIfNeeded()
+			height = cell.frame.height
+		} else {
+			// Hasn't loaded yet in cellForRowAt, calculate height after tableView is fully loaded
+			self.isDynamicLastCell = true
+		}
+		return height
+	}()
+	
     // MARK: - Functions
-    
+	
     func indexPaths(toInsert cells: [UITableViewCell]) -> [IndexPath] {
         var indexPaths = [IndexPath]()
         for section in 0 ..< super.numberOfSections(in: tableView) {
@@ -85,6 +88,29 @@ class StaticTableViewController: UITableViewController {
         return IndexPath(row: (indexPath as NSIndexPath).row + numberOfExcludedRows(before: indexPath),
                          section: (indexPath as NSIndexPath).section)
     }
+	
+	fileprivate func refreshTableView() {
+		tableView.beginUpdates()
+		tableView.endUpdates()
+	}
+	
+	fileprivate func updateFillUsingLastCell() {
+		// Set default dynamicLastCellHeight.
+		dynamicLastCellHeight = intrinsicHeightCells
+			? UITableViewAutomaticDimension
+			: super.tableView(tableView, heightForRowAt: superIndexPath(for: lastCellIndexPath))
+		// Use default height when last cell is not on the screen.
+		guard tableView.indexPathsForVisibleRows?.contains(lastCellIndexPath) == true
+			else { return }
+		let previousRowFrame = tableView.rectForRow(at: IndexPath(row: lastCellIndexPath.row - 1, section: lastCellIndexPath.section))
+		// Get height of empty spaces to fill
+		let availableHeight = tableView.frame.size.height - previousRowFrame.maxY
+		if let lastCell = tableView.cellForRow(at: lastCellIndexPath) {
+			if availableHeight.rounded() >= lastCell.frame.height.rounded() {
+				dynamicLastCellHeight = availableHeight
+			}
+		}
+	}
     
     // MARK: - UIViewController
     
@@ -111,20 +137,40 @@ class StaticTableViewController: UITableViewController {
     }
     
     // MARK: - UITableViewDelegate
+	override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+		if filledUsingLastCell && isDynamicLastCell && (self.dynamicLastCellHeight == nil) {
+			if let indexPathsForVisibleRows = tableView.indexPathsForVisibleRows,
+				let lastIndexPath = indexPathsForVisibleRows.last,
+				lastIndexPath.row == indexPath.row
+			{
+				// Calculate height of last cell
+				DispatchQueue.main.async {
+					self.updateFillUsingLastCell()
+					self.refreshTableView()
+				}
+			}
+		}
+	}
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        var height = intrinsicHeightCells
-            ? UITableViewAutomaticDimension
-            : super.tableView(tableView, heightForRowAt: superIndexPath(for: indexPath))
-        if filledUsingLastCell && indexPath == lastCellIndexPath {
-            let previousRowFrame = tableView.rectForRow(at: IndexPath(row: indexPath.row - 1, section: indexPath.section))
-            // Get height of empty spaces to fill
-            let availableHeight = tableView.frame.size.height - previousRowFrame.maxY
-            if availableHeight > lastCellIntrinsicHeight {
-                height = availableHeight
-            }
-        }
-        return height
-    }
-    
+	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		var height = intrinsicHeightCells
+			? UITableViewAutomaticDimension
+			: super.tableView(tableView, heightForRowAt: superIndexPath(for: indexPath))
+		if filledUsingLastCell && indexPath == lastCellIndexPath {
+			if isDynamicLastCell {
+				if let dynamicLastCellHeight = self.dynamicLastCellHeight {
+					height = dynamicLastCellHeight
+				}
+			} else {
+				let previousRowFrame = tableView.rectForRow(at: IndexPath(row: indexPath.row - 1, section: indexPath.section))
+				// Get height of empty spaces to fill
+				let availableHeight = tableView.frame.size.height - previousRowFrame.maxY
+				if availableHeight > lastCellIntrinsicHeight {
+					height = availableHeight
+				}
+			}
+		}
+		return height
+	}
+	
 }
