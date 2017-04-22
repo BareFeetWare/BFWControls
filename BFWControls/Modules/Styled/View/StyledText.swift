@@ -27,26 +27,14 @@ open class StyledText {
     
     fileprivate static let styledTextPlist = "StyledText"
     
-    fileprivate static var classBundle: Bundle {
-        #if TARGET_INTERFACE_BUILDER // Rendering in storyboard using IBDesignable.
-            let isInterfaceBuilder = true
-        #else
-            let isInterfaceBuilder = false
-        #endif
-        return bundle(isInterfaceBuilder: isInterfaceBuilder)
-    }
-    
-    fileprivate static func bundle(isInterfaceBuilder: Bool) -> Bundle {
-        let bundle = isInterfaceBuilder
-            ? Bundle(for: self)
-            : Bundle.main
-        return bundle;
-    }
-    
-    fileprivate static var plistDict: [String: AnyObject] = {
-        let plistPath = classBundle.path(forResource: styledTextPlist, ofType: "plist")!
-        let dictionary = NSDictionary(contentsOfFile: plistPath) as! [String: AnyObject]
-        return dictionary
+    fileprivate static var plistDict: [String: AnyObject]? = {
+        guard let path = Bundle.path(forFirstResource: styledTextPlist, ofType: "plist"),
+            let plistDict = NSDictionary(contentsOfFile: path) as? [String: AnyObject]
+            else {
+                debugPrint("StyledText: plistDict: failed")
+                return nil
+        }
+        return plistDict
     }()
     
     // MARK: - Functions
@@ -111,16 +99,15 @@ open class StyledText {
     
     // TODO: Make this private by providing alernative func.
     open class func attributes(forSection section: String, key: String) -> TextAttributes? {
-        var textAttributes: TextAttributes?
-        if let sectionDict = plistDict[section] as? [String : AnyObject],
+        guard let sectionDict = plistDict?[section] as? [String : AnyObject],
             let lookupDict = sectionDict[key] as? [String: AnyObject]
-        {
-            textAttributes = attributes(for: lookupDict)
-        }
-        return textAttributes
+            else { return nil }
+        return attributes(for: lookupDict)
     }
     
     fileprivate class func flatLookup(dict lookupDict: [String: AnyObject]) -> [String: AnyObject] {
+        guard let plistDict = plistDict
+            else { return [:] }
         var combined = [String: AnyObject]()
         for section in sections {
             if let key = lookupDict[section],
@@ -136,6 +123,24 @@ open class StyledText {
             }
         }
         return combined
+    }
+    
+}
+
+fileprivate extension Bundle {
+
+    static func path(forFirstResource resource: String, ofType typeExtension: String) -> String? {
+        var path: String?
+        for bundle in Bundle.allBundles {
+            if let thisPath = bundle.path(forResource: resource, ofType: typeExtension) {
+                path = thisPath
+                break
+            }
+        }
+        if path == nil {
+            debugPrint("Failed to locate resource: " + resource + "." + typeExtension)
+        }
+        return path
     }
     
 }
