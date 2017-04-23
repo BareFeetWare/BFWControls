@@ -4,7 +4,6 @@
 
 // For BlurView.swift:
 #import "UIImageEffects.h"
-#import "UIImage+BFW.h"
 
 // For MorphSegue.swift:
 #import "UIView+BFWCopy.h"
