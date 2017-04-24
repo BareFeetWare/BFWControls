@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E207BCAA1EADE577007BB14F /* UIImage+BFW.swift in Sources */ = {isa = PBXBuildFile; fileRef = E207BCA91EADE577007BB14F /* UIImage+BFW.swift */; };
 		E28BA96D1E96402500D5DE3D /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA91F1E96402500D5DE3D /* AlertViewController.swift */; };
 		E28BA96E1E96402500D5DE3D /* ActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9211E96402500D5DE3D /* ActionSheetView.swift */; };
 		E28BA96F1E96402500D5DE3D /* ActionSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9221E96402500D5DE3D /* ActionSheetView.xib */; };
@@ -18,8 +19,6 @@
 		E28BA9751E96402500D5DE3D /* StaticAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9281E96402500D5DE3D /* StaticAlertView.xib */; };
 		E28BA9761E96402500D5DE3D /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA92C1E96402500D5DE3D /* Binding.swift */; };
 		E28BA9771E96402500D5DE3D /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA92F1E96402500D5DE3D /* BlurView.swift */; };
-		E28BA9781E96402500D5DE3D /* UIImage+BFW.h in Headers */ = {isa = PBXBuildFile; fileRef = E28BA9301E96402500D5DE3D /* UIImage+BFW.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E28BA9791E96402500D5DE3D /* UIImage+BFW.m in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9311E96402500D5DE3D /* UIImage+BFW.m */; };
 		E28BA97A1E96402500D5DE3D /* CarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9341E96402500D5DE3D /* CarouselViewController.swift */; };
 		E28BA97B1E96402500D5DE3D /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9371E96402500D5DE3D /* DesignableButton.swift */; };
 		E28BA97C1E96402500D5DE3D /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9381E96402500D5DE3D /* DesignableView.swift */; };
@@ -79,6 +78,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E207BCA91EADE577007BB14F /* UIImage+BFW.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+BFW.swift"; sourceTree = "<group>"; };
 		E28BA9111E963F7800D5DE3D /* BFWControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BFWControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E28BA9141E963F7900D5DE3D /* BFWControls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFWControls.h; sourceTree = "<group>"; };
 		E28BA9151E963F7900D5DE3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -93,8 +93,6 @@
 		E28BA9281E96402500D5DE3D /* StaticAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaticAlertView.xib; sourceTree = "<group>"; };
 		E28BA92C1E96402500D5DE3D /* Binding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		E28BA92F1E96402500D5DE3D /* BlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
-		E28BA9301E96402500D5DE3D /* UIImage+BFW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BFW.h"; sourceTree = "<group>"; };
-		E28BA9311E96402500D5DE3D /* UIImage+BFW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BFW.m"; sourceTree = "<group>"; };
 		E28BA9341E96402500D5DE3D /* CarouselViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselViewController.swift; sourceTree = "<group>"; };
 		E28BA9371E96402500D5DE3D /* DesignableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableButton.swift; sourceTree = "<group>"; };
 		E28BA9381E96402500D5DE3D /* DesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
@@ -290,8 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				E28BA92F1E96402500D5DE3D /* BlurView.swift */,
-				E28BA9301E96402500D5DE3D /* UIImage+BFW.h */,
-				E28BA9311E96402500D5DE3D /* UIImage+BFW.m */,
+				E207BCA91EADE577007BB14F /* UIImage+BFW.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -687,7 +684,6 @@
 				E28BA9A11E9643BC00D5DE3D /* BFWControls.h in Headers */,
 				E28BA9A91E96457100D5DE3D /* UIView+BFWCopy.h in Headers */,
 				E28BA9A81E96457100D5DE3D /* BFWNibView.h in Headers */,
-				E28BA9781E96402500D5DE3D /* UIImage+BFW.h in Headers */,
 				E28BA9B41E964B5200D5DE3D /* UIImageEffects.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -819,13 +815,13 @@
 				E28BA9971E96402500D5DE3D /* DismissAndPresentSegue.swift in Sources */,
 				E28BA98C1E96402500D5DE3D /* StatusTextField.swift in Sources */,
 				E28BA9931E96402500D5DE3D /* StaticTableViewController.swift in Sources */,
-				E28BA9791E96402500D5DE3D /* UIImage+BFW.m in Sources */,
 				E28BA96D1E96402500D5DE3D /* AlertViewController.swift in Sources */,
 				E28BA99C1E96402500D5DE3D /* TranslationNavigationDelegate.swift in Sources */,
 				E28BA9951E96402500D5DE3D /* AutoNextViewController.swift in Sources */,
 				E28BA9911E96402500D5DE3D /* TextAttributes.swift in Sources */,
 				E28BA9721E96402500D5DE3D /* AlertViewOverlay.swift in Sources */,
 				E28BA9881E96402500D5DE3D /* NibTableViewCell.swift in Sources */,
+				E207BCAA1EADE577007BB14F /* UIImage+BFW.swift in Sources */,
 				E28BA9A01E96402500D5DE3D /* DefaultsHandler.swift in Sources */,
 				E28BA97E1E96402500D5DE3D /* UIView+Transform.swift in Sources */,
 				E28BA9701E96402500D5DE3D /* AlertView.swift in Sources */,
