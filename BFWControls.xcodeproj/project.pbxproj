@@ -45,7 +45,7 @@
 		E28BA9931E96402500D5DE3D /* StaticTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9591E96402500D5DE3D /* StaticTableViewController.swift */; };
 		E28BA9941E96402500D5DE3D /* UIView+Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA95B1E96402500D5DE3D /* UIView+Table.swift */; };
 		E28BA9951E96402500D5DE3D /* AutoNextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA95E1E96402500D5DE3D /* AutoNextViewController.swift */; };
-		E28BA9961E96402500D5DE3D /* SegueHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA95F1E96402500D5DE3D /* SegueHandler.swift */; };
+		E28BA9961E96402500D5DE3D /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA95F1E96402500D5DE3D /* SegueHandlerType.swift */; };
 		E28BA9971E96402500D5DE3D /* DismissAndPresentSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9611E96402500D5DE3D /* DismissAndPresentSegue.swift */; };
 		E28BA9981E96402500D5DE3D /* DismissAndPushSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9621E96402500D5DE3D /* DismissAndPushSegue.swift */; };
 		E28BA9991E96402500D5DE3D /* MorphSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9631E96402500D5DE3D /* MorphSegue.swift */; };
@@ -55,7 +55,7 @@
 		E28BA99D1E96402500D5DE3D /* TranslationTransitioningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9671E96402500D5DE3D /* TranslationTransitioningController.swift */; };
 		E28BA99E1E96402500D5DE3D /* UIViewController+Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9681E96402500D5DE3D /* UIViewController+Segue.swift */; };
 		E28BA99F1E96402500D5DE3D /* UIViewMorphExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9691E96402500D5DE3D /* UIViewMorphExtensions.swift */; };
-		E28BA9A01E96402500D5DE3D /* DefaultsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA96C1E96402500D5DE3D /* DefaultsHandler.swift */; };
+		E28BA9A01E96402500D5DE3D /* DefaultsHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA96C1E96402500D5DE3D /* DefaultsHandlerType.swift */; };
 		E28BA9A11E9643BC00D5DE3D /* BFWControls.h in Headers */ = {isa = PBXBuildFile; fileRef = E28BA9141E963F7900D5DE3D /* BFWControls.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E28BA9A81E96457100D5DE3D /* BFWNibView.h in Headers */ = {isa = PBXBuildFile; fileRef = E28BA9A61E96457100D5DE3D /* BFWNibView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E28BA9A91E96457100D5DE3D /* UIView+BFWCopy.h in Headers */ = {isa = PBXBuildFile; fileRef = E28BA9A71E96457100D5DE3D /* UIView+BFWCopy.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -119,7 +119,7 @@
 		E28BA9591E96402500D5DE3D /* StaticTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticTableViewController.swift; sourceTree = "<group>"; };
 		E28BA95B1E96402500D5DE3D /* UIView+Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Table.swift"; sourceTree = "<group>"; };
 		E28BA95E1E96402500D5DE3D /* AutoNextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoNextViewController.swift; sourceTree = "<group>"; };
-		E28BA95F1E96402500D5DE3D /* SegueHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandler.swift; sourceTree = "<group>"; };
+		E28BA95F1E96402500D5DE3D /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandlerType.swift; sourceTree = "<group>"; };
 		E28BA9611E96402500D5DE3D /* DismissAndPresentSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissAndPresentSegue.swift; sourceTree = "<group>"; };
 		E28BA9621E96402500D5DE3D /* DismissAndPushSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissAndPushSegue.swift; sourceTree = "<group>"; };
 		E28BA9631E96402500D5DE3D /* MorphSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorphSegue.swift; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 		E28BA9671E96402500D5DE3D /* TranslationTransitioningController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationTransitioningController.swift; sourceTree = "<group>"; };
 		E28BA9681E96402500D5DE3D /* UIViewController+Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Segue.swift"; sourceTree = "<group>"; };
 		E28BA9691E96402500D5DE3D /* UIViewMorphExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewMorphExtensions.swift; sourceTree = "<group>"; };
-		E28BA96C1E96402500D5DE3D /* DefaultsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsHandler.swift; sourceTree = "<group>"; };
+		E28BA96C1E96402500D5DE3D /* DefaultsHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsHandlerType.swift; sourceTree = "<group>"; };
 		E28BA9A61E96457100D5DE3D /* BFWNibView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWNibView.h; sourceTree = "<group>"; };
 		E28BA9A71E96457100D5DE3D /* UIView+BFWCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BFWCopy.h"; sourceTree = "<group>"; };
 		E28BA9AD1E964A8300D5DE3D /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
@@ -446,7 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				E28BA95E1E96402500D5DE3D /* AutoNextViewController.swift */,
-				E28BA95F1E96402500D5DE3D /* SegueHandler.swift */,
+				E28BA95F1E96402500D5DE3D /* SegueHandlerType.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -478,7 +478,7 @@
 		E28BA96B1E96402500D5DE3D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E28BA96C1E96402500D5DE3D /* DefaultsHandler.swift */,
+				E28BA96C1E96402500D5DE3D /* DefaultsHandlerType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -822,7 +822,7 @@
 				E28BA9721E96402500D5DE3D /* AlertViewOverlay.swift in Sources */,
 				E28BA9881E96402500D5DE3D /* NibTableViewCell.swift in Sources */,
 				E207BCAA1EADE577007BB14F /* UIImage+BFW.swift in Sources */,
-				E28BA9A01E96402500D5DE3D /* DefaultsHandler.swift in Sources */,
+				E28BA9A01E96402500D5DE3D /* DefaultsHandlerType.swift in Sources */,
 				E28BA97E1E96402500D5DE3D /* UIView+Transform.swift in Sources */,
 				E28BA9701E96402500D5DE3D /* AlertView.swift in Sources */,
 				E28BA9841E96402500D5DE3D /* ImageNibCellView.swift in Sources */,
@@ -843,7 +843,7 @@
 				E28BA9991E96402500D5DE3D /* MorphSegue.swift in Sources */,
 				E28BA99B1E96402500D5DE3D /* TranslationAnimationController.swift in Sources */,
 				E28BA98D1E96402500D5DE3D /* StatusTextFieldNibView.swift in Sources */,
-				E28BA9961E96402500D5DE3D /* SegueHandler.swift in Sources */,
+				E28BA9961E96402500D5DE3D /* SegueHandlerType.swift in Sources */,
 				E28BA9891E96402500D5DE3D /* NibTableViewHeaderFooterView.swift in Sources */,
 				E28BA9831E96402500D5DE3D /* BFWNibView.m in Sources */,
 				E28BA9941E96402500D5DE3D /* UIView+Table.swift in Sources */,

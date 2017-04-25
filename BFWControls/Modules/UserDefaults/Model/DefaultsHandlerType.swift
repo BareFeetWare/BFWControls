@@ -1,5 +1,5 @@
 //
-//  DefaultsHandler.swift
+//  DefaultsHandlerType.swift
 //  BFWControls
 //
 //  Created by Tom Brodhurst-Hill on 24/12/16.
@@ -9,7 +9,7 @@
 
 import Foundation
 
-public protocol DefaultsHandler {
+public protocol DefaultsHandlerType {
     
     associatedtype Key: RawRepresentable
     
@@ -17,7 +17,7 @@ public protocol DefaultsHandler {
     
 }
 
-public extension DefaultsHandler where Key.RawValue == String {
+public extension DefaultsHandlerType where Key.RawValue == String {
     
     public static func setValue(_ value: Any?, for key: Key) {
         defaults.setValue(value, forKey: key.rawValue)

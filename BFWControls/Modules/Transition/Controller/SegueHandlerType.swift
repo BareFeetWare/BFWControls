@@ -1,5 +1,5 @@
 //
-//  SegueHandler.swift
+//  SegueHandlerType.swift
 //
 //  Created by Tom Brodhurst-Hill on 7/12/16.
 //  Copyright © 2016 BareFeetWare.
@@ -8,14 +8,14 @@
 /*
  Inspired by:
     https://www.bignerdranch.com/blog/using-swift-enumerations-makes-segues-safer/
-    https://developer.apple.com/library/content/samplecode/Lister/Listings/Lister_SegueHandlerType_swift.html
+    https://developer.apple.com/library/content/samplecode/Lister/Listings/Lister_SegueHandlerTypeType_swift.html
     https://www.natashatherobot.com/protocol-oriented-segue-identifiers-swift/
  
  but changed to allow (ie not crash) blank segue identifiers with no code handling.
 
  Example usage:
  
- class RootViewController: UITableViewController, SegueHandler {
+ class RootViewController: UITableViewController, SegueHandlerType {
  
     enum SegueIdentifier: String {
         case account, products, recentProducts, contacts, login
@@ -64,13 +64,13 @@
 
 import UIKit
 
-public protocol SegueHandler {
+public protocol SegueHandlerType {
     
     associatedtype SegueIdentifier: RawRepresentable
     
 }
 
-public extension SegueHandler where Self: UIViewController, SegueIdentifier.RawValue == String {
+public extension SegueHandlerType where Self: UIViewController, SegueIdentifier.RawValue == String {
     
     func performSegue(segueIdentifier: SegueIdentifier, sender: Any?) {
         performSegue(withIdentifier: segueIdentifier.rawValue, sender: sender)
