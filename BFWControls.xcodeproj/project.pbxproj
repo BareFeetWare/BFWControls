@@ -38,7 +38,7 @@
 		E28BA98B1E96402500D5DE3D /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA94B1E96402500D5DE3D /* NibView.swift */; };
 		E28BA98C1E96402500D5DE3D /* StatusTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA94C1E96402500D5DE3D /* StatusTextField.swift */; };
 		E28BA98D1E96402500D5DE3D /* StatusTextFieldNibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA94D1E96402500D5DE3D /* StatusTextFieldNibView.swift */; };
-		E28BA98F1E96402500D5DE3D /* UIView+BFWCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = E28BA94F1E96402500D5DE3D /* UIView+BFWCopy.m */; };
+		E28BA98F1E96402500D5DE3D /* UIView+Copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA94F1E96402500D5DE3D /* UIView+Copy.swift */; };
 		E28BA9901E96402500D5DE3D /* Dictionary+StyledText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9531E96402500D5DE3D /* Dictionary+StyledText.swift */; };
 		E28BA9911E96402500D5DE3D /* TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9541E96402500D5DE3D /* TextAttributes.swift */; };
 		E28BA9921E96402500D5DE3D /* StyledText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9561E96402500D5DE3D /* StyledText.swift */; };
@@ -112,7 +112,7 @@
 		E28BA94B1E96402500D5DE3D /* NibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
 		E28BA94C1E96402500D5DE3D /* StatusTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusTextField.swift; sourceTree = "<group>"; };
 		E28BA94D1E96402500D5DE3D /* StatusTextFieldNibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusTextFieldNibView.swift; sourceTree = "<group>"; };
-		E28BA94F1E96402500D5DE3D /* UIView+BFWCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BFWCopy.m"; sourceTree = "<group>"; };
+		E28BA94F1E96402500D5DE3D /* UIView+Copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Copy.swift"; sourceTree = "<group>"; };
 		E28BA9531E96402500D5DE3D /* Dictionary+StyledText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+StyledText.swift"; sourceTree = "<group>"; };
 		E28BA9541E96402500D5DE3D /* TextAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAttributes.swift; sourceTree = "<group>"; };
 		E28BA9561E96402500D5DE3D /* StyledText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyledText.swift; sourceTree = "<group>"; };
@@ -370,7 +370,7 @@
 				E28BA94C1E96402500D5DE3D /* StatusTextField.swift */,
 				E28BA94D1E96402500D5DE3D /* StatusTextFieldNibView.swift */,
 				E28BA9A71E96457100D5DE3D /* UIView+BFWCopy.h */,
-				E28BA94F1E96402500D5DE3D /* UIView+BFWCopy.m */,
+				E28BA94F1E96402500D5DE3D /* UIView+Copy.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -802,7 +802,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E28BA9861E96402500D5DE3D /* NibCellView.swift in Sources */,
-				E28BA98F1E96402500D5DE3D /* UIView+BFWCopy.m in Sources */,
+				E28BA98F1E96402500D5DE3D /* UIView+Copy.swift in Sources */,
 				E28BA96E1E96402500D5DE3D /* ActionSheetView.swift in Sources */,
 				E28BA9771E96402500D5DE3D /* BlurView.swift in Sources */,
 				E28BA9981E96402500D5DE3D /* DismissAndPushSegue.swift in Sources */,
