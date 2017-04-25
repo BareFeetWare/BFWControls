@@ -3,7 +3,7 @@
 //  BFWControls
 //
 //  Created by Tom Brodhurst-Hill on 6/4/17.
-//  Copyright © 2017 BareFeetWare. All rights reserved.
+//  Free to use at your own risk, with acknowledgement to BareFeetWare.
 //
 
 #import <UIKit/UIKit.h>
@@ -18,5 +18,4 @@ FOUNDATION_EXPORT const unsigned char BFWControlsVersionString[];
 
 #import <BFWControls/BFWNibView.h>
 #import <BFWControls/UIView+BFWCopy.h>
-#import <BFWControls/UIImage+BFW.h>
 #import <BFWControls/UIImageEffects.h>
