@@ -6,7 +6,7 @@
 //
 
 #import "BFWNibView.h"
-#import "UIView+BFWCopy.h"
+#import <BFWControls/BFWControls-Swift.h>
 
 @implementation BFWNibView
 

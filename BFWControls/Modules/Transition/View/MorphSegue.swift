@@ -41,10 +41,10 @@ open class MorphSegue: UIStoryboardSegue {
         if useCopyForMorphingView {
             // Create a copy of the view hierarchy for morphing, so the original is not changed.
             if let cell = fromView as? UITableViewCell {
-                morphingView = cell.copy(withSubviews: nil, includeConstraints: false)
+                morphingView = cell.copyWithSubviews([], includeConstraints: false)
                 morphingView?.copySubviews(cell.contentView.subviews, includeConstraints: false)
             } else {
-                morphingView = fromView?.copy(withSubviews: fromView?.subviews, includeConstraints: false)
+                morphingView = fromView?.copyWithSubviews(fromView?.subviews ?? [], includeConstraints: false)
             }
             if let morphingView = morphingView {
                 sourceVCView?.addSubview(morphingView)

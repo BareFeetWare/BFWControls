@@ -76,7 +76,7 @@ import UIKit
         if let reuseSize = type.sizeForKeyDictionary[key] {
             size = reuseSize
         } else {
-            size = type.sizeFromNib()
+            size = type.sizeFromNib
             type.sizeForKeyDictionary[key] = size
         }
         return size
