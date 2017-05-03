@@ -131,7 +131,7 @@ fileprivate extension Bundle {
 
     static func path(forFirstResource resource: String, ofType typeExtension: String) -> String? {
         var path: String?
-        for bundle in Bundle.allBundles {
+        for bundle in Bundle.allBundles + Bundle.allFrameworks {
             if let thisPath = bundle.path(forResource: resource, ofType: typeExtension) {
                 path = thisPath
                 break
