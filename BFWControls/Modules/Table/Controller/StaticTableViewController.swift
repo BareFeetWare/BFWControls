@@ -106,10 +106,8 @@ open class StaticTableViewController: UITableViewController {
 		previousRowFrame = tableView.rectForRow(at: IndexPath(row: lastCellIndexPath.row - 1, section: lastCellIndexPath.section))
 		// Get height of empty spaces to fill
 		let availableHeight = tableView.frame.size.height - previousRowFrame.maxY
-		if let lastCell = tableView.cellForRow(at: lastCellIndexPath) {
-			if availableHeight.rounded() >= lastCell.frame.height.rounded() {
-				dynamicLastCellHeight = availableHeight
-			}
+		if availableHeight.rounded() >= lastCellIntrinsicHeight {
+			dynamicLastCellHeight = availableHeight
 		}
 	}
 	
