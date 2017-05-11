@@ -31,12 +31,13 @@ enum Direction: Int {
 
 }
 
-class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
+class TranslationAnimationController: UIPercentDrivenInteractiveTransition, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate {
+
 
     // MARK: - Variables
 
     @IBInspectable var isPresenting: Bool = true
-    @IBInspectable var duration: TimeInterval = 0.3
+	@IBInspectable var animateDuration: TimeInterval = 0.3
     @IBInspectable var leftInset: CGFloat = 0.0
     @IBInspectable var rightInset: CGFloat = 0.0
     @IBInspectable var topInset: CGFloat = 0.0
@@ -49,7 +50,8 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
     /// Direction to which it presents. Dismiss direction defaults to reverse.
     var direction: Direction = .left
     let backdropView = UIView()
-    
+	var isInteractive = false
+
     // MARK: - Private functions
 
     fileprivate func presentedFrame(in containerView: UIView) -> CGRect {
@@ -80,7 +82,7 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
     // MARK: - UIViewControllerAnimatedTransitioning
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return duration
+		return animateDuration
     }
 
     @objc func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -131,7 +133,7 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
         }
         let fromDirection = animatePresenter && isPresenting ? direction.reverse : direction
         UIView.animate(
-            withDuration: duration,
+            withDuration: animateDuration,
             delay: 0.0,
             options: [.curveEaseInOut],
             animations: {
@@ -160,7 +162,24 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
             }
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
-        
     }
-    
+	
+	func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+		self.isPresenting = true
+		return self
+	}
+	
+	func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+		self.isPresenting = false
+		return self
+	}
+	
+	func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+		return self.isInteractive ? self : nil
+	}
+	
+	func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+		return self.isInteractive ? self : nil
+	}
+
 }

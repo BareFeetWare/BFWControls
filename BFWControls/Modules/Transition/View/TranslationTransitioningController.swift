@@ -40,7 +40,7 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
     // MARK: - Private functions
 
     fileprivate func updateAnimationController() {
-        animationController.duration = duration
+		animationController.animateDuration = duration
         animationController.leftInset = leftInset
         animationController.rightInset = rightInset
         animationController.topInset = topInset
