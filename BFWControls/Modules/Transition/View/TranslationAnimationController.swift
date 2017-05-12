@@ -47,9 +47,11 @@ class TranslationAnimationController: UIPercentDrivenInteractiveTransition, UIVi
     /// Fade out/in the first view controller, instead of moving.
     @IBInspectable var fadeFirst: Bool = false
     @IBInspectable var backdropColor: UIColor?
+	@IBInspectable var blurBackground: Bool = false
     /// Direction to which it presents. Dismiss direction defaults to reverse.
     var direction: Direction = .left
     let backdropView = UIView()
+	let blurView = BlurView()
 	var isInteractive = false
 
     // MARK: - Private functions
@@ -130,6 +132,13 @@ class TranslationAnimationController: UIPercentDrivenInteractiveTransition, UIVi
                     backdropView.alpha = 0.0
                 }
             }
+			if blurBackground {
+				blurView.frame = containerView.bounds
+				containerView.insertSubview(blurView, belowSubview: toViewController.view)
+				blurView.pinToSuperviewEdges()
+				blurView.setNeedsDisplay()
+				blurView.alpha = 0.5
+			}
         }
         let fromDirection = animatePresenter && isPresenting ? direction.reverse : direction
         UIView.animate(
@@ -149,12 +158,15 @@ class TranslationAnimationController: UIPercentDrivenInteractiveTransition, UIVi
                 }
                 if self.isPresenting {
                     self.backdropView.alpha = 1.0
+					self.blurView.alpha = 1.0
                 } else {
                     self.backdropView.alpha = 0.0
+					self.blurView.alpha = 0.0
                 }
             }
             )
         { finished in
+			self.blurView.removeFromSuperview()
             if transitionContext.transitionWasCancelled {
                 toViewController?.view.removeFromSuperview()
             } else {
