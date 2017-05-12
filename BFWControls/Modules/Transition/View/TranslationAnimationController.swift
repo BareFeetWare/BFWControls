@@ -37,7 +37,7 @@ class TranslationAnimationController: UIPercentDrivenInteractiveTransition, UIVi
     // MARK: - Variables
 
     @IBInspectable var isPresenting: Bool = true
-	@IBInspectable var animateDuration: TimeInterval = 0.3
+	@IBInspectable var transitionDuration: CGFloat = 0.3
     @IBInspectable var leftInset: CGFloat = 0.0
     @IBInspectable var rightInset: CGFloat = 0.0
     @IBInspectable var topInset: CGFloat = 0.0
@@ -82,7 +82,7 @@ class TranslationAnimationController: UIPercentDrivenInteractiveTransition, UIVi
     // MARK: - UIViewControllerAnimatedTransitioning
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-		return animateDuration
+		return TimeInterval(transitionDuration)
     }
 
     @objc func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -133,7 +133,7 @@ class TranslationAnimationController: UIPercentDrivenInteractiveTransition, UIVi
         }
         let fromDirection = animatePresenter && isPresenting ? direction.reverse : direction
         UIView.animate(
-            withDuration: animateDuration,
+            withDuration: TimeInterval(transitionDuration),
             delay: 0.0,
             options: [.curveEaseInOut],
             animations: {
@@ -165,21 +165,21 @@ class TranslationAnimationController: UIPercentDrivenInteractiveTransition, UIVi
     }
 	
 	func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-		self.isPresenting = true
+		isPresenting = true
 		return self
 	}
 	
 	func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-		self.isPresenting = false
+		isPresenting = false
 		return self
 	}
 	
 	func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-		return self.isInteractive ? self : nil
+		return isInteractive ? self : nil
 	}
 	
 	func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-		return self.isInteractive ? self : nil
+		return isInteractive ? self : nil
 	}
 
 }
