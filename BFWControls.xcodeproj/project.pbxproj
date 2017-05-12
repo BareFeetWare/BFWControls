@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E207BCAA1EADE577007BB14F /* UIImage+BFW.swift in Sources */ = {isa = PBXBuildFile; fileRef = E207BCA91EADE577007BB14F /* UIImage+BFW.swift */; };
+		E22FD1B21EC564AD0043171C /* UIViewController+Dismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FD1B11EC564AD0043171C /* UIViewController+Dismiss.swift */; };
 		E28BA96D1E96402500D5DE3D /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA91F1E96402500D5DE3D /* AlertViewController.swift */; };
 		E28BA96E1E96402500D5DE3D /* ActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9211E96402500D5DE3D /* ActionSheetView.swift */; };
 		E28BA96F1E96402500D5DE3D /* ActionSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9221E96402500D5DE3D /* ActionSheetView.xib */; };
@@ -79,6 +80,7 @@
 
 /* Begin PBXFileReference section */
 		E207BCA91EADE577007BB14F /* UIImage+BFW.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+BFW.swift"; sourceTree = "<group>"; };
+		E22FD1B11EC564AD0043171C /* UIViewController+Dismiss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Dismiss.swift"; sourceTree = "<group>"; };
 		E28BA9111E963F7800D5DE3D /* BFWControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BFWControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E28BA9141E963F7900D5DE3D /* BFWControls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFWControls.h; sourceTree = "<group>"; };
 		E28BA9151E963F7900D5DE3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -462,6 +464,7 @@
 				E28BA9661E96402500D5DE3D /* TranslationNavigationDelegate.swift */,
 				E28BA9671E96402500D5DE3D /* TranslationTransitioningController.swift */,
 				E28BA9681E96402500D5DE3D /* UIViewController+Segue.swift */,
+				E22FD1B11EC564AD0043171C /* UIViewController+Dismiss.swift */,
 				E28BA9691E96402500D5DE3D /* UIViewMorphExtensions.swift */,
 			);
 			path = View;
@@ -838,6 +841,7 @@
 				E28BA99E1E96402500D5DE3D /* UIViewController+Segue.swift in Sources */,
 				E28BA97F1E96402500D5DE3D /* NSLayoutConstraintExtensions.swift in Sources */,
 				E28BA9901E96402500D5DE3D /* Dictionary+StyledText.swift in Sources */,
+				E22FD1B21EC564AD0043171C /* UIViewController+Dismiss.swift in Sources */,
 				E28BA99A1E96402500D5DE3D /* OpenURLSegue.swift in Sources */,
 				E28BA9801E96402500D5DE3D /* PileView.swift in Sources */,
 				E28BA9991E96402500D5DE3D /* MorphSegue.swift in Sources */,
