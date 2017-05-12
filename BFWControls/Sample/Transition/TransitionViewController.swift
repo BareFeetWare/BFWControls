@@ -9,7 +9,7 @@
 import UIKit
 
 
-class TransitionViewController: UIViewController {
+class TransitionViewController: UIViewController, SegueHandler {
 
 	let interactiveTransition = TranslationAnimationController()
 	
@@ -17,24 +17,12 @@ class TransitionViewController: UIViewController {
 		case interactiveSegue
 	}
 	
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-	
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		guard let segueIdentifier = SegueIdentifier(rawValue: segue.identifier!)
+		guard let identifier = segue.identifier,
+			let segueIdentifier = SegueIdentifier(rawValue: identifier)
 			else { return }
 		switch segueIdentifier {
 		case .interactiveSegue:
@@ -43,24 +31,23 @@ class TransitionViewController: UIViewController {
 		}
     }
 
-
 	@IBAction func handlePanGesture(_ pan: UIPanGestureRecognizer) {
 		let translation = pan.translation(in: pan.view!)
-		let d =  translation.y / pan.view!.bounds.height
+		let progress =  translation.y / pan.view!.bounds.height
 		switch pan.state {
 		case .began:
 			interactiveTransition.isInteractive = true
 			interactiveTransition.direction = .down
-			performSegue(withIdentifier: SegueIdentifier.interactiveSegue.rawValue, sender: self)
+			performSegue(segueIdentifier: .interactiveSegue, sender: pan.view)
 			break
 		case .changed:
 			// update progress of the transition
-			interactiveTransition.update(d)
+			interactiveTransition.update(progress)
 			break
 		default: // .ended, .cancelled, .failed ...
 			// return flag to false and finish the transition
 			interactiveTransition.isInteractive = false
-			if d > 0.2 {
+			if progress > 0.2 {
 				// threshold crossed: finish
 				interactiveTransition.finish()
 			}
