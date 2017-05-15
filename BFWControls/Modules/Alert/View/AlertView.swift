@@ -81,12 +81,12 @@ import UIKit
     
     // MARK: - Functions
     
-    func buttonTitle(at index: Int) -> String? {
+    open func buttonTitle(at index: Int) -> String? {
         let button = buttons[index]
         return button.currentTitle
     }
     
-    func index(of button: UIButton) -> Int? {
+    open func index(of button: UIButton) -> Int? {
         return buttons.index(of: button)
     }
     
