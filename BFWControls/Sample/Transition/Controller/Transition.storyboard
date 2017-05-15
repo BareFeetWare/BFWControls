@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="34X-8D-MNq">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Transition View Controller-->
+        <scene sceneID="uX1-J7-a5U">
+            <objects>
+                <viewController id="34X-8D-MNq" customClass="TransitionViewController" customModule="BFWControls" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hzE-Nd-joU"/>
+                        <viewControllerLayoutGuide type="bottom" id="7Og-Po-gOc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RxD-X5-nTK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrt-Ek-pXh">
+                                <rect key="frame" x="127" y="318" width="121" height="30"/>
+                                <state key="normal" title="Trigger Transition"/>
+                                <connections>
+                                    <segue destination="EBR-nC-xcq" kind="presentation" identifier="interactiveSegue" id="cac-KF-aex"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe down for interactive transition " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxu-fp-hZY">
+                                <rect key="frame" x="46.5" y="28" width="283" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="fxu-fp-hZY" firstAttribute="centerX" secondItem="RxD-X5-nTK" secondAttribute="centerX" id="Bet-Bv-sVG"/>
+                            <constraint firstItem="yrt-Ek-pXh" firstAttribute="centerY" secondItem="RxD-X5-nTK" secondAttribute="centerY" id="PEW-LO-x8p"/>
+                            <constraint firstItem="yrt-Ek-pXh" firstAttribute="centerX" secondItem="RxD-X5-nTK" secondAttribute="centerX" id="Yps-uq-Pc0"/>
+                            <constraint firstItem="fxu-fp-hZY" firstAttribute="top" secondItem="hzE-Nd-joU" secondAttribute="bottom" constant="8" id="mMi-1t-NVe"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="0Rt-sq-rXB" appends="YES" id="Oso-Mi-3KS"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <segue destination="EBR-nC-xcq" kind="show" id="cUl-ia-lKI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1fn-DB-PYP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="0Rt-sq-rXB">
+                    <connections>
+                        <action selector="handlePanGesture:" destination="34X-8D-MNq" id="5p3-hl-hhf"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-226.40000000000001" y="75.112443778110944"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="wkN-13-BsU">
+            <objects>
+                <viewController id="EBR-nC-xcq" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kXH-Yt-wd0"/>
+                        <viewControllerLayoutGuide type="bottom" id="adm-TW-Icc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bJI-hZ-Zpl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sry-37-0Xp">
+                                <rect key="frame" x="113" y="318" width="150" height="30"/>
+                                <state key="normal" title="Back to previous view"/>
+                                <connections>
+                                    <segue destination="VKL-TU-a5K" kind="unwind" unwindAction="unwindToTransitionWithSegue:" id="Mj6-Ss-0v9"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.81960784310000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Sry-37-0Xp" firstAttribute="centerY" secondItem="bJI-hZ-Zpl" secondAttribute="centerY" id="4Px-nh-J7c"/>
+                            <constraint firstItem="Sry-37-0Xp" firstAttribute="centerX" secondItem="bJI-hZ-Zpl" secondAttribute="centerX" id="bAV-wH-wK3"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="transitioningDelegateOutlet" destination="OMr-5p-ziJ" id="h08-ba-4Qh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Em-n0-mvJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="VKL-TU-a5K" userLabel="Exit" sceneMemberID="exit"/>
+                <customObject id="OMr-5p-ziJ" customClass="TranslationTransitioningController" customModule="BFWControls" customModuleProvider="target">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="direction_">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="backdropColor">
+                            <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.50113492400000004" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                            <real key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </customObject>
+            </objects>
+            <point key="canvasLocation" x="712.79999999999995" y="74.212893553223395"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="cac-KF-aex"/>
+    </inferredMetricsTieBreakers>
+</document>

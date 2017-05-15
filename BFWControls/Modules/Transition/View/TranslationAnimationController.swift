@@ -31,12 +31,13 @@ enum Direction: Int {
 
 }
 
-class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
+class TranslationAnimationController: UIPercentDrivenInteractiveTransition, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate {
+
 
     // MARK: - Variables
 
     @IBInspectable var isPresenting: Bool = true
-    @IBInspectable var duration: TimeInterval = 0.3
+	@IBInspectable var transitionDuration: CGFloat = 0.3
     @IBInspectable var leftInset: CGFloat = 0.0
     @IBInspectable var rightInset: CGFloat = 0.0
     @IBInspectable var topInset: CGFloat = 0.0
@@ -46,10 +47,13 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
     /// Fade out/in the first view controller, instead of moving.
     @IBInspectable var fadeFirst: Bool = false
     @IBInspectable var backdropColor: UIColor?
+	@IBInspectable var blurBackground: Bool = false
     /// Direction to which it presents. Dismiss direction defaults to reverse.
     var direction: Direction = .left
     let backdropView = UIView()
-    
+	let blurView = BlurView()
+	var isInteractive = false
+
     // MARK: - Private functions
 
     fileprivate func presentedFrame(in containerView: UIView) -> CGRect {
@@ -80,7 +84,7 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
     // MARK: - UIViewControllerAnimatedTransitioning
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return duration
+		return TimeInterval(transitionDuration)
     }
 
     @objc func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -128,10 +132,17 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
                     backdropView.alpha = 0.0
                 }
             }
+			if blurBackground {
+				blurView.frame = containerView.bounds
+				containerView.insertSubview(blurView, belowSubview: toViewController.view)
+				blurView.pinToSuperviewEdges()
+				blurView.setNeedsDisplay()
+				blurView.alpha = 0.5
+			}
         }
         let fromDirection = animatePresenter && isPresenting ? direction.reverse : direction
         UIView.animate(
-            withDuration: duration,
+            withDuration: TimeInterval(transitionDuration),
             delay: 0.0,
             options: [.curveEaseInOut],
             animations: {
@@ -147,12 +158,15 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
                 }
                 if self.isPresenting {
                     self.backdropView.alpha = 1.0
+					self.blurView.alpha = 1.0
                 } else {
                     self.backdropView.alpha = 0.0
+					self.blurView.alpha = 0.0
                 }
             }
             )
         { finished in
+			self.blurView.removeFromSuperview()
             if transitionContext.transitionWasCancelled {
                 toViewController?.view.removeFromSuperview()
             } else {
@@ -160,7 +174,24 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
             }
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
-        
     }
-    
+	
+	func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+		isPresenting = true
+		return self
+	}
+	
+	func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+		isPresenting = false
+		return self
+	}
+	
+	func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+		return isInteractive ? self : nil
+	}
+	
+	func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+		return isInteractive ? self : nil
+	}
+
 }
