@@ -17,6 +17,7 @@ class StaticTableViewController: UITableViewController {
     @IBInspectable var intrinsicHeightCells: Bool = false
 	
 	fileprivate var isDynamicLastCell: Bool = false
+	fileprivate var needRefreshDynamicLastCellHeight: Bool = true
 	fileprivate var dynamicLastCellHeight: CGFloat?
 	fileprivate var previousRowFrame = CGRect()
 	
@@ -109,10 +110,11 @@ class StaticTableViewController: UITableViewController {
 		if availableHeight.rounded() >= lastCellIntrinsicHeight {
 			dynamicLastCellHeight = availableHeight
 		}
+		needRefreshDynamicLastCellHeight = false
 	}
 	
 	func refreshDynamicLastCellHeight() {
-		dynamicLastCellHeight = nil
+		needRefreshDynamicLastCellHeight = true
 		DispatchQueue.main.async {
 			self.updateFillUsingLastCell()
 			self.refreshCellHeights()
@@ -126,6 +128,7 @@ class StaticTableViewController: UITableViewController {
         if intrinsicHeightCells || filledUsingLastCell {
             tableView.estimatedRowHeight = 44.0
         }
+		NotificationCenter.default.addObserver(self, selector: #selector(StaticTableViewController.UIApplicationDidChangeStatusBarFrameHandler(for:)), name: NSNotification.Name.UIApplicationDidChangeStatusBarFrame, object: nil)
     }
 	
 	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -135,6 +138,12 @@ class StaticTableViewController: UITableViewController {
 		}
 	}
 	
+	func UIApplicationDidChangeStatusBarFrameHandler (for notification: Foundation.Notification) {
+		if filledUsingLastCell {
+			refreshDynamicLastCellHeight()
+		}
+	}
+    
     // MARK: - UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -152,7 +161,7 @@ class StaticTableViewController: UITableViewController {
     
     // MARK: - UITableViewDelegate
 	override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-		if filledUsingLastCell && dynamicLastCellHeight == nil {
+		if filledUsingLastCell && needRefreshDynamicLastCellHeight {
 			if let indexPathsForVisibleRows = tableView.indexPathsForVisibleRows,
 				let lastIndexPath = indexPathsForVisibleRows.last,
 				lastIndexPath.row == indexPath.row
