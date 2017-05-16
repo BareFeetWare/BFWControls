@@ -45,7 +45,7 @@ class StaticTableViewController: UITableViewController {
 		}
 		return height
 	}()
-	
+
     // MARK: - Functions
 	
     func indexPaths(toInsert cells: [UITableViewCell]) -> [IndexPath] {
@@ -65,7 +65,7 @@ class StaticTableViewController: UITableViewController {
         }
         return indexPaths
     }
-    
+	
     // MARK: - Private functions
     
     fileprivate func numberOfExcludedRows(before indexPath: IndexPath) -> Int {
@@ -127,7 +127,14 @@ class StaticTableViewController: UITableViewController {
             tableView.estimatedRowHeight = 44.0
         }
     }
-    
+	
+	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+		super.viewWillTransition(to: size, with: coordinator)
+		if filledUsingLastCell {
+			refreshDynamicLastCellHeight()
+		}
+	}
+	
     // MARK: - UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
