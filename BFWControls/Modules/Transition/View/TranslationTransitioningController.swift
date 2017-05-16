@@ -12,7 +12,7 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
 
     // MARK: - Variables
 
-    @IBInspectable var duration: TimeInterval = 0.3
+    @IBInspectable var duration: CGFloat = 0.3
     @IBInspectable var leftInset: CGFloat = 0.0
     @IBInspectable var rightInset: CGFloat = 0.0
     @IBInspectable var topInset: CGFloat = 0.0
@@ -40,7 +40,7 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
     // MARK: - Private functions
 
     fileprivate func updateAnimationController() {
-        animationController.duration = duration
+		animationController.transitionDuration = duration
         animationController.leftInset = leftInset
         animationController.rightInset = rightInset
         animationController.topInset = topInset

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9EAE74CF1EA7053C00349520 /* UIImage+BFW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAE74CE1EA7053C00349520 /* UIImage+BFW.swift */; };
+		A10D2D441EC57E7B006FE9D4 /* Transition.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A10D2D431EC57E7B006FE9D4 /* Transition.storyboard */; };
+		A10D2D461EC581D0006FE9D4 /* TransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10D2D451EC581D0006FE9D4 /* TransitionViewController.swift */; };
 		E20256A61BEB413300095590 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E20256951BEB413300095590 /* AppDelegate.m */; };
 		E20256A71BEB413300095590 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E20256961BEB413300095590 /* Assets.xcassets */; };
 		E20256AA1BEB413300095590 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E202569B1BEB413300095590 /* main.m */; };
@@ -73,6 +75,8 @@
 
 /* Begin PBXFileReference section */
 		9EAE74CE1EA7053C00349520 /* UIImage+BFW.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+BFW.swift"; sourceTree = "<group>"; };
+		A10D2D431EC57E7B006FE9D4 /* Transition.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Transition.storyboard; path = Controller/Transition.storyboard; sourceTree = "<group>"; };
+		A10D2D451EC581D0006FE9D4 /* TransitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionViewController.swift; sourceTree = "<group>"; };
 		E20256441BEAD78200095590 /* BFWControls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BFWControls.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E20256941BEB413300095590 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E20256951BEB413300095590 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -154,6 +158,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A10D2D3F1EC57E40006FE9D4 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				A10D2D401EC57E51006FE9D4 /* Controller */,
+			);
+			path = Transition;
+			sourceTree = "<group>";
+		};
+		A10D2D401EC57E51006FE9D4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A10D2D431EC57E7B006FE9D4 /* Transition.storyboard */,
+				A10D2D451EC581D0006FE9D4 /* TransitionViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		E202563B1BEAD78200095590 = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +251,7 @@
 				E274E06F1CC5A1B600262254 /* Morph */,
 				E23BFB9C1DB4942500D877EF /* NibView */,
 				E28D6A6D1D38889D007EE85F /* Table */,
+				A10D2D3F1EC57E40006FE9D4 /* Transition */,
 			);
 			path = Sample;
 			sourceTree = "<group>";
@@ -663,6 +685,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A10D2D441EC57E7B006FE9D4 /* Transition.storyboard in Resources */,
 				E20256A71BEB413300095590 /* Assets.xcassets in Resources */,
 				E2B170161CBC562D00D391B4 /* StaticAlertView.xib in Resources */,
 				E25FC14C1D680A79001C7495 /* Carousel.storyboard in Resources */,
@@ -713,6 +736,7 @@
 				E274E0781CC5A1B600262254 /* MorphTableViewController.swift in Sources */,
 				E2FF6C7C1C413F61005514B6 /* DesignableView.swift in Sources */,
 				E26F2AE61CE1807600B56416 /* Dictionary+StyledText.swift in Sources */,
+				A10D2D461EC581D0006FE9D4 /* TransitionViewController.swift in Sources */,
 				E20256A61BEB413300095590 /* AppDelegate.m in Sources */,
 				E2A7BE4B1D4B15DA00F1A629 /* StatusTextFieldNibView.swift in Sources */,
 				9EAE74CF1EA7053C00349520 /* UIImage+BFW.swift in Sources */,
