@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E207BCAA1EADE577007BB14F /* UIImage+BFW.swift in Sources */ = {isa = PBXBuildFile; fileRef = E207BCA91EADE577007BB14F /* UIImage+BFW.swift */; };
+		E22477EA1ECBCAA7004A7802 /* Transition.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E22477E81ECBCAA7004A7802 /* Transition.storyboard */; };
+		E22477EB1ECBCAA7004A7802 /* TransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22477E91ECBCAA7004A7802 /* TransitionViewController.swift */; };
 		E22FD1B21EC564AD0043171C /* UIViewController+Dismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FD1B11EC564AD0043171C /* UIViewController+Dismiss.swift */; };
 		E28BA96D1E96402500D5DE3D /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA91F1E96402500D5DE3D /* AlertViewController.swift */; };
 		E28BA96E1E96402500D5DE3D /* ActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9211E96402500D5DE3D /* ActionSheetView.swift */; };
@@ -80,6 +82,8 @@
 
 /* Begin PBXFileReference section */
 		E207BCA91EADE577007BB14F /* UIImage+BFW.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+BFW.swift"; sourceTree = "<group>"; };
+		E22477E81ECBCAA7004A7802 /* Transition.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Transition.storyboard; sourceTree = "<group>"; };
+		E22477E91ECBCAA7004A7802 /* TransitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionViewController.swift; sourceTree = "<group>"; };
 		E22FD1B11EC564AD0043171C /* UIViewController+Dismiss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Dismiss.swift"; sourceTree = "<group>"; };
 		E28BA9111E963F7800D5DE3D /* BFWControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BFWControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E28BA9141E963F7900D5DE3D /* BFWControls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFWControls.h; sourceTree = "<group>"; };
@@ -173,6 +177,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E22477E61ECBCAA7004A7802 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				E22477E71ECBCAA7004A7802 /* Controller */,
+			);
+			path = Transition;
+			sourceTree = "<group>";
+		};
+		E22477E71ECBCAA7004A7802 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E22477E81ECBCAA7004A7802 /* Transition.storyboard */,
+				E22477E91ECBCAA7004A7802 /* TransitionViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		E28BA9071E963F7800D5DE3D = {
 			isa = PBXGroup;
 			children = (
@@ -463,8 +484,8 @@
 				E28BA9651E96402500D5DE3D /* TranslationAnimationController.swift */,
 				E28BA9661E96402500D5DE3D /* TranslationNavigationDelegate.swift */,
 				E28BA9671E96402500D5DE3D /* TranslationTransitioningController.swift */,
-				E28BA9681E96402500D5DE3D /* UIViewController+Segue.swift */,
 				E22FD1B11EC564AD0043171C /* UIViewController+Dismiss.swift */,
+				E28BA9681E96402500D5DE3D /* UIViewController+Segue.swift */,
 				E28BA9691E96402500D5DE3D /* UIViewMorphExtensions.swift */,
 			);
 			path = View;
@@ -549,6 +570,7 @@
 				E28BA9E71E964D4500D5DE3D /* Morph */,
 				E28BA9EB1E964D4500D5DE3D /* NibView */,
 				E28BA9F11E964D4500D5DE3D /* Table */,
+				E22477E61ECBCAA7004A7802 /* Transition */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -794,6 +816,7 @@
 				E28BA9F81E964D4500D5DE3D /* Layout.storyboard in Resources */,
 				E28BA9F41E964D4500D5DE3D /* Alerts.storyboard in Resources */,
 				E28BA9F91E964D4500D5DE3D /* Morph.storyboard in Resources */,
+				E22477EA1ECBCAA7004A7802 /* Transition.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -861,6 +884,7 @@
 				E28BA9FA1E964D4500D5DE3D /* MorphTableViewController.swift in Sources */,
 				E28BA9FC1E964D4500D5DE3D /* AvatarView.swift in Sources */,
 				E28BA9D41E964CB200D5DE3D /* AppDelegate.swift in Sources */,
+				E22477EB1ECBCAA7004A7802 /* TransitionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

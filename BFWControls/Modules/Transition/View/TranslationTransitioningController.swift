@@ -9,23 +9,23 @@
 import UIKit
 
 open class TranslationTransitioningController: NSObject, UIViewControllerTransitioningDelegate {
-
+    
     // MARK: - Variables
-
-    @IBInspectable open var duration: TimeInterval = 0.3
+    
+    @IBInspectable open var duration: CGFloat = 0.3
     @IBInspectable open var leftInset: CGFloat = 0.0
     @IBInspectable open var rightInset: CGFloat = 0.0
     @IBInspectable open var topInset: CGFloat = 0.0
     @IBInspectable open var bottomInset: CGFloat = 0.0
     @IBInspectable open var belowTopGuide: Bool = false
     @IBInspectable open var backdropColor: UIColor?
-
+    
     /// Fade out/in the first view controller, instead of moving.
     @IBInspectable open var fadeFirst: Bool = false
-
+    
     /// Direction to which it presents. Dismiss direction defaults to opposite.
     open var direction: Direction = .up
-
+    
     @IBInspectable open var direction_: Int {
         get {
             return direction.rawValue
@@ -34,13 +34,13 @@ open class TranslationTransitioningController: NSObject, UIViewControllerTransit
             direction = Direction(rawValue: newValue) ?? .up
         }
     }
-
+    
     fileprivate let animationController = TranslationAnimationController()
-
+    
     // MARK: - Private functions
-
+    
     fileprivate func updateAnimationController() {
-        animationController.duration = duration
+        animationController.transitionDuration = duration
         animationController.leftInset = leftInset
         animationController.rightInset = rightInset
         animationController.topInset = topInset
@@ -49,9 +49,9 @@ open class TranslationTransitioningController: NSObject, UIViewControllerTransit
         animationController.direction = direction
         animationController.backdropColor = backdropColor
     }
-
+    
     // MARK: - UIViewControllerTransitioningDelegate
-
+    
     open func animationController(
         forPresented presented: UIViewController,
         presenting: UIViewController,
@@ -64,7 +64,7 @@ open class TranslationTransitioningController: NSObject, UIViewControllerTransit
         animationController.fadeFirst = fadeFirst
         return animationController
     }
-
+    
     open func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let animationController = self.animationController
         updateAnimationController()
@@ -72,11 +72,11 @@ open class TranslationTransitioningController: NSObject, UIViewControllerTransit
         animationController.fadeFirst = fadeFirst
         return animationController
     }
-
+    
 }
 
 public extension UIViewController {
-
+    
     @IBOutlet public var transitioningDelegateOutlet: NSObject? {
         get {
             return transitioningDelegate as? NSObject
@@ -85,5 +85,5 @@ public extension UIViewController {
             transitioningDelegate = newValue as? UIViewControllerTransitioningDelegate
         }
     }
-
+    
 }

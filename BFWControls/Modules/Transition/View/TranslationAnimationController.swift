@@ -10,12 +10,12 @@
 import UIKit
 
 public enum Direction: Int {
-
+    
     case left = 0
     case right = 1
     case up = 2
     case down = 3
-
+    
     var reverse: Direction {
         switch self {
         case .left:
@@ -28,30 +28,33 @@ public enum Direction: Int {
             return .up
         }
     }
-
+    
 }
 
-open class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
-
+open class TranslationAnimationController: UIPercentDrivenInteractiveTransition, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate {
+    
     // MARK: - Variables
-
-    @IBInspectable open var isPresenting: Bool = true
-    @IBInspectable open var duration: TimeInterval = 0.3
-    @IBInspectable open var leftInset: CGFloat = 0.0
-    @IBInspectable open var rightInset: CGFloat = 0.0
-    @IBInspectable open var topInset: CGFloat = 0.0
-    @IBInspectable open var bottomInset: CGFloat = 0.0
-    @IBInspectable open var belowTopGuide: Bool = false
-    @IBInspectable open var animatePresenter = false // TODO: Determine automatically
+    
+    @IBInspectable var isPresenting: Bool = true
+    @IBInspectable var transitionDuration: CGFloat = 0.3
+    @IBInspectable var leftInset: CGFloat = 0.0
+    @IBInspectable var rightInset: CGFloat = 0.0
+    @IBInspectable var topInset: CGFloat = 0.0
+    @IBInspectable var bottomInset: CGFloat = 0.0
+    @IBInspectable var belowTopGuide: Bool = false
+    @IBInspectable var animatePresenter = false // TODO: Determine automatically
     /// Fade out/in the first view controller, instead of moving.
-    @IBInspectable open var fadeFirst: Bool = false
-    @IBInspectable open var backdropColor: UIColor?
+    @IBInspectable var fadeFirst: Bool = false
+    @IBInspectable var backdropColor: UIColor?
+    @IBInspectable var blurBackground: Bool = false
     /// Direction to which it presents. Dismiss direction defaults to reverse.
     open var direction: Direction = .left
     let backdropView = UIView()
+    let blurView = BlurView()
+    var isInteractive = false
     
     // MARK: - Private functions
-
+    
     fileprivate func presentedFrame(in containerView: UIView) -> CGRect {
         // TODO: Use AutoLayout?
         var frame = containerView.bounds
@@ -61,7 +64,7 @@ open class TranslationAnimationController: NSObject, UIViewControllerAnimatedTra
         frame.size.height -= frame.origin.y + bottomInset
         return frame
     }
-
+    
     fileprivate func dismissedFrame(in containerView: UIView, direction: Direction) -> CGRect {
         var frame = presentedFrame(in: containerView)
         switch direction {
@@ -76,13 +79,13 @@ open class TranslationAnimationController: NSObject, UIViewControllerAnimatedTra
         }
         return frame
     }
-
+    
     // MARK: - UIViewControllerAnimatedTransitioning
-
+    
     open func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return duration
+        return TimeInterval(transitionDuration)
     }
-
+    
     @objc open func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
         let animateToView = animatePresenter || fadeFirst || isPresenting
@@ -128,10 +131,17 @@ open class TranslationAnimationController: NSObject, UIViewControllerAnimatedTra
                     backdropView.alpha = 0.0
                 }
             }
+            if blurBackground {
+                blurView.frame = containerView.bounds
+                containerView.insertSubview(blurView, belowSubview: toViewController.view)
+                blurView.pinToSuperviewEdges()
+                blurView.setNeedsDisplay()
+                blurView.alpha = 0.5
+            }
         }
         let fromDirection = animatePresenter && isPresenting ? direction.reverse : direction
         UIView.animate(
-            withDuration: duration,
+            withDuration: TimeInterval(transitionDuration),
             delay: 0.0,
             options: [.curveEaseInOut],
             animations: {
@@ -147,12 +157,15 @@ open class TranslationAnimationController: NSObject, UIViewControllerAnimatedTra
                 }
                 if self.isPresenting {
                     self.backdropView.alpha = 1.0
+                    self.blurView.alpha = 1.0
                 } else {
                     self.backdropView.alpha = 0.0
+                    self.blurView.alpha = 0.0
                 }
-            }
+        }
             )
         { finished in
+            self.blurView.removeFromSuperview()
             if transitionContext.transitionWasCancelled {
                 toViewController?.view.removeFromSuperview()
             } else {
@@ -160,7 +173,24 @@ open class TranslationAnimationController: NSObject, UIViewControllerAnimatedTra
             }
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
-        
+    }
+    
+    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        isPresenting = true
+        return self
+    }
+    
+    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        isPresenting = false
+        return self
+    }
+    
+    public func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return isInteractive ? self : nil
+    }
+    
+    public func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return isInteractive ? self : nil
     }
     
 }
