@@ -17,7 +17,7 @@ class StaticTableViewController: UITableViewController {
     @IBInspectable open var intrinsicHeightCells: Bool = false
     
     fileprivate var isDynamicLastCell: Bool = false
-    fileprivate var needRefreshDynamicLastCellHeight: Bool = true
+    fileprivate var needRefreshDynamicLastCellHeight: Bool = false
     fileprivate var dynamicLastCellHeight: CGFloat?
     fileprivate var previousRowFrame = CGRect()
     
