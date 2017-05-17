@@ -8,20 +8,20 @@
 
 import UIKit
 
-class TranslationNavigationDelegate: NSObject, UINavigationControllerDelegate {
+open class TranslationNavigationDelegate: NSObject, UINavigationControllerDelegate {
 
     // MARK: - Variables
 
-    @IBInspectable var duration: TimeInterval = 0.3
-    @IBInspectable var leftInset: CGFloat = 0.0
-    @IBInspectable var rightInset: CGFloat = 0.0
-    @IBInspectable var topInset: CGFloat = 0.0
-    @IBInspectable var bottomInset: CGFloat = 0.0
-    @IBInspectable var belowTopGuide: Bool = false
+    @IBInspectable open var duration: TimeInterval = 0.3
+    @IBInspectable open var leftInset: CGFloat = 0.0
+    @IBInspectable open var rightInset: CGFloat = 0.0
+    @IBInspectable open var topInset: CGFloat = 0.0
+    @IBInspectable open var bottomInset: CGFloat = 0.0
+    @IBInspectable open var belowTopGuide: Bool = false
     
-    var direction: Direction = .left
+    open var direction: Direction = .left
     
-    @IBInspectable var direction_: Int {
+    @IBInspectable open var direction_: Int {
         get {
             return direction.rawValue
         }
@@ -30,9 +30,9 @@ class TranslationNavigationDelegate: NSObject, UINavigationControllerDelegate {
         }
     }
 
-    var firstDirection: Direction?
+    open var firstDirection: Direction?
     
-    @IBInspectable var firstDirection_: Int {
+    @IBInspectable open var firstDirection_: Int {
         get {
             return firstDirection?.rawValue ?? direction.rawValue
         }
@@ -42,14 +42,14 @@ class TranslationNavigationDelegate: NSObject, UINavigationControllerDelegate {
     }
 
     /// Fade out/in the first view controller, instead of moving.
-    @IBInspectable var fadeFirst: Bool = false
+    @IBInspectable open var fadeFirst: Bool = false
     
     /// Clears background of view controllers so navigation background shows through.
-    @IBInspectable var clearBackgrounds: Bool = false
+    @IBInspectable open var clearBackgrounds: Bool = false
 
     // MARK: - UINavigationControllerDelegate
 
-    func navigationController(
+    open func navigationController(
         _ navigationController: UINavigationController,
         animationControllerFor operation: UINavigationControllerOperation,
         from fromViewController: UIViewController,
@@ -70,7 +70,7 @@ class TranslationNavigationDelegate: NSObject, UINavigationControllerDelegate {
         return animationController
     }
     
-    func navigationController(_ navigationController: UINavigationController,
+    open func navigationController(_ navigationController: UINavigationController,
                               willShow viewController: UIViewController,
                               animated: Bool)
     {

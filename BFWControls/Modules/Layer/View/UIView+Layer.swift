@@ -9,9 +9,9 @@
 
 import UIKit
 
-extension UIView {
+public extension UIView {
     
-    var cornerRadius: CGFloat {
+    public var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
         }
@@ -20,7 +20,7 @@ extension UIView {
         }
     }
     
-    var borderWidth: CGFloat {
+    public var borderWidth: CGFloat {
         get {
             return layer.borderWidth
         }
@@ -29,7 +29,7 @@ extension UIView {
         }
     }
     
-    var borderColor: UIColor? {
+    public var borderColor: UIColor? {
         get {
             return layer.borderColor.map { UIColor(cgColor: $0) }
         }
@@ -38,7 +38,7 @@ extension UIView {
         }
     }
     
-    var shadowColor: UIColor? {
+    public var shadowColor: UIColor? {
         get {
             return layer.shadowColor.map { UIColor(cgColor: $0) }
         }
@@ -47,7 +47,7 @@ extension UIView {
         }
     }
     
-    var shadowOffset: CGSize {
+    public var shadowOffset: CGSize {
         get {
             return layer.shadowOffset
         }
@@ -56,7 +56,7 @@ extension UIView {
         }
     }
     
-    var shadowOpacity: Float {
+    public var shadowOpacity: Float {
         get {
             return layer.shadowOpacity
         }
@@ -65,7 +65,7 @@ extension UIView {
         }
     }
     
-    var shadowRadius: CGFloat {
+    public var shadowRadius: CGFloat {
         get {
             return layer.shadowRadius
         }

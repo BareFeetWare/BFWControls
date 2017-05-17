@@ -8,13 +8,13 @@
 
 import UIKit
 
-@IBDesignable class StatusTextFieldNibView: NibView {
+@IBDesignable open class StatusTextFieldNibView: NibView {
 
     // MARK: - IBOutlets
 
-    @IBOutlet weak var iconView: UIView?
-    @IBOutlet weak var titleLabel: UILabel?
-    @IBOutlet weak var messageLabel: UILabel?
-    @IBOutlet weak var borderView: UIView?
+    @IBOutlet open weak var iconView: UIView?
+    @IBOutlet open weak var titleLabel: UILabel?
+    @IBOutlet open weak var messageLabel: UILabel?
+    @IBOutlet open weak var borderView: UIView?
     
 }

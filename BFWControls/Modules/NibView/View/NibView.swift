@@ -7,26 +7,26 @@
 
 import UIKit
 
-@IBDesignable class NibView: BFWNibView {
-
+@IBDesignable open class NibView: BFWNibView {
+    
     // MARK: - Variables & Functions
     
     /// Labels which should remove enclosing [] from text after awakeFromNib.
-    var placeholderViews: [UIView]? {
+    open var placeholderViews: [UIView]? {
         return nil
     }
-
-    func isPlaceholderString(_ string: String?) -> Bool {
+    
+    open func isPlaceholderString(_ string: String?) -> Bool {
         return string != nil && string!.isPlaceholder
     }
     
     // MARK: - UpdateView mechanism
     
     /// Override in subclasses and call super. Update view and subview properties that are affected by properties of this class.
-    func updateView() {
+    open func updateView() {
     }
     
-    func setNeedsUpdateView() {
+    open func setNeedsUpdateView() {
         needsUpdateView = true
         setNeedsLayout()
     }
@@ -50,9 +50,9 @@ import UIKit
             }
         }
     }
-
+    
     fileprivate var needsUpdateView = true
-        
+    
     fileprivate func updateViewIfNeeded() {
         if needsUpdateView {
             needsUpdateView = false
@@ -60,19 +60,16 @@ import UIKit
         }
     }
     
-}
-
-/// UIView overrides
-extension NibView {
+    // MARK: - UIView overrides
     
     private static var sizeForKeyDictionary = [String: CGSize]()
     
-    override func awakeFromNib() {
+    open override func awakeFromNib() {
         super.awakeFromNib()
         removePlaceHolders()
     }
     
-    override var intrinsicContentSize: CGSize {
+    open override var intrinsicContentSize: CGSize {
         let size: CGSize
         let type = type(of: self)
         let key = NSStringFromClass(type)
@@ -85,7 +82,7 @@ extension NibView {
         return size
     }
     
-    override var backgroundColor: UIColor? {
+    open override var backgroundColor: UIColor? {
         get {
             return super.backgroundColor
         }
@@ -97,7 +94,7 @@ extension NibView {
         }
     }
     
-    override func layoutSubviews() {
+    open override func layoutSubviews() {
         updateViewIfNeeded()
         super.layoutSubviews()
     }

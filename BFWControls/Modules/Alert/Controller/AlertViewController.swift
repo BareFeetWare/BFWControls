@@ -9,32 +9,32 @@
 
 import UIKit
 
-protocol AlertViewDelegate {
+public protocol AlertViewDelegate {
     
     func alertView(_ alertView: AlertView, clickedButtonAt index: Int)
     
 }
 
-class AlertViewController: UIViewController {
+open class AlertViewController: UIViewController {
     
     // MARK: - Variables
     
-    @IBInspectable var action0Segue: String?
-    @IBInspectable var action1Segue: String?
-    @IBInspectable var action2Segue: String?
-    @IBInspectable var action3Segue: String?
-    @IBInspectable var action4Segue: String?
-    @IBInspectable var action6Segue: String?
-    @IBInspectable var action7Segue: String?
-    @IBInspectable var autoDismisses: Bool = true
+    @IBInspectable open var action0Segue: String?
+    @IBInspectable open var action1Segue: String?
+    @IBInspectable open var action2Segue: String?
+    @IBInspectable open var action3Segue: String?
+    @IBInspectable open var action4Segue: String?
+    @IBInspectable open var action6Segue: String?
+    @IBInspectable open var action7Segue: String?
+    @IBInspectable open var autoDismisses: Bool = true
     
-    var delegate: AlertViewDelegate?
+    open var delegate: AlertViewDelegate?
     
-    lazy var alertView: AlertView = {
+    lazy open var alertView: AlertView = {
         let foundAlertView: AlertView
         let alertViewOverlay = self.view.subviews.first { subview in
             subview is AlertViewOverlay
-        } as? AlertViewOverlay
+            } as? AlertViewOverlay
         if let alertViewOverlay = alertViewOverlay {
             foundAlertView = alertViewOverlay.alertView
         } else {
@@ -63,15 +63,15 @@ class AlertViewController: UIViewController {
             var alpha: CGFloat = 0.0
             subview.backgroundColor?.getWhite(&white, alpha: &alpha)
             return alpha < 1.0
-            }
+        }
         return overlayView
     }
     
-    private var onCompletion: (() -> Void)?
+    fileprivate var onCompletion: (() -> Void)?
     
     // MARK: - Actions
     
-    @IBAction func actionButton(_ button: UIButton) {
+    @IBAction open func actionButton(_ button: UIButton) {
         let index = alertView.index(of: button)!
         if alertView.hasCancel && index == 0 {
             dismissAlert(button)
@@ -96,7 +96,7 @@ class AlertViewController: UIViewController {
         }
     }
     
-    @IBAction func dismissAlert(_ sender: AnyObject?) {
+    @IBAction open func dismissAlert(_ sender: AnyObject?) {
         if presentingViewController != nil {
             dismiss(animated: true, completion: onCompletion)
         } else {
@@ -112,17 +112,17 @@ class AlertViewController: UIViewController {
     
     // MARK: - Init
     
-    override init(nibName: String?, bundle: Bundle?) {
+    public override init(nibName: String?, bundle: Bundle?) {
         super.init(nibName: nibName, bundle: bundle)
         commonInit()
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
     }
     
-    func commonInit() {
+    open func commonInit() {
         translationTransitioningController.backdropColor = UIColor.black.withAlphaComponent(0.75)
         translationTransitioningController.direction = .up
         transitioningDelegate = translationTransitioningController
@@ -131,7 +131,7 @@ class AlertViewController: UIViewController {
     
     // MARK: - UIViewController
     
-    override func viewWillAppear(_ animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hideOverlay()
         // TODO: Fix responder chain for button taps when presenter still has text field as first responder. The following is a workaround.

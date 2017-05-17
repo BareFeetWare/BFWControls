@@ -7,30 +7,30 @@
 
 import UIKit
 
-class NibTextField: UITextField {
-
+open class NibTextField: UITextField {
+    
     // MARK: - Variables
     
-    @IBInspectable var autoUpdateCellHeights: Bool = true
+    @IBInspectable open var autoUpdateCellHeights: Bool = true
     
     /// Override in subclass
-    var contentView: NibView? {
+    open var contentView: NibView? {
         return nil
     }
-        
+    
     // MARK: - Init
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
     }
     
-    func commonInit() {
+    open func commonInit() {
         if let contentView = contentView {
             addSubview(contentView)
             contentView.pinToSuperviewEdges()
@@ -48,12 +48,12 @@ class NibTextField: UITextField {
     }
     
     // MARK: - updateView
-
+    
     /// Override in subclasses, calling super.
-    func updateView() {
+    open func updateView() {
     }
     
-    func setNeedsUpdateView() {
+    open func setNeedsUpdateView() {
         needsUpdateView = true
         setNeedsLayout()
     }
@@ -69,11 +69,11 @@ class NibTextField: UITextField {
     
     // MARK: - UITextField
     
-    override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+    open override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
         return textRect(forBounds: bounds)
     }
     
-    override func textRect(forBounds bounds: CGRect) -> CGRect {
+    open override func textRect(forBounds bounds: CGRect) -> CGRect {
         // TODO: Calculate the adjustment.
         let magicAdjustment: CGFloat = 50.0
         var rect: CGRect
@@ -88,7 +88,7 @@ class NibTextField: UITextField {
         return rect
     }
     
-    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+    open override func editingRect(forBounds bounds: CGRect) -> CGRect {
         return textRect(forBounds: bounds)
     }
     
@@ -99,14 +99,14 @@ class NibTextField: UITextField {
     
     // MARK: UIView
     
-    override func layoutSubviews() {
+    open override func layoutSubviews() {
         updateViewIfNeeded()
         if autoUpdateCellHeights {
             updateTableViewCellHeights()
         }
         super.layoutSubviews()
     }
-
+    
 }
 
 private extension UIView {

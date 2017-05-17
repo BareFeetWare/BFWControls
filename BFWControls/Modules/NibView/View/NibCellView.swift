@@ -7,19 +7,19 @@
 
 import UIKit
 
-@IBDesignable class NibCellView: NibView {
-
+@IBDesignable open class NibCellView: NibView {
+    
     // MARK: - IBOutlets
     
-    @IBOutlet weak var textLabel: UILabel?
-    @IBOutlet weak var detailTextLabel: UILabel?
-    @IBOutlet weak var iconView: UIView?
-    @IBOutlet weak var accessoryView: UIView?
-    @IBOutlet weak var separatorView: UIView?
-
+    @IBOutlet open weak var textLabel: UILabel?
+    @IBOutlet open weak var detailTextLabel: UILabel?
+    @IBOutlet open weak var iconView: UIView?
+    @IBOutlet open weak var accessoryView: UIView?
+    @IBOutlet open weak var separatorView: UIView?
+    
     // MARK: - Variables and functions
-
-    @IBInspectable var text: String? {
+    
+    @IBInspectable open var text: String? {
         get {
             return textLabel?.text
         }
@@ -28,7 +28,7 @@ import UIKit
         }
     }
     
-    @IBInspectable var detailText: String? {
+    @IBInspectable open var detailText: String? {
         get {
             return detailTextLabel?.text
         }
@@ -39,7 +39,7 @@ import UIKit
     
     fileprivate var accessoryConstraints = [NSLayoutConstraint]()
     
-    @IBInspectable var showAccessory: Bool {
+    @IBInspectable open var showAccessory: Bool {
         get {
             return !(accessoryView?.isHidden ?? true)
         }
@@ -59,7 +59,7 @@ import UIKit
         }
     }
     
-    @IBInspectable var showSeparator: Bool {
+    @IBInspectable open var showSeparator: Bool {
         get {
             return !(separatorView?.isHidden ?? true)
         }
@@ -70,7 +70,7 @@ import UIKit
     
     // MARK: - NibView
     
-    override var placeholderViews: [UIView]? {
+    open override var placeholderViews: [UIView]? {
         return [textLabel, detailTextLabel].flatMap { $0 }
     }
     
