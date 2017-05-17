@@ -88,7 +88,7 @@ class CarouselViewController: UICollectionViewController {
         return page < 0 || pageCount == 0 ? CGFloat(pageCount) + page : page.truncatingRemainder(dividingBy: CGFloat(pageCount))
     }
     
-    lazy var pageControl: UIPageControl! = {
+    lazy var pageControl: UIPageControl = {
         /* If this carousel is embedded as a container in another view controller, find a page control already
          existing in that view controller, otherwise create a new one.
          */
@@ -188,7 +188,7 @@ class CarouselViewController: UICollectionViewController {
         if collectionViewSize != collectionView?.bounds.size {
             collectionViewSize = collectionView?.bounds.size
             collectionView?.reloadData()
-            scroll(toPage: 0, animated: false)
+            scroll(toPage: pageControl.currentPage, animated: false)
         }
     }
     
