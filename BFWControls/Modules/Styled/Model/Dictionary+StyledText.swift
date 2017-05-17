@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Dictionary {
+public extension Dictionary {
     
     mutating func update(with dictionary: Dictionary) {
         for (key, value) in dictionary {

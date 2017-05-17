@@ -9,7 +9,7 @@
 
 import UIKit
 
-extension UIView {
+public extension UIView {
     
     var superviewCell: UITableViewCell? {
         return superview as? UITableViewCell ?? superview?.superviewCell

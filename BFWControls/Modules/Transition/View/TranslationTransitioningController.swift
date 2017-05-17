@@ -8,25 +8,25 @@
 
 import UIKit
 
-class TranslationTransitioningController: NSObject, UIViewControllerTransitioningDelegate {
+open class TranslationTransitioningController: NSObject, UIViewControllerTransitioningDelegate {
     
     // MARK: - Variables
     
-    @IBInspectable var duration: CGFloat = 0.3
-    @IBInspectable var leftInset: CGFloat = 0.0
-    @IBInspectable var rightInset: CGFloat = 0.0
-    @IBInspectable var topInset: CGFloat = 0.0
-    @IBInspectable var bottomInset: CGFloat = 0.0
-    @IBInspectable var belowTopGuide: Bool = false
-    @IBInspectable var backdropColor: UIColor?
+    @IBInspectable open var duration: CGFloat = 0.3
+    @IBInspectable open var leftInset: CGFloat = 0.0
+    @IBInspectable open var rightInset: CGFloat = 0.0
+    @IBInspectable open var topInset: CGFloat = 0.0
+    @IBInspectable open var bottomInset: CGFloat = 0.0
+    @IBInspectable open var belowTopGuide: Bool = false
+    @IBInspectable open var backdropColor: UIColor?
     
     /// Fade out/in the first view controller, instead of moving.
-    @IBInspectable var fadeFirst: Bool = false
+    @IBInspectable open var fadeFirst: Bool = false
     
     /// Direction to which it presents. Dismiss direction defaults to opposite.
-    var direction: Direction = .up
+    open var direction: Direction = .up
     
-    @IBInspectable var direction_: Int {
+    @IBInspectable open var direction_: Int {
         get {
             return direction.rawValue
         }
@@ -52,7 +52,7 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
     
     // MARK: - UIViewControllerTransitioningDelegate
     
-    func animationController(
+    public func animationController(
         forPresented presented: UIViewController,
         presenting: UIViewController,
         source: UIViewController
@@ -65,7 +65,7 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
         return animationController
     }
     
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let animationController = self.animationController
         updateAnimationController()
         animationController.isPresenting = false
@@ -75,9 +75,9 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
     
 }
 
-extension UIViewController {
+public extension UIViewController {
     
-    @IBOutlet var transitioningDelegateOutlet: NSObject? {
+    @IBOutlet public var transitioningDelegateOutlet: NSObject? {
         get {
             return transitioningDelegate as? NSObject
         }

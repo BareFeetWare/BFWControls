@@ -9,11 +9,11 @@
 
 import UIKit
 
-class MorphSegue: UIStoryboardSegue {
+open class MorphSegue: UIStoryboardSegue {
 
     // MARK: - Public variables
 
-    @IBOutlet lazy var fromView: UIView? = {
+    @IBOutlet open lazy var fromView: UIView? = {
         return self.source.view
     }()
     
@@ -22,7 +22,7 @@ class MorphSegue: UIStoryboardSegue {
     
     // MARK: - UIStoryboardSegue
     
-    override func perform() {
+    open override func perform() {
         let destinationVCView = destination.view!
         let sourceVCView = source.view
         

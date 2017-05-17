@@ -7,14 +7,14 @@
 
 import UIKit
 
-class StyledText {
+open class StyledText {
     
     // MARK: - Constants
     
-    struct Section {
-        static let level = "level"
-        static let emphasis = "emphasis"
-        static let style = "style"
+    public struct Section {
+        public static let level = "level"
+        public static let emphasis = "emphasis"
+        public static let style = "style"
     }
     
     struct Key {
@@ -43,19 +43,23 @@ class StyledText {
         return bundle;
     }
     
-    fileprivate static var plistDict: [String: AnyObject] = {
-        let plistPath = classBundle.path(forResource: styledTextPlist, ofType: "plist")!
-        let dictionary = NSDictionary(contentsOfFile: plistPath) as! [String: AnyObject]
-        return dictionary
+    fileprivate static var plistDict: [String: AnyObject]? = {
+        guard let path = classBundle.path(forResource: styledTextPlist, ofType: "plist"),
+            let plistDict = NSDictionary(contentsOfFile: path) as? [String: AnyObject]
+            else {
+                debugPrint("StyledText: plistDict: failed")
+                return nil
+        }
+        return plistDict
     }()
     
     // MARK: - Functions
     
-    class func attributes(for style: String) -> TextAttributes? {
+    open class func attributes(for style: String) -> TextAttributes? {
         return attributes(forSection: Section.style, key: style)
     }
     
-    class func attributes(for styles: [String]) -> TextAttributes? {
+    open class func attributes(for styles: [String]) -> TextAttributes? {
         var textAttributes: TextAttributes?
         for style in styles {
             if let extraAttributes = attributes(for: style) {
@@ -68,11 +72,11 @@ class StyledText {
         return textAttributes
     }
     
-    class func attributes(forLevel level: Int) -> TextAttributes? {
+    open class func attributes(forLevel level: Int) -> TextAttributes? {
         return attributes(forSection: Section.level, key: String(level))
     }
     
-    class func attributes(for lookupDict: [String: AnyObject]) -> TextAttributes? {
+    open class func attributes(for lookupDict: [String: AnyObject]) -> TextAttributes? {
         var attributes = TextAttributes()
         let flatDict = flatLookup(dict: lookupDict)
         if let familyName = flatDict[Key.familyName] as? String {
@@ -110,17 +114,16 @@ class StyledText {
     }
     
     // TODO: Make this private by providing alernative func.
-    class func attributes(forSection section: String, key: String) -> TextAttributes? {
-        var textAttributes: TextAttributes?
-        if let sectionDict = plistDict[section] as? [String : AnyObject],
+    open class func attributes(forSection section: String, key: String) -> TextAttributes? {
+        guard let sectionDict = plistDict?[section] as? [String : AnyObject],
             let lookupDict = sectionDict[key] as? [String: AnyObject]
-        {
-            textAttributes = attributes(for: lookupDict)
-        }
-        return textAttributes
+            else { return nil }
+        return attributes(for: lookupDict)
     }
     
     fileprivate class func flatLookup(dict lookupDict: [String: AnyObject]) -> [String: AnyObject] {
+        guard let plistDict = plistDict
+            else { return [:] }
         var combined = [String: AnyObject]()
         for section in sections {
             if let key = lookupDict[section],

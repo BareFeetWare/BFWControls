@@ -13,8 +13,8 @@ class StaticTableViewController: UITableViewController {
     
     // MARK: - Variables
     
-    @IBInspectable var filledUsingLastCell: Bool = false
-    @IBInspectable var intrinsicHeightCells: Bool = false
+    @IBInspectable open var filledUsingLastCell: Bool = false
+    @IBInspectable open var intrinsicHeightCells: Bool = false
     
     fileprivate var isDynamicLastCell: Bool = false
     fileprivate var needRefreshDynamicLastCellHeight: Bool = true
@@ -22,7 +22,7 @@ class StaticTableViewController: UITableViewController {
     fileprivate var previousRowFrame = CGRect()
     
     /// Override in subclass, usually by connecting to an IBOutlet collection.
-    var excludedCells: [UITableViewCell]? {
+    open var excludedCells: [UITableViewCell]? {
         return nil
     }
     
@@ -49,7 +49,7 @@ class StaticTableViewController: UITableViewController {
     
     // MARK: - Functions
     
-    func indexPaths(toInsert cells: [UITableViewCell]) -> [IndexPath] {
+    open func indexPaths(toInsert cells: [UITableViewCell]) -> [IndexPath] {
         var indexPaths = [IndexPath]()
         for section in 0 ..< super.numberOfSections(in: tableView) {
             var numberOfExcludedRows = 0
@@ -113,7 +113,7 @@ class StaticTableViewController: UITableViewController {
         needRefreshDynamicLastCellHeight = false
     }
     
-    func refreshDynamicLastCellHeight() {
+    fileprivate func refreshDynamicLastCellHeight() {
         needRefreshDynamicLastCellHeight = true
         DispatchQueue.main.async {
             self.updateFillUsingLastCell()
@@ -143,7 +143,7 @@ class StaticTableViewController: UITableViewController {
         }
     }
     
-    func UIApplicationDidChangeStatusBarFrameHandler (for notification: Foundation.Notification) {
+    internal func UIApplicationDidChangeStatusBarFrameHandler (for notification: Foundation.Notification) {
         if filledUsingLastCell {
             refreshDynamicLastCellHeight()
         }
