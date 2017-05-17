@@ -9,7 +9,7 @@
 import UIKit
 
 open class DismissAndPresentSegue: UIStoryboardSegue {
-
+    
     open override func perform() {
         if let presentingViewController = source.presentingViewController {
             presentingViewController.dismiss(animated: true, completion: {

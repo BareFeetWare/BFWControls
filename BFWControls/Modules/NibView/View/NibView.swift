@@ -8,14 +8,14 @@
 import UIKit
 
 @IBDesignable open class NibView: BFWNibView {
-
+    
     // MARK: - Variables & Functions
     
     /// Labels which should remove enclosing [] from text after awakeFromNib.
     open var placeholderViews: [UIView]? {
         return nil
     }
-
+    
     open func isPlaceholderString(_ string: String?) -> Bool {
         return string != nil && string!.isPlaceholder
     }
@@ -50,9 +50,9 @@ import UIKit
             }
         }
     }
-
+    
     fileprivate var needsUpdateView = true
-        
+    
     fileprivate func updateViewIfNeeded() {
         if needsUpdateView {
             needsUpdateView = false
@@ -60,7 +60,7 @@ import UIKit
         }
     }
     
-    /// UIView overrides
+    // MARK: - UIView overrides
     
     private static var sizeForKeyDictionary = [String: CGSize]()
     

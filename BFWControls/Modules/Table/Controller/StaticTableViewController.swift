@@ -113,7 +113,7 @@ open class StaticTableViewController: UITableViewController {
         needRefreshDynamicLastCellHeight = false
     }
     
-    func refreshDynamicLastCellHeight() {
+    fileprivate func refreshDynamicLastCellHeight() {
         needRefreshDynamicLastCellHeight = true
         DispatchQueue.main.async {
             self.updateFillUsingLastCell()
@@ -143,7 +143,7 @@ open class StaticTableViewController: UITableViewController {
         }
     }
     
-    func UIApplicationDidChangeStatusBarFrameHandler (for notification: Foundation.Notification) {
+    internal func UIApplicationDidChangeStatusBarFrameHandler (for notification: Foundation.Notification) {
         if filledUsingLastCell {
             refreshDynamicLastCellHeight()
         }

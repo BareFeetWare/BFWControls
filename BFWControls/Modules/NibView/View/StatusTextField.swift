@@ -8,9 +8,9 @@
 import UIKit
 
 open class StatusTextField: NibTextField {
-
+    
     // MARK: - Enum
-
+    
     public enum ControlStatus: Int {
         case normal = 0
         case editing = 1
@@ -20,7 +20,7 @@ open class StatusTextField: NibTextField {
     }
     
     // MARK: - Variables
-
+    
     /// Leave as nil to have placeholder animate into title when text entered in field.
     @IBInspectable open var title: String? {
         get {
@@ -32,9 +32,9 @@ open class StatusTextField: NibTextField {
     }
     
     open var status: ControlStatus = .normal { didSet { setNeedsUpdateView() }}
-
+    
     // MARK: - IBInspectable mapping to contentView Nib
-
+    
     @IBInspectable open var message: String? {
         get {
             return statusTextFieldNibView?.messageLabel?.text
@@ -54,7 +54,7 @@ open class StatusTextField: NibTextField {
             status = ControlStatus(rawValue: newValue) ?? .normal
         }
     }
-
+    
     // MARK: - Computed variables
     
     open var messageColor: UIColor {
@@ -78,7 +78,7 @@ open class StatusTextField: NibTextField {
     }
     
     // MARK: - Init
-
+    
     open override func commonInit() {
         super.commonInit()
         statusTextFieldNibView?.titleLabel?.text = nil
@@ -88,7 +88,7 @@ open class StatusTextField: NibTextField {
     }
     
     // MARK: - updateView
-
+    
     open override func updateView() {
         super.updateView()
         statusTextFieldNibView?.iconView?.isHidden = status == .normal
@@ -104,9 +104,9 @@ open class StatusTextField: NibTextField {
             }
         }
     }
-
+    
     // MARK: - UITextField
-
+    
     open override var placeholder: String? {
         get {
             return isPlaceholderAtTitle && title == nil ? nil : super.placeholder
@@ -118,7 +118,7 @@ open class StatusTextField: NibTextField {
     
 }
 
-public extension StatusTextField.ControlStatus {
+fileprivate extension StatusTextField.ControlStatus {
     
     var color: UIColor {
         switch self {
@@ -175,5 +175,5 @@ extension StatusTextField: UITextFieldDelegate {
         }
         return should
     }
-
+    
 }

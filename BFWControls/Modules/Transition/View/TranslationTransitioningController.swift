@@ -52,7 +52,7 @@ open class TranslationTransitioningController: NSObject, UIViewControllerTransit
     
     // MARK: - UIViewControllerTransitioningDelegate
     
-    open func animationController(
+    public func animationController(
         forPresented presented: UIViewController,
         presenting: UIViewController,
         source: UIViewController
@@ -65,7 +65,7 @@ open class TranslationTransitioningController: NSObject, UIViewControllerTransit
         return animationController
     }
     
-    open func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let animationController = self.animationController
         updateAnimationController()
         animationController.isPresenting = false

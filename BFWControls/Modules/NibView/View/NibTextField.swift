@@ -8,7 +8,7 @@
 import UIKit
 
 open class NibTextField: UITextField {
-
+    
     // MARK: - Variables
     
     @IBInspectable open var autoUpdateCellHeights: Bool = true
@@ -17,7 +17,7 @@ open class NibTextField: UITextField {
     open var contentView: NibView? {
         return nil
     }
-        
+    
     // MARK: - Init
     
     public override init(frame: CGRect) {
@@ -48,7 +48,7 @@ open class NibTextField: UITextField {
     }
     
     // MARK: - updateView
-
+    
     /// Override in subclasses, calling super.
     open func updateView() {
     }
@@ -106,7 +106,7 @@ open class NibTextField: UITextField {
         }
         super.layoutSubviews()
     }
-
+    
 }
 
 private extension UIView {
