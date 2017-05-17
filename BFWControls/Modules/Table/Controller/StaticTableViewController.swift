@@ -17,6 +17,7 @@ open class StaticTableViewController: UITableViewController {
     @IBInspectable open var intrinsicHeightCells: Bool = false
     
     fileprivate var isDynamicLastCell: Bool = false
+    fileprivate var needRefreshDynamicLastCellHeight: Bool = true
     fileprivate var dynamicLastCellHeight: CGFloat?
     fileprivate var previousRowFrame = CGRect()
     
@@ -109,10 +110,11 @@ open class StaticTableViewController: UITableViewController {
         if availableHeight.rounded() >= lastCellIntrinsicHeight {
             dynamicLastCellHeight = availableHeight
         }
+        needRefreshDynamicLastCellHeight = false
     }
     
     func refreshDynamicLastCellHeight() {
-        dynamicLastCellHeight = nil
+        needRefreshDynamicLastCellHeight = true
         DispatchQueue.main.async {
             self.updateFillUsingLastCell()
             self.refreshCellHeights()
@@ -126,10 +128,22 @@ open class StaticTableViewController: UITableViewController {
         if intrinsicHeightCells || filledUsingLastCell {
             tableView.estimatedRowHeight = 44.0
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(StaticTableViewController.UIApplicationDidChangeStatusBarFrameHandler(for:)), name: NSNotification.Name.UIApplicationDidChangeStatusBarFrame, object: nil)
+    }
+    
+    deinit {
+        // Call removeObserver to support iOS 8 or earlier.
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationDidChangeStatusBarFrame, object: nil)
     }
     
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
+        if filledUsingLastCell {
+            refreshDynamicLastCellHeight()
+        }
+    }
+    
+    func UIApplicationDidChangeStatusBarFrameHandler (for notification: Foundation.Notification) {
         if filledUsingLastCell {
             refreshDynamicLastCellHeight()
         }
@@ -152,7 +166,7 @@ open class StaticTableViewController: UITableViewController {
     
     // MARK: - UITableViewDelegate
     open override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if filledUsingLastCell && dynamicLastCellHeight == nil {
+        if filledUsingLastCell && needRefreshDynamicLastCellHeight {
             if let indexPathsForVisibleRows = tableView.indexPathsForVisibleRows,
                 let lastIndexPath = indexPathsForVisibleRows.last,
                 lastIndexPath.row == indexPath.row
