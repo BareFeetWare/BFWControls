@@ -7,9 +7,9 @@
 
 import Foundation
 
-typealias TextAttributes = [String: AnyObject]
+public typealias TextAttributes = [String: AnyObject]
 
 // extension TextAttributes
-extension Dictionary where Key: ExpressibleByStringLiteral, Value: AnyObject {
+public extension Dictionary where Key: ExpressibleByStringLiteral, Value: AnyObject {
     
 }

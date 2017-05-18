@@ -13,8 +13,8 @@ class StaticTableViewController: UITableViewController {
     
     // MARK: - Variables
     
-    @IBInspectable var filledUsingLastCell: Bool = false
-    @IBInspectable var intrinsicHeightCells: Bool = false
+    @IBInspectable open var filledUsingLastCell: Bool = false
+    @IBInspectable open var intrinsicHeightCells: Bool = false
     
     fileprivate var isDynamicLastCell: Bool = false
     fileprivate var needRefreshDynamicLastCellHeight: Bool = true
@@ -22,7 +22,7 @@ class StaticTableViewController: UITableViewController {
     fileprivate var previousRowFrame = CGRect()
     
     /// Override in subclass, usually by connecting to an IBOutlet collection.
-    var excludedCells: [UITableViewCell]? {
+    open var excludedCells: [UITableViewCell]? {
         return nil
     }
     
@@ -37,11 +37,11 @@ class StaticTableViewController: UITableViewController {
     lazy var lastCellIntrinsicHeight: CGFloat = {
         var height = self.tableView.estimatedRowHeight
         if let cell = self.tableView.cellForRow(at: self.lastCellIndexPath) {
-            // Already on screen or static table view controller
+            // Already on screen or static table view controller.
             cell.layoutIfNeeded()
             height = cell.frame.height
         } else {
-            // Hasn't loaded yet in cellForRowAt, calculate height after tableView is fully loaded
+            // Hasn't loaded yet in cellForRowAt, calculate height after tableView is fully loaded.
             self.isDynamicLastCell = true
         }
         return height
@@ -49,7 +49,7 @@ class StaticTableViewController: UITableViewController {
     
     // MARK: - Functions
     
-    func indexPaths(toInsert cells: [UITableViewCell]) -> [IndexPath] {
+    open func indexPaths(toInsert cells: [UITableViewCell]) -> [IndexPath] {
         var indexPaths = [IndexPath]()
         for section in 0 ..< super.numberOfSections(in: tableView) {
             var numberOfExcludedRows = 0
@@ -97,6 +97,7 @@ class StaticTableViewController: UITableViewController {
     }
     
     fileprivate func updateFillUsingLastCell() {
+        needRefreshDynamicLastCellHeight = false
         // Set default dynamicLastCellHeight.
         dynamicLastCellHeight = intrinsicHeightCells
             ? UITableViewAutomaticDimension
@@ -105,15 +106,14 @@ class StaticTableViewController: UITableViewController {
         guard tableView.indexPathsForVisibleRows?.contains(lastCellIndexPath) ?? false
             else { return }
         previousRowFrame = tableView.rectForRow(at: IndexPath(row: lastCellIndexPath.row - 1, section: lastCellIndexPath.section))
-        // Get height of empty spaces to fill
+        // Get height of empty spaces to fill.
         let availableHeight = tableView.frame.size.height - previousRowFrame.maxY
         if availableHeight.rounded() >= lastCellIntrinsicHeight {
             dynamicLastCellHeight = availableHeight
         }
-        needRefreshDynamicLastCellHeight = false
     }
     
-    func refreshDynamicLastCellHeight() {
+    fileprivate func refreshDynamicLastCellHeight() {
         needRefreshDynamicLastCellHeight = true
         DispatchQueue.main.async {
             self.updateFillUsingLastCell()
@@ -143,7 +143,7 @@ class StaticTableViewController: UITableViewController {
         }
     }
     
-    func UIApplicationDidChangeStatusBarFrameHandler (for notification: Foundation.Notification) {
+    internal func UIApplicationDidChangeStatusBarFrameHandler (for notification: Foundation.Notification) {
         if filledUsingLastCell {
             refreshDynamicLastCellHeight()
         }
@@ -165,13 +165,14 @@ class StaticTableViewController: UITableViewController {
     }
     
     // MARK: - UITableViewDelegate
+    
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if filledUsingLastCell && needRefreshDynamicLastCellHeight {
             if let indexPathsForVisibleRows = tableView.indexPathsForVisibleRows,
                 let lastIndexPath = indexPathsForVisibleRows.last,
                 lastIndexPath.row == indexPath.row
             {
-                // Calculate height of last cell
+                // Calculate height of last cell.
                 DispatchQueue.main.async {
                     self.updateFillUsingLastCell()
                     self.refreshCellHeights()
@@ -189,14 +190,14 @@ class StaticTableViewController: UITableViewController {
                 if let dynamicLastCellHeight = self.dynamicLastCellHeight {
                     height = dynamicLastCellHeight
                     let currentPreviousRowFrame = tableView.rectForRow(at: IndexPath(row: indexPath.row - 1, section: indexPath.section))
-                    // Detect changes on tableView contents after dynamicLastCellHeight is set
+                    // Detect changes on tableView contents after dynamicLastCellHeight is set.
                     if currentPreviousRowFrame.maxY != previousRowFrame.maxY {
                         refreshDynamicLastCellHeight()
                     }
                 }
             } else {
                 previousRowFrame = tableView.rectForRow(at: IndexPath(row: indexPath.row - 1, section: indexPath.section))
-                // Get height of empty spaces to fill
+                // Get height of empty spaces to fill.
                 let availableHeight = tableView.frame.size.height - previousRowFrame.maxY
                 if availableHeight > lastCellIntrinsicHeight {
                     height = availableHeight

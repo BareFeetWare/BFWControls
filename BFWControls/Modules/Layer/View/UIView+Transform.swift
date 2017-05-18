@@ -9,9 +9,9 @@
 
 import UIKit
 
-extension UIView {
+public extension UIView {
     
-    var rotationDegrees: CGFloat {
+    public var rotationDegrees: CGFloat {
         get {
             let angleInRadians = atan2(transform.b, transform.a)
             return angleInRadians * 180.0 / .pi

@@ -9,9 +9,9 @@
 
 import UIKit
 
-extension UIView {
+public extension UIView {
     
-    func isMorphable(to view: UIView) -> Bool {
+    public func isMorphable(to view: UIView) -> Bool {
         var isMorphable = false
         if tag != 0 && tag == view.tag {
             isMorphable = true
@@ -23,7 +23,7 @@ extension UIView {
         return isMorphable
     }
     
-    func subview(matching view: UIView) -> UIView? {
+    public func subview(matching view: UIView) -> UIView? {
         var matchingSubview: UIView?
         if view.tag != 0 {
             matchingSubview = viewWithTag(view.tag)
@@ -37,12 +37,12 @@ extension UIView {
         }
         return matchingSubview;
     }
-
+    
 }
 
-extension UILabel {
+public extension UILabel {
     
-    override func isMorphable(to view: UIView) -> Bool {
+    public override func isMorphable(to view: UIView) -> Bool {
         var isMorphable = super.isMorphable(to: view)
         if !isMorphable {
             if let label = view as? UILabel {
@@ -54,9 +54,9 @@ extension UILabel {
     
 }
 
-extension UIImageView {
+public extension UIImageView {
     
-    override func isMorphable(to view: UIView) -> Bool {
+    public override func isMorphable(to view: UIView) -> Bool {
         var isMorphable = super.isMorphable(to: view)
         if !isMorphable {
             if let imageView = view as? UIImageView,
