@@ -100,8 +100,10 @@ open class AlertViewController: UIViewController {
         if presentingViewController != nil {
             dismiss(animated: true, completion: onCompletion)
         } else {
-            onCompletion?()
-            let _ = navigationController?.popViewController(animated: true)
+            CATransaction.begin()
+            CATransaction.setCompletionBlock(onCompletion)
+            navigationController?.popViewController(animated: true)
+            CATransaction.commit()
         }
     }
     
