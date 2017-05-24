@@ -129,14 +129,16 @@ open class CarouselViewController: UICollectionViewController {
         scroll(toPage: pageControl.currentPage, animated: true)
     }
     
-    fileprivate func updatePageControl() {
+    fileprivate func updatePageControl(_ shouldUpdateCurrentPage: Bool = true) {
         if let collectionViewSize = collectionViewSize {
             if pageControl.superview == collectionView {
                 pageControl.frame.origin.x = (collectionViewSize.width - pageControl.frame.width) / 2 + collectionView!.contentOffset.x
                 pageControl.frame.origin.y = collectionViewSize.height - pageControl.frame.height + collectionView!.contentOffset.y - controlInsetBottom
             }
             pageControl.numberOfPages = pageCount
-            pageControl.currentPage = currentPage
+            if shouldUpdateCurrentPage {
+                pageControl.currentPage = currentPage
+            }
         }
     }
     
@@ -234,18 +236,7 @@ extension CarouselViewController {
     
     open override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == collectionView {
-            if let collectionViewSize = collectionViewSize {
-                if pageControl.superview == collectionView {
-                    pageControl.frame.origin.x = (collectionViewSize.width - pageControl.frame.width) / 2 + collectionView!.contentOffset.x
-                    pageControl.frame.origin.y = collectionViewSize.height - pageControl.frame.height + collectionView!.contentOffset.y - controlInsetBottom
-                }
-                pageControl.numberOfPages = pageCount
-            }
-            if let size = collectionViewSize,
-                size == scrollView.frame.size
-            {
-                pageControl.currentPage = currentPage
-            }
+            updatePageControl(collectionViewSize ?? CGSize() == scrollView.frame.size)
         }
     }
     
