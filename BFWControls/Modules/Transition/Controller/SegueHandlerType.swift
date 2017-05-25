@@ -22,14 +22,14 @@
     }
 
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        guard let segueIdentifier = segueIdentifier(for: identifier)
+        guard let segueIdentifier = segueIdentifier(forIdentifier: identifier)
             else { return true }
         let should: Bool
         switch segueIdentifier {
         case .account:
             should = isLoggedIn
             if !should {
-                performSegue(with: .login, sender: sender)
+                performSegue(segueIdentifer: .login, sender: sender)
             }
         default:
             should = true
@@ -38,7 +38,7 @@
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let segueIdentifier = segueIdentifier(for: segue.identifier)
+        guard let segueIdentifier = segueIdentifier(forIdentifier: segue.identifier)
             else { return }
         switch segueIdentifier {
         case .account:
@@ -83,7 +83,7 @@ public extension SegueHandlerType where Self: UIViewController, SegueIdentifier.
         }
     }
     
-    func segueIdentifier(for identifier: String?) -> SegueIdentifier? {
+    func segueIdentifier(forIdentifier identifier: String?) -> SegueIdentifier? {
         return identifier.flatMap { SegueIdentifier(rawValue: $0) }
     }
     
