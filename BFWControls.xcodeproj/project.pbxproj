@@ -228,14 +228,12 @@
 			isa = PBXGroup;
 			children = (
 				E28BA91D1E96402500D5DE3D /* Alert */,
-				E28BA9291E96402500D5DE3D /* Animation */,
 				E28BA92A1E96402500D5DE3D /* Binding */,
 				E28BA92D1E96402500D5DE3D /* Blur */,
 				E28BA9321E96402500D5DE3D /* Carousel */,
 				E28BA9351E96402500D5DE3D /* Layer */,
 				E28BA93B1E96402500D5DE3D /* Layout */,
 				E28BA9401E96402500D5DE3D /* NibView */,
-				E28BA9501E96402500D5DE3D /* Segues */,
 				E28BA9511E96402500D5DE3D /* Styled */,
 				E28BA9571E96402500D5DE3D /* Table */,
 				E28BA95C1E96402500D5DE3D /* Transition */,
@@ -274,13 +272,6 @@
 				E28BA9281E96402500D5DE3D /* StaticAlertView.xib */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		E28BA9291E96402500D5DE3D /* Animation */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Animation;
 			sourceTree = "<group>";
 		};
 		E28BA92A1E96402500D5DE3D /* Binding */ = {
@@ -396,13 +387,6 @@
 				E28BA94F1E96402500D5DE3D /* UIView+BFWCopy.m */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		E28BA9501E96402500D5DE3D /* Segues */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Segues;
 			sourceTree = "<group>";
 		};
 		E28BA9511E96402500D5DE3D /* Styled */ = {
