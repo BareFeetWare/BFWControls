@@ -20,6 +20,7 @@ open class StaticTableViewController: UITableViewController {
     fileprivate var needRefreshDynamicLastCellHeight: Bool = true
     fileprivate var dynamicLastCellHeight: CGFloat?
     fileprivate var previousRowFrame = CGRect()
+    fileprivate var shouldCallHeightForRow = true
     
     /// Override in subclass, usually by connecting to an IBOutlet collection.
     open var excludedCells: [UITableViewCell]? {
@@ -92,8 +93,14 @@ open class StaticTableViewController: UITableViewController {
     }
     
     fileprivate func refreshCellHeights() {
+        CATransaction.begin()
+        shouldCallHeightForRow = false
+        CATransaction.setCompletionBlock {
+            self.shouldCallHeightForRow = true
+        }
         tableView.beginUpdates()
         tableView.endUpdates()
+        CATransaction.commit()
     }
     
     fileprivate func updateFillUsingLastCell() {
@@ -188,10 +195,12 @@ open class StaticTableViewController: UITableViewController {
             if isDynamicLastCell {
                 if let dynamicLastCellHeight = self.dynamicLastCellHeight {
                     height = dynamicLastCellHeight
-                    let currentPreviousRowFrame = tableView.rectForRow(at: IndexPath(row: indexPath.row - 1, section: indexPath.section))
-                    // Detect changes on tableView contents after dynamicLastCellHeight is set.
-                    if currentPreviousRowFrame.maxY != previousRowFrame.maxY {
-                        refreshDynamicLastCellHeight()
+                    if shouldCallHeightForRow {
+                        let currentPreviousRowFrame = tableView.rectForRow(at: IndexPath(row: indexPath.row - 1, section: indexPath.section))
+                        // Detect changes on tableView contents after dynamicLastCellHeight is set.
+                        if currentPreviousRowFrame.maxY != previousRowFrame.maxY {
+                            refreshDynamicLastCellHeight()
+                        }
                     }
                 }
             } else {
@@ -205,5 +214,4 @@ open class StaticTableViewController: UITableViewController {
         }
         return height
     }
-    
 }
