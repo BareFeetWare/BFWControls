@@ -20,6 +20,7 @@ class StaticTableViewController: UITableViewController {
     fileprivate var needRefreshDynamicLastCellHeight: Bool = true
     fileprivate var dynamicLastCellHeight: CGFloat?
     fileprivate var previousRowFrame = CGRect()
+    fileprivate var shouldCallHeightForRow = true
     
     /// Override in subclass, usually by connecting to an IBOutlet collection.
     open var excludedCells: [UITableViewCell]? {
@@ -92,8 +93,14 @@ class StaticTableViewController: UITableViewController {
     }
     
     fileprivate func refreshCellHeights() {
+        CATransaction.begin()
+        shouldCallHeightForRow = false
+        CATransaction.setCompletionBlock({
+            self.shouldCallHeightForRow = true
+        })
         tableView.beginUpdates()
         tableView.endUpdates()
+        CATransaction.commit()
     }
     
     fileprivate func updateFillUsingLastCell() {
@@ -187,7 +194,7 @@ class StaticTableViewController: UITableViewController {
             : super.tableView(tableView, heightForRowAt: superIndexPath(for: indexPath))
         if filledUsingLastCell && indexPath == lastCellIndexPath {
             if isDynamicLastCell {
-                if let dynamicLastCellHeight = self.dynamicLastCellHeight {
+                if let dynamicLastCellHeight = self.dynamicLastCellHeight, shouldCallHeightForRow {
                     height = dynamicLastCellHeight
                     let currentPreviousRowFrame = tableView.rectForRow(at: IndexPath(row: indexPath.row - 1, section: indexPath.section))
                     // Detect changes on tableView contents after dynamicLastCellHeight is set.
@@ -206,5 +213,4 @@ class StaticTableViewController: UITableViewController {
         }
         return height
     }
-    
 }
