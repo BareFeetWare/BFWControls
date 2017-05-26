@@ -29,7 +29,7 @@
         case .account:
             should = isLoggedIn
             if !should {
-                performSegue(segueIdentifer: .login, sender: sender)
+                performSegue(.login, sender: sender)
             }
         default:
             should = true
@@ -72,14 +72,14 @@ public protocol SegueHandlerType {
 
 public extension SegueHandlerType where Self: UIViewController, SegueIdentifier.RawValue == String {
     
-    func performSegue(segueIdentifier: SegueIdentifier, sender: Any?) {
+    func performSegue(_ segueIdentifier: SegueIdentifier, sender: Any?) {
         performSegue(withIdentifier: segueIdentifier.rawValue, sender: sender)
     }
     
     /// To perform the segue after already queued UI actions. For instance, use in an unwind segue to perform a forward segue after viewDidAppear has finished.
-    func performOnMainQueueSegue(segueIdentifier: SegueIdentifier, sender: Any?) {
+    func performOnMainQueueSegue(_ segueIdentifier: SegueIdentifier, sender: Any?) {
         DispatchQueue.main.sync { [weak self] in
-            self?.performSegue(segueIdentifier: segueIdentifier, sender: sender)
+            self?.performSegue(segueIdentifier, sender: sender)
         }
     }
     

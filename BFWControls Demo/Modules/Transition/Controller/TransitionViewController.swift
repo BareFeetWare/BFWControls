@@ -38,7 +38,7 @@ class TransitionViewController: UIViewController, SegueHandler {
         case .began:
             interactiveTransition.isInteractive = true
             interactiveTransition.direction = .down
-            performSegue(segueIdentifier: .interactiveSegue, sender: pan.view)
+            performSegue(.interactiveSegue, sender: pan.view)
             break
         case .changed:
             // update progress of the transition
