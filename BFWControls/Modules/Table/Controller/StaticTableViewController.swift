@@ -95,9 +95,9 @@ class StaticTableViewController: UITableViewController {
     fileprivate func refreshCellHeights() {
         CATransaction.begin()
         shouldCallHeightForRow = false
-        CATransaction.setCompletionBlock({
+        CATransaction.setCompletionBlock {
             self.shouldCallHeightForRow = true
-        })
+        }
         tableView.beginUpdates()
         tableView.endUpdates()
         CATransaction.commit()
@@ -194,12 +194,14 @@ class StaticTableViewController: UITableViewController {
             : super.tableView(tableView, heightForRowAt: superIndexPath(for: indexPath))
         if filledUsingLastCell && indexPath == lastCellIndexPath {
             if isDynamicLastCell {
-                if let dynamicLastCellHeight = self.dynamicLastCellHeight, shouldCallHeightForRow {
+                if let dynamicLastCellHeight = self.dynamicLastCellHeight {
                     height = dynamicLastCellHeight
-                    let currentPreviousRowFrame = tableView.rectForRow(at: IndexPath(row: indexPath.row - 1, section: indexPath.section))
-                    // Detect changes on tableView contents after dynamicLastCellHeight is set.
-                    if currentPreviousRowFrame.maxY != previousRowFrame.maxY {
-                        refreshDynamicLastCellHeight()
+                    if shouldCallHeightForRow {
+                        let currentPreviousRowFrame = tableView.rectForRow(at: IndexPath(row: indexPath.row - 1, section: indexPath.section))
+                        // Detect changes on tableView contents after dynamicLastCellHeight is set.
+                        if currentPreviousRowFrame.maxY != previousRowFrame.maxY {
+                            refreshDynamicLastCellHeight()
+                        }
                     }
                 }
             } else {
