@@ -105,13 +105,13 @@ class StaticTableViewController: UITableViewController {
     
     fileprivate func updateFillUsingLastCell() {
         needRefreshDynamicLastCellHeight = false
+        // Use default height when last cell is not on the screen.
+        guard tableView.indexPathsForVisibleRows?.contains(lastCellIndexPath) ?? false
+            else { return }
         // Set default dynamicLastCellHeight.
         dynamicLastCellHeight = intrinsicHeightCells
             ? UITableViewAutomaticDimension
             : super.tableView(tableView, heightForRowAt: superIndexPath(for: lastCellIndexPath))
-        // Use default height when last cell is not on the screen.
-        guard tableView.indexPathsForVisibleRows?.contains(lastCellIndexPath) ?? false
-            else { return }
         previousRowFrame = tableView.rectForRow(at: IndexPath(row: lastCellIndexPath.row - 1, section: lastCellIndexPath.section))
         // Get height of empty spaces to fill.
         let availableHeight = tableView.frame.size.height - previousRowFrame.maxY
