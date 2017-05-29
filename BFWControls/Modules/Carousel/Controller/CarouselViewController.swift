@@ -236,7 +236,7 @@ extension CarouselViewController {
     
     open override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == collectionView {
-            updatePageControl(shouldUpdateCurrentPage: collectionViewSize ?? CGSize.zero == scrollView.frame.size)
+            updatePageControl(shouldUpdateCurrentPage: collectionViewSize.map { $0 == scrollView.frame.size} ?? false)
         }
     }
     
