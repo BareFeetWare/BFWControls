@@ -129,7 +129,7 @@ open class CarouselViewController: UICollectionViewController {
         scroll(toPage: pageControl.currentPage, animated: true)
     }
     
-    fileprivate func updatePageControl(_ shouldUpdateCurrentPage: Bool = true) {
+    fileprivate func updatePageControl(shouldUpdateCurrentPage: Bool = true) {
         if let collectionViewSize = collectionViewSize {
             if pageControl.superview == collectionView {
                 pageControl.frame.origin.x = (collectionViewSize.width - pageControl.frame.width) / 2 + collectionView!.contentOffset.x
@@ -236,7 +236,7 @@ extension CarouselViewController {
     
     open override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == collectionView {
-            updatePageControl(collectionViewSize ?? CGSize() == scrollView.frame.size)
+            updatePageControl(shouldUpdateCurrentPage: collectionViewSize.map { $0 == scrollView.frame.size} ?? false)
         }
     }
     
