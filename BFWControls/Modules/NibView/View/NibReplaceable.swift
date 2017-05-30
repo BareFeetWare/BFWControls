@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol NibReplaceable {
+public protocol NibReplaceable {
     
     var nibView: NibView { get }
     var contentView: UIView { get }
@@ -16,7 +16,7 @@ protocol NibReplaceable {
     
 }
 
-extension NibReplaceable {
+public extension NibReplaceable {
     
     func addNib() {
         contentView.addSubview(nibView)

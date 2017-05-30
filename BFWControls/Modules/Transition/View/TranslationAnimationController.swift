@@ -33,7 +33,6 @@ public enum Direction: Int {
 
 open class TranslationAnimationController: UIPercentDrivenInteractiveTransition, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate {
     
-    
     // MARK: - Variables
     
     @IBInspectable open var isPresenting: Bool = true

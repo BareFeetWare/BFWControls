@@ -9,13 +9,13 @@
 
 import UIKit
 
-class ImageNibCellView: NibCellView {
+open class ImageNibCellView: NibCellView {
     
-    var iconImageView: UIImageView? {
+    open var iconImageView: UIImageView? {
         return iconView as? UIImageView
     }
     
-    @IBInspectable var iconImage: UIImage? {
+    @IBInspectable open var iconImage: UIImage? {
         get {
             return iconImageView?.image
         }
@@ -23,12 +23,12 @@ class ImageNibCellView: NibCellView {
             iconImageView?.image = newValue
         }
     }
-
-    var accessoryImageView: UIImageView? {
+    
+    open var accessoryImageView: UIImageView? {
         return accessoryView as? UIImageView
     }
     
-    @IBInspectable var accessoryImage: UIImage? {
+    @IBInspectable open var accessoryImage: UIImage? {
         get {
             return accessoryImageView?.image
         }

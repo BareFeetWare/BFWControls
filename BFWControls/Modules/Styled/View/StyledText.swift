@@ -27,24 +27,8 @@ open class StyledText {
     
     fileprivate static let styledTextPlist = "StyledText"
     
-    fileprivate static var classBundle: Bundle {
-        #if TARGET_INTERFACE_BUILDER // Rendering in storyboard using IBDesignable.
-            let isInterfaceBuilder = true
-        #else
-            let isInterfaceBuilder = false
-        #endif
-        return bundle(isInterfaceBuilder: isInterfaceBuilder)
-    }
-    
-    fileprivate static func bundle(isInterfaceBuilder: Bool) -> Bundle {
-        let bundle = isInterfaceBuilder
-            ? Bundle(for: self)
-            : Bundle.main
-        return bundle;
-    }
-    
     fileprivate static var plistDict: [String: AnyObject]? = {
-        guard let path = classBundle.path(forResource: styledTextPlist, ofType: "plist"),
+        guard let path = Bundle.path(forFirstResource: styledTextPlist, ofType: "plist"),
             let plistDict = NSDictionary(contentsOfFile: path) as? [String: AnyObject]
             else {
                 debugPrint("StyledText: plistDict: failed")
@@ -139,6 +123,24 @@ open class StyledText {
             }
         }
         return combined
+    }
+    
+}
+
+fileprivate extension Bundle {
+
+    static func path(forFirstResource resource: String, ofType typeExtension: String) -> String? {
+        var path: String?
+        for bundle in Bundle.allBundles + Bundle.allFrameworks {
+            if let thisPath = bundle.path(forResource: resource, ofType: typeExtension) {
+                path = thisPath
+                break
+            }
+        }
+        if path == nil {
+            debugPrint("Failed to locate resource: " + resource + "." + typeExtension)
+        }
+        return path
     }
     
 }

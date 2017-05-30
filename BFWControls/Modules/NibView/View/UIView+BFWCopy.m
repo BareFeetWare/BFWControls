@@ -11,26 +11,37 @@
 
 #pragma mark - class methods
 
-+ (NSBundle *)bundle
-{
++ (NSBundle *)bundle {
+    BOOL isInterfaceBuilder;
 #if TARGET_INTERFACE_BUILDER // Rendering in storyboard using IBDesignable.
-    BOOL isInterfaceBuilder = YES;
+    isInterfaceBuilder = YES;
 #else
-    BOOL isInterfaceBuilder = NO;
+    isInterfaceBuilder = NO;
 #endif
     NSBundle *bundle = isInterfaceBuilder
     ? [NSBundle bundleForClass:self]
+    // TODO: Dynamic strings:
+    : [self.moduleName isEqualToString:@"BFWControls"]
+    ? [NSBundle bundleWithIdentifier:@"com.barefeetware.BFWControls"]
     : [NSBundle mainBundle];
     return bundle;
 }
 
-+ (NSString *)nibName {
++ (NSArray *)classNameComponents {
     NSString *fullClassName = NSStringFromClass(self);
-    
+    return [fullClassName componentsSeparatedByString:@"."];
+}
+
++ (NSString *)nibName {
     // Remove the <ProjectName>. prefix that Swift adds:
-    NSString *className = [fullClassName componentsSeparatedByString:@"."].lastObject;
-    
-    return className;
+    return self.classNameComponents.lastObject;
+}
+
++ (NSString *)moduleName {
+    NSArray* components = self.classNameComponents;
+    return components.count > 1
+    ? components.firstObject
+    : nil;
 }
 
 + (CGSize)sizeFromNib {
