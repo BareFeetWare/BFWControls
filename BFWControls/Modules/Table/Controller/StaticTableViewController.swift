@@ -118,8 +118,10 @@ open class StaticTableViewController: UITableViewController {
         CATransaction.setCompletionBlock {
             self.shouldCallHeightForRow = true
         }
-        tableView.beginUpdates()
-        tableView.endUpdates()
+        UIView.performWithoutAnimation {
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }
         CATransaction.commit()
     }
     
