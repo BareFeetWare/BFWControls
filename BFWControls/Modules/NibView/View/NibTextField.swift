@@ -112,14 +112,14 @@ open class NibTextField: UITextField {
 private extension UIView {
     
     var subviewTextField: UITextField? {
-        var retValue: UITextField?
+        var foundTextField: UITextField?
         for subview in subviews {
             if let textField = subview as? UITextField ?? subview.subviewTextField {
-                retValue = textField
+                foundTextField = textField
                 break
             }
         }
-        return retValue
+        return foundTextField
     }
     
 }
