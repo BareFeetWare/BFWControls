@@ -112,10 +112,8 @@ open class NibTextField: UITextField {
 private extension UIView {
     
     var subviewTextField: UITextField? {
-        return subviews.first
-            { subview in
-                subview is UITextField || subview.subviewTextField != nil
-            } as? UITextField
+        let textFields = subviews.flatMap { $0 as? UITextField ?? $0.subviewTextField }
+        return textFields.first
     }
     
 }
