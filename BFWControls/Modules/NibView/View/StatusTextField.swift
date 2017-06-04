@@ -87,6 +87,12 @@ open class StatusTextField: NibTextField {
         super.delegate = self
     }
     
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+        // Set borderStyle to none since we're using our own borderView.
+        borderStyle = .none
+    }
+    
     // MARK: - updateView
     
     open override func updateView() {
