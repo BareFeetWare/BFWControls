@@ -145,7 +145,7 @@ fileprivate extension Bundle {
     
 }
 
-private extension UIColor {
+fileprivate extension UIColor {
     
     convenience init(hexValue: UInt32, alpha: CGFloat) {
         self.init(red: CGFloat((hexValue & 0xFF0000) >> 16) / 255.0,
@@ -166,8 +166,7 @@ private extension UIColor {
     
 }
 
-@available(iOS 8.2, *)
-enum FontWeight {
+public enum FontWeight {
     
     case ultraLight
     case thin
@@ -179,7 +178,8 @@ enum FontWeight {
     case heavy
     case black
     
-    var rawValue: CGFloat {
+    @available(iOS 8.2, *)
+    public var rawValue: CGFloat {
         switch self {
         case .ultraLight: return UIFontWeightUltraLight
         case .thin: return UIFontWeightThin
@@ -217,22 +217,24 @@ enum FontWeight {
                                     .heavy,
                                     .black]
     
+    @available(iOS 8.2, *)
     static var rawValues: [CGFloat] {
         return all.map { $0.rawValue }
     }
     
-    static var names: [String] {
+    public static var names: [String] {
         return all.map { $0.name }
     }
     
     /// Arbitrary value out of range -1.0 to 1.0.
-    static let notSet: CGFloat = -2.0
+    public static let notSet: CGFloat = -2.0
     
     init(name: String) {
         self = FontWeight.all.first { $0.name == name }!
     }
     
-    init(approximateWeight: CGFloat) {
+    @available(iOS 8.2, *)
+    public init(approximateWeight: CGFloat) {
         self = FontWeight.all.reduce(FontWeight.medium) { closest, possible in
             return abs(possible.rawValue - approximateWeight) < abs(closest.rawValue - approximateWeight)
                 ? possible : closest
@@ -242,7 +244,7 @@ enum FontWeight {
 }
 
 // TODO: move extension to separate file.
-extension UIFont {
+public extension UIFont {
     
     func font(weight: CGFloat) -> UIFont {
         let validWeight: CGFloat
