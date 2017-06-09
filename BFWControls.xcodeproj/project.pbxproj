@@ -180,13 +180,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A1E0C3631EE9950E009F4ED3 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
 		E22477E61ECBCAA7004A7802 /* Transition */ = {
 			isa = PBXGroup;
 			children = (
@@ -680,7 +673,6 @@
 		E28BA9F11E964D4500D5DE3D /* Table */ = {
 			isa = PBXGroup;
 			children = (
-				A1E0C3631EE9950E009F4ED3 /* View */,
 				E28BA9F21E964D4500D5DE3D /* Controller */,
 			);
 			path = Table;
