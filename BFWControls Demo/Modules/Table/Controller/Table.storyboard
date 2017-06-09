@@ -38,7 +38,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="ncW-T4-haB" kind="show" identifier="simpleCellSegue" id="zFU-c2-dH8"/>
+                                            <segue destination="ncW-T4-haB" kind="show" identifier="simpleCell" id="zFU-c2-dH8"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="WPo-Hs-LRd" rowHeight="54" style="IBUITableViewCellStyleDefault" id="rbr-h0-xQz">
@@ -58,7 +58,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Ros-cf-7sJ" kind="show" identifier="singleCellSegue" id="ciX-PG-MvL"/>
+                                            <segue destination="Ros-cf-7sJ" kind="show" identifier="singleCell" id="ciX-PG-MvL"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="by9-SY-WlI" rowHeight="54" style="IBUITableViewCellStyleDefault" id="Ela-cA-kh1">
@@ -78,7 +78,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="UDS-3V-ayw" kind="show" identifier="multiSectionSegue" id="yRQ-vY-GlT"/>
+                                            <segue destination="UDS-3V-ayw" kind="show" identifier="multiSection" id="yRQ-vY-GlT"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="AdT-hS-q8v" rowHeight="54" style="IBUITableViewCellStyleDefault" id="1lJ-J5-JFs">
@@ -98,7 +98,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="bs8-pc-hWh" kind="show" identifier="statusTextFieldCellSegue" id="clq-un-LgW"/>
+                                            <segue destination="bs8-pc-hWh" kind="show" identifier="statusTextFieldCell" id="clq-un-LgW"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="54" id="fAQ-BX-c3Q">

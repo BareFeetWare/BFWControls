@@ -25,7 +25,7 @@
                                 <rect key="frame" x="127" y="318.5" width="121" height="30"/>
                                 <state key="normal" title="Trigger Transition"/>
                                 <connections>
-                                    <segue destination="EBR-nC-xcq" kind="presentation" identifier="interactiveSegue" id="cac-KF-aex"/>
+                                    <segue destination="EBR-nC-xcq" kind="presentation" identifier="interactive" id="cac-KF-aex"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe down for interactive transition " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxu-fp-hZY">
@@ -48,7 +48,7 @@
                         </connections>
                     </view>
                     <connections>
-                        <segue destination="EBR-nC-xcq" kind="show" identifier="normalSegue" id="cUl-ia-lKI"/>
+                        <segue destination="EBR-nC-xcq" kind="show" identifier="normal" id="cUl-ia-lKI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1fn-DB-PYP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -58,7 +58,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-226.40000000000001" y="75.112443778110944"/>
+            <point key="canvasLocation" x="-407" y="74"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="wkN-13-BsU">
@@ -76,7 +76,7 @@
                                 <rect key="frame" x="112.5" y="318.5" width="150" height="30"/>
                                 <state key="normal" title="Back to previous view"/>
                                 <connections>
-                                    <segue destination="VKL-TU-a5K" kind="unwind" identifier="backSegue" unwindAction="unwindToTransitionWithSegue:" id="Mj6-Ss-0v9"/>
+                                    <segue destination="VKL-TU-a5K" kind="unwind" identifier="back" unwindAction="unwindToTransitionWithSegue:" id="Mj6-Ss-0v9"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -106,7 +106,7 @@
                     </userDefinedRuntimeAttributes>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="318" y="75"/>
+            <point key="canvasLocation" x="508" y="73"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

@@ -23,10 +23,8 @@ class ExcludeCellDemoViewController: StaticTableViewController {
 
     fileprivate func removeCell(indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
-            tableView.beginUpdates()
             selectedCells.append(cell)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.endUpdates()
         }
     }
     
