@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="34X-8D-MNq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="34X-8D-MNq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,7 +12,7 @@
         <!--Transition View Controller-->
         <scene sceneID="uX1-J7-a5U">
             <objects>
-                <viewController id="34X-8D-MNq" customClass="TransitionViewController" customModule="BFWControls" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="34X-8D-MNq" customClass="TransitionViewController" customModule="BFWControls_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hzE-Nd-joU"/>
                         <viewControllerLayoutGuide type="bottom" id="7Og-Po-gOc"/>
@@ -22,14 +22,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrt-Ek-pXh">
-                                <rect key="frame" x="127" y="318" width="121" height="30"/>
+                                <rect key="frame" x="127" y="318.5" width="121" height="30"/>
                                 <state key="normal" title="Trigger Transition"/>
                                 <connections>
-                                    <segue destination="EBR-nC-xcq" kind="presentation" identifier="interactiveSegue" id="cac-KF-aex"/>
+                                    <segue destination="EBR-nC-xcq" kind="presentation" identifier="interactive" id="cac-KF-aex"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe down for interactive transition " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxu-fp-hZY">
-                                <rect key="frame" x="46.5" y="28" width="283" height="21"/>
+                                <rect key="frame" x="46" y="28" width="283" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -48,7 +48,7 @@
                         </connections>
                     </view>
                     <connections>
-                        <segue destination="EBR-nC-xcq" kind="show" id="cUl-ia-lKI"/>
+                        <segue destination="EBR-nC-xcq" kind="show" identifier="normal" id="cUl-ia-lKI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1fn-DB-PYP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -58,7 +58,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-226.40000000000001" y="75.112443778110944"/>
+            <point key="canvasLocation" x="-407" y="74"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="wkN-13-BsU">
@@ -73,10 +73,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sry-37-0Xp">
-                                <rect key="frame" x="113" y="318" width="150" height="30"/>
+                                <rect key="frame" x="112.5" y="318.5" width="150" height="30"/>
                                 <state key="normal" title="Back to previous view"/>
                                 <connections>
-                                    <segue destination="VKL-TU-a5K" kind="unwind" unwindAction="unwindToTransitionWithSegue:" id="Mj6-Ss-0v9"/>
+                                    <segue destination="VKL-TU-a5K" kind="unwind" identifier="back" unwindAction="unwindToTransitionWithSegue:" id="Mj6-Ss-0v9"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -92,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Em-n0-mvJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="VKL-TU-a5K" userLabel="Exit" sceneMemberID="exit"/>
-                <customObject id="OMr-5p-ziJ" customClass="TranslationTransitioningController" customModule="BFWControls" customModuleProvider="target">
+                <customObject id="OMr-5p-ziJ" customClass="TranslationTransitioningController" customModule="BFWControls_Demo" customModuleProvider="target">
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="direction_">
                             <integer key="value" value="3"/>
@@ -106,10 +106,10 @@
                     </userDefinedRuntimeAttributes>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="712.79999999999995" y="74.212893553223395"/>
+            <point key="canvasLocation" x="508" y="73"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cac-KF-aex"/>
+        <segue reference="cUl-ia-lKI"/>
     </inferredMetricsTieBreakers>
 </document>
