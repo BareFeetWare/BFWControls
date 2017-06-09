@@ -7,9 +7,9 @@
 //
 
 import UIKit
+import BFWControls
 
-
-class TransitionViewController: UIViewController, SegueHandler {
+class TransitionViewController: UIViewController, SegueHandlerType {
     
     let interactiveTransition = TranslationAnimationController()
     
