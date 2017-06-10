@@ -7,14 +7,14 @@
 //
 
 import UIKit
+import BFWControls
 
-
-class TransitionViewController: UIViewController, SegueHandler {
+class TransitionViewController: UIViewController, SegueHandlerType {
     
     let interactiveTransition = TranslationAnimationController()
     
     enum SegueIdentifier: String {
-        case interactiveSegue
+        case interactive
     }
     
     // MARK: - Navigation
@@ -25,7 +25,7 @@ class TransitionViewController: UIViewController, SegueHandler {
             let segueIdentifier = SegueIdentifier(rawValue: identifier)
             else { return }
         switch segueIdentifier {
-        case .interactiveSegue:
+        case .interactive:
             let viewController = segue.destination
             viewController.transitioningDelegate = interactiveTransition
         }
@@ -38,7 +38,7 @@ class TransitionViewController: UIViewController, SegueHandler {
         case .began:
             interactiveTransition.isInteractive = true
             interactiveTransition.direction = .down
-            performSegue(.interactiveSegue, sender: pan.view)
+            performSegue(.interactive, sender: pan.view)
             break
         case .changed:
             // update progress of the transition
