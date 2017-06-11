@@ -15,13 +15,13 @@ class DynamicCellDemoViewController: StaticTableViewController {
     fileprivate var rowCount = 0
 
     // MARK: - Private functions
-    fileprivate func insertCell() {
+    fileprivate func insertRow() {
         rowCount += 1
-        tableView.insertRows(at: [IndexPath(row: rowCount-1, section: 0)], with: .right)
+        tableView.insertRows(at: [IndexPath(row: rowCount - 1, section: 0)], with: .right)
         reloadAllVisibleRows()
     }
     
-    fileprivate func removeCell(indexPath: IndexPath) {
+    fileprivate func deleteRow(at indexPath: IndexPath) {
         rowCount -= 1
         tableView.deleteRows(at: [indexPath], with: .left)
         reloadAllVisibleRows()
@@ -35,7 +35,7 @@ class DynamicCellDemoViewController: StaticTableViewController {
     
     // MARK: - Actions
     @IBAction func actionAddCell(_ sender: Any) {
-        insertCell()
+        insertRow()
     }
     
     // MARK: - UITableViewDataSource
@@ -50,8 +50,8 @@ class DynamicCellDemoViewController: StaticTableViewController {
     }
     
     //MARK: - UITableViewDelegate
-    override  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        removeCell(indexPath: indexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        deleteRow(at: indexPath)
     }
     
 }
