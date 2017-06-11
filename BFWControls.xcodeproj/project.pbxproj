@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A11CF22A1EEC2F4D00020C0C /* DynamicHeightCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11CF2291EEC2F4D00020C0C /* DynamicHeightCellViewController.swift */; };
 		A1BD33A21EEA2F9800D217F6 /* ExcludeCellDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD33A11EEA2F9800D217F6 /* ExcludeCellDemoViewController.swift */; };
+		A1BD33B91EEAC9A400D217F6 /* DynamicCellDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD33B81EEAC9A400D217F6 /* DynamicCellDemoViewController.swift */; };
 		A1E0C3561EE9257A009F4ED3 /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA95F1E96402500D5DE3D /* SegueHandlerType.swift */; };
 		E207BCAA1EADE577007BB14F /* UIImage+BFW.swift in Sources */ = {isa = PBXBuildFile; fileRef = E207BCA91EADE577007BB14F /* UIImage+BFW.swift */; };
 		E22477EA1ECBCAA7004A7802 /* Transition.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E22477E81ECBCAA7004A7802 /* Transition.storyboard */; };
@@ -83,7 +85,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A11CF2291EEC2F4D00020C0C /* DynamicHeightCellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicHeightCellViewController.swift; sourceTree = "<group>"; };
 		A1BD33A11EEA2F9800D217F6 /* ExcludeCellDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExcludeCellDemoViewController.swift; sourceTree = "<group>"; };
+		A1BD33B81EEAC9A400D217F6 /* DynamicCellDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicCellDemoViewController.swift; sourceTree = "<group>"; };
 		E207BCA91EADE577007BB14F /* UIImage+BFW.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+BFW.swift"; sourceTree = "<group>"; };
 		E22477E81ECBCAA7004A7802 /* Transition.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Transition.storyboard; sourceTree = "<group>"; };
 		E22477E91ECBCAA7004A7802 /* TransitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionViewController.swift; sourceTree = "<group>"; };
@@ -683,6 +687,8 @@
 			children = (
 				E28BA9F31E964D4500D5DE3D /* Table.storyboard */,
 				A1BD33A11EEA2F9800D217F6 /* ExcludeCellDemoViewController.swift */,
+				A1BD33B81EEAC9A400D217F6 /* DynamicCellDemoViewController.swift */,
+				A11CF2291EEC2F4D00020C0C /* DynamicHeightCellViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -870,9 +876,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E28BA9FA1E964D4500D5DE3D /* MorphTableViewController.swift in Sources */,
+				A1BD33B91EEAC9A400D217F6 /* DynamicCellDemoViewController.swift in Sources */,
 				E28BA9FC1E964D4500D5DE3D /* AvatarView.swift in Sources */,
 				A1BD33A21EEA2F9800D217F6 /* ExcludeCellDemoViewController.swift in Sources */,
 				E28BA9D41E964CB200D5DE3D /* AppDelegate.swift in Sources */,
+				A11CF22A1EEC2F4D00020C0C /* DynamicHeightCellViewController.swift in Sources */,
 				A1E0C3561EE9257A009F4ED3 /* SegueHandlerType.swift in Sources */,
 				E22477EB1ECBCAA7004A7802 /* TransitionViewController.swift in Sources */,
 			);
