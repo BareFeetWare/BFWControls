@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Kjh-AR-qZQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Kjh-AR-qZQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B09-KP-YUi" customClass="PileView" customModule="BFWControls">
-                                <rect key="frame" x="16" y="311" width="343" height="44"/>
+                                <rect key="frame" x="82" y="315" width="211" height="36"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wTn-2v-lr6">
                                         <rect key="frame" x="0.0" y="49" width="77" height="30"/>
@@ -51,7 +50,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xG2-tc-Yef" customClass="PileView" customModule="BFWControls">
-                                <rect key="frame" x="16" y="399" width="343" height="93"/>
+                                <rect key="frame" x="48.5" y="395" width="278" height="36"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3x-XB-NnH">
                                         <rect key="frame" x="0.0" y="49" width="77" height="30"/>
@@ -81,12 +80,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="B09-KP-YUi" firstAttribute="leading" secondItem="OCC-f4-QLy" secondAttribute="leadingMargin" id="SGN-Bb-SXZ"/>
-                            <constraint firstItem="xG2-tc-Yef" firstAttribute="leading" secondItem="OCC-f4-QLy" secondAttribute="leadingMargin" id="XYv-ny-jmr"/>
+                            <constraint firstItem="xG2-tc-Yef" firstAttribute="centerX" secondItem="OCC-f4-QLy" secondAttribute="centerX" id="4Dl-GX-UVh"/>
+                            <constraint firstItem="B09-KP-YUi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OCC-f4-QLy" secondAttribute="leading" constant="15" id="SGN-Bb-SXZ"/>
+                            <constraint firstItem="xG2-tc-Yef" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OCC-f4-QLy" secondAttribute="leading" constant="15" id="XYv-ny-jmr"/>
                             <constraint firstItem="xG2-tc-Yef" firstAttribute="top" secondItem="B09-KP-YUi" secondAttribute="bottom" constant="44" id="YE6-j4-NL1"/>
                             <constraint firstItem="B09-KP-YUi" firstAttribute="centerY" secondItem="OCC-f4-QLy" secondAttribute="centerY" id="bO4-fw-hEm"/>
-                            <constraint firstItem="B09-KP-YUi" firstAttribute="trailing" secondItem="OCC-f4-QLy" secondAttribute="trailingMargin" id="g5K-bT-91Y"/>
-                            <constraint firstItem="xG2-tc-Yef" firstAttribute="trailing" secondItem="OCC-f4-QLy" secondAttribute="trailingMargin" id="tmf-oO-mlm"/>
+                            <constraint firstItem="B09-KP-YUi" firstAttribute="centerX" secondItem="OCC-f4-QLy" secondAttribute="centerX" id="n6A-f4-nQD"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="PileViews" id="v50-ab-Szx"/>
