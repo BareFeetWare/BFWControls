@@ -30,11 +30,8 @@ import UIKit
         let centerXConstraintWithSuperview = constraintsWithSuperview.filter({ $0.firstAttribute == .centerX }).first
         let leadingConstraintWithSuperview = constraintsWithSuperview.filter({ $0.firstAttribute == .leading }).first?.constant ?? 0
         let trailingConstraintWithSuperview = constraintsWithSuperview.filter({ $0.firstAttribute == .trailing }).first?.constant ?? 0
-        if centerXConstraintWithSuperview != nil {
-            return (superview.bounds.size.width - (subviewCount - 1) * gapWidth - (trailingConstraintWithSuperview + leadingConstraintWithSuperview) * 2)
-        } else {
-            return (superview.bounds.size.width - (subviewCount - 1) * gapWidth - trailingConstraintWithSuperview - leadingConstraintWithSuperview)
-        }
+        let leadingAndTrailingConstraintMultiplier: CGFloat = centerXConstraintWithSuperview != nil ? 2 : 1
+        return (superview.bounds.size.width - (subviewCount - 1) * gapWidth - (trailingConstraintWithSuperview + leadingConstraintWithSuperview) * leadingAndTrailingConstraintMultiplier)
     }
     
     /// Total width of the subviews when they are layed out horizontally.
@@ -66,7 +63,7 @@ import UIKit
             width  = subviews.reduce(0) { (result, subview) in
                 return (result + subview.intrinsicContentSize.width)
             }
-            width += (subviewCount - 1)*gapWidth
+            width += (subviewCount - 1) * gapWidth
             height  = subviews.reduce(0) { (result, subview) in
                 return max(result, subview.intrinsicContentSize.height)
             }
@@ -77,43 +74,29 @@ import UIKit
             height  = subviews.reduce(0) { (result, subview) in
                 return (result + subview.intrinsicContentSize.height)
             }
-            height += (subviewCount - 1)*gapHeight
+            height += (subviewCount - 1) * gapHeight
         }
         return CGSize(width: width, height: height)
-    }
-    
-    
-    /// Returns origin for a subview
-    ///
-    /// - Parameters:
-    ///   - subview: Current subview
-    ///   - previousSubview: Previous subview
-    /// - Returns: Origin as CGPoint
-    private func getOrigin(for subview: UIView, previousSubview: UIView?) -> CGPoint {
-        var subviewOriginY: CGFloat = 0.0
-        var subviewOriginX: CGFloat = 0.0
-        if isHorizontal {
-            subviewOriginX = previousSubview != nil
-                ? previousSubview!.frame.origin.x + previousSubview!.bounds.size.width + gapWidth
-                : 0.0
-        } else  {
-            subviewOriginY = previousSubview != nil
-                ? previousSubview!.frame.origin.y + previousSubview!.bounds.size.height + gapHeight
-                : 0.0
-        }
-        return CGPoint(x: subviewOriginX, y: subviewOriginY)
     }
     
     /// Subviews layed out horizontally or vertically.
     open override func layoutSubviews() {
         invalidateIntrinsicContentSize()
         for (index, subview) in subviews.enumerated() {
-            for eachContraint in subview.constraints {
-                subview.removeConstraint(eachContraint)
-            }
+            // Remove any existing constraints
+            subview.constraints.forEach(subview.removeConstraint)
+            // Layout subview
             let subviewWidth = min(subview.intrinsicContentSize.width, bounds.size.width)
             let subviewHeight = min(subview.intrinsicContentSize.height, bounds.size.height)
-            let origin = getOrigin(for: subview, previousSubview: (index > 0 ? subviews[index-1] : nil))
+            let origin: CGPoint
+            if (index == 0) {
+                origin = CGPoint.zero
+            } else {
+                let previousSubview = subviews[index - 1]
+                origin = isHorizontal
+                    ? CGPoint(x: previousSubview.frame.maxX + gapWidth, y: 0)
+                    : CGPoint(x: 0, y: previousSubview.frame.maxY + gapHeight)
+            }
             subview.frame = CGRect(origin: origin,
                                    size: CGSize(width: subviewWidth,
                                                 height: subviewHeight))
