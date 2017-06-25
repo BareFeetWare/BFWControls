@@ -82,6 +82,7 @@
 		E28BA9FD1E964D4500D5DE3D /* AvatarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9F01E964D4500D5DE3D /* AvatarView.xib */; };
 		E28BA9FE1E964D4500D5DE3D /* Table.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9F31E964D4500D5DE3D /* Table.storyboard */; };
 		E28BA9FF1E964D9500D5DE3D /* BFWControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E28BA9111E963F7800D5DE3D /* BFWControls.framework */; };
+		E2A87BCA1EFEA2F80069E41F /* Shadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A87BC91EFEA2F80069E41F /* Shadable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -163,6 +164,7 @@
 		E28BA9EF1E964D4500D5DE3D /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		E28BA9F01E964D4500D5DE3D /* AvatarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AvatarView.xib; sourceTree = "<group>"; };
 		E28BA9F31E964D4500D5DE3D /* Table.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Table.storyboard; sourceTree = "<group>"; };
+		E2A87BC91EFEA2F80069E41F /* Shadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shadable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +243,7 @@
 				E28BA9351E96402500D5DE3D /* Layer */,
 				E28BA93B1E96402500D5DE3D /* Layout */,
 				E28BA9401E96402500D5DE3D /* NibView */,
+				E2A87BC71EFEA2940069E41F /* Shade */,
 				E28BA9511E96402500D5DE3D /* Styled */,
 				E28BA9571E96402500D5DE3D /* Table */,
 				E28BA95C1E96402500D5DE3D /* Transition */,
@@ -693,6 +696,22 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		E2A87BC71EFEA2940069E41F /* Shade */ = {
+			isa = PBXGroup;
+			children = (
+				E2A87BC81EFEA2940069E41F /* View */,
+			);
+			path = Shade;
+			sourceTree = "<group>";
+		};
+		E2A87BC81EFEA2940069E41F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E2A87BC91EFEA2F80069E41F /* Shadable.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -850,6 +869,7 @@
 				E28BA9851E96402500D5DE3D /* NibButton.swift in Sources */,
 				E28BA98A1E96402500D5DE3D /* NibTextField.swift in Sources */,
 				E28BA97A1E96402500D5DE3D /* CarouselViewController.swift in Sources */,
+				E2A87BCA1EFEA2F80069E41F /* Shadable.swift in Sources */,
 				E28BA9921E96402500D5DE3D /* StyledText.swift in Sources */,
 				E28BA97D1E96402500D5DE3D /* UIView+Layer.swift in Sources */,
 				E28BA99F1E96402500D5DE3D /* UIViewMorphExtensions.swift in Sources */,
