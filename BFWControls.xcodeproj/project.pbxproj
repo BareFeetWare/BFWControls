@@ -33,7 +33,6 @@
 		E28BA97E1E96402500D5DE3D /* UIView+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA93A1E96402500D5DE3D /* UIView+Transform.swift */; };
 		E28BA97F1E96402500D5DE3D /* NSLayoutConstraintExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA93D1E96402500D5DE3D /* NSLayoutConstraintExtensions.swift */; };
 		E28BA9801E96402500D5DE3D /* PileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA93E1E96402500D5DE3D /* PileView.swift */; };
-		E28BA9811E96402500D5DE3D /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA93F1E96402500D5DE3D /* UIViewExtensions.swift */; };
 		E28BA9831E96402500D5DE3D /* BFWNibView.m in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9431E96402500D5DE3D /* BFWNibView.m */; };
 		E28BA9841E96402500D5DE3D /* ImageNibCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9441E96402500D5DE3D /* ImageNibCellView.swift */; };
 		E28BA9851E96402500D5DE3D /* NibButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9451E96402500D5DE3D /* NibButton.swift */; };
@@ -114,7 +113,6 @@
 		E28BA93A1E96402500D5DE3D /* UIView+Transform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Transform.swift"; sourceTree = "<group>"; };
 		E28BA93D1E96402500D5DE3D /* NSLayoutConstraintExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintExtensions.swift; sourceTree = "<group>"; };
 		E28BA93E1E96402500D5DE3D /* PileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PileView.swift; sourceTree = "<group>"; };
-		E28BA93F1E96402500D5DE3D /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		E28BA9431E96402500D5DE3D /* BFWNibView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFWNibView.m; sourceTree = "<group>"; };
 		E28BA9441E96402500D5DE3D /* ImageNibCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageNibCellView.swift; sourceTree = "<group>"; };
 		E28BA9451E96402500D5DE3D /* NibButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibButton.swift; sourceTree = "<group>"; };
@@ -365,7 +363,6 @@
 			children = (
 				E28BA93D1E96402500D5DE3D /* NSLayoutConstraintExtensions.swift */,
 				E28BA93E1E96402500D5DE3D /* PileView.swift */,
-				E28BA93F1E96402500D5DE3D /* UIViewExtensions.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -865,7 +862,6 @@
 				E28BA97E1E96402500D5DE3D /* UIView+Transform.swift in Sources */,
 				E28BA9701E96402500D5DE3D /* AlertView.swift in Sources */,
 				E28BA9841E96402500D5DE3D /* ImageNibCellView.swift in Sources */,
-				E28BA9811E96402500D5DE3D /* UIViewExtensions.swift in Sources */,
 				E28BA9851E96402500D5DE3D /* NibButton.swift in Sources */,
 				E28BA98A1E96402500D5DE3D /* NibTextField.swift in Sources */,
 				E28BA97A1E96402500D5DE3D /* CarouselViewController.swift in Sources */,
