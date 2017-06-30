@@ -28,7 +28,7 @@ public extension UIView {
     }
     
     static var classNameComponents: [String] {
-        let fullClassName = String(describing: self)
+        let fullClassName = NSStringFromClass(self) // Note: String(describing: self) does not include the moduleName prefix.
         return fullClassName.components(separatedBy: ".")
     }
     
