@@ -12,19 +12,7 @@ public extension UIView {
     // MARK: - Class variables
     
     public static var bundle: Bundle? {
-        let isInterfaceBuilder: Bool
-        #if TARGET_INTERFACE_BUILDER // Rendering in storyboard using IBDesignable.
-            isInterfaceBuilder = true
-        #else
-            isInterfaceBuilder = false
-        #endif
-        let bundle = isInterfaceBuilder
-            ? Bundle(for: self)
-                // TODO: Dynamic strings:
-            : moduleName == "BFWControls"
-            ? Bundle(identifier: "com.barefeetware.BFWControls")
-            : Bundle.main
-        return bundle
+        return Bundle(for: self)
     }
     
     static var classNameComponents: [String] {
