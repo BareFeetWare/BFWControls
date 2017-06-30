@@ -64,6 +64,13 @@ import UIKit
     
     private static var sizeForKeyDictionary = [String: CGSize]()
     
+    open override func awakeAfter(using coder: NSCoder) -> Any? {
+        let hasAlreadyLoadedFromNib = !subviews.isEmpty // TODO: More rubust test.
+        return hasAlreadyLoadedFromNib
+            ? self
+            : viewFromNib ?? self
+    }
+    
     open override func awakeFromNib() {
         super.awakeFromNib()
         removePlaceHolders()
