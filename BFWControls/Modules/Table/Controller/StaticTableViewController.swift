@@ -210,8 +210,9 @@ open class StaticTableViewController: UITableViewController {
             {
                 // Calculate height of last cell.
                 DispatchQueue.main.async {
-                    self.updateFillUsingLastCell()
-                    self.refreshCellHeights()
+                    if self.updateFillUsingLastCell() {
+                        self.refreshCellHeights()
+                    }
                 }
             }
         }
