@@ -149,7 +149,7 @@ open class StaticTableViewController: UITableViewController {
         return shouldRefreshCellHeights
     }
     
-    fileprivate func refreshDynamicLastCellHeight() {
+    open func refreshDynamicLastCellHeight() {
         needRefreshDynamicLastCellHeight = true
         DispatchQueue.main.async {
             if self.updateFillUsingLastCell() {
