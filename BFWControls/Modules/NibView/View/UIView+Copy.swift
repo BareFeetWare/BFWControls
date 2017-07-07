@@ -44,9 +44,8 @@ public extension UIView {
     func copyConstraints(from view: UIView) {
         translatesAutoresizingMaskIntoConstraints = view.translatesAutoresizingMaskIntoConstraints
         for constraint in view.constraints {
-            if var firstItem = constraint.firstItem as? UIView,
+            if var firstItem = constraint.firstItem as? UIView {
                 var secondItem = constraint.secondItem as? UIView
-            {
                 if firstItem == view {
                     firstItem = self
                 }
