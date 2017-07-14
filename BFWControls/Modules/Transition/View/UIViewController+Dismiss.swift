@@ -25,12 +25,28 @@ public extension UIViewController {
     }
     
     var readiedForPush: UIViewController {
+        removeDismiss()
         if self is UINavigationController {
-            debugPrint("**** error: pushing a navigation controller onlto a navigation controller. Stripping out second navigation controller, but this should be fixed.")
+            debugPrint("**** error: pushing a navigation controller onto a navigation controller. Stripping out the second navigation controller, but this should be fixed.")
         }
         let strippedViewController = (self as? UINavigationController)?.viewControllers.first ?? self
-        strippedViewController.removeDismiss()
         return strippedViewController
+    }
+    
+}
+
+public extension UINavigationController {
+    
+    override func removeDismiss() {
+        viewControllers.first?.removeDismiss()
+    }
+    
+}
+
+public extension UITabBarController {
+    
+    override func removeDismiss() {
+        viewControllers?.forEach { $0.removeDismiss() }
     }
     
 }
