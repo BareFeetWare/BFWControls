@@ -146,12 +146,13 @@ open class CarouselViewController: UICollectionViewController {
         }
     }
     
-    fileprivate func showBounceWhenViewLoaded() {
+    fileprivate func showBounce() {
         UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseInOut, animations: {
             self.collectionView?.setContentOffset(CGPoint(x: self.bounceContentOffsetXValue, y: 0), animated: false)
         }) {_ in
             self.scroll(toPage: self.pageControl.currentPage, animated: true)
         }
+        shouldBounce = false
     }
     
     open func scroll(toPage page: Int, animated: Bool) {
@@ -199,7 +200,7 @@ open class CarouselViewController: UICollectionViewController {
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if shouldBounce {
-            showBounceWhenViewLoaded()
+            showBounce()
         }
     }
     
