@@ -18,6 +18,8 @@ open class CarouselViewController: UICollectionViewController {
     /// Looped from last back to first page.
     @IBInspectable open var looped: Bool = false
     
+    @IBInspectable open var shouldBounce: Bool = false
+    
     // MARK: - Static content
     
     /// Cell identifiers for finite static content.
@@ -112,6 +114,8 @@ open class CarouselViewController: UICollectionViewController {
         return collectionViewSize.map { size in collectionView!.contentOffset.x / size.width } ?? 0
     }
     
+    fileprivate var bounceContentOffsetX: CGFloat = 100
+    
     // MARK: - Actions
     
     fileprivate func addPageControl() {
@@ -140,6 +144,15 @@ open class CarouselViewController: UICollectionViewController {
                 pageControl.currentPage = currentPage
             }
         }
+    }
+    
+    fileprivate func showBounce() {
+        UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseInOut, animations: {
+            self.collectionView?.setContentOffset(CGPoint(x: self.bounceContentOffsetX, y: 0), animated: false)
+        }) {_ in
+            self.scroll(toPage: self.pageControl.currentPage, animated: true)
+        }
+        shouldBounce = false
     }
     
     open func scroll(toPage page: Int, animated: Bool) {
@@ -184,13 +197,22 @@ open class CarouselViewController: UICollectionViewController {
         addPageControl()
     }
     
+    open override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if shouldBounce {
+            showBounce()
+        }
+    }
+    
     open override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         // Resize cell size to fit collectionView if bounds change.
         if collectionViewSize != collectionView?.bounds.size {
             collectionViewSize = collectionView?.bounds.size
             collectionView?.reloadData()
-            scroll(toPage: pageControl.currentPage, animated: false)
+            if !shouldBounce {
+                scroll(toPage: pageControl.currentPage, animated: false)
+            }
         }
     }
     
