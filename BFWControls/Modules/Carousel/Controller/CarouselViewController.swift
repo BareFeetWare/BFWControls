@@ -114,7 +114,7 @@ open class CarouselViewController: UICollectionViewController {
         return collectionViewSize.map { size in collectionView!.contentOffset.x / size.width } ?? 0
     }
     
-    fileprivate var bounceContentOffsetXValue: CGFloat = 100
+    fileprivate var bounceContentOffsetX: CGFloat = 100
     
     // MARK: - Actions
     
@@ -148,7 +148,7 @@ open class CarouselViewController: UICollectionViewController {
     
     fileprivate func showBounce() {
         UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseInOut, animations: {
-            self.collectionView?.setContentOffset(CGPoint(x: self.bounceContentOffsetXValue, y: 0), animated: false)
+            self.collectionView?.setContentOffset(CGPoint(x: self.bounceContentOffsetX, y: 0), animated: false)
         }) {_ in
             self.scroll(toPage: self.pageControl.currentPage, animated: true)
         }
