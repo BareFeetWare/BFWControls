@@ -97,7 +97,7 @@ public extension Shadable where Self: UIView {
     var isLightUse: Bool {
         return isLightAuto
             ? (superview as? Shadable)?.isLightUse
-                ?? isBackgroundLight.map { !$0 }
+                ?? superview?.isBackgroundLight.map { !$0 }
                 ?? isLight
             : isLight
     }
@@ -132,6 +132,11 @@ fileprivate extension UIView {
             var color: UIColor?
             var superview: UIView? = self
             while superview != nil {
+                if superview is UIImageView {
+                    // TODO: Determine average color of image.
+                    color = .darkGray
+                    break
+                }
                 if let backgroundColor = superview?.backgroundColor {
                     var white: CGFloat = 0.0
                     var alpha: CGFloat = 0.0
