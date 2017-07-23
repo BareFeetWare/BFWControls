@@ -4,6 +4,7 @@
 //
 //  Created by Tom Brodhurst-Hill on 24/6/17.
 //  Copyright © 2017 BareFeetWare. All rights reserved.
+//  Free to use at your own risk, with acknowledgement to BareFeetWare.
 //
 
 import UIKit
@@ -13,20 +14,41 @@ public protocol Shadable {
     // Declare these variables as stored @IBInspectable to set per instance:
     
     var isLight: Bool { get }
+    
+    // Can override:
+    
     var isLightAuto: Bool { get }
     var isLightUse: Bool { get }
+    var parentShadable: Shadable? { get }
 
     var shadeLevel: Int { get }
     var lightColors: [UIColor] { get }
     var darkColors: [UIColor] { get }
     
-    // Implemented by extension:
-    
 //    func applyShade()
     
 }
 
-public extension Shadable where Self: UIView {
+public extension Shadable {
+    
+    var isLight: Bool {
+        return false
+    }
+    
+    var isLightAuto: Bool {
+        return true
+    }
+    
+    var isLightUse: Bool {
+        return isLightAuto
+            ? parentShadable?.isLightUse
+                ?? isLight
+            : isLight
+    }
+    
+    var parentShadable: Shadable? {
+        return nil
+    }
     
     var shadeLevel: Int {
         get {
@@ -55,12 +77,21 @@ public extension Shadable where Self: UIView {
         }
     }
     
-    var isLight: Bool {
-        return false
+    var shadeColor: UIColor {
+        let colors = isLight
+            ? lightColors
+            : darkColors
+        let index = max(shadeLevel, colors.count - 1)
+        let color = colors[index]
+        return color
     }
     
-    var isLightAuto: Bool {
-        return true
+}
+
+public extension Shadable where Self: UIView {
+    
+    var parentShadable: Shadable? {
+        return superview as? Shadable
     }
     
     var isLightUse: Bool {
@@ -69,15 +100,6 @@ public extension Shadable where Self: UIView {
                 ?? isBackgroundLight.map { !$0 }
                 ?? isLight
             : isLight
-    }
-    
-    var shadeColor: UIColor {
-        let colors = isLight
-            ? lightColors
-            : darkColors
-        let index = max(shadeLevel, colors.count - 1)
-        let color = colors[index]
-        return color
     }
     
 //    func applyShade() {

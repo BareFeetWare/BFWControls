@@ -15,6 +15,7 @@
 		E22477EA1ECBCAA7004A7802 /* Transition.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E22477E81ECBCAA7004A7802 /* Transition.storyboard */; };
 		E22477EB1ECBCAA7004A7802 /* TransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22477E91ECBCAA7004A7802 /* TransitionViewController.swift */; };
 		E22FD1B21EC564AD0043171C /* UIViewController+Dismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FD1B11EC564AD0043171C /* UIViewController+Dismiss.swift */; };
+		E24682211F24820B007285DB /* ShadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24682201F24820B007285DB /* ShadableView.swift */; };
 		E28BA96D1E96402500D5DE3D /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA91F1E96402500D5DE3D /* AlertViewController.swift */; };
 		E28BA96E1E96402500D5DE3D /* ActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9211E96402500D5DE3D /* ActionSheetView.swift */; };
 		E28BA96F1E96402500D5DE3D /* ActionSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9221E96402500D5DE3D /* ActionSheetView.xib */; };
@@ -92,6 +93,7 @@
 		E22477E81ECBCAA7004A7802 /* Transition.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Transition.storyboard; sourceTree = "<group>"; };
 		E22477E91ECBCAA7004A7802 /* TransitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionViewController.swift; sourceTree = "<group>"; };
 		E22FD1B11EC564AD0043171C /* UIViewController+Dismiss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Dismiss.swift"; sourceTree = "<group>"; };
+		E24682201F24820B007285DB /* ShadableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadableView.swift; sourceTree = "<group>"; };
 		E28BA9111E963F7800D5DE3D /* BFWControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BFWControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E28BA9141E963F7900D5DE3D /* BFWControls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFWControls.h; sourceTree = "<group>"; };
 		E28BA9151E963F7900D5DE3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -241,7 +243,7 @@
 				E28BA9351E96402500D5DE3D /* Layer */,
 				E28BA93B1E96402500D5DE3D /* Layout */,
 				E28BA9401E96402500D5DE3D /* NibView */,
-				E2A87BC71EFEA2940069E41F /* Shade */,
+				E2A87BC71EFEA2940069E41F /* Shadable */,
 				E28BA9511E96402500D5DE3D /* Styled */,
 				E28BA9571E96402500D5DE3D /* Table */,
 				E28BA95C1E96402500D5DE3D /* Transition */,
@@ -693,18 +695,19 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		E2A87BC71EFEA2940069E41F /* Shade */ = {
+		E2A87BC71EFEA2940069E41F /* Shadable */ = {
 			isa = PBXGroup;
 			children = (
 				E2A87BC81EFEA2940069E41F /* View */,
 			);
-			path = Shade;
+			path = Shadable;
 			sourceTree = "<group>";
 		};
 		E2A87BC81EFEA2940069E41F /* View */ = {
 			isa = PBXGroup;
 			children = (
 				E2A87BC91EFEA2F80069E41F /* Shadable.swift */,
+				E24682201F24820B007285DB /* ShadableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -881,6 +884,7 @@
 				E28BA99B1E96402500D5DE3D /* TranslationAnimationController.swift in Sources */,
 				E28BA98D1E96402500D5DE3D /* StatusTextFieldNibView.swift in Sources */,
 				E28BA9961E96402500D5DE3D /* SegueHandlerType.swift in Sources */,
+				E24682211F24820B007285DB /* ShadableView.swift in Sources */,
 				E28BA9891E96402500D5DE3D /* NibTableViewHeaderFooterView.swift in Sources */,
 				E28BA9831E96402500D5DE3D /* BFWNibView.m in Sources */,
 				E28BA9941E96402500D5DE3D /* UIView+Table.swift in Sources */,
