@@ -83,6 +83,7 @@
 		E28BA9FE1E964D4500D5DE3D /* Table.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9F31E964D4500D5DE3D /* Table.storyboard */; };
 		E28BA9FF1E964D9500D5DE3D /* BFWControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E28BA9111E963F7800D5DE3D /* BFWControls.framework */; };
 		E2A87BCA1EFEA2F80069E41F /* Shadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A87BC91EFEA2F80069E41F /* Shadable.swift */; };
+		E2B3E5841F26EA5C002539E6 /* ReplaceInNavigationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B3E5831F26EA5C002539E6 /* ReplaceInNavigationSegue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -165,6 +166,7 @@
 		E28BA9F01E964D4500D5DE3D /* AvatarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AvatarView.xib; sourceTree = "<group>"; };
 		E28BA9F31E964D4500D5DE3D /* Table.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Table.storyboard; sourceTree = "<group>"; };
 		E2A87BC91EFEA2F80069E41F /* Shadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shadable.swift; sourceTree = "<group>"; };
+		E2B3E5831F26EA5C002539E6 /* ReplaceInNavigationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplaceInNavigationSegue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -474,6 +476,7 @@
 				E28BA9621E96402500D5DE3D /* DismissAndPushSegue.swift */,
 				E28BA9631E96402500D5DE3D /* MorphSegue.swift */,
 				E28BA9641E96402500D5DE3D /* OpenURLSegue.swift */,
+				E2B3E5831F26EA5C002539E6 /* ReplaceInNavigationSegue.swift */,
 				E28BA9651E96402500D5DE3D /* TranslationAnimationController.swift */,
 				E28BA9661E96402500D5DE3D /* TranslationNavigationDelegate.swift */,
 				E28BA9671E96402500D5DE3D /* TranslationTransitioningController.swift */,
@@ -873,6 +876,7 @@
 				E28BA97D1E96402500D5DE3D /* UIView+Layer.swift in Sources */,
 				E28BA99F1E96402500D5DE3D /* UIViewMorphExtensions.swift in Sources */,
 				E28BA9741E96402500D5DE3D /* StaticAlertView.swift in Sources */,
+				E2B3E5841F26EA5C002539E6 /* ReplaceInNavigationSegue.swift in Sources */,
 				E28BA9871E96402500D5DE3D /* NibReplaceable.swift in Sources */,
 				E28BA99E1E96402500D5DE3D /* UIViewController+Segue.swift in Sources */,
 				E28BA97F1E96402500D5DE3D /* NSLayoutConstraintExtensions.swift in Sources */,
