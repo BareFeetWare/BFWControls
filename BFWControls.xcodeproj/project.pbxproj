@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65FF09B11F303CD50064E4E3 /* ArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FF09B01F303CD50064E4E3 /* ArcView.swift */; };
 		A11CF22A1EEC2F4D00020C0C /* DynamicHeightCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11CF2291EEC2F4D00020C0C /* DynamicHeightCellViewController.swift */; };
 		A1BD33A21EEA2F9800D217F6 /* ExcludeCellDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD33A11EEA2F9800D217F6 /* ExcludeCellDemoViewController.swift */; };
 		A1BD33B91EEAC9A400D217F6 /* DynamicCellDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD33B81EEAC9A400D217F6 /* DynamicCellDemoViewController.swift */; };
@@ -88,6 +89,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		65FF09B01F303CD50064E4E3 /* ArcView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcView.swift; sourceTree = "<group>"; };
 		A11CF2291EEC2F4D00020C0C /* DynamicHeightCellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicHeightCellViewController.swift; sourceTree = "<group>"; };
 		A1BD33A11EEA2F9800D217F6 /* ExcludeCellDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExcludeCellDemoViewController.swift; sourceTree = "<group>"; };
 		A1BD33B81EEAC9A400D217F6 /* DynamicCellDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicCellDemoViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +192,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		65FF09AE1F303CC20064E4E3 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				65FF09AF1F303CC20064E4E3 /* View */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		65FF09AF1F303CC20064E4E3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				65FF09B01F303CD50064E4E3 /* ArcView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		E22477E61ECBCAA7004A7802 /* Transition */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				E28BA91D1E96402500D5DE3D /* Alert */,
+				65FF09AE1F303CC20064E4E3 /* Animation */,
 				E28BA92A1E96402500D5DE3D /* Binding */,
 				E28BA92D1E96402500D5DE3D /* Blur */,
 				E28BA9321E96402500D5DE3D /* Carousel */,
@@ -867,6 +886,7 @@
 				E28BA9911E96402500D5DE3D /* TextAttributes.swift in Sources */,
 				E28BA9721E96402500D5DE3D /* AlertViewOverlay.swift in Sources */,
 				E28BA9881E96402500D5DE3D /* NibTableViewCell.swift in Sources */,
+				65FF09B11F303CD50064E4E3 /* ArcView.swift in Sources */,
 				E207BCAA1EADE577007BB14F /* UIImage+BFW.swift in Sources */,
 				E28BA9A01E96402500D5DE3D /* DefaultsHandlerType.swift in Sources */,
 				E28BA97E1E96402500D5DE3D /* UIView+Transform.swift in Sources */,
