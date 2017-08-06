@@ -9,27 +9,27 @@
 
 import UIKit
 
-@IBDesignable class ArcView: UIView {
+@IBDesignable open class ArcView: UIView {
     
-    // MARK: - IBInspecatble variables
+    // MARK: - IBInspectable variables
 
-    @IBInspectable var start: CGFloat = -0.25
-    @IBInspectable var end: CGFloat = 0.75
-    @IBInspectable var lineWidth: CGFloat = 2
-    @IBInspectable var duration: TimeInterval = 3.0
-    @IBInspectable var fillColor: UIColor = .clear
-    @IBInspectable var strokeColor: UIColor = .blue
+    @IBInspectable open var start: Double = -0.25
+    @IBInspectable open var end: Double = 0.75
+    @IBInspectable open var lineWidth: CGFloat = 2
+    @IBInspectable open var duration: TimeInterval = 1.0
+    @IBInspectable open var fillColor: UIColor = .clear
+    @IBInspectable open var strokeColor: UIColor = .gray
     
-    @IBInspectable var curveInt: Int {
+    @IBInspectable open var animationCurveInt: Int {
         get {
-            return curve.rawValue
+            return animationCurve.rawValue
         }
         set {
-            curve = Curve(rawValue: newValue) ?? .linear
+            animationCurve = UIViewAnimationCurve(rawValue: newValue) ?? .linear
         }
     }
     
-    @IBInspectable var isPaused = false {
+    @IBInspectable open var isPaused = false {
         didSet {
             if oldValue != isPaused {
                 if !isPaused {
@@ -39,33 +39,19 @@ import UIKit
         }
     }
     
-    // MARK: - Enums
-
-    enum Curve: Int {
-        case linear = 0
-        case easeIn
-        case easeOut
-        case easeInEaseOut
-        
-        var mediaTimingFunctionString: String {
-            switch self {
-            case .linear: return kCAMediaTimingFunctionLinear
-            case .easeIn: return kCAMediaTimingFunctionEaseIn
-            case .easeOut: return kCAMediaTimingFunctionEaseOut
-            case .easeInEaseOut: return kCAMediaTimingFunctionEaseInEaseOut
-            }
-        }
-        
-        var mediaTimingFunction: CAMediaTimingFunction {
-            return CAMediaTimingFunction(name: mediaTimingFunctionString)
-        }
-        
-    }
-    
     // MARK: - Variables
 
-    var curve: Curve = .linear
-    let arcLayer = CAShapeLayer()
+    open var animationCurve: UIViewAnimationCurve = .linear
+    
+    open lazy var bezierPath: UIBezierPath = UIBezierPath(
+        arcCenter: CGPoint(x: self.bounds.midX, y: self.bounds.midY),
+        radius: min(self.bounds.midX, self.bounds.midY) - self.lineWidth / 2,
+        startAngle: CGFloat(self.start) * 2 * .pi,
+        endAngle: CGFloat(self.end) * 2 * .pi,
+        clockwise: self.start < self.end
+    )
+    
+    let shapeLayer = CAShapeLayer()
     
     // MARK: - Init
     
@@ -74,7 +60,7 @@ import UIKit
         commonInit()
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
     }
@@ -82,34 +68,26 @@ import UIKit
     private func commonInit() {
         backgroundColor = UIColor.clear
         
-        // Add the arcLayer to the view's layer's sublayers
-        layer.addSublayer(arcLayer)
+        // Add the shapeLayer to the view's layer's sublayers
+        layer.addSublayer(shapeLayer)
     }
     
     // MARK: - Functions
 
     private func updateView() {
-        let arcPath = UIBezierPath(
-            arcCenter: CGPoint(x: bounds.midX, y: bounds.midY),
-            radius: min(bounds.midX, bounds.midY),
-            startAngle: start * 2 * .pi,
-            endAngle: end * 2 * .pi,
-            clockwise: start < end
-        )
-        arcLayer.path = arcPath.cgPath
-        arcLayer.fillColor = fillColor.cgColor
-        arcLayer.strokeColor = strokeColor.cgColor
-        arcLayer.lineWidth = lineWidth
+        shapeLayer.path = bezierPath.cgPath
+        shapeLayer.fillColor = fillColor.cgColor
+        shapeLayer.strokeColor = strokeColor.cgColor
+        shapeLayer.lineWidth = lineWidth
         
         // Don't draw the arc initially
-        arcLayer.strokeEnd = 0.0
+        shapeLayer.strokeEnd = 0.0
     }
     
-    func animate() {
-        
+    open func animate() {
         updateView()
         
-        // Animate the strokeEnd property of the arcLayer.
+        // Animate the strokeEnd property of the shapeLayer.
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         
         animation.duration = duration
@@ -119,21 +97,38 @@ import UIKit
         animation.toValue = 1
         
         // Do a linear animation (i.e. the speed of the animation stays the same)
-        animation.timingFunction = curve.mediaTimingFunction
+        animation.timingFunction = animationCurve.mediaTimingFunction
         
-        // Set the arcLayer's strokeEnd property to 1.0 now so that it's the
+        // Set the shapeLayer's strokeEnd property to 1.0 now so that it's the
         // right value when the animation ends.
-        arcLayer.strokeEnd = 1.0
+        shapeLayer.strokeEnd = 1.0
         
         // Do the actual animation
-        arcLayer.add(animation, forKey: "animate")
+        shapeLayer.add(animation, forKey: "animate")
     }
     
     // MARK: UIView
     
-    override func didMoveToWindow() {
+    open override func didMoveToWindow() {
         super.didMoveToWindow()
         animate()
     }
     
+}
+
+fileprivate extension UIViewAnimationCurve {
+    
+    var mediaTimingFunctionString: String {
+        switch self {
+        case .linear: return kCAMediaTimingFunctionLinear
+        case .easeIn: return kCAMediaTimingFunctionEaseIn
+        case .easeOut: return kCAMediaTimingFunctionEaseOut
+        case .easeInOut: return kCAMediaTimingFunctionEaseInEaseOut
+        }
+    }
+    
+    var mediaTimingFunction: CAMediaTimingFunction {
+        return CAMediaTimingFunction(name: mediaTimingFunctionString)
+    }
+
 }
