@@ -13,9 +13,9 @@ import UIKit
     
     // MARK: - IBInspectable variables
 
-    @IBInspectable open var start: Double = -0.25
-    @IBInspectable open var end: Double = 0.75
-    @IBInspectable open var lineWidth: CGFloat = 2
+    @IBInspectable open var start: Double = 0.0
+    @IBInspectable open var end: Double = 1.0
+    @IBInspectable open var lineWidth: CGFloat = 2.0
     @IBInspectable open var duration: TimeInterval = 1.0
     @IBInspectable open var fillColor: UIColor = .clear
     @IBInspectable open var strokeColor: UIColor = .gray
