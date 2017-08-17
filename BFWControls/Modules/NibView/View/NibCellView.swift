@@ -7,7 +7,7 @@
 
 import UIKit
 
-@IBDesignable open class NibCellView: NibView {
+@IBDesignable open class NibCellView: NibView, Interchangeable {
     
     // MARK: - IBOutlets
     
