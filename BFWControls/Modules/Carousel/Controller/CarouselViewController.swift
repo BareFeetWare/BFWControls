@@ -87,7 +87,9 @@ open class CarouselViewController: UICollectionViewController {
     
     open var currentPageFloat: CGFloat {
         let page = currentCellItem - (shouldLoop ? 1 : 0)
-        return page < 0 || pageCount == 0 ? CGFloat(pageCount) + page : page.truncatingRemainder(dividingBy: CGFloat(pageCount))
+        return page < 0 || pageCount == 0
+            ? CGFloat(pageCount) + page
+            : page.truncatingRemainder(dividingBy: CGFloat(pageCount))
     }
     
     open lazy var pageControl: UIPageControl = {
@@ -156,8 +158,10 @@ open class CarouselViewController: UICollectionViewController {
     }
     
     open func scroll(toPage page: Int, animated: Bool) {
-        let loopPage = loopedPage(forPage: page)
-        let scrolledPage = loopPage + (shouldLoop ? 1 : 0)
+        guard pageCount > 0
+            else { return }
+        let loopedPage = self.loopedPage(forPage: page)
+        let scrolledPage = loopedPage + (shouldLoop ? 1 : 0)
         let indexPath = IndexPath(item: scrolledPage, section: 0)
         collectionView?.scrollToItem(at: indexPath,
                                      at: .centeredHorizontally,
@@ -168,11 +172,15 @@ open class CarouselViewController: UICollectionViewController {
     // MARK: - Functions
     
     fileprivate func loopedPage(forPage page: Int) -> Int {
-        return page < 0 || pageCount == 0 ? pageCount + page : page % pageCount
+        return pageCount == 0
+            ? 0
+            : page < 0
+            ? pageCount + page
+            : page % pageCount
     }
     
     open func page(for indexPath: IndexPath) -> Int {
-        var page = (indexPath as NSIndexPath).row
+        var page = indexPath.item
         if shouldLoop {
             page -= 1
             page = loopedPage(forPage: page)
