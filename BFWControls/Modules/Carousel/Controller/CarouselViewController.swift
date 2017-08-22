@@ -129,6 +129,7 @@ open class CarouselViewController: UICollectionViewController {
                               action: #selector(changed(pageControl:)),
                               for: .valueChanged)
         pageControl.numberOfPages = pageCount
+        pageControl.isHidden = shouldBounce
     }
     
     @IBAction open func changed(pageControl: UIPageControl) {
@@ -153,6 +154,7 @@ open class CarouselViewController: UICollectionViewController {
             self.collectionView?.setContentOffset(CGPoint(x: self.bounceContentOffsetX, y: 0), animated: false)
         }) {_ in
             self.scroll(toPage: self.pageControl.currentPage, animated: true)
+            self.pageControl.isHidden = false
         }
         shouldBounce = false
     }
@@ -198,10 +200,6 @@ open class CarouselViewController: UICollectionViewController {
             layout.scrollDirection = .horizontal
             layout.minimumInteritemSpacing = 0.0
         }
-    }
-    
-    open override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         addPageControl()
     }
     
