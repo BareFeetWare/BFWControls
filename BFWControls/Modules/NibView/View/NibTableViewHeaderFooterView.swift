@@ -24,7 +24,7 @@ open class NibTableViewHeaderFooterView: UITableViewHeaderFooterView {
 
 extension NibTableViewHeaderFooterView: NibReplaceable {
     
-    public var nibView: NibView {
+    open var nibView: NibView {
         fatalError("nibView must be implemented in subclass")
     }
     
