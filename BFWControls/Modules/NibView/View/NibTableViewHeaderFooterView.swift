@@ -10,6 +10,8 @@ import UIKit
 
 open class NibTableViewHeaderFooterView: UITableViewHeaderFooterView {
     
+    // MARK: - Init
+    
     public override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         addNib()
@@ -18,6 +20,12 @@ open class NibTableViewHeaderFooterView: UITableViewHeaderFooterView {
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
         addNib()
+    }
+    
+    // MARK: - UITableViewHeaderFooterView
+    
+    open override var textLabel: UILabel? {
+        return (nibView as? Interchangeable)?.textLabel
     }
     
 }
