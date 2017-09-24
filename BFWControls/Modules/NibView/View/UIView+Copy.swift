@@ -80,14 +80,14 @@ public extension UIView {
                 debugPrint("**** error: Could not find an instance of class \(type(of: self)) in \(nibName) xib")
                 return nil
         }
-        (nibView as? Morphable)?.copyProperties(from: self)
+        nibView.copyProperties(from: self)
         nibView.copyConstraints(from: self)
         return nibView
     }
     
     var copied: UIView {
         let copiedView = type(of: self).init(frame: frame)
-        (copiedView as? Morphable)?.copyProperties(from: self)
+        copiedView.copyProperties(from: self)
         return copiedView
     }
     
@@ -105,7 +105,7 @@ public extension UIView {
         for subview in subviews {
             let copiedSubview = type(of: subview).init(frame: frame)
             addSubview(copiedSubview)
-            (copiedSubview as? Morphable)?.copyProperties(from: subview)
+            copiedSubview.copyProperties(from: subview)
             if includeConstraints {
                 copiedSubview.copyConstraints(from: subview)
             }
@@ -130,9 +130,9 @@ public protocol Morphable {
     
 }
 
-public extension Morphable where Self: UIView {
+extension UIView: Morphable {
     
-    func copyProperties(from view: UIView) {
+    public func copyProperties(from view: UIView) {
         copyAnimatableProperties(from: view)
         frame = view.frame
         tag = view.tag
@@ -140,45 +140,51 @@ public extension Morphable where Self: UIView {
         isHidden = view.isHidden
     }
     
+    open override func copy() -> Any {
+        let copy = type(of: self).init(frame: frame)
+        copy.copyProperties(from: self)
+        return copy
+    }
+    
 }
 
 public extension Morphable where Self: UILabel {
     
-    func copyProperties(from view: UIView) {
-        (self as UIView).copyConstraints(from: view)
-        if let label = view as? UILabel {
-            text = label.text
-            font = label.font
-            textColor = label.textColor
-            shadowColor = label.shadowColor
-            shadowOffset = label.shadowOffset
-            textAlignment = label.textAlignment
-            lineBreakMode = label.lineBreakMode
-            attributedText = label.attributedText
-            highlightedTextColor = label.highlightedTextColor
-            numberOfLines = label.numberOfLines
-            adjustsFontSizeToFitWidth = label.adjustsFontSizeToFitWidth
-            baselineAdjustment = label.baselineAdjustment
-            minimumScaleFactor = label.minimumScaleFactor
-            preferredMaxLayoutWidth = label.preferredMaxLayoutWidth
-            isHighlighted = label.isHighlighted
-            isEnabled = label.isEnabled
-            tintColor = label.tintColor;
-        }
+    public func copyProperties(from view: UIView) {
+        guard let label = view as? UILabel
+            else { return }
+        (self as UIView).copyProperties(from: view)
+        text = label.text
+        font = label.font
+        textColor = label.textColor
+        shadowColor = label.shadowColor
+        shadowOffset = label.shadowOffset
+        textAlignment = label.textAlignment
+        lineBreakMode = label.lineBreakMode
+        attributedText = label.attributedText
+        highlightedTextColor = label.highlightedTextColor
+        numberOfLines = label.numberOfLines
+        adjustsFontSizeToFitWidth = label.adjustsFontSizeToFitWidth
+        baselineAdjustment = label.baselineAdjustment
+        minimumScaleFactor = label.minimumScaleFactor
+        preferredMaxLayoutWidth = label.preferredMaxLayoutWidth
+        isHighlighted = label.isHighlighted
+        isEnabled = label.isEnabled
+        tintColor = label.tintColor;
     }
     
 }
 
 public extension Morphable where Self: UIImageView {
     
-    func copyProperties(from view: UIView) {
-        (self as UIView).copyConstraints(from: view)
-        if let imageView = view as? UIImageView {
-            image = imageView.image
-            highlightedImage = imageView.highlightedImage
-            isHighlighted = imageView.isHighlighted
-            animationImages = imageView.animationImages
-        }
+    public func copyProperties(from view: UIView) {
+        guard let imageView = view as? UIImageView
+            else { return }
+        (self as UIView).copyProperties(from: view)
+        image = imageView.image
+        highlightedImage = imageView.highlightedImage
+        isHighlighted = imageView.isHighlighted
+        animationImages = imageView.animationImages
     }
     
 }
