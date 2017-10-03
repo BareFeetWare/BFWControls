@@ -13,6 +13,44 @@ open class CarouselViewController: UICollectionViewController {
     
     // MARK: - Variables
     
+    @IBInspectable open var maxCellWidth: CGFloat = .notSet
+    @IBInspectable open var peakCellWidth: CGFloat = .notSet
+    @IBInspectable open var advanceInterval: Double = .notSet {
+        didSet {
+            updateTimer()
+        }
+    }
+    
+    private func updateTimer() {
+        timer?.invalidate()
+        timer = nil
+        if advanceInterval != .notSet {
+            timer = Timer.scheduledTimer(
+                timeInterval: advanceInterval,
+                target: self,
+                selector: #selector(advancePage(sender:)),
+                userInfo: nil,
+                repeats: true
+            )
+        }
+    }
+    
+    @objc private func advancePage(sender: Any?) {
+        scroll(toPage: currentPage + 1, animated: true)
+    }
+    
+    private var timer: Timer?
+    
+    @IBInspectable open var isPageControlHidden: Bool = false {
+        didSet {
+            updatePageControl()
+        }
+    }
+    
+    private func updatePageControl() {
+        pageControl.isHidden = isPageControlHidden
+    }
+    
     @IBInspectable open var controlInsetBottom: CGFloat = 0.0
     
     /// Looped from last back to first page.
@@ -37,11 +75,11 @@ open class CarouselViewController: UICollectionViewController {
     
     /// Override in subclass for dynamic content or use default implementation for static content.
     open var cellIdentifiers: [String]? {
-        return plistDict?[Key.cellIdentifiers] as? [String] ?? ibCellIdentifiers
+        return plistDict?[Key.cellIdentifiers.rawValue] as? [String] ?? ibCellIdentifiers
     }
     
-    fileprivate struct Key {
-        static let cellIdentifiers = "cellIdentifiers"
+    fileprivate enum Key: String {
+        case cellIdentifiers
     }
     
     fileprivate var ibCellIdentifiers: [String] {
@@ -87,7 +125,9 @@ open class CarouselViewController: UICollectionViewController {
     
     open var currentPageFloat: CGFloat {
         let page = currentCellItem - (shouldLoop ? 1 : 0)
-        return page < 0 || pageCount == 0 ? CGFloat(pageCount) + page : page.truncatingRemainder(dividingBy: CGFloat(pageCount))
+        return page < 0 || pageCount == 0
+            ? CGFloat(pageCount) + page
+            : page.truncatingRemainder(dividingBy: CGFloat(pageCount))
     }
     
     open lazy var pageControl: UIPageControl = {
@@ -127,6 +167,7 @@ open class CarouselViewController: UICollectionViewController {
                               action: #selector(changed(pageControl:)),
                               for: .valueChanged)
         pageControl.numberOfPages = pageCount
+        pageControl.isHidden = shouldBounce
     }
     
     @IBAction open func changed(pageControl: UIPageControl) {
@@ -151,13 +192,16 @@ open class CarouselViewController: UICollectionViewController {
             self.collectionView?.setContentOffset(CGPoint(x: self.bounceContentOffsetX, y: 0), animated: false)
         }) {_ in
             self.scroll(toPage: self.pageControl.currentPage, animated: true)
+            self.pageControl.isHidden = false
         }
         shouldBounce = false
     }
     
     open func scroll(toPage page: Int, animated: Bool) {
-        let loopPage = loopedPage(forPage: page)
-        let scrolledPage = loopPage + (shouldLoop ? 1 : 0)
+        guard pageCount > 0
+            else { return }
+        let loopedPage = self.loopedPage(forPage: page)
+        let scrolledPage = loopedPage + (shouldLoop ? 1 : 0)
         let indexPath = IndexPath(item: scrolledPage, section: 0)
         collectionView?.scrollToItem(at: indexPath,
                                      at: .centeredHorizontally,
@@ -168,11 +212,15 @@ open class CarouselViewController: UICollectionViewController {
     // MARK: - Functions
     
     fileprivate func loopedPage(forPage page: Int) -> Int {
-        return page < 0 || pageCount == 0 ? pageCount + page : page % pageCount
+        return pageCount == 0
+            ? 0
+            : page < 0
+            ? pageCount + page
+            : page % pageCount
     }
     
     open func page(for indexPath: IndexPath) -> Int {
-        var page = (indexPath as NSIndexPath).row
+        var page = indexPath.item
         if shouldLoop {
             page -= 1
             page = loopedPage(forPage: page)
@@ -190,15 +238,13 @@ open class CarouselViewController: UICollectionViewController {
             layout.scrollDirection = .horizontal
             layout.minimumInteritemSpacing = 0.0
         }
-    }
-    
-    open override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         addPageControl()
+        updatePageControl()
     }
     
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        updateTimer()
         if shouldBounce {
             showBounce()
         }
@@ -240,14 +286,14 @@ extension CarouselViewController: UICollectionViewDelegateFlowLayout {
                              layout collectionViewLayout: UICollectionViewLayout,
                              sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        return collectionView.frame.size
-    }
-    
-    open func collectionView(_ collectionView: UICollectionView,
-                             layout collectionViewLayout: UICollectionViewLayout,
-                             minimumLineSpacingForSectionAt section: Int) -> CGFloat
-    {
-        return 0.0
+        var size = collectionView.frame.size
+        if peakCellWidth != .notSet {
+            size.width -= peakCellWidth
+        }
+        if maxCellWidth != .notSet, size.width > maxCellWidth {
+            size.width = maxCellWidth
+        }
+        return size
     }
     
 }
@@ -268,4 +314,12 @@ extension CarouselViewController {
         }
     }
     
+}
+
+private extension CGFloat {
+    static let notSet: CGFloat = -1.0
+}
+
+private extension Double {
+    static let notSet: Double = -1.0
 }

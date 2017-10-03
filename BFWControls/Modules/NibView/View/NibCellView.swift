@@ -7,7 +7,7 @@
 
 import UIKit
 
-@IBDesignable open class NibCellView: NibView {
+@IBDesignable open class NibCellView: NibView, Interchangeable {
     
     // MARK: - IBOutlets
     
@@ -70,7 +70,7 @@ import UIKit
     
     // MARK: - NibView
     
-    open override var placeholderViews: [UIView]? {
+    open override var placeholderViews: [UIView] {
         return [textLabel, detailTextLabel].flatMap { $0 }
     }
     
