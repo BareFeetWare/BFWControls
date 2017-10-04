@@ -24,11 +24,11 @@ public extension UIViewController {
         }
     }
     
-    var topViewController: UIViewController {
+    public var topViewController: UIViewController {
         return (self as? UINavigationController)?.viewControllers.first ?? self
     }
     
-    var readiedForPush: UIViewController {
+    public var readiedForPush: UIViewController {
         removeDismiss()
         return topViewController
     }
