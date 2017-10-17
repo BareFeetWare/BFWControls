@@ -192,7 +192,7 @@ open class CarouselViewController: UICollectionViewController {
             self.collectionView?.setContentOffset(CGPoint(x: self.bounceContentOffsetX, y: 0), animated: false)
         }) {_ in
             self.scroll(toPage: self.pageControl.currentPage, animated: true)
-            self.pageControl.isHidden = false
+            self.isPageControlHidden = false
         }
         shouldBounce = false
     }
