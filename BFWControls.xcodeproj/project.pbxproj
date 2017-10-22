@@ -17,6 +17,7 @@
 		E22477EB1ECBCAA7004A7802 /* TransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22477E91ECBCAA7004A7802 /* TransitionViewController.swift */; };
 		E22FD1B21EC564AD0043171C /* UIViewController+Dismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FD1B11EC564AD0043171C /* UIViewController+Dismiss.swift */; };
 		E24682211F24820B007285DB /* ShadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24682201F24820B007285DB /* ShadableView.swift */; };
+		E26E1F971F9C34F90008BACB /* NibCellViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26E1F961F9C34F90008BACB /* NibCellViewContainer.swift */; };
 		E28BA96D1E96402500D5DE3D /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA91F1E96402500D5DE3D /* AlertViewController.swift */; };
 		E28BA96E1E96402500D5DE3D /* ActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9211E96402500D5DE3D /* ActionSheetView.swift */; };
 		E28BA96F1E96402500D5DE3D /* ActionSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9221E96402500D5DE3D /* ActionSheetView.xib */; };
@@ -98,6 +99,7 @@
 		E22477E91ECBCAA7004A7802 /* TransitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionViewController.swift; sourceTree = "<group>"; };
 		E22FD1B11EC564AD0043171C /* UIViewController+Dismiss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Dismiss.swift"; sourceTree = "<group>"; };
 		E24682201F24820B007285DB /* ShadableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadableView.swift; sourceTree = "<group>"; };
+		E26E1F961F9C34F90008BACB /* NibCellViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibCellViewContainer.swift; sourceTree = "<group>"; };
 		E28BA9111E963F7800D5DE3D /* BFWControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BFWControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E28BA9141E963F7900D5DE3D /* BFWControls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFWControls.h; sourceTree = "<group>"; };
 		E28BA9151E963F7900D5DE3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -392,6 +394,7 @@
 				E2E5CABC1F4323EA003E0054 /* Interchangeable.swift */,
 				E28BA9451E96402500D5DE3D /* NibButton.swift */,
 				E28BA9461E96402500D5DE3D /* NibCellView.swift */,
+				E26E1F961F9C34F90008BACB /* NibCellViewContainer.swift */,
 				E220976F1F4185B500400079 /* NibCollectionViewCell.swift */,
 				E28BA9471E96402500D5DE3D /* NibReplaceable.swift */,
 				E28BA9481E96402500D5DE3D /* NibTableViewCell.swift */,
@@ -889,6 +892,7 @@
 				E28BA97F1E96402500D5DE3D /* NSLayoutConstraintExtensions.swift in Sources */,
 				E28BA9901E96402500D5DE3D /* Dictionary+StyledText.swift in Sources */,
 				E22FD1B21EC564AD0043171C /* UIViewController+Dismiss.swift in Sources */,
+				E26E1F971F9C34F90008BACB /* NibCellViewContainer.swift in Sources */,
 				E22097701F4185B500400079 /* NibCollectionViewCell.swift in Sources */,
 				E28BA99A1E96402500D5DE3D /* OpenURLSegue.swift in Sources */,
 				E28BA9801E96402500D5DE3D /* PileView.swift in Sources */,
