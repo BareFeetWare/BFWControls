@@ -24,13 +24,13 @@ public extension UIViewController {
         }
     }
     
-    var readiedForPush: UIViewController {
+    public var topViewController: UIViewController {
+        return (self as? UINavigationController)?.viewControllers.first ?? self
+    }
+    
+    public var readiedForPush: UIViewController {
         removeDismiss()
-        if self is UINavigationController {
-            debugPrint("**** error: pushing a navigation controller onto a navigation controller. Stripping out the second navigation controller, but this should be fixed.")
-        }
-        let strippedViewController = (self as? UINavigationController)?.viewControllers.first ?? self
-        return strippedViewController
+        return topViewController
     }
     
 }
