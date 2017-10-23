@@ -9,16 +9,16 @@
 
 import UIKit
 
-class OpenURLSegue: UIStoryboardSegue {
-
-    override func perform() {
-        let title = destination.navigationItem.title ?? destination.title
-        if let urlString = title,
-            let url = URL(string: urlString)
-        {
-            UIApplication.shared.openURL(url)
+open class OpenURLSegue: UIStoryboardSegue {
+    
+    open override func perform() {
+        guard let title = destination.navigationItem.title ?? destination.title,
+            let url = URL(string: title)
+            else { return }
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         } else {
-            print("OpenURLSegue could not make a URL out of the title \"\(title)\"")
+            UIApplication.shared.openURL(url)
         }
     }
     

@@ -9,11 +9,11 @@
 
 import UIKit
 
-class MorphSegue: UIStoryboardSegue {
+open class MorphSegue: UIStoryboardSegue {
 
     // MARK: - Public variables
 
-    @IBOutlet lazy var fromView: UIView? = {
+    @IBOutlet open lazy var fromView: UIView? = {
         return self.source.view
     }()
     
@@ -22,7 +22,7 @@ class MorphSegue: UIStoryboardSegue {
     
     // MARK: - UIStoryboardSegue
     
-    override func perform() {
+    open override func perform() {
         let destinationVCView = destination.view!
         let sourceVCView = source.view
         
@@ -41,10 +41,10 @@ class MorphSegue: UIStoryboardSegue {
         if useCopyForMorphingView {
             // Create a copy of the view hierarchy for morphing, so the original is not changed.
             if let cell = fromView as? UITableViewCell {
-                morphingView = cell.copy(withSubviews: nil, includeConstraints: false)
+                morphingView = cell.copied
                 morphingView?.copySubviews(cell.contentView.subviews, includeConstraints: false)
-            } else {
-                morphingView = fromView?.copy(withSubviews: fromView?.subviews, includeConstraints: false)
+            } else if let fromView = fromView {
+                morphingView = fromView.copied(withSubviews: fromView.subviews, includeConstraints: false)
             }
             if let morphingView = morphingView {
                 sourceVCView?.addSubview(morphingView)

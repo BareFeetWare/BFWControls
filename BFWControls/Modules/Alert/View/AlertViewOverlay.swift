@@ -9,19 +9,19 @@
 
 import UIKit
 
-@IBDesignable class AlertViewOverlay: NibView {
-
+@IBDesignable open class AlertViewOverlay: NibView {
+    
     // MARK: - IBOutlets
     
-    lazy var alertView: AlertView! = {
+    open lazy var alertView: AlertView! = {
         return self.subviews.first { subview in
             subview is AlertView
-        } as? AlertView
+            } as? AlertView
     }()
     
     // MARK: - Variables mapping to AlertView variables
     
-    @IBInspectable var title: String? {
+    @IBInspectable open var title: String? {
         get {
             return alertView.title
         }
@@ -30,7 +30,7 @@ import UIKit
         }
     }
     
-    @IBInspectable var message: String? {
+    @IBInspectable open var message: String? {
         get {
             return alertView.message
         }
@@ -39,7 +39,7 @@ import UIKit
         }
     }
     
-    @IBInspectable var hasCancel: Bool {
+    @IBInspectable open var hasCancel: Bool {
         get {
             return alertView.hasCancel
         }
@@ -48,7 +48,7 @@ import UIKit
         }
     }
     
-    @IBInspectable var button0Title: String? {
+    @IBInspectable open var button0Title: String? {
         get {
             return alertView.button0Title
         }
@@ -57,7 +57,7 @@ import UIKit
         }
     }
     
-    @IBInspectable var button1Title: String? {
+    @IBInspectable open var button1Title: String? {
         get {
             return alertView.button1Title
         }
@@ -66,7 +66,7 @@ import UIKit
         }
     }
     
-    @IBInspectable var button2Title: String? {
+    @IBInspectable open var button2Title: String? {
         get {
             return alertView.button2Title
         }
@@ -75,7 +75,7 @@ import UIKit
         }
     }
     
-    @IBInspectable var button3Title: String? {
+    @IBInspectable open var button3Title: String? {
         get {
             return alertView.button3Title
         }
@@ -83,8 +83,8 @@ import UIKit
             alertView.button3Title = newValue
         }
     }
-
-    @IBInspectable var button4Title: String? {
+    
+    @IBInspectable open var button4Title: String? {
         get {
             return alertView.button4Title
         }
@@ -92,8 +92,8 @@ import UIKit
             alertView.button4Title = newValue
         }
     }
-
-    @IBInspectable var button5Title: String? {
+    
+    @IBInspectable open var button5Title: String? {
         get {
             return alertView.button5Title
         }
@@ -101,8 +101,8 @@ import UIKit
             alertView.button5Title = newValue
         }
     }
-
-    @IBInspectable var button6Title: String? {
+    
+    @IBInspectable open var button6Title: String? {
         get {
             return alertView.button6Title
         }
@@ -110,8 +110,8 @@ import UIKit
             alertView.button6Title = newValue
         }
     }
-
-    @IBInspectable var button7Title: String? {
+    
+    @IBInspectable open var button7Title: String? {
         get {
             return alertView.button7Title
         }
@@ -119,8 +119,8 @@ import UIKit
             alertView.button7Title = newValue
         }
     }
-
-    @IBInspectable var maxHorizontalButtonTitleCharacterCount: Int {
+    
+    @IBInspectable open var maxHorizontalButtonTitleCharacterCount: Int {
         get {
             return alertView.maxHorizontalButtonTitleCharacterCount
         }
@@ -128,5 +128,5 @@ import UIKit
             alertView.maxHorizontalButtonTitleCharacterCount = newValue
         }
     }
-
+    
 }

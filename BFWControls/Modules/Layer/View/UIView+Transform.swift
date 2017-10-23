@@ -9,15 +9,15 @@
 
 import UIKit
 
-extension UIView {
+public extension UIView {
     
-    var rotationDegrees: CGFloat {
+    public var rotationDegrees: CGFloat {
         get {
-            // TODO: Reverse engineer angle from transform.
-            return 0.0
+            let angleInRadians = atan2(transform.b, transform.a)
+            return angleInRadians * 180.0 / .pi
         }
         set {
-            transform = CGAffineTransform(rotationAngle: CGFloat(M_PI) / 180.0 * newValue)
+            transform = CGAffineTransform(rotationAngle: .pi / 180.0 * newValue)
         }
     }
     

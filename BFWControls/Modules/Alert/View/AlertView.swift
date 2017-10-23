@@ -9,10 +9,10 @@
 
 import UIKit
 
-@IBDesignable class AlertView: NibView {
-
+@IBDesignable open class AlertView: NibView {
+    
     // MARK: - Structs
-
+    
     fileprivate struct ButtonTitle {
         static let cancel = "Cancel"
         static let ok = "OK"
@@ -21,26 +21,26 @@ import UIKit
     fileprivate struct Minimum {
         static let height: CGFloat = 50.0
     }
-
+    
     // MARK: - IBOutlets
-
-    @IBOutlet weak var titleLabel: UILabel?
-    @IBOutlet weak var messageLabel: UILabel?
-    @IBOutlet weak var button0: UIButton?
-    @IBOutlet weak var button1: UIButton?
-    @IBOutlet weak var button2: UIButton?
-    @IBOutlet weak var button3: UIButton?
-    @IBOutlet weak var button4: UIButton?
-    @IBOutlet weak var button5: UIButton?
-    @IBOutlet weak var button6: UIButton?
-    @IBOutlet weak var button7: UIButton?
-
-    @IBOutlet var horizontalButtonsLayoutConstraints: [NSLayoutConstraint]?
-    @IBOutlet var verticalButtonsLayoutConstraints: [NSLayoutConstraint]?
+    
+    @IBOutlet open weak var titleLabel: UILabel?
+    @IBOutlet open weak var messageLabel: UILabel?
+    @IBOutlet open weak var button0: UIButton?
+    @IBOutlet open weak var button1: UIButton?
+    @IBOutlet open weak var button2: UIButton?
+    @IBOutlet open weak var button3: UIButton?
+    @IBOutlet open weak var button4: UIButton?
+    @IBOutlet open weak var button5: UIButton?
+    @IBOutlet open weak var button6: UIButton?
+    @IBOutlet open weak var button7: UIButton?
+    
+    @IBOutlet open var horizontalButtonsLayoutConstraints: [NSLayoutConstraint]?
+    @IBOutlet open var verticalButtonsLayoutConstraints: [NSLayoutConstraint]?
     
     // MARK: - Variables
-
-    @IBInspectable var title: String? {
+    
+    @IBInspectable open var title: String? {
         get {
             return titleLabel?.text
         }
@@ -49,7 +49,7 @@ import UIKit
         }
     }
     
-    @IBInspectable var message: String? {
+    @IBInspectable open var message: String? {
         get {
             return messageLabel?.text
         }
@@ -58,22 +58,22 @@ import UIKit
         }
     }
     
-    @IBInspectable var hasCancel: Bool = true {
+    @IBInspectable open var hasCancel: Bool = true {
         didSet {
             setNeedsUpdateView()
         }
     }
     
-    @IBInspectable var button0Title: String? { didSet { setNeedsUpdateView() } }
-    @IBInspectable var button1Title: String? { didSet { setNeedsUpdateView() } }
-    @IBInspectable var button2Title: String? { didSet { setNeedsUpdateView() } }
-    @IBInspectable var button3Title: String? { didSet { setNeedsUpdateView() } }
-    @IBInspectable var button4Title: String? { didSet { setNeedsUpdateView() } }
-    @IBInspectable var button5Title: String? { didSet { setNeedsUpdateView() } }
-    @IBInspectable var button6Title: String? { didSet { setNeedsUpdateView() } }
-    @IBInspectable var button7Title: String? { didSet { setNeedsUpdateView() } }
+    @IBInspectable open var button0Title: String? { didSet { setNeedsUpdateView() } }
+    @IBInspectable open var button1Title: String? { didSet { setNeedsUpdateView() } }
+    @IBInspectable open var button2Title: String? { didSet { setNeedsUpdateView() } }
+    @IBInspectable open var button3Title: String? { didSet { setNeedsUpdateView() } }
+    @IBInspectable open var button4Title: String? { didSet { setNeedsUpdateView() } }
+    @IBInspectable open var button5Title: String? { didSet { setNeedsUpdateView() } }
+    @IBInspectable open var button6Title: String? { didSet { setNeedsUpdateView() } }
+    @IBInspectable open var button7Title: String? { didSet { setNeedsUpdateView() } }
     
-    @IBInspectable var maxHorizontalButtonTitleCharacterCount: Int = 9 {
+    @IBInspectable open var maxHorizontalButtonTitleCharacterCount: Int = 9 {
         didSet {
             setNeedsUpdateView()
         }
@@ -81,17 +81,17 @@ import UIKit
     
     // MARK: - Functions
     
-    func buttonTitle(at index: Int) -> String? {
+    open func buttonTitle(at index: Int) -> String? {
         let button = buttons[index]
         return button.currentTitle
     }
     
-    func index(of button: UIButton) -> Int? {
+    open func index(of button: UIButton) -> Int? {
         return buttons.index(of: button)
     }
     
     // MARK: - Private variables and functions
-
+    
     typealias Action = (button: UIButton?, title: String?)
     
     fileprivate var displayedButton0Title: String {
@@ -154,17 +154,17 @@ import UIKit
     // MARK: - UIView
     
     // Override NibView which copies size from xib. Forces calculation using contents.
-    override var intrinsicContentSize : CGSize {
+    open override var intrinsicContentSize : CGSize {
         return CGSize(width: UIViewNoIntrinsicMetric, height: Minimum.height)
     }
     
     // MARK: - NibView
     
-    override var placeholderViews: [UIView]? {
+    open override var placeholderViews: [UIView] {
         return [titleLabel, messageLabel].flatMap { $0 }
     }
     
-    override func updateView() {
+    open override func updateView() {
         super.updateView()
         for action in actions {
             action.button?.setTitle(action.title, for: .normal)

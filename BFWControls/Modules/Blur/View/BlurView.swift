@@ -8,43 +8,37 @@
 
 import UIKit
 
-class BlurView: UIView {
-
-    @IBInspectable var blurRadius: CGFloat = 10.0 {
+open class BlurView: UIView {
+    
+    @IBInspectable open var blurRadius: CGFloat = 10.0 {
         didSet {
             setNeedsDisplay()
         }
     }
-
+    
     //MARK: Accessors
-
-    var blurredImage: UIImage? {
-        var blurredImage: UIImage? = nil;
-        if let subviews = superview?.subviews,
-            let selfIndex = subviews.index(of: self) {
-            if selfIndex > 0 {
-                let previousView = subviews[selfIndex - 1];
-                let contentImage = UIImage(of: previousView,
-                                           size: bounds.size)
-                blurredImage = UIImageEffects.imageByApplyingBlur(to: contentImage,
-                                                                  withRadius: blurRadius,
-                                                                  tintColor: backgroundColor,
-                                                                  saturationDeltaFactor: 1.8,
-                                                                  maskImage: nil)
-            }
-        }
-        return blurredImage
+    open var blurredImage: UIImage? {
+        guard let subviews = superview?.subviews,
+            let previousIndex = subviews.index(of: self).map({ $0 - 1 }),
+            subviews.indices.contains(previousIndex)
+            else { return nil }
+        let contentImage = UIImage.snapshot(of: subviews[previousIndex],
+                                            size: bounds.size)
+        return UIImageEffects
+            .imageByApplyingBlur(to: contentImage,
+                                 withRadius: blurRadius,
+                                 tintColor: backgroundColor,
+                                 saturationDeltaFactor: 1.8,
+                                 maskImage: nil)
     }
-
+    
     //MARK: UIView
-
+    
     #if TARGET_INTERFACE_BUILDER
     // Dont draw anything, so it is transparent.
     #else
-    override func draw(_: CGRect) {
-        if let image = blurredImage {
-            image.draw(in: bounds)
-        }
+    open override func draw(_: CGRect) {
+        blurredImage?.draw(in: bounds)
     }
     #endif
 }

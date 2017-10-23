@@ -7,26 +7,26 @@
 
 import UIKit
 
-@IBDesignable class NibView: BFWNibView {
-
+@IBDesignable open class NibView: BFWNibView {
+    
     // MARK: - Variables & Functions
     
     /// Labels which should remove enclosing [] from text after awakeFromNib.
-    var placeholderViews: [UIView]? {
-        return nil
+    open var placeholderViews: [UIView] {
+        return []
     }
-
-    func isPlaceholderString(_ string: String?) -> Bool {
+    
+    open func isPlaceholderString(_ string: String?) -> Bool {
         return string != nil && string!.isPlaceholder
     }
     
     // MARK: - UpdateView mechanism
     
     /// Override in subclasses and call super. Update view and subview properties that are affected by properties of this class.
-    func updateView() {
+    open func updateView() {
     }
     
-    func setNeedsUpdateView() {
+    open func setNeedsUpdateView() {
         needsUpdateView = true
         setNeedsLayout()
     }
@@ -34,25 +34,23 @@ import UIKit
     // MARK: - Private variables and functions.
     
     /// Replace placeholders (eg [Text]) with blank text.
-    fileprivate func removePlaceHolders() {
-        if let views = placeholderViews {
-            for view in views {
-                if let label = view as? UILabel,
-                    let text = label.text,
-                    text.isPlaceholder
-                {
-                    label.text = nil
-                } else if let button = view as? UIButton {
-                    if button.title(for: .normal)?.isPlaceholder ?? false {
-                        button.setTitle(nil, for: .normal)
-                    }
+    fileprivate func removePlaceholders() {
+        for view in placeholderViews {
+            if let label = view as? UILabel,
+                let text = label.text,
+                text.isPlaceholder
+            {
+                label.text = nil
+            } else if let button = view as? UIButton {
+                if button.title(for: .normal)?.isPlaceholder ?? false {
+                    button.setTitle(nil, for: .normal)
                 }
             }
         }
     }
-
+    
     fileprivate var needsUpdateView = true
-        
+    
     fileprivate func updateViewIfNeeded() {
         if needsUpdateView {
             needsUpdateView = false
@@ -60,32 +58,36 @@ import UIKit
         }
     }
     
-}
-
-/// UIView overrides
-extension NibView {
+    // MARK: - UIView overrides
     
     private static var sizeForKeyDictionary = [String: CGSize]()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        removePlaceHolders()
+    open override func awakeAfter(using coder: NSCoder) -> Any? {
+        let hasAlreadyLoadedFromNib = !subviews.isEmpty // TODO: More rubust test.
+        return hasAlreadyLoadedFromNib
+            ? self
+            : viewFromNib ?? self
     }
     
-    override var intrinsicContentSize: CGSize {
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+        removePlaceholders()
+    }
+    
+    open override var intrinsicContentSize: CGSize {
         let size: CGSize
         let type = type(of: self)
         let key = NSStringFromClass(type)
         if let reuseSize = type.sizeForKeyDictionary[key] {
             size = reuseSize
         } else {
-            size = type.sizeFromNib()
+            size = type.sizeFromNib ?? .zero
             type.sizeForKeyDictionary[key] = size
         }
         return size
     }
     
-    override var backgroundColor: UIColor? {
+    open override var backgroundColor: UIColor? {
         get {
             return super.backgroundColor
         }
@@ -97,7 +99,7 @@ extension NibView {
         }
     }
     
-    override func layoutSubviews() {
+    open override func layoutSubviews() {
         updateViewIfNeeded()
         super.layoutSubviews()
     }

@@ -9,48 +9,88 @@
 
 import UIKit
 
-class CarouselViewController: UICollectionViewController {
+open class CarouselViewController: UICollectionViewController {
     
     // MARK: - Variables
     
-    @IBInspectable var controlInsetBottom: CGFloat = 0.0
+    @IBInspectable open var maxCellWidth: CGFloat = .notSet
+    @IBInspectable open var peakCellWidth: CGFloat = .notSet
+    @IBInspectable open var advanceInterval: Double = .notSet {
+        didSet {
+            updateTimer()
+        }
+    }
+    
+    private func updateTimer() {
+        timer?.invalidate()
+        timer = nil
+        if advanceInterval != .notSet {
+            timer = Timer.scheduledTimer(
+                timeInterval: advanceInterval,
+                target: self,
+                selector: #selector(advancePage(sender:)),
+                userInfo: nil,
+                repeats: true
+            )
+        }
+    }
+    
+    @objc private func advancePage(sender: Any?) {
+        scroll(toPage: currentPage + 1, animated: true)
+    }
+    
+    private var timer: Timer?
+    
+    @IBInspectable open var isPageControlHidden: Bool = false {
+        didSet {
+            updatePageControl()
+        }
+    }
+    
+    private func updatePageControl() {
+        pageControl.isHidden = isPageControlHidden
+    }
+    
+    @IBInspectable open var controlInsetBottom: CGFloat = 0.0
     
     /// Looped from last back to first page.
-    @IBInspectable var looped: Bool = false
+    @IBInspectable open var looped: Bool = false
+    
+    @IBInspectable open var shouldBounce: Bool = false
     
     // MARK: - Static content
     
     /// Cell identifiers for finite static content.
-    @IBInspectable var cell0Identifier: String?
-    @IBInspectable var cell1Identifier: String?
-    @IBInspectable var cell2Identifier: String?
-    @IBInspectable var cell3Identifier: String?
-    @IBInspectable var cell4Identifier: String?
-    @IBInspectable var cell5Identifier: String?
-    @IBInspectable var cell6Identifier: String?
-    @IBInspectable var cell7Identifier: String?
-
+    @IBInspectable open var cell0Identifier: String?
+    @IBInspectable open var cell1Identifier: String?
+    @IBInspectable open var cell2Identifier: String?
+    @IBInspectable open var cell3Identifier: String?
+    @IBInspectable open var cell4Identifier: String?
+    @IBInspectable open var cell5Identifier: String?
+    @IBInspectable open var cell6Identifier: String?
+    @IBInspectable open var cell7Identifier: String?
+    
     /// Name of plist file containing cell identifiers for long static content.
-    @IBInspectable var dataSourcePlistName: String?
+    @IBInspectable open var dataSourcePlistName: String?
     
     /// Override in subclass for dynamic content or use default implementation for static content.
-    var cellIdentifiers: [String]? {
-        return plistDict?[Key.cellIdentifiers] as? [String] ?? ibCellIdentifiers
+    open var cellIdentifiers: [String]? {
+        return plistDict?[Key.cellIdentifiers.rawValue] as? [String] ?? ibCellIdentifiers
     }
     
-    fileprivate struct Key {
-        static let cellIdentifiers = "cellIdentifiers"
+    fileprivate enum Key: String {
+        case cellIdentifiers
     }
     
     fileprivate var ibCellIdentifiers: [String] {
         return [cell0Identifier,
-            cell1Identifier,
-            cell2Identifier,
-            cell3Identifier,
-            cell4Identifier,
-            cell5Identifier,
-            cell6Identifier,
-            cell7Identifier
+                cell1Identifier,
+                cell2Identifier,
+                cell3Identifier,
+                cell4Identifier,
+                cell5Identifier,
+                cell6Identifier,
+                cell7Identifier
             ].flatMap { $0 }
     }
     
@@ -61,15 +101,15 @@ class CarouselViewController: UICollectionViewController {
     }
     
     // MARK: - Override in subclass for dynamic content
-
+    
     /// Override in subclass for dynamic content or use default implementation for static content.
-    var pageCount: Int {
+    open var pageCount: Int {
         return cellIdentifiers?.count ?? 0
     }
     
     /// Override in subclass for dynamic content or use default implementation for static content.
-    override func collectionView(_ collectionView: UICollectionView,
-                                 cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    open override func collectionView(_ collectionView: UICollectionView,
+                                      cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let page = self.page(for: indexPath)
         let cellIdentifier = cellIdentifiers![page]
@@ -79,22 +119,24 @@ class CarouselViewController: UICollectionViewController {
     
     // MARK: - Variables
     
-    var currentPage: Int {
+    open var currentPage: Int {
         return loopedPage(forPage: Int(round(currentPageFloat)))
     }
     
-    var currentPageFloat: CGFloat {
+    open var currentPageFloat: CGFloat {
         let page = currentCellItem - (shouldLoop ? 1 : 0)
-        return page < 0 || pageCount == 0 ? CGFloat(pageCount) + page : page.truncatingRemainder(dividingBy: CGFloat(pageCount))
+        return page < 0 || pageCount == 0
+            ? CGFloat(pageCount) + page
+            : page.truncatingRemainder(dividingBy: CGFloat(pageCount))
     }
     
-    lazy var pageControl: UIPageControl! = {
+    open lazy var pageControl: UIPageControl = {
         /* If this carousel is embedded as a container in another view controller, find a page control already
          existing in that view controller, otherwise create a new one.
          */
         let pageControl = self.view.superview?.superview?.subviews.first { subview in
             subview is UIPageControl
-        } as? UIPageControl ?? UIPageControl()
+            } as? UIPageControl ?? UIPageControl()
         pageControl.numberOfPages = self.pageCount
         pageControl.sizeToFit()
         return pageControl
@@ -103,7 +145,7 @@ class CarouselViewController: UICollectionViewController {
     // MARK: - Private variables
     
     fileprivate var collectionViewSize: CGSize?
-
+    
     fileprivate var shouldLoop: Bool {
         return looped && pageCount > 1
     }
@@ -111,6 +153,8 @@ class CarouselViewController: UICollectionViewController {
     fileprivate var currentCellItem: CGFloat {
         return collectionViewSize.map { size in collectionView!.contentOffset.x / size.width } ?? 0
     }
+    
+    fileprivate var bounceContentOffsetX: CGFloat = 100
     
     // MARK: - Actions
     
@@ -123,26 +167,41 @@ class CarouselViewController: UICollectionViewController {
                               action: #selector(changed(pageControl:)),
                               for: .valueChanged)
         pageControl.numberOfPages = pageCount
+        pageControl.isHidden = shouldBounce
     }
     
-    @IBAction func changed(pageControl: UIPageControl) {
+    @IBAction open func changed(pageControl: UIPageControl) {
         scroll(toPage: pageControl.currentPage, animated: true)
     }
     
-    fileprivate func updatePageControl() {
+    fileprivate func updatePageControl(shouldUpdateCurrentPage: Bool = true) {
         if let collectionViewSize = collectionViewSize {
             if pageControl.superview == collectionView {
                 pageControl.frame.origin.x = (collectionViewSize.width - pageControl.frame.width) / 2 + collectionView!.contentOffset.x
                 pageControl.frame.origin.y = collectionViewSize.height - pageControl.frame.height + collectionView!.contentOffset.y - controlInsetBottom
             }
             pageControl.numberOfPages = pageCount
-            pageControl.currentPage = currentPage
+            if shouldUpdateCurrentPage {
+                pageControl.currentPage = currentPage
+            }
         }
     }
     
-    func scroll(toPage page: Int, animated: Bool) {
-        let loopPage = loopedPage(forPage: page)
-        let scrolledPage = loopPage + (shouldLoop ? 1 : 0)
+    fileprivate func showBounce() {
+        UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseInOut, animations: {
+            self.collectionView?.setContentOffset(CGPoint(x: self.bounceContentOffsetX, y: 0), animated: false)
+        }) {_ in
+            self.scroll(toPage: self.pageControl.currentPage, animated: true)
+            self.isPageControlHidden = false
+        }
+        shouldBounce = false
+    }
+    
+    open func scroll(toPage page: Int, animated: Bool) {
+        guard pageCount > 0
+            else { return }
+        let loopedPage = self.loopedPage(forPage: page)
+        let scrolledPage = loopedPage + (shouldLoop ? 1 : 0)
         let indexPath = IndexPath(item: scrolledPage, section: 0)
         collectionView?.scrollToItem(at: indexPath,
                                      at: .centeredHorizontally,
@@ -153,11 +212,15 @@ class CarouselViewController: UICollectionViewController {
     // MARK: - Functions
     
     fileprivate func loopedPage(forPage page: Int) -> Int {
-        return page < 0 || pageCount == 0 ? pageCount + page : page % pageCount
+        return pageCount == 0
+            ? 0
+            : page < 0
+            ? pageCount + page
+            : page % pageCount
     }
     
-    func page(for indexPath: IndexPath) -> Int {
-        var page = (indexPath as NSIndexPath).row
+    open func page(for indexPath: IndexPath) -> Int {
+        var page = indexPath.item
         if shouldLoop {
             page -= 1
             page = loopedPage(forPage: page)
@@ -167,7 +230,7 @@ class CarouselViewController: UICollectionViewController {
     
     // MARK: - UIViewController
     
-    override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.isPagingEnabled = true
         collectionView?.showsHorizontalScrollIndicator = false
@@ -175,20 +238,27 @@ class CarouselViewController: UICollectionViewController {
             layout.scrollDirection = .horizontal
             layout.minimumInteritemSpacing = 0.0
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         addPageControl()
+        updatePageControl()
     }
     
-    override func viewDidLayoutSubviews() {
+    open override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        updateTimer()
+        if shouldBounce {
+            showBounce()
+        }
+    }
+    
+    open override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         // Resize cell size to fit collectionView if bounds change.
         if collectionViewSize != collectionView?.bounds.size {
             collectionViewSize = collectionView?.bounds.size
             collectionView?.reloadData()
-            scroll(toPage: 0, animated: false)
+            if !shouldBounce {
+                scroll(toPage: pageControl.currentPage, animated: false)
+            }
         }
     }
     
@@ -198,12 +268,12 @@ class CarouselViewController: UICollectionViewController {
 
 extension CarouselViewController {
     
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+    open override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    override func collectionView(_ collectionView: UICollectionView,
-                                 numberOfItemsInSection section: Int) -> Int
+    open override func collectionView(_ collectionView: UICollectionView,
+                                      numberOfItemsInSection section: Int) -> Int
     {
         return pageCount + (shouldLoop ? 2 : 0)
     }
@@ -212,18 +282,18 @@ extension CarouselViewController {
 
 extension CarouselViewController: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize
+    open func collectionView(_ collectionView: UICollectionView,
+                             layout collectionViewLayout: UICollectionViewLayout,
+                             sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        return collectionView.frame.size
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat
-    {
-        return 0.0
+        var size = collectionView.frame.size
+        if peakCellWidth != .notSet {
+            size.width -= peakCellWidth
+        }
+        if maxCellWidth != .notSet, size.width > maxCellWidth {
+            size.width = maxCellWidth
+        }
+        return size
     }
     
 }
@@ -232,16 +302,24 @@ extension CarouselViewController: UICollectionViewDelegateFlowLayout {
 
 extension CarouselViewController {
     
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    open override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == collectionView {
-            updatePageControl()
+            updatePageControl(shouldUpdateCurrentPage: collectionViewSize.map { $0 == scrollView.frame.size} ?? false)
         }
     }
     
-    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    open override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if shouldLoop {
             scroll(toPage: currentPage, animated: false)
         }
     }
     
+}
+
+private extension CGFloat {
+    static let notSet: CGFloat = -1.0
+}
+
+private extension Double {
+    static let notSet: Double = -1.0
 }
