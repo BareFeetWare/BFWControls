@@ -69,7 +69,11 @@ open class StaticTableViewController: UITableViewController {
     }
     
     fileprivate var normalisedTableViewHeight: CGFloat {
-        return tableView.frame.size.height - tableView.contentInset.top
+        if #available(iOS 11.0, *) {
+            return tableView.frame.size.height - tableView.safeAreaInsets.top - tableView.safeAreaInsets.bottom
+        } else {
+            return tableView.frame.size.height - tableView.contentInset.top
+        }
     }
 
     // MARK: - Functions
