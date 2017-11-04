@@ -100,7 +100,7 @@ open class StaticTableViewController: UITableViewController {
     
     private func numberOfExcludedSections(beforeSection section: Int) -> Int {
         var numberOfExcludedSections = 0
-        for superSection in 0 ..< super.tableView(tableView, numberOfRowsInSection: section) {
+        for superSection in 0 ..< super.numberOfSections(in: tableView) {
             if shouldHideSection(superSection) {
                 numberOfExcludedSections += 1
             }
