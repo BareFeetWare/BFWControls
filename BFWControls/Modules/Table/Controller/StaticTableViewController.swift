@@ -98,7 +98,17 @@ open class StaticTableViewController: UITableViewController {
     
     // MARK: - Private functions
     
-    fileprivate func numberOfExcludedRows(before indexPath: IndexPath) -> Int {
+    private func numberOfExcludedSections(beforeSection section: Int) -> Int {
+        var numberOfExcludedSections = 0
+        for superSection in 0 ..< super.tableView(tableView, numberOfRowsInSection: section) {
+            if shouldHideSection(superSection) {
+                numberOfExcludedSections += 1
+            }
+        }
+        return numberOfExcludedSections
+    }
+    
+    fileprivate func numberOfExcludedRowsInSection(before indexPath: IndexPath) -> Int {
         var numberOfExcludedRows = 0
         if let excludedCells = excludedCells {
             for superRow in 0 ..< super.tableView(tableView, numberOfRowsInSection: indexPath.section) {
@@ -114,9 +124,23 @@ open class StaticTableViewController: UITableViewController {
         return numberOfExcludedRows
     }
     
+    private func numberOfExcludedRows(inSection section: Int) -> Int {
+        let numberOfRowsInSection = super.tableView(tableView, numberOfRowsInSection: section)
+        let indexPath = IndexPath(row: numberOfRowsInSection - 1, section: section)
+        return numberOfExcludedRowsInSection(before: indexPath)
+    }
+    
+    private func shouldHideSection(_ section: Int) -> Bool {
+        return numberOfExcludedRows(inSection: section) == super.tableView(tableView, numberOfRowsInSection: section)
+    }
+    
+    private func superSection(forSection section: Int) -> Int {
+        return section + numberOfExcludedSections(beforeSection: section)
+    }
+    
     fileprivate func superIndexPath(for indexPath: IndexPath) -> IndexPath {
-        return IndexPath(row: (indexPath as NSIndexPath).row + numberOfExcludedRows(before: indexPath),
-                         section: (indexPath as NSIndexPath).section)
+        return IndexPath(row: indexPath.row + numberOfExcludedRowsInSection(before: indexPath),
+                         section: superSection(forSection: indexPath.section))
     }
     
     fileprivate func refreshCellHeights() {
@@ -191,32 +215,14 @@ open class StaticTableViewController: UITableViewController {
     
     // MARK: - UITableViewDataSource
     
-    open override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        switch self.tableView(tableView, numberOfRowsInSection: section) {
-        case 0: return 0.01
-        default: return super.tableView(tableView, heightForHeaderInSection: section)
+    open override func numberOfSections(in tableView: UITableView) -> Int {
+        var numberOfSections = 0
+        for section in 0 ..< super.numberOfSections(in: tableView) {
+            if !shouldHideSection(section) {
+                numberOfSections += 1
+            }
         }
-    }
-    
-    open override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch self.tableView(tableView, numberOfRowsInSection: section) {
-        case 0: return nil
-        default: return super.tableView(tableView, titleForHeaderInSection: section)
-        }
-    }
-    
-    open override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        switch self.tableView(tableView, numberOfRowsInSection: section) {
-        case 0: return 0.01
-        default: return super.tableView(tableView, heightForFooterInSection: section)
-        }
-    }
-    
-    open override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        switch self.tableView(tableView, numberOfRowsInSection: section) {
-        case 0: return nil
-        default: return super.tableView(tableView, titleForFooterInSection: section)
-        }
+        return numberOfSections
     }
     
     open override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -225,8 +231,7 @@ open class StaticTableViewController: UITableViewController {
         if numberOfRowsInSection == 0 {
             numberOfExcludedCellsInThisSection = 0
         } else {
-            let indexPath = IndexPath(row: numberOfRowsInSection - 1, section: section)
-            numberOfExcludedCellsInThisSection = numberOfExcludedRows(before: indexPath)
+            numberOfExcludedCellsInThisSection = numberOfExcludedRows(inSection: section)
         }
         return super.tableView(tableView, numberOfRowsInSection: section) - numberOfExcludedCellsInThisSection
     }
