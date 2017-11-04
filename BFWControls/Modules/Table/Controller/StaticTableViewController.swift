@@ -53,7 +53,7 @@ open class StaticTableViewController: UITableViewController {
         let prevIndexPath: IndexPath
         let seconLastRowIndex = indexPath.row - 1
         if seconLastRowIndex < 0 {
-            let section = (0..<indexPath.section).reversed().first(where: { tableView(tableView, numberOfRowsInSection: $0) > 0 } ) ?? 0
+            let section = (0 ..< indexPath.section).reversed().first(where: { tableView(tableView, numberOfRowsInSection: $0) > 0 } ) ?? 0
             let row = max(0, tableView(tableView, numberOfRowsInSection: section) - 1)
             prevIndexPath = IndexPath(row: row, section: section)
         } else {
@@ -63,9 +63,9 @@ open class StaticTableViewController: UITableViewController {
     }
     
     fileprivate var secondLastCellRect: CGRect {
-        return lastCellIndexPath == secondLastCellIndexPath ?
-            .zero :
-            tableView.rectForRow(at: secondLastCellIndexPath)
+        return lastCellIndexPath == secondLastCellIndexPath
+            ? .zero
+            : tableView.rectForRow(at: secondLastCellIndexPath)
     }
     
     fileprivate var normalisedTableViewHeight: CGFloat {
