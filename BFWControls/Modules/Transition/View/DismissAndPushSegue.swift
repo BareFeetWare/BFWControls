@@ -14,7 +14,7 @@ open class DismissAndPushSegue: UIStoryboardSegue {
         if let presentingViewController = source.presentingViewController {
             presentingViewController.dismiss(animated: true, completion: {
                 if let presentingNavigationController = presentingViewController as? UINavigationController ?? presentingViewController.navigationController {
-                    presentingNavigationController.pushViewController(self.destination.topViewController, animated: true)
+                    presentingNavigationController.pushViewController(self.destination.firstViewController, animated: true)
                 }
             })
         }
