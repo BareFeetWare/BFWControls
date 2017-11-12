@@ -114,8 +114,8 @@ open class StaticTableViewController: UITableViewController {
         var numberOfExcludedRows = 0
         if let excludedCells = excludedCells {
             for superRow in 0 ..< super.tableView(tableView, numberOfRowsInSection: superIndexPath.section) {
-                let superIndexPath = IndexPath(row: superRow, section: superIndexPath.section)
-                let cell = super.tableView(tableView, cellForRowAt: superIndexPath)
+                let steppedSuperIndexPath = IndexPath(row: superRow, section: superIndexPath.section)
+                let cell = super.tableView(tableView, cellForRowAt: steppedSuperIndexPath)
                 if excludedCells.contains(cell) {
                     numberOfExcludedRows += 1
                 } else if superRow - numberOfExcludedRows == superIndexPath.row {
