@@ -112,7 +112,7 @@ open class StaticTableViewController: UITableViewController {
     
     private func numberOfExcludedRowsInSuperSection(before superIndexPath: IndexPath) -> Int {
         var numberOfExcludedRows = 0
-        if let excludedCells = excludedCells {
+        if let excludedCells = excludedCells, !excludedCells.isEmpty {
             for superRow in 0 ..< super.tableView(tableView, numberOfRowsInSection: superIndexPath.section) {
                 let steppedSuperIndexPath = IndexPath(row: superRow, section: superIndexPath.section)
                 let cell = super.tableView(tableView, cellForRowAt: steppedSuperIndexPath)
@@ -133,8 +133,8 @@ open class StaticTableViewController: UITableViewController {
     }
     
     private func shouldInclude(superSection: Int) -> Bool {
-        guard let excludedCells = excludedCells
-            else { return false }
+        guard let excludedCells = excludedCells, !excludedCells.isEmpty
+            else { return true }
         let rows = 0 ..< super.tableView(tableView, numberOfRowsInSection: superSection)
         let firstIncludedRow = rows.first { row in
             let indexPath = IndexPath(row: row, section: superSection)
