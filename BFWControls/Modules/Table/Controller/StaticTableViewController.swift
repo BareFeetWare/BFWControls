@@ -145,10 +145,14 @@ open class StaticTableViewController: UITableViewController {
     }
     
     private func superSection(forSection section: Int) -> Int {
+        guard let excludedCells = excludedCells, !excludedCells.isEmpty
+            else { return section }
         return section + numberOfExcludedSections(beforeSection: section)
     }
     
     private func superIndexPath(for indexPath: IndexPath) -> IndexPath {
+        guard let excludedCells = excludedCells, !excludedCells.isEmpty
+            else { return indexPath }
         let superSection = self.superSection(forSection: indexPath.section)
         let indexPathInSuperSection = IndexPath(row: indexPath.row, section: superSection)
         let superIndexPath = IndexPath(row: indexPath.row + numberOfExcludedRowsInSuperSection(before: indexPathInSuperSection),
@@ -229,8 +233,11 @@ open class StaticTableViewController: UITableViewController {
     // MARK: - UITableViewDataSource
     
     open override func numberOfSections(in tableView: UITableView) -> Int {
+        let superNumberOfSections = super.numberOfSections(in: tableView)
+        guard let excludedCells = excludedCells, !excludedCells.isEmpty
+            else { return superNumberOfSections }
         var numberOfSections = 0
-        for superSection in 0 ..< super.numberOfSections(in: tableView) {
+        for superSection in 0 ..< superNumberOfSections {
             if shouldInclude(superSection: superSection) {
                 numberOfSections += 1
             }
@@ -263,6 +270,8 @@ open class StaticTableViewController: UITableViewController {
     }
     
     open override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let excludedCells = excludedCells, !excludedCells.isEmpty
+            else { return super.tableView(tableView, numberOfRowsInSection: section) }
         let superSection = self.superSection(forSection: section)
         let numberOfRowsInSuperSection = super.tableView(tableView, numberOfRowsInSection: superSection)
         let numberOfExcludedRowsInThisSection: Int = numberOfRowsInSuperSection == 0
