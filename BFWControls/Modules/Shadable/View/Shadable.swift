@@ -78,10 +78,10 @@ public extension Shadable {
     }
     
     var shadeColor: UIColor {
-        let colors = isLight
+        let colors = isLightUse
             ? lightColors
             : darkColors
-        let index = max(shadeLevel, colors.count - 1)
+        let index = min(shadeLevel, colors.count - 1)
         let color = colors[index]
         return color
     }
