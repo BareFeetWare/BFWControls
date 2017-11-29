@@ -238,6 +238,11 @@ open class CarouselViewController: UICollectionViewController {
             layout.scrollDirection = .horizontal
             layout.minimumInteritemSpacing = 0.0
         }
+    }
+    
+    open override func didMove(toParentViewController parent: UIViewController?) {
+        super.didMove(toParentViewController: parent)
+        // addPageControl() must be called after this controller's view has a superview (eg not in viewDidLoad), so it can find an exsiting pageControl.
         addPageControl()
         updatePageControl()
     }
