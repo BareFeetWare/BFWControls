@@ -128,7 +128,7 @@ import UIKit
         let hasShortBottomTitles = bottomActions.flatMap { action in
             action.title
             }.filter { title in
-                title.characters.count <= maxHorizontalButtonTitleCharacterCount
+                title.count <= maxHorizontalButtonTitleCharacterCount
             }.count == 2
         return hasShortBottomTitles && !hasTopTitles
     }
