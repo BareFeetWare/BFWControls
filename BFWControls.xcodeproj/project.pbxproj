@@ -87,6 +87,7 @@
 		E2B3E5841F26EA5C002539E6 /* ReplaceInNavigationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B3E5831F26EA5C002539E6 /* ReplaceInNavigationSegue.swift */; };
 		E2BFE8F71F296CD900BAEC16 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BFE8F61F296CD900BAEC16 /* CustomTableViewCell.swift */; };
 		E2E5CABD1F4323EA003E0054 /* Interchangeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E5CABC1F4323EA003E0054 /* Interchangeable.swift */; };
+		E2EB09B01FE335EF001DC697 /* FullWidthImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EB09AF1FE335EF001DC697 /* FullWidthImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -173,6 +174,7 @@
 		E2B3E5831F26EA5C002539E6 /* ReplaceInNavigationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplaceInNavigationSegue.swift; sourceTree = "<group>"; };
 		E2BFE8F61F296CD900BAEC16 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		E2E5CABC1F4323EA003E0054 /* Interchangeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interchangeable.swift; sourceTree = "<group>"; };
+		E2EB09AF1FE335EF001DC697 /* FullWidthImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullWidthImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -455,6 +457,7 @@
 			isa = PBXGroup;
 			children = (
 				E2BFE8F61F296CD900BAEC16 /* CustomTableViewCell.swift */,
+				E2EB09AF1FE335EF001DC697 /* FullWidthImageView.swift */,
 				E28BA95B1E96402500D5DE3D /* UIView+Table.swift */,
 			);
 			path = View;
@@ -859,6 +862,7 @@
 				E28BA9761E96402500D5DE3D /* Binding.swift in Sources */,
 				E2BFE8F71F296CD900BAEC16 /* CustomTableViewCell.swift in Sources */,
 				E28BA98B1E96402500D5DE3D /* NibView.swift in Sources */,
+				E2EB09B01FE335EF001DC697 /* FullWidthImageView.swift in Sources */,
 				E2E5CABD1F4323EA003E0054 /* Interchangeable.swift in Sources */,
 				E28BA99D1E96402500D5DE3D /* TranslationTransitioningController.swift in Sources */,
 				E28BA97C1E96402500D5DE3D /* DesignableView.swift in Sources */,
