@@ -11,11 +11,22 @@ import UIKit
 
 /// UIView for grouping subviews under a single Shadable setting.
 open class ShadableView: UIView, Shadable {
-
+    
+    // MARK: - Shadable
+    
     @IBInspectable open var isLight: Bool = false { didSet { setNeedsUpdateView() }}
     @IBInspectable open var isLightAuto: Bool = true { didSet { setNeedsUpdateView() }}
     
-    private var needsUpdateView = false
+    // This is a background color, so should be dark when content isLight.
+    public var lightColors: [UIColor] = [.white, .darkGray, .black].reversed()
+    
+    private func applyShade() {
+        backgroundColor = shadeColor
+    }
+    
+    // MARK: - Updatable
+    
+    private var needsUpdateView = true
     
     private func setNeedsUpdateView() {
         needsUpdateView = true
@@ -29,10 +40,11 @@ open class ShadableView: UIView, Shadable {
         }
     }
     
-    public var lightColors: [UIColor] = [.white, .darkGray, .black]
+    // MARK: UIView
     
-    private func applyShade() {
-        backgroundColor = shadeColor
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        updateViewIfNeeded()
     }
-
+    
 }

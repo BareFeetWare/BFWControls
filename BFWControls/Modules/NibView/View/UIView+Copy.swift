@@ -170,7 +170,7 @@ public extension Morphable where Self: UILabel {
         preferredMaxLayoutWidth = label.preferredMaxLayoutWidth
         isHighlighted = label.isHighlighted
         isEnabled = label.isEnabled
-        tintColor = label.tintColor;
+        tintColor = label.tintColor
     }
     
 }
