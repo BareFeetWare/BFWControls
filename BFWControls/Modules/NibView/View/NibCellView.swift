@@ -7,19 +7,19 @@
 
 import UIKit
 
-@IBDesignable class NibCellView: NibView {
-
+@IBDesignable open class NibCellView: NibView, Interchangeable {
+    
     // MARK: - IBOutlets
     
-    @IBOutlet weak var textLabel: UILabel?
-    @IBOutlet weak var detailTextLabel: UILabel?
-    @IBOutlet weak var iconView: UIView?
-    @IBOutlet weak var accessoryView: UIView?
-    @IBOutlet weak var separatorView: UIView?
-
+    @IBOutlet open weak var textLabel: UILabel?
+    @IBOutlet open weak var detailTextLabel: UILabel?
+    @IBOutlet open weak var iconView: UIView?
+    @IBOutlet open weak var accessoryView: UIView?
+    @IBOutlet open weak var separatorView: UIView?
+    
     // MARK: - Variables and functions
-
-    @IBInspectable var text: String? {
+    
+    @IBInspectable open var text: String? {
         get {
             return textLabel?.text
         }
@@ -28,7 +28,7 @@ import UIKit
         }
     }
     
-    @IBInspectable var detailText: String? {
+    @IBInspectable open var detailText: String? {
         get {
             return detailTextLabel?.text
         }
@@ -37,28 +37,40 @@ import UIKit
         }
     }
     
-    @IBInspectable var showAccessory: Bool {
+    fileprivate var accessoryConstraints = [NSLayoutConstraint]()
+    
+    @IBInspectable open var showAccessory: Bool {
         get {
-            return !(accessoryView?.hidden ?? true)
+            return !(accessoryView?.isHidden ?? true)
         }
         set {
-            accessoryView?.hidden = !newValue
-            accessoryView?.deactivateConstraintsIfHidden()
+            guard let accessoryView = accessoryView else { return }
+            accessoryView.isHidden = !newValue
+            if newValue {
+                NSLayoutConstraint.activate(accessoryConstraints)
+            } else {
+                if let siblingAndSuperviewConstraints = accessoryView.siblingAndSuperviewConstraints,
+                    !siblingAndSuperviewConstraints.isEmpty
+                {
+                    accessoryConstraints = siblingAndSuperviewConstraints
+                    NSLayoutConstraint.deactivate(accessoryConstraints)
+                }
+            }
         }
     }
     
-    @IBInspectable var showSeparator: Bool {
+    @IBInspectable open var showSeparator: Bool {
         get {
-            return !(separatorView?.hidden ?? true)
+            return !(separatorView?.isHidden ?? true)
         }
         set {
-            separatorView?.hidden = !newValue
+            separatorView?.isHidden = !newValue
         }
     }
     
     // MARK: - NibView
     
-    override var placeholderViews: [UIView]? {
+    open override var placeholderViews: [UIView] {
         return [textLabel, detailTextLabel].flatMap { $0 }
     }
     

@@ -9,27 +9,27 @@
 
 import UIKit
 
-extension UIView {
+public extension UIView {
     
-    func isMorphableTo(view: UIView) -> Bool {
+    public func isMorphable(to view: UIView) -> Bool {
         var isMorphable = false
         if tag != 0 && tag == view.tag {
             isMorphable = true
         } else if view is UILayoutSupport && self is UILayoutSupport {
-            if CGPointEqualToPoint(view.frame.origin, CGPointZero) == CGPointEqualToPoint(frame.origin, CGPointZero) {
+            if view.frame.origin.equalTo(CGPoint.zero) == frame.origin.equalTo(CGPoint.zero) {
                 isMorphable = true
             }
         }
         return isMorphable
     }
     
-    func subviewMatchingView(view: UIView) -> UIView? {
+    public func subview(matching view: UIView) -> UIView? {
         var matchingSubview: UIView?
         if view.tag != 0 {
             matchingSubview = viewWithTag(view.tag)
         } else {
             for subview in subviews {
-                if subview.isMorphableTo(view) {
+                if subview.isMorphable(to: view) {
                     matchingSubview = subview
                     break
                 }
@@ -37,13 +37,13 @@ extension UIView {
         }
         return matchingSubview;
     }
-
+    
 }
 
-extension UILabel {
+public extension UILabel {
     
-    override func isMorphableTo(view: UIView) -> Bool {
-        var isMorphable = super.isMorphableTo(view)
+    public override func isMorphable(to view: UIView) -> Bool {
+        var isMorphable = super.isMorphable(to: view)
         if !isMorphable {
             if let label = view as? UILabel {
                 isMorphable = text == label.text
@@ -54,10 +54,10 @@ extension UILabel {
     
 }
 
-extension UIImageView {
+public extension UIImageView {
     
-    override func isMorphableTo(view: UIView) -> Bool {
-        var isMorphable = super.isMorphableTo(view)
+    public override func isMorphable(to view: UIView) -> Bool {
+        var isMorphable = super.isMorphable(to: view)
         if !isMorphable {
             if let imageView = view as? UIImageView,
                 let image = image

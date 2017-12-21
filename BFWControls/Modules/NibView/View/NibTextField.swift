@@ -7,60 +7,60 @@
 
 import UIKit
 
-class NibTextField: UITextField {
-
+open class NibTextField: UITextField {
+    
     // MARK: - Variables
     
-    @IBInspectable var autoUpdateCellHeights: Bool = true
+    @IBInspectable open var autoUpdateCellHeights: Bool = true
     
     /// Override in subclass
-    var contentView: NibView? {
+    open var contentView: NibView? {
         return nil
     }
-        
+    
     // MARK: - Init
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
     }
     
-    func commonInit() {
+    open func commonInit() {
         if let contentView = contentView {
             addSubview(contentView)
             contentView.pinToSuperviewEdges()
-            contentView.userInteractionEnabled = false
-            borderStyle = .None
+            contentView.isUserInteractionEnabled = false
+            borderStyle = .none
             absorbInnerTextField()
         }
     }
     
-    private func absorbInnerTextField() {
+    fileprivate func absorbInnerTextField() {
         if let innerTextField = subviewTextField {
-            innerTextField.hidden = true
+            innerTextField.isHidden = true
             defaultTextAttributes = innerTextField.defaultTextAttributes
         }
     }
     
     // MARK: - updateView
-
+    
     /// Override in subclasses, calling super.
-    func updateView() {
+    open func updateView() {
     }
     
-    func setNeedsUpdateView() {
+    open func setNeedsUpdateView() {
         needsUpdateView = true
         setNeedsLayout()
     }
     
-    private var needsUpdateView = true
+    fileprivate var needsUpdateView = true
     
-    private func updateViewIfNeeded() {
+    fileprivate func updateViewIfNeeded() {
         if needsUpdateView {
             needsUpdateView = false
             updateView()
@@ -69,68 +69,57 @@ class NibTextField: UITextField {
     
     // MARK: - UITextField
     
-    override func placeholderRectForBounds(bounds: CGRect) -> CGRect {
-        return textRectForBounds(bounds)
+    open override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        return textRect(forBounds: bounds)
     }
     
-    override func textRectForBounds(bounds: CGRect) -> CGRect {
+    open override func textRect(forBounds bounds: CGRect) -> CGRect {
         // TODO: Calculate the adjustment.
         let magicAdjustment: CGFloat = 50.0
         var rect: CGRect
         if let innerTextField = subviewTextField {
-            rect = innerTextField.superview!.convertRect(innerTextField.frame, toView: self)
+            rect = innerTextField.superview!.convert(innerTextField.frame, to: self)
             let adjustment = bounds.height / 2 - magicAdjustment
             rect.origin.y -= adjustment
             rect.size.height += adjustment
         } else {
-            rect = super.textRectForBounds(bounds)
+            rect = super.textRect(forBounds: bounds)
         }
         return rect
     }
     
-    override func editingRectForBounds(bounds: CGRect) -> CGRect {
-        return textRectForBounds(bounds)
+    open override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return textRect(forBounds: bounds)
     }
     
     /// Locate active text editor for debugging.
-    private var fieldEditor: UIScrollView? {
-        var fieldEditor: UIScrollView?
-        for subview in subviews {
-            if let possible = subview as? UIScrollView {
-                fieldEditor = possible
-                break
-            }
-        }
-        return fieldEditor
+    fileprivate var fieldEditor: UIScrollView? {
+        return subviews.first { $0 is UIScrollView } as? UIScrollView
     }
     
     // MARK: UIView
     
-    override func layoutSubviews() {
+    open override func layoutSubviews() {
         updateViewIfNeeded()
         if autoUpdateCellHeights {
             updateTableViewCellHeights()
         }
         super.layoutSubviews()
     }
-
+    
 }
 
 private extension UIView {
     
     var subviewTextField: UITextField? {
-        var textField: UITextField?
+        var foundTextField: UITextField?
         for subview in subviews {
-            if let possible = subview as? UITextField {
-                textField = possible
-            } else if let possible = subview.subviewTextField {
-                textField = possible
-            }
-            if textField != nil {
+            if let textField = subview as? UITextField ?? subview.subviewTextField {
+                foundTextField = textField
                 break
             }
         }
-        return textField
+        return foundTextField
     }
     
 }

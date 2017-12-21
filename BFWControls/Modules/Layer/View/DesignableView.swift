@@ -9,6 +9,6 @@
 
 import UIKit
 
-@IBDesignable class DesignableView: UIView {
+@IBDesignable open class DesignableView: UIView {
 
 }

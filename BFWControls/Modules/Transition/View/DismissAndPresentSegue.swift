@@ -8,13 +8,13 @@
 
 import UIKit
 
-class DismissAndPresentSegue: UIStoryboardSegue {
-
-    override func perform() {
-        if let presentingViewController = sourceViewController.presentingViewController {
-            presentingViewController.dismissViewControllerAnimated(true, completion: {
+open class DismissAndPresentSegue: UIStoryboardSegue {
+    
+    open override func perform() {
+        if let presentingViewController = source.presentingViewController {
+            presentingViewController.dismiss(animated: true, completion: {
                 if let presentingNavigationController = presentingViewController as? UINavigationController ?? presentingViewController.navigationController {
-                    presentingNavigationController.presentViewController(self.destinationViewController, animated: true, completion: nil)
+                    presentingNavigationController.present(self.destination, animated: true, completion: nil)
                 }
             })
         }

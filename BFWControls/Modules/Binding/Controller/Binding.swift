@@ -39,14 +39,14 @@ class Binding: NSObject {
 
     private static var rootBindingDict = [String: [String: AnyObject]]()
     
-    private var bindingDict: [String: AnyObject]? {
+    fileprivate var bindingDict: [String: AnyObject]? {
         get {
             var bindingDict: [String: AnyObject]?
             if let plist = plist {
                 if let dict = Binding.rootBindingDict[plist] {
                     bindingDict = dict
                 } else {
-                    if let path = NSBundle.mainBundle().pathForResource(plist, ofType: "plist"),
+                    if let path = Bundle.main.path(forResource: plist, ofType: "plist"),
                         let plistDict = NSDictionary(contentsOfFile: path) as? [String: AnyObject]
                     {
                         bindingDict = plistDict
@@ -61,12 +61,17 @@ class Binding: NSObject {
     // MARK: - Functions
 
     private func updateBinding() {
-        if let view = view, keyPath = viewKeyPath, variable = variable, bindingDict = bindingDict,
+        if let view = view,
+            let keyPath = viewKeyPath,
+            let variable = variable,
+            let bindingDict = bindingDict,
             let value = bindingDict[variable]
         {
-            let string = String(value)
+            let string = String(describing: value)
             view.setValue(string, forKeyPath: keyPath)
-            if let textField = view as? UITextField where viewKeyPath == "text" {
+            if let textField = view as? UITextField,
+                viewKeyPath == "text"
+            {
                 textField.delegate = self
             }
         }
@@ -76,9 +81,9 @@ class Binding: NSObject {
 
 extension Binding: UITextFieldDelegate {
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         if var bindingDict = bindingDict, let variable = variable {
-            bindingDict[variable] = textField.text
+            bindingDict[variable] = textField.text as AnyObject?
         }
     }
     

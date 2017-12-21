@@ -9,82 +9,84 @@
 
 import UIKit
 
-protocol AlertViewDelegate {
+public protocol AlertViewDelegate {
     
-    func alertView(alertView: AlertView, clickedButtonAtIndex index: Int)
+    func alertView(_ alertView: AlertView, clickedButtonAt index: Int)
     
 }
 
-class AlertViewController: UIViewController {
+open class AlertViewController: UIViewController {
     
     // MARK: - Variables
     
-    @IBInspectable var action0Segue: String?
-    @IBInspectable var action1Segue: String?
-    @IBInspectable var action2Segue: String?
-    @IBInspectable var action3Segue: String?
-    @IBInspectable var action4Segue: String?
-    @IBInspectable var action6Segue: String?
-    @IBInspectable var action7Segue: String?
-    @IBInspectable var autoDismisses: Bool = true
+    @IBInspectable open var action0Segue: String?
+    @IBInspectable open var action1Segue: String?
+    @IBInspectable open var action2Segue: String?
+    @IBInspectable open var action3Segue: String?
+    @IBInspectable open var action4Segue: String?
+    @IBInspectable open var action6Segue: String?
+    @IBInspectable open var action7Segue: String?
+    @IBInspectable open var autoDismisses: Bool = true
     
-    var delegate: AlertViewDelegate?
+    open var delegate: AlertViewDelegate?
     
-    lazy var alertView: AlertView = {
+    lazy open var alertView: AlertView = {
         let foundAlertView: AlertView
-        let alertViewOverlay = self.view.subviews.filter { subview in
+        let alertViewOverlay = self.view.subviews.first { subview in
             subview is AlertViewOverlay
-        }.first as? AlertViewOverlay
+            } as? AlertViewOverlay
         if let alertViewOverlay = alertViewOverlay {
             foundAlertView = alertViewOverlay.alertView
         } else {
-            foundAlertView = self.view.subviews.filter { subview in
+            foundAlertView = self.view.subviews.first { subview in
                 subview is AlertView
-                }.first as! AlertView
+                } as! AlertView
         }
         return foundAlertView
     }()
     
     // MARK: - Private variables
     
-    private var isInNavigationController: Bool {
+    fileprivate var isInNavigationController: Bool {
         return presentingViewController?.presentedViewController is UINavigationController
     }
     
-    private var segueIdentifiers: [String?] {
+    fileprivate var segueIdentifiers: [String?] {
         return [action0Segue, action1Segue, action2Segue, action3Segue, action4Segue, action6Segue, action7Segue]
     }
     
-    private let translationTransitioningController = TranslationTransitioningController()
+    fileprivate let translationTransitioningController = TranslationTransitioningController()
     
-    private var overlayView: UIView? {
-        let overlayView = view.subviews.filter { subview in
+    fileprivate var overlayView: UIView? {
+        let overlayView = view.subviews.first { subview in
             var white: CGFloat = 0.0
             var alpha: CGFloat = 0.0
             subview.backgroundColor?.getWhite(&white, alpha: &alpha)
             return alpha < 1.0
-            }.first
+        }
         return overlayView
     }
     
-    private var onCompletion: (() -> Void)?
+    fileprivate var onCompletion: (() -> Void)?
     
     // MARK: - Actions
     
-    @IBAction func actionButton(button: UIButton) {
-        let index = alertView.indexOfButton(button)!
+    @IBAction open func actionButton(_ button: UIButton) {
+        let index = alertView.index(of: button)!
         if alertView.hasCancel && index == 0 {
             dismissAlert(button)
         } else {
             onCompletion = { [weak self] _ in
                 guard let strongSelf = self else { return }
                 if let delegate = strongSelf.delegate {
-                    delegate.alertView(strongSelf.alertView, clickedButtonAtIndex: index)
-                } else {
-                    let identifer = strongSelf.segueIdentifiers[index]
-                        ?? strongSelf.alertView.buttonTitleAtIndex(index)!
-                    strongSelf.performSegueWithIdentifier(identifer, sender: strongSelf.alertView)
+                    delegate.alertView(strongSelf.alertView, clickedButtonAt: index)
                 }
+            }
+            if delegate == nil,
+                let identifier = segueIdentifiers[index]
+                    ?? alertView.buttonTitle(at: index)
+            {
+                performSegue(withIdentifier: identifier, sender: alertView)
             }
             if !isInNavigationController && autoDismisses {
                 dismissAlert(button)
@@ -94,42 +96,43 @@ class AlertViewController: UIViewController {
         }
     }
     
-    @IBAction func dismissAlert(sender: AnyObject?) {
+    @IBAction open func dismissAlert(_ sender: AnyObject?) {
         if presentingViewController != nil {
-            dismissViewControllerAnimated(true, completion: onCompletion)
+            dismiss(animated: true, completion: onCompletion)
         } else {
-            onCompletion?()
-            navigationController?.popViewControllerAnimated(true)
+            CATransaction.begin()
+            CATransaction.setCompletionBlock(onCompletion)
+            navigationController?.popViewController(animated: true)
+            CATransaction.commit()
         }
     }
     
-    private func hideOverlay() {
-        view.backgroundColor = .clearColor()
-        overlayView?.backgroundColor = .clearColor()
+    fileprivate func hideOverlay() {
+        overlayView?.backgroundColor = .clear
     }
     
     // MARK: - Init
     
-    override init(nibName: String?, bundle: NSBundle?) {
+    public override init(nibName: String?, bundle: Bundle?) {
         super.init(nibName: nibName, bundle: bundle)
         commonInit()
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
     }
     
-    func commonInit() {
-        translationTransitioningController.backdropColor = UIColor.blackColor().colorWithAlphaComponent(0.75)
-        translationTransitioningController.direction = .Up
+    open func commonInit() {
+        translationTransitioningController.backdropColor = UIColor.black.withAlphaComponent(0.75)
+        translationTransitioningController.direction = .up
         transitioningDelegate = translationTransitioningController
-        modalPresentationStyle = .OverFullScreen
+        modalPresentationStyle = .overFullScreen
     }
     
     // MARK: - UIViewController
     
-    override func viewWillAppear(animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hideOverlay()
         // TODO: Fix responder chain for button taps when presenter still has text field as first responder. The following is a workaround.

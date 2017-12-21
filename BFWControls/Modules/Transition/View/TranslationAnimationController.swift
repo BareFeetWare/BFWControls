@@ -9,50 +9,53 @@
 
 import UIKit
 
-enum Direction: Int {
-
-    case Left = 0
-    case Right = 1
-    case Up = 2
-    case Down = 3
-
+public enum Direction: Int {
+    
+    case left = 0
+    case right = 1
+    case up = 2
+    case down = 3
+    
     var reverse: Direction {
         switch self {
-        case .Left:
-            return .Right
-        case .Right:
-            return .Left
-        case .Up:
-            return .Down
-        case .Down:
-            return .Up
+        case .left:
+            return .right
+        case .right:
+            return .left
+        case .up:
+            return .down
+        case .down:
+            return .up
         }
     }
-
+    
 }
 
-class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
-
+open class TranslationAnimationController: UIPercentDrivenInteractiveTransition, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate {
+    
     // MARK: - Variables
-
-    @IBInspectable var isPresenting: Bool = true
-    @IBInspectable var duration: NSTimeInterval = 0.3
-    @IBInspectable var leftInset: CGFloat = 0.0
-    @IBInspectable var rightInset: CGFloat = 0.0
-    @IBInspectable var topInset: CGFloat = 0.0
-    @IBInspectable var bottomInset: CGFloat = 0.0
-    @IBInspectable var belowTopGuide: Bool = false
-    @IBInspectable var animatePresenter = false // TODO: Determine automatically
+    
+    @IBInspectable open var isPresenting: Bool = true
+    @IBInspectable open var transitionDuration: CGFloat = 0.3
+    @IBInspectable open var leftInset: CGFloat = 0.0
+    @IBInspectable open var rightInset: CGFloat = 0.0
+    @IBInspectable open var topInset: CGFloat = 0.0
+    @IBInspectable open var bottomInset: CGFloat = 0.0
+    @IBInspectable open var belowTopGuide: Bool = false
+    @IBInspectable open var animatePresenter = false // TODO: Determine automatically
     /// Fade out/in the first view controller, instead of moving.
-    @IBInspectable var fadeFirst: Bool = false
-    @IBInspectable var backdropColor: UIColor?
+    @IBInspectable open var fadeFirst: Bool = false
+    @IBInspectable open var backdropColor: UIColor?
+    @IBInspectable open var blurBackground: Bool = false
     /// Direction to which it presents. Dismiss direction defaults to reverse.
-    var direction: Direction = .Left
+    open var direction: Direction = .left
     let backdropView = UIView()
+    let blurView = BlurView()
+    open var isInteractive = false
     
     // MARK: - Private functions
-
-    private func presentedFrameInContainerView(containerView: UIView) -> CGRect {
+    
+    fileprivate func presentedFrame(in containerView: UIView) -> CGRect {
         // TODO: Use AutoLayout?
         var frame = containerView.bounds
         frame.origin.x += leftInset
@@ -61,42 +64,46 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
         frame.size.height -= frame.origin.y + bottomInset
         return frame
     }
-
-    private func dismissedFrameInContainerView(containerView: UIView, direction: Direction) -> CGRect {
-        var frame = presentedFrameInContainerView(containerView)
+    
+    fileprivate func dismissedFrame(in containerView: UIView, direction: Direction) -> CGRect {
+        var frame = presentedFrame(in: containerView)
         switch direction {
-        case .Left:
+        case .left:
             frame.origin.x += containerView.frame.size.width
-        case .Right:
+        case .right:
             frame.origin.x -= containerView.frame.size.width
-        case .Up:
+        case .up:
             frame.origin.y += containerView.frame.size.height
-        case .Down:
+        case .down:
             frame.origin.y -= containerView.frame.size.height
         }
         return frame
     }
-
+    
     // MARK: - UIViewControllerAnimatedTransitioning
-
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-        return duration
+    
+    public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return TimeInterval(transitionDuration)
     }
-
-    @objc func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        #if swift(>=2.3)
-            let containerView = transitionContext.containerView()
-        #else
-            let containerView = transitionContext.containerView()!
-        #endif
+    
+    @objc public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        let containerView = transitionContext.containerView
         let animateToView = animatePresenter || fadeFirst || isPresenting
         let animateFromView = animatePresenter || fadeFirst || !isPresenting
-        let toViewController = animateToView ? transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) : nil
-        let fromViewController = animateFromView ? transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) : nil
+        let toViewController = animateToView ? transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) : nil
+        let fromViewController = animateFromView ? transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) : nil
         let presentingViewController = isPresenting ? fromViewController : toViewController
         let presentingNavigationController = presentingViewController as? UINavigationController ?? presentingViewController?.navigationController
-        let isPush = fromViewController?.navigationController == toViewController?.navigationController ?? false
-        let isFirst = !isPush || (presentingNavigationController?.viewControllers.count == (isPresenting ? 2 : 1)) ?? true
+        let isPush: Bool
+        if let fromNavigationController = fromViewController?.navigationController,
+            let toNavigationController = toViewController?.navigationController,
+            fromNavigationController == toNavigationController
+        {
+            isPush = true
+        } else {
+            isPush = false
+        }
+        let isFirst = !isPush || (presentingNavigationController?.viewControllers.count == (isPresenting ? 2 : 1))
         let fadeFrom = fadeFirst && isPresenting && isFirst
         let fadeTo = fadeFirst && !isPresenting && isFirst
         if let toViewController = toViewController {
@@ -114,7 +121,7 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
                 toViewController.view.alpha = 0.0
             } else {
                 let toDirection = animatePresenter && !isPresenting ? direction.reverse : direction
-                toViewController.view.frame = dismissedFrameInContainerView(containerView, direction: toDirection)
+                toViewController.view.frame = dismissedFrame(in: containerView, direction: toDirection)
             }
             if let backdropColor = backdropColor {
                 if !containerView.subviews.contains(backdropView) {
@@ -124,38 +131,66 @@ class TranslationAnimationController: NSObject, UIViewControllerAnimatedTransiti
                     backdropView.alpha = 0.0
                 }
             }
+            if blurBackground {
+                blurView.frame = containerView.bounds
+                containerView.insertSubview(blurView, belowSubview: toViewController.view)
+                blurView.pinToSuperviewEdges()
+                blurView.setNeedsDisplay()
+                blurView.alpha = 0.5
+            }
         }
         let fromDirection = animatePresenter && isPresenting ? direction.reverse : direction
-        UIView.animateWithDuration(
-            duration,
+        UIView.animate(
+            withDuration: TimeInterval(transitionDuration),
             delay: 0.0,
-            options: UIViewAnimationOptions.CurveEaseInOut,
+            options: [.curveEaseInOut],
             animations: {
                 if fadeFrom {
                     fromViewController?.view.alpha = 0.0
                 } else {
-                    fromViewController?.view.frame = self.dismissedFrameInContainerView(containerView, direction: fromDirection)
+                    fromViewController?.view.frame = self.dismissedFrame(in: containerView, direction: fromDirection)
                 }
                 if fadeTo {
                     toViewController?.view.alpha = 1.0
                 } else {
-                    toViewController?.view.frame = self.presentedFrameInContainerView(containerView)
+                    toViewController?.view.frame = self.presentedFrame(in: containerView)
                 }
                 if self.isPresenting {
                     self.backdropView.alpha = 1.0
+                    self.blurView.alpha = 1.0
                 } else {
                     self.backdropView.alpha = 0.0
+                    self.blurView.alpha = 0.0
                 }
-            }
+        }
             )
         { finished in
-            if transitionContext.transitionWasCancelled() {
+            self.blurView.removeFromSuperview()
+            if transitionContext.transitionWasCancelled {
                 toViewController?.view.removeFromSuperview()
             } else {
                 fromViewController?.view.removeFromSuperview()
             }
-            transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
+    }
+    
+    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        isPresenting = true
+        return self
+    }
+    
+    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        isPresenting = false
+        return self
+    }
+    
+    public func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return isInteractive ? self : nil
+    }
+    
+    public func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return isInteractive ? self : nil
     }
     
 }

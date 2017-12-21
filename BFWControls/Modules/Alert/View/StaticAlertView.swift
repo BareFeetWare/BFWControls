@@ -20,27 +20,38 @@ import UIKit
     // MARK: - Variables
     
     @IBInspectable var title: String? {
-        didSet {
-            titleLabel.text = title
+        get {
+            return titleLabel.text
+        }
+        set {
+            titleLabel.text = newValue
         }
     }
     
     @IBInspectable var message: String? {
-        didSet {
-            messageLabel.text = message
+        get {
+            return messageLabel.text
+        }
+        set {
+            messageLabel.text = newValue
         }
     }
 
     @IBInspectable var button0Title: String? {
-        didSet {
-            button0.setTitle(button0Title, forState: .Normal)
-            setNeedsUpdateView()
+        get {
+            return button0.title(for: .normal)
+        }
+        set {
+            button0.setTitle(newValue, for: .normal)
         }
     }
 
     @IBInspectable var button1Title: String? {
-        didSet {
-            button1.setTitle(button1Title, forState: .Normal)
+        get {
+            return button1.title(for: .normal)
+        }
+        set {
+            button1.setTitle(newValue, for: .normal)
             setNeedsUpdateView()
         }
     }
@@ -49,8 +60,8 @@ import UIKit
     
     override func updateView() {
         super.updateView()
-        button1.hidden = button1Title == nil
-        messageLabel.activateOnlyConstraintsWithFirstVisibleInViews([button1, button0])
+        button1.isHidden = button1Title == nil
+        messageLabel.activateOnlyConstraintsWithFirstVisible(in: [button1, button0])
     }
     
 }

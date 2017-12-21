@@ -8,39 +8,39 @@
 
 import UIKit
 
-class TranslationTransitioningController: NSObject, UIViewControllerTransitioningDelegate {
-
+open class TranslationTransitioningController: NSObject, UIViewControllerTransitioningDelegate {
+    
     // MARK: - Variables
-
-    @IBInspectable var duration: NSTimeInterval = 0.3
-    @IBInspectable var leftInset: CGFloat = 0.0
-    @IBInspectable var rightInset: CGFloat = 0.0
-    @IBInspectable var topInset: CGFloat = 0.0
-    @IBInspectable var bottomInset: CGFloat = 0.0
-    @IBInspectable var belowTopGuide: Bool = false
-    @IBInspectable var backdropColor: UIColor?
-
+    
+    @IBInspectable open var duration: CGFloat = 0.3
+    @IBInspectable open var leftInset: CGFloat = 0.0
+    @IBInspectable open var rightInset: CGFloat = 0.0
+    @IBInspectable open var topInset: CGFloat = 0.0
+    @IBInspectable open var bottomInset: CGFloat = 0.0
+    @IBInspectable open var belowTopGuide: Bool = false
+    @IBInspectable open var backdropColor: UIColor?
+    
     /// Fade out/in the first view controller, instead of moving.
-    @IBInspectable var fadeFirst: Bool = false
-
+    @IBInspectable open var fadeFirst: Bool = false
+    
     /// Direction to which it presents. Dismiss direction defaults to opposite.
-    var direction: Direction = .Up
-
-    @IBInspectable var direction_: Int {
+    open var direction: Direction = .up
+    
+    @IBInspectable open var direction_: Int {
         get {
             return direction.rawValue
         }
         set {
-            direction = Direction(rawValue: newValue) ?? .Up
+            direction = Direction(rawValue: newValue) ?? .up
         }
     }
-
-    private let animationController = TranslationAnimationController()
-
+    
+    fileprivate let animationController = TranslationAnimationController()
+    
     // MARK: - Private functions
-
-    private func updateAnimationController() {
-        animationController.duration = duration
+    
+    fileprivate func updateAnimationController() {
+        animationController.transitionDuration = duration
         animationController.leftInset = leftInset
         animationController.rightInset = rightInset
         animationController.topInset = topInset
@@ -49,13 +49,13 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
         animationController.direction = direction
         animationController.backdropColor = backdropColor
     }
-
+    
     // MARK: - UIViewControllerTransitioningDelegate
-
-    func animationControllerForPresentedController(
-        presented: UIViewController,
-        presentingController presenting: UIViewController,
-        sourceController source: UIViewController
+    
+    public func animationController(
+        forPresented presented: UIViewController,
+        presenting: UIViewController,
+        source: UIViewController
         ) -> UIViewControllerAnimatedTransitioning?
     {
         let animationController = self.animationController
@@ -64,20 +64,20 @@ class TranslationTransitioningController: NSObject, UIViewControllerTransitionin
         animationController.fadeFirst = fadeFirst
         return animationController
     }
-
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    
+    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let animationController = self.animationController
         updateAnimationController()
         animationController.isPresenting = false
         animationController.fadeFirst = fadeFirst
         return animationController
     }
-
+    
 }
 
-extension UIViewController {
-
-    @IBOutlet var transitioningDelegateOutlet: NSObject? {
+public extension UIViewController {
+    
+    @IBOutlet public var transitioningDelegateOutlet: NSObject? {
         get {
             return transitioningDelegate as? NSObject
         }
@@ -85,5 +85,5 @@ extension UIViewController {
             transitioningDelegate = newValue as? UIViewControllerTransitioningDelegate
         }
     }
-
+    
 }

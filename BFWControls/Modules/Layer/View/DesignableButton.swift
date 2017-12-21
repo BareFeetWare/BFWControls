@@ -9,6 +9,6 @@
 
 import UIKit
 
-@IBDesignable class DesignableButton: UIButton {
+@IBDesignable open class DesignableButton: UIButton {
 
 }

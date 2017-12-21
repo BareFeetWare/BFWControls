@@ -7,48 +7,48 @@
 
 import UIKit
 
-class NibButton: UIButton {
+open class NibButton: UIButton {
     
     // MARK: - Variables
     
     /// Override in subclass
-    var contentView: NibView? {
+    open var contentView: NibView? {
         return nil
     }
     
     // MARK: - Init
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
     }
     
-    func commonInit() {
+    open func commonInit() {
         if let contentView = contentView {
             addSubview(contentView)
             contentView.pinToSuperviewEdges()
-            contentView.userInteractionEnabled = false
+            contentView.isUserInteractionEnabled = false
         }
     }
     
-    override func awakeFromNib() {
+    open override func awakeFromNib() {
         super.awakeFromNib()
         commonAwake()
     }
     
-    override func prepareForInterfaceBuilder() {
+    open override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         commonAwake()
     }
     
-    func commonAwake() {
-        titleLabel?.text = titleForState(.Normal)
-        setTitle(nil, forState: .Normal)
+    open func commonAwake() {
+        titleLabel?.text = title(for: .normal)
+        setTitle(nil, for: .normal)
     }
     
 }

@@ -9,15 +9,14 @@
 
 import UIKit
 
-extension UIViewController {
+public extension UIViewController {
     
-    func canPerformSegueWithIdentifier(identifier: NSString?) -> Bool {
+    public func canPerformSegue(identifier: String) -> Bool {
         var can = false
-        if let identifier = identifier,
-            let templates = self.valueForKey("storyboardSegueTemplates") as? NSArray
+        if let templates = self.value(forKey: "storyboardSegueTemplates") as? NSArray
         {
             let predicate = NSPredicate(format: "identifier=%@", identifier)
-            let filteredtemplates = templates.filteredArrayUsingPredicate(predicate)
+            let filteredtemplates = templates.filtered(using: predicate)
             can = !filteredtemplates.isEmpty
         }
         return can

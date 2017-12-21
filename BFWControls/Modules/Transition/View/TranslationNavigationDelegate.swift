@@ -8,52 +8,52 @@
 
 import UIKit
 
-class TranslationNavigationDelegate: NSObject, UINavigationControllerDelegate {
+open class TranslationNavigationDelegate: NSObject, UINavigationControllerDelegate {
 
     // MARK: - Variables
 
-    @IBInspectable var duration: NSTimeInterval = 0.3
-    @IBInspectable var leftInset: CGFloat = 0.0
-    @IBInspectable var rightInset: CGFloat = 0.0
-    @IBInspectable var topInset: CGFloat = 0.0
-    @IBInspectable var bottomInset: CGFloat = 0.0
-    @IBInspectable var belowTopGuide: Bool = false
+    @IBInspectable open var duration: TimeInterval = 0.3
+    @IBInspectable open var leftInset: CGFloat = 0.0
+    @IBInspectable open var rightInset: CGFloat = 0.0
+    @IBInspectable open var topInset: CGFloat = 0.0
+    @IBInspectable open var bottomInset: CGFloat = 0.0
+    @IBInspectable open var belowTopGuide: Bool = false
     
-    var direction: Direction = .Left
+    open var direction: Direction = .left
     
-    @IBInspectable var direction_: Int {
+    @IBInspectable open var direction_: Int {
         get {
             return direction.rawValue
         }
         set {
-            direction = Direction(rawValue: newValue) ?? .Left
+            direction = Direction(rawValue: newValue) ?? .left
         }
     }
 
-    var firstDirection: Direction?
+    open var firstDirection: Direction?
     
-    @IBInspectable var firstDirection_: Int {
+    @IBInspectable open var firstDirection_: Int {
         get {
             return firstDirection?.rawValue ?? direction.rawValue
         }
         set {
-            firstDirection = Direction(rawValue: newValue) ?? .Left
+            firstDirection = Direction(rawValue: newValue) ?? .left
         }
     }
 
     /// Fade out/in the first view controller, instead of moving.
-    @IBInspectable var fadeFirst: Bool = false
+    @IBInspectable open var fadeFirst: Bool = false
     
     /// Clears background of view controllers so navigation background shows through.
-    @IBInspectable var clearBackgrounds: Bool = false
+    @IBInspectable open var clearBackgrounds: Bool = false
 
     // MARK: - UINavigationControllerDelegate
 
-    func navigationController(
-        navigationController: UINavigationController,
-        animationControllerForOperation operation: UINavigationControllerOperation,
-                                        fromViewController: UIViewController,
-                                        toViewController: UIViewController
+    open func navigationController(
+        _ navigationController: UINavigationController,
+        animationControllerFor operation: UINavigationControllerOperation,
+        from fromViewController: UIViewController,
+        to toViewController: UIViewController
         ) -> UIViewControllerAnimatedTransitioning?
     {
         let animationController = TranslationAnimationController()
@@ -63,23 +63,23 @@ class TranslationNavigationDelegate: NSObject, UINavigationControllerDelegate {
         animationController.belowTopGuide = belowTopGuide
         animationController.bottomInset = bottomInset
         animationController.animatePresenter = true
-        animationController.isPresenting = operation != .Pop
+        animationController.isPresenting = operation != .pop
         animationController.fadeFirst = fadeFirst
-        let viewControllerAfterTransitionCount = navigationController.viewControllers.count - (operation == .Pop ? 0 : 1)
+        let viewControllerAfterTransitionCount = navigationController.viewControllers.count - (operation == .pop ? 0 : 1)
         animationController.direction = viewControllerAfterTransitionCount == 1 ? (firstDirection ?? direction) : direction
         return animationController
     }
     
-    func navigationController(navigationController: UINavigationController,
-                              willShowViewController viewController: UIViewController,
-                                                     animated: Bool)
+    open func navigationController(_ navigationController: UINavigationController,
+                              willShow viewController: UIViewController,
+                              animated: Bool)
     {
         viewController.automaticallyAdjustsScrollViewInsets = !belowTopGuide
         if clearBackgrounds {
-            viewController.view.backgroundColor = UIColor.clearColor() // TODO: Attribute
+            viewController.view.backgroundColor = .clear // TODO: Attribute
             if let tableViewController = viewController as? UITableViewController {
                 tableViewController.tableView.backgroundView = nil
-                tableViewController.tableView.backgroundColor = UIColor.clearColor()
+                tableViewController.tableView.backgroundColor = .clear
             }
         }
     }

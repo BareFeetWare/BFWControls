@@ -9,65 +9,71 @@
 
 import UIKit
 
-@IBDesignable class AlertView: NibView {
-
+@IBDesignable open class AlertView: NibView {
+    
     // MARK: - Structs
-
-    private struct ButtonTitle {
+    
+    fileprivate struct ButtonTitle {
         static let cancel = "Cancel"
         static let ok = "OK"
     }
     
-    private struct Minimum {
+    fileprivate struct Minimum {
         static let height: CGFloat = 50.0
     }
-
+    
     // MARK: - IBOutlets
-
-    @IBOutlet weak var titleLabel: UILabel?
-    @IBOutlet weak var messageLabel: UILabel?
-    @IBOutlet weak var button0: UIButton?
-    @IBOutlet weak var button1: UIButton?
-    @IBOutlet weak var button2: UIButton?
-    @IBOutlet weak var button3: UIButton?
-    @IBOutlet weak var button4: UIButton?
-    @IBOutlet weak var button5: UIButton?
-    @IBOutlet weak var button6: UIButton?
-    @IBOutlet weak var button7: UIButton?
-
-    @IBOutlet var horizontalButtonsLayoutConstraints: [NSLayoutConstraint]?
-    @IBOutlet var verticalButtonsLayoutConstraints: [NSLayoutConstraint]?
+    
+    @IBOutlet open weak var titleLabel: UILabel?
+    @IBOutlet open weak var messageLabel: UILabel?
+    @IBOutlet open weak var button0: UIButton?
+    @IBOutlet open weak var button1: UIButton?
+    @IBOutlet open weak var button2: UIButton?
+    @IBOutlet open weak var button3: UIButton?
+    @IBOutlet open weak var button4: UIButton?
+    @IBOutlet open weak var button5: UIButton?
+    @IBOutlet open weak var button6: UIButton?
+    @IBOutlet open weak var button7: UIButton?
+    
+    @IBOutlet open var horizontalButtonsLayoutConstraints: [NSLayoutConstraint]?
+    @IBOutlet open var verticalButtonsLayoutConstraints: [NSLayoutConstraint]?
     
     // MARK: - Variables
-
-    @IBInspectable var title: String? {
-        didSet {
-            titleLabel?.text = title
+    
+    @IBInspectable open var title: String? {
+        get {
+            return titleLabel?.text
+        }
+        set {
+            titleLabel?.text = newValue
         }
     }
     
-    @IBInspectable var message: String? {
-        didSet {
-            messageLabel?.text = message
+    @IBInspectable open var message: String? {
+        get {
+            return messageLabel?.text
+        }
+        set {
+            messageLabel?.text = newValue
         }
     }
     
-    @IBInspectable var hasCancel: Bool = true {
+    @IBInspectable open var hasCancel: Bool = true {
         didSet {
             setNeedsUpdateView()
         }
     }
     
-    @IBInspectable var button0Title: String? { didSet { setNeedsUpdateView() } }
-    @IBInspectable var button1Title: String? { didSet { setNeedsUpdateView() } }
-    @IBInspectable var button2Title: String? { didSet { setNeedsUpdateView() } }
-    @IBInspectable var button3Title: String? { didSet { setNeedsUpdateView() } }
-    @IBInspectable var button4Title: String? { didSet { setNeedsUpdateView() } }
-    @IBInspectable var button5Title: String? { didSet { setNeedsUpdateView() } }
-    @IBInspectable var button6Title: String? { didSet { setNeedsUpdateView() } }
-    @IBInspectable var button7Title: String? { didSet { setNeedsUpdateView() } }
+    @IBInspectable open var button0Title: String? { didSet { setNeedsUpdateView() } }
+    @IBInspectable open var button1Title: String? { didSet { setNeedsUpdateView() } }
+    @IBInspectable open var button2Title: String? { didSet { setNeedsUpdateView() } }
+    @IBInspectable open var button3Title: String? { didSet { setNeedsUpdateView() } }
+    @IBInspectable open var button4Title: String? { didSet { setNeedsUpdateView() } }
+    @IBInspectable open var button5Title: String? { didSet { setNeedsUpdateView() } }
+    @IBInspectable open var button6Title: String? { didSet { setNeedsUpdateView() } }
+    @IBInspectable open var button7Title: String? { didSet { setNeedsUpdateView() } }
     
-    @IBInspectable var maxHorizontalButtonTitleCharacterCount: Int = 9 {
+    @IBInspectable open var maxHorizontalButtonTitleCharacterCount: Int = 9 {
         didSet {
             setNeedsUpdateView()
         }
@@ -75,30 +81,30 @@ import UIKit
     
     // MARK: - Functions
     
-    func buttonTitleAtIndex(index: Int) -> String? {
+    open func buttonTitle(at index: Int) -> String? {
         let button = buttons[index]
         return button.currentTitle
     }
     
-    func indexOfButton(button: UIButton) -> Int? {
-        return buttons.indexOf(button)
+    open func index(of button: UIButton) -> Int? {
+        return buttons.index(of: button)
     }
     
     // MARK: - Private variables and functions
-
+    
     typealias Action = (button: UIButton?, title: String?)
     
-    private var displayedButton0Title: String {
+    fileprivate var displayedButton0Title: String {
         return button0Title ?? (hasCancel ? ButtonTitle.cancel : ButtonTitle.ok)
     }
     
-    private var bottomActions: [Action] {
+    fileprivate var bottomActions: [Action] {
         return [
             (button0, displayedButton0Title),
             (button1, button1Title)
         ]
     }
-    private var topActions: [Action] {
+    fileprivate var topActions: [Action] {
         return [
             (button2, button2Title),
             (button3, button3Title),
@@ -109,38 +115,38 @@ import UIKit
         ]
     }
     
-    private var actions: [Action] {
+    fileprivate var actions: [Action] {
         return bottomActions + topActions
     }
     
-    private var buttons: [UIButton] {
+    fileprivate var buttons: [UIButton] {
         return actions.flatMap { $0.button }
     }
     
-    private var isHorizontalLayout: Bool {
+    fileprivate var isHorizontalLayout: Bool {
         let hasTopTitles = topActions.flatMap { $0.title }.count > 0
         let hasShortBottomTitles = bottomActions.flatMap { action in
             action.title
             }.filter { title in
-                title.characters.count <= maxHorizontalButtonTitleCharacterCount
+                title.count <= maxHorizontalButtonTitleCharacterCount
             }.count == 2
         return hasShortBottomTitles && !hasTopTitles
     }
     
-    private func hideUnused() {
+    fileprivate func hideUnused() {
         for action in actions {
-            action.button?.hidden = action.title == nil || isPlaceholderString(action.title)
+            action.button?.isHidden = action.title == nil || isPlaceholderString(action.title)
         }
-        messageLabel?.activateOnlyConstraintsWithFirstVisibleInViews(buttons.reverse())
+        messageLabel?.activateOnlyConstraintsWithFirstVisible(in: buttons.reversed())
         if let horizontalButtonsLayoutConstraints = horizontalButtonsLayoutConstraints,
             let verticalButtonsLayoutConstraints = verticalButtonsLayoutConstraints
         {
             if isHorizontalLayout {
-                NSLayoutConstraint.activateConstraints(horizontalButtonsLayoutConstraints)
-                NSLayoutConstraint.deactivateConstraints(verticalButtonsLayoutConstraints)
+                NSLayoutConstraint.activate(horizontalButtonsLayoutConstraints)
+                NSLayoutConstraint.deactivate(verticalButtonsLayoutConstraints)
             } else {
-                NSLayoutConstraint.activateConstraints(verticalButtonsLayoutConstraints)
-                NSLayoutConstraint.deactivateConstraints(horizontalButtonsLayoutConstraints)
+                NSLayoutConstraint.activate(verticalButtonsLayoutConstraints)
+                NSLayoutConstraint.deactivate(horizontalButtonsLayoutConstraints)
             }
         }
     }
@@ -148,20 +154,20 @@ import UIKit
     // MARK: - UIView
     
     // Override NibView which copies size from xib. Forces calculation using contents.
-    override func intrinsicContentSize() -> CGSize {
+    open override var intrinsicContentSize : CGSize {
         return CGSize(width: UIViewNoIntrinsicMetric, height: Minimum.height)
     }
     
     // MARK: - NibView
     
-    override var placeholderViews: [UIView]? {
+    open override var placeholderViews: [UIView] {
         return [titleLabel, messageLabel].flatMap { $0 }
     }
     
-    override func updateView() {
+    open override func updateView() {
         super.updateView()
         for action in actions {
-            action.button?.setTitle(action.title, forState: .Normal)
+            action.button?.setTitle(action.title, for: .normal)
         }
         hideUnused()
     }
