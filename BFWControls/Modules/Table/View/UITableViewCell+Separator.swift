@@ -13,11 +13,7 @@ public extension UITableViewCell {
     
     /// Arbitrarily large number. Must be larger than any possible screen dimension. Can't be .greatestFiniteMagnitude, since that causes screen flash when app is restored from background.
     private static let offScreen: CGFloat = 999999.0
-    
-    private var offScreen: CGFloat {
-        return type(of: self).offScreen
-    }
-    
+
     private static let hiddenInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: offScreen)
     
     private var hiddenInset: UIEdgeInsets {
