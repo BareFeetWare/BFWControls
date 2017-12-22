@@ -10,6 +10,6 @@
 import UIKit
 
 /// Exactly the same as UITableViewCell, with the addition of IBDesignable, so it renders in the storyboard. Useful when applying properties from extensions.
-@IBDesignable class DesignableTableViewCell: UITableViewCell {
+@IBDesignable public class DesignableTableViewCell: UITableViewCell {
 
 }
