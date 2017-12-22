@@ -9,9 +9,10 @@
 
 import UIKit
 
+/// To see the change in the storyboard, you must use a UITabelViewCell subclass that has @IBDesignable, such as DesignableTableViewCell.
 public extension UITableViewCell {
     
-    /// Arbitrarily large number. Must be larger than any possible screen dimension. Can't be .greatestFiniteMagnitude, since that causes screen flash when app is restored from background.
+    /// Arbitrarily large number. Must be larger than any possible screen dimension. Can't be .greatestFiniteMagnitude, since that causes a screen flash when the app is restored from background.
     private static let offScreen: CGFloat = 999999.0
 
     private static let hiddenInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: offScreen)
@@ -20,7 +21,7 @@ public extension UITableViewCell {
         return type(of: self).hiddenInset
     }
     
-    /// Hides the separator is a cell in a table view that is showing cell separators.
+    /// Hides the separator in a cell in a table view that is showing cell separators.
     @IBInspectable public var isSeparatorHidden: Bool {
         get {
             return separatorInset == hiddenInset
