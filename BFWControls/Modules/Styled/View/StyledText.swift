@@ -39,6 +39,20 @@ open class StyledText {
     
     // MARK: - Functions
     
+    public static func registerFontsIfNeeded(in bundle: Bundle) {
+        if !registeredFontBundles.contains(bundle) {
+            registeredFontBundles += [bundle]
+            registerFonts(in: bundle)
+        }
+    }
+    
+    public static func registerFontsInAllBundles() {
+        (Bundle.allBundles + Bundle.allFrameworks)
+            .forEach { bundle in
+                registerFontsIfNeeded(in: bundle)
+        }
+    }
+    
     open class func attributes(for style: String) -> TextAttributes? {
         return attributes(forSection: Section.style, key: style)
     }
@@ -81,6 +95,10 @@ open class StyledText {
             let font = UIFont(name: fontName, size: fontSize)
         {
             attributes[NSFontAttributeName] = font
+        } else if let fontName = flatDict[Key.fontName] as? String {
+            debugPrint("**** error: Couldn't load UIFont(name: \(fontName)")
+        } else {
+            debugPrint("**** error: No value for key: \(Key.fontName)")
         }
         if let textColorString = flatDict[Key.textColor] as? String,
             // TODO: Facilitate alpha ≠ 1.0
@@ -92,6 +110,15 @@ open class StyledText {
     }
     
     // MARK: - Private variables and functions
+    
+    private static var registeredFontBundles: [Bundle] = []
+    
+    private static func registerFonts(in bundle: Bundle) {
+        let fontURLs = bundle.urls(forResourcesWithExtensions: ["otf", "ttf"])
+        CTFontManagerRegisterFontsForURLs(fontURLs as CFArray,
+                                          .process,
+                                          nil)
+    }
     
     fileprivate class var sections: [String] {
         return [Section.style, Section.level, Section.emphasis]
@@ -133,6 +160,7 @@ fileprivate extension Bundle {
         var path: String?
         for bundle in Bundle.allBundles + Bundle.allFrameworks {
             if let thisPath = bundle.path(forResource: resource, ofType: typeExtension) {
+                StyledText.registerFontsIfNeeded(in: bundle)
                 path = thisPath
                 break
             }
@@ -141,6 +169,16 @@ fileprivate extension Bundle {
             debugPrint("Failed to locate resource: " + resource + "." + typeExtension)
         }
         return path
+    }
+    
+    fileprivate func urls(forResourcesWithExtensions fileExtensions: [String]) -> [URL] {
+        return fileExtensions.reduce([URL]()) { (fileURLs, fileExtension) in
+            let moreURLs = urls(
+                forResourcesWithExtension: fileExtension,
+                subdirectory: nil
+            )
+            return fileURLs + (moreURLs ?? [])
+        }
     }
     
 }
