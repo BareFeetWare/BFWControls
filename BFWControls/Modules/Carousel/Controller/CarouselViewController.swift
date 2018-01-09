@@ -291,7 +291,11 @@ extension CarouselViewController: UICollectionViewDelegateFlowLayout {
                              layout collectionViewLayout: UICollectionViewLayout,
                              sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        var size = collectionView.frame.size
+        return cellSize
+    }
+    
+    var cellSize: CGSize {
+        var size = collectionView!.frame.size
         if peakCellWidth != .notSet {
             size.width -= peakCellWidth
         }
