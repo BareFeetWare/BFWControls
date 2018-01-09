@@ -232,7 +232,6 @@ open class CarouselViewController: UICollectionViewController {
     
     open override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView?.isPagingEnabled = true
         collectionView?.showsHorizontalScrollIndicator = false
         if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
