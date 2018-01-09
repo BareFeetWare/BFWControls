@@ -259,6 +259,7 @@ open class CarouselViewController: UICollectionViewController {
         // Resize cell size to fit collectionView if bounds change.
         if collectionViewSize != collectionView?.bounds.size {
             collectionViewSize = collectionView?.bounds.size
+            collectionView?.isPagingEnabled = cellSize.width == collectionView!.frame.size.width
             updatePageControl(shouldUpdateCurrentPage: true)
             collectionView?.reloadData()
             if !shouldBounce {
