@@ -158,6 +158,11 @@ import UIKit
         return CGSize(width: UIViewNoIntrinsicMetric, height: Minimum.height)
     }
     
+    open override func layoutSubviews() {
+        hideUnused()
+        super.layoutSubviews()
+    }
+    
     // MARK: - NibView
     
     open override var placeholderViews: [UIView] {
@@ -169,7 +174,6 @@ import UIKit
         for action in actions {
             action.button?.setTitle(action.title, for: .normal)
         }
-        hideUnused()
     }
     
 }
