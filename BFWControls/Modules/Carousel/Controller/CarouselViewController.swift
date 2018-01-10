@@ -203,6 +203,11 @@ open class CarouselViewController: UICollectionViewController {
         let loopedPage = self.loopedPage(forPage: page)
         let scrolledPage = loopedPage + (shouldLoop ? 1 : 0)
         let indexPath = IndexPath(item: scrolledPage, section: 0)
+        if shouldLoop && loopedPage == 0 && currentPage == pageCount - 1 {
+            collectionView?.scrollToItem(at: IndexPath(item: 0, section: 0),
+                                         at: .centeredHorizontally,
+                                         animated: false)
+        }
         collectionView?.scrollToItem(at: indexPath,
                                      at: .centeredHorizontally,
                                      animated: animated)
