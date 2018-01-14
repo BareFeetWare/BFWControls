@@ -72,7 +72,7 @@ public extension UIView {
         }
     }
     
-    var viewFromNib: UIView? {
+    public var viewFromNib: UIView? {
         let nibName = type(of: self).nibName
         guard let nibViews = type(of: self).bundle?.loadNibNamed(nibName, owner: nil, options: nil),
             let nibView = nibViews.first(where: { type(of: $0) == type(of: self) } ) as? UIView
