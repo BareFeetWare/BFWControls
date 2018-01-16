@@ -25,7 +25,7 @@ open class NibTableViewHeaderFooterView: UITableViewHeaderFooterView, NibContain
     // MARK: - UITableViewHeaderFooterView
     
     open override var textLabel: UILabel? {
-        return (contentSubview as? Interchangeable)?.textLabel
+        return (contentSubview as? TextLabelProvider)?.textLabel
     }
     
 }

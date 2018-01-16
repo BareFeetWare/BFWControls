@@ -35,7 +35,7 @@ open class NibTableViewCell: UITableViewCell, NibContainer {
     private var isAwake = false
     
     private func commonAwake() {
-        guard let cellView = contentSubview as? Interchangeable
+        guard let cellView = contentSubview as? TextLabelProvider
             else { return }
         cellView.textLabel?.text = super.textLabel?.text
         cellView.detailTextLabel?.text = super.detailTextLabel?.text
