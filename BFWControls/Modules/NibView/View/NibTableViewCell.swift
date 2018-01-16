@@ -8,24 +8,54 @@
 
 import UIKit
 
-open class NibTableViewCell: UITableViewCell {
+open class NibTableViewCell: UITableViewCell, NibContainer {
+    
+    // MARK: - Init
     
     public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        addNib()
+        addContentSubview()
     }
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
-        addNib()
+        addContentSubview()
     }
     
-}
-
-extension NibTableViewCell: NibReplaceable {
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+        commonAwake()
+    }
     
-    public var nibView: NibView {
-        fatalError("nibView must be implemented in subclass")
+    open override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        commonAwake()
+    }
+    
+    private var isAwake = false
+    
+    private func commonAwake() {
+        guard let cellView = contentSubview as? Interchangeable
+            else { return }
+        cellView.textLabel?.text = super.textLabel?.text
+        cellView.detailTextLabel?.text = super.detailTextLabel?.text
+        super.textLabel?.text = nil
+        super.detailTextLabel?.text = nil
+        isAwake = true
+    }
+    
+    // MARK: - UITableViewCell
+    
+    open override var textLabel: UILabel? {
+        return isAwake
+            ? cellView?.textLabel
+            : super.textLabel
+    }
+    
+    open override var detailTextLabel: UILabel? {
+        return isAwake
+            ? cellView?.detailTextLabel
+            : super.detailTextLabel
     }
     
 }

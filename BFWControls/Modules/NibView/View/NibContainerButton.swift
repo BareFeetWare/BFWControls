@@ -1,5 +1,5 @@
 //
-//  NibButton.swift
+//  NibContainerButton.swift
 //
 //  Created by Tom Brodhurst-Hill on 2/03/2016.
 //  Copyright © 2016 BareFeetWare. Free to use and modify, without warranty.
@@ -7,15 +7,8 @@
 
 import UIKit
 
-open class NibButton: UIButton {
-    
-    // MARK: - Variables
-    
-    /// Override in subclass
-    open var contentView: NibView? {
-        return nil
-    }
-    
+open class NibContainerButton: UIButton {
+
     // MARK: - Init
     
     public override init(frame: CGRect) {
@@ -29,11 +22,9 @@ open class NibButton: UIButton {
     }
     
     open func commonInit() {
-        if let contentView = contentView {
-            addSubview(contentView)
-            contentView.pinToSuperviewEdges()
-            contentView.isUserInteractionEnabled = false
-        }
+        addContentSubview()
+        // Allow presses on the content to pass through to the button itself:
+        contentSubview.isUserInteractionEnabled = false
     }
     
     open override func awakeFromNib() {
@@ -47,8 +38,20 @@ open class NibButton: UIButton {
     }
     
     open func commonAwake() {
-        titleLabel?.text = title(for: .normal)
-        setTitle(nil, for: .normal)
+        titleLabel?.text = super.title(for: .normal)
+        super.setTitle(nil, for: .normal)
     }
     
+    // MARK: - UIButton
+    
+    open override var titleLabel: UILabel? {
+        return (contentSubview as? Interchangeable)?.textLabel
+    }
+    
+}
+
+extension NibContainerButton: NibContainer {
+    public var contentView: UIView {
+        return self
+    }
 }
