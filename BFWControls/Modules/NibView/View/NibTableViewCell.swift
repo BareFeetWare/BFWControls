@@ -58,4 +58,15 @@ open class NibTableViewCell: UITableViewCell, NibContainer {
             : super.detailTextLabel
     }
     
+    // MARK: - UIView
+    
+    open override func layoutSubviews() {
+        if let leadingConstraint = textLabel?.constraints(with: textLabel!.superview!)?.first( where: { $0.firstAttribute == .leading })
+            // TODO: Check that constraint is not to margin.
+        {
+            leadingConstraint.constant = separatorInset.left
+        }
+        super.layoutSubviews()
+    }
+    
 }
