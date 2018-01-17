@@ -58,7 +58,8 @@ import UIKit
             }
         }
     }
-    
+
+    // Deprecated. Use table view separators instead.
     @IBInspectable open var showSeparator: Bool {
         get {
             return !(separatorView?.isHidden ?? true)
@@ -68,10 +69,21 @@ import UIKit
         }
     }
     
+    @IBInspectable open var isInsetAligned: Bool = false
+    
     // MARK: - NibView
     
     open override var placeholderViews: [UIView] {
         return [textLabel, detailTextLabel].flatMap { $0 }
+    }
+    
+    open override func updateView() {
+        super.updateView()
+        if let leadingConstraint = constraints.first( where: { $0.firstAttribute == .leading }),
+            let cell = superviewCell
+        {
+            leadingConstraint.constant = cell.separatorInset.left
+        }
     }
     
 }
