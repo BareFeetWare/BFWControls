@@ -41,7 +41,6 @@
 		E28BA9841E96402500D5DE3D /* ImageNibCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9441E96402500D5DE3D /* ImageNibCellView.swift */; };
 		E28BA9851E96402500D5DE3D /* NibContainerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9451E96402500D5DE3D /* NibContainerButton.swift */; };
 		E28BA9861E96402500D5DE3D /* NibCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9461E96402500D5DE3D /* NibCellView.swift */; };
-		E28BA9871E96402500D5DE3D /* NibContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9471E96402500D5DE3D /* NibContainer.swift */; };
 		E28BA9881E96402500D5DE3D /* NibTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9481E96402500D5DE3D /* NibTableViewCell.swift */; };
 		E28BA9891E96402500D5DE3D /* NibTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9491E96402500D5DE3D /* NibTableViewHeaderFooterView.swift */; };
 		E28BA98A1E96402500D5DE3D /* NibTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA94A1E96402500D5DE3D /* NibTextField.swift */; };
@@ -130,7 +129,6 @@
 		E28BA9441E96402500D5DE3D /* ImageNibCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageNibCellView.swift; sourceTree = "<group>"; };
 		E28BA9451E96402500D5DE3D /* NibContainerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibContainerButton.swift; sourceTree = "<group>"; };
 		E28BA9461E96402500D5DE3D /* NibCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibCellView.swift; sourceTree = "<group>"; };
-		E28BA9471E96402500D5DE3D /* NibContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibContainer.swift; sourceTree = "<group>"; };
 		E28BA9481E96402500D5DE3D /* NibTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibTableViewCell.swift; sourceTree = "<group>"; };
 		E28BA9491E96402500D5DE3D /* NibTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
 		E28BA94A1E96402500D5DE3D /* NibTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibTextField.swift; sourceTree = "<group>"; };
@@ -403,7 +401,6 @@
 				E28BA9461E96402500D5DE3D /* NibCellView.swift */,
 				E26E1F961F9C34F90008BACB /* NibCellViewContainer.swift */,
 				E220976F1F4185B500400079 /* NibCollectionViewCell.swift */,
-				E28BA9471E96402500D5DE3D /* NibContainer.swift */,
 				E28BA9451E96402500D5DE3D /* NibContainerButton.swift */,
 				E28BA9481E96402500D5DE3D /* NibTableViewCell.swift */,
 				E28BA9491E96402500D5DE3D /* NibTableViewHeaderFooterView.swift */,
@@ -918,7 +915,6 @@
 				E28BA9741E96402500D5DE3D /* StaticAlertView.swift in Sources */,
 				E2B3E5841F26EA5C002539E6 /* ReplaceInNavigationSegue.swift in Sources */,
 				E2EB09C71FE4C61E001DC697 /* UISegmentedControl+Convenience.swift in Sources */,
-				E28BA9871E96402500D5DE3D /* NibContainer.swift in Sources */,
 				E28BA99E1E96402500D5DE3D /* UIViewController+Segue.swift in Sources */,
 				E28BA97F1E96402500D5DE3D /* NSLayoutConstraintExtensions.swift in Sources */,
 				E28BA9901E96402500D5DE3D /* Dictionary+StyledText.swift in Sources */,

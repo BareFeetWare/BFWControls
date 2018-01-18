@@ -8,15 +8,32 @@
 
 import UIKit
 
-open class NibCollectionViewCell: UICollectionViewCell, NibContainer {
-
+open class NibCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - NibView container
+    
+    private func addContentSubview() {
+        contentView.addSubview(nibView)
+        nibView.pinToSuperviewEdges()
+    }
+    
+    open var nibView: NibView {
+        fatalError("Concrete subclass must provide nibView.")
+    }
+    
+    // MARK: - Init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addContentSubview()
+        commonInit()
     }
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
+        commonInit()
+    }
+    
+    open func commonInit() {
         addContentSubview()
     }
     

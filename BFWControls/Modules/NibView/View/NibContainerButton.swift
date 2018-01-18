@@ -8,7 +8,20 @@
 import UIKit
 
 open class NibContainerButton: UIButton {
-
+    
+    // MARK: - NibView container
+    
+    private func addContentSubview() {
+        addSubview(nibView)
+        nibView.pinToSuperviewEdges()
+        // Allow presses on the content to pass through to the button itself:
+        nibView.isUserInteractionEnabled = false
+    }
+    
+    open var nibView: NibView {
+        fatalError("Concrete subclass must provide nibView.")
+    }
+    
     // MARK: - Init
     
     public override init(frame: CGRect) {
@@ -23,8 +36,6 @@ open class NibContainerButton: UIButton {
     
     open func commonInit() {
         addContentSubview()
-        // Allow presses on the content to pass through to the button itself:
-        contentSubview.isUserInteractionEnabled = false
     }
     
     open override func awakeFromNib() {
@@ -45,13 +56,7 @@ open class NibContainerButton: UIButton {
     // MARK: - UIButton
     
     open override var titleLabel: UILabel? {
-        return (contentSubview as? TextLabelProvider)?.textLabel
+        return (nibView as? TextLabelProvider)?.textLabel
     }
     
-}
-
-extension NibContainerButton: NibContainer {
-    public var contentView: UIView {
-        return self
-    }
 }

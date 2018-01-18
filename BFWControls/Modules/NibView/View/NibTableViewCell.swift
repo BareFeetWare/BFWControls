@@ -8,17 +8,32 @@
 
 import UIKit
 
-open class NibTableViewCell: UITableViewCell, NibContainer {
+open class NibTableViewCell: UITableViewCell {
+    
+    // MARK: - NibView container
+    
+    private func addContentSubview() {
+        contentView.addSubview(nibView)
+        nibView.pinToSuperviewEdges()
+    }
+    
+    open var nibView: NibView {
+        fatalError("Concrete subclass must provide nibView.")
+    }
     
     // MARK: - Init
     
     public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        addContentSubview()
+        commonInit()
     }
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
+        commonInit()
+    }
+    
+    open func commonInit() {
         addContentSubview()
     }
     
@@ -35,7 +50,7 @@ open class NibTableViewCell: UITableViewCell, NibContainer {
     private var isAwake = false
     
     private func commonAwake() {
-        guard let cellView = contentSubview as? TextLabelProvider
+        guard let cellView = nibView as? TextLabelProvider
             else { return }
         cellView.textLabel?.text = super.textLabel?.text
         cellView.detailTextLabel?.text = super.detailTextLabel?.text
@@ -61,7 +76,9 @@ open class NibTableViewCell: UITableViewCell, NibContainer {
     // MARK: - UIView
     
     open override func layoutSubviews() {
-        if let leadingConstraint = textLabel?.constraints(with: textLabel!.superview!)?.first( where: { $0.firstAttribute == .leading })
+        if let leadingConstraint = textLabel?
+            .constraints(with: textLabel!.superview!)?
+            .first( where: { $0.firstAttribute == .leading })
             // TODO: Check that constraint is not to margin.
         {
             leadingConstraint.constant = separatorInset.left
