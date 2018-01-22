@@ -10,31 +10,32 @@ import UIKit
 
 open class NibTableViewCell: UITableViewCell {
     
-    // MARK: - NibView container
-    
-    private func addContentSubview() {
-        contentView.addSubview(nibView)
-        nibView.pinToSuperviewEdges()
-    }
-    
-    open var nibView: NibView {
-        fatalError("Concrete subclass must provide nibView.")
-    }
-    
     // MARK: - Init
     
     public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        commonInit()
+        commonInit(style: style)
     }
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
-        commonInit()
+        let styleInt = coder.decodeInteger(forKey: "UITableViewCellStyle")
+        if let style = UITableViewCellStyle(rawValue: styleInt) {
+            commonInit(style: style)
+        }
     }
     
-    open func commonInit() {
-        addContentSubview()
+    open func commonInit(style: UITableViewCellStyle) {
+        let nibView = self.nibView(for: style)
+        contentView.addSubview(nibView)
+        nibView.pinToSuperviewEdges()
+    }
+    
+    open func nibView(for style: UITableViewCellStyle) -> NibView {
+        switch style {
+        default:
+            fatalError("Concrete subclass must provide nibView(for style:).")
+        }
     }
     
     open override func awakeFromNib() {
@@ -50,7 +51,7 @@ open class NibTableViewCell: UITableViewCell {
     private var isAwake = false
     
     private func commonAwake() {
-        guard let cellView = nibView as? TextLabelProvider
+        guard let cellView = cellView
             else { return }
         cellView.textLabel?.text = super.textLabel?.text
         cellView.detailTextLabel?.text = super.detailTextLabel?.text
