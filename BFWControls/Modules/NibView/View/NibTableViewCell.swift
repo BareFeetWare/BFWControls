@@ -77,8 +77,8 @@ open class NibTableViewCell: UITableViewCell {
     // MARK: - UIView
     
     open override func layoutSubviews() {
-        if let leadingConstraint = textLabel?
-            .constraints(with: textLabel!.superview!)?
+        if let leadingConstraint =
+            constraints
             .first( where: { $0.firstAttribute == .leading })
             // TODO: Check that constraint is not to margin.
         {
