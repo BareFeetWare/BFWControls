@@ -19,6 +19,7 @@
 		E2320B2D1FDF6A49000E940E /* UITableViewCell+Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2320B2C1FDF6A49000E940E /* UITableViewCell+Separator.swift */; };
 		E24682211F24820B007285DB /* ShadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24682201F24820B007285DB /* ShadableView.swift */; };
 		E26E1F971F9C34F90008BACB /* NibCellViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26E1F961F9C34F90008BACB /* NibCellViewContainer.swift */; };
+		E286499E20185E7000A2A454 /* Observation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E286499D20185E7000A2A454 /* Observation.swift */; };
 		E28BA96D1E96402500D5DE3D /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA91F1E96402500D5DE3D /* AlertViewController.swift */; };
 		E28BA96E1E96402500D5DE3D /* ActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9211E96402500D5DE3D /* ActionSheetView.swift */; };
 		E28BA96F1E96402500D5DE3D /* ActionSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9221E96402500D5DE3D /* ActionSheetView.xib */; };
@@ -104,6 +105,7 @@
 		E2320B2C1FDF6A49000E940E /* UITableViewCell+Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Separator.swift"; sourceTree = "<group>"; };
 		E24682201F24820B007285DB /* ShadableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadableView.swift; sourceTree = "<group>"; };
 		E26E1F961F9C34F90008BACB /* NibCellViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibCellViewContainer.swift; sourceTree = "<group>"; };
+		E286499D20185E7000A2A454 /* Observation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observation.swift; sourceTree = "<group>"; };
 		E28BA9111E963F7800D5DE3D /* BFWControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BFWControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E28BA9141E963F7900D5DE3D /* BFWControls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFWControls.h; sourceTree = "<group>"; };
 		E28BA9151E963F7900D5DE3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -217,6 +219,22 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		E286499B20185E3500A2A454 /* Observation */ = {
+			isa = PBXGroup;
+			children = (
+				E286499C20185E5C00A2A454 /* Model */,
+			);
+			path = Observation;
+			sourceTree = "<group>";
+		};
+		E286499C20185E5C00A2A454 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E286499D20185E7000A2A454 /* Observation.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E28BA9071E963F7800D5DE3D = {
 			isa = PBXGroup;
 			children = (
@@ -258,6 +276,7 @@
 				E28BA9351E96402500D5DE3D /* Layer */,
 				E28BA93B1E96402500D5DE3D /* Layout */,
 				E28BA9401E96402500D5DE3D /* NibView */,
+				E286499B20185E3500A2A454 /* Observation */,
 				E2A87BC71EFEA2940069E41F /* Shadable */,
 				E28BA9511E96402500D5DE3D /* Styled */,
 				E28BA9571E96402500D5DE3D /* Table */,
@@ -910,6 +929,7 @@
 				E28BA97A1E96402500D5DE3D /* CarouselViewController.swift in Sources */,
 				E2A87BCA1EFEA2F80069E41F /* Shadable.swift in Sources */,
 				E28BA9921E96402500D5DE3D /* StyledText.swift in Sources */,
+				E286499E20185E7000A2A454 /* Observation.swift in Sources */,
 				E28BA97D1E96402500D5DE3D /* UIView+Layer.swift in Sources */,
 				E28BA99F1E96402500D5DE3D /* UIViewMorphExtensions.swift in Sources */,
 				E28BA9741E96402500D5DE3D /* StaticAlertView.swift in Sources */,
