@@ -151,7 +151,7 @@ open class CarouselViewController: UICollectionViewController {
     }
     
     fileprivate var currentCellItem: CGFloat {
-        return collectionViewSize.map { size in collectionView!.contentOffset.x / size.width } ?? 0
+        return collectionViewSize.map { size in collectionView!.contentOffset.x / maxCellWidth } ?? 0
     }
     
     fileprivate var bounceContentOffsetX: CGFloat = 100
