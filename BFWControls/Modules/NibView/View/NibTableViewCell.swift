@@ -9,6 +9,9 @@
 import UIKit
 
 open class NibTableViewCell: UITableViewCell {
+
+    /// Should position to leading edge of the cellView to match the cell's separatorInset.left. Default = true.
+    @IBInspectable open var isInsetAligned: Bool = true { didSet { updateInset() }}
     
     // MARK: - Init
     
@@ -74,16 +77,26 @@ open class NibTableViewCell: UITableViewCell {
             : super.detailTextLabel
     }
     
+    open override var separatorInset: UIEdgeInsets {
+        didSet {
+            updateInset()
+        }
+    }
+    
     // MARK: - UIView
     
+    private func updateInset() {
+        guard let cellView = cellView,
+            let constraints = contentView.constraints(with: cellView)
+            else { return }
+        constraints
+            .first( where: { [.leading, .left].contains($0.firstAttribute) })?
+            .constant = CGFloat(indentationLevel) * indentationWidth
+            + (isInsetAligned ? separatorInset.left : 0.0)
+    }
+    
     open override func layoutSubviews() {
-        if let leadingConstraint =
-            constraints
-            .first( where: { $0.firstAttribute == .leading })
-            // TODO: Check that constraint is not to margin.
-        {
-            leadingConstraint.constant = separatorInset.left
-        }
+        updateInset()
         super.layoutSubviews()
     }
     
