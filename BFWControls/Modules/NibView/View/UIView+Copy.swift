@@ -73,8 +73,14 @@ public extension UIView {
     }
     
     var viewFromNib: UIView? {
+        guard let bundle = type(of: self).bundle
+            else { return nil }
         let nibName = type(of: self).nibName
-        guard let nibViews = type(of: self).bundle?.loadNibNamed(nibName, owner: nil, options: nil),
+        return view(fromNibNamed: nibName, in: bundle)
+    }
+    
+    func view(fromNibNamed nibName: String, in bundle: Bundle) -> UIView? {
+        guard let nibViews = bundle.loadNibNamed(nibName, owner: nil, options: nil),
             let nibView = nibViews.first(where: { type(of: $0) == type(of: self) } ) as? UIView
             else {
                 debugPrint("**** error: Could not find an instance of class \(type(of: self)) in \(nibName) xib")
