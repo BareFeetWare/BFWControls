@@ -58,6 +58,22 @@ import UIKit
         }
     }
     
+    // MARK: - Init
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    public required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
+    }
+    
+    /// Convenience called by init(frame:) and init(coder:). Override in subclasses if required.
+    open func commonInit() {
+    }
+
     // MARK: - UIView overrides
     
     private static var sizeForKeyDictionary = [String: CGSize]()
