@@ -56,10 +56,10 @@ open class NibTableViewCell: UITableViewCell {
     private func commonAwake() {
         guard let cellView = cellView
             else { return }
-        cellView.textLabel?.text = super.textLabel?.text
-        cellView.detailTextLabel?.text = super.detailTextLabel?.text
-        super.textLabel?.text = nil
-        super.detailTextLabel?.text = nil
+        cellView.textLabel?.attributedText = super.textLabel?.attributedText
+        cellView.detailTextLabel?.attributedText = super.detailTextLabel?.attributedText
+        super.textLabel?.attributedText = nil
+        super.detailTextLabel?.attributedText = nil
         isAwake = true
     }
     
