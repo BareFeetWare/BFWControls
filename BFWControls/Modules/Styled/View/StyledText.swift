@@ -319,7 +319,6 @@ public extension NSAttributedString {
         let attributedString = NSMutableAttributedString(string: string, attributes: attributes)
         enumerateAttributes(in: NSRange(location: 0, length: length), options: [])
         { (attributes, range, stop) in
-            debugPrint("range: location: \(range.location), length: \(range.length), text: \((string as NSString).substring(with: range))")
             if let font = attributes[NSFontAttributeName] as? UIFont {
                 if let oldFont = attributedString.attribute(NSFontAttributeName,
                                                             at: range.location,
