@@ -9,9 +9,9 @@
 import UIKit
 
 open class NibTableViewCell: UITableViewCell {
-
+    
     /// Should position to leading edge of the cellView to match the cell's separatorInset.left. Default = true.
-    @IBInspectable open var isInsetAligned: Bool = true { didSet { updateInset() }}
+    @IBInspectable open var isInsetAligned: Bool = true { didSet { setNeedsUpdateInset() }}
     
     // MARK: - Init
     
@@ -31,7 +31,7 @@ open class NibTableViewCell: UITableViewCell {
     open func commonInit(style: UITableViewCellStyle) {
         let nibView = self.nibView(for: style)
         contentView.addSubview(nibView)
-        nibView.pinToSuperviewEdges()
+        nibView.pinToSuperviewMargins()
     }
     
     open func nibView(for style: UITableViewCellStyle) -> NibView {
@@ -77,26 +77,48 @@ open class NibTableViewCell: UITableViewCell {
             : super.detailTextLabel
     }
     
-    open override var separatorInset: UIEdgeInsets {
-        didSet {
+    open override var separatorInset: UIEdgeInsets { didSet { setNeedsUpdateInset() }}
+    
+    // MARK: - Update Inset
+    
+    private var needsUpdateInset = true
+    
+    private func setNeedsUpdateInset() {
+        needsUpdateInset = true
+        setNeedsLayout()
+    }
+    
+    private func updateInsetIfNeeded() {
+        if needsUpdateInset {
+            needsUpdateInset = false
             updateInset()
+        }
+    }
+    
+    private func updateInset() {
+        guard let cellView = cellView,
+            let leadingConstraint = contentView
+                .constraints(with: cellView)?
+                .first( where: { [.leading, .left, .leadingMargin, .leftMargin].contains($0.firstAttribute) })
+            else { return }
+        if isInsetAligned {
+            let insetPlusIndentationLeft = CGFloat(indentationLevel) * indentationWidth + separatorInset.left
+            let difference = insetPlusIndentationLeft - layoutMargins.left
+            leadingConstraint.constant = max(difference, 0.0)
+        } else {
+            leadingConstraint.constant = 0.0
         }
     }
     
     // MARK: - UIView
     
-    private func updateInset() {
-        guard let cellView = cellView,
-            let constraints = contentView.constraints(with: cellView)
-            else { return }
-        constraints
-            .first( where: { [.leading, .left].contains($0.firstAttribute) })?
-            .constant = CGFloat(indentationLevel) * indentationWidth
-            + (isInsetAligned ? separatorInset.left : 0.0)
+    open override func layoutMarginsDidChange() {
+        super.layoutMarginsDidChange()
+        setNeedsUpdateInset()
     }
     
     open override func layoutSubviews() {
-        updateInset()
+        updateInsetIfNeeded()
         super.layoutSubviews()
     }
     
