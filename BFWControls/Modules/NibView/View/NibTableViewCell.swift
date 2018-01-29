@@ -29,15 +29,15 @@ open class NibTableViewCell: UITableViewCell {
     }
     
     open func commonInit(style: UITableViewCellStyle) {
-        let nibView = self.nibView(for: style)
-        contentView.addSubview(nibView)
-        nibView.pinToSuperviewMargins()
+        let subview = contentSubview(for: style)
+        contentView.addSubview(subview)
+        subview.pinToSuperviewMargins()
     }
     
-    open func nibView(for style: UITableViewCellStyle) -> NibView {
+    open func contentSubview(for style: UITableViewCellStyle) -> UIView {
         switch style {
         default:
-            fatalError("Concrete subclass must provide nibView(for style:).")
+            fatalError("Concrete subclass must provide contentSubview(for style:).")
         }
     }
     
