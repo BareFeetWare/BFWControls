@@ -7,7 +7,7 @@
 
 import UIKit
 
-@IBDesignable open class NibView: BFWNibView {
+open class NibView: BFWNibView {
     
     // MARK: - Variables & Functions
     
