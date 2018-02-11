@@ -137,6 +137,33 @@ public extension UIView {
         }
     }
     
+    public func addConstraint(toBypass sibling: UIView) {
+        if let superview = superview,
+            superview == sibling.superview,
+            let gapConstraint: NSLayoutConstraint = sibling
+                .constraints(with: self)?
+                .first( where: {
+                    [.left, .leftMargin, .leading, .leadingMargin, .top, .topMargin]
+                        .contains($0.attribute(for: sibling)!)
+                        && [.right, .rightMargin, .trailing, .trailingMargin, .bottom, .bottomMargin]
+                            .contains($0.attribute(for: self)!)
+                } ),
+            let siblingToSuperConstraint: NSLayoutConstraint = sibling
+                // TODO: Also handle if constraint with superview's safe area.
+                .constraints(with: superview)?
+                .first( where: {
+                    gapConstraint.attribute(for: self)! == $0.attribute(for: $0.otherItem(if: sibling)!)!
+                })
+        {
+            let selfToSuperConstraint = siblingToSuperConstraint.constraint(
+                byReplacing: [sibling],
+                with: [self])
+            superview.addConstraint(selfToSuperConstraint)
+            sibling.isHidden = true
+            sibling.deactivateConstraintsIfHidden()
+        }
+    }
+
     public var widthMultiplier: CGFloat? {
         get {
             return widthConstraint?.multiplier
@@ -193,16 +220,22 @@ public extension NSLayoutConstraint {
     }
     
     public func constraint(byReplacing oldItems: [NSObject], with newItems: [NSObject]) -> NSLayoutConstraint {
-        let firstIndex = oldItems.index(of: self.firstItem as! NSObject)!
-        let firstItem = newItems[firstIndex]
-        var newSecondItem: NSObject?
-        if let secondItem = secondItem {
-            if let secondIndex = oldItems.index(of: secondItem as! NSObject) {
-                newSecondItem = newItems[secondIndex]
-            }
+        let newFirstItem: AnyObject
+        if let firstIndex = oldItems.index(of: firstItem as! NSObject) {
+            newFirstItem = newItems[firstIndex]
+        } else {
+            newFirstItem = firstItem
+        }
+        let newSecondItem: AnyObject?
+        if let secondItem = secondItem,
+            let secondIndex = oldItems.index(of: secondItem as! NSObject)
+        {
+            newSecondItem = newItems[secondIndex]
+        } else {
+            newSecondItem = self.secondItem
         }
         let constraint = NSLayoutConstraint(
-            item: firstItem,
+            item: newFirstItem,
             attribute: firstAttribute,
             relatedBy: relation,
             toItem: newSecondItem,
@@ -222,6 +255,22 @@ public extension NSLayoutConstraint {
                 || (firstItem == otherItem && secondItem == item)
         }
         return isBetween
+    }
+    
+    public func attribute(for view: AnyObject) -> NSLayoutAttribute? {
+        let attribute: NSLayoutAttribute?
+        if let firstItem = firstItem,
+            firstItem === view
+        {
+            attribute = firstAttribute
+        } else if let secondItem = secondItem,
+            secondItem === view
+        {
+            attribute = secondAttribute
+        } else {
+            attribute = nil
+        }
+        return attribute
     }
     
     public func otherItem(if view: UIView) -> AnyObject? {

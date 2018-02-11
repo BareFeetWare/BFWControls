@@ -28,10 +28,20 @@ open class NibTableViewCell: UITableViewCell {
         }
     }
     
+    /// Can be called from subclasses for taks common for init(coder:) and init(style:). Should call super.
     open func commonInit(style: UITableViewCellStyle) {
         let subview = contentSubview(for: style)
         contentView.addSubview(subview)
         subview.pinToSuperviewMargins()
+        removeDetailTextLabelIfNotUsed(style: style)
+    }
+    
+    private func removeDetailTextLabelIfNotUsed(style: UITableViewCellStyle) {
+        guard let textLabel = cellView?.textLabel,
+            let detailTextLabel = cellView?.detailTextLabel,
+            style == .default
+            else { return }
+        textLabel.addConstraint(toBypass: detailTextLabel)
     }
     
     open func contentSubview(for style: UITableViewCellStyle) -> UIView {
