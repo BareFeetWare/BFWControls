@@ -293,17 +293,19 @@ public extension UIFont {
         } else {
             validWeight = weight
         }
-        let traits = [UIFontWeightTrait: validWeight]
-        let attributes: TextAttributes = [
+        let traits = [UIFontWeightTrait : validWeight]
+        let fontAttributes: [String : Any] = [
             UIFontDescriptorFamilyAttribute: familyName as AnyObject,
             UIFontDescriptorTraitsAttribute: traits as AnyObject
         ]
-        let descriptor = UIFontDescriptor(fontAttributes: attributes)
+        let descriptor = UIFontDescriptor(fontAttributes: fontAttributes)
         let font = UIFont(descriptor: descriptor, size: pointSize)
         return font
     }
 
     public func addingSymbolicTraits(_ symbolicTraits: UIFontDescriptorSymbolicTraits) -> UIFont {
+        guard !symbolicTraits.isEmpty
+            else { return self }
         let combinedTraits = UIFontDescriptorSymbolicTraits(
             rawValue: symbolicTraits.rawValue
                 | fontDescriptor.symbolicTraits.rawValue
@@ -319,15 +321,15 @@ public extension NSAttributedString {
         let attributedString = NSMutableAttributedString(string: string, attributes: attributes)
         enumerateAttributes(in: NSRange(location: 0, length: length), options: [])
         { (attributes, range, stop) in
-            if let font = attributes[NSFontAttributeName] as? UIFont {
-                if let oldFont = attributedString.attribute(NSFontAttributeName,
-                                                            at: range.location,
-                                                            longestEffectiveRange: nil,
-                                                            in: range) as? UIFont
-                {
-                    let newFont = oldFont.addingSymbolicTraits(font.fontDescriptor.symbolicTraits)
-                    attributedString.addAttributes([NSFontAttributeName : newFont], range: range)
-                }
+            if let font = attributes[NSFontAttributeName] as? UIFont,
+                !font.fontDescriptor.symbolicTraits.isEmpty,
+                let oldFont = attributedString.attribute(NSFontAttributeName,
+                                                         at: range.location,
+                                                         longestEffectiveRange: nil,
+                                                         in: range) as? UIFont
+            {
+                let newFont = oldFont.addingSymbolicTraits(font.fontDescriptor.symbolicTraits)
+                attributedString.addAttributes([NSFontAttributeName : newFont], range: range)
             }
         }
         return NSAttributedString(attributedString: attributedString)
