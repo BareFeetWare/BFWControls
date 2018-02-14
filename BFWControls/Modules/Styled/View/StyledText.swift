@@ -306,11 +306,8 @@ public extension UIFont {
     public func addingSymbolicTraits(_ symbolicTraits: UIFontDescriptorSymbolicTraits) -> UIFont {
         guard !symbolicTraits.isEmpty
             else { return self }
-        let combinedTraits = UIFontDescriptorSymbolicTraits(
-            rawValue: symbolicTraits.rawValue
-                | fontDescriptor.symbolicTraits.rawValue
-        )
-        let newFontDescriptor = fontDescriptor.withSymbolicTraits(combinedTraits)!
+        var combinedTraits = fontDescriptor.symbolicTraits
+        combinedTraits.insert(symbolicTraits)
         let font = UIFont(descriptor: newFontDescriptor, size: pointSize)
         return font
     }
