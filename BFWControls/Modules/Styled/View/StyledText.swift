@@ -295,8 +295,8 @@ public extension UIFont {
         }
         let traits = [UIFontWeightTrait : validWeight]
         let fontAttributes: [String : Any] = [
-            UIFontDescriptorFamilyAttribute: familyName as AnyObject,
-            UIFontDescriptorTraitsAttribute: traits as AnyObject
+            UIFontDescriptorFamilyAttribute: familyName,
+            UIFontDescriptorTraitsAttribute: traits
         ]
         let descriptor = UIFontDescriptor(fontAttributes: fontAttributes)
         let font = UIFont(descriptor: descriptor, size: pointSize)
@@ -308,6 +308,22 @@ public extension UIFont {
             else { return self }
         var combinedTraits = fontDescriptor.symbolicTraits
         combinedTraits.insert(symbolicTraits)
+        let newFontDescriptor: UIFontDescriptor
+        if let combinedFontDescriptor = fontDescriptor.withSymbolicTraits(combinedTraits) {
+            newFontDescriptor = combinedFontDescriptor
+        } else {
+            // Fallback to below for pre-iOS 10 which returns nil from above and doesn't seem to work with symbolicTraits:
+            if combinedTraits.contains(.traitBold) {
+                let traitsDictionary = [UIFontWeightTrait : UIFontWeightBold]
+                let fontAttributes: [String : Any] = [
+                    UIFontDescriptorFamilyAttribute: familyName,
+                    UIFontDescriptorTraitsAttribute: traitsDictionary
+                ]
+                newFontDescriptor = UIFontDescriptor(fontAttributes: fontAttributes)
+            } else {
+                newFontDescriptor = fontDescriptor
+            }
+        }
         let font = UIFont(descriptor: newFontDescriptor, size: pointSize)
         return font
     }
