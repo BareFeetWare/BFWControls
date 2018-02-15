@@ -80,13 +80,8 @@ open class StyledText {
         if let familyName = flatDict[Key.familyName] as? String {
             attributes[UIFontDescriptorFamilyAttribute] = familyName as AnyObject?
             if let weight = flatDict[Key.weight] as? CGFloat {
-                let validWeight: CGFloat
-                if #available(iOS 8.2, *) {
-                    let fontWeight = FontWeight(approximateWeight: weight)
-                    validWeight = fontWeight.rawValue
-                } else {
-                    validWeight = weight
-                }
+                let fontWeight = FontWeight(approximateWeight: weight)
+                let validWeight = fontWeight.rawValue
                 let traits = [UIFontWeightTrait: validWeight]
                 attributes[UIFontDescriptorTraitsAttribute] = traits as AnyObject?
             }
@@ -218,7 +213,6 @@ public enum FontWeight {
     case heavy
     case black
     
-    @available(iOS 8.2, *)
     public var rawValue: CGFloat {
         switch self {
         case .ultraLight: return UIFontWeightUltraLight
@@ -257,7 +251,6 @@ public enum FontWeight {
                                     .heavy,
                                     .black]
     
-    @available(iOS 8.2, *)
     static var rawValues: [CGFloat] {
         return all.map { $0.rawValue }
     }
@@ -273,7 +266,6 @@ public enum FontWeight {
         self = FontWeight.all.first { $0.name == name }!
     }
     
-    @available(iOS 8.2, *)
     public init(approximateWeight: CGFloat) {
         self = FontWeight.all.reduce(FontWeight.medium) { closest, possible in
             return abs(possible.rawValue - approximateWeight) < abs(closest.rawValue - approximateWeight)
@@ -286,13 +278,8 @@ public enum FontWeight {
 public extension UIFont {
     
     func font(weight: CGFloat) -> UIFont {
-        let validWeight: CGFloat
-        if #available(iOS 8.2, *) {
-            let fontWeight = FontWeight(approximateWeight: weight)
-            validWeight = fontWeight.rawValue
-        } else {
-            validWeight = weight
-        }
+        let fontWeight = FontWeight(approximateWeight: weight)
+        let validWeight = fontWeight.rawValue
         let traits = [UIFontWeightTrait : validWeight]
         let fontAttributes: [String : Any] = [
             UIFontDescriptorFamilyAttribute: familyName,
