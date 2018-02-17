@@ -14,20 +14,37 @@ public extension UITableViewCell {
     
     /// Arbitrarily large number. Must be larger than any possible screen dimension. Can't be .greatestFiniteMagnitude, since that causes a screen flash when the app is restored from background.
     private var hiddenInsetRight: CGFloat {
-        return 999999.0
+        if #available(iOS 10, *) {
+            return 999999.0
+        } else {
+            // Workaround for iOS 9, which otherwise draws the separator to the left of separatorInset.left when separatorInset.right is large.
+            return bounds.width - separatorInset.left
+        }
     }
-
+    
+    private var hiddenInset: UIEdgeInsets {
+        return UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: hiddenInsetRight)
+    }
+    
     /// Hides the separator in a cell in a table view that is showing cell separators.
     @IBInspectable public var isSeparatorHidden: Bool {
         get {
             return separatorInset.right == hiddenInsetRight
         }
         set {
-            guard let insetRight: CGFloat = newValue
-                ? hiddenInsetRight
-                : superviewTableView?.separatorInset.right
-                else { return }
-            separatorInset.right = insetRight
+            update(isSeparatorHidden: newValue)
+        }
+    }
+
+    public func updateIsSeparatorHidden() {
+        update(isSeparatorHidden: isSeparatorHidden)
+    }
+    
+    public func update(isSeparatorHidden: Bool) {
+        if isSeparatorHidden {
+            if separatorInset.right != hiddenInsetRight {
+                separatorInset = hiddenInset
+            }
         }
     }
     
