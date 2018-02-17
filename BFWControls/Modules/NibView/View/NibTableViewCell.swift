@@ -11,7 +11,7 @@ import UIKit
 open class NibTableViewCell: UITableViewCell {
     
     /// Should position to leading edge of the cellView to match the cell's separatorInset.left. Default = true.
-    @IBInspectable open var isInsetAligned: Bool = true { didSet { setNeedsUpdateInset() }}
+    @IBInspectable open var isAlignedToInset: Bool = true { didSet { setNeedsAlignToInset() }}
     
     // MARK: - Init
     
@@ -87,31 +87,31 @@ open class NibTableViewCell: UITableViewCell {
             : super.detailTextLabel
     }
     
-    open override var separatorInset: UIEdgeInsets { didSet { setNeedsUpdateInset() }}
+    open override var separatorInset: UIEdgeInsets { didSet { setNeedsAlignToInset() }}
     
     // MARK: - Update Inset
     
-    private var needsUpdateInset = true
+    private var needsAlignToInset = true
     
-    private func setNeedsUpdateInset() {
-        needsUpdateInset = true
+    private func setNeedsAlignToInset() {
+        needsAlignToInset = true
         setNeedsLayout()
     }
     
-    private func updateInsetIfNeeded() {
-        if needsUpdateInset {
-            needsUpdateInset = false
-            updateInset()
+    private func alignToInsetIfNeeded() {
+        if needsAlignToInset {
+            needsAlignToInset = false
+            alignToInset()
         }
     }
     
-    private func updateInset() {
+    private func alignToInset() {
         guard let cellView = cellView,
             let leadingConstraint = contentView
                 .constraints(with: cellView)?
                 .first( where: { [.leading, .left, .leadingMargin, .leftMargin].contains($0.firstAttribute) })
             else { return }
-        if isInsetAligned {
+        if isAlignedToInset {
             let insetPlusIndentationLeft = CGFloat(indentationLevel) * indentationWidth + separatorInset.left
             let difference = insetPlusIndentationLeft - layoutMargins.left
             leadingConstraint.constant = max(difference, 0.0)
@@ -124,11 +124,11 @@ open class NibTableViewCell: UITableViewCell {
     
     open override func layoutMarginsDidChange() {
         super.layoutMarginsDidChange()
-        setNeedsUpdateInset()
+        setNeedsAlignToInset()
     }
     
     open override func layoutSubviews() {
-        updateInsetIfNeeded()
+        alignToInsetIfNeeded()
         super.layoutSubviews()
     }
     
