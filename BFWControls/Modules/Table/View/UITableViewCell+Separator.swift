@@ -33,6 +33,7 @@ public extension UITableViewCell {
         }
         set {
             update(isSeparatorHidden: newValue)
+            observeFrameChanges()
         }
     }
 
@@ -48,4 +49,24 @@ public extension UITableViewCell {
         }
     }
     
+    // MARK - KVO
+    
+    private static var observations: Set<NSKeyValueObservation> = []
+    
+    private var observations: Set<NSKeyValueObservation> {
+        return type(of: self).observations
+    }
+    
+    private func observeFrameChanges() {
+        if #available(iOS 10.0, *) {
+            // No need
+        } else {
+            // TODO: Remove observations of cells before they are deallocated, to prevent crashing.
+            let frameObservation = observe(\.frame) { (cell, change) in
+                cell.update(isSeparatorHidden: true)
+            }
+            type(of: self).observations.insert(frameObservation)
+            debugPrint("observations.count = \(observations.count)")
+        }
+    }
 }

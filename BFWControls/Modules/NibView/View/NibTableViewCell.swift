@@ -10,26 +10,6 @@ import UIKit
 
 open class NibTableViewCell: UITableViewCell {
     
-    private var storedIsSeparatorHidden: Bool = false
-    
-    /// Workaround for iOS 9 by storing isSeparatorHidden, since large separatorInset.right shows a line on the left of separatorInset.left.
-    @IBInspectable open override var isSeparatorHidden: Bool {
-        get {
-            if #available(iOS 10, *) {
-                return super.isSeparatorHidden
-            } else {
-                return storedIsSeparatorHidden
-            }
-        }
-        set {
-            if #available(iOS 10, *) {
-                super.isSeparatorHidden = newValue
-            } else {
-                storedIsSeparatorHidden = newValue
-            }
-        }
-    }
-
     /// Should position to leading edge of the cellView to match the cell's separatorInset.left. Default = true.
     @IBInspectable open var isAlignedToInset: Bool = true { didSet { setNeedsAlignToInset() }}
     
@@ -149,11 +129,6 @@ open class NibTableViewCell: UITableViewCell {
     
     open override func layoutSubviews() {
         alignToInsetIfNeeded()
-        if #available(iOS 10, *) {
-            // Nothing extra to do.
-        } else {
-            updateIsSeparatorHidden()
-        }
         super.layoutSubviews()
     }
     
