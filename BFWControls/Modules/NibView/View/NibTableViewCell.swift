@@ -10,6 +10,23 @@ import UIKit
 
 open class NibTableViewCell: UITableViewCell {
     
+    // MARK: Variables
+    
+    /// Minimum intrisicContentSize.height to use if table view uses auto dimension.
+    @IBInspectable open var intrinsicHeight: CGFloat {
+        get {
+            return cellView?.intrinsicContentSize.height ?? UITableViewAutomaticDimension
+        }
+        set {
+            cellView?.intrinsicSize = CGSize(width: UITableViewAutomaticDimension, height: newValue)
+        }
+    }
+    
+    /// Should position to the leading edge of the cellView to match the cell's separatorInset.left. Default = true.
+    @IBInspectable open var isAlignedToInset: Bool = true { didSet { setNeedsAlignToInset() }}
+    
+    // MARK: - UITableViewCell+Separator
+    
     private var storedIsSeparatorHidden: Bool = false
     
     /// Workaround for iOS 9 by storing isSeparatorHidden, since large separatorInset.right shows a line on the left of separatorInset.left.
@@ -29,9 +46,6 @@ open class NibTableViewCell: UITableViewCell {
             }
         }
     }
-
-    /// Should position to leading edge of the cellView to match the cell's separatorInset.left. Default = true.
-    @IBInspectable open var isAlignedToInset: Bool = true { didSet { setNeedsAlignToInset() }}
     
     // MARK: - Init
     
@@ -48,7 +62,7 @@ open class NibTableViewCell: UITableViewCell {
         }
     }
     
-    /// Can be called from subclasses for taks common for init(coder:) and init(style:). Should call super.
+    /// Can be called from subclasses for tasks common for init(coder:) and init(style:). Should call super.
     open func commonInit(style: UITableViewCellStyle) {
         let subview = contentSubview(for: style)
         contentView.addSubview(subview)

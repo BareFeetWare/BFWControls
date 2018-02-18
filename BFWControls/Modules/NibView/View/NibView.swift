@@ -11,6 +11,14 @@ open class NibView: BFWNibView {
     
     // MARK: - Variables & Functions
     
+    private let autoSize = CGSize(width: UITableViewAutomaticDimension,
+                                  height: UITableViewAutomaticDimension)
+    
+    // If this is set, it is used as intrinsicContentSize. Otherwise intrinsicContentSize taken as nib size.
+    @IBInspectable open lazy var intrinsicSize: CGSize = {
+        return self.autoSize
+    }()
+    
     /// Labels which should remove enclosing [] from text after awakeFromNib.
     open var placeholderViews: [UIView] {
         return []
@@ -91,16 +99,20 @@ open class NibView: BFWNibView {
     }
     
     open override var intrinsicContentSize: CGSize {
-        let size: CGSize
-        let type = type(of: self)
-        let key = NSStringFromClass(type)
-        if let reuseSize = type.sizeForKeyDictionary[key] {
-            size = reuseSize
+        if intrinsicSize != autoSize {
+            return intrinsicSize
         } else {
-            size = type.sizeFromNib ?? .zero
-            type.sizeForKeyDictionary[key] = size
+            let size: CGSize
+            let type = type(of: self)
+            let key = NSStringFromClass(type)
+            if let reuseSize = type.sizeForKeyDictionary[key] {
+                size = reuseSize
+            } else {
+                size = type.sizeFromNib ?? .zero
+                type.sizeForKeyDictionary[key] = size
+            }
+            return size
         }
-        return size
     }
     
     open override var backgroundColor: UIColor? {
