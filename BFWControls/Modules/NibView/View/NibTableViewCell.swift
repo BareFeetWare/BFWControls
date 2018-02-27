@@ -25,6 +25,9 @@ open class NibTableViewCell: UITableViewCell {
     /// Should position to the leading edge of the cellView to match the cell's separatorInset.left. Default = true.
     @IBInspectable open var isAlignedToInset: Bool = true { didSet { setNeedsAlignToInset() }}
     
+    /// Modify this in subclasses to pin content subview to superview margins or edges.
+    open var isContentSubviewPinnedToMargins: Bool = true
+    
     // MARK: - UITableViewCell+Separator
     
     private var storedIsSeparatorHidden: Bool = false
@@ -66,7 +69,11 @@ open class NibTableViewCell: UITableViewCell {
     open func commonInit(style: UITableViewCellStyle) {
         let subview = contentSubview(for: style)
         contentView.addSubview(subview)
-        subview.pinToSuperviewMargins()
+        if isContentSubviewPinnedToMargins {
+            subview.pinToSuperviewMargins()
+        } else {
+            subview.pinToSuperviewEdges()
+        }
         removeDetailTextLabelIfNotUsed(style: style)
     }
     
