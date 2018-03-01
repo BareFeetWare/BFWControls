@@ -26,7 +26,7 @@ open class NibTableViewCell: UITableViewCell {
     @IBInspectable open var isAlignedToInset: Bool = true { didSet { setNeedsAlignToInset() }}
     
     /// Modify this in subclasses to pin content subview to superview margins or edges.
-    open var isContentSubviewPinnedToMargins: Bool = true
+    open var isContentSubviewPinnedToMargins: Bool = true { didSet { pinContentSubviewToContentView() }}
     
     // MARK: - UITableViewCell+Separator
     
@@ -69,12 +69,20 @@ open class NibTableViewCell: UITableViewCell {
     open func commonInit(style: UITableViewCellStyle) {
         let subview = contentSubview(for: style)
         contentView.addSubview(subview)
-        if isContentSubviewPinnedToMargins {
-            subview.pinToSuperviewMargins()
-        } else {
-            subview.pinToSuperviewEdges()
-        }
+        pinContentSubviewToContentView()
         removeDetailTextLabelIfNotUsed(style: style)
+    }
+    
+    private func pinContentSubviewToContentView() {
+        guard let cellView = cellView else { return }
+        if let constraints = contentView.constraints(with: cellView) {
+            NSLayoutConstraint.deactivate(constraints)
+        }
+        if isContentSubviewPinnedToMargins {
+            cellView.pinToSuperviewMargins()
+        } else {
+            cellView.pinToSuperviewEdges()
+        }
     }
     
     private func removeDetailTextLabelIfNotUsed(style: UITableViewCellStyle) {
