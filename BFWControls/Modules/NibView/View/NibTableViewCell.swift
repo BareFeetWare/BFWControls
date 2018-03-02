@@ -31,6 +31,7 @@ open class NibTableViewCell: UITableViewCell {
     // MARK: - UITableViewCell+Separator
     
     private var storedIsSeparatorHidden: Bool = false
+    open var contentSubview: UIView?
     
     /// Workaround for iOS 9 by storing isSeparatorHidden, since large separatorInset.right shows a line on the left of separatorInset.left.
     @IBInspectable open override var isSeparatorHidden: Bool {
@@ -67,21 +68,22 @@ open class NibTableViewCell: UITableViewCell {
     
     /// Can be called from subclasses for tasks common for init(coder:) and init(style:). Should call super.
     open func commonInit(style: UITableViewCellStyle) {
-        let subview = contentSubview(for: style)
-        contentView.addSubview(subview)
+        contentSubview = contentSubview(for: style)
+        contentView.addSubview(contentSubview!)
         pinContentSubviewToContentView()
         removeDetailTextLabelIfNotUsed(style: style)
     }
     
     private func pinContentSubviewToContentView() {
-        guard let cellView = cellView else { return }
-        if let constraints = contentView.constraints(with: cellView) {
+        guard let contentSubview = contentSubview
+            else { return }
+        if let constraints = contentView.constraints(with: contentSubview) {
             NSLayoutConstraint.deactivate(constraints)
         }
         if isContentSubviewPinnedToMargins {
-            cellView.pinToSuperviewMargins()
+            contentSubview.pinToSuperviewMargins()
         } else {
-            cellView.pinToSuperviewEdges()
+            contentSubview.pinToSuperviewEdges()
         }
     }
     
