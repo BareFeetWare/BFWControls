@@ -1,5 +1,5 @@
 //
-//  AvatarView.swift
+//  AvatarCellView.swift
 //  BFWControls
 //
 //  Created by Tom Brodhurst-Hill on 17/10/16.
@@ -10,6 +10,6 @@
 import UIKit
 import BFWControls
 
-@IBDesignable class AvatarView: NibCellView {
+@IBDesignable class AvatarCellView: NibCellView {
     
 }
