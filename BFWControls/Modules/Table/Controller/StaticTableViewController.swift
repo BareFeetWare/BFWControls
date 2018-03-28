@@ -21,6 +21,7 @@ open class StaticTableViewController: UITableViewController {
     fileprivate var dynamicLastCellHeight: CGFloat?
     fileprivate var previousRowFrame = CGRect()
     fileprivate var shouldCallHeightForRow = true
+    fileprivate var isRefreshing = false
     
     /// Override in subclass, usually by connecting to an IBOutlet collection.
     open var excludedCells: [UITableViewCell]? {
@@ -222,6 +223,20 @@ open class StaticTableViewController: UITableViewController {
         if filledUsingLastCell {
             refreshDynamicLastCellHeight()
         }
+    }
+    
+    open func beginRefreshing() {
+        if let refreshControl = refreshControl, isRefreshing {
+            refreshControl.beginRefreshing()
+            tableView.setContentOffset(CGPoint(x: 0, y: tableView.contentOffset.y - refreshControl.frame.size.height), animated: true)
+        }
+    }
+    
+    open override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        guard let refreshControl = refreshControl else { return }
+        isRefreshing = refreshControl.isRefreshing
+        refreshControl.endRefreshing()
     }
     
     internal func UIApplicationDidChangeStatusBarFrameHandler (for notification: Foundation.Notification) {
