@@ -317,10 +317,15 @@ public extension UIFont {
 }
 
 public extension NSAttributedString {
-    public func keepingTraitsButAdding(attributes: TextAttributes) -> NSAttributedString {
+    public func keepingTraitsAndColorButAdding(attributes: TextAttributes) -> NSAttributedString {
         let attributedString = NSMutableAttributedString(string: string, attributes: attributes)
         enumerateAttributes(in: NSRange(location: 0, length: length), options: [])
         { (attributes, range, stop) in
+            if let color = attributes[NSForegroundColorAttributeName] as? UIColor,
+                color != .black
+            {
+                attributedString.addAttributes([NSForegroundColorAttributeName : color], range: range)
+            }
             if let font = attributes[NSFontAttributeName] as? UIFont,
                 !font.fontDescriptor.symbolicTraits.isEmpty,
                 let oldFont = attributedString.attribute(NSFontAttributeName,
