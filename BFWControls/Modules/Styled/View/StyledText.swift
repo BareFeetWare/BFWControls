@@ -322,7 +322,7 @@ public extension NSAttributedString {
         enumerateAttributes(in: NSRange(location: 0, length: length), options: [])
         { (attributes, range, stop) in
             if let color = attributes[NSForegroundColorAttributeName] as? UIColor,
-                color != .black
+                ![UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1), .black].contains(color)
             {
                 attributedString.addAttributes([NSForegroundColorAttributeName : color], range: range)
             }
