@@ -224,7 +224,7 @@ open class StaticTableViewController: UITableViewController {
         }
     }
     
-    internal func UIApplicationDidChangeStatusBarFrameHandler (for notification: Foundation.Notification) {
+    @objc internal func UIApplicationDidChangeStatusBarFrameHandler (for notification: Foundation.Notification) {
         if filledUsingLastCell {
             refreshDynamicLastCellHeight()
         }

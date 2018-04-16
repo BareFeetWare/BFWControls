@@ -15,7 +15,7 @@ public extension UIViewController {
         dismiss(animated: true) {}
     }
     
-    public func removeDismiss() {
+    @objc public func removeDismiss() {
         // TODO: Cater for multiple leftBarButtonItems.
         if let selector = navigationItem.leftBarButtonItem?.action,
             selector == #selector(UIViewController.dismiss(_:))

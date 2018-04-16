@@ -103,7 +103,7 @@ open class NibView: BFWNibView {
             return intrinsicSize
         } else {
             let size: CGSize
-            let type = type(of: self)
+            let type = Swift.type(of: self)
             let key = NSStringFromClass(type)
             if let reuseSize = type.sizeForKeyDictionary[key] {
                 size = reuseSize

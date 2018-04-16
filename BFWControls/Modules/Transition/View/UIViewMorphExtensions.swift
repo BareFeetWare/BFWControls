@@ -11,7 +11,7 @@ import UIKit
 
 public extension UIView {
     
-    public func isMorphable(to view: UIView) -> Bool {
+    @objc public func isMorphable(to view: UIView) -> Bool {
         var isMorphable = false
         if tag != 0 && tag == view.tag {
             isMorphable = true

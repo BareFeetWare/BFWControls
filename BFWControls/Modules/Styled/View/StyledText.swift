@@ -78,18 +78,18 @@ open class StyledText {
         var attributes = TextAttributes()
         let flatDict = flatLookup(dict: lookupDict)
         if let familyName = flatDict[Key.familyName] as? String {
-            attributes[UIFontDescriptorFamilyAttribute] = familyName as AnyObject?
+            attributes[UIFontDescriptor.AttributeName.family] = familyName as AnyObject?
             if let weight = flatDict[Key.weight] as? CGFloat {
                 let fontWeight = FontWeight(approximateWeight: weight)
                 let validWeight = fontWeight.rawValue
-                let traits = [UIFontWeightTrait: validWeight]
-                attributes[UIFontDescriptorTraitsAttribute] = traits as AnyObject?
+                let traits = [UIFontDescriptor.TraitKey.weight: validWeight]
+                attributes[UIFontDescriptor.AttributeName.traits] = traits as AnyObject?
             }
         } else if let fontName = flatDict[Key.fontName] as? String,
             let fontSize = flatDict[Key.fontSize] as? CGFloat,
             let font = UIFont(name: fontName, size: fontSize)
         {
-            attributes[NSFontAttributeName] = font
+            attributes[NSAttributedStringKey.font] = font
         } else if let fontName = flatDict[Key.fontName] as? String {
             debugPrint("**** error: Couldn't load UIFont(name: \(fontName)")
         } else {
@@ -99,7 +99,7 @@ open class StyledText {
             // TODO: Facilitate alpha ≠ 1.0
             let textColor = UIColor(hexString: textColorString, alpha: 1.0)
         {
-            attributes[NSForegroundColorAttributeName] = textColor
+            attributes[NSAttributedStringKey.foregroundColor] = textColor
         }
         return attributes
     }
@@ -215,15 +215,15 @@ public enum FontWeight {
     
     public var rawValue: CGFloat {
         switch self {
-        case .ultraLight: return UIFontWeightUltraLight
-        case .thin: return UIFontWeightThin
-        case .light: return UIFontWeightLight
-        case .regular: return UIFontWeightRegular
-        case .medium: return UIFontWeightMedium
-        case .semibold: return UIFontWeightSemibold
-        case .bold: return UIFontWeightBold
-        case .heavy: return UIFontWeightHeavy
-        case .black: return UIFontWeightBlack
+        case .ultraLight: return UIFont.Weight.ultraLight.rawValue
+        case .thin: return UIFont.Weight.thin.rawValue
+        case .light: return UIFont.Weight.light.rawValue
+        case .regular: return UIFont.Weight.regular.rawValue
+        case .medium: return UIFont.Weight.medium.rawValue
+        case .semibold: return UIFont.Weight.semibold.rawValue
+        case .bold: return UIFont.Weight.bold.rawValue
+        case .heavy: return UIFont.Weight.heavy.rawValue
+        case .black: return UIFont.Weight.black.rawValue
         }
     }
     
@@ -280,10 +280,10 @@ public extension UIFont {
     func font(weight: CGFloat) -> UIFont {
         let fontWeight = FontWeight(approximateWeight: weight)
         let validWeight = fontWeight.rawValue
-        let traits = [UIFontWeightTrait : validWeight]
+        let traits = [UIFontDescriptor.TraitKey.weight : validWeight]
         let fontAttributes: [String : Any] = [
-            UIFontDescriptorFamilyAttribute: familyName,
-            UIFontDescriptorTraitsAttribute: traits
+            UIFontDescriptor.AttributeName.family.rawValue: familyName,
+            UIFontDescriptor.AttributeName.traits.rawValue: traits
         ]
         let descriptor = UIFontDescriptor(fontAttributes: fontAttributes)
         let font = UIFont(descriptor: descriptor, size: pointSize)
@@ -301,10 +301,10 @@ public extension UIFont {
         } else {
             // Fallback to below for pre-iOS 10 which returns nil from above and doesn't seem to work with symbolicTraits:
             if combinedTraits.contains(.traitBold) {
-                let traitsDictionary = [UIFontWeightTrait : UIFontWeightBold]
+                let traitsDictionary = [UIFontDescriptor.TraitKey.weight : UIFont.Weight.bold]
                 let fontAttributes: [String : Any] = [
-                    UIFontDescriptorFamilyAttribute: familyName,
-                    UIFontDescriptorTraitsAttribute: traitsDictionary
+                    UIFontDescriptor.AttributeName.family.rawValue: familyName,
+                    UIFontDescriptor.AttributeName.traits.rawValue: traitsDictionary
                 ]
                 newFontDescriptor = UIFontDescriptor(fontAttributes: fontAttributes)
             } else {
@@ -321,20 +321,20 @@ public extension NSAttributedString {
         let attributedString = NSMutableAttributedString(string: string, attributes: attributes)
         enumerateAttributes(in: NSRange(location: 0, length: length), options: [])
         { (attributes, range, stop) in
-            if let color = attributes[NSForegroundColorAttributeName] as? UIColor,
+            if let color = attributes[NSAttributedStringKey.foregroundColor] as? UIColor,
                 ![UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1), .black].contains(color)
             {
-                attributedString.addAttributes([NSForegroundColorAttributeName : color], range: range)
+                attributedString.addAttributes([NSAttributedStringKey.foregroundColor : color], range: range)
             }
-            if let font = attributes[NSFontAttributeName] as? UIFont,
+            if let font = attributes[NSAttributedStringKey.font] as? UIFont,
                 !font.fontDescriptor.symbolicTraits.isEmpty,
-                let oldFont = attributedString.attribute(NSFontAttributeName,
+                let oldFont = attributedString.attribute(NSAttributedStringKey.font,
                                                          at: range.location,
                                                          longestEffectiveRange: nil,
                                                          in: range) as? UIFont
             {
                 let newFont = oldFont.addingSymbolicTraits(font.fontDescriptor.symbolicTraits)
-                attributedString.addAttributes([NSFontAttributeName : newFont], range: range)
+                attributedString.addAttributes([NSAttributedStringKey.font : newFont], range: range)
             }
         }
         return NSAttributedString(attributedString: attributedString)

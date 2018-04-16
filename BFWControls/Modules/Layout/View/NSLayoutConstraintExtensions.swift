@@ -224,7 +224,7 @@ public extension NSLayoutConstraint {
         if let firstIndex = oldItems.index(of: firstItem as! NSObject) {
             newFirstItem = newItems[firstIndex]
         } else {
-            newFirstItem = firstItem
+            newFirstItem = firstItem!
         }
         let newSecondItem: AnyObject?
         if let secondItem = secondItem,
