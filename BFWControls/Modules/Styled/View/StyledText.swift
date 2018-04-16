@@ -27,9 +27,9 @@ open class StyledText {
     
     fileprivate static let styledTextPlist = "StyledText"
     
-    fileprivate static var plistDict: [String: AnyObject]? = {
+    fileprivate static var plistDict: [String : AnyObject]? = {
         guard let path = Bundle.path(forFirstResource: styledTextPlist, ofType: "plist"),
-            let plistDict = NSDictionary(contentsOfFile: path) as? [String: AnyObject]
+            let plistDict = NSDictionary(contentsOfFile: path) as? [String : AnyObject]
             else {
                 debugPrint("StyledText: plistDict: failed")
                 return nil
@@ -74,22 +74,27 @@ open class StyledText {
         return attributes(forSection: Section.level, key: String(level))
     }
     
-    open class func attributes(for lookupDict: [String: AnyObject]) -> TextAttributes? {
+    open class func attributes(for lookupDict: [String : AnyObject]) -> TextAttributes? {
         var attributes = TextAttributes()
         let flatDict = flatLookup(dict: lookupDict)
-        if let familyName = flatDict[Key.familyName] as? String {
-            attributes[UIFontDescriptor.AttributeName.family] = familyName as AnyObject?
+        if let familyName = flatDict[Key.familyName] as? String,
+            let fontSize = flatDict[Key.fontSize] as? CGFloat
+        {
+            var fontAttributes = [UIFontDescriptor.AttributeName : Any]()
+            fontAttributes[.family] = familyName
             if let weight = flatDict[Key.weight] as? CGFloat {
                 let fontWeight = FontWeight(approximateWeight: weight)
                 let validWeight = fontWeight.rawValue
                 let traits = [UIFontDescriptor.TraitKey.weight: validWeight]
-                attributes[UIFontDescriptor.AttributeName.traits] = traits as AnyObject?
+                fontAttributes[.traits] = traits
             }
+            let fontDescriptor = UIFontDescriptor(fontAttributes: fontAttributes)
+            attributes[.font] = UIFont(descriptor: fontDescriptor, size: fontSize)
         } else if let fontName = flatDict[Key.fontName] as? String,
             let fontSize = flatDict[Key.fontSize] as? CGFloat,
             let font = UIFont(name: fontName, size: fontSize)
         {
-            attributes[NSAttributedStringKey.font] = font
+            attributes[.font] = font
         } else if let fontName = flatDict[Key.fontName] as? String {
             debugPrint("**** error: Couldn't load UIFont(name: \(fontName)")
         } else {
@@ -99,7 +104,7 @@ open class StyledText {
             // TODO: Facilitate alpha ≠ 1.0
             let textColor = UIColor(hexString: textColorString, alpha: 1.0)
         {
-            attributes[NSAttributedStringKey.foregroundColor] = textColor
+            attributes[.foregroundColor] = textColor
         }
         return attributes
     }
@@ -122,19 +127,19 @@ open class StyledText {
     // TODO: Make this private by providing alernative func.
     open class func attributes(forSection section: String, key: String) -> TextAttributes? {
         guard let sectionDict = plistDict?[section] as? [String : AnyObject],
-            let lookupDict = sectionDict[key] as? [String: AnyObject]
+            let lookupDict = sectionDict[key] as? [String : AnyObject]
             else { return nil }
         return attributes(for: lookupDict)
     }
     
-    fileprivate class func flatLookup(dict lookupDict: [String: AnyObject]) -> [String: AnyObject] {
+    fileprivate class func flatLookup(dict lookupDict: [String : AnyObject]) -> [String : AnyObject] {
         guard let plistDict = plistDict
             else { return [:] }
-        var combined = [String: AnyObject]()
+        var combined = [String : AnyObject]()
         for section in sections {
             if let key = lookupDict[section],
                 let sectionDict = plistDict[section] as? [String : AnyObject],
-                let dict = sectionDict[String(describing: key)] as? [String: AnyObject]
+                let dict = sectionDict[String(describing: key)] as? [String : AnyObject]
             {
                 combined.update(with: flatLookup(dict: dict))
             }
@@ -281,9 +286,9 @@ public extension UIFont {
         let fontWeight = FontWeight(approximateWeight: weight)
         let validWeight = fontWeight.rawValue
         let traits = [UIFontDescriptor.TraitKey.weight : validWeight]
-        let fontAttributes: [String : Any] = [
-            UIFontDescriptor.AttributeName.family.rawValue: familyName,
-            UIFontDescriptor.AttributeName.traits.rawValue: traits
+        let fontAttributes: [UIFontDescriptor.AttributeName : Any] = [
+            .family : familyName,
+            .traits : traits
         ]
         let descriptor = UIFontDescriptor(fontAttributes: fontAttributes)
         let font = UIFont(descriptor: descriptor, size: pointSize)
@@ -302,9 +307,9 @@ public extension UIFont {
             // Fallback to below for pre-iOS 10 which returns nil from above and doesn't seem to work with symbolicTraits:
             if combinedTraits.contains(.traitBold) {
                 let traitsDictionary = [UIFontDescriptor.TraitKey.weight : UIFont.Weight.bold]
-                let fontAttributes: [String : Any] = [
-                    UIFontDescriptor.AttributeName.family.rawValue: familyName,
-                    UIFontDescriptor.AttributeName.traits.rawValue: traitsDictionary
+                let fontAttributes: [UIFontDescriptor.AttributeName : Any] = [
+                    .family : familyName,
+                    .traits : traitsDictionary
                 ]
                 newFontDescriptor = UIFontDescriptor(fontAttributes: fontAttributes)
             } else {
