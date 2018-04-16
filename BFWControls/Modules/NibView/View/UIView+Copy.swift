@@ -72,7 +72,7 @@ public extension UIView {
         }
     }
     
-    var viewFromNib: UIView? {
+    @objc var viewFromNib: UIView? {
         guard let bundle = type(of: self).bundle
             else { return nil }
         let nibName = type(of: self).nibName

@@ -91,7 +91,7 @@ open class CarouselViewController: UICollectionViewController {
                 cell5Identifier,
                 cell6Identifier,
                 cell7Identifier
-            ].flatMap { $0 }
+            ].compactMap { $0 }
     }
     
     fileprivate var plistDict: [String: AnyObject]? {

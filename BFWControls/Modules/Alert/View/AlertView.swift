@@ -120,12 +120,12 @@ import UIKit
     }
     
     fileprivate var buttons: [UIButton] {
-        return actions.flatMap { $0.button }
+        return actions.compactMap { $0.button }
     }
     
     fileprivate var isHorizontalLayout: Bool {
-        let hasTopTitles = topActions.flatMap { $0.title }.count > 0
-        let hasShortBottomTitles = bottomActions.flatMap { action in
+        let hasTopTitles = topActions.compactMap { $0.title }.count > 0
+        let hasShortBottomTitles = bottomActions.compactMap { action in
             action.title
             }.filter { title in
                 title.count <= maxHorizontalButtonTitleCharacterCount
@@ -166,7 +166,7 @@ import UIKit
     // MARK: - NibView
     
     open override var placeholderViews: [UIView] {
-        return [titleLabel, messageLabel].flatMap { $0 }
+        return [titleLabel, messageLabel].compactMap { $0 }
     }
     
     open override func updateView() {

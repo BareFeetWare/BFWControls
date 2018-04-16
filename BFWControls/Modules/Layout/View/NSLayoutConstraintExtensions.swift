@@ -208,7 +208,7 @@ public extension NSLayoutConstraint {
     
     public func constraint(with multiplier: CGFloat) -> NSLayoutConstraint {
         let constraint = NSLayoutConstraint(
-            item: firstItem,
+            item: firstItem!,
             attribute: firstAttribute,
             relatedBy: relation,
             toItem: secondItem,
