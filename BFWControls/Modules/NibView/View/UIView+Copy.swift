@@ -155,7 +155,7 @@ extension UIView: Morphable {
 }
 
 public extension Morphable where Self: UILabel {
-    
+
     public func copyProperties(from view: UIView) {
         guard let label = view as? UILabel
             else { return }
@@ -163,8 +163,11 @@ public extension Morphable where Self: UILabel {
         text = label.text
         font = label.font
         textColor = label.textColor
+        // TODO: Figure out why the next two lines cause a segmentation fault in Swift 4
+        /*
         shadowColor = label.shadowColor
         shadowOffset = label.shadowOffset
+         */
         textAlignment = label.textAlignment
         lineBreakMode = label.lineBreakMode
         attributedText = label.attributedText
@@ -178,11 +181,11 @@ public extension Morphable where Self: UILabel {
         isEnabled = label.isEnabled
         tintColor = label.tintColor
     }
-    
+
 }
 
 public extension Morphable where Self: UIImageView {
-    
+
     public func copyProperties(from view: UIView) {
         guard let imageView = view as? UIImageView
             else { return }
@@ -192,5 +195,5 @@ public extension Morphable where Self: UIImageView {
         isHighlighted = imageView.isHighlighted
         animationImages = imageView.animationImages
     }
-    
+
 }
