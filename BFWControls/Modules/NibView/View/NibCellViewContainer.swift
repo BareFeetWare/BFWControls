@@ -16,7 +16,7 @@ public protocol NibCellViewContainer {
 
 extension UITableViewCell: NibCellViewContainer {
     
-    public var cellView: NibCellView? {
+    @objc public var cellView: NibCellView? {
         return contentView.subviews.first { $0 is NibCellView } as? NibCellView
     }
     
