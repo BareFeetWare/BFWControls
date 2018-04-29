@@ -19,22 +19,8 @@ open class DirectNibTableViewCell: BFWNibTableViewCell {
 
     // MARK: - Init and awake
     
-    private static var isLoadingFromNib = false
-    
-    private func loadedOnceFromNib() -> UIView {
-        let view: UIView
-        if type(of: self).isLoadingFromNib {
-            view = self
-        } else {
-            type(of: self).isLoadingFromNib = true
-            view = viewFromNib ?? self
-            type(of: self).isLoadingFromNib = false
-        }
-        return view
-    }
-    
     open override func awakeAfter(using coder: NSCoder) -> Any? {
-        return loadedOnceFromNib()
+        return viewFromNib
     }
 
     // MARK: - UITableViewCell

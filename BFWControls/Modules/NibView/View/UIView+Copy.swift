@@ -11,6 +11,9 @@ public extension UIView {
     
     // MARK: - Class variables
     
+    /// Prevents recursive call by loadNibNamed to itself. Safe as a static var since it always called on the main thread, ie synchronously.
+    private static var isLoadingFromNib = false
+    
     public static var bundle: Bundle? {
         return Bundle(for: self)
     }
@@ -80,12 +83,16 @@ public extension UIView {
     }
     
     func view(fromNibNamed nibName: String, in bundle: Bundle) -> UIView? {
+        let selfType = type(of: self)
+        guard !selfType.isLoadingFromNib
+            else { return self }
+        selfType.isLoadingFromNib = true
         guard let nibViews = bundle.loadNibNamed(nibName, owner: nil, options: nil),
-            let nibView = nibViews.first(where: { type(of: $0) == type(of: self) } ) as? UIView
+            let nibView = nibViews.first(where: { type(of: $0) == selfType } ) as? UIView
             else {
-                debugPrint("**** error: Could not find an instance of class \(type(of: self)) in \(nibName) xib")
-                return nil
+                fatalError("Could not find an instance of class \(selfType) in \(nibName) xib")
         }
+        selfType.isLoadingFromNib = false
         nibView.copyProperties(from: self)
         nibView.copyConstraints(from: self)
         return nibView
