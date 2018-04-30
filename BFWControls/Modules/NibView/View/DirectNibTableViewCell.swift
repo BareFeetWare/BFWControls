@@ -11,11 +11,11 @@ import UIKit
 
 open class DirectNibTableViewCell: BFWNibTableViewCell {
     
-    // MARK: - IBOutlets
+    // MARK: - Overriding storage
     
-    @IBOutlet open var overridingTextLabel: UILabel?
-    @IBOutlet open var overridingDetailTextLabel: UILabel?
-    @IBOutlet open var overridingImageView: UIImageView?
+    private var overridingTextLabel: UILabel?
+    private var overridingDetailTextLabel: UILabel?
+    private var overridingImageView: UIImageView?
 
     // MARK: - Init and awake
     
@@ -25,7 +25,7 @@ open class DirectNibTableViewCell: BFWNibTableViewCell {
 
     // MARK: - UITableViewCell
     
-    open override var textLabel: UILabel? {
+    @IBOutlet open override var textLabel: UILabel? {
         get {
             return overridingTextLabel
         }
@@ -34,7 +34,7 @@ open class DirectNibTableViewCell: BFWNibTableViewCell {
         }
     }
 
-    open override var detailTextLabel: UILabel? {
+    @IBOutlet open override var detailTextLabel: UILabel? {
         get {
             return overridingDetailTextLabel
         }
@@ -43,7 +43,7 @@ open class DirectNibTableViewCell: BFWNibTableViewCell {
         }
     }
 
-    open override var imageView: UIImageView? {
+    @IBOutlet open override var imageView: UIImageView? {
         get {
             return overridingImageView
         }

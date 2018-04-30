@@ -57,9 +57,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="overridingDetailTextLabel" destination="xqw-HD-prD" id="SnD-hx-qzN"/>
-                <outlet property="overridingImageView" destination="FNP-uV-VbS" id="2Bx-Ve-gaQ"/>
-                <outlet property="overridingTextLabel" destination="250-Yq-Tlg" id="fbb-6J-nRq"/>
+                <outlet property="detailTextLabel" destination="xqw-HD-prD" id="gEQ-MW-nh5"/>
+                <outlet property="imageView" destination="FNP-uV-VbS" id="wtE-fX-ckv"/>
+                <outlet property="textLabel" destination="250-Yq-Tlg" id="QCs-Be-dTs"/>
             </connections>
             <point key="canvasLocation" x="34" y="93"/>
         </tableViewCell>
