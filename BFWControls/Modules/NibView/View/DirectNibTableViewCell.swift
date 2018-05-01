@@ -31,25 +31,25 @@ open class DirectNibTableViewCell: BFWNibTableViewCell {
     
     @IBOutlet open override var textLabel: UILabel? {
         get {
-            return overridingTextLabel
+            return overridingTextLabel ?? super.textLabel
         }
         set {
             overridingTextLabel = newValue
         }
     }
-    
+
     @IBOutlet open override var detailTextLabel: UILabel? {
         get {
-            return overridingDetailTextLabel
+            return overridingDetailTextLabel ?? super.detailTextLabel
         }
         set {
             overridingDetailTextLabel = newValue
         }
     }
-    
+
     @IBOutlet open override var imageView: UIImageView? {
         get {
-            return overridingImageView
+            return overridingImageView ?? super.imageView
         }
         set {
             overridingImageView = newValue
