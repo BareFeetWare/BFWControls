@@ -46,9 +46,9 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Using NibTableViewCell subclass" id="9yP-qW-UfW">
+                            <tableViewSection headerTitle="Using NibContentTableViewCell subclass" id="9yP-qW-UfW">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="eKY-bm-ddb" detailTextLabel="Q6W-nf-ScW" rowHeight="219" style="IBUITableViewCellStyleSubtitle" id="dPx-ZC-h7R" customClass="AvatarTableViewCell" customModule="BFWControls_Demo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="eKY-bm-ddb" detailTextLabel="Q6W-nf-ScW" rowHeight="219" style="IBUITableViewCellStyleSubtitle" id="dPx-ZC-h7R" customClass="AvatarContentTableViewCell" customModule="BFWControls_Demo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="275" width="375" height="219"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dPx-ZC-h7R" id="CZg-8F-NnC">

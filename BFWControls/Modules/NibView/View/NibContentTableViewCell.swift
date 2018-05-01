@@ -1,5 +1,5 @@
 //
-//  NibTableViewCell.swift
+//  NibContentTableViewCell.swift
 //  BFWControls
 //
 //  Created by Tom Brodhurst-Hill on 26/3/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class NibTableViewCell: UITableViewCell {
+open class NibContentTableViewCell: UITableViewCell {
     
     // MARK: Variables
     

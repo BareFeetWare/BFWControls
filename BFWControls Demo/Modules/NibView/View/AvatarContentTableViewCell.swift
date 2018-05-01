@@ -1,5 +1,5 @@
 //
-//  AvatarTableViewCell.swift
+//  AvatarContentTableViewCell.swift
 //  BFWControls Demo
 //
 //  Created by Tom Brodhurst-Hill on 4/3/18.
@@ -10,7 +10,7 @@
 import UIKit
 import BFWControls
 
-@IBDesignable class AvatarTableViewCell: NibTableViewCell {
+@IBDesignable class AvatarContentTableViewCell: NibContentTableViewCell {
     
     override func contentSubview(for style: UITableViewCellStyle) -> UIView {
         return AvatarCellView()
