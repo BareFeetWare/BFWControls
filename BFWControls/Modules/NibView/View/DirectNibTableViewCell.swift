@@ -9,8 +9,8 @@
 
 import UIKit
 
-open class DirectNibTableViewCell: BFWNibTableViewCell {
-    
+@IBDesignable open class DirectNibTableViewCell: UITableViewCell {
+
     // MARK: - Overriding storage
     
     private var overridingTextLabel: UILabel?
@@ -18,6 +18,17 @@ open class DirectNibTableViewCell: BFWNibTableViewCell {
     private var overridingImageView: UIImageView?
     
     // MARK: - Init and awake
+    
+    open override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        guard let cell = viewFromNib as? UITableViewCell
+            else { return }
+        cell.copySubviewProperties(from: self)
+        contentView.isHidden = true
+        let subview = cell.contentView
+        addSubview(subview)
+        subview.pinToSuperviewEdges()
+    }
     
     open override func awakeAfter(using coder: NSCoder) -> Any? {
         let view = viewFromNib

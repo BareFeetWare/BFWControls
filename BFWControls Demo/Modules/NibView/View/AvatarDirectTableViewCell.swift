@@ -9,7 +9,7 @@
 import UIKit
 import BFWControls
 
-class AvatarDirectTableViewCell: DirectNibTableViewCell {
+@IBDesignable class AvatarDirectTableViewCell: DirectNibTableViewCell {
 
     
 }
