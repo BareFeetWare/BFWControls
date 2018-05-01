@@ -16,30 +16,31 @@ open class DirectNibTableViewCell: BFWNibTableViewCell {
     private var overridingTextLabel: UILabel?
     private var overridingDetailTextLabel: UILabel?
     private var overridingImageView: UIImageView?
-    private var replacedTextLabel: UILabel?
-    private var replacedDetailTextLabel: UILabel?
-    private var replacedImageView: UIImageView?
     
     // MARK: - Init and awake
     
-    public required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        let labels = contentView.subviews.compactMap{ $0 as? UILabel }
-        replacedTextLabel = labels.first
-        if labels.count >= 1 {
-            replacedDetailTextLabel = labels[1]
-        }
-        replacedImageView = contentView.subviews.compactMap { $0 as? UIImageView }.first
-    }
-    
     open override func awakeAfter(using coder: NSCoder) -> Any? {
-        let cell = viewFromNib as? UITableViewCell
-        cell?.textLabel?.text = replacedTextLabel?.text
-        cell?.detailTextLabel?.text = replacedDetailTextLabel?.text
-        cell?.imageView?.image = replacedImageView?.image
-        replacedTextLabel = nil
-        replacedDetailTextLabel = nil
-        replacedImageView = nil
+        let labels = contentView.subviews.compactMap{ $0 as? UILabel }
+        let replacedTextLabel = labels.first
+        let replacedDetailTextLabel = labels.count >= 1
+            ? labels[1]
+            : nil
+        let replacedImageView = contentView.subviews.compactMap { $0 as? UIImageView }.first
+        guard let cell = viewFromNib as? UITableViewCell
+            else { return self}
+        if let textLabel = cell.textLabel,
+            let replacedTextLabel = replacedTextLabel,
+            let attributes = textLabel.attributedText?.attributes(at: 0, effectiveRange: nil)
+        {
+            textLabel.attributedText = replacedTextLabel.attributedText?.keepingTraitsAndColorButAdding(attributes: attributes)
+        }
+        if let detailTextLabel = cell.detailTextLabel,
+            let replacedDetailTextLabel = replacedDetailTextLabel,
+            let attributes = detailTextLabel.attributedText?.attributes(at: 0, effectiveRange: nil)
+        {
+            detailTextLabel.attributedText = replacedDetailTextLabel.attributedText?.keepingTraitsAndColorButAdding(attributes: attributes)
+        }
+        cell.imageView?.image = replacedImageView?.image
         return cell
     }
     
