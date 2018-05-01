@@ -76,7 +76,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Using DirectNibTableViewCell subclass" id="938-eu-ppw">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="prU-v2-4Zb" detailTextLabel="2v9-Ae-ht2" rowHeight="219" style="IBUITableViewCellStyleSubtitle" id="0Ne-Is-qjk" customClass="AvatarDirectTableViewCell" customModule="BFWControls_Demo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="prU-v2-4Zb" detailTextLabel="2v9-Ae-ht2" imageView="bRb-EK-T3a" rowHeight="219" style="IBUITableViewCellStyleSubtitle" id="0Ne-Is-qjk" customClass="AvatarDirectTableViewCell" customModule="BFWControls_Demo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="522" width="375" height="219"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Ne-Is-qjk" id="FFP-Ug-yZs">
@@ -84,19 +84,23 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Tom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="prU-v2-4Zb">
-                                                    <rect key="frame" x="16" y="89" width="33" height="20.5"/>
+                                                    <rect key="frame" x="158" y="89" width="33" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="BareFeetWare" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2v9-Ae-ht2">
-                                                    <rect key="frame" x="16" y="112.5" width="79.5" height="14.5"/>
+                                                    <rect key="frame" x="158" y="112.5" width="79.5" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Tom" id="bRb-EK-T3a">
+                                                    <rect key="frame" x="16" y="45" width="127" height="127"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -117,4 +121,7 @@
             <point key="canvasLocation" x="77.599999999999994" y="145.27736131934034"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Tom" width="127" height="127"/>
+    </resources>
 </document>
