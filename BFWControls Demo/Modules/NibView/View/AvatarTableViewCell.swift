@@ -1,5 +1,5 @@
 //
-//  AvatarDirectTableViewCell.swift
+//  AvatarTableViewCell.swift
 //  BFWControls Demo
 //
 //  Created by Tom Brodhurst-Hill on 26/4/18.
@@ -9,7 +9,7 @@
 import UIKit
 import BFWControls
 
-@IBDesignable class AvatarDirectTableViewCell: DirectNibTableViewCell {
+@IBDesignable class AvatarTableViewCell: NibTableViewCell {
 
     
 }

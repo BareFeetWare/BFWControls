@@ -76,7 +76,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Using DirectNibTableViewCell subclass" id="938-eu-ppw">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="prU-v2-4Zb" detailTextLabel="2v9-Ae-ht2" imageView="bRb-EK-T3a" rowHeight="219" style="IBUITableViewCellStyleSubtitle" id="0Ne-Is-qjk" customClass="AvatarDirectTableViewCell" customModule="BFWControls_Demo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="prU-v2-4Zb" detailTextLabel="2v9-Ae-ht2" imageView="bRb-EK-T3a" rowHeight="219" style="IBUITableViewCellStyleSubtitle" id="0Ne-Is-qjk" customClass="AvatarTableViewCell" customModule="BFWControls_Demo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="522" width="375" height="219"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Ne-Is-qjk" id="FFP-Ug-yZs">

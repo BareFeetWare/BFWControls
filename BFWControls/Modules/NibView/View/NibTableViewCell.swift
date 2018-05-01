@@ -1,5 +1,5 @@
 //
-//  DirectNibTableViewCell.swift
+//  NibTableViewCell.swift
 //  BFWControls
 //
 //  Created by Tom Brodhurst-Hill on 24/4/18.
@@ -9,7 +9,7 @@
 
 import UIKit
 
-@IBDesignable open class DirectNibTableViewCell: CustomTableViewCell {
+@IBDesignable open class NibTableViewCell: CustomTableViewCell {
 
     // MARK: - Show nib content inside IB instance
     
