@@ -11,6 +11,7 @@
 		A1BD33A21EEA2F9800D217F6 /* ExcludeCellDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD33A11EEA2F9800D217F6 /* ExcludeCellDemoViewController.swift */; };
 		A1BD33B91EEAC9A400D217F6 /* DynamicCellDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD33B81EEAC9A400D217F6 /* DynamicCellDemoViewController.swift */; };
 		A1E0C3561EE9257A009F4ED3 /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA95F1E96402500D5DE3D /* SegueHandlerType.swift */; };
+		E2037A9A209815BB001E0BBA /* NSAttributedString+TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2037A99209815BB001E0BBA /* NSAttributedString+TextAttributes.swift */; };
 		E207BCAA1EADE577007BB14F /* UIImage+BFW.swift in Sources */ = {isa = PBXBuildFile; fileRef = E207BCA91EADE577007BB14F /* UIImage+BFW.swift */; };
 		E22097701F4185B500400079 /* NibCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E220976F1F4185B500400079 /* NibCollectionViewCell.swift */; };
 		E22477EA1ECBCAA7004A7802 /* Transition.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E22477E81ECBCAA7004A7802 /* Transition.storyboard */; };
@@ -103,6 +104,7 @@
 		A11CF2291EEC2F4D00020C0C /* DynamicHeightCellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicHeightCellViewController.swift; sourceTree = "<group>"; };
 		A1BD33A11EEA2F9800D217F6 /* ExcludeCellDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExcludeCellDemoViewController.swift; sourceTree = "<group>"; };
 		A1BD33B81EEAC9A400D217F6 /* DynamicCellDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicCellDemoViewController.swift; sourceTree = "<group>"; };
+		E2037A99209815BB001E0BBA /* NSAttributedString+TextAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+TextAttributes.swift"; sourceTree = "<group>"; };
 		E207BCA91EADE577007BB14F /* UIImage+BFW.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+BFW.swift"; sourceTree = "<group>"; };
 		E220976F1F4185B500400079 /* NibCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibCollectionViewCell.swift; sourceTree = "<group>"; };
 		E22477E81ECBCAA7004A7802 /* Transition.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Transition.storyboard; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				E28BA9531E96402500D5DE3D /* Dictionary+StyledText.swift */,
+				E2037A99209815BB001E0BBA /* NSAttributedString+TextAttributes.swift */,
 				E28BA9541E96402500D5DE3D /* TextAttributes.swift */,
 			);
 			path = Model;
@@ -942,6 +945,7 @@
 				E28BA99F1E96402500D5DE3D /* UIViewMorphExtensions.swift in Sources */,
 				E28BA9741E96402500D5DE3D /* StaticAlertView.swift in Sources */,
 				E2B3E5841F26EA5C002539E6 /* ReplaceInNavigationSegue.swift in Sources */,
+				E2037A9A209815BB001E0BBA /* NSAttributedString+TextAttributes.swift in Sources */,
 				E2EB09C71FE4C61E001DC697 /* UISegmentedControl+Convenience.swift in Sources */,
 				E28BA99E1E96402500D5DE3D /* UIViewController+Segue.swift in Sources */,
 				E28BA97F1E96402500D5DE3D /* NSLayoutConstraintExtensions.swift in Sources */,
