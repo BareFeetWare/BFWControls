@@ -20,28 +20,11 @@ open class DirectNibTableViewCell: BFWNibTableViewCell {
     // MARK: - Init and awake
     
     open override func awakeAfter(using coder: NSCoder) -> Any? {
-        let labels = contentView.subviews.compactMap{ $0 as? UILabel }
-        let replacedTextLabel = labels.first
-        let replacedDetailTextLabel = labels.count >= 1
-            ? labels[1]
-            : nil
-        let replacedImageView = contentView.subviews.compactMap { $0 as? UIImageView }.first
-        guard let cell = viewFromNib as? UITableViewCell
-            else { return self}
-        if let textLabel = cell.textLabel,
-            let replacedTextLabel = replacedTextLabel,
-            let attributes = textLabel.attributedText?.attributes(at: 0, effectiveRange: nil)
-        {
-            textLabel.attributedText = replacedTextLabel.attributedText?.keepingTraitsAndColorButAdding(attributes: attributes)
+        let view = viewFromNib
+        if let cell = view as? UITableViewCell {
+            cell.copySubviewProperties(from: self)
         }
-        if let detailTextLabel = cell.detailTextLabel,
-            let replacedDetailTextLabel = replacedDetailTextLabel,
-            let attributes = detailTextLabel.attributedText?.attributes(at: 0, effectiveRange: nil)
-        {
-            detailTextLabel.attributedText = replacedDetailTextLabel.attributedText?.keepingTraitsAndColorButAdding(attributes: attributes)
-        }
-        cell.imageView?.image = replacedImageView?.image
-        return cell
+        return view
     }
     
     // MARK: - UITableViewCell
