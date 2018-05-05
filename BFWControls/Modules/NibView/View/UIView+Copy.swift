@@ -11,7 +11,7 @@ public extension UIView {
     
     // MARK: - Class variables
     
-    /// Prevents recursive call by loadNibNamed to itself. Safe as a static var since it always called on the main thread, ie synchronously.
+    /// Prevents recursive call by loadNibNamed to itself. Safe as a static var since it is always called on the main thread, ie synchronously.
     private static var isLoadingFromNib = false
     
     public static var bundle: Bundle? {
@@ -36,9 +36,11 @@ public extension UIView {
     }
     
     static var sizeFromNib: CGSize? {
-        return (bundle?
-            .loadNibNamed(nibName, owner:nil, options: [:])?
-            .first as? UIView)?
+        return (
+            bundle?
+                .loadNibNamed(nibName, owner:nil, options: [:])?
+                .first as? UIView
+            )?
             .frame.size
     }
     
