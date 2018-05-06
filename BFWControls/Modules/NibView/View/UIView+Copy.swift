@@ -77,24 +77,24 @@ public extension UIView {
         }
     }
     
-    @objc var viewFromNib: UIView? {
-        guard let bundle = type(of: self).bundle
+    static func nibView(fromNibNamed nibName: String? = nil, in bundle: Bundle? = nil) -> UIView? {
+        guard !isLoadingFromNib
             else { return nil }
-        let nibName = type(of: self).nibName
-        return view(fromNibNamed: nibName, in: bundle)
+        isLoadingFromNib = true
+        let bundle = bundle ?? self.bundle!
+        let nibName = nibName ?? self.nibName
+        guard let nibViews = bundle.loadNibNamed(nibName, owner: nil, options: nil),
+            let nibView = nibViews.first(where: { type(of: $0) == self } ) as? UIView
+            else {
+                fatalError("Could not find an instance of class \(self) in \(nibName) xib")
+        }
+        isLoadingFromNib = false
+        return nibView
     }
     
-    func view(fromNibNamed nibName: String, in bundle: Bundle) -> UIView? {
-        let selfType = type(of: self)
-        guard !selfType.isLoadingFromNib
-            else { return self }
-        selfType.isLoadingFromNib = true
-        guard let nibViews = bundle.loadNibNamed(nibName, owner: nil, options: nil),
-            let nibView = nibViews.first(where: { type(of: $0) == selfType } ) as? UIView
-            else {
-                fatalError("Could not find an instance of class \(selfType) in \(nibName) xib")
-        }
-        selfType.isLoadingFromNib = false
+    @objc func replacedByNibView(fromNibNamed nibName: String? = nil, in bundle: Bundle? = nil) -> UIView {
+        guard let nibView = type(of: self).nibView(fromNibNamed: nibName, in: bundle)
+            else { return self}
         nibView.copyProperties(from: self)
         nibView.copyConstraints(from: self)
         return nibView

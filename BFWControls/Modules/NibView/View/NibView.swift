@@ -65,7 +65,7 @@ open class NibView: BFWNibView {
         let hasAlreadyLoadedFromNib = !subviews.isEmpty // TODO: More rubust test.
         return hasAlreadyLoadedFromNib
             ? self
-            : viewFromNib ?? self
+            : replacedByNibView()
     }
     
     open override var intrinsicContentSize: CGSize {
