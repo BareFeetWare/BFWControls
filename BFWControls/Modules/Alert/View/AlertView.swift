@@ -90,7 +90,7 @@ import UIKit
         return buttons.index(of: button)
     }
     
-    open func button(for title: String) -> UIButton? {
+    open func button(forTitle title: String) -> UIButton? {
         return actions.first { $0.title == title }?.button
     }
     
