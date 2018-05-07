@@ -90,6 +90,10 @@ import UIKit
         return buttons.index(of: button)
     }
     
+    open func button(for title: String) -> UIButton? {
+        return actions.first { $0.title == title }?.button
+    }
+    
     // MARK: - Private variables and functions
     
     typealias Action = (button: UIButton?, title: String?)
