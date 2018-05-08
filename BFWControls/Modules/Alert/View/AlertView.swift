@@ -91,7 +91,7 @@ import UIKit
     }
     
     open func button(forTitle title: String) -> UIButton? {
-        return actions.first { $0.title == title }?.button
+        return actions.first { $0.title?.uppercased() == title.uppercased() }?.button
     }
     
     // MARK: - Private variables and functions
