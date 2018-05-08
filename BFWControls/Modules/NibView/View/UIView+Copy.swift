@@ -81,6 +81,9 @@ public extension UIView {
         guard !isLoadingFromNib
             else { return nil }
         isLoadingFromNib = true
+        defer {
+            isLoadingFromNib = false
+        }
         let bundle = bundle ?? self.bundle!
         let nibName = nibName ?? self.nibName
         guard let nibViews = bundle.loadNibNamed(nibName, owner: nil, options: nil),
@@ -88,7 +91,6 @@ public extension UIView {
             else {
                 fatalError("Could not find an instance of class \(self) in \(nibName) xib")
         }
-        isLoadingFromNib = false
         return nibView
     }
     
