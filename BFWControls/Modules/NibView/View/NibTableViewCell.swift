@@ -28,6 +28,16 @@ import UIKit
         }
     }
     
+    /// Minimum intrinsicContentSize.height to use if the table view uses auto dimension.
+    @IBInspectable open var minimumHeight: CGFloat {
+        get {
+            return heightConstraint.constant
+        }
+        set {
+            heightConstraint.constant = newValue
+        }
+    }
+    
     /// Override to give different nib for each cell style
     @IBInspectable open var nibName: String?
     
@@ -40,7 +50,22 @@ import UIKit
         return contentSubview
     }
     
+    private lazy var heightConstraint: NSLayoutConstraint = {
+        NSLayoutConstraint(
+            item: contentView,
+            attribute: .height,
+            relatedBy: .greaterThanOrEqual,
+            toItem: nil,
+            attribute: .height,
+            multiplier: 1.0,
+            constant: 0.0)
+    }()
+    
     // MARK: - Functions
+    
+    private func addMinimimumHeight() {
+        contentView.addConstraint(heightConstraint)
+    }
     
     // TODO: Move to NibReplaceable:
     
@@ -53,6 +78,7 @@ import UIKit
     public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.style = style
+        addMinimimumHeight()
     }
     
     public required init?(coder: NSCoder) {
@@ -61,6 +87,7 @@ import UIKit
         if let style = UITableViewCellStyle(rawValue: styleInt) {
             self.style = style
         }
+        addMinimimumHeight()
     }
     
     // MARK: - Show nib content inside IB instance
