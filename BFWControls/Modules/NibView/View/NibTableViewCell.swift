@@ -116,3 +116,16 @@ extension NibTableViewCell: NibReplaceable {
     }
     
 }
+
+// Morphable
+
+extension NibTableViewCell {
+    
+    public override func copyProperties(from view: UIView) {
+        guard let cell = view as? UITableViewCell
+            else { return }
+        super.copyProperties(from: view)
+        accessoryType = cell.accessoryType
+    }
+    
+}

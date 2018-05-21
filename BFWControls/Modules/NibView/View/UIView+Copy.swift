@@ -172,7 +172,7 @@ public protocol Morphable {
 
 extension UIView: Morphable {
     
-    public func copyProperties(from view: UIView) {
+    @objc public func copyProperties(from view: UIView) {
         copyAnimatableProperties(from: view)
         frame = view.frame
         tag = view.tag
