@@ -112,7 +112,7 @@ import UIKit
 extension NibTableViewCell: NibReplaceable {
     
     open var placeholderViews: [UIView] {
-        return [textLabel, detailTextLabel].compactMap { $0 }
+        return [textLabel, detailTextLabel, actionView].compactMap { $0 }
     }
     
 }
