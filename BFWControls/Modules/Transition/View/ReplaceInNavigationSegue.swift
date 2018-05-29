@@ -9,13 +9,28 @@
 
 import UIKit
 
+public protocol NavigationReplacer {
+    var replacedViewController: UIViewController? { get set }
+}
+
 open class ReplaceInNavigationSegue: UIStoryboardSegue {
 
     open override func perform() {
-        guard var viewControllers = source.navigationController?.viewControllers
+        source.replaceInNavigation(with: destination)
+    }
+    
+}
+
+public extension UIViewController {
+    
+    public func replaceInNavigation(with replacerViewController: UIViewController) {
+        guard var viewControllers = navigationController?.viewControllers
             else { return }
-        viewControllers[viewControllers.count - 1] = destination.readiedForPush
-        source.navigationController?.viewControllers = viewControllers
+        viewControllers[viewControllers.count - 1] = replacerViewController.readiedForPush
+        navigationController?.viewControllers = viewControllers
+        if var replacer = replacerViewController as? NavigationReplacer {
+            replacer.replacedViewController = self
+        }
     }
     
 }
