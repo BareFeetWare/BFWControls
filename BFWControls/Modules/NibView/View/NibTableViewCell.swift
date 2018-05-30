@@ -9,8 +9,43 @@
 
 import UIKit
 
-@IBDesignable open class NibTableViewCell: CustomTableViewCell {
+@IBDesignable open class NibTableViewCell: BFWNibTableViewCell {
     
+    // MARK: - UITableViewCell
+    
+    @IBOutlet open override var textLabel: UILabel? {
+        get {
+            return overridingTextLabel ?? super.textLabel
+        }
+        set {
+            overridingTextLabel = newValue
+        }
+    }
+    
+    @IBOutlet open override var detailTextLabel: UILabel? {
+        get {
+            return overridingDetailTextLabel ?? super.detailTextLabel
+        }
+        set {
+            overridingDetailTextLabel = newValue
+        }
+    }
+    
+    @IBOutlet open override var imageView: UIImageView? {
+        get {
+            return overridingImageView ?? super.imageView
+        }
+        set {
+            overridingImageView = newValue
+        }
+    }
+    
+    // MARK: - Private variables
+    
+    private var overridingTextLabel: UILabel?
+    private var overridingDetailTextLabel: UILabel?
+    private var overridingImageView: UIImageView?
+
     // MARK: - IBOutlets
     
     // TODO: Perhaps integrate actionView with accessoryView
@@ -64,19 +99,6 @@ import UIKit
         if let style = UITableViewCellStyle(rawValue: styleInt) {
             self.style = style
         }
-    }
-    
-    // MARK: - Show nib content inside IB instance
-    
-    open override func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
-        guard let cell = replacedByNibView() as? UITableViewCell
-            else { return }
-        cell.copySubviewProperties(from: self)
-        contentView.isHidden = true
-        let subview = cell.contentView
-        addSubview(subview)
-        subview.pinToSuperviewEdges()
     }
     
     open override func awakeAfter(using coder: NSCoder) -> Any? {

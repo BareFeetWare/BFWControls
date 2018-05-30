@@ -9,9 +9,9 @@
 
 import UIKit
 
-extension UITableViewCell {
+public extension UITableViewCell {
     
-    func copySubviewProperties(from sourceCell: UITableViewCell) {
+    @objc public func copySubviewProperties(from sourceCell: UITableViewCell) {
         if let textLabel = textLabel,
             let sourceTextLabel = sourceCell.textLabel,
             let attributes = textLabel.attributedText?.attributes(at: 0, effectiveRange: nil)
