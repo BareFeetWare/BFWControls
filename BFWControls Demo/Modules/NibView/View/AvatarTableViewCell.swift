@@ -11,5 +11,15 @@ import BFWControls
 
 @IBDesignable class AvatarTableViewCell: NibTableViewCell {
 
+    @IBOutlet var tertiaryTextLabel: UILabel?
+    
+    @IBInspectable var tertiaryText: String? {
+        get {
+            return tertiaryTextLabel?.text
+        }
+        set {
+            tertiaryTextLabel?.text = newValue
+        }
+    }
     
 }
