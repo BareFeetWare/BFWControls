@@ -12,6 +12,7 @@
 
 #pragma mark - Init
 
+// Init in Objective C so it can return a replacement for self.
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {

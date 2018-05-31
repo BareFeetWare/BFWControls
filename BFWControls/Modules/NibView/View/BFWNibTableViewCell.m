@@ -13,6 +13,7 @@
 
 #pragma mark - Init
 
+// Init in Objective C so it can return a replacement for self.
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
