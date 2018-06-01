@@ -16,8 +16,8 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        if (super.contentView.subviews.count == 0) { // Prevents loading nib in nib itself.
-            BFWNibTableViewCell *nibView = (BFWNibTableViewCell *)[super replacedByNibViewFromNibNamed:nil in:nil];
+        BFWNibTableViewCell *nibView = (BFWNibTableViewCell *)[super replacedByNibViewFromNibNamed:nil in:nil];
+        if (nibView != self) {
             nibView.frame = super.frame;
             [nibView copySubviewPropertiesFrom: self];
             self = nibView;
