@@ -103,6 +103,9 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="tertiaryText" value="Tertiary goes here 5"/>
+                                        </userDefinedRuntimeAttributes>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
