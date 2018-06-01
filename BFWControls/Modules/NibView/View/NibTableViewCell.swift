@@ -82,7 +82,7 @@ import UIKit
     
     // TODO: Move to NibReplaceable:
     
-    open func replacedByNibView() -> UIView {
+    @objc open func replacedByNibView() -> UIView {
         return replacedByNibView(fromNibNamed: nibName ?? type(of: self).nibName)
     }
     

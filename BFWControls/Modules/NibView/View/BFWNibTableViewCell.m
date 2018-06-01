@@ -16,7 +16,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        BFWNibTableViewCell *nibView = (BFWNibTableViewCell *)[super replacedByNibViewFromNibNamed:nil in:nil];
+        NibTableViewCell *nibView = (NibTableViewCell *)[(NibTableViewCell *)self replacedByNibView];
         if (nibView != self) {
             nibView.frame = super.frame;
             [nibView copySubviewPropertiesFrom: self];
