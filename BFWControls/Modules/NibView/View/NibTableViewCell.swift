@@ -15,7 +15,14 @@ import UIKit
     
     @IBOutlet open override var textLabel: UILabel? {
         get {
+            #if TARGET_INTERFACE_BUILDER
+            // Prevent UITableViewCell from calling contentView.addSubview(textLabel)
+            return UIView.isLoadingFromNib
+                ? overridingTextLabel ?? super.textLabel
+                : super.textLabel
+            #else
             return overridingTextLabel ?? super.textLabel
+            #endif
         }
         set {
             overridingTextLabel = newValue
