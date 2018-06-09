@@ -19,7 +19,6 @@
         NibTableViewCell *nibView = (NibTableViewCell *)[(NibTableViewCell *)self replacedByNibView];
         if (nibView != self) {
             nibView.frame = super.frame;
-            [nibView copySubviewPropertiesFrom: self];
             self = nibView;
             self.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.5]; // testing
         }
