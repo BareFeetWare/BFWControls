@@ -215,6 +215,15 @@ public extension Morphable where Self: UILabel {
         isEnabled = label.isEnabled
         tintColor = label.tintColor
     }
+    
+    public func copyNonDefaultProperties(from view: UIView) {
+        guard let label = view as? UILabel
+            else { return }
+        if let attributes = attributedText?.attributes(at: 0, effectiveRange: nil)
+        {
+            attributedText = label.attributedText?.keepingTraitsAndColorButAdding(attributes: attributes)
+        }
+    }
 
 }
 
