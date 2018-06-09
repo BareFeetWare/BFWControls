@@ -15,17 +15,14 @@ import UIKit
     
     @IBOutlet open override var textLabel: UILabel? {
         get {
-            #if TARGET_INTERFACE_BUILDER
-            // Prevent UITableViewCell from calling contentView.addSubview(textLabel)
-            return UIView.isLoadingFromNib
-                ? overridingTextLabel ?? super.textLabel
+            return isAwake
+                ? overridingTextLabel
                 : super.textLabel
-            #else
-            return overridingTextLabel ?? super.textLabel
-            #endif
         }
         set {
-            overridingTextLabel = newValue
+            if overridingTextLabel == nil {
+                overridingTextLabel = newValue
+            }
         }
     }
     
@@ -111,12 +108,39 @@ import UIKit
     open override func awakeAfter(using coder: NSCoder) -> Any? {
         let view = replacedByNibView()
         if view != self {
-        if let cell = view as? UITableViewCell {
-            cell.copySubviewProperties(from: self)
-        }
-        (view as? NibReplaceable)?.removePlaceholders()
+            if let cell = view as? UITableViewCell {
+                cell.copySubviewProperties(from: self)
+            }
+            (view as? NibReplaceable)?.removePlaceholders()
         }
         return view
+    }
+    
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    open override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        commonAwake()
+    }
+    
+    private var isAwake = false
+    
+    private func commonAwake() {
+        if let destinationLabel = overridingTextLabel,
+            let sourceLabel = super.textLabel
+        {
+            destinationLabel.copyNonDefaultProperties(from: sourceLabel)
+            sourceLabel.attributedText = nil
+        }
+        if let destinationLabel = overridingDetailTextLabel,
+            let sourceLabel = super.detailTextLabel
+        {
+            destinationLabel.copyNonDefaultProperties(from: sourceLabel)
+            sourceLabel.attributedText = nil
+        }
+        isAwake = true
     }
     
     // MARK: - UITableViewCell
