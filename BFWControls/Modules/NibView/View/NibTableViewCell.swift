@@ -110,10 +110,12 @@ import UIKit
     
     open override func awakeAfter(using coder: NSCoder) -> Any? {
         let view = replacedByNibView()
+        if view != self {
         if let cell = view as? UITableViewCell {
             cell.copySubviewProperties(from: self)
         }
         (view as? NibReplaceable)?.removePlaceholders()
+        }
         return view
     }
     
