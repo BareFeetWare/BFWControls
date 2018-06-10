@@ -16,7 +16,7 @@ import UIKit
     @IBOutlet open override var textLabel: UILabel? {
         get {
             return activeView(overridingView: overridingTextLabel,
-                              inheritedView: super.textLabel)
+                              inheritedView: super.textLabel ?? UILabel())
                 as? UILabel
         }
         set {
@@ -28,13 +28,9 @@ import UIKit
     
     @IBOutlet open override var detailTextLabel: UILabel? {
         get {
-            return overridingDetailTextLabel ?? super.detailTextLabel
-            // TODO: Make this work:
-            /*
             return activeView(overridingView: overridingDetailTextLabel,
-                              inheritedView: super.detailTextLabel)
+                              inheritedView: inheritedDetailTextLabel ?? UILabel())
                 as? UILabel
-             */
         }
         set {
             if overridingDetailTextLabel == nil {
@@ -61,6 +57,18 @@ import UIKit
     private var overridingTextLabel: UILabel?
     private var overridingDetailTextLabel: UILabel?
     private var overridingImageView: UIImageView?
+    
+    /// super.detailTextLabel returns nil even though super.textLabel returns the label, so resorting to subviews:
+    private var inheritedDetailTextLabel: UILabel? {
+        let superLabels = super.contentView.subviews.filter { $0 is UILabel } as! [UILabel]
+        let superLabel: UILabel? = super.detailTextLabel
+            ?? (
+                superLabels.count == 2
+                    ? superLabels[1]
+                    : nil
+        )
+        return superLabel
+    }
     
     // MARK: - IBOutlets
     
@@ -157,7 +165,7 @@ import UIKit
             sourceLabel.attributedText = nil
         }
         if let destinationLabel = overridingDetailTextLabel,
-            let sourceLabel = super.detailTextLabel
+            let sourceLabel = inheritedDetailTextLabel
         {
             destinationLabel.copyNonDefaultProperties(from: sourceLabel)
             sourceLabel.attributedText = nil
