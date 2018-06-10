@@ -219,8 +219,7 @@ public extension Morphable where Self: UILabel {
     public func copyNonDefaultProperties(from view: UIView) {
         guard let label = view as? UILabel
             else { return }
-        if let attributes = attributedText?.attributes(at: 0, effectiveRange: nil)
-        {
+        if let attributes = attributedText?.attributes(at: 0, effectiveRange: nil) {
             attributedText = label.attributedText?.keepingTraitsAndColorButAdding(attributes: attributes)
         }
     }
@@ -237,6 +236,14 @@ public extension Morphable where Self: UIImageView {
         highlightedImage = imageView.highlightedImage
         isHighlighted = imageView.isHighlighted
         animationImages = imageView.animationImages
+    }
+    
+    public func copyNonDefaultProperties(from view: UIView) {
+        guard let imageView = view as? UIImageView
+            else { return }
+        if let sourceImage = imageView.image {
+            image = sourceImage
+        }
     }
 
 }

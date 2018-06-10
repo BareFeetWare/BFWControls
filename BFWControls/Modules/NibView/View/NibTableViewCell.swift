@@ -162,6 +162,12 @@ import UIKit
             destinationLabel.copyNonDefaultProperties(from: sourceLabel)
             sourceLabel.attributedText = nil
         }
+        if let destination = overridingImageView,
+            let source = super.imageView
+        {
+            destination.copyNonDefaultProperties(from: source)
+            source.image = nil
+        }
         isAwake = true
     }
     
