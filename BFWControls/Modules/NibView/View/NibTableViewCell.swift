@@ -15,9 +15,8 @@ import UIKit
     
     @IBOutlet open override var textLabel: UILabel? {
         get {
-            return isAwake
-                ? overridingTextLabel
-                : super.textLabel
+            return activeLabel(overridingLabel: overridingTextLabel,
+                               superLabel: super.textLabel)
         }
         set {
             if overridingTextLabel == nil {
@@ -29,9 +28,14 @@ import UIKit
     @IBOutlet open override var detailTextLabel: UILabel? {
         get {
             return overridingDetailTextLabel ?? super.detailTextLabel
+            // TODO: Make this work:
+//            return activeLabel(overridingLabel: overridingDetailTextLabel,
+//                               superLabel: super.detailTextLabel)
         }
         set {
-            overridingDetailTextLabel = newValue
+            if overridingDetailTextLabel == nil {
+                overridingDetailTextLabel = newValue
+            }
         }
     }
     
@@ -83,6 +87,16 @@ import UIKit
     }
     
     // MARK: - Functions
+    
+    private func activeLabel(overridingLabel: UILabel?, superLabel: UILabel?) -> UILabel? {
+        #if TARGET_INTERFACE_BUILDER
+        return isAwake
+            ? overridingLabel
+            : superLabel
+        #else
+        return overridingLabel ?? superLabel
+        #endif
+    }
     
     // TODO: Move to NibReplaceable:
     
