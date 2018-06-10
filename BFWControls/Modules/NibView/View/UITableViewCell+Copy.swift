@@ -12,17 +12,15 @@ import UIKit
 public extension UITableViewCell {
     
     @objc public func copySubviewProperties(from sourceCell: UITableViewCell) {
-        if let textLabel = textLabel,
-            let sourceTextLabel = sourceCell.textLabel,
-            let attributes = textLabel.attributedText?.attributes(at: 0, effectiveRange: nil)
+        if let destinationLabel = textLabel,
+            let sourceLabel = sourceCell.textLabel
         {
-            textLabel.attributedText = sourceTextLabel.attributedText?.keepingTraitsAndColorButAdding(attributes: attributes)
+            destinationLabel.copyNonDefaultProperties(from: sourceLabel)
         }
-        if let detailTextLabel = detailTextLabel,
-            let sourceDetailTextLabel = sourceCell.detailTextLabel,
-            let attributes = detailTextLabel.attributedText?.attributes(at: 0, effectiveRange: nil)
+        if let destinationLabel = detailTextLabel,
+            let sourceLabel = sourceCell.detailTextLabel
         {
-            detailTextLabel.attributedText = sourceDetailTextLabel.attributedText?.keepingTraitsAndColorButAdding(attributes: attributes)
+            destinationLabel.copyNonDefaultProperties(from: sourceLabel)
         }
         if let sourceImageView = sourceCell.imageView {
             imageView?.image = sourceImageView.image

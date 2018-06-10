@@ -17,12 +17,10 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        if (super.contentView.subviews.count == 0) { // Prevents loading nib in nib itself.
-            BFWNibTableViewCell *nibView = (BFWNibTableViewCell *)[super replacedByNibViewFromNibNamed:nil in:nil];
+        NibTableViewCell *nibView = (NibTableViewCell *)[(NibTableViewCell *)self replacedByNibView];
+        if (nibView != self) {
             nibView.frame = super.frame;
-            [nibView copySubviewPropertiesFrom: self];
             self = nibView;
-            self.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.5]; // testing
         }
     }
     return self;

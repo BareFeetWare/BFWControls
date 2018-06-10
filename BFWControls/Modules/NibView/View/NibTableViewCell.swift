@@ -15,28 +15,40 @@ import UIKit
     
     @IBOutlet open override var textLabel: UILabel? {
         get {
-            return overridingTextLabel ?? super.textLabel
+            return activeView(overridingView: overridingTextLabel,
+                              inheritedView: super.textLabel ?? UILabel())
+                as? UILabel
         }
         set {
-            overridingTextLabel = newValue
+            if overridingTextLabel == nil {
+                overridingTextLabel = newValue
+            }
         }
     }
     
     @IBOutlet open override var detailTextLabel: UILabel? {
         get {
-            return overridingDetailTextLabel ?? super.detailTextLabel
+            return activeView(overridingView: overridingDetailTextLabel,
+                              inheritedView: inheritedDetailTextLabel ?? UILabel())
+                as? UILabel
         }
         set {
-            overridingDetailTextLabel = newValue
+            if overridingDetailTextLabel == nil {
+                overridingDetailTextLabel = newValue
+            }
         }
     }
     
     @IBOutlet open override var imageView: UIImageView? {
         get {
-            return overridingImageView ?? super.imageView
+            return activeView(overridingView: overridingImageView,
+                              inheritedView: super.imageView)
+                as? UIImageView
         }
         set {
-            overridingImageView = newValue
+            if overridingImageView == nil {
+                overridingImageView = newValue
+            }
         }
     }
     
@@ -45,6 +57,19 @@ import UIKit
     private var overridingTextLabel: UILabel?
     private var overridingDetailTextLabel: UILabel?
     private var overridingImageView: UIImageView?
+    
+    /// super.detailTextLabel returns nil even though super.textLabel returns the label, so resorting to subviews:
+    private var inheritedDetailTextLabel: UILabel? {
+        let superLabels = super.contentView.subviews.filter { $0 is UILabel } as! [UILabel]
+        let superLabel: UILabel? = super.detailTextLabel
+            ?? (
+                superLabels.count == 2
+                    ? superLabels[1]
+                    : nil
+        )
+        return superLabel
+    }
+    
 
     // MARK: - IBOutlets
     
@@ -80,9 +105,19 @@ import UIKit
     
     // MARK: - Functions
     
+    private func activeView(overridingView: UIView?, inheritedView: UIView?) -> UIView? {
+        #if TARGET_INTERFACE_BUILDER
+        return isAwake
+            ? overridingView
+            : inheritedView
+        #else
+        return overridingView ?? inheritedView
+        #endif
+    }
+    
     // TODO: Move to NibReplaceable:
     
-    open func replacedByNibView() -> UIView {
+    @objc open func replacedByNibView() -> UIView {
         return replacedByNibView(fromNibNamed: nibName ?? type(of: self).nibName)
     }
     
@@ -103,14 +138,45 @@ import UIKit
     
     open override func awakeAfter(using coder: NSCoder) -> Any? {
         let view = replacedByNibView()
-        if let cell = view as? UITableViewCell {
-            cell.copySubviewProperties(from: self)
+        if view != self {
+            if let cell = view as? UITableViewCell {
+                cell.copySubviewProperties(from: self)
+            }
+            (view as? NibReplaceable)?.removePlaceholders()
         }
-        (view as? NibReplaceable)?.removePlaceholders()
         return view
     }
     
-    // MARK: - UITableViewCell
+    open override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        commonAwake()
+    }
+    
+    private var isAwake = false
+    
+    private func commonAwake() {
+        if let destinationLabel = overridingTextLabel,
+            let sourceLabel = super.textLabel
+        {
+            destinationLabel.copyNonDefaultProperties(from: sourceLabel)
+            sourceLabel.attributedText = nil
+        }
+        if let destinationLabel = overridingDetailTextLabel,
+            let sourceLabel = inheritedDetailTextLabel
+        {
+            destinationLabel.copyNonDefaultProperties(from: sourceLabel)
+            sourceLabel.attributedText = nil
+        }
+        if let destination = overridingImageView,
+            let source = super.imageView
+        {
+            destination.copyNonDefaultProperties(from: source)
+            source.image = nil
+        }
+        isAwake = true
+    }
+    
+    // MARK: - UIView
     
     open override func systemLayoutSizeFitting(
         _ targetSize: CGSize,

@@ -21,5 +21,5 @@ import BFWControls
             tertiaryTextLabel?.text = newValue
         }
     }
-    
+
 }
