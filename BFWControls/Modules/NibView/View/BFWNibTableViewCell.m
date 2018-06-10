@@ -20,7 +20,6 @@
         if (nibView != self) {
             nibView.frame = super.frame;
             self = nibView;
-            self.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.5]; // testing
         }
     }
     return self;
