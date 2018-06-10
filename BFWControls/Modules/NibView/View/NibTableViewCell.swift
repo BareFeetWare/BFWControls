@@ -146,10 +146,6 @@ import UIKit
         return view
     }
     
-    open override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     open override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         commonAwake()
@@ -179,7 +175,7 @@ import UIKit
         isAwake = true
     }
     
-    // MARK: - UITableViewCell
+    // MARK: - UIView
     
     open override func systemLayoutSizeFitting(
         _ targetSize: CGSize,
