@@ -15,8 +15,9 @@ import UIKit
     
     @IBOutlet open override var textLabel: UILabel? {
         get {
-            return activeLabel(overridingLabel: overridingTextLabel,
-                               superLabel: super.textLabel)
+            return activeView(overridingView: overridingTextLabel,
+                              inheritedView: super.textLabel)
+                as? UILabel
         }
         set {
             if overridingTextLabel == nil {
@@ -29,8 +30,11 @@ import UIKit
         get {
             return overridingDetailTextLabel ?? super.detailTextLabel
             // TODO: Make this work:
-//            return activeLabel(overridingLabel: overridingDetailTextLabel,
-//                               superLabel: super.detailTextLabel)
+            /*
+            return activeView(overridingView: overridingDetailTextLabel,
+                              inheritedView: super.detailTextLabel)
+                as? UILabel
+             */
         }
         set {
             if overridingDetailTextLabel == nil {
@@ -41,10 +45,14 @@ import UIKit
     
     @IBOutlet open override var imageView: UIImageView? {
         get {
-            return overridingImageView ?? super.imageView
+            return activeView(overridingView: overridingImageView,
+                              inheritedView: super.imageView)
+                as? UIImageView
         }
         set {
-            overridingImageView = newValue
+            if overridingImageView == nil {
+                overridingImageView = newValue
+            }
         }
     }
     
@@ -53,7 +61,7 @@ import UIKit
     private var overridingTextLabel: UILabel?
     private var overridingDetailTextLabel: UILabel?
     private var overridingImageView: UIImageView?
-
+    
     // MARK: - IBOutlets
     
     // TODO: Perhaps integrate actionView with accessoryView
@@ -88,13 +96,13 @@ import UIKit
     
     // MARK: - Functions
     
-    private func activeLabel(overridingLabel: UILabel?, superLabel: UILabel?) -> UILabel? {
+    private func activeView(overridingView: UIView?, inheritedView: UIView?) -> UIView? {
         #if TARGET_INTERFACE_BUILDER
         return isAwake
-            ? overridingLabel
-            : superLabel
+            ? overridingView
+            : inheritedView
         #else
-        return overridingLabel ?? superLabel
+        return overridingView ?? inheritedView
         #endif
     }
     
