@@ -182,6 +182,7 @@ import UIKit
             source.image = nil
         }
         isAwake = true
+        removePlaceholders()
     }
     
     // MARK: - UIView
