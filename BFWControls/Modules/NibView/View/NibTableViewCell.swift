@@ -52,6 +52,17 @@ import UIKit
         }
     }
     
+    @IBOutlet open var tertiaryTextLabel: UILabel?
+    
+    @IBInspectable open var tertiaryText: String? {
+        get {
+            return tertiaryTextLabel?.text
+        }
+        set {
+            tertiaryTextLabel?.text = newValue
+        }
+    }
+    
     // TODO: Perhaps integrate actionView with accessoryView
     
     @IBOutlet open var actionView: UIView?
@@ -197,7 +208,7 @@ import UIKit
 extension NibTableViewCell: NibReplaceable {
     
     open var placeholderViews: [UIView] {
-        return [textLabel, detailTextLabel, actionView].compactMap { $0 }
+        return [textLabel, detailTextLabel, tertiaryTextLabel, actionView].compactMap { $0 }
     }
     
 }
