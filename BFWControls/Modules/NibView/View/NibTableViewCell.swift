@@ -182,7 +182,13 @@ import UIKit
             source.image = nil
         }
         isAwake = true
+    }
+    
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+        #if TARGET_INTERFACE_BUILDER
         removePlaceholders()
+        #endif
     }
     
     // MARK: - UIView
