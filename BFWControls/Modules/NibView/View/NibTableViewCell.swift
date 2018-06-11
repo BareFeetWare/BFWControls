@@ -11,7 +11,7 @@ import UIKit
 
 @IBDesignable open class NibTableViewCell: BFWNibTableViewCell {
     
-    // MARK: - UITableViewCell
+    // MARK: - IBOutlets
     
     @IBOutlet open override var textLabel: UILabel? {
         get {
@@ -52,6 +52,10 @@ import UIKit
         }
     }
     
+    // TODO: Perhaps integrate actionView with accessoryView
+    
+    @IBOutlet open var actionView: UIView?
+    
     // MARK: - Private variables
     
     private var overridingTextLabel: UILabel?
@@ -69,13 +73,6 @@ import UIKit
         )
         return superLabel
     }
-    
-
-    // MARK: - IBOutlets
-    
-    // TODO: Perhaps integrate actionView with accessoryView
-    
-    @IBOutlet open var actionView: UIView?
     
     // MARK: - Variables
     
