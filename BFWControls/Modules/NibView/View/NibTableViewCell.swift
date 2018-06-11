@@ -169,11 +169,13 @@ import UIKit
             destinationLabel.copyNonDefaultProperties(from: sourceLabel)
             sourceLabel.attributedText = nil
         }
-        if let destinationLabel = overridingDetailTextLabel,
-            let sourceLabel = inheritedDetailTextLabel
-        {
-            destinationLabel.copyNonDefaultProperties(from: sourceLabel)
-            sourceLabel.attributedText = nil
+        if let destinationLabel = overridingDetailTextLabel {
+            if let sourceLabel = inheritedDetailTextLabel {
+                destinationLabel.copyNonDefaultProperties(from: sourceLabel)
+                sourceLabel.attributedText = nil
+            } else {
+                destinationLabel.text = nil
+            }
         }
         if let destination = overridingImageView,
             let source = super.imageView
