@@ -12,18 +12,14 @@ import UIKit
 public extension UITableViewCell {
     
     @objc public func copySubviewProperties(from sourceCell: UITableViewCell) {
-        if let destinationLabel = textLabel,
-            let sourceLabel = sourceCell.textLabel
-        {
-            destinationLabel.copyNonDefaultProperties(from: sourceLabel)
+        if let sourceLabel = sourceCell.textLabel {
+            textLabel?.copyNonDefaultProperties(from: sourceLabel)
         }
-        if let destinationLabel = detailTextLabel,
-            let sourceLabel = sourceCell.detailTextLabel
-        {
-            destinationLabel.copyNonDefaultProperties(from: sourceLabel)
+        if let sourceLabel = sourceCell.detailTextLabel {
+            detailTextLabel?.copyNonDefaultProperties(from: sourceLabel)
         }
         if let sourceImageView = sourceCell.imageView {
-            imageView?.image = sourceImageView.image
+            imageView?.copyNonDefaultProperties(from: sourceImageView)
         }
     }
     
