@@ -188,12 +188,12 @@ extension UIView: Morphable {
     
 }
 
-public extension Morphable where Self: UILabel {
+public extension UILabel {
 
-    public func copyProperties(from view: UIView) {
+    public override func copyProperties(from view: UIView) {
+        super.copyProperties(from: view)
         guard let label = view as? UILabel
             else { return }
-        (self as UIView).copyProperties(from: view)
         text = label.text
         font = label.font
         textColor = label.textColor
@@ -226,12 +226,12 @@ public extension Morphable where Self: UILabel {
 
 }
 
-public extension Morphable where Self: UIImageView {
+public extension UIImageView {
 
-    public func copyProperties(from view: UIView) {
+    public override func copyProperties(from view: UIView) {
+        super.copyProperties(from: view)
         guard let imageView = view as? UIImageView
             else { return }
-        (self as UIView).copyProperties(from: view)
         image = imageView.image
         highlightedImage = imageView.highlightedImage
         isHighlighted = imageView.isHighlighted
@@ -246,4 +246,24 @@ public extension Morphable where Self: UIImageView {
         }
     }
 
+}
+
+public extension UITableViewCell {
+    
+    override func copyProperties(from view: UIView) {
+        super.copyProperties(from: view)
+        guard let cell = view as? UITableViewCell
+            else { return }
+        accessoryType = cell.accessoryType
+        editingAccessoryType = cell.editingAccessoryType
+        selectionStyle = cell.selectionStyle
+        indentationLevel = cell.indentationLevel
+        indentationWidth = cell.indentationWidth
+        shouldIndentWhileEditing = cell.shouldIndentWhileEditing
+        separatorInset = cell.separatorInset
+        if #available(iOS 9, *) {
+            focusStyle = cell.focusStyle
+        }
+    }
+    
 }
