@@ -8,7 +8,7 @@
 //
 
 public extension UIViewController {
-    
+        
     public var frontViewController: UIViewController {
         let frontViewController = presentedViewController
             ?? navigationController?.topViewController
@@ -18,7 +18,7 @@ public extension UIViewController {
             ? self
             : frontViewController.frontViewController
     }
-    
+
     public func unwindToSelf(animated: Bool, completion: (() -> Void)? = nil) {
         if let _ = presentedViewController {
             dismiss(animated: animated) { [weak self] in
@@ -40,10 +40,6 @@ public extension UIViewController {
             navigationController.popToRootViewController(animated: animated)
         }
         
-    }
-    
-    @objc public func unwindToRoot(animated: Bool) {
-        view.window!.rootViewController!.unwindToSelf(animated: animated)
     }
     
 }
