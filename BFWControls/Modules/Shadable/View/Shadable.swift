@@ -11,6 +11,8 @@ import UIKit
 
 public protocol Shadable {
     
+    func setNeedsUpdateView()
+    
     // Declare these variables as stored @IBInspectable to set per instance:
     
     var isLight: Bool { get }
