@@ -20,15 +20,11 @@ open class ShadableView: UIView, Shadable {
     // This is a background color, so should be dark when content isLight.
     public var lightColors: [UIColor] = [.white, .darkGray, .black].reversed()
     
-    private func applyShade() {
-        backgroundColor = shadeColor
-    }
-    
     // MARK: - Updatable
     
     private var needsUpdateView = true
     
-    private func setNeedsUpdateView() {
+    public func setNeedsUpdateView() {
         needsUpdateView = true
         setNeedsLayout()
     }
@@ -36,8 +32,12 @@ open class ShadableView: UIView, Shadable {
     func updateViewIfNeeded() {
         if needsUpdateView {
             needsUpdateView = false
-            applyShade()
+            updateView()
         }
+    }
+    
+    public func updateView() {
+        backgroundColor = shadeColor
     }
     
     // MARK: UIView
