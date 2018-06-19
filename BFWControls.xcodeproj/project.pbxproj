@@ -12,6 +12,7 @@
 		A1BD33B91EEAC9A400D217F6 /* DynamicCellDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD33B81EEAC9A400D217F6 /* DynamicCellDemoViewController.swift */; };
 		A1E0C3561EE9257A009F4ED3 /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA95F1E96402500D5DE3D /* SegueHandlerType.swift */; };
 		E207BCAA1EADE577007BB14F /* UIImage+BFW.swift in Sources */ = {isa = PBXBuildFile; fileRef = E207BCA91EADE577007BB14F /* UIImage+BFW.swift */; };
+		E212B38B20D8776700A5E677 /* InputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E212B38A20D8776600A5E677 /* InputValidator.swift */; };
 		E22097701F4185B500400079 /* NibCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E220976F1F4185B500400079 /* NibCollectionViewCell.swift */; };
 		E22477EA1ECBCAA7004A7802 /* Transition.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E22477E81ECBCAA7004A7802 /* Transition.storyboard */; };
 		E22477EB1ECBCAA7004A7802 /* TransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22477E91ECBCAA7004A7802 /* TransitionViewController.swift */; };
@@ -101,6 +102,7 @@
 		A1BD33A11EEA2F9800D217F6 /* ExcludeCellDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExcludeCellDemoViewController.swift; sourceTree = "<group>"; };
 		A1BD33B81EEAC9A400D217F6 /* DynamicCellDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicCellDemoViewController.swift; sourceTree = "<group>"; };
 		E207BCA91EADE577007BB14F /* UIImage+BFW.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+BFW.swift"; sourceTree = "<group>"; };
+		E212B38A20D8776600A5E677 /* InputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidator.swift; sourceTree = "<group>"; };
 		E220976F1F4185B500400079 /* NibCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibCollectionViewCell.swift; sourceTree = "<group>"; };
 		E22477E81ECBCAA7004A7802 /* Transition.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Transition.storyboard; sourceTree = "<group>"; };
 		E22477E91ECBCAA7004A7802 /* TransitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +210,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E212B38820D8773000A5E677 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				E212B38920D8774900A5E677 /* Model */,
+			);
+			path = Validation;
+			sourceTree = "<group>";
+		};
+		E212B38920D8774900A5E677 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E212B38A20D8776600A5E677 /* InputValidator.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E22477E61ECBCAA7004A7802 /* Transition */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,6 +289,7 @@
 				E28BA9571E96402500D5DE3D /* Table */,
 				E28BA95C1E96402500D5DE3D /* Transition */,
 				E28BA96A1E96402500D5DE3D /* UserDefaults */,
+				E212B38820D8773000A5E677 /* Validation */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -895,6 +914,7 @@
 				E28BA96E1E96402500D5DE3D /* ActionSheetView.swift in Sources */,
 				E28BA9771E96402500D5DE3D /* BlurView.swift in Sources */,
 				E28BA9981E96402500D5DE3D /* DismissAndPushSegue.swift in Sources */,
+				E212B38B20D8776700A5E677 /* InputValidator.swift in Sources */,
 				E28BA9761E96402500D5DE3D /* Binding.swift in Sources */,
 				E2BFE8F71F296CD900BAEC16 /* CustomTableViewCell.swift in Sources */,
 				E28BA98B1E96402500D5DE3D /* NibView.swift in Sources */,
