@@ -163,18 +163,23 @@ import UIKit
     private var isAwake = false
     
     private func commonAwake() {
-        if let destinationLabel = overridingTextLabel,
-            let sourceLabel = super.textLabel
+        if let destination = overridingTextLabel,
+            let source = super.textLabel
         {
-            destinationLabel.copyNonDefaultProperties(from: sourceLabel)
-            sourceLabel.attributedText = nil
+            if !["Text", "Title"].contains(source.text) {
+                destination.copyNonDefaultProperties(from: source)
+            }
+            source.attributedText = nil
         }
-        if let destinationLabel = overridingDetailTextLabel {
-            if let sourceLabel = inheritedDetailTextLabel {
-                destinationLabel.copyNonDefaultProperties(from: sourceLabel)
-                sourceLabel.attributedText = nil
+        if let destination = overridingDetailTextLabel {
+            if let source = inheritedDetailTextLabel
+            {
+                if !["Detail", "Subtitle"].contains(source.text) {
+                    destination.copyNonDefaultProperties(from: source)
+                }
+                source.attributedText = nil
             } else {
-                destinationLabel.text = nil
+                destination.text = nil
             }
         }
         if let destination = overridingImageView,
