@@ -100,11 +100,17 @@ open class NibTextField: UITextField {
     // MARK: UIView
     
     open override func layoutSubviews() {
-        updateViewIfNeeded()
-        if autoUpdateCellHeights {
-            updateTableViewCellHeights()
+        // Dispatch to main queue in case layoutSubviews is called by UIKit on non main thread. Reported to happen sometimes when setNeedsLayoutSubviews is called on another thread, eg by KVO. Seems to be an Apple bug.
+        if !Thread.isMainThread {
+            debugPrint("warning: layoutSubviews() called on thread that is not main. Dispatching specifically to main to prevent a crash or missing view updates.")
         }
-        super.layoutSubviews()
+        DispatchQueue.main.async {
+            self.updateViewIfNeeded()
+            if self.autoUpdateCellHeights {
+                self.updateTableViewCellHeights()
+            }
+            super.layoutSubviews()
+        }
     }
     
 }

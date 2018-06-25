@@ -78,7 +78,7 @@ public extension SegueHandlerType where Self: UIViewController, SegueIdentifier.
     
     /// To perform the segue after already queued UI actions. For instance, use in an unwind segue to perform a forward segue after viewDidAppear has finished.
     public func performOnMainQueueSegue(_ segueIdentifier: SegueIdentifier, sender: Any?) {
-        DispatchQueue.main.sync { [weak self] in
+        DispatchQueue.main.async { [weak self] in
             self?.performSegue(segueIdentifier, sender: sender)
         }
     }
