@@ -104,11 +104,19 @@ public extension Shadable where Self: UIView {
             : isLight
     }
     
-//    func applyShade() {
-//        subviews.forEach {
-//            ($0 as? Shadable)?.applyShade()
-//        }
-//    }
+}
+
+public extension UIView {
+    
+    func shadeSubviews() {
+        subviews.forEach { subview in
+            if let shadable = subview as? Shadable {
+                shadable.setNeedsUpdateView()
+            } else {
+                subview.shadeSubviews()
+            }
+        }
+    }
     
 }
 
