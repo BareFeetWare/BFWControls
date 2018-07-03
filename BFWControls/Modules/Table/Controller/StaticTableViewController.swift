@@ -303,6 +303,10 @@ open class StaticTableViewController: UITableViewController {
         }
     }
     
+    open override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return super.tableView(tableView, heightForRowAt: superIndexPath(for: indexPath))
+    }
+    
     open override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         var height = intrinsicHeightCells
             ? UITableViewAutomaticDimension
