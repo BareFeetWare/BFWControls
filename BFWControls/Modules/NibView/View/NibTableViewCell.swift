@@ -2,109 +2,157 @@
 //  NibTableViewCell.swift
 //  BFWControls
 //
-//  Created by Tom Brodhurst-Hill on 26/3/17.
-//  Copyright © 2017 BareFeetWare. Free to use and modify, without warranty.
+//  Created by Tom Brodhurst-Hill on 24/4/18.
+//  Copyright © 2018 BareFeetWare. All rights reserved.
+//  Free to use at your own risk, with acknowledgement to BareFeetWare.
 //
 
 import UIKit
 
-open class NibTableViewCell: UITableViewCell {
+@IBDesignable open class NibTableViewCell: BFWNibTableViewCell {
     
-    // MARK: Variables
+    // MARK: - IBOutlets
     
-    /// Minimum intrisicContentSize.height to use if table view uses auto dimension.
-    @IBInspectable open var intrinsicHeight: CGFloat {
+    @IBOutlet open override var textLabel: UILabel? {
         get {
-            return cellView?.intrinsicContentSize.height ?? UITableViewAutomaticDimension
+            return activeView(overridingView: overridingTextLabel,
+                              inheritedView: super.textLabel ?? UILabel())
+                as? UILabel
         }
         set {
-            cellView?.intrinsicSize = CGSize(width: UITableViewAutomaticDimension, height: newValue)
+            if overridingTextLabel == nil {
+                overridingTextLabel = newValue
+            }
         }
     }
     
-    /// Should position to the leading edge of the cellView to match the cell's separatorInset.left. Default = true.
-    @IBInspectable open var isAlignedToInset: Bool = true { didSet { setNeedsAlignToInset() }}
-    
-    /// Modify this in subclasses to pin content subview to superview margins or edges.
-    open var isContentSubviewPinnedToMargins: Bool = true { didSet { pinContentSubviewToContentView() }}
-    
-    // MARK: - UITableViewCell+Separator
-    
-    private var storedIsSeparatorHidden: Bool = false
-    open var contentSubview: UIView?
-    
-    /// Workaround for iOS 9 by storing isSeparatorHidden, since large separatorInset.right shows a line on the left of separatorInset.left.
-    @IBInspectable open override var isSeparatorHidden: Bool {
+    @IBOutlet open override var detailTextLabel: UILabel? {
         get {
-            if #available(iOS 10, *) {
-                return super.isSeparatorHidden
-            } else {
-                return storedIsSeparatorHidden
-            }
+            return activeView(overridingView: overridingDetailTextLabel,
+                              inheritedView: inheritedDetailTextLabel ?? UILabel())
+                as? UILabel
         }
         set {
-            if #available(iOS 10, *) {
-                super.isSeparatorHidden = newValue
-            } else {
-                storedIsSeparatorHidden = newValue
+            if overridingDetailTextLabel == nil {
+                overridingDetailTextLabel = newValue
             }
         }
+    }
+    
+    @IBOutlet open override var imageView: UIImageView? {
+        get {
+            return activeView(overridingView: overridingImageView,
+                              inheritedView: super.imageView)
+                as? UIImageView
+        }
+        set {
+            if overridingImageView == nil {
+                overridingImageView = newValue
+            }
+        }
+    }
+    
+    @IBOutlet open var tertiaryTextLabel: UILabel?
+    
+    @IBInspectable open var tertiaryText: String? {
+        get {
+            return tertiaryTextLabel?.text
+        }
+        set {
+            tertiaryTextLabel?.text = newValue
+        }
+    }
+    
+    // TODO: Perhaps integrate actionView with accessoryView
+    
+    @IBOutlet open var actionView: UIView?
+    
+    // MARK: - Private variables
+    
+    private var overridingTextLabel: UILabel?
+    private var overridingDetailTextLabel: UILabel?
+    private var overridingImageView: UIImageView?
+    
+    /// super.detailTextLabel returns nil even though super.textLabel returns the label, so resorting to subviews:
+    private var inheritedDetailTextLabel: UILabel? {
+        let superLabels = super.contentView.subviews.filter { $0 is UILabel } as! [UILabel]
+        let superLabel: UILabel? = super.detailTextLabel
+            ?? (
+                superLabels.count == 2
+                    ? superLabels[1]
+                    : nil
+        )
+        return superLabel
+    }
+    
+    // MARK: - Variables
+    
+    @IBInspectable open var isActionViewHidden: Bool {
+        get {
+            return actionView?.isHidden ?? true
+        }
+        set {
+            actionView?.isHidden = newValue
+        }
+    }
+    
+    /// Minimum intrinsicContentSize.height to use if the table view uses auto dimension.
+    @IBInspectable open var minimumHeight: CGFloat = 0.0
+    
+    /// Override to give different nib for each cell style
+    @IBInspectable open var nibName: String?
+    
+    open var style: UITableViewCellStyle = .default
+    
+    open var contentSubview: UIView? {
+        guard let contentSubview = contentView.subviews.first,
+            contentView.subviews.count == 1
+            else { return nil }
+        return contentSubview
+    }
+    
+    // MARK: - Functions
+    
+    private func activeView(overridingView: UIView?, inheritedView: UIView?) -> UIView? {
+        #if TARGET_INTERFACE_BUILDER
+        return isAwake
+            ? overridingView
+            : inheritedView
+        #else
+        return overridingView ?? inheritedView
+        #endif
+    }
+    
+    // TODO: Move to NibReplaceable:
+    
+    @objc open func replacedByNibView() -> UIView {
+        return replacedByNibView(fromNibNamed: nibName ?? type(of: self).nibName)
     }
     
     // MARK: - Init
     
     public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        commonInit(style: style)
+        self.style = style
     }
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
         let styleInt = coder.decodeInteger(forKey: "UITableViewCellStyle")
         if let style = UITableViewCellStyle(rawValue: styleInt) {
-            commonInit(style: style)
+            self.style = style
         }
     }
     
-    /// Can be called from subclasses for tasks common for init(coder:) and init(style:). Should call super.
-    open func commonInit(style: UITableViewCellStyle) {
-        contentSubview = contentSubview(for: style)
-        contentView.addSubview(contentSubview!)
-        pinContentSubviewToContentView()
-        removeDetailTextLabelIfNotUsed(style: style)
-    }
-    
-    private func pinContentSubviewToContentView() {
-        guard let contentSubview = contentSubview
-            else { return }
-        if let constraints = contentView.constraints(with: contentSubview) {
-            NSLayoutConstraint.deactivate(constraints)
+    open override func awakeAfter(using coder: NSCoder) -> Any? {
+        let view = replacedByNibView()
+        if view != self {
+            if let cell = view as? UITableViewCell {
+                cell.copySubviewProperties(from: self)
+            }
+            (view as? NibReplaceable)?.removePlaceholders()
         }
-        if isContentSubviewPinnedToMargins {
-            contentSubview.pinToSuperviewMargins()
-        } else {
-            contentSubview.pinToSuperviewEdges()
-        }
-    }
-    
-    private func removeDetailTextLabelIfNotUsed(style: UITableViewCellStyle) {
-        guard let textLabel = cellView?.textLabel,
-            let detailTextLabel = cellView?.detailTextLabel,
-            style == .default
-            else { return }
-        textLabel.addConstraint(toBypass: detailTextLabel)
-    }
-    
-    open func contentSubview(for style: UITableViewCellStyle) -> UIView {
-        switch style {
-        default:
-            fatalError("Concrete subclass must provide contentSubview(for style:).")
-        }
-    }
-    
-    open override func awakeFromNib() {
-        super.awakeFromNib()
-        commonAwake()
+        return view
     }
     
     open override func prepareForInterfaceBuilder() {
@@ -115,77 +163,66 @@ open class NibTableViewCell: UITableViewCell {
     private var isAwake = false
     
     private func commonAwake() {
-        guard let cellView = cellView
-            else { return }
-        cellView.textLabel?.attributedText = super.textLabel?.attributedText
-        cellView.detailTextLabel?.attributedText = super.detailTextLabel?.attributedText
-        super.textLabel?.attributedText = nil
-        super.detailTextLabel?.attributedText = nil
+        if let destination = overridingTextLabel,
+            let source = super.textLabel
+        {
+            if !["Text", "Title"].contains(source.text) {
+                destination.copyNonDefaultProperties(from: source)
+            }
+            source.attributedText = nil
+        }
+        if let destination = overridingDetailTextLabel {
+            if let source = inheritedDetailTextLabel
+            {
+                if !["Detail", "Subtitle"].contains(source.text) {
+                    destination.copyNonDefaultProperties(from: source)
+                }
+                source.attributedText = nil
+            } else {
+                destination.text = nil
+            }
+        }
+        if let destination = overridingImageView,
+            let source = super.imageView
+        {
+            destination.copyNonDefaultProperties(from: source)
+            source.image = nil
+        }
         isAwake = true
     }
     
-    // MARK: - UITableViewCell
-    
-    open override var textLabel: UILabel? {
-        return isAwake
-            ? cellView?.textLabel
-            : super.textLabel
-    }
-    
-    open override var detailTextLabel: UILabel? {
-        return isAwake
-            ? cellView?.detailTextLabel
-            : super.detailTextLabel
-    }
-    
-    open override var separatorInset: UIEdgeInsets { didSet { setNeedsAlignToInset() }}
-    
-    // MARK: - Update Inset
-    
-    private var needsAlignToInset = true
-    
-    private func setNeedsAlignToInset() {
-        needsAlignToInset = true
-        setNeedsLayout()
-    }
-    
-    private func alignToInsetIfNeeded() {
-        if needsAlignToInset {
-            needsAlignToInset = false
-            alignToInset()
-        }
-    }
-    
-    private func alignToInset() {
-        guard let cellView = cellView,
-            let leadingConstraint = contentView
-                .constraints(with: cellView)?
-                .first( where: { [.leading, .left, .leadingMargin, .leftMargin].contains($0.firstAttribute) })
-            else { return }
-        if isAlignedToInset {
-            let insetPlusIndentationLeft = CGFloat(indentationLevel) * indentationWidth + separatorInset.left
-            let difference = insetPlusIndentationLeft - layoutMargins.left
-            leadingConstraint.constant = max(difference, 0.0)
-        } else {
-            leadingConstraint.constant = 0.0
-        }
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+        #if TARGET_INTERFACE_BUILDER
+        removePlaceholders()
+        #endif
     }
     
     // MARK: - UIView
     
-    open override func layoutMarginsDidChange() {
-        super.layoutMarginsDidChange()
-        setNeedsAlignToInset()
+    open override func systemLayoutSizeFitting(
+        _ targetSize: CGSize,
+        withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority,
+        verticalFittingPriority: UILayoutPriority
+        ) -> CGSize
+    {
+        var size = super.systemLayoutSizeFitting(
+            targetSize,
+            withHorizontalFittingPriority: horizontalFittingPriority,
+            verticalFittingPriority: verticalFittingPriority
+        )
+        if size.height < minimumHeight {
+            size.height = minimumHeight
+        }
+        return size
     }
     
-    open override func layoutSubviews() {
-        alignToInsetIfNeeded()
-        if #available(iOS 10, *) {
-            // Nothing extra to do.
-        } else {
-            updateIsSeparatorHidden()
-        }
-        super.layoutSubviews()
+}
+
+extension NibTableViewCell: NibReplaceable {
+    
+    open var placeholderViews: [UIView] {
+        return [textLabel, detailTextLabel, tertiaryTextLabel, actionView].compactMap { $0 }
     }
     
 }

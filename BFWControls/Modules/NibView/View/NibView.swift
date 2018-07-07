@@ -19,15 +19,6 @@ open class NibView: BFWNibView {
         return self.autoSize
     }()
     
-    /// Labels which should remove enclosing [] from text after awakeFromNib.
-    open var placeholderViews: [UIView] {
-        return []
-    }
-    
-    open func isPlaceholderString(_ string: String?) -> Bool {
-        return string != nil && string!.isPlaceholder
-    }
-    
     // MARK: - UpdateView mechanism
     
     /// Override in subclasses and call super. Update view and subview properties that are affected by properties of this class.
@@ -40,22 +31,6 @@ open class NibView: BFWNibView {
     }
     
     // MARK: - Private variables and functions.
-    
-    /// Replace placeholders (eg [Text]) with blank text.
-    fileprivate func removePlaceholders() {
-        for view in placeholderViews {
-            if let label = view as? UILabel,
-                let text = label.text,
-                text.isPlaceholder
-            {
-                label.text = nil
-            } else if let button = view as? UIButton {
-                if button.title(for: .normal)?.isPlaceholder ?? false {
-                    button.setTitle(nil, for: .normal)
-                }
-            }
-        }
-    }
     
     fileprivate var needsUpdateView = true
     
@@ -91,11 +66,6 @@ open class NibView: BFWNibView {
         return hasAlreadyLoadedFromNib
             ? self
             : viewFromNib ?? self
-    }
-    
-    open override func awakeFromNib() {
-        super.awakeFromNib()
-        removePlaceholders()
     }
     
     open override var intrinsicContentSize: CGSize {
@@ -134,10 +104,15 @@ open class NibView: BFWNibView {
     
 }
 
-private extension String {
+extension NibView: NibReplaceable {
     
-    var isPlaceholder: Bool {
-        return hasPrefix("[") && hasSuffix("]")
+    open var placeholderViews: [UIView] {
+        return []
+    }
+    
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+        removePlaceholders()
     }
     
 }

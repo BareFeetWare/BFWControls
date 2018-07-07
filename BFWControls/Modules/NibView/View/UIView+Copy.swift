@@ -11,6 +11,9 @@ public extension UIView {
     
     // MARK: - Class variables
     
+    /// Prevents recursive call by loadNibNamed to itself. Safe as a static var since it is always called on the main thread, ie synchronously.
+    private static var isLoadingFromNib = false
+    
     public static var bundle: Bundle? {
         return Bundle(for: self)
     }
@@ -33,9 +36,11 @@ public extension UIView {
     }
     
     static var sizeFromNib: CGSize? {
-        return (bundle?
-            .loadNibNamed(nibName, owner:nil, options: [:])?
-            .first as? UIView)?
+        return (
+            bundle?
+                .loadNibNamed(nibName, owner:nil, options: [:])?
+                .first as? UIView
+            )?
             .frame.size
     }
     
@@ -72,6 +77,8 @@ public extension UIView {
         }
     }
     
+    // TODO: Remove this. Consolidate with the new nibView(fromNibNamed) functions below:
+    
     @objc var viewFromNib: UIView? {
         guard let bundle = type(of: self).bundle
             else { return nil }
@@ -86,6 +93,33 @@ public extension UIView {
                 debugPrint("**** error: Could not find an instance of class \(type(of: self)) in \(nibName) xib")
                 return nil
         }
+        nibView.copyProperties(from: self)
+        nibView.copyConstraints(from: self)
+        return nibView
+    }
+
+    // TODO: Remove above
+    
+    static func nibView(fromNibNamed nibName: String? = nil, in bundle: Bundle? = nil) -> UIView? {
+        guard !isLoadingFromNib
+            else { return nil }
+        isLoadingFromNib = true
+        defer {
+            isLoadingFromNib = false
+        }
+        let bundle = bundle ?? self.bundle!
+        let nibName = nibName ?? self.nibName
+        guard let nibViews = bundle.loadNibNamed(nibName, owner: nil, options: nil),
+            let nibView = nibViews.first(where: { type(of: $0) == self } ) as? UIView
+            else {
+                fatalError("Could not find an instance of class \(self) in \(nibName) xib")
+        }
+        return nibView
+    }
+    
+    @objc func replacedByNibView(fromNibNamed nibName: String? = nil, in bundle: Bundle? = nil) -> UIView {
+        guard let nibView = type(of: self).nibView(fromNibNamed: nibName, in: bundle)
+            else { return self}
         nibView.copyProperties(from: self)
         nibView.copyConstraints(from: self)
         return nibView
@@ -138,7 +172,7 @@ public protocol Morphable {
 
 extension UIView: Morphable {
     
-    public func copyProperties(from view: UIView) {
+    @objc public func copyProperties(from view: UIView) {
         copyAnimatableProperties(from: view)
         frame = view.frame
         tag = view.tag
@@ -154,12 +188,12 @@ extension UIView: Morphable {
     
 }
 
-public extension Morphable where Self: UILabel {
+public extension UILabel {
 
-    public func copyProperties(from view: UIView) {
+    public override func copyProperties(from view: UIView) {
+        super.copyProperties(from: view)
         guard let label = view as? UILabel
             else { return }
-        (self as UIView).copyProperties(from: view)
         text = label.text
         font = label.font
         textColor = label.textColor
@@ -181,19 +215,57 @@ public extension Morphable where Self: UILabel {
         isEnabled = label.isEnabled
         tintColor = label.tintColor
     }
+    
+    public func copyNonDefaultProperties(from view: UIView) {
+        guard let label = view as? UILabel
+            else { return }
+        if let sourceAttributedText = label.attributedText,
+            let attributes = attributedText?.attributes(at: 0, effectiveRange: nil)
+        {
+            attributedText = sourceAttributedText.keepingTraitsAndColorButAdding(attributes: attributes)
+        }
+    }
 
 }
 
-public extension Morphable where Self: UIImageView {
+public extension UIImageView {
 
-    public func copyProperties(from view: UIView) {
+    public override func copyProperties(from view: UIView) {
+        super.copyProperties(from: view)
         guard let imageView = view as? UIImageView
             else { return }
-        (self as UIView).copyProperties(from: view)
         image = imageView.image
         highlightedImage = imageView.highlightedImage
         isHighlighted = imageView.isHighlighted
         animationImages = imageView.animationImages
     }
+    
+    public func copyNonDefaultProperties(from view: UIView) {
+        guard let imageView = view as? UIImageView
+            else { return }
+        if let sourceImage = imageView.image {
+            image = sourceImage
+        }
+    }
 
+}
+
+public extension UITableViewCell {
+    
+    override func copyProperties(from view: UIView) {
+        super.copyProperties(from: view)
+        guard let cell = view as? UITableViewCell
+            else { return }
+        accessoryType = cell.accessoryType
+        editingAccessoryType = cell.editingAccessoryType
+        selectionStyle = cell.selectionStyle
+        indentationLevel = cell.indentationLevel
+        indentationWidth = cell.indentationWidth
+        shouldIndentWhileEditing = cell.shouldIndentWhileEditing
+        separatorInset = cell.separatorInset
+        if #available(iOS 9, *) {
+            focusStyle = cell.focusStyle
+        }
+    }
+    
 }

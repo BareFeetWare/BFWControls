@@ -69,7 +69,7 @@ open class NibCellView: NibView, TextLabelProvider {
         }
     }
     
-    // MARK: - NibView
+    // MARK: - NibReplaceable
     
     open override var placeholderViews: [UIView] {
         return [textLabel, detailTextLabel].compactMap { $0 }

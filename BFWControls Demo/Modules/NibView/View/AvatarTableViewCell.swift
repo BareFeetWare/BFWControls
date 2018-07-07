@@ -2,18 +2,24 @@
 //  AvatarTableViewCell.swift
 //  BFWControls Demo
 //
-//  Created by Tom Brodhurst-Hill on 4/3/18.
+//  Created by Tom Brodhurst-Hill on 26/4/18.
 //  Copyright © 2018 BareFeetWare. All rights reserved.
-//  Free to use at your own risk, with acknowledgement to BareFeetWare.
 //
 
 import UIKit
 import BFWControls
 
 @IBDesignable class AvatarTableViewCell: NibTableViewCell {
+
+    @IBOutlet var tertiaryTextLabel: UILabel?
     
-    override func contentSubview(for style: UITableViewCellStyle) -> UIView {
-        return AvatarCellView()
+    @IBInspectable var tertiaryText: String? {
+        get {
+            return tertiaryTextLabel?.text
+        }
+        set {
+            tertiaryTextLabel?.text = newValue
+        }
     }
-    
+
 }
