@@ -19,17 +19,21 @@ public protocol DefaultsHandlerType {
 
 public extension DefaultsHandlerType where Key.RawValue == String {
     
-    // MARK: - Get/set value
+    // MARK: - Set/Remove
     
     public static func setValue(_ value: Any?, for key: Key) {
         defaults.setValue(value, forKey: key.rawValue)
     }
     
+    public static func removeObject(for key: Key) {
+        defaults.removeObject(forKey: key.rawValue)
+    }
+    
+    // MARK: - Get
+    
     public static func value(for key: Key) -> Any? {
         return defaults.value(forKey: key.rawValue) as Any?
     }
-    
-    // MARK: - Get specific types
     
     static func array(for key: Key) -> [Any]? {
         return defaults.array(forKey: key.rawValue)
