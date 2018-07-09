@@ -51,6 +51,12 @@ open class NibTextField: UITextField {
     
     /// Override in subclasses, calling super.
     open func updateView() {
+        if autoUpdateCellHeights {
+            DispatchQueue.main.async {
+                // Must be performed in the queue (not in the current layoutSubviews()) for iOS 10, or cells might overlap.
+                self.updateTableViewCellHeights()
+            }
+        }
     }
     
     open func setNeedsUpdateView() {
@@ -105,10 +111,7 @@ open class NibTextField: UITextField {
             else {
                 fatalError("layoutSubviews() called on thread that is not main.")
         }
-        self.updateViewIfNeeded()
-        if self.autoUpdateCellHeights {
-            self.updateTableViewCellHeights()
-        }
+        updateViewIfNeeded()
         super.layoutSubviews()
     }
     
