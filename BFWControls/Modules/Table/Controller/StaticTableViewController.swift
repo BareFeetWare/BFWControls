@@ -221,6 +221,8 @@ open class StaticTableViewController: UITableViewController {
         super.viewWillTransition(to: size, with: coordinator)
         if filledUsingLastCell {
             refreshDynamicLastCellHeight()
+        } else if intrinsicHeightCells {
+            tableView.updateTableViewCellHeights()
         }
     }
     
