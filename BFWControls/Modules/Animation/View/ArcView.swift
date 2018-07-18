@@ -16,7 +16,7 @@ import UIKit
     @IBInspectable open var start: Double = 0.0
     @IBInspectable open var end: Double = 1.0
     @IBInspectable open var lineWidth: CGFloat = 2.0
-    @IBInspectable open var duration: TimeInterval = 1.0
+    @IBInspectable open var duration: Double = 1.0
     @IBInspectable open var fillColor: UIColor = .clear
     @IBInspectable open var strokeColor: UIColor = .gray
     
@@ -43,13 +43,15 @@ import UIKit
 
     open var animationCurve: UIViewAnimationCurve = .linear
     
-    open lazy var bezierPath: UIBezierPath = UIBezierPath(
-        arcCenter: CGPoint(x: self.bounds.midX, y: self.bounds.midY),
-        radius: min(self.bounds.midX, self.bounds.midY) - self.lineWidth / 2,
-        startAngle: CGFloat(self.start) * 2 * .pi,
-        endAngle: CGFloat(self.end) * 2 * .pi,
-        clockwise: self.start < self.end
-    )
+    open var bezierPath: UIBezierPath {
+        return UIBezierPath(
+            arcCenter: CGPoint(x: bounds.midX, y: bounds.midY),
+            radius: min(bounds.midX, bounds.midY) - lineWidth / 2,
+            startAngle: CGFloat(start) * 2 * .pi,
+            endAngle: CGFloat(end) * 2 * .pi,
+            clockwise: start < end
+        )
+    }
     
     let shapeLayer = CAShapeLayer()
     
@@ -66,15 +68,20 @@ import UIKit
     }
     
     private func commonInit() {
+        #if TARGET_INTERFACE_BUILDER
+        // TODO: Draw something in IB
+        backgroundColor = UIColor.cyan.withAlphaComponent(0.2)
+        #else
         backgroundColor = UIColor.clear
-        
+        #endif
+
         // Add the shapeLayer to the view's layer's sublayers
         layer.addSublayer(shapeLayer)
     }
     
     // MARK: - Functions
 
-    private func updateView() {
+    private func updateShapeLayer() {
         shapeLayer.path = bezierPath.cgPath
         shapeLayer.fillColor = fillColor.cgColor
         shapeLayer.strokeColor = strokeColor.cgColor
@@ -85,7 +92,12 @@ import UIKit
     }
     
     open func animate() {
-        updateView()
+        updateShapeLayer()
+        
+        #if TARGET_INTERFACE_BUILDER
+        // TODO: Draw something in IB
+        backgroundColor = UIColor.cyan
+        #endif
         
         // Animate the strokeEnd property of the shapeLayer.
         let animation = CABasicAnimation(keyPath: "strokeEnd")
@@ -93,8 +105,8 @@ import UIKit
         animation.duration = duration
         
         // Animate from 0 (no arc) to 1 (full arc)
-        animation.fromValue = 0
-        animation.toValue = 1
+        animation.fromValue = 0.0
+        animation.toValue = 1.0
         
         // Do a linear animation (i.e. the speed of the animation stays the same)
         animation.timingFunction = animationCurve.mediaTimingFunction
@@ -108,15 +120,17 @@ import UIKit
     }
     
     // MARK: UIView
-    
-    open override func didMoveToWindow() {
-        super.didMoveToWindow()
-        animate()
+
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        if window != nil {
+            animate()
+        }
     }
     
 }
 
-fileprivate extension UIViewAnimationCurve {
+private extension UIViewAnimationCurve {
     
     var mediaTimingFunctionString: String {
         switch self {
