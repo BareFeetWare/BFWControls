@@ -22,6 +22,8 @@
 		E22FD1B21EC564AD0043171C /* UIViewController+Dismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FD1B11EC564AD0043171C /* UIViewController+Dismiss.swift */; };
 		E2320B2D1FDF6A49000E940E /* UITableViewCell+Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2320B2C1FDF6A49000E940E /* UITableViewCell+Separator.swift */; };
 		E24682211F24820B007285DB /* ShadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24682201F24820B007285DB /* ShadableView.swift */; };
+		E24D5CBF20FEAE4F00600102 /* NibContainerSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24D5CBE20FEAE4F00600102 /* NibContainerSegmentedControl.swift */; };
+		E24D5CC320FEB45300600102 /* UIView+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24D5CC220FEB45200600102 /* UIView+UIImage.swift */; };
 		E24FFA1720D6255900A36699 /* UIViewController+Unwind.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24FFA1620D6255900A36699 /* UIViewController+Unwind.swift */; };
 		E24FFA1C20D7244A00A36699 /* UIApplication+Unwind.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24FFA1B20D7244A00A36699 /* UIApplication+Unwind.swift */; };
 		E26E1F971F9C34F90008BACB /* NibCellViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26E1F961F9C34F90008BACB /* NibCellViewContainer.swift */; };
@@ -120,6 +122,8 @@
 		E22FD1B11EC564AD0043171C /* UIViewController+Dismiss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Dismiss.swift"; sourceTree = "<group>"; };
 		E2320B2C1FDF6A49000E940E /* UITableViewCell+Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Separator.swift"; sourceTree = "<group>"; };
 		E24682201F24820B007285DB /* ShadableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadableView.swift; sourceTree = "<group>"; };
+		E24D5CBE20FEAE4F00600102 /* NibContainerSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibContainerSegmentedControl.swift; sourceTree = "<group>"; };
+		E24D5CC220FEB45200600102 /* UIView+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+UIImage.swift"; sourceTree = "<group>"; };
 		E24FFA1620D6255900A36699 /* UIViewController+Unwind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Unwind.swift"; sourceTree = "<group>"; };
 		E24FFA1B20D7244A00A36699 /* UIApplication+Unwind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Unwind.swift"; sourceTree = "<group>"; };
 		E26E1F961F9C34F90008BACB /* NibCellViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibCellViewContainer.swift; sourceTree = "<group>"; };
@@ -447,6 +451,7 @@
 				E26E1F961F9C34F90008BACB /* NibCellViewContainer.swift */,
 				E220976F1F4185B500400079 /* NibCollectionViewCell.swift */,
 				E28BA9451E96402500D5DE3D /* NibContainerButton.swift */,
+				E24D5CBE20FEAE4F00600102 /* NibContainerSegmentedControl.swift */,
 				E28BA9481E96402500D5DE3D /* NibContentTableViewCell.swift */,
 				E226BD06209C3AD600652E86 /* NibReplaceable.swift */,
 				E29569AF208EA44000E48077 /* NibTableViewCell.swift */,
@@ -458,6 +463,7 @@
 				E2E5CABC1F4323EA003E0054 /* TextLabelProvider.swift */,
 				E2037AA4209851F8001E0BBA /* UITableViewCell+Copy.swift */,
 				E28BA94F1E96402500D5DE3D /* UIView+Copy.swift */,
+				E24D5CC220FEB45200600102 /* UIView+UIImage.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -935,6 +941,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E24D5CBF20FEAE4F00600102 /* NibContainerSegmentedControl.swift in Sources */,
 				E28BA9861E96402500D5DE3D /* NibCellView.swift in Sources */,
 				E28BA98F1E96402500D5DE3D /* UIView+Copy.swift in Sources */,
 				E28BA96E1E96402500D5DE3D /* ActionSheetView.swift in Sources */,
@@ -970,6 +977,7 @@
 				E28BA97E1E96402500D5DE3D /* UIView+Transform.swift in Sources */,
 				E28BA9701E96402500D5DE3D /* AlertView.swift in Sources */,
 				E28BA9841E96402500D5DE3D /* ImageNibCellView.swift in Sources */,
+				E24D5CC320FEB45300600102 /* UIView+UIImage.swift in Sources */,
 				E28BA9851E96402500D5DE3D /* NibContainerButton.swift in Sources */,
 				E28BA98A1E96402500D5DE3D /* NibTextField.swift in Sources */,
 				E28BA97A1E96402500D5DE3D /* CarouselViewController.swift in Sources */,
