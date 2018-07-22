@@ -92,6 +92,7 @@
 		E28BA9FE1E964D4500D5DE3D /* Table.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9F31E964D4500D5DE3D /* Table.storyboard */; };
 		E28BA9FF1E964D9500D5DE3D /* BFWControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E28BA9111E963F7800D5DE3D /* BFWControls.framework */; };
 		E29569B0208EA44000E48077 /* NibTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29569AF208EA44000E48077 /* NibTableViewCell.swift */; };
+		E29643602104570D007598D3 /* UIStackView+Joined.swift in Sources */ = {isa = PBXBuildFile; fileRef = E296435F2104570D007598D3 /* UIStackView+Joined.swift */; };
 		E2A87BCA1EFEA2F80069E41F /* Shadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A87BC91EFEA2F80069E41F /* Shadable.swift */; };
 		E2B3E5841F26EA5C002539E6 /* ReplaceInNavigationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B3E5831F26EA5C002539E6 /* ReplaceInNavigationSegue.swift */; };
 		E2BFE8F71F296CD900BAEC16 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BFE8F61F296CD900BAEC16 /* CustomTableViewCell.swift */; };
@@ -196,6 +197,7 @@
 		E28BA9F01E964D4500D5DE3D /* AvatarCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AvatarCellView.xib; sourceTree = "<group>"; };
 		E28BA9F31E964D4500D5DE3D /* Table.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Table.storyboard; sourceTree = "<group>"; };
 		E29569AF208EA44000E48077 /* NibTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibTableViewCell.swift; sourceTree = "<group>"; };
+		E296435F2104570D007598D3 /* UIStackView+Joined.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Joined.swift"; sourceTree = "<group>"; };
 		E2A87BC91EFEA2F80069E41F /* Shadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shadable.swift; sourceTree = "<group>"; };
 		E2B3E5831F26EA5C002539E6 /* ReplaceInNavigationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplaceInNavigationSegue.swift; sourceTree = "<group>"; };
 		E2BFE8F61F296CD900BAEC16 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 				E28BA94C1E96402500D5DE3D /* StatusTextField.swift */,
 				E28BA94D1E96402500D5DE3D /* StatusTextFieldNibView.swift */,
 				E2E5CABC1F4323EA003E0054 /* TextLabelProvider.swift */,
+				E296435F2104570D007598D3 /* UIStackView+Joined.swift */,
 				E2037AA4209851F8001E0BBA /* UITableViewCell+Copy.swift */,
 				E28BA94F1E96402500D5DE3D /* UIView+Copy.swift */,
 				E24D5CC220FEB45200600102 /* UIView+UIImage.swift */,
@@ -941,6 +944,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E29643602104570D007598D3 /* UIStackView+Joined.swift in Sources */,
 				E24D5CBF20FEAE4F00600102 /* NibContainerSegmentedControl.swift in Sources */,
 				E28BA9861E96402500D5DE3D /* NibCellView.swift in Sources */,
 				E28BA98F1E96402500D5DE3D /* UIView+Copy.swift in Sources */,
