@@ -178,6 +178,8 @@ extension UIView: Morphable {
         tag = view.tag
         isUserInteractionEnabled = view.isUserInteractionEnabled
         isHidden = view.isHidden
+        autoresizingMask = view.autoresizingMask
+        isOpaque = view.isOpaque
     }
     
     open override func copy() -> Any {
