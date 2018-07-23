@@ -10,12 +10,9 @@ import UIKit
 
 open class NibCollectionViewCell: BFWNibCollectionViewCell {
     
-    /// Override to give different nib for each cell style
-    @IBInspectable open var nibName: String?
-    
     // TODO: Move to NibReplaceable:
     
     @objc open func replacedByNibView() -> UIView {
-        return replacedByNibView(fromNibNamed: nibName ?? type(of: self).nibName)
+        return replacedByNibView(fromNibNamed: type(of: self).nibName)
     }
 }
