@@ -11,6 +11,8 @@ import UIKit
 
 public protocol Shadable {
     
+    func setNeedsUpdateView()
+    
     // Declare these variables as stored @IBInspectable to set per instance:
     
     var isLight: Bool { get }
@@ -102,11 +104,19 @@ public extension Shadable where Self: UIView {
             : isLight
     }
     
-//    func applyShade() {
-//        subviews.forEach {
-//            ($0 as? Shadable)?.applyShade()
-//        }
-//    }
+}
+
+public extension UIView {
+    
+    func shadeSubviews() {
+        subviews.forEach { subview in
+            if let shadable = subview as? Shadable {
+                shadable.setNeedsUpdateView()
+            } else {
+                subview.shadeSubviews()
+            }
+        }
+    }
     
 }
 
@@ -122,8 +132,8 @@ fileprivate extension UIView {
     
     struct Threshold {
         static let alpha: CGFloat = 0.5
-        static let white: CGFloat = 0.8
-        static let black: CGFloat = 0.2
+        static let light: CGFloat = 0.8
+        static let dark: CGFloat = 0.6
     }
     
     /// Color that shows through background of the view. Recursively checks superview if view background is clear.
@@ -137,7 +147,9 @@ fileprivate extension UIView {
                     color = .darkGray
                     break
                 }
-                if let backgroundColor = superview?.backgroundColor {
+                if let backgroundColor: UIColor = superview?.backgroundColor
+                    ?? (superview as? UINavigationBar)?.barTintColor
+                {
                     var white: CGFloat = 0.0
                     var alpha: CGFloat = 0.0
                     backgroundColor.getWhite(&white, alpha: &alpha)
@@ -159,7 +171,12 @@ fileprivate extension UIView {
         var alpha: CGFloat = 0.0
         if let visibleBackgroundColor = visibleBackgroundColor {
             visibleBackgroundColor.getWhite(&white, alpha: &alpha)
-            isBackgroundLight = white > Threshold.white ? true : white < Threshold.black ? false : nil
+            isBackgroundLight =
+                white < Threshold.dark
+                ? false
+                : white > Threshold.light
+                ? true
+                : nil
         }
         return isBackgroundLight
     }

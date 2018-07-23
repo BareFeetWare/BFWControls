@@ -91,7 +91,7 @@ open class CarouselViewController: UICollectionViewController {
                 cell5Identifier,
                 cell6Identifier,
                 cell7Identifier
-            ].flatMap { $0 }
+            ].compactMap { $0 }
     }
     
     fileprivate var plistDict: [String: AnyObject]? {
@@ -151,7 +151,7 @@ open class CarouselViewController: UICollectionViewController {
     }
     
     fileprivate var currentCellItem: CGFloat {
-        return collectionViewSize.map { size in collectionView!.contentOffset.x / size.width } ?? 0
+        return collectionViewSize.map { size in collectionView!.contentOffset.x / maxCellWidth } ?? 0
     }
     
     fileprivate var bounceContentOffsetX: CGFloat = 100
@@ -203,6 +203,11 @@ open class CarouselViewController: UICollectionViewController {
         let loopedPage = self.loopedPage(forPage: page)
         let scrolledPage = loopedPage + (shouldLoop ? 1 : 0)
         let indexPath = IndexPath(item: scrolledPage, section: 0)
+        if shouldLoop && loopedPage == 0 && currentPage == pageCount - 1 {
+            collectionView?.scrollToItem(at: IndexPath(item: 0, section: 0),
+                                         at: .centeredHorizontally,
+                                         animated: false)
+        }
         collectionView?.scrollToItem(at: indexPath,
                                      at: .centeredHorizontally,
                                      animated: animated)
@@ -232,7 +237,6 @@ open class CarouselViewController: UICollectionViewController {
     
     open override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView?.isPagingEnabled = true
         collectionView?.showsHorizontalScrollIndicator = false
         if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
@@ -260,6 +264,7 @@ open class CarouselViewController: UICollectionViewController {
         // Resize cell size to fit collectionView if bounds change.
         if collectionViewSize != collectionView?.bounds.size {
             collectionViewSize = collectionView?.bounds.size
+            collectionView?.isPagingEnabled = cellSize.width == collectionView!.frame.size.width
             updatePageControl(shouldUpdateCurrentPage: true)
             collectionView?.reloadData()
             if !shouldBounce {
@@ -292,7 +297,11 @@ extension CarouselViewController: UICollectionViewDelegateFlowLayout {
                              layout collectionViewLayout: UICollectionViewLayout,
                              sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        var size = collectionView.frame.size
+        return cellSize
+    }
+    
+    var cellSize: CGSize {
+        var size = collectionView!.frame.size
         if peakCellWidth != .notSet {
             size.width -= peakCellWidth
         }

@@ -221,10 +221,12 @@ open class StaticTableViewController: UITableViewController {
         super.viewWillTransition(to: size, with: coordinator)
         if filledUsingLastCell {
             refreshDynamicLastCellHeight()
+        } else if intrinsicHeightCells {
+            tableView.updateTableViewCellHeights()
         }
     }
     
-    internal func UIApplicationDidChangeStatusBarFrameHandler (for notification: Foundation.Notification) {
+    @objc internal func UIApplicationDidChangeStatusBarFrameHandler (for notification: Foundation.Notification) {
         if filledUsingLastCell {
             refreshDynamicLastCellHeight()
         }
@@ -301,6 +303,10 @@ open class StaticTableViewController: UITableViewController {
                 }
             }
         }
+    }
+    
+    open override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return super.tableView(tableView, heightForRowAt: superIndexPath(for: indexPath))
     }
     
     open override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

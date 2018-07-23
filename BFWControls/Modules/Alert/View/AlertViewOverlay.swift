@@ -13,7 +13,7 @@ import UIKit
     
     // MARK: - IBOutlets
     
-    open lazy var alertView: AlertView! = {
+    @objc open lazy var alertView: AlertView! = {
         return self.subviews.first { subview in
             subview is AlertView
             } as? AlertView

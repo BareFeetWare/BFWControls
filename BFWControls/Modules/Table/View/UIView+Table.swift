@@ -12,12 +12,12 @@ import UIKit
 public extension UIView {
     
     var superviewCell: UITableViewCell? {
-        return superview as? UITableViewCell ?? superview?.superviewCell
+        return self as? UITableViewCell ?? superview?.superviewCell
     }
     
     // TODO: Consolidate with superviewCell using generics.
     var superviewTableView: UITableView? {
-        return superview as? UITableView ?? superview?.superviewTableView
+        return self as? UITableView ?? superview?.superviewTableView
     }
     
     func updateTableViewCellHeights() {

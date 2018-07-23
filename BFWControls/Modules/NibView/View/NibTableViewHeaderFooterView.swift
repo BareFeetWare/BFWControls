@@ -10,30 +10,37 @@ import UIKit
 
 open class NibTableViewHeaderFooterView: UITableViewHeaderFooterView {
     
+    // MARK: - NibView container
+    
+    private func addContentSubview() {
+        contentView.addSubview(nibView)
+        nibView.pinToSuperviewEdges()
+    }
+    
+    open var nibView: NibView {
+        fatalError("Concrete subclass must provide nibView.")
+    }
+    
     // MARK: - Init
     
     public override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        addNib()
+        commonInit()
     }
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
-        addNib()
+        commonInit()
+    }
+    
+    open func commonInit() {
+        addContentSubview()
     }
     
     // MARK: - UITableViewHeaderFooterView
     
     open override var textLabel: UILabel? {
-        return (nibView as? Interchangeable)?.textLabel
-    }
-    
-}
-
-extension NibTableViewHeaderFooterView: NibReplaceable {
-    
-    open var nibView: NibView {
-        fatalError("nibView must be implemented in subclass")
+        return (nibView as? TextLabelProvider)?.textLabel
     }
     
 }

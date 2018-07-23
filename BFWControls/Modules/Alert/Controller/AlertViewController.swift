@@ -76,7 +76,7 @@ open class AlertViewController: UIViewController {
         if alertView.hasCancel && index == 0 {
             dismissAlert(button)
         } else {
-            onCompletion = { [weak self] _ in
+            onCompletion = { [weak self] in
                 guard let strongSelf = self else { return }
                 if let delegate = strongSelf.delegate {
                     delegate.alertView(strongSelf.alertView, clickedButtonAt: index)
@@ -108,7 +108,6 @@ open class AlertViewController: UIViewController {
     }
     
     fileprivate func hideOverlay() {
-        view.backgroundColor = .clear
         overlayView?.backgroundColor = .clear
     }
     

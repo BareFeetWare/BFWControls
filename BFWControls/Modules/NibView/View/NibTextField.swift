@@ -51,6 +51,12 @@ open class NibTextField: UITextField {
     
     /// Override in subclasses, calling super.
     open func updateView() {
+        if autoUpdateCellHeights {
+            DispatchQueue.main.async {
+                // Must be performed in the queue (not in the current layoutSubviews()) for iOS 10, or cells might overlap.
+                self.updateTableViewCellHeights()
+            }
+        }
     }
     
     open func setNeedsUpdateView() {
@@ -100,10 +106,12 @@ open class NibTextField: UITextField {
     // MARK: UIView
     
     open override func layoutSubviews() {
-        updateViewIfNeeded()
-        if autoUpdateCellHeights {
-            updateTableViewCellHeights()
+        // Dispatch to main queue in case layoutSubviews is called by UIKit on non main thread. Reported to happen sometimes when setNeedsLayout is called on another thread, eg by KVO. Seems to be an Apple bug.
+        guard Thread.isMainThread
+            else {
+                fatalError("layoutSubviews() called on thread that is not main.")
         }
+        updateViewIfNeeded()
         super.layoutSubviews()
     }
     

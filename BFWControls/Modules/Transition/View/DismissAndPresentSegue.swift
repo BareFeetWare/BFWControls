@@ -15,6 +15,8 @@ open class DismissAndPresentSegue: UIStoryboardSegue {
             presentingViewController.dismiss(animated: true, completion: {
                 if let presentingNavigationController = presentingViewController as? UINavigationController ?? presentingViewController.navigationController {
                     presentingNavigationController.present(self.destination, animated: true, completion: nil)
+                } else if let presentingViewController = presentingViewController as? UITabBarController {
+                    presentingViewController.present(self.destination, animated: true, completion: nil)
                 }
             })
         }

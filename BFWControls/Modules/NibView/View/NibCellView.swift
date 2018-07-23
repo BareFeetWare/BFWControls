@@ -7,7 +7,7 @@
 
 import UIKit
 
-@IBDesignable open class NibCellView: NibView, Interchangeable {
+open class NibCellView: NibView, TextLabelProvider {
     
     // MARK: - IBOutlets
     
@@ -58,7 +58,8 @@ import UIKit
             }
         }
     }
-    
+
+    // Deprecated. Use table view separators instead.
     @IBInspectable open var showSeparator: Bool {
         get {
             return !(separatorView?.isHidden ?? true)
@@ -68,10 +69,10 @@ import UIKit
         }
     }
     
-    // MARK: - NibView
+    // MARK: - NibReplaceable
     
     open override var placeholderViews: [UIView] {
-        return [textLabel, detailTextLabel].flatMap { $0 }
+        return [textLabel, detailTextLabel].compactMap { $0 }
     }
     
 }

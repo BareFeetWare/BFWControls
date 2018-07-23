@@ -8,25 +8,33 @@
 
 import UIKit
 
-class NibCollectionViewCell: UICollectionViewCell {
+open class NibCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - NibView container
+    
+    private func addContentSubview() {
+        contentView.addSubview(nibView)
+        nibView.pinToSuperviewEdges()
+    }
+    
+    open var nibView: NibView {
+        fatalError("Concrete subclass must provide nibView.")
+    }
+    
+    // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addNib()
+        commonInit()
     }
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
-        addNib()
+        commonInit()
+    }
+    
+    open func commonInit() {
+        addContentSubview()
     }
     
 }
-
-extension NibCollectionViewCell: NibReplaceable {
-    
-    public var nibView: NibView {
-        fatalError("nibView must be implemented in subclass")
-    }
-    
-}
-

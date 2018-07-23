@@ -7,18 +7,17 @@
 
 import UIKit
 
-@IBDesignable open class NibView: BFWNibView {
+open class NibView: BFWNibView {
     
     // MARK: - Variables & Functions
     
-    /// Labels which should remove enclosing [] from text after awakeFromNib.
-    open var placeholderViews: [UIView] {
-        return []
-    }
+    private let autoSize = CGSize(width: UITableViewAutomaticDimension,
+                                  height: UITableViewAutomaticDimension)
     
-    open func isPlaceholderString(_ string: String?) -> Bool {
-        return string != nil && string!.isPlaceholder
-    }
+    // If this is set, it is used as intrinsicContentSize. Otherwise intrinsicContentSize taken as nib size.
+    @IBInspectable open lazy var intrinsicSize: CGSize = {
+        return self.autoSize
+    }()
     
     // MARK: - UpdateView mechanism
     
@@ -33,22 +32,6 @@ import UIKit
     
     // MARK: - Private variables and functions.
     
-    /// Replace placeholders (eg [Text]) with blank text.
-    fileprivate func removePlaceholders() {
-        for view in placeholderViews {
-            if let label = view as? UILabel,
-                let text = label.text,
-                text.isPlaceholder
-            {
-                label.text = nil
-            } else if let button = view as? UIButton {
-                if button.title(for: .normal)?.isPlaceholder ?? false {
-                    button.setTitle(nil, for: .normal)
-                }
-            }
-        }
-    }
-    
     fileprivate var needsUpdateView = true
     
     fileprivate func updateViewIfNeeded() {
@@ -58,6 +41,22 @@ import UIKit
         }
     }
     
+    // MARK: - Init
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    public required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
+    }
+    
+    /// Convenience called by init(frame:) and init(coder:). Override in subclasses if required.
+    open func commonInit() {
+    }
+
     // MARK: - UIView overrides
     
     private static var sizeForKeyDictionary = [String: CGSize]()
@@ -69,22 +68,21 @@ import UIKit
             : viewFromNib ?? self
     }
     
-    open override func awakeFromNib() {
-        super.awakeFromNib()
-        removePlaceholders()
-    }
-    
     open override var intrinsicContentSize: CGSize {
-        let size: CGSize
-        let type = type(of: self)
-        let key = NSStringFromClass(type)
-        if let reuseSize = type.sizeForKeyDictionary[key] {
-            size = reuseSize
+        if intrinsicSize != autoSize {
+            return intrinsicSize
         } else {
-            size = type.sizeFromNib ?? .zero
-            type.sizeForKeyDictionary[key] = size
+            let size: CGSize
+            let type = Swift.type(of: self)
+            let key = NSStringFromClass(type)
+            if let reuseSize = type.sizeForKeyDictionary[key] {
+                size = reuseSize
+            } else {
+                size = type.sizeFromNib ?? .zero
+                type.sizeForKeyDictionary[key] = size
+            }
+            return size
         }
-        return size
     }
     
     open override var backgroundColor: UIColor? {
@@ -106,10 +104,15 @@ import UIKit
     
 }
 
-private extension String {
+extension NibView: NibReplaceable {
     
-    var isPlaceholder: Bool {
-        return hasPrefix("[") && hasSuffix("]")
+    open var placeholderViews: [UIView] {
+        return []
+    }
+    
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+        removePlaceholders()
     }
     
 }
