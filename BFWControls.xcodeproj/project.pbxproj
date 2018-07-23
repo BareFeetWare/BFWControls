@@ -11,6 +11,10 @@
 		A1BD33A21EEA2F9800D217F6 /* ExcludeCellDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD33A11EEA2F9800D217F6 /* ExcludeCellDemoViewController.swift */; };
 		A1BD33B91EEAC9A400D217F6 /* DynamicCellDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD33B81EEAC9A400D217F6 /* DynamicCellDemoViewController.swift */; };
 		A1E0C3561EE9257A009F4ED3 /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA95F1E96402500D5DE3D /* SegueHandlerType.swift */; };
+		A1EDD9B72105E8AE00A76119 /* BFWNibCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A1EDD9B52105E8AE00A76119 /* BFWNibCollectionViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A1EDD9B82105E8AE00A76119 /* BFWNibCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EDD9B62105E8AE00A76119 /* BFWNibCollectionViewCell.m */; };
+		A1EDD9BB2105EAAA00A76119 /* AvatarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EDD9B92105EAAA00A76119 /* AvatarCollectionViewCell.swift */; };
+		A1EDD9BC2105EAAA00A76119 /* AvatarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EDD9BA2105EAAA00A76119 /* AvatarCollectionViewCell.xib */; };
 		E2037A9A209815BB001E0BBA /* NSAttributedString+TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2037A99209815BB001E0BBA /* NSAttributedString+TextAttributes.swift */; };
 		E2037AA5209851F8001E0BBA /* UITableViewCell+Copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2037AA4209851F8001E0BBA /* UITableViewCell+Copy.swift */; };
 		E207BCAA1EADE577007BB14F /* UIImage+BFW.swift in Sources */ = {isa = PBXBuildFile; fileRef = E207BCA91EADE577007BB14F /* UIImage+BFW.swift */; };
@@ -99,7 +103,6 @@
 		E2D4D3D5205A4734004AE487 /* PushFirstSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D4D3D4205A4734004AE487 /* PushFirstSegue.swift */; };
 		E2D6C7B8204BC3C300144DF6 /* AvatarContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D6C7B7204BC3C300144DF6 /* AvatarContentTableViewCell.swift */; };
 		E2DA04D81FEC953C00A2B602 /* DesignableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DA04D71FEC953C00A2B602 /* DesignableTableViewCell.swift */; };
-		E2E40F112091B7CF005D0AA5 /* AvatarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E40F0F2091B7CF005D0AA5 /* AvatarTableViewCell.swift */; };
 		E2E40F122091B7CF005D0AA5 /* AvatarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E40F102091B7CF005D0AA5 /* AvatarTableViewCell.xib */; };
 		E2E5CABD1F4323EA003E0054 /* TextLabelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E5CABC1F4323EA003E0054 /* TextLabelProvider.swift */; };
 		E2EB09B01FE335EF001DC697 /* FullWidthImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EB09AF1FE335EF001DC697 /* FullWidthImageView.swift */; };
@@ -112,6 +115,10 @@
 		A11CF2291EEC2F4D00020C0C /* DynamicHeightCellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicHeightCellViewController.swift; sourceTree = "<group>"; };
 		A1BD33A11EEA2F9800D217F6 /* ExcludeCellDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExcludeCellDemoViewController.swift; sourceTree = "<group>"; };
 		A1BD33B81EEAC9A400D217F6 /* DynamicCellDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicCellDemoViewController.swift; sourceTree = "<group>"; };
+		A1EDD9B52105E8AE00A76119 /* BFWNibCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFWNibCollectionViewCell.h; sourceTree = "<group>"; };
+		A1EDD9B62105E8AE00A76119 /* BFWNibCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFWNibCollectionViewCell.m; sourceTree = "<group>"; };
+		A1EDD9B92105EAAA00A76119 /* AvatarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCollectionViewCell.swift; sourceTree = "<group>"; };
+		A1EDD9BA2105EAAA00A76119 /* AvatarCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AvatarCollectionViewCell.xib; sourceTree = "<group>"; };
 		E2037A99209815BB001E0BBA /* NSAttributedString+TextAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+TextAttributes.swift"; sourceTree = "<group>"; };
 		E2037AA4209851F8001E0BBA /* UITableViewCell+Copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Copy.swift"; sourceTree = "<group>"; };
 		E207BCA91EADE577007BB14F /* UIImage+BFW.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+BFW.swift"; sourceTree = "<group>"; };
@@ -448,6 +455,8 @@
 				E28BA9431E96402500D5DE3D /* BFWNibView.m */,
 				E2F1606120BE006800A54D6A /* BFWNibTableViewCell.h */,
 				E2F1606220BE006800A54D6A /* BFWNibTableViewCell.m */,
+				A1EDD9B52105E8AE00A76119 /* BFWNibCollectionViewCell.h */,
+				A1EDD9B62105E8AE00A76119 /* BFWNibCollectionViewCell.m */,
 				E28BA9441E96402500D5DE3D /* ImageNibCellView.swift */,
 				E28BA9461E96402500D5DE3D /* NibCellView.swift */,
 				E26E1F961F9C34F90008BACB /* NibCellViewContainer.swift */,
@@ -757,6 +766,8 @@
 				E2D6C7B7204BC3C300144DF6 /* AvatarContentTableViewCell.swift */,
 				E2E40F0F2091B7CF005D0AA5 /* AvatarTableViewCell.swift */,
 				E2E40F102091B7CF005D0AA5 /* AvatarTableViewCell.xib */,
+				A1EDD9B92105EAAA00A76119 /* AvatarCollectionViewCell.swift */,
+				A1EDD9BA2105EAAA00A76119 /* AvatarCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -823,6 +834,7 @@
 				E28BA9A11E9643BC00D5DE3D /* BFWControls.h in Headers */,
 				E28BA9A81E96457100D5DE3D /* BFWNibView.h in Headers */,
 				E2F1606320BE006800A54D6A /* BFWNibTableViewCell.h in Headers */,
+				A1EDD9B72105E8AE00A76119 /* BFWNibCollectionViewCell.h in Headers */,
 				E28BA9B41E964B5200D5DE3D /* UIImageEffects.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -923,6 +935,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E28BA9D51E964CB200D5DE3D /* Assets.xcassets in Resources */,
+				A1EDD9BC2105EAAA00A76119 /* AvatarCollectionViewCell.xib in Resources */,
 				E28BA9FD1E964D4500D5DE3D /* AvatarCellView.xib in Resources */,
 				E28BA9FE1E964D4500D5DE3D /* Table.storyboard in Resources */,
 				E2E40F122091B7CF005D0AA5 /* AvatarTableViewCell.xib in Resources */,
@@ -967,6 +980,7 @@
 				E28BA98C1E96402500D5DE3D /* StatusTextField.swift in Sources */,
 				E28BA9931E96402500D5DE3D /* StaticTableViewController.swift in Sources */,
 				E28BA96D1E96402500D5DE3D /* AlertViewController.swift in Sources */,
+				A1EDD9B82105E8AE00A76119 /* BFWNibCollectionViewCell.m in Sources */,
 				E28BA99C1E96402500D5DE3D /* TranslationNavigationDelegate.swift in Sources */,
 				E28BA9951E96402500D5DE3D /* AutoNextViewController.swift in Sources */,
 				E28BA9911E96402500D5DE3D /* TextAttributes.swift in Sources */,
@@ -1022,9 +1036,9 @@
 				E2D6C7B8204BC3C300144DF6 /* AvatarContentTableViewCell.swift in Sources */,
 				E28BA9FA1E964D4500D5DE3D /* MorphTableViewController.swift in Sources */,
 				A1BD33B91EEAC9A400D217F6 /* DynamicCellDemoViewController.swift in Sources */,
+				A1EDD9BB2105EAAA00A76119 /* AvatarCollectionViewCell.swift in Sources */,
 				E28BA9FC1E964D4500D5DE3D /* AvatarCellView.swift in Sources */,
 				A1BD33A21EEA2F9800D217F6 /* ExcludeCellDemoViewController.swift in Sources */,
-				E2E40F112091B7CF005D0AA5 /* AvatarTableViewCell.swift in Sources */,
 				E28BA9D41E964CB200D5DE3D /* AppDelegate.swift in Sources */,
 				A11CF22A1EEC2F4D00020C0C /* DynamicHeightCellViewController.swift in Sources */,
 				A1E0C3561EE9257A009F4ED3 /* SegueHandlerType.swift in Sources */,
