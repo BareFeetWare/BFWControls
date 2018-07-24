@@ -19,6 +19,7 @@
 		E22477EA1ECBCAA7004A7802 /* Transition.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E22477E81ECBCAA7004A7802 /* Transition.storyboard */; };
 		E22477EB1ECBCAA7004A7802 /* TransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22477E91ECBCAA7004A7802 /* TransitionViewController.swift */; };
 		E226BD07209C3AD700652E86 /* NibReplaceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E226BD06209C3AD600652E86 /* NibReplaceable.swift */; };
+		E22A98EC2107E52500572A85 /* UIViewController+SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22A98EB2107E52500572A85 /* UIViewController+SegmentedControl.swift */; };
 		E22FD1B21EC564AD0043171C /* UIViewController+Dismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FD1B11EC564AD0043171C /* UIViewController+Dismiss.swift */; };
 		E2320B2D1FDF6A49000E940E /* UITableViewCell+Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2320B2C1FDF6A49000E940E /* UITableViewCell+Separator.swift */; };
 		E24682211F24820B007285DB /* ShadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24682201F24820B007285DB /* ShadableView.swift */; };
@@ -120,6 +121,7 @@
 		E22477E81ECBCAA7004A7802 /* Transition.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Transition.storyboard; sourceTree = "<group>"; };
 		E22477E91ECBCAA7004A7802 /* TransitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionViewController.swift; sourceTree = "<group>"; };
 		E226BD06209C3AD600652E86 /* NibReplaceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibReplaceable.swift; sourceTree = "<group>"; };
+		E22A98EB2107E52500572A85 /* UIViewController+SegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SegmentedControl.swift"; sourceTree = "<group>"; };
 		E22FD1B11EC564AD0043171C /* UIViewController+Dismiss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Dismiss.swift"; sourceTree = "<group>"; };
 		E2320B2C1FDF6A49000E940E /* UITableViewCell+Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Separator.swift"; sourceTree = "<group>"; };
 		E24682201F24820B007285DB /* ShadableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadableView.swift; sourceTree = "<group>"; };
@@ -542,6 +544,7 @@
 				E28BA95E1E96402500D5DE3D /* AutoNextViewController.swift */,
 				E28BA95F1E96402500D5DE3D /* SegueHandlerType.swift */,
 				E24FFA1B20D7244A00A36699 /* UIApplication+Unwind.swift */,
+				E22A98EB2107E52500572A85 /* UIViewController+SegmentedControl.swift */,
 				E24FFA1620D6255900A36699 /* UIViewController+Unwind.swift */,
 			);
 			path = Controller;
@@ -984,6 +987,7 @@
 				E24D5CC320FEB45300600102 /* UIView+UIImage.swift in Sources */,
 				E28BA9851E96402500D5DE3D /* NibContainerButton.swift in Sources */,
 				E28BA98A1E96402500D5DE3D /* NibTextField.swift in Sources */,
+				E22A98EC2107E52500572A85 /* UIViewController+SegmentedControl.swift in Sources */,
 				E28BA97A1E96402500D5DE3D /* CarouselViewController.swift in Sources */,
 				E2A87BCA1EFEA2F80069E41F /* Shadable.swift in Sources */,
 				E28BA9921E96402500D5DE3D /* StyledText.swift in Sources */,
