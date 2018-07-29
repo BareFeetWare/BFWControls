@@ -28,6 +28,7 @@
 		E24FFA1720D6255900A36699 /* UIViewController+Unwind.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24FFA1620D6255900A36699 /* UIViewController+Unwind.swift */; };
 		E24FFA1C20D7244A00A36699 /* UIApplication+Unwind.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24FFA1B20D7244A00A36699 /* UIApplication+Unwind.swift */; };
 		E26E1F971F9C34F90008BACB /* NibCellViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26E1F961F9C34F90008BACB /* NibCellViewContainer.swift */; };
+		E26EE120210DCFC900E0781D /* ArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26EE11F210DCFC800E0781D /* ArcView.swift */; };
 		E288EEBA21094DDE00887F29 /* UIView+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E288EEB921094DDD00887F29 /* UIView+Hierarchy.swift */; };
 		E288EEBC21094E6900887F29 /* UIView+NSLayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E288EEBB21094E6900887F29 /* UIView+NSLayoutConstraints.swift */; };
 		E28BA96D1E96402500D5DE3D /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA91F1E96402500D5DE3D /* AlertViewController.swift */; };
@@ -132,6 +133,7 @@
 		E24FFA1620D6255900A36699 /* UIViewController+Unwind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Unwind.swift"; sourceTree = "<group>"; };
 		E24FFA1B20D7244A00A36699 /* UIApplication+Unwind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Unwind.swift"; sourceTree = "<group>"; };
 		E26E1F961F9C34F90008BACB /* NibCellViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibCellViewContainer.swift; sourceTree = "<group>"; };
+		E26EE11F210DCFC800E0781D /* ArcView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcView.swift; sourceTree = "<group>"; };
 		E288EEB921094DDD00887F29 /* UIView+Hierarchy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Hierarchy.swift"; sourceTree = "<group>"; };
 		E288EEBB21094E6900887F29 /* UIView+NSLayoutConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+NSLayoutConstraints.swift"; sourceTree = "<group>"; };
 		E28BA9111E963F7800D5DE3D /* BFWControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BFWControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -271,6 +273,22 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		E26EE11D210DCFC800E0781D /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				E26EE11E210DCFC800E0781D /* View */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		E26EE11E210DCFC800E0781D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E26EE11F210DCFC800E0781D /* ArcView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		E28BA9071E963F7800D5DE3D = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				E28BA91D1E96402500D5DE3D /* Alert */,
+				E26EE11D210DCFC800E0781D /* Animation */,
 				E28BA92A1E96402500D5DE3D /* Binding */,
 				E28BA92D1E96402500D5DE3D /* Blur */,
 				E28BA9321E96402500D5DE3D /* Carousel */,
@@ -986,6 +1005,7 @@
 				E2D4D3D5205A4734004AE487 /* PushFirstSegue.swift in Sources */,
 				E288EEBA21094DDE00887F29 /* UIView+Hierarchy.swift in Sources */,
 				E28BA9881E96402500D5DE3D /* NibContentTableViewCell.swift in Sources */,
+				E26EE120210DCFC900E0781D /* ArcView.swift in Sources */,
 				E207BCAA1EADE577007BB14F /* UIImage+BFW.swift in Sources */,
 				E28BA9A01E96402500D5DE3D /* DefaultsHandlerType.swift in Sources */,
 				E28BA97E1E96402500D5DE3D /* UIView+Transform.swift in Sources */,
