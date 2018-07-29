@@ -19,6 +19,14 @@ import UIKit
     @IBInspectable open var duration: Double = 1.0
     @IBInspectable open var fillColor: UIColor = .clear
     @IBInspectable open var strokeColor: UIColor = .gray
+    @IBInspectable open var clockwise: Bool {
+        get {
+            return overriddenClockwise ?? true
+        }
+        set {
+            overriddenClockwise = newValue
+        }
+    }
     
     @IBInspectable open var animationCurveInt: Int {
         get {
@@ -49,11 +57,13 @@ import UIKit
             radius: min(bounds.midX, bounds.midY) - lineWidth / 2,
             startAngle: CGFloat(start) * 2 * .pi,
             endAngle: CGFloat(end) * 2 * .pi,
-            clockwise: start < end
+            clockwise: overriddenClockwise ?? (start < end)
         )
     }
     
     let shapeLayer = CAShapeLayer()
+    
+    private var overriddenClockwise: Bool?
     
     // MARK: - Init
     
