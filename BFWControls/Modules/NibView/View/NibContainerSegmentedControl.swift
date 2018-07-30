@@ -56,7 +56,7 @@ open class NibContainerSegmentedControl: UISegmentedControl {
     
     open override var intrinsicContentSize: CGSize {
         var size = super.intrinsicContentSize
-        size.height = 44.0
+        size.height = nibView.intrinsicContentSize.height
         return size
     }
     
