@@ -8,33 +8,11 @@
 
 import UIKit
 
-open class NibCollectionViewCell: UICollectionViewCell {
+open class NibCollectionViewCell: BFWNibCollectionViewCell {
     
-    // MARK: - NibView container
+    // TODO: Move to NibReplaceable:
     
-    private func addContentSubview() {
-        contentView.addSubview(nibView)
-        nibView.pinToSuperviewEdges()
+    @objc open func replacedByNibView() -> UIView {
+        return replacedByNibView(fromNibNamed: type(of: self).nibName)
     }
-    
-    open var nibView: NibView {
-        fatalError("Concrete subclass must provide nibView.")
-    }
-    
-    // MARK: - Init
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
-    }
-    
-    public required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        commonInit()
-    }
-    
-    open func commonInit() {
-        addContentSubview()
-    }
-    
 }

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="AvatarCollectionViewCell" customModule="BFWControls_Demo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="280" height="272"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="280" height="272"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tDd-rd-XWN">
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="272"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LCa-nU-avC">
+                                <rect key="frame" x="8" y="33" width="264" height="129.5"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Tom" translatesAutoresizingMaskIntoConstraints="NO" id="xtF-hV-cjj">
+                                        <rect key="frame" x="110" y="0.0" width="44" height="44"/>
+                                        <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="0.41905088680000002" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="6em-Ll-eER"/>
+                                            <constraint firstAttribute="height" constant="44" id="nVb-S4-VkT"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="260" verticalCompressionResistancePriority="760" text="Tom" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axj-03-Jac">
+                                        <rect key="frame" x="115.5" y="52" width="33" height="20.5"/>
+                                        <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.80000001190000003" alpha="0.34834248309999999" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="BareFeetWare" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0g-Jf-9zS">
+                                        <rect key="frame" x="78" y="80.5" width="108" height="20.5"/>
+                                        <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.80000001190000003" alpha="0.34834248309999999" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="240" verticalCompressionResistancePriority="740" text="[Tertiary Text]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oo3-Dr-4ex">
+                                        <rect key="frame" x="78.5" y="109" width="107" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.42745098040000001" green="0.69803921570000005" blue="0.7725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="LCa-nU-avC" secondAttribute="trailing" id="9wP-GL-Eqm"/>
+                            <constraint firstItem="LCa-nU-avC" firstAttribute="leading" secondItem="tDd-rd-XWN" secondAttribute="leadingMargin" id="cqu-zj-Gs3"/>
+                            <constraint firstItem="LCa-nU-avC" firstAttribute="top" secondItem="tDd-rd-XWN" secondAttribute="topMargin" constant="25" id="yTu-1T-2ZU"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="tDd-rd-XWN" secondAttribute="bottom" id="Sd4-Vc-6vH"/>
+                <constraint firstItem="tDd-rd-XWN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="WcY-UE-AoG"/>
+                <constraint firstItem="tDd-rd-XWN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="g99-T9-Jjt"/>
+                <constraint firstAttribute="trailing" secondItem="tDd-rd-XWN" secondAttribute="trailing" id="nIw-2v-B1T"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="280" height="272"/>
+            <point key="canvasLocation" x="-379" y="-27"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Tom" width="127" height="127"/>
+    </resources>
+</document>
