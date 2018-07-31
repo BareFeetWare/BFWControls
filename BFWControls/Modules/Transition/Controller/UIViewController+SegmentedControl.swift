@@ -12,11 +12,13 @@ import UIKit
 public extension UIViewController {
     
     @IBAction public func switchTabBarItem(segmentedControl: UISegmentedControl) {
-        guard let tabBarController = (self as? UITabBarController) ?? self.tabBarController
+        guard let tabBarController = (self as? UITabBarController)
+            ?? childViewControllers.first as? UITabBarController
+            ?? self.tabBarController
             else { return }
         let oldSelectedIndex = tabBarController.selectedIndex
         tabBarController.selectedIndex = segmentedControl.selectedSegmentIndex
-        if self != tabBarController {
+        if tabBarController == self.tabBarController {
             segmentedControl.selectedSegmentIndex = oldSelectedIndex
         }
     }
