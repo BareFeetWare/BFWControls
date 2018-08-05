@@ -31,6 +31,7 @@
 		E24D5CC320FEB45300600102 /* UIView+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24D5CC220FEB45200600102 /* UIView+UIImage.swift */; };
 		E24FFA1720D6255900A36699 /* UIViewController+Unwind.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24FFA1620D6255900A36699 /* UIViewController+Unwind.swift */; };
 		E24FFA1C20D7244A00A36699 /* UIApplication+Unwind.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24FFA1B20D7244A00A36699 /* UIApplication+Unwind.swift */; };
+		E26403782116B14800A4204C /* AvatarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E40F0F2091B7CF005D0AA5 /* AvatarTableViewCell.swift */; };
 		E26E1F971F9C34F90008BACB /* NibCellViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26E1F961F9C34F90008BACB /* NibCellViewContainer.swift */; };
 		E26EE120210DCFC900E0781D /* ArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26EE11F210DCFC800E0781D /* ArcView.swift */; };
 		E288EEBA21094DDE00887F29 /* UIView+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E288EEB921094DDD00887F29 /* UIView+Hierarchy.swift */; };
@@ -791,11 +792,11 @@
 			children = (
 				E28BA9EF1E964D4500D5DE3D /* AvatarCellView.swift */,
 				E28BA9F01E964D4500D5DE3D /* AvatarCellView.xib */,
+				A1EDD9B92105EAAA00A76119 /* AvatarCollectionViewCell.swift */,
+				A1EDD9BA2105EAAA00A76119 /* AvatarCollectionViewCell.xib */,
 				E2D6C7B7204BC3C300144DF6 /* AvatarContentTableViewCell.swift */,
 				E2E40F0F2091B7CF005D0AA5 /* AvatarTableViewCell.swift */,
 				E2E40F102091B7CF005D0AA5 /* AvatarTableViewCell.xib */,
-				A1EDD9B92105EAAA00A76119 /* AvatarCollectionViewCell.swift */,
-				A1EDD9BA2105EAAA00A76119 /* AvatarCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1068,6 +1069,7 @@
 				E2D6C7B8204BC3C300144DF6 /* AvatarContentTableViewCell.swift in Sources */,
 				E28BA9FA1E964D4500D5DE3D /* MorphTableViewController.swift in Sources */,
 				A1BD33B91EEAC9A400D217F6 /* DynamicCellDemoViewController.swift in Sources */,
+				E26403782116B14800A4204C /* AvatarTableViewCell.swift in Sources */,
 				A1EDD9BB2105EAAA00A76119 /* AvatarCollectionViewCell.swift in Sources */,
 				E28BA9FC1E964D4500D5DE3D /* AvatarCellView.swift in Sources */,
 				A1BD33A21EEA2F9800D217F6 /* ExcludeCellDemoViewController.swift in Sources */,
