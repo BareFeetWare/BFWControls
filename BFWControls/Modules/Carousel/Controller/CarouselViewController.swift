@@ -95,9 +95,11 @@ open class CarouselViewController: UICollectionViewController {
     }
     
     fileprivate var plistDict: [String: AnyObject]? {
-        return Bundle.main.path(forResource: dataSourcePlistName, ofType: "plist").flatMap {
-            NSDictionary(contentsOfFile: $0) as? [String: AnyObject]
-        }
+        guard let dataSourcePlistName = dataSourcePlistName,
+            let filePath = Bundle.main.path(forResource: dataSourcePlistName, ofType: "plist"),
+            let dictionary = NSDictionary(contentsOfFile: filePath) as? [String: AnyObject]
+            else { return nil }
+        return dictionary
     }
     
     // MARK: - Override in subclass for dynamic content
