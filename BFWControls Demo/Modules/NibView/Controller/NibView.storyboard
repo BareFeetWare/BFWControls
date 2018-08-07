@@ -15,7 +15,7 @@
             <objects>
                 <tableViewController id="M8z-tY-HnS" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="fE0-39-3Rg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -33,6 +33,7 @@
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="text" value="Tom"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="detailText" value="BareFeetWare"/>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="iconView.image" value="Tom"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
@@ -46,7 +47,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Using NibContentTableViewCell subclass" id="9yP-qW-UfW">
+                            <tableViewSection headerTitle="Subclass of NibContentTableViewCell" id="9yP-qW-UfW">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="eKY-bm-ddb" detailTextLabel="Q6W-nf-ScW" rowHeight="219" style="IBUITableViewCellStyleSubtitle" id="dPx-ZC-h7R" customClass="AvatarContentTableViewCell" customModule="BFWControls_Demo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="275" width="375" height="219"/>
@@ -74,38 +75,61 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Using NibTableViewCell subclass" id="938-eu-ppw">
+                            <tableViewSection headerTitle="Subclass of NibTableViewCell" id="sn6-Ew-qoS">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="prU-v2-4Zb" detailTextLabel="2v9-Ae-ht2" imageView="bRb-EK-T3a" rowHeight="219" style="IBUITableViewCellStyleSubtitle" id="0Ne-Is-qjk" customClass="AvatarTableViewCell" customModule="BFWControls_Demo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="cj2-nS-gQg" detailTextLabel="KpV-PL-vAO" imageView="Fu4-5e-UPF" rowHeight="219" style="IBUITableViewCellStyleSubtitle" id="CT3-5l-Wjh" customClass="AvatarTableViewCell" customModule="BFWControls_Demo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="522" width="375" height="219"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Ne-Is-qjk" id="FFP-Ug-yZs">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CT3-5l-Wjh" id="fB8-x5-637">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="218.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Tom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="prU-v2-4Zb">
-                                                    <rect key="frame" x="158" y="89" width="33" height="20.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Tom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cj2-nS-gQg">
+                                                    <rect key="frame" x="37.5" y="52" width="33" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="BareFeetWare" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2v9-Ae-ht2">
-                                                    <rect key="frame" x="158" y="112.5" width="79.5" height="14.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="BareFeetWare" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KpV-PL-vAO">
+                                                    <rect key="frame" x="0.0" y="80.5" width="108" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Tom" id="bRb-EK-T3a">
-                                                    <rect key="frame" x="16" y="45" width="127" height="127"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Tom" id="Fu4-5e-UPF">
+                                                    <rect key="frame" x="32" y="0.0" width="44" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="tertiaryText" value="Tertiary text here"/>
-                                        </userDefinedRuntimeAttributes>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Subclass of NibCollectionViewCell" id="mje-ob-uNZ">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="219" id="Gic-UJ-vqR">
+                                        <rect key="frame" x="0.0" y="769" width="375" height="219"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gic-UJ-vqR" id="v4l-VK-DS8">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="218.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Auo-nQ-blK">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="219"/>
+                                                    <connections>
+                                                        <segue destination="Vc3-eX-PDc" kind="embed" id="bn0-pD-Y0r"/>
+                                                    </connections>
+                                                </containerView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Auo-nQ-blK" secondAttribute="bottom" id="Dmr-Bq-y2X"/>
+                                                <constraint firstItem="Auo-nQ-blK" firstAttribute="leading" secondItem="v4l-VK-DS8" secondAttribute="leading" id="cpV-Hw-atm"/>
+                                                <constraint firstItem="Auo-nQ-blK" firstAttribute="top" secondItem="v4l-VK-DS8" secondAttribute="top" id="lRy-PN-2lt"/>
+                                                <constraint firstAttribute="trailing" secondItem="Auo-nQ-blK" secondAttribute="trailing" id="mlg-AV-1N4"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -117,34 +141,51 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="NibViews" id="vl8-0l-EUX"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <size key="freeformSize" width="375" height="800"/>
+                    <size key="freeformSize" width="375" height="1100"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xzn-rj-oGb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="77.599999999999994" y="145.27736131934034"/>
+            <point key="canvasLocation" x="77.599999999999994" y="144.82758620689657"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Carousel View Controller-->
         <scene sceneID="e50-w3-PZL">
             <objects>
-                <collectionViewController id="Vc3-eX-PDc" sceneMemberID="viewController">
+                <collectionViewController id="Vc3-eX-PDc" customClass="CarouselViewController" customModule="BFWControls" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="uvG-Hr-Pbc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="750" height="219"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LJp-uI-SiG">
-                            <size key="itemSize" width="303" height="207"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LJp-uI-SiG">
+                            <size key="itemSize" width="373" height="207"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Eve-to-dka" customClass="AvatarCollectionViewCell" customModule="BFWControls_Demo" customModuleProvider="target">
-                                <rect key="frame" x="36" y="0.0" width="303" height="207"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="tom" id="Eve-to-dka" customClass="AvatarCollectionViewCell" customModule="BFWControls_Demo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="6" width="373" height="207"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="303" height="207"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="373" height="207"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </view>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="Tom"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="detailText" value="BareFeetWare"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="Tom"/>
+                                </userDefinedRuntimeAttributes>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="dani" id="c1F-CF-ufy" customClass="AvatarCollectionViewCell" customModule="BFWControls_Demo" customModuleProvider="target">
+                                <rect key="frame" x="383" y="6" width="373" height="207"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="373" height="207"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="Dani"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="detailText" value="BareFeetWare"/>
+                                </userDefinedRuntimeAttributes>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -152,10 +193,15 @@
                             <outlet property="delegate" destination="Vc3-eX-PDc" id="aWq-1L-OTq"/>
                         </connections>
                     </collectionView>
+                    <size key="freeformSize" width="750" height="219"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="cell0Identifier" value="tom"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="cell1Identifier" value="dani"/>
+                    </userDefinedRuntimeAttributes>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uhe-fA-PML" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="832.79999999999995" y="86.806596701649184"/>
+            <point key="canvasLocation" x="1350" y="492"/>
         </scene>
     </scenes>
     <resources>
