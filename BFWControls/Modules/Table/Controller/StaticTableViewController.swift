@@ -156,10 +156,4 @@ open class StaticTableViewController: AdjustingTableViewController {
         return cell
     }
     
-    // MARK: - UITableViewDelegate
-    
-    open override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return super.tableView(tableView, heightForRowAt: superIndexPath(for: indexPath))
-    }
-    
 }
