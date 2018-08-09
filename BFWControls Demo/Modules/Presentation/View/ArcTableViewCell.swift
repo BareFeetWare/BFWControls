@@ -9,7 +9,8 @@
 import UIKit
 import BFWControls
 
-class ArcTableViewCell: NibTableViewCell {
+@IBDesignable class ArcTableViewCell: NibTableViewCell {
 
+    @IBOutlet weak var arcView: ArcView!
     
 }

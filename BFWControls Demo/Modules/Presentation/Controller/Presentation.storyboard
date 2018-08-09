@@ -43,6 +43,11 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="arcView.end">
+                                                <real key="value" value="0.23000000000000001"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="962-6R-I94" detailTextLabel="O4h-0x-GgS" rowHeight="88" style="IBUITableViewCellStyleSubtitle" id="QhR-nB-DbG" customClass="ArcTableViewCell" customModule="BFWControls_Demo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="88" width="375" height="88"/>

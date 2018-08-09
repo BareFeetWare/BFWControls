@@ -24,9 +24,8 @@
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BVw-2r-m86">
                         <rect key="frame" x="16" y="45" width="292" height="55"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZPR-cE-ofe">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZPR-cE-ofe" customClass="ArcView" customModule="BFWControls">
                                 <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
-                                <color key="backgroundColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="55" id="1JS-4O-7AU"/>
                                     <constraint firstAttribute="height" constant="55" id="7ID-Ym-3Q5"/>
@@ -61,6 +60,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="arcView" destination="ZPR-cE-ofe" id="b2c-ja-1EU"/>
                 <outlet property="detailTextLabel" destination="afR-Ax-Py7" id="Diz-3M-876"/>
                 <outlet property="textLabel" destination="m6g-ez-lmO" id="Loq-zD-DI0"/>
             </connections>
