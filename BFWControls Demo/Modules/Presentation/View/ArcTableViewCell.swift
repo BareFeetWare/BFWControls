@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import BFWControls
 
-class ArcTableViewCell: UITableViewCell {
+class ArcTableViewCell: NibTableViewCell {
 
     
 }
