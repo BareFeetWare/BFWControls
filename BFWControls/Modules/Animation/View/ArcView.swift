@@ -78,13 +78,8 @@ import UIKit
     }
     
     private func commonInit() {
-        #if TARGET_INTERFACE_BUILDER
-        // TODO: Draw something in IB
-        backgroundColor = UIColor.cyan.withAlphaComponent(0.2)
-        #else
         backgroundColor = UIColor.clear
-        #endif
-
+        
         // Add the shapeLayer to the view's layer's sublayers
         layer.addSublayer(shapeLayer)
     }
@@ -96,18 +91,20 @@ import UIKit
         shapeLayer.fillColor = fillColor.cgColor
         shapeLayer.strokeColor = strokeColor.cgColor
         shapeLayer.lineWidth = lineWidth
-        
+    }
+    
+    open func draw() {
+        updateShapeLayer()
+        #if TARGET_INTERFACE_BUILDER
+        shapeLayer.strokeEnd = 1.0
+        #else
         // Don't draw the arc initially
         shapeLayer.strokeEnd = 0.0
+        animate()
+        #endif
     }
     
     open func animate() {
-        updateShapeLayer()
-        
-        #if TARGET_INTERFACE_BUILDER
-        // TODO: Draw something in IB
-        backgroundColor = UIColor.cyan
-        #endif
         
         // Animate the strokeEnd property of the shapeLayer.
         let animation = CABasicAnimation(keyPath: "strokeEnd")
@@ -134,7 +131,7 @@ import UIKit
     open override func layoutSubviews() {
         super.layoutSubviews()
         if window != nil {
-            animate()
+            draw()
         }
     }
     
