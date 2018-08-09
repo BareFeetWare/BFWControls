@@ -34,6 +34,8 @@
 		E26403782116B14800A4204C /* AvatarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E40F0F2091B7CF005D0AA5 /* AvatarTableViewCell.swift */; };
 		E26403822119CE4B00A4204C /* AdjustingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26403812119CE4B00A4204C /* AdjustingTableViewController.swift */; };
 		E2640386211BB5B300A4204C /* Presentation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2640385211BB5B300A4204C /* Presentation.storyboard */; };
+		E2640391211CF4A900A4204C /* ArcTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E264038F211CF4A900A4204C /* ArcTableViewCell.swift */; };
+		E2640392211CF4A900A4204C /* ArcTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2640390211CF4A900A4204C /* ArcTableViewCell.xib */; };
 		E26E1F971F9C34F90008BACB /* NibCellViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26E1F961F9C34F90008BACB /* NibCellViewContainer.swift */; };
 		E26EE120210DCFC900E0781D /* ArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26EE11F210DCFC800E0781D /* ArcView.swift */; };
 		E288EEBA21094DDE00887F29 /* UIView+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E288EEB921094DDD00887F29 /* UIView+Hierarchy.swift */; };
@@ -144,6 +146,8 @@
 		E24FFA1B20D7244A00A36699 /* UIApplication+Unwind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Unwind.swift"; sourceTree = "<group>"; };
 		E26403812119CE4B00A4204C /* AdjustingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustingTableViewController.swift; sourceTree = "<group>"; };
 		E2640385211BB5B300A4204C /* Presentation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Presentation.storyboard; sourceTree = "<group>"; };
+		E264038F211CF4A900A4204C /* ArcTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcTableViewCell.swift; sourceTree = "<group>"; };
+		E2640390211CF4A900A4204C /* ArcTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArcTableViewCell.xib; sourceTree = "<group>"; };
 		E26E1F961F9C34F90008BACB /* NibCellViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibCellViewContainer.swift; sourceTree = "<group>"; };
 		E26EE11F210DCFC800E0781D /* ArcView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcView.swift; sourceTree = "<group>"; };
 		E288EEB921094DDD00887F29 /* UIView+Hierarchy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Hierarchy.swift"; sourceTree = "<group>"; };
@@ -289,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				E2640384211BB58C00A4204C /* Controller */,
+				E264038E211CF48300A4204C /* View */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -299,6 +304,15 @@
 				E2640385211BB5B300A4204C /* Presentation.storyboard */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		E264038E211CF48300A4204C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E264038F211CF4A900A4204C /* ArcTableViewCell.swift */,
+				E2640390211CF4A900A4204C /* ArcTableViewCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		E26EE11D210DCFC800E0781D /* Animation */ = {
@@ -999,6 +1013,7 @@
 				E28BA9F41E964D4500D5DE3D /* Alerts.storyboard in Resources */,
 				E28BA9F91E964D4500D5DE3D /* Morph.storyboard in Resources */,
 				E22477EA1ECBCAA7004A7802 /* Transition.storyboard in Resources */,
+				E2640392211CF4A900A4204C /* ArcTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1100,6 +1115,7 @@
 				E28BA9D41E964CB200D5DE3D /* AppDelegate.swift in Sources */,
 				A11CF22A1EEC2F4D00020C0C /* DynamicHeightCellViewController.swift in Sources */,
 				A1E0C3561EE9257A009F4ED3 /* SegueHandlerType.swift in Sources */,
+				E2640391211CF4A900A4204C /* ArcTableViewCell.swift in Sources */,
 				E22477EB1ECBCAA7004A7802 /* TransitionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

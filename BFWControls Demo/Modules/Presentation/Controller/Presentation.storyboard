@@ -20,7 +20,7 @@
                         <sections>
                             <tableViewSection id="Evw-T9-4QK">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="8rT-fL-6S0" detailTextLabel="fF7-Ny-67s" style="IBUITableViewCellStyleSubtitle" id="H38-Se-ucF">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="8rT-fL-6S0" detailTextLabel="fF7-Ny-67s" style="IBUITableViewCellStyleSubtitle" id="H38-Se-ucF" customClass="ArcTableViewCell" customModule="BFWControls_Demo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="H38-Se-ucF" id="VT1-l2-euq">
@@ -44,7 +44,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="962-6R-I94" detailTextLabel="O4h-0x-GgS" style="IBUITableViewCellStyleSubtitle" id="QhR-nB-DbG">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="962-6R-I94" detailTextLabel="O4h-0x-GgS" style="IBUITableViewCellStyleSubtitle" id="QhR-nB-DbG" customClass="ArcTableViewCell" customModule="BFWControls_Demo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QhR-nB-DbG" id="6wn-lt-twE">
@@ -68,7 +68,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="cTI-AP-o3j" detailTextLabel="jLa-40-mjb" style="IBUITableViewCellStyleSubtitle" id="1Yd-lc-Zpz">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="cTI-AP-o3j" detailTextLabel="jLa-40-mjb" style="IBUITableViewCellStyleSubtitle" id="1Yd-lc-Zpz" customClass="ArcTableViewCell" customModule="BFWControls_Demo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="88" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Yd-lc-Zpz" id="8u3-uB-vX7">
