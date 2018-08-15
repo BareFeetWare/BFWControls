@@ -22,10 +22,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BVw-2r-m86">
-                        <rect key="frame" x="16" y="45" width="292" height="55"/>
+                        <rect key="frame" x="16" y="40" width="292" height="65.5"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZPR-cE-ofe" customClass="ArcView" customModule="BFWControls">
-                                <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
+                                <rect key="frame" x="0.0" y="5.5" width="55" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="55" id="1JS-4O-7AU"/>
                                     <constraint firstAttribute="height" constant="55" id="7ID-Ym-3Q5"/>
@@ -40,18 +40,24 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5AY-ZH-S2r">
-                                <rect key="frame" x="63" y="6" width="229" height="43"/>
+                                <rect key="frame" x="63" y="0.0" width="229" height="65.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[Text]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6g-ez-lmO">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[Text]" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6g-ez-lmO">
                                         <rect key="frame" x="0.0" y="0.0" width="47.5" height="20.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[Detail Text]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afR-Ax-Py7">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[Detail Text]" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afR-Ax-Py7">
                                         <rect key="frame" x="0.0" y="28.5" width="69" height="14.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                         <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[Tertiary Text]" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uid-JX-3Rw">
+                                        <rect key="frame" x="0.0" y="51" width="79.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -70,6 +76,7 @@
             <connections>
                 <outlet property="arcView" destination="ZPR-cE-ofe" id="b2c-ja-1EU"/>
                 <outlet property="detailTextLabel" destination="afR-Ax-Py7" id="Diz-3M-876"/>
+                <outlet property="tertiaryTextLabel" destination="Uid-JX-3Rw" id="rvu-hg-IVZ"/>
                 <outlet property="textLabel" destination="m6g-ez-lmO" id="Loq-zD-DI0"/>
             </connections>
             <point key="canvasLocation" x="36" y="104.5"/>

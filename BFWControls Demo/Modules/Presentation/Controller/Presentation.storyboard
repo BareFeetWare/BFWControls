@@ -12,7 +12,7 @@
         <!--Presentation-->
         <scene sceneID="htb-M2-DiR">
             <objects>
-                <tableViewController id="iFn-lG-0pZ" sceneMemberID="viewController">
+                <tableViewController id="iFn-lG-0pZ" customClass="AdjustingTableViewController" customModule="BFWControls" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GwS-yt-3wh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -78,11 +78,11 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="cTI-AP-o3j" detailTextLabel="jLa-40-mjb" rowHeight="88" style="IBUITableViewCellStyleSubtitle" id="1Yd-lc-Zpz" customClass="ArcTableViewCell" customModule="BFWControls_Demo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="176" width="375" height="88"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="cTI-AP-o3j" detailTextLabel="jLa-40-mjb" rowHeight="108" style="IBUITableViewCellStyleSubtitle" id="1Yd-lc-Zpz" customClass="ArcTableViewCell" customModule="BFWControls_Demo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="176" width="375" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Yd-lc-Zpz" id="8u3-uB-vX7">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="87.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="107.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="23 days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cTI-AP-o3j">
@@ -105,6 +105,9 @@
                                             <userDefinedRuntimeAttribute type="number" keyPath="arcEnd">
                                                 <real key="value" value="0.74199999999999999"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="tertiaryText">
+                                                <string key="value">Lots of extra text here that wraps over multiple lines and requires the cell to adjust its height. Perhaps some legal disclaimer. You know how long those can be.</string>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </tableViewCell>
                                 </cells>
@@ -116,10 +119,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Presentation" id="Ghe-ul-Vgv"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="intrinsicHeightCells" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y3Z-6W-gTH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="15" y="120"/>
+            <point key="canvasLocation" x="13.6" y="119.1904047976012"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZiI-Hc-PeA">
