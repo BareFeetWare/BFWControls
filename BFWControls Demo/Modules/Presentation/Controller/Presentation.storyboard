@@ -44,8 +44,8 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="arcView.end">
-                                                <real key="value" value="0.23000000000000001"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="arcEnd">
+                                                <real key="value" value="0.73299999999999998"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </tableViewCell>
@@ -72,6 +72,11 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="arcEnd">
+                                                <real key="value" value="0.35699999999999998"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="cTI-AP-o3j" detailTextLabel="jLa-40-mjb" rowHeight="88" style="IBUITableViewCellStyleSubtitle" id="1Yd-lc-Zpz" customClass="ArcTableViewCell" customModule="BFWControls_Demo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="176" width="375" height="88"/>
@@ -96,6 +101,11 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="arcEnd">
+                                                <real key="value" value="0.74199999999999999"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
