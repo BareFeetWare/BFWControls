@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WFM-cv-YeC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iFn-lG-0pZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Presentation-->
+        <!--ArcView-->
         <scene sceneID="htb-M2-DiR">
             <objects>
                 <tableViewController id="iFn-lG-0pZ" customClass="AdjustingTableViewController" customModule="BFWControls" sceneMemberID="viewController">
@@ -118,7 +118,8 @@
                             <outlet property="delegate" destination="iFn-lG-0pZ" id="zME-Cc-1hb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Presentation" id="Ghe-ul-Vgv"/>
+                    <navigationItem key="navigationItem" title="ArcView" id="Ghe-ul-Vgv"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="intrinsicHeightCells" value="YES"/>
                     </userDefinedRuntimeAttributes>
@@ -126,22 +127,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y3Z-6W-gTH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="13.6" y="119.1904047976012"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ZiI-Hc-PeA">
-            <objects>
-                <navigationController id="WFM-cv-YeC" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="t6J-eg-1XB">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="iFn-lG-0pZ" kind="relationship" relationship="rootViewController" id="HSR-iK-5k8"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DMI-V9-Gbn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-937" y="120"/>
         </scene>
     </scenes>
 </document>
