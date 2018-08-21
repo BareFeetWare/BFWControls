@@ -12,13 +12,13 @@ import UIKit
 @IBDesignable open class ArcView: UIView {
     
     // MARK: - IBInspectable variables
-
-    @IBInspectable open var start: Double = 0.0
-    @IBInspectable open var end: Double = 1.0 { didSet { setNeedsLayout() }}
-    @IBInspectable open var lineWidth: CGFloat = 2.0
+    
+    @IBInspectable open var start: Double = 0.0 { didSet { setNeedsDraw() }}
+    @IBInspectable open var end: Double = 1.0 { didSet { setNeedsDraw() }}
+    @IBInspectable open var lineWidth: CGFloat = 2.0 { didSet { setNeedsDraw() }}
     @IBInspectable open var duration: Double = 1.0
-    @IBInspectable open var fillColor: UIColor = .clear
-    @IBInspectable open var strokeColor: UIColor = .gray
+    @IBInspectable open var fillColor: UIColor = .clear { didSet { setNeedsDraw() }}
+    @IBInspectable open var strokeColor: UIColor = .gray { didSet { setNeedsDraw() }}
     
     @IBInspectable open var clockwise: Bool {
         get {
@@ -49,7 +49,7 @@ import UIKit
     }
     
     // MARK: - Variables
-
+    
     open var animationCurve: UIViewAnimationCurve = .linear
     
     open var bezierPath: UIBezierPath {
@@ -65,6 +65,7 @@ import UIKit
     let shapeLayer = CAShapeLayer()
     
     private var overriddenClockwise: Bool?
+    private var needsDraw = true
     
     // MARK: - Init
     
@@ -86,7 +87,7 @@ import UIKit
     }
     
     // MARK: - Functions
-
+    
     private func updateShapeLayer() {
         shapeLayer.path = bezierPath.cgPath
         shapeLayer.fillColor = fillColor.cgColor
@@ -103,6 +104,18 @@ import UIKit
         shapeLayer.strokeEnd = 0.0
         animate()
         #endif
+    }
+    
+    private func setNeedsDraw() {
+        needsDraw = true
+        setNeedsLayout()
+    }
+    
+    private func drawIfNeeded() {
+        if needsDraw {
+            needsDraw = false
+            draw()
+        }
     }
     
     open func animate() {
@@ -131,7 +144,7 @@ import UIKit
     
     open override func layoutSubviews() {
         super.layoutSubviews()
-        draw()
+        drawIfNeeded()
     }
     
 }
@@ -150,5 +163,5 @@ private extension UIViewAnimationCurve {
     var mediaTimingFunction: CAMediaTimingFunction {
         return CAMediaTimingFunction(name: mediaTimingFunctionString)
     }
-
+    
 }
