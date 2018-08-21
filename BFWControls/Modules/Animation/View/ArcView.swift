@@ -128,12 +128,10 @@ import UIKit
     }
     
     // MARK: UIView
-
+    
     open override func layoutSubviews() {
         super.layoutSubviews()
-        if window != nil {
-            draw()
-        }
+        draw()
     }
     
 }
