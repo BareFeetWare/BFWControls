@@ -14,7 +14,7 @@ import UIKit
     // MARK: - IBInspectable variables
 
     @IBInspectable open var start: Double = 0.0
-    @IBInspectable open var end: Double = 1.0
+    @IBInspectable open var end: Double = 1.0 { didSet { setNeedsLayout() }}
     @IBInspectable open var lineWidth: CGFloat = 2.0
     @IBInspectable open var duration: Double = 1.0
     @IBInspectable open var fillColor: UIColor = .clear
