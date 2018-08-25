@@ -15,6 +15,7 @@ import UIKit
     
     @IBInspectable open var start: Double = 0.0 { didSet { setNeedsDraw() }}
     @IBInspectable open var end: Double = 1.0 { didSet { setNeedsDraw() }}
+    @IBInspectable open var offset: Double = 0.0 { didSet { setNeedsDraw() }}
     @IBInspectable open var lineWidth: CGFloat = 2.0 { didSet { setNeedsDraw() }}
     @IBInspectable open var duration: Double = 1.0
     @IBInspectable open var fillColor: UIColor = .clear { didSet { setNeedsDraw() }}
@@ -56,8 +57,8 @@ import UIKit
         return UIBezierPath(
             arcCenter: CGPoint(x: bounds.midX, y: bounds.midY),
             radius: min(bounds.midX, bounds.midY) - lineWidth / 2,
-            startAngle: CGFloat(start) * 2 * .pi,
-            endAngle: CGFloat(end) * 2 * .pi,
+            startAngle: CGFloat(start + offset) * 2 * .pi,
+            endAngle: CGFloat(end + offset) * 2 * .pi,
             clockwise: clockwise
         )
     }
