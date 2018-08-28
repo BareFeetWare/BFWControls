@@ -106,7 +106,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                     <integer key="value" value="5"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
