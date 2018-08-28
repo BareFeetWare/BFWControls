@@ -142,7 +142,9 @@ import UIKit
             action.button?.isHidden = action.title == nil || isPlaceholderString(action.title)
         }
         messageLabel?.activateOnlyConstraintsWithFirstVisible(in: buttons.reversed())
-        if let horizontalButtonsLayoutConstraints = horizontalButtonsLayoutConstraints,
+        if let stackView = button0?.superview as? UIStackView {
+            stackView.axis = isHorizontalLayout ? .horizontal : .vertical
+        } else if let horizontalButtonsLayoutConstraints = horizontalButtonsLayoutConstraints,
             let verticalButtonsLayoutConstraints = verticalButtonsLayoutConstraints
         {
             if isHorizontalLayout {
