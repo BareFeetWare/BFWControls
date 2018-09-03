@@ -11,7 +11,7 @@ import BFWControls
 
 class ExcludeCellDemoViewController: StaticTableViewController {
 
-    var selectedCells =  [UITableViewCell]()
+    var selectedCells: [UITableViewCell] = []
     
     override var excludedCells: [UITableViewCell] {
         return selectedCells
@@ -24,12 +24,16 @@ class ExcludeCellDemoViewController: StaticTableViewController {
     fileprivate func removeCell(indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
             selectedCells.append(cell)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            if tableView.numberOfRows(inSection: indexPath.section) == 1 {
+                tableView.deleteSections([indexPath.section], with: .automatic)
+            } else {
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
         }
     }
     
     @IBAction func actionShowAll(_ sender: Any) {
-        selectedCells = [UITableViewCell]()
+        selectedCells = []
         tableView.reloadData()
     }
     
