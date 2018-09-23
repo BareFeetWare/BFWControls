@@ -150,10 +150,6 @@ open class StaticTableViewController: AdjustingTableViewController {
         return numberOfRowsInSuperSection - numberOfExcludedRowsInThisSection
     }
     
-    open override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return super.tableView(tableView, heightForRowAt: superIndexPath(for: indexPath))
-    }
-    
     open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: superIndexPath(for: indexPath))
         cell.layoutIfNeeded()
