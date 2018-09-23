@@ -22,7 +22,7 @@ public extension UIView {
             activityIndicatorView.activityIndicatorViewStyle = frame.size.width > 50.0 && frame.size.height > 50.0
                 ? .whiteLarge
                 : .white
-            activityIndicatorView.isUserInteractionEnabled = true
+            activityIndicatorView.addGestureRecognizer(UITapGestureRecognizer())
             activityIndicatorView.startAnimating()
             addSubview(activityIndicatorView)
             activityIndicatorView.pinToSuperviewEdges()
