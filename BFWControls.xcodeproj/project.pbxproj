@@ -111,7 +111,7 @@
 		E2D4D3D5205A4734004AE487 /* PushFirstSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D4D3D4205A4734004AE487 /* PushFirstSegue.swift */; };
 		E2D6C7B8204BC3C300144DF6 /* AvatarContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D6C7B7204BC3C300144DF6 /* AvatarContentTableViewCell.swift */; };
 		E2DA04D81FEC953C00A2B602 /* DesignableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DA04D71FEC953C00A2B602 /* DesignableTableViewCell.swift */; };
-		E2E08F732157294700316653 /* UIView+Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E08F722157294700316653 /* UIView+Activity.swift */; };
+		E2E08F732157294700316653 /* UIView+Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E08F722157294700316653 /* UIView+Overlay.swift */; };
 		E2E40F122091B7CF005D0AA5 /* AvatarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E40F102091B7CF005D0AA5 /* AvatarTableViewCell.xib */; };
 		E2E5CABD1F4323EA003E0054 /* TextLabelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E5CABC1F4323EA003E0054 /* TextLabelProvider.swift */; };
 		E2EB09B01FE335EF001DC697 /* FullWidthImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EB09AF1FE335EF001DC697 /* FullWidthImageView.swift */; };
@@ -227,7 +227,7 @@
 		E2D4D3D4205A4734004AE487 /* PushFirstSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushFirstSegue.swift; sourceTree = "<group>"; };
 		E2D6C7B7204BC3C300144DF6 /* AvatarContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarContentTableViewCell.swift; sourceTree = "<group>"; };
 		E2DA04D71FEC953C00A2B602 /* DesignableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableTableViewCell.swift; sourceTree = "<group>"; };
-		E2E08F722157294700316653 /* UIView+Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Activity.swift"; sourceTree = "<group>"; };
+		E2E08F722157294700316653 /* UIView+Overlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Overlay.swift"; sourceTree = "<group>"; };
 		E2E40F0F2091B7CF005D0AA5 /* AvatarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarTableViewCell.swift; sourceTree = "<group>"; };
 		E2E40F102091B7CF005D0AA5 /* AvatarTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AvatarTableViewCell.xib; sourceTree = "<group>"; };
 		E2E5CABC1F4323EA003E0054 /* TextLabelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabelProvider.swift; sourceTree = "<group>"; };
@@ -364,7 +364,6 @@
 		E28BA91C1E96402500D5DE3D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				E2E08F702157292200316653 /* Activity */,
 				E28BA91D1E96402500D5DE3D /* Alert */,
 				E26EE11D210DCFC800E0781D /* Animation */,
 				E28BA92A1E96402500D5DE3D /* Binding */,
@@ -374,6 +373,7 @@
 				E28BA9351E96402500D5DE3D /* Layer */,
 				E28BA93B1E96402500D5DE3D /* Layout */,
 				E28BA9401E96402500D5DE3D /* NibView */,
+				E2E08F702157292200316653 /* Overlay */,
 				E2A87BC71EFEA2940069E41F /* Shadable */,
 				E28BA9511E96402500D5DE3D /* Styled */,
 				E28BA9571E96402500D5DE3D /* Table */,
@@ -873,18 +873,18 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		E2E08F702157292200316653 /* Activity */ = {
+		E2E08F702157292200316653 /* Overlay */ = {
 			isa = PBXGroup;
 			children = (
 				E2E08F712157293100316653 /* View */,
 			);
-			path = Activity;
+			path = Overlay;
 			sourceTree = "<group>";
 		};
 		E2E08F712157293100316653 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E2E08F722157294700316653 /* UIView+Activity.swift */,
+				E2E08F722157294700316653 /* UIView+Overlay.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1077,7 +1077,7 @@
 				E26EE120210DCFC900E0781D /* ArcView.swift in Sources */,
 				E207BCAA1EADE577007BB14F /* UIImage+BFW.swift in Sources */,
 				E28BA9A01E96402500D5DE3D /* DefaultsHandlerType.swift in Sources */,
-				E2E08F732157294700316653 /* UIView+Activity.swift in Sources */,
+				E2E08F732157294700316653 /* UIView+Overlay.swift in Sources */,
 				E28BA97E1E96402500D5DE3D /* UIView+Transform.swift in Sources */,
 				E28BA9701E96402500D5DE3D /* AlertView.swift in Sources */,
 				E28BA9841E96402500D5DE3D /* ImageNibCellView.swift in Sources */,
