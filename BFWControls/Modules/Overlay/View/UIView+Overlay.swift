@@ -15,15 +15,13 @@ public extension UIView {
         return subviews.first { $0 is T } as? T
     }
     
-    public func addOverlay<T: UIView>(ofType: T.Type, backgroundColor: UIColor = UIColor.darkGray.withAlphaComponent(0.7)) {
+    public func addOverlay<T: UIView>(ofType: T.Type, backgroundColor: UIColor? = nil) {
         if subview(ofType: T.self) == nil {
             let subview = T()
-            subview.backgroundColor = backgroundColor
-            subview.addGestureRecognizer(UITapGestureRecognizer())
-            addSubview(subview)
-            if let subview = subview as? Overlayable {
-                subview.customizeOverlay()
+            if let backgroundColor = backgroundColor {
+                subview.backgroundColor = backgroundColor
             }
+            addSubview(subview)
             subview.pinToSuperviewEdges()
         }
     }
@@ -35,7 +33,7 @@ public extension UIView {
     public func addOverlay<T: UIView>(
         ofType: T.Type,
         timeInterval: TimeInterval,
-        backgroundColor: UIColor = UIColor.darkGray.withAlphaComponent(0.7))
+        backgroundColor: UIColor? = nil)
     {
         addOverlay(ofType: T.self, backgroundColor: backgroundColor)
         let timer: Timer
@@ -58,19 +56,4 @@ public extension UIView {
         RunLoop.main.add(timer, forMode: .defaultRunLoopMode)
     }
     
-}
-
-public protocol Overlayable {
-    func customizeOverlay()
-}
-
-extension UIActivityIndicatorView: Overlayable {
-    public func customizeOverlay() {
-        if let superview = superview {
-            activityIndicatorViewStyle = superview.frame.size.width > 50.0 && superview.frame.size.height > 50.0
-                ? .whiteLarge
-                : .white
-        }
-        startAnimating()
-    }
 }
