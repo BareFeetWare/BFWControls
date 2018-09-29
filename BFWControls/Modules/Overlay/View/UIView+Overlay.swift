@@ -15,6 +15,13 @@ public extension UIView {
         return subviews.first { $0 is T } as? T
     }
     
+    public func addOneOverlay<T: UIView>(_ overlay: T) {
+        guard firstSubview(ofType: T.self) == nil
+            else { return }
+        addSubview(overlay)
+        overlay.pinToSuperviewEdges()
+    }
+    
     public func addOneOverlay<T: UIView>(_ overlay: T, timeInterval: TimeInterval) {
         guard firstSubview(ofType: T.self) == nil
             else { return }
