@@ -12,8 +12,8 @@ public extension UIView {
     // MARK: - Class variables
     
     /// Prevents recursive call by loadNibNamed to itself. Safe as a static var since it is always called on the main thread, ie synchronously.
-    private static var isLoadingFromNib = false
-    
+    private static var loadingStack: [AnyClass] = []
+
     public static var bundle: Bundle? {
         return Bundle(for: self)
     }
@@ -101,11 +101,11 @@ public extension UIView {
     // TODO: Remove above
     
     static func nibView(fromNibNamed nibName: String? = nil, in bundle: Bundle? = nil) -> UIView? {
-        guard !isLoadingFromNib
+        guard loadingStack.last != self
             else { return nil }
-        isLoadingFromNib = true
+        loadingStack.append(self)
         defer {
-            isLoadingFromNib = false
+            loadingStack.removeLast()
         }
         let bundle = bundle ?? self.bundle!
         let nibName = nibName ?? self.nibName
