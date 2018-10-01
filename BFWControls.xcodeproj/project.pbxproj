@@ -26,6 +26,7 @@
 		E22A98EC2107E52500572A85 /* UIViewController+SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22A98EB2107E52500572A85 /* UIViewController+SegmentedControl.swift */; };
 		E22FD1B21EC564AD0043171C /* UIViewController+Dismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FD1B11EC564AD0043171C /* UIViewController+Dismiss.swift */; };
 		E2320B2D1FDF6A49000E940E /* UITableViewCell+Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2320B2C1FDF6A49000E940E /* UITableViewCell+Separator.swift */; };
+		E2430DC62161D7DD00DE95AE /* HidingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2430DC52161D7DD00DE95AE /* HidingStackView.swift */; };
 		E24682211F24820B007285DB /* ShadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24682201F24820B007285DB /* ShadableView.swift */; };
 		E24D5CBF20FEAE4F00600102 /* NibContainerSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24D5CBE20FEAE4F00600102 /* NibContainerSegmentedControl.swift */; };
 		E24D5CC320FEB45300600102 /* UIView+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24D5CC220FEB45200600102 /* UIView+UIImage.swift */; };
@@ -139,6 +140,7 @@
 		E22A98EB2107E52500572A85 /* UIViewController+SegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SegmentedControl.swift"; sourceTree = "<group>"; };
 		E22FD1B11EC564AD0043171C /* UIViewController+Dismiss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Dismiss.swift"; sourceTree = "<group>"; };
 		E2320B2C1FDF6A49000E940E /* UITableViewCell+Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Separator.swift"; sourceTree = "<group>"; };
+		E2430DC52161D7DD00DE95AE /* HidingStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HidingStackView.swift; sourceTree = "<group>"; };
 		E24682201F24820B007285DB /* ShadableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadableView.swift; sourceTree = "<group>"; };
 		E24D5CBE20FEAE4F00600102 /* NibContainerSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibContainerSegmentedControl.swift; sourceTree = "<group>"; };
 		E24D5CC220FEB45200600102 /* UIView+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+UIImage.swift"; sourceTree = "<group>"; };
@@ -494,6 +496,7 @@
 		E28BA93C1E96402500D5DE3D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E2430DC52161D7DD00DE95AE /* HidingStackView.swift */,
 				E28BA93D1E96402500D5DE3D /* NSLayoutConstraintExtensions.swift */,
 				E28BA93E1E96402500D5DE3D /* PileView.swift */,
 				E288EEB921094DDD00887F29 /* UIView+Hierarchy.swift */,
@@ -1093,6 +1096,7 @@
 				E28BA99F1E96402500D5DE3D /* UIViewMorphExtensions.swift in Sources */,
 				E28BA9741E96402500D5DE3D /* StaticAlertView.swift in Sources */,
 				E2B3E5841F26EA5C002539E6 /* ReplaceInNavigationSegue.swift in Sources */,
+				E2430DC62161D7DD00DE95AE /* HidingStackView.swift in Sources */,
 				E2037A9A209815BB001E0BBA /* NSAttributedString+TextAttributes.swift in Sources */,
 				E288EEBC21094E6900887F29 /* UIView+NSLayoutConstraints.swift in Sources */,
 				E2EB09C71FE4C61E001DC697 /* UISegmentedControl+Convenience.swift in Sources */,
