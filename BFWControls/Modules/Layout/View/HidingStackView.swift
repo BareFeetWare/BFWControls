@@ -11,36 +11,63 @@ import UIKit
 
 /// A stack view that hides any subviews that have invisible contents (eg UILabel.text == nil and UIImageView.image == nil) or a UIStackView subview that has all of its subviews hidden. When a stack view has a hidden subview, it removes it from the arrangedSubviews, so the space it occupied is freed, essentially shrinking any unused space.
 @IBDesignable open class HidingStackView: UIStackView {
-
-    open override func layoutSubviews() {
-        for subview in subviews {
-            if let subview = subview as? ContentCanBeInvisible & UIView {
-                subview.isHidden = subview.contentIsInvisible
-            }
+    
+    // MARK: - Variables
+    
+    private var observations: Set<NSKeyValueObservation> = []
+    
+    // MARK: - Functions
+    
+    private func observeView(_ view: UIView) {
+        if let label = view as? UILabel {
+            observations.insert(
+                label.observe(\.text) { [weak self] (_, _) in
+                    self?.updateSubview(view)
+                }
+            )
+        } else if let imageView = view as? UIImageView {
+            observations.insert(
+                imageView.observe(\.image) { [weak self] (_, _) in
+                    self?.updateSubview(view)
+                }
+            )
         }
-        super.layoutSubviews()
+    }
+    
+    private func updateSubview(_ subview: UIView) {
+        if let subview = subview as? ContentCanBeInvisible & UIView {
+            subview.isHidden = subview.isInvisibleContent
+            isHidden = isInvisibleContent
+        }
+    }
+    
+    // MARK: - UIView
+    
+    open override func addSubview(_ view: UIView) {
+        super.addSubview(view)
+        observeView(view)
     }
     
 }
 
 fileprivate protocol ContentCanBeInvisible {
-    var contentIsInvisible: Bool { get }
+    var isInvisibleContent: Bool { get }
 }
 
 extension UILabel: ContentCanBeInvisible {
-    var contentIsInvisible: Bool {
+    var isInvisibleContent: Bool {
         return text == nil
     }
 }
 
 extension UIImageView: ContentCanBeInvisible {
-    var contentIsInvisible: Bool {
+    var isInvisibleContent: Bool {
         return image == nil
     }
 }
 
 extension UIStackView: ContentCanBeInvisible {
-    var contentIsInvisible: Bool {
-        return arrangedSubviews == []
+    var isInvisibleContent: Bool {
+        return arrangedSubviews.first { !$0.isHidden } == nil
     }
 }
