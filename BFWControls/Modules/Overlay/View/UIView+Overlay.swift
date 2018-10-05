@@ -9,24 +9,44 @@
 
 import UIKit
 
+public protocol Overlay where Self: UIView {}
+
 public extension UIView {
     
     public func firstSubview<T: UIView>(ofType: T.Type) -> T? {
         return subviews.first { $0 is T } as? T
     }
     
-    public func addOneOverlay<T: UIView>(_ overlay: T) {
-        guard firstSubview(ofType: T.self) == nil
-            else { return }
-        addSubview(overlay)
-        overlay.pinToSuperviewEdges()
+    public var overlay: (UIView & Overlay)? {
+        return subviews.first { $0 is Overlay } as? UIView & Overlay
     }
     
-    public func addOneOverlay<T: UIView>(_ overlay: T, timeInterval: TimeInterval) {
-        guard firstSubview(ofType: T.self) == nil
-            else { return }
-        addSubview(overlay)
-        overlay.pinToSuperviewEdges()
+    public func addOneOverlay(_ overlay: (UIView & Overlay)?) {
+        subviews.filter { $0 is Overlay && type(of: $0) != type(of: overlay) }
+            .forEach { $0.removeFromSuperview() }
+        if let overlay = overlay, self.overlay == nil {
+            addSubview(overlay)
+            overlay.pinToSuperviewEdges()
+        }
+    }
+    
+    public func addOneOverlay<T: Overlay>(ofType overlayType: T.Type?) {
+        subviews.filter { $0 is Overlay && type(of: $0) != overlayType }
+            .forEach { $0.removeFromSuperview() }
+        if overlayType != nil, self.overlay == nil {
+            let overlay = T()
+            addSubview(overlay)
+            overlay.pinToSuperviewEdges()
+        }
+    }
+    
+    @objc public func removeOverlays() {
+        subviews.filter { $0 is Overlay }
+            .forEach { $0.removeFromSuperview() }
+    }
+    
+    public func addOneOverlay(_ overlay: UIView & Overlay, timeInterval: TimeInterval) {
+        addOneOverlay(overlay)
         let timer: Timer
         if #available(iOS 10.0, *) {
             timer = Timer(
@@ -34,13 +54,13 @@ public extension UIView {
                 interval: 0.0,
                 repeats: false)
             { _ in
-                overlay.removeFromSuperview()
+                self.removeOverlays()
             }
         } else {
             timer = Timer(
                 timeInterval: timeInterval,
-                target: overlay,
-                selector: #selector(removeFromSuperview),
+                target: self,
+                selector: #selector(removeOverlays),
                 userInfo: nil,
                 repeats: false)
         }
