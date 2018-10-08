@@ -18,7 +18,7 @@ open class MorphSegue: UIStoryboardSegue {
     }()
     
     @IBInspectable var duration: TimeInterval = 1.0
-    var animationOptions = UIViewAnimationOptions()
+    var animationOptions = UIView.AnimationOptions()
     
     // MARK: - UIStoryboardSegue
     

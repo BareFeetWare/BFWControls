@@ -62,8 +62,8 @@ public extension NSLayoutConstraint {
         return isBetween
     }
     
-    public func attribute(for view: AnyObject) -> NSLayoutAttribute? {
-        let attribute: NSLayoutAttribute?
+    public func attribute(for view: AnyObject) -> NSLayoutConstraint.Attribute? {
+        let attribute: NSLayoutConstraint.Attribute?
         if let firstItem = firstItem,
             firstItem === view
         {

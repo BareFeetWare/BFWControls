@@ -15,10 +15,10 @@ open class NibContentTableViewCell: UITableViewCell {
     /// Minimum intrisicContentSize.height to use if table view uses auto dimension.
     @IBInspectable open var intrinsicHeight: CGFloat {
         get {
-            return cellView?.intrinsicContentSize.height ?? UITableViewAutomaticDimension
+            return cellView?.intrinsicContentSize.height ?? UITableView.automaticDimension
         }
         set {
-            cellView?.intrinsicSize = CGSize(width: UITableViewAutomaticDimension, height: newValue)
+            cellView?.intrinsicSize = CGSize(width: UITableView.automaticDimension, height: newValue)
         }
     }
     
@@ -53,7 +53,7 @@ open class NibContentTableViewCell: UITableViewCell {
     
     // MARK: - Init
     
-    public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         commonInit(style: style)
     }
@@ -61,13 +61,13 @@ open class NibContentTableViewCell: UITableViewCell {
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
         let styleInt = coder.decodeInteger(forKey: "UITableViewCellStyle")
-        if let style = UITableViewCellStyle(rawValue: styleInt) {
+        if let style = UITableViewCell.CellStyle(rawValue: styleInt) {
             commonInit(style: style)
         }
     }
     
     /// Can be called from subclasses for tasks common for init(coder:) and init(style:). Should call super.
-    open func commonInit(style: UITableViewCellStyle) {
+    open func commonInit(style: UITableViewCell.CellStyle) {
         contentSubview = contentSubview(for: style)
         contentView.addSubview(contentSubview!)
         pinContentSubviewToContentView()
@@ -87,7 +87,7 @@ open class NibContentTableViewCell: UITableViewCell {
         }
     }
     
-    private func removeDetailTextLabelIfNotUsed(style: UITableViewCellStyle) {
+    private func removeDetailTextLabelIfNotUsed(style: UITableViewCell.CellStyle) {
         guard let textLabel = cellView?.textLabel,
             let detailTextLabel = cellView?.detailTextLabel,
             style == .default
@@ -95,7 +95,7 @@ open class NibContentTableViewCell: UITableViewCell {
         textLabel.addConstraint(toBypass: detailTextLabel)
     }
     
-    open func contentSubview(for style: UITableViewCellStyle) -> UIView {
+    open func contentSubview(for style: UITableViewCell.CellStyle) -> UIView {
         switch style {
         default:
             fatalError("Concrete subclass must provide contentSubview(for style:).")

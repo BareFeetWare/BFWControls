@@ -94,7 +94,7 @@ open class AdjustingTableViewController: UITableViewController {
             else { return shouldRefreshCellHeights }
         // Set default dynamicLastCellHeight.
         dynamicLastCellHeight = intrinsicHeightCells
-            ? UITableViewAutomaticDimension
+            ? UITableView.automaticDimension
             : super.tableView(tableView, heightForRowAt: lastCellIndexPath)
         previousRowFrame = secondLastCellRect
         // Get height of empty spaces to fill.
@@ -122,12 +122,12 @@ open class AdjustingTableViewController: UITableViewController {
         if intrinsicHeightCells || filledUsingLastCell {
             tableView.estimatedRowHeight = 44.0
         }
-        NotificationCenter.default.addObserver(self, selector: #selector(StaticTableViewController.UIApplicationDidChangeStatusBarFrameHandler(for:)), name: NSNotification.Name.UIApplicationDidChangeStatusBarFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(StaticTableViewController.UIApplicationDidChangeStatusBarFrameHandler(for:)), name: UIApplication.didChangeStatusBarFrameNotification, object: nil)
     }
     
     deinit {
         // Call removeObserver to support iOS 8 or earlier.
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationDidChangeStatusBarFrame, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIApplication.didChangeStatusBarFrameNotification, object: nil)
     }
     
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -149,7 +149,7 @@ open class AdjustingTableViewController: UITableViewController {
     
     open override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         var height = intrinsicHeightCells
-            ? UITableViewAutomaticDimension
+            ? UITableView.automaticDimension
             : super.tableView(tableView, heightForRowAt: indexPath)
         if filledUsingLastCell && indexPath == lastCellIndexPath {
             if isDynamicLastCell {

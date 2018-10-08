@@ -246,8 +246,8 @@ open class CarouselViewController: UICollectionViewController {
         }
     }
     
-    open override func didMove(toParentViewController parent: UIViewController?) {
-        super.didMove(toParentViewController: parent)
+    open override func didMove(toParent parent: UIViewController?) {
+        super.didMove(toParent: parent)
         // addPageControl() must be called after this controller's view has a superview (eg not in viewDidLoad), so it can find an exsiting pageControl.
         addPageControl()
         updatePageControl()

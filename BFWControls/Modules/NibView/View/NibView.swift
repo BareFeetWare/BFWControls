@@ -11,8 +11,8 @@ open class NibView: BFWNibView {
     
     // MARK: - Variables & Functions
     
-    private let autoSize = CGSize(width: UITableViewAutomaticDimension,
-                                  height: UITableViewAutomaticDimension)
+    private let autoSize = CGSize(width: UITableView.automaticDimension,
+                                  height: UITableView.automaticDimension)
     
     // If this is set, it is used as intrinsicContentSize. Otherwise intrinsicContentSize taken as nib size.
     @IBInspectable open lazy var intrinsicSize: CGSize = {

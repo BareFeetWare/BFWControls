@@ -64,7 +64,7 @@ public extension UIView {
                 userInfo: nil,
                 repeats: false)
         }
-        RunLoop.main.add(timer, forMode: .defaultRunLoopMode)
+        RunLoop.main.add(timer, forMode: RunLoop.Mode.default)
     }
     
 }

@@ -161,7 +161,7 @@ import UIKit
     
     // Override NibView which copies size from xib. Forces calculation using contents.
     open override var intrinsicContentSize : CGSize {
-        return CGSize(width: UIViewNoIntrinsicMetric, height: Minimum.height)
+        return CGSize(width: UIView.noIntrinsicMetric, height: Minimum.height)
     }
     
     open override func layoutSubviews() {

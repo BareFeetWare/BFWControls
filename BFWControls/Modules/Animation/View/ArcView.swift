@@ -35,7 +35,7 @@ import UIKit
             return animationCurve.rawValue
         }
         set {
-            animationCurve = UIViewAnimationCurve(rawValue: newValue) ?? .linear
+            animationCurve = UIView.AnimationCurve(rawValue: newValue) ?? .linear
         }
     }
     
@@ -51,7 +51,7 @@ import UIKit
     
     // MARK: - Variables
     
-    open var animationCurve: UIViewAnimationCurve = .linear
+    open var animationCurve: UIView.AnimationCurve = .linear
     
     open var bezierPath: UIBezierPath {
         return UIBezierPath(
@@ -150,19 +150,29 @@ import UIKit
     
 }
 
-private extension UIViewAnimationCurve {
+private extension UIView.AnimationCurve {
     
     var mediaTimingFunctionString: String {
         switch self {
-        case .linear: return kCAMediaTimingFunctionLinear
-        case .easeIn: return kCAMediaTimingFunctionEaseIn
-        case .easeOut: return kCAMediaTimingFunctionEaseOut
-        case .easeInOut: return kCAMediaTimingFunctionEaseInEaseOut
+        case .linear: return convertFromCAMediaTimingFunctionName(CAMediaTimingFunctionName.linear)
+        case .easeIn: return convertFromCAMediaTimingFunctionName(CAMediaTimingFunctionName.easeIn)
+        case .easeOut: return convertFromCAMediaTimingFunctionName(CAMediaTimingFunctionName.easeOut)
+        case .easeInOut: return convertFromCAMediaTimingFunctionName(CAMediaTimingFunctionName.easeInEaseOut)
         }
     }
     
     var mediaTimingFunction: CAMediaTimingFunction {
-        return CAMediaTimingFunction(name: mediaTimingFunctionString)
+        return CAMediaTimingFunction(name: convertToCAMediaTimingFunctionName(mediaTimingFunctionString))
     }
     
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromCAMediaTimingFunctionName(_ input: CAMediaTimingFunctionName) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToCAMediaTimingFunctionName(_ input: String) -> CAMediaTimingFunctionName {
+	return CAMediaTimingFunctionName(rawValue: input)
 }

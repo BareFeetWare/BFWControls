@@ -102,7 +102,7 @@ import UIKit
     /// Override to give different nib for each cell style
     @IBInspectable open var nibName: String?
     
-    open var style: UITableViewCellStyle = .default
+    open var style: UITableViewCell.CellStyle = .default
     
     open var contentSubview: UIView? {
         guard let contentSubview = contentView.subviews.first,
@@ -131,7 +131,7 @@ import UIKit
     
     // MARK: - Init
     
-    public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.style = style
     }
@@ -139,7 +139,7 @@ import UIKit
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
         let styleInt = coder.decodeInteger(forKey: "UITableViewCellStyle")
-        if let style = UITableViewCellStyle(rawValue: styleInt) {
+        if let style = UITableViewCell.CellStyle(rawValue: styleInt) {
             self.style = style
         }
     }

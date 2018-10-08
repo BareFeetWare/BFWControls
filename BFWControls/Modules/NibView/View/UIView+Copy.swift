@@ -70,7 +70,7 @@ public extension UIView {
             } else {
                 debugPrint("copyConstraintsFromView: error: firstItem is not a UIView")
             }
-            for axis in [UILayoutConstraintAxis.horizontal, UILayoutConstraintAxis.vertical] {
+            for axis in [NSLayoutConstraint.Axis.horizontal, NSLayoutConstraint.Axis.vertical] {
                 setContentCompressionResistancePriority(view.contentCompressionResistancePriority(for: axis), for: axis)
                 setContentHuggingPriority(view.contentHuggingPriority(for: axis), for: axis)
             }

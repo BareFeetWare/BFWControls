@@ -54,8 +54,8 @@ public extension UIView {
     }
     
     public func pin(to view: UIView,
-                    attributes: [NSLayoutAttribute],
-                    secondAttributes: [NSLayoutAttribute],
+                    attributes: [NSLayoutConstraint.Attribute],
+                    secondAttributes: [NSLayoutConstraint.Attribute],
                     constants: [CGFloat] = [0, 0, 0, 0])
     {
         var constraints = [NSLayoutConstraint]()

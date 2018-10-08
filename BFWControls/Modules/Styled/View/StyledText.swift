@@ -295,7 +295,7 @@ public extension UIFont {
         return font
     }
 
-    public func addingSymbolicTraits(_ symbolicTraits: UIFontDescriptorSymbolicTraits) -> UIFont {
+    public func addingSymbolicTraits(_ symbolicTraits: UIFontDescriptor.SymbolicTraits) -> UIFont {
         guard !symbolicTraits.isEmpty
             else { return self }
         var combinedTraits = fontDescriptor.symbolicTraits

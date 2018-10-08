@@ -51,7 +51,7 @@ open class TranslationNavigationDelegate: NSObject, UINavigationControllerDelega
 
     open func navigationController(
         _ navigationController: UINavigationController,
-        animationControllerFor operation: UINavigationControllerOperation,
+        animationControllerFor operation: UINavigationController.Operation,
         from fromViewController: UIViewController,
         to toViewController: UIViewController
         ) -> UIViewControllerAnimatedTransitioning?

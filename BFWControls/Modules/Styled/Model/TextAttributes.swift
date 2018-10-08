@@ -7,7 +7,7 @@
 
 import Foundation
 
-public typealias TextAttributes = [NSAttributedStringKey : Any]
+public typealias TextAttributes = [NSAttributedString.Key : Any]
 
 // extension TextAttributes
 public extension Dictionary where Key: ExpressibleByStringLiteral, Value: AnyObject {

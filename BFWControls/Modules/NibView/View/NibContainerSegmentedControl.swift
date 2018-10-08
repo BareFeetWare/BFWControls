@@ -40,7 +40,7 @@ open class NibContainerSegmentedControl: UISegmentedControl {
         let cellView = nibView as! NibCellView
         setTitleTextAttributes(cellView.textLabel?.attributedText?.attributes(at: 0, effectiveRange: nil), for: .normal)
         cellView.textLabel?.text = nil
-        for state: UIControlState in [.normal, .selected] {
+        for state: UIControl.State in [.normal, .selected] {
             cellView.accessoryView?.isHidden = state == .normal
             let segmentWidth: CGFloat = 10.0 // arbitrary since stretched
             cellView.frame.size.width = segmentWidth
