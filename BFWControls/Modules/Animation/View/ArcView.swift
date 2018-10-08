@@ -152,27 +152,17 @@ import UIKit
 
 private extension UIView.AnimationCurve {
     
-    var mediaTimingFunctionString: String {
+    var mediaTimingFunctionName: CAMediaTimingFunctionName {
         switch self {
-        case .linear: return convertFromCAMediaTimingFunctionName(CAMediaTimingFunctionName.linear)
-        case .easeIn: return convertFromCAMediaTimingFunctionName(CAMediaTimingFunctionName.easeIn)
-        case .easeOut: return convertFromCAMediaTimingFunctionName(CAMediaTimingFunctionName.easeOut)
-        case .easeInOut: return convertFromCAMediaTimingFunctionName(CAMediaTimingFunctionName.easeInEaseOut)
+        case .linear: return .linear
+        case .easeIn: return .easeIn
+        case .easeOut: return .easeOut
+        case .easeInOut: return .easeInEaseOut
         }
     }
     
     var mediaTimingFunction: CAMediaTimingFunction {
-        return CAMediaTimingFunction(name: convertToCAMediaTimingFunctionName(mediaTimingFunctionString))
+        return CAMediaTimingFunction(name: mediaTimingFunctionName)
     }
     
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromCAMediaTimingFunctionName(_ input: CAMediaTimingFunctionName) -> String {
-	return input.rawValue
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToCAMediaTimingFunctionName(_ input: String) -> CAMediaTimingFunctionName {
-	return CAMediaTimingFunctionName(rawValue: input)
 }
