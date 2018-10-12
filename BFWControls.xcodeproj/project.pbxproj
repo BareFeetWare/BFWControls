@@ -32,6 +32,7 @@
 		E24D5CC320FEB45300600102 /* UIView+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24D5CC220FEB45200600102 /* UIView+UIImage.swift */; };
 		E24FFA1720D6255900A36699 /* UIViewController+Unwind.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24FFA1620D6255900A36699 /* UIViewController+Unwind.swift */; };
 		E24FFA1C20D7244A00A36699 /* UIApplication+Unwind.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24FFA1B20D7244A00A36699 /* UIApplication+Unwind.swift */; };
+		E26002B5217064C400F4BA98 /* IBLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26002B4217064C400F4BA98 /* IBLog.swift */; };
 		E26403782116B14800A4204C /* AvatarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E40F0F2091B7CF005D0AA5 /* AvatarTableViewCell.swift */; };
 		E26403822119CE4B00A4204C /* AdjustingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26403812119CE4B00A4204C /* AdjustingTableViewController.swift */; };
 		E2640386211BB5B300A4204C /* ArcView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2640385211BB5B300A4204C /* ArcView.storyboard */; };
@@ -146,6 +147,7 @@
 		E24D5CC220FEB45200600102 /* UIView+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+UIImage.swift"; sourceTree = "<group>"; };
 		E24FFA1620D6255900A36699 /* UIViewController+Unwind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Unwind.swift"; sourceTree = "<group>"; };
 		E24FFA1B20D7244A00A36699 /* UIApplication+Unwind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Unwind.swift"; sourceTree = "<group>"; };
+		E26002B4217064C400F4BA98 /* IBLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBLog.swift; sourceTree = "<group>"; };
 		E26403812119CE4B00A4204C /* AdjustingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustingTableViewController.swift; sourceTree = "<group>"; };
 		E2640385211BB5B300A4204C /* ArcView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArcView.storyboard; sourceTree = "<group>"; };
 		E264038F211CF4A900A4204C /* ArcTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcTableViewCell.swift; sourceTree = "<group>"; };
@@ -291,6 +293,22 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		E26002B22170649300F4BA98 /* IBLog */ = {
+			isa = PBXGroup;
+			children = (
+				E26002B3217064AC00F4BA98 /* Model */,
+			);
+			path = IBLog;
+			sourceTree = "<group>";
+		};
+		E26002B3217064AC00F4BA98 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E26002B4217064C400F4BA98 /* IBLog.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E2640383211BB57700A4204C /* ArcView */ = {
 			isa = PBXGroup;
 			children = (
@@ -372,6 +390,7 @@
 				E28BA92D1E96402500D5DE3D /* Blur */,
 				E28BA9321E96402500D5DE3D /* Carousel */,
 				E2EB09C41FE4C5D1001DC697 /* Controls */,
+				E26002B22170649300F4BA98 /* IBLog */,
 				E28BA9351E96402500D5DE3D /* Layer */,
 				E28BA93B1E96402500D5DE3D /* Layout */,
 				E28BA9401E96402500D5DE3D /* NibView */,
@@ -1058,6 +1077,7 @@
 				E2EB09B01FE335EF001DC697 /* FullWidthImageView.swift in Sources */,
 				E2E5CABD1F4323EA003E0054 /* TextLabelProvider.swift in Sources */,
 				E28BA99D1E96402500D5DE3D /* TranslationTransitioningController.swift in Sources */,
+				E26002B5217064C400F4BA98 /* IBLog.swift in Sources */,
 				E28BA97C1E96402500D5DE3D /* DesignableView.swift in Sources */,
 				E28BA97B1E96402500D5DE3D /* DesignableButton.swift in Sources */,
 				E28BA9B51E964B5200D5DE3D /* UIImageEffects.m in Sources */,
