@@ -11,6 +11,8 @@ import UIKit
 
 @IBDesignable open class NibTableViewCell: BFWNibTableViewCell {
     
+    // MARK: - IBDesignable
+    
     #if TARGET_INTERFACE_BUILDER
     
     /// Delay referencing textLabel, detailTextLabel, imageView until after init has completed. Otherwise UITableViewCell will remove them from the nib layout (during addSubview() to contentView) using super's mechanism.
@@ -22,8 +24,9 @@ import UIKit
         }
         set {
             IBLog.write("textLabel set", indent: 1)
+            IBLog.write("newValue: \(newValue.shortDescription)")
             if isInitCompleted {
-                IBLog.write("overridingTextLabel = \(overridingTextLabel.shortDescription)")
+                IBLog.write("overridingTextLabel = newValue")
                 overridingTextLabel = newValue
             } else {
                 IBLog.write("no change")
@@ -38,7 +41,8 @@ import UIKit
         }
         set {
             IBLog.write("detailTextLabel set", indent: 1)
-            IBLog.write("overridingDetailTextLabel = \(overridingDetailTextLabel.shortDescription)")
+            IBLog.write("newValue: \(newValue.shortDescription)")
+            IBLog.write("overridingDetailTextLabel = newValue")
             overridingDetailTextLabel = newValue
             IBLog.write("detailTextLabel set, done", indent: -1)
         }
@@ -50,13 +54,26 @@ import UIKit
         }
         set {
             IBLog.write("imageView set", indent: 1)
-            IBLog.write("overridingImageView = \(overridingImageView.shortDescription)")
+            IBLog.write("newValue: \(newValue.shortDescription)")
+            IBLog.write("overridingImageView = newValue")
             overridingImageView = newValue
             IBLog.write("imageView set, done", indent: -1)
         }
     }
     
+    open override func prepareForInterfaceBuilder() {
+        IBLog.write("prepareForInterfaceBuilder()", indent: 1)
+        IBLog.write("super.prepareForInterfaceBuilder()")
+        super.prepareForInterfaceBuilder()
+        IBLog.write("overridingTextLabel: \(overridingTextLabel.shortDescription)")
+        IBLog.write("super.textLabel: \(super.textLabel.shortDescription)")
+        IBLog.write(contentView.recursiveDescription())
+        IBLog.write("prepareForInterfaceBuilder() end", indent: -1)
+    }
+    
     #else
+    
+    // MARK: - IBOutlets
     
     @IBOutlet open override var textLabel: UILabel? {
         get {
@@ -171,16 +188,6 @@ import UIKit
         }
         IBLog.write("awakeAfter(using) return \(view.shortDescription)", indent: -1)
         return view
-    }
-    
-    open override func prepareForInterfaceBuilder() {
-        IBLog.write("prepareForInterfaceBuilder()", indent: 1)
-        IBLog.write("super.prepareForInterfaceBuilder()")
-        super.prepareForInterfaceBuilder()
-        IBLog.write("overridingTextLabel: \(overridingTextLabel.shortDescription)")
-        IBLog.write("super.textLabel: \(super.textLabel.shortDescription)")
-        IBLog.write(contentView.recursiveDescription())
-        IBLog.write("prepareForInterfaceBuilder() end", indent: -1)
     }
     
     open override func awakeFromNib() {
