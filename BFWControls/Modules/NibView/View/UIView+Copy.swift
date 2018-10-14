@@ -118,10 +118,15 @@ public extension UIView {
     }
     
     @objc func replacedByNibView(fromNibNamed nibName: String? = nil, in bundle: Bundle? = nil) -> UIView {
+        IBLog.write("UIView replacedByNibView(fromNibNamed: \(nibName ?? "nil"))", indent: 1)
         guard let nibView = type(of: self).nibView(fromNibNamed: nibName, in: bundle)
-            else { return self}
+            else {
+                IBLog.write("UIView replacedByNibView(), guard else return self \(shortDescription)", indent: -1)
+                return self
+        }
         nibView.copyProperties(from: self)
         nibView.copyConstraints(from: self)
+        IBLog.write("UIView replacedByNibView(), return \(nibView.shortDescription)", indent: -1)
         return nibView
     }
     
