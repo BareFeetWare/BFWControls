@@ -44,3 +44,11 @@ public extension UILabel {
     }
     
 }
+
+public extension UIImageView {
+    
+    public override var shortDescription: String {
+        return super.shortDescription + "; image = \(image == nil ? "nil" : "not nil")"
+    }
+    
+}
