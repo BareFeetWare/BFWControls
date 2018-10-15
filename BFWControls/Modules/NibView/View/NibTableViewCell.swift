@@ -15,23 +15,32 @@ import UIKit
     
     #if TARGET_INTERFACE_BUILDER
     
+    private var nibTextLabel: UILabel?
+    private var nibDetailTextLabel: UILabel?
+    private var nibImageView: UIImageView?
+    
     private var isLoadingFromNib: Bool {
         return type(of: self).isLoadingFromNib
     }
     
     @IBOutlet open override var textLabel: UILabel? {
         get {
-            return overridingTextLabel ?? super.textLabel
+            IBLog.write("textLabel get", indent: 1)
+            let label = overridingTextLabel ?? super.textLabel
+            IBLog.write("textLabel get, return \(label.shortDescription)", indent: -1)
+            return label
         }
         set {
             IBLog.write("textLabel set", indent: 1)
             IBLog.write("newValue: \(newValue.shortDescription)")
-                IBLog.write("overridingTextLabel = newValue")
-                overridingTextLabel = newValue
             IBLog.write("isLoadingFromNib = \(isLoadingFromNib)")
             if !isLoadingFromNib {
+                IBLog.write("overridingTextLabel = nibTextLabel")
+                overridingTextLabel = nibTextLabel
+                super.textLabel?.text = nil
             } else {
-                IBLog.write("no change")
+                IBLog.write("nibTextLabel = newValue")
+                nibTextLabel = newValue
             }
             IBLog.write("textLabel set, done", indent: -1)
         }
@@ -39,26 +48,52 @@ import UIKit
     
     @IBOutlet open override var detailTextLabel: UILabel? {
         get {
-            return overridingDetailTextLabel ?? super.detailTextLabel
+            IBLog.write("detailTextLabel get", indent: 1)
+            let label = overridingDetailTextLabel ?? super.detailTextLabel
+            IBLog.write("detailTextLabel get, return \(label.shortDescription)", indent: -1)
+            return label
         }
         set {
             IBLog.write("detailTextLabel set", indent: 1)
             IBLog.write("newValue: \(newValue.shortDescription)")
-            IBLog.write("overridingDetailTextLabel = newValue")
-            overridingDetailTextLabel = newValue
+            IBLog.write("isLoadingFromNib = \(isLoadingFromNib)")
+            if !isLoadingFromNib {
+                IBLog.write("overridingDetailTextLabel = nibDetailTextLabel")
+                overridingDetailTextLabel?.text = nil
+                overridingDetailTextLabel = nibDetailTextLabel
+            } else {
+                IBLog.write("nibDetailTextLabel = newValue")
+                nibDetailTextLabel = newValue
+                // detailTextLabel must be not nil or else IBDesignable will stop with an error.
+                let nonNilLabel = UILabel()
+                nonNilLabel.backgroundColor = UIColor.red
+                nonNilLabel.text = "non nil"
+                overridingDetailTextLabel = nonNilLabel
+            }
             IBLog.write("detailTextLabel set, done", indent: -1)
         }
     }
     
     @IBOutlet open override var imageView: UIImageView? {
         get {
-            return overridingImageView ?? super.imageView
+            IBLog.write("imageView get", indent: 1)
+            let imageView = overridingImageView ?? super.imageView
+            IBLog.write("imageView get, return \(imageView.shortDescription)", indent: -1)
+            return imageView
         }
         set {
             IBLog.write("imageView set", indent: 1)
             IBLog.write("newValue: \(newValue.shortDescription)")
-            IBLog.write("overridingImageView = newValue")
-            overridingImageView = newValue
+            IBLog.write("isLoadingFromNib = \(isLoadingFromNib)")
+            if !isLoadingFromNib {
+                IBLog.write("overridingImageView = nibImageView")
+                overridingImageView = nibImageView
+                overridingImageView?.image = super.imageView?.image
+                super.imageView?.image = nil
+            } else {
+                IBLog.write("nibImageView = newValue")
+                nibImageView = newValue
+            }
             IBLog.write("imageView set, done", indent: -1)
         }
     }
