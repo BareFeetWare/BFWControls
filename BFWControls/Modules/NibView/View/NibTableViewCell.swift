@@ -15,8 +15,9 @@ import UIKit
     
     #if TARGET_INTERFACE_BUILDER
     
-    /// Delay referencing textLabel, detailTextLabel, imageView until after init has completed. Otherwise UITableViewCell will remove them from the nib layout (during addSubview() to contentView) using super's mechanism.
-    private var isInitCompleted = false
+    private var isLoadingFromNib: Bool {
+        return type(of: self).isLoadingFromNib
+    }
     
     @IBOutlet open override var textLabel: UILabel? {
         get {
@@ -25,9 +26,10 @@ import UIKit
         set {
             IBLog.write("textLabel set", indent: 1)
             IBLog.write("newValue: \(newValue.shortDescription)")
-            if isInitCompleted {
                 IBLog.write("overridingTextLabel = newValue")
                 overridingTextLabel = newValue
+            IBLog.write("isLoadingFromNib = \(isLoadingFromNib)")
+            if !isLoadingFromNib {
             } else {
                 IBLog.write("no change")
             }
@@ -161,9 +163,6 @@ import UIKit
         IBLog.write("init(style)", indent: 1)
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.style = style
-        #if TARGET_INTERFACE_BUILDER
-        isInitCompleted = true
-        #endif
         IBLog.write("init(style) done, self = \(shortDescription)", indent: -1)
     }
     
