@@ -22,7 +22,9 @@ public extension Optional where Wrapped: UIView {
 public extension UIView {
     
     @objc public var shortDescription: String {
-        return "\(type(of: self)) \(Unmanaged.passUnretained(self).toOpaque()); frame = \(self.frame)"
+        let superviewConstraints = superview.flatMap { constraints(with: $0) }
+        let constraintsString: String = superviewConstraints.map { String($0.count) } ?? "nil"
+        return "\(type(of: self)) \(Unmanaged.passUnretained(self).toOpaque()); frame = \(self.frame); constraints to superview: \(constraintsString)"
     }
     
     public func recursiveDescription(indent: Int = 0) -> String {
