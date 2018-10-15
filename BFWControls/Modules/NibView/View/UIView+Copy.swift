@@ -13,6 +13,10 @@ public extension UIView {
     
     /// Prevents recursive call by loadNibNamed to itself. Safe as a static var since it is always called on the main thread, ie synchronously.
     private static var loadingStack: [AnyClass] = []
+    
+    static var isLoadingFromNib: Bool {
+        return loadingStack.last == self
+    }
 
     public static var bundle: Bundle? {
         return Bundle(for: self)
