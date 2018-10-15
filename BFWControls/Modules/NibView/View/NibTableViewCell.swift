@@ -73,6 +73,24 @@ import UIKit
         IBLog.write("prepareForInterfaceBuilder() end", indent: -1)
     }
     
+    open override func awakeFromNib() {
+        IBLog.write("awakefromNib()", indent: 1)
+        IBLog.write("super.awakefromNib()")
+        super.awakeFromNib()
+        IBLog.write("awakefromNib() done", indent: -1)
+    }
+    
+    // MARK: - UIView
+    
+    open override func layoutSubviews() {
+        IBLog.write("layoutSubviews()", indent: 1)
+        IBLog.write(recursiveDescription())
+        IBLog.write("super.layoutSubviews()")
+        super.layoutSubviews()
+        IBLog.write(shortDescription)
+        IBLog.write("layoutSubviews() done", indent: -1)
+    }
+
     #else
     
     // MARK: - IBOutlets
@@ -189,21 +207,7 @@ import UIKit
         return view
     }
     
-    open override func awakeFromNib() {
-        IBLog.write("awakefromNib()", indent: 1)
-        IBLog.write("super.awakefromNib()")
-        super.awakeFromNib()
-        IBLog.write("awakefromNib() done", indent: -1)
-    }
-    
     // MARK: - UIView
-    
-    open override func layoutSubviews() {
-        IBLog.write("layoutSubviews()", indent: 1)
-        IBLog.write("super.layoutSubviews()")
-        super.layoutSubviews()
-        IBLog.write("layoutSubviews() done", indent: -1)
-    }
     
     open override func systemLayoutSizeFitting(
         _ targetSize: CGSize,
