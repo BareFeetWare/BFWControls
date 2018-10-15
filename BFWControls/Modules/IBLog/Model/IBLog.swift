@@ -11,7 +11,10 @@ import Foundation
 
 open class IBLog {
     
+    static var isEnabled = true
+    
     private static var indentPosition = 0
+    
     private static let dateFormatter: DateFormatter = {
         var dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss.SSS"
@@ -23,6 +26,7 @@ open class IBLog {
                              indent: Int = 0,
                              toFilePath filePath: String = "/tmp/IBDesignable.log")
     {
+        guard isEnabled else { return }
         #if TARGET_INTERFACE_BUILDER
         if !FileManager.default.fileExists(atPath: filePath) {
             FileManager.default.createFile(atPath: filePath, contents: Data(), attributes: nil)
@@ -44,4 +48,7 @@ open class IBLog {
         #endif
     }
     
+    public static func writeStack() {
+        write("Stack:\n" + Thread.callStackSymbols.joined(separator: "\n"))
+    }
 }
