@@ -34,13 +34,13 @@ import UIKit
             IBLog.write("textLabel set", indent: 1)
             IBLog.write("newValue: \(newValue.shortDescription)")
             IBLog.write("isLoadingFromNib = \(isLoadingFromNib)")
-            if !isLoadingFromNib {
+            if isLoadingFromNib {
+                IBLog.write("nibTextLabel = newValue")
+                nibTextLabel = newValue
+            } else {
                 IBLog.write("overridingTextLabel = nibTextLabel")
                 overridingTextLabel = nibTextLabel
                 super.textLabel?.text = nil
-            } else {
-                IBLog.write("nibTextLabel = newValue")
-                nibTextLabel = newValue
             }
             IBLog.write("textLabel set, done", indent: -1)
         }
@@ -57,11 +57,7 @@ import UIKit
             IBLog.write("detailTextLabel set", indent: 1)
             IBLog.write("newValue: \(newValue.shortDescription)")
             IBLog.write("isLoadingFromNib = \(isLoadingFromNib)")
-            if !isLoadingFromNib {
-                IBLog.write("overridingDetailTextLabel = nibDetailTextLabel")
-                overridingDetailTextLabel?.text = nil
-                overridingDetailTextLabel = nibDetailTextLabel
-            } else {
+            if isLoadingFromNib {
                 IBLog.write("nibDetailTextLabel = newValue")
                 nibDetailTextLabel = newValue
                 // detailTextLabel must be not nil or else IBDesignable will stop with an error.
@@ -69,6 +65,10 @@ import UIKit
                 nonNilLabel.backgroundColor = UIColor.red
                 nonNilLabel.text = "non nil"
                 overridingDetailTextLabel = nonNilLabel
+            } else {
+                IBLog.write("overridingDetailTextLabel = nibDetailTextLabel")
+                overridingDetailTextLabel?.text = nil
+                overridingDetailTextLabel = nibDetailTextLabel
             }
             IBLog.write("detailTextLabel set, done", indent: -1)
         }
@@ -85,14 +85,14 @@ import UIKit
             IBLog.write("imageView set", indent: 1)
             IBLog.write("newValue: \(newValue.shortDescription)")
             IBLog.write("isLoadingFromNib = \(isLoadingFromNib)")
-            if !isLoadingFromNib {
+            if isLoadingFromNib {
+                IBLog.write("nibImageView = newValue")
+                nibImageView = newValue
+            } else {
                 IBLog.write("overridingImageView = nibImageView")
                 overridingImageView = nibImageView
                 overridingImageView?.image = super.imageView?.image
                 super.imageView?.image = nil
-            } else {
-                IBLog.write("nibImageView = newValue")
-                nibImageView = newValue
             }
             IBLog.write("imageView set, done", indent: -1)
         }
