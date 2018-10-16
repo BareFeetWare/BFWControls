@@ -42,6 +42,17 @@ import UIKit
         }
     }
     
+    open override func awakeAfter(using coder: NSCoder) -> Any? {
+        let view = replacedByNibView()
+        if view != self {
+            if let cell = view as? UITableViewCell {
+                cell.copySubviewProperties(from: self)
+            }
+            (view as? NibReplaceable)?.removePlaceholders()
+        }
+        return view
+    }
+    
     #endif
     
     @IBOutlet open var tertiaryTextLabel: UILabel?
@@ -112,19 +123,6 @@ import UIKit
             self.style = style
         }
         IBLog.write("init(coder) done, self = \(shortDescription)", indent: -1)
-    }
-    
-    open override func awakeAfter(using coder: NSCoder) -> Any? {
-        IBLog.write("awakeAfter(using)", indent: 1)
-        let view = replacedByNibView()
-        if view != self {
-            if let cell = view as? UITableViewCell {
-                cell.copySubviewProperties(from: self)
-            }
-            (view as? NibReplaceable)?.removePlaceholders()
-        }
-        IBLog.write("awakeAfter(using) return \(view.shortDescription)", indent: -1)
-        return view
     }
     
     // MARK: - UIView
