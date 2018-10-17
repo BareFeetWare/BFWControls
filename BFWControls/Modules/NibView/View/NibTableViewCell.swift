@@ -172,6 +172,11 @@ import UIKit
                 nibTextLabel = newValue
             } else {
                 IBLog.write("overridingTextLabel = nibTextLabel")
+                if let source = overridingTextLabel,
+                    let destination = nibTextLabel
+                {
+                    destination.copyNonDefaultProperties(from: source)
+                }
                 overridingTextLabel = nibTextLabel
                 super.textLabel?.text = nil
             }
@@ -200,6 +205,11 @@ import UIKit
                 overridingDetailTextLabel = nonNilLabel
             } else {
                 IBLog.write("overridingDetailTextLabel = nibDetailTextLabel")
+                if let source = overridingDetailTextLabel,
+                    let destination = nibDetailTextLabel
+                {
+                    destination.copyNonDefaultProperties(from: source)
+                }
                 overridingDetailTextLabel?.text = nil
                 overridingDetailTextLabel = nibDetailTextLabel
             }
@@ -223,8 +233,12 @@ import UIKit
                 nibImageView = newValue
             } else {
                 IBLog.write("overridingImageView = nibImageView")
+                if let source = overridingImageView,
+                    let destination = nibImageView
+                {
+                    destination.copyNonDefaultProperties(from: source)
+                }
                 overridingImageView = nibImageView
-                overridingImageView?.image = super.imageView?.image
                 super.imageView?.image = nil
             }
             IBLog.write("imageView set, done", indent: -1)
@@ -237,7 +251,7 @@ import UIKit
         super.prepareForInterfaceBuilder()
         IBLog.write("overridingTextLabel: \(overridingTextLabel.shortDescription)")
         IBLog.write("super.textLabel: \(super.textLabel.shortDescription)")
-        IBLog.write(contentView.recursiveDescription())
+        IBLog.write("contentView: " + contentView.recursiveDescription())
         IBLog.write("prepareForInterfaceBuilder() end", indent: -1)
     }
     
