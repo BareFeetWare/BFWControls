@@ -190,7 +190,10 @@ extension UIView: Morphable {
         autoresizingMask = view.autoresizingMask
         isOpaque = view.isOpaque
     }
-    
+
+    @objc public func copyNonDefaultProperties(from view: UIView) {
+    }
+
     open override func copy() -> Any {
         let copy = type(of: self).init(frame: frame)
         copy.copyProperties(from: self)
@@ -227,7 +230,8 @@ public extension UILabel {
         tintColor = label.tintColor
     }
     
-    public func copyNonDefaultProperties(from view: UIView) {
+    public override func copyNonDefaultProperties(from view: UIView) {
+        super.copyNonDefaultProperties(from: view)
         guard let label = view as? UILabel
             else { return }
         if let sourceAttributedText = label.attributedText,
@@ -251,7 +255,8 @@ public extension UIImageView {
         animationImages = imageView.animationImages
     }
     
-    public func copyNonDefaultProperties(from view: UIView) {
+    public override func copyNonDefaultProperties(from view: UIView) {
+        super.copyNonDefaultProperties(from: view)
         guard let imageView = view as? UIImageView
             else { return }
         if let sourceImage = imageView.image {
