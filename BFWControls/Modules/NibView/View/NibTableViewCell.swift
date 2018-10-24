@@ -100,29 +100,22 @@ import UIKit
     // TODO: Move to NibReplaceable:
     
     @objc open func replacedByNibView() -> UIView {
-        IBLog.write("replacedByNibView()", indent: 1)
-        let view = replacedByNibView(fromNibNamed: nibName ?? type(of: self).nibName)
-        IBLog.write("replacedByNibView(), return \(view.shortDescription)", indent: -1)
-        return view
+        return replacedByNibView(fromNibNamed: nibName ?? type(of: self).nibName)
     }
     
     // MARK: - Init
     
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        IBLog.write("init(style)", indent: 1)
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.style = style
-        IBLog.write("init(style) done, self = \(shortDescription)", indent: -1)
     }
     
     public required init?(coder: NSCoder) {
-        IBLog.write("init(coder)", indent: 1)
         super.init(coder: coder)
         let styleInt = coder.decodeInteger(forKey: "UITableViewCellStyle")
         if let style = UITableViewCell.CellStyle(rawValue: styleInt) {
             self.style = style
         }
-        IBLog.write("init(coder) done, self = \(shortDescription)", indent: -1)
     }
     
     // MARK: - UIView
@@ -158,41 +151,33 @@ import UIKit
     private let dumpTextLabel = UILabel()
     private let dumpDetailTextLabel = UILabel()
     private let dumpImageView = UIImageView()
-
+    
     @IBOutlet open override var textLabel: UILabel? {
         get {
-            IBLog.write("textLabel get", indent: 1)
-            let label = hasPrepared
+            return hasPrepared
                 ? overridingTextLabel ?? super.textLabel
                 : dumpTextLabel
-            IBLog.write("textLabel return \(label.shortDescription)", indent: -1)
-            return label
         }
         set {
-            IBLog.write("textLabel set to \(newValue.shortDescription)")
             if isLoadingFromNib {
                 overridingTextLabel = newValue
             }
         }
     }
-
+    
     @IBOutlet open override var detailTextLabel: UILabel? {
         get {
-            IBLog.write("detailTextLabel get", indent: 1)
-            let label = hasPrepared
+            return hasPrepared
                 ? overridingDetailTextLabel ?? super.detailTextLabel
                 : dumpDetailTextLabel
-            IBLog.write("detailTextLabel return \(label.shortDescription)", indent: -1)
-            return label
         }
         set {
-            IBLog.write("detailTextLabel set to \(newValue.shortDescription)")
             if isLoadingFromNib {
                 overridingDetailTextLabel = newValue
             }
         }
     }
-
+    
     @IBOutlet open override var imageView: UIImageView? {
         get {
             return hasPrepared
@@ -200,52 +185,22 @@ import UIKit
                 : dumpImageView
         }
         set {
-            IBLog.write("imageView set to \(newValue.shortDescription)")
             if isLoadingFromNib {
                 overridingImageView = newValue
             }
         }
     }
-
+    
     open override func prepareForInterfaceBuilder() {
-        IBLog.write("prepareForInterfaceBuilder()", indent: 1)
-        IBLog.write("super.prepareForInterfaceBuilder()")
         super.prepareForInterfaceBuilder()
         hasPrepared = true
-        IBLog.write("overridingTextLabel: \(overridingTextLabel.shortDescription)")
-        IBLog.write("dumpTextLabel: \(dumpTextLabel.shortDescription)")
-        IBLog.write("super.textLabel: \(super.textLabel.shortDescription)")
-        IBLog.write("textLabel: \(textLabel.shortDescription)")
-
         overridingTextLabel?.copyNonDefaultProperties(from: dumpTextLabel)
         overridingDetailTextLabel?.copyNonDefaultProperties(from: dumpDetailTextLabel)
         overridingImageView?.copyNonDefaultProperties(from: dumpImageView)
-
         super.textLabel?.removeFromSuperview()
         dumpTextLabel.removeFromSuperview()
         dumpDetailTextLabel.removeFromSuperview()
         dumpImageView.removeFromSuperview()
-        
-        IBLog.write("contentView: " + contentView.recursiveDescription())
-        IBLog.write("prepareForInterfaceBuilder() end", indent: -1)
-    }
-    
-    open override func awakeFromNib() {
-        IBLog.write("awakefromNib()", indent: 1)
-        IBLog.write("super.awakefromNib()")
-        super.awakeFromNib()
-        IBLog.write("awakefromNib() done", indent: -1)
-    }
-    
-    // MARK: - UIView
-    
-    open override func layoutSubviews() {
-        IBLog.write("layoutSubviews()", indent: 1)
-        IBLog.write(recursiveDescription())
-        IBLog.write("super.layoutSubviews()")
-        super.layoutSubviews()
-        IBLog.write(recursiveDescription())
-        IBLog.write("layoutSubviews() done", indent: -1)
     }
     
     #endif
