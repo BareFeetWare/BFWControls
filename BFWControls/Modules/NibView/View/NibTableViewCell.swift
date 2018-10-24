@@ -53,7 +53,7 @@ import UIKit
         return view
     }
     
-    #endif
+    #endif // !TARGET_INTERFACE_BUILDER
     
     @IBOutlet open var tertiaryTextLabel: UILabel?
     
@@ -141,7 +141,7 @@ import UIKit
     
     #if TARGET_INTERFACE_BUILDER
     
-    private var hasPrepared = false
+    private var isFinishedPrepare = false
     
     private var isLoadingFromNib: Bool {
         return type(of: self).isLoadingFromNib
@@ -154,7 +154,7 @@ import UIKit
     
     @IBOutlet open override var textLabel: UILabel? {
         get {
-            return hasPrepared
+            return isFinishedPrepare
                 ? overridingTextLabel ?? super.textLabel
                 : dumpTextLabel
         }
@@ -167,7 +167,7 @@ import UIKit
     
     @IBOutlet open override var detailTextLabel: UILabel? {
         get {
-            return hasPrepared
+            return isFinishedPrepare
                 ? overridingDetailTextLabel ?? super.detailTextLabel
                 : dumpDetailTextLabel
         }
@@ -180,7 +180,7 @@ import UIKit
     
     @IBOutlet open override var imageView: UIImageView? {
         get {
-            return hasPrepared
+            return isFinishedPrepare
                 ? overridingImageView ?? super.imageView
                 : dumpImageView
         }
@@ -193,7 +193,7 @@ import UIKit
     
     open override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
-        hasPrepared = true
+        isFinishedPrepare = true
         overridingTextLabel?.copyNonDefaultProperties(from: dumpTextLabel)
         overridingDetailTextLabel?.copyNonDefaultProperties(from: dumpDetailTextLabel)
         overridingImageView?.copyNonDefaultProperties(from: dumpImageView)
@@ -203,7 +203,7 @@ import UIKit
         dumpImageView.removeFromSuperview()
     }
     
-    #endif
+    #endif // TARGET_INTERFACE_BUILDER
     
 }
 
