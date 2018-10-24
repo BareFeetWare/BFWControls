@@ -148,95 +148,99 @@ import UIKit
     
     #if TARGET_INTERFACE_BUILDER
     
-    private var nibTextLabel: UILabel?
-    private var nibDetailTextLabel: UILabel?
-    private var nibImageView: UIImageView?
+    private var hasPrepared = false
     
     private var isLoadingFromNib: Bool {
         return type(of: self).isLoadingFromNib
     }
     
+    private func dumpLabel() -> UILabel {
+        let label = UILabel(frame: CGRect(origin: CGPoint(x: 20, y: 20), size: CGSize(width: 100, height: 40)))
+        label.text = "dump"
+        label.backgroundColor = UIColor.red.withAlphaComponent(0.5)
+        return label
+    }
+    
+    private lazy var dumpTextLabel: UILabel = {
+        self.dumpLabel()
+    }()
+
+    private lazy var dumpDetailTextLabel: UILabel = {
+        self.dumpLabel()
+    }()
+
+    private lazy var dumpImageView: UIImageView = {
+        let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: 20, y: 20), size: CGSize(width: 100, height: 40)))
+        imageView.backgroundColor = UIColor.purple.withAlphaComponent(0.5)
+        return imageView
+    }()
+
     @IBOutlet open override var textLabel: UILabel? {
         get {
             IBLog.write("textLabel get", indent: 1)
-            let label = overridingTextLabel ?? super.textLabel
-            IBLog.write("textLabel get, return \(label.shortDescription)", indent: -1)
+            let label = hasPrepared
+                ? overridingTextLabel ?? super.textLabel
+                : dumpTextLabel
+            IBLog.write("textLabel return \(label.shortDescription)", indent: -1)
             return label
         }
         set {
-            IBLog.write("textLabel set", indent: 1)
-            IBLog.write("newValue: \(newValue.shortDescription)")
-            IBLog.write("isLoadingFromNib = \(isLoadingFromNib)")
+            IBLog.write("textLabel set to \(newValue.shortDescription)")
             if isLoadingFromNib {
-                IBLog.write("nibTextLabel = newValue")
-                nibTextLabel = newValue
-            } else {
-                IBLog.write("overridingTextLabel = nibTextLabel")
-                overridingTextLabel = nibTextLabel
-                super.textLabel?.text = nil
+                overridingTextLabel = newValue
             }
-            IBLog.write("textLabel set, done", indent: -1)
         }
     }
-    
+
     @IBOutlet open override var detailTextLabel: UILabel? {
         get {
             IBLog.write("detailTextLabel get", indent: 1)
-            let label = overridingDetailTextLabel ?? super.detailTextLabel
-            IBLog.write("detailTextLabel get, return \(label.shortDescription)", indent: -1)
+            let label = hasPrepared
+                ? overridingDetailTextLabel ?? super.detailTextLabel
+                : dumpDetailTextLabel
+            IBLog.write("detailTextLabel return \(label.shortDescription)", indent: -1)
             return label
         }
         set {
-            IBLog.write("detailTextLabel set", indent: 1)
-            IBLog.write("newValue: \(newValue.shortDescription)")
-            IBLog.write("isLoadingFromNib = \(isLoadingFromNib)")
+            IBLog.write("detailTextLabel set to \(newValue.shortDescription)")
             if isLoadingFromNib {
-                IBLog.write("nibDetailTextLabel = newValue")
-                nibDetailTextLabel = newValue
-                // detailTextLabel must be not nil or else IBDesignable will stop with an error.
-                let nonNilLabel = UILabel()
-                nonNilLabel.backgroundColor = UIColor.red
-                nonNilLabel.text = "non nil"
-                overridingDetailTextLabel = nonNilLabel
-            } else {
-                overridingDetailTextLabel?.text = nil
-                IBLog.write("overridingDetailTextLabel = nibDetailTextLabel")
-                overridingDetailTextLabel = nibDetailTextLabel
+                overridingDetailTextLabel = newValue
             }
-            IBLog.write("detailTextLabel set, done", indent: -1)
         }
     }
-    
+
     @IBOutlet open override var imageView: UIImageView? {
         get {
-            IBLog.write("imageView get", indent: 1)
-            let imageView = overridingImageView ?? super.imageView
-            IBLog.write("imageView get, return \(imageView.shortDescription)", indent: -1)
-            return imageView
+            return hasPrepared
+                ? overridingImageView ?? super.imageView
+                : dumpImageView
         }
         set {
-            IBLog.write("imageView set", indent: 1)
-            IBLog.write("newValue: \(newValue.shortDescription)")
-            IBLog.write("isLoadingFromNib = \(isLoadingFromNib)")
+            IBLog.write("imageView set to \(newValue.shortDescription)")
             if isLoadingFromNib {
-                IBLog.write("nibImageView = newValue")
-                nibImageView = newValue
-            } else {
-                IBLog.write("overridingImageView = nibImageView")
-                overridingImageView = nibImageView
-                overridingImageView?.image = super.imageView?.image
-                super.imageView?.image = nil
+                overridingImageView = newValue
             }
-            IBLog.write("imageView set, done", indent: -1)
         }
     }
-    
+
     open override func prepareForInterfaceBuilder() {
         IBLog.write("prepareForInterfaceBuilder()", indent: 1)
         IBLog.write("super.prepareForInterfaceBuilder()")
         super.prepareForInterfaceBuilder()
+        hasPrepared = true
         IBLog.write("overridingTextLabel: \(overridingTextLabel.shortDescription)")
+        IBLog.write("dumpTextLabel: \(dumpTextLabel.shortDescription)")
         IBLog.write("super.textLabel: \(super.textLabel.shortDescription)")
+        IBLog.write("textLabel: \(textLabel.shortDescription)")
+
+        overridingTextLabel?.text = dumpTextLabel.text
+        overridingDetailTextLabel?.text = dumpDetailTextLabel.text
+        overridingImageView?.image = dumpImageView.image
+
+        dumpTextLabel.text = nil
+        dumpDetailTextLabel.text = nil
+        dumpImageView.image = nil
+        
         IBLog.write("contentView: " + contentView.recursiveDescription())
         IBLog.write("prepareForInterfaceBuilder() end", indent: -1)
     }
@@ -255,7 +259,7 @@ import UIKit
         IBLog.write(recursiveDescription())
         IBLog.write("super.layoutSubviews()")
         super.layoutSubviews()
-        IBLog.write(shortDescription)
+        IBLog.write(recursiveDescription())
         IBLog.write("layoutSubviews() done", indent: -1)
     }
     
