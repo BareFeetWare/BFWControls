@@ -154,26 +154,10 @@ import UIKit
         return type(of: self).isLoadingFromNib
     }
     
-    private func dumpLabel() -> UILabel {
-        let label = UILabel(frame: CGRect(origin: CGPoint(x: 20, y: 20), size: CGSize(width: 100, height: 40)))
-        label.text = "dump"
-        label.backgroundColor = UIColor.red.withAlphaComponent(0.5)
-        return label
-    }
-    
-    private lazy var dumpTextLabel: UILabel = {
-        self.dumpLabel()
-    }()
-
-    private lazy var dumpDetailTextLabel: UILabel = {
-        self.dumpLabel()
-    }()
-
-    private lazy var dumpImageView: UIImageView = {
-        let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: 20, y: 20), size: CGSize(width: 100, height: 40)))
-        imageView.backgroundColor = UIColor.purple.withAlphaComponent(0.5)
-        return imageView
-    }()
+    // Subviews in which UITableViewCell moves and sets properties. We later copy those properties into our subviews.
+    private let dumpTextLabel = UILabel()
+    private let dumpDetailTextLabel = UILabel()
+    private let dumpImageView = UIImageView()
 
     @IBOutlet open override var textLabel: UILabel? {
         get {
@@ -237,9 +221,10 @@ import UIKit
         overridingDetailTextLabel?.text = dumpDetailTextLabel.text
         overridingImageView?.image = dumpImageView.image
 
-        dumpTextLabel.text = nil
-        dumpDetailTextLabel.text = nil
-        dumpImageView.image = nil
+        super.textLabel?.removeFromSuperview()
+        dumpTextLabel.removeFromSuperview()
+        dumpDetailTextLabel.removeFromSuperview()
+        dumpImageView.removeFromSuperview()
         
         IBLog.write("contentView: " + contentView.recursiveDescription())
         IBLog.write("prepareForInterfaceBuilder() end", indent: -1)
