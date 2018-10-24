@@ -217,9 +217,9 @@ import UIKit
         IBLog.write("super.textLabel: \(super.textLabel.shortDescription)")
         IBLog.write("textLabel: \(textLabel.shortDescription)")
 
-        overridingTextLabel?.text = dumpTextLabel.text
-        overridingDetailTextLabel?.text = dumpDetailTextLabel.text
-        overridingImageView?.image = dumpImageView.image
+        overridingTextLabel?.copyNonDefaultProperties(from: dumpTextLabel)
+        overridingDetailTextLabel?.copyNonDefaultProperties(from: dumpDetailTextLabel)
+        overridingImageView?.copyNonDefaultProperties(from: dumpImageView)
 
         super.textLabel?.removeFromSuperview()
         dumpTextLabel.removeFromSuperview()
