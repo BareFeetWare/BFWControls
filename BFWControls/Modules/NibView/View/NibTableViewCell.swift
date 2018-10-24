@@ -203,6 +203,31 @@ import UIKit
         dumpImageView.removeFromSuperview()
     }
     
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        offsetSubviewFramesIfNeeded()
+    }
+    
+    /// Implement workaround for bug in IB frames of textLabel, detailTextLabel, imageView.
+    private var isOffsetSubviewFramesNeeded = true
+    
+    private var previousSuperviewFrame: CGRect?
+    
+    /// Workaround for bug in IB that does not show the correct frame for textLabel etc.
+    private func offsetSubviewFramesIfNeeded() {
+        if isOffsetSubviewFramesNeeded && isFinishedPrepare && textLabel?.superview?.frame != previousSuperviewFrame {
+            previousSuperviewFrame = textLabel?.superview?.frame
+            [textLabel, detailTextLabel, imageView].compactMap { $0 }.forEach {
+                if let superview = $0.superview,
+                    superview != contentView
+                {
+                    $0.frame.origin.x += superview.frame.origin.x
+                    $0.frame.origin.y += superview.frame.origin.y
+                }
+            }
+        }
+    }
+    
     #endif // TARGET_INTERFACE_BUILDER
     
 }
