@@ -38,7 +38,7 @@ open class IBLog {
         }
         let date = Date()
         let dateString = dateFormatter.string(from: date)
-        let indentString = String(repeating: "  ", count: indentPosition)
+        let indentString = String(repeating: "  ", count: max(indentPosition, 0))
         if indent > 0 {
             indentPosition += indent
         }
