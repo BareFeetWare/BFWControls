@@ -140,6 +140,12 @@ import UIKit
     // MARK: - IBDesignable
     
     #if TARGET_INTERFACE_BUILDER
+    let isInterfaceBuilder = true
+    #else
+    let isInterfaceBuilder = false
+    #endif
+    
+    #if TARGET_INTERFACE_BUILDER
     
     private var isFinishedPrepare = false
     
@@ -147,7 +153,7 @@ import UIKit
         return type(of: self).isLoadingFromNib
     }
     
-    // Subviews in which UITableViewCell moves and sets properties. We later copy those properties into our subviews.
+    // Subviews in which UITableViewCell moves and sets properties. prepareForInterfaceBuilder() later copies those properties into our subviews and dump these subviews. This strategey prevents UITableViewCell from moving the subviews out of our nested layout.
     private let dumpTextLabel = UILabel()
     private let dumpDetailTextLabel = UILabel()
     private let dumpImageView = UIImageView()
@@ -191,9 +197,10 @@ import UIKit
         }
     }
     
+    // #endif // TARGET_INTERFACE_BUILDER
+    
     open override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
-        isFinishedPrepare = true
         overridingTextLabel?.copyNonDefaultProperties(from: dumpTextLabel)
         overridingDetailTextLabel?.copyNonDefaultProperties(from: dumpDetailTextLabel)
         overridingImageView?.copyNonDefaultProperties(from: dumpImageView)
@@ -201,31 +208,41 @@ import UIKit
         dumpTextLabel.removeFromSuperview()
         dumpDetailTextLabel.removeFromSuperview()
         dumpImageView.removeFromSuperview()
+        isFinishedPrepare = true
     }
     
     open override func layoutSubviews() {
+        IBLog.write("layoutSubviews() {", indent: 1)
         super.layoutSubviews()
         offsetSubviewFramesIfNeeded()
+        IBLog.write("}", indent: -1)
     }
     
     /// Implement workaround for bug in IB frames of textLabel, detailTextLabel, imageView.
     private var isOffsetSubviewFramesNeeded = true
     
-    private var previousSuperviewFrame: CGRect?
+    // Hack to figure out in which layoutSubviews() call after prepareForInterfaceBuilder, to adjust the frames so the selection in IB lines up.
+    private var offsetCount = 0
+    private let changeFrameOffsetCount = 3
     
     /// Workaround for bug in IB that does not show the correct frame for textLabel etc.
     private func offsetSubviewFramesIfNeeded() {
-        if isOffsetSubviewFramesNeeded && isFinishedPrepare && textLabel?.superview?.frame != previousSuperviewFrame {
-            previousSuperviewFrame = textLabel?.superview?.frame
-            [textLabel, detailTextLabel, imageView].compactMap { $0 }.forEach {
-                if let superview = $0.superview,
-                    superview != contentView
-                {
-                    $0.frame.origin.x += superview.frame.origin.x
-                    $0.frame.origin.y += superview.frame.origin.y
-                }
+        guard isInterfaceBuilder && isOffsetSubviewFramesNeeded && isFinishedPrepare
+            else { return }
+        IBLog.write("offsetSubviewFramesIfNeeded() {", indent: 1)
+        offsetCount += 1
+        IBLog.write("offsetCount = \(offsetCount)")
+        [textLabel, detailTextLabel, imageView].compactMap { $0 }.forEach { subview in
+            let converted = subview.convert(CGPoint.zero, to: self)
+            if offsetCount == changeFrameOffsetCount {
+                IBLog.write("subview: \(subview.shortDescription) {", indent: 1)
+                IBLog.write("old origin: \(subview.frame.origin)")
+                subview.frame.origin = converted
+                IBLog.write("new origin: \(subview.frame.origin)")
+                IBLog.write("}", indent: -1)
             }
         }
+        IBLog.write("}", indent: -1)
     }
     
     #endif // TARGET_INTERFACE_BUILDER
