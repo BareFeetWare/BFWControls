@@ -48,6 +48,10 @@ open class IBLog {
         #endif
     }
     
+    public static func writeCaller() {
+        write("Caller: " + (Thread.callStackSymbols.first ?? "nil"))
+    }
+    
     public static func writeStack() {
         write("Stack:\n" + Thread.callStackSymbols.joined(separator: "\n"))
     }
