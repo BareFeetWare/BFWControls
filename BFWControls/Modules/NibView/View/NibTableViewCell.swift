@@ -234,7 +234,10 @@ import UIKit
         IBLog.write("offsetCount = \(offsetCount)")
         [textLabel, detailTextLabel, imageView].compactMap { $0 }.forEach { subview in
             let converted = subview.convert(CGPoint.zero, to: self)
-            if offsetCount == changeFrameOffsetCount {
+            if offsetCount == changeFrameOffsetCount
+                && converted.x > 0
+                && converted.y > 0
+            {
                 IBLog.write("subview: \(subview.shortDescription) {", indent: 1)
                 IBLog.write("old origin: \(subview.frame.origin)")
                 subview.frame.origin = converted
