@@ -208,6 +208,7 @@ import UIKit
         dumpTextLabel.removeFromSuperview()
         dumpDetailTextLabel.removeFromSuperview()
         dumpImageView.removeFromSuperview()
+        removePlaceholders()
         isFinishedPrepare = true
     }
     
