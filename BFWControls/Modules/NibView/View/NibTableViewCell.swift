@@ -161,11 +161,11 @@ import UIKit
     @IBOutlet open override var textLabel: UILabel? {
         get {
             return isFinishedPrepare
-                ? overridingTextLabel ?? super.textLabel
-                : dumpTextLabel
+                ? overridingTextLabel
+                : super.textLabel ?? UILabel()
         }
         set {
-            if isLoadingFromNib {
+            if overridingTextLabel == nil {
                 overridingTextLabel = newValue
             }
         }
@@ -174,11 +174,11 @@ import UIKit
     @IBOutlet open override var detailTextLabel: UILabel? {
         get {
             return isFinishedPrepare
-                ? overridingDetailTextLabel ?? super.detailTextLabel
-                : dumpDetailTextLabel
+                ? overridingDetailTextLabel
+                : inheritedDetailTextLabel ?? UILabel()
         }
         set {
-            if isLoadingFromNib {
+            if overridingDetailTextLabel == nil {
                 overridingDetailTextLabel = newValue
             }
         }
@@ -187,18 +187,61 @@ import UIKit
     @IBOutlet open override var imageView: UIImageView? {
         get {
             return isFinishedPrepare
-                ? overridingImageView ?? super.imageView
-                : dumpImageView
+                ? overridingImageView
+                : super.imageView
         }
         set {
-            if isLoadingFromNib {
+            if overridingImageView == nil {
                 overridingImageView = newValue
             }
         }
     }
     
+    /// super.detailTextLabel returns nil even though super.textLabel returns the label, so resorting to subviews:
+    private var inheritedDetailTextLabel: UILabel? {
+        let superLabels = super.contentView.subviews.filter { $0 is UILabel } as! [UILabel]
+        let superLabel: UILabel? = super.detailTextLabel
+            ?? (
+                superLabels.count == 2
+                    ? superLabels[1]
+                    : nil
+        )
+        return superLabel
+    }
+    
     // #endif // TARGET_INTERFACE_BUILDER
     
+    open override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        if let destination = overridingTextLabel,
+            let source = super.textLabel
+        {
+            if !["Text", "Title"].contains(source.text) {
+                destination.copyNonDefaultProperties(from: source)
+            }
+            source.attributedText = nil
+        }
+        if let destination = overridingDetailTextLabel {
+            if let source = inheritedDetailTextLabel
+            {
+                if !["Detail", "Subtitle"].contains(source.text) {
+                    destination.copyNonDefaultProperties(from: source)
+                }
+                source.attributedText = nil
+            } else {
+                destination.text = nil
+            }
+        }
+        if let destination = overridingImageView,
+            let source = super.imageView
+        {
+            destination.copyNonDefaultProperties(from: source)
+            source.image = nil
+        }
+        isFinishedPrepare = true
+    }
+    
+    /*
     open override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         overridingTextLabel?.copyNonDefaultProperties(from: dumpTextLabel)
@@ -248,6 +291,8 @@ import UIKit
         }
         IBLog.write("}", indent: -1)
     }
+    
+    */
     
     #endif // TARGET_INTERFACE_BUILDER
     
