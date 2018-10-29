@@ -149,15 +149,6 @@ import UIKit
     
     private var isFinishedPrepare = false
     
-    private var isLoadingFromNib: Bool {
-        return type(of: self).isLoadingFromNib
-    }
-    
-    // Subviews in which UITableViewCell moves and sets properties. prepareForInterfaceBuilder() later copies those properties into our subviews and dump these subviews. This strategey prevents UITableViewCell from moving the subviews out of our nested layout.
-    private let dumpTextLabel = UILabel()
-    private let dumpDetailTextLabel = UILabel()
-    private let dumpImageView = UIImageView()
-    
     @IBOutlet open override var textLabel: UILabel? {
         get {
             return isFinishedPrepare
@@ -175,7 +166,7 @@ import UIKit
         get {
             return isFinishedPrepare
                 ? overridingDetailTextLabel
-                : inheritedDetailTextLabel ?? UILabel()
+                : superDetailTextLabel ?? UILabel()
         }
         set {
             if overridingDetailTextLabel == nil {
@@ -198,20 +189,29 @@ import UIKit
     }
     
     /// super.detailTextLabel returns nil even though super.textLabel returns the label, so resorting to subviews:
-    private var inheritedDetailTextLabel: UILabel? {
-        let superLabels = super.contentView.subviews.filter { $0 is UILabel } as! [UILabel]
-        let superLabel: UILabel? = super.detailTextLabel
-            ?? (
-                superLabels.count == 2
-                    ? superLabels[1]
-                    : nil
-        )
-        return superLabel
+    private var superDetailTextLabel: UILabel? {
+        IBLog.write("superDetailTextLabel {", indent: 1)
+        let label: UILabel?
+        if let detailTextLabel = super.detailTextLabel {
+            IBLog.write("return super.detailTextLabel")
+            IBLog.write("}", indent: -1)
+            label = detailTextLabel
+        } else {
+            let superLabels = super.contentView.subviews.filter { $0 is UILabel } as! [UILabel]
+            IBLog.write("return super.contentView.subviews labels[1]:")
+            label = superLabels.count == 2
+                ? superLabels[1]
+                : nil
+        }
+        IBLog.write("label: \(label.shortDescription)")
+        IBLog.write("}", indent: -1)
+        return label
     }
     
     // #endif // TARGET_INTERFACE_BUILDER
     
     open override func prepareForInterfaceBuilder() {
+        IBLog.write("prepareForInterfaceBuilder() {", indent: 1)
         super.prepareForInterfaceBuilder()
         if let destination = overridingTextLabel,
             let source = super.textLabel
@@ -222,7 +222,7 @@ import UIKit
             source.attributedText = nil
         }
         if let destination = overridingDetailTextLabel {
-            if let source = inheritedDetailTextLabel
+            if let source = superDetailTextLabel
             {
                 if !["Detail", "Subtitle"].contains(source.text) {
                     destination.copyNonDefaultProperties(from: source)
@@ -239,35 +239,34 @@ import UIKit
             source.image = nil
         }
         isFinishedPrepare = true
-    }
-    
-    /*
-    open override func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
-        overridingTextLabel?.copyNonDefaultProperties(from: dumpTextLabel)
-        overridingDetailTextLabel?.copyNonDefaultProperties(from: dumpDetailTextLabel)
-        overridingImageView?.copyNonDefaultProperties(from: dumpImageView)
-        super.textLabel?.removeFromSuperview()
-        dumpTextLabel.removeFromSuperview()
-        dumpDetailTextLabel.removeFromSuperview()
-        dumpImageView.removeFromSuperview()
-        removePlaceholders()
-        isFinishedPrepare = true
+        IBLog.write("}", indent: -1)
     }
     
     open override func layoutSubviews() {
         IBLog.write("layoutSubviews() {", indent: 1)
-        super.layoutSubviews()
-        offsetSubviewFramesIfNeeded()
+        if isFinishedLayoutAfterOffset {
+            IBLog.write("Blocked since isFinishedLayoutAfterOffset")
+        } else {
+            IBLog.write("super.layoutSubviews() {", indent: 1)
+            super.layoutSubviews()
+            offsetSubviewFramesIfNeeded()
+            if isOffsetSubviewFramesFinished {
+                isFinishedLayoutAfterOffset = true
+                IBLog.write("cell: \(recursiveDescription())")
+            }
+            IBLog.write("}", indent: -1)
+        }
         IBLog.write("}", indent: -1)
     }
     
     /// Implement workaround for bug in IB frames of textLabel, detailTextLabel, imageView.
     private var isOffsetSubviewFramesNeeded = true
-    
+    private var isOffsetSubviewFramesFinished = false
+    private var isFinishedLayoutAfterOffset = false
+
     // Hack to figure out in which layoutSubviews() call after prepareForInterfaceBuilder, to adjust the frames so the selection in IB lines up.
     private var offsetCount = 0
-    private let changeFrameOffsetCount = 3
+    private let changeFrameOffsetCount = 2
     
     /// Workaround for bug in IB that does not show the correct frame for textLabel etc.
     private func offsetSubviewFramesIfNeeded() {
@@ -276,23 +275,23 @@ import UIKit
         IBLog.write("offsetSubviewFramesIfNeeded() {", indent: 1)
         offsetCount += 1
         IBLog.write("offsetCount = \(offsetCount)")
-        [textLabel, detailTextLabel, imageView].compactMap { $0 }.forEach { subview in
-            let converted = subview.convert(CGPoint.zero, to: self)
-            if offsetCount == changeFrameOffsetCount
-                && converted.x > 0
-                && converted.y > 0
-            {
-                IBLog.write("subview: \(subview.shortDescription) {", indent: 1)
-                IBLog.write("old origin: \(subview.frame.origin)")
-                subview.frame.origin = converted
-                IBLog.write("new origin: \(subview.frame.origin)")
-                IBLog.write("}", indent: -1)
+        if offsetCount == changeFrameOffsetCount {
+            [textLabel, detailTextLabel, imageView].compactMap { $0 }.forEach { subview in
+                let converted = subview.convert(CGPoint.zero, to: self)
+                if converted.x > 0
+                    && converted.y > 0
+                {
+                    IBLog.write("subview: \(subview.shortDescription) {", indent: 1)
+                    IBLog.write("old origin: \(subview.frame.origin)")
+                    subview.frame.origin = converted
+                    IBLog.write("new origin: \(subview.frame.origin)")
+                    IBLog.write("}", indent: -1)
+                }
             }
+            isOffsetSubviewFramesFinished = true
         }
         IBLog.write("}", indent: -1)
     }
-    
-    */
     
     #endif // TARGET_INTERFACE_BUILDER
     
