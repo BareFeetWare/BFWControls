@@ -107,6 +107,11 @@
 		E28BA9FF1E964D9500D5DE3D /* BFWControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E28BA9111E963F7800D5DE3D /* BFWControls.framework */; };
 		E29569B0208EA44000E48077 /* NibTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29569AF208EA44000E48077 /* NibTableViewCell.swift */; };
 		E29643602104570D007598D3 /* UIStackView+Joined.swift in Sources */ = {isa = PBXBuildFile; fileRef = E296435F2104570D007598D3 /* UIStackView+Joined.swift */; };
+		E29BD1192186BF7B000D3176 /* RoundedImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29BD1162186BF7B000D3176 /* RoundedImageTableViewCell.swift */; };
+		E29BD11A2186BF7B000D3176 /* RoundedImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E29BD1172186BF7B000D3176 /* RoundedImageTableViewCell.xib */; };
+		E29BD11B2186BF7B000D3176 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29BD1182186BF7B000D3176 /* RoundedImageView.swift */; };
+		E29BD11E2186C28A000D3176 /* CenteredTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29BD11C2186C28A000D3176 /* CenteredTableViewCell.swift */; };
+		E29BD11F2186C28A000D3176 /* CenteredTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E29BD11D2186C28A000D3176 /* CenteredTableViewCell.xib */; };
 		E2A87BCA1EFEA2F80069E41F /* Shadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A87BC91EFEA2F80069E41F /* Shadable.swift */; };
 		E2B3E5841F26EA5C002539E6 /* ReplaceInNavigationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B3E5831F26EA5C002539E6 /* ReplaceInNavigationSegue.swift */; };
 		E2BFE8F71F296CD900BAEC16 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BFE8F61F296CD900BAEC16 /* CustomTableViewCell.swift */; };
@@ -226,6 +231,11 @@
 		E28BA9F31E964D4500D5DE3D /* Table.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Table.storyboard; sourceTree = "<group>"; };
 		E29569AF208EA44000E48077 /* NibTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibTableViewCell.swift; sourceTree = "<group>"; };
 		E296435F2104570D007598D3 /* UIStackView+Joined.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Joined.swift"; sourceTree = "<group>"; };
+		E29BD1162186BF7B000D3176 /* RoundedImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageTableViewCell.swift; sourceTree = "<group>"; };
+		E29BD1172186BF7B000D3176 /* RoundedImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoundedImageTableViewCell.xib; sourceTree = "<group>"; };
+		E29BD1182186BF7B000D3176 /* RoundedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
+		E29BD11C2186C28A000D3176 /* CenteredTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredTableViewCell.swift; sourceTree = "<group>"; };
+		E29BD11D2186C28A000D3176 /* CenteredTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CenteredTableViewCell.xib; sourceTree = "<group>"; };
 		E2A87BC91EFEA2F80069E41F /* Shadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shadable.swift; sourceTree = "<group>"; };
 		E2B3E5831F26EA5C002539E6 /* ReplaceInNavigationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplaceInNavigationSegue.swift; sourceTree = "<group>"; };
 		E2BFE8F61F296CD900BAEC16 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
@@ -858,6 +868,11 @@
 				E2D6C7B7204BC3C300144DF6 /* AvatarContentTableViewCell.swift */,
 				E2E40F0F2091B7CF005D0AA5 /* AvatarTableViewCell.swift */,
 				E2E40F102091B7CF005D0AA5 /* AvatarTableViewCell.xib */,
+				E29BD11C2186C28A000D3176 /* CenteredTableViewCell.swift */,
+				E29BD11D2186C28A000D3176 /* CenteredTableViewCell.xib */,
+				E29BD1162186BF7B000D3176 /* RoundedImageTableViewCell.swift */,
+				E29BD1172186BF7B000D3176 /* RoundedImageTableViewCell.xib */,
+				E29BD1182186BF7B000D3176 /* RoundedImageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1053,7 +1068,9 @@
 				E2640386211BB5B300A4204C /* ArcView.storyboard in Resources */,
 				E28BA9FD1E964D4500D5DE3D /* AvatarCellView.xib in Resources */,
 				E28BA9FE1E964D4500D5DE3D /* Table.storyboard in Resources */,
+				E29BD11A2186BF7B000D3176 /* RoundedImageTableViewCell.xib in Resources */,
 				E2E40F122091B7CF005D0AA5 /* AvatarTableViewCell.xib in Resources */,
+				E29BD11F2186C28A000D3176 /* CenteredTableViewCell.xib in Resources */,
 				E28BA9F51E964D4500D5DE3D /* Carousel.storyboard in Resources */,
 				E28BA9FB1E964D4500D5DE3D /* NibView.storyboard in Resources */,
 				E28BA9F71E964D4500D5DE3D /* Developer.storyboard in Resources */,
@@ -1159,14 +1176,17 @@
 			files = (
 				E2D6C7B8204BC3C300144DF6 /* AvatarContentTableViewCell.swift in Sources */,
 				E28BA9FA1E964D4500D5DE3D /* MorphTableViewController.swift in Sources */,
+				E29BD11E2186C28A000D3176 /* CenteredTableViewCell.swift in Sources */,
 				A1BD33B91EEAC9A400D217F6 /* DynamicCellDemoViewController.swift in Sources */,
 				E26403782116B14800A4204C /* AvatarTableViewCell.swift in Sources */,
 				A1EDD9BB2105EAAA00A76119 /* AvatarCollectionViewCell.swift in Sources */,
 				E28BA9FC1E964D4500D5DE3D /* AvatarCellView.swift in Sources */,
+				E29BD11B2186BF7B000D3176 /* RoundedImageView.swift in Sources */,
 				A1BD33A21EEA2F9800D217F6 /* ExcludeCellDemoViewController.swift in Sources */,
 				E28BA9D41E964CB200D5DE3D /* AppDelegate.swift in Sources */,
 				A11CF22A1EEC2F4D00020C0C /* DynamicHeightCellViewController.swift in Sources */,
 				A1E0C3561EE9257A009F4ED3 /* SegueHandlerType.swift in Sources */,
+				E29BD1192186BF7B000D3176 /* RoundedImageTableViewCell.swift in Sources */,
 				E2640391211CF4A900A4204C /* ArcTableViewCell.swift in Sources */,
 				E22477EB1ECBCAA7004A7802 /* TransitionViewController.swift in Sources */,
 			);
