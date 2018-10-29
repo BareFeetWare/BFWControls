@@ -190,28 +190,19 @@ import UIKit
     
     /// super.detailTextLabel returns nil even though super.textLabel returns the label, so resorting to subviews:
     private var superDetailTextLabel: UILabel? {
-        IBLog.write("superDetailTextLabel {", indent: 1)
         let label: UILabel?
         if let detailTextLabel = super.detailTextLabel {
-            IBLog.write("return super.detailTextLabel")
-            IBLog.write("}", indent: -1)
             label = detailTextLabel
         } else {
             let superLabels = super.contentView.subviews.filter { $0 is UILabel } as! [UILabel]
-            IBLog.write("return super.contentView.subviews labels[1]:")
             label = superLabels.count == 2
                 ? superLabels[1]
                 : nil
         }
-        IBLog.write("label: \(label.shortDescription)")
-        IBLog.write("}", indent: -1)
         return label
     }
     
-    // #endif // TARGET_INTERFACE_BUILDER
-    
     open override func prepareForInterfaceBuilder() {
-        IBLog.write("prepareForInterfaceBuilder() {", indent: 1)
         super.prepareForInterfaceBuilder()
         if let destination = overridingTextLabel,
             let source = super.textLabel
@@ -239,31 +230,17 @@ import UIKit
             source.image = nil
         }
         isFinishedPrepare = true
-        IBLog.write("}", indent: -1)
     }
     
     open override func layoutSubviews() {
-        IBLog.write("layoutSubviews() {", indent: 1)
-        if isFinishedLayoutAfterOffset {
-            IBLog.write("Blocked since isFinishedLayoutAfterOffset")
-        } else {
-            IBLog.write("super.layoutSubviews() {", indent: 1)
-            super.layoutSubviews()
-            offsetSubviewFramesIfNeeded()
-            if isOffsetSubviewFramesFinished {
-                isFinishedLayoutAfterOffset = true
-                IBLog.write("cell: \(recursiveDescription())")
-            }
-            IBLog.write("}", indent: -1)
-        }
-        IBLog.write("}", indent: -1)
+        super.layoutSubviews()
+        offsetSubviewFramesIfNeeded()
     }
     
     /// Implement workaround for bug in IB frames of textLabel, detailTextLabel, imageView.
     private var isOffsetSubviewFramesNeeded = true
     private var isOffsetSubviewFramesFinished = false
-    private var isFinishedLayoutAfterOffset = false
-
+    
     // Hack to figure out in which layoutSubviews() call after prepareForInterfaceBuilder, to adjust the frames so the selection in IB lines up.
     private var offsetCount = 0
     private let changeFrameOffsetCount = 2
