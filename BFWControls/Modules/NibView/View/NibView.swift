@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class NibView: BFWNibView {
+open class NibView: BFWNibView, NibReplaceable {
     
     // MARK: - Variables & Functions
     
@@ -18,6 +18,18 @@ open class NibView: BFWNibView {
     @IBInspectable open lazy var intrinsicSize: CGSize = {
         return self.autoSize
     }()
+    
+    static func sizeFromNib() -> CGSize {
+        let size: CGSize
+        let key = NSStringFromClass(self)
+        if let reuseSize = sizeForKeyDictionary[key] {
+            size = reuseSize
+        } else {
+            size = nibView()?.frame.size ?? .zero
+            sizeForKeyDictionary[key] = size
+        }
+        return size
+    }
     
     // MARK: - UpdateView mechanism
     
@@ -33,7 +45,8 @@ open class NibView: BFWNibView {
     // MARK: - Private variables and functions.
     
     fileprivate var needsUpdateView = true
-    
+    private static var sizeForKeyDictionary = [String: CGSize]()
+
     fileprivate func updateViewIfNeeded() {
         if needsUpdateView {
             needsUpdateView = false
@@ -59,29 +72,19 @@ open class NibView: BFWNibView {
 
     // MARK: - UIView overrides
     
-    private static var sizeForKeyDictionary = [String: CGSize]()
-    
     open override func awakeAfter(using coder: NSCoder) -> Any? {
-        let hasAlreadyLoadedFromNib = !subviews.isEmpty // TODO: More rubust test.
-        return hasAlreadyLoadedFromNib
-            ? self
-            : viewFromNib ?? self
+        let view = replacedByNibView()
+        if view != self {
+            view.removePlaceholders()
+        }
+        return view
     }
     
     open override var intrinsicContentSize: CGSize {
         if intrinsicSize != autoSize {
             return intrinsicSize
         } else {
-            let size: CGSize
-            let type = Swift.type(of: self)
-            let key = NSStringFromClass(type)
-            if let reuseSize = type.sizeForKeyDictionary[key] {
-                size = reuseSize
-            } else {
-                size = type.sizeFromNib ?? .zero
-                type.sizeForKeyDictionary[key] = size
-            }
-            return size
+            return type(of: self).sizeFromNib()
         }
     }
     
@@ -104,15 +107,10 @@ open class NibView: BFWNibView {
     
 }
 
-extension NibView: NibReplaceable {
+@objc public extension NibView {
     
-    open var placeholderViews: [UIView] {
-        return []
-    }
-    
-    open override func awakeFromNib() {
-        super.awakeFromNib()
-        removePlaceholders()
+    @objc func replacedByNibViewForInit() -> Self {
+        return replacedByNibView()
     }
     
 }

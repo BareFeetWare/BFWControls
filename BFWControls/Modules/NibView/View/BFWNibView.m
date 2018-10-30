@@ -16,10 +16,10 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        if (super.subviews.count == 0) { // Prevents loading nib in nib itself.
-            UIView *nibView = [super replacedByNibViewFromNibNamed:nil in:nil];
+        NibView *nibView = (NibView *)[(NibView *)self replacedByNibViewForInit];
+        if (nibView != self) {
             nibView.frame = super.frame;
-            self = (BFWNibView *)nibView;
+            self = nibView;
         }
     }
     return self;

@@ -9,8 +9,14 @@
 
 import UIKit
 
-@IBDesignable open class NibTableViewCell: BFWNibTableViewCell {
+@IBDesignable open class NibTableViewCell: BFWNibTableViewCell, NibReplaceable {
     
+    // MARK: - NibReplaceable
+
+    open var placeholderViews: [UIView] {
+        return [textLabel, detailTextLabel, tertiaryTextLabel, actionView].compactMap { $0 }
+    }
+
     // MARK: - IBOutlets
     
     #if !TARGET_INTERFACE_BUILDER
@@ -45,10 +51,8 @@ import UIKit
     open override func awakeAfter(using coder: NSCoder) -> Any? {
         let view = replacedByNibView()
         if view != self {
-            if let cell = view as? UITableViewCell {
-                cell.copySubviewProperties(from: self)
-            }
-            (view as? NibReplaceable)?.removePlaceholders()
+            view.copySubviewProperties(from: self)
+            view.removePlaceholders()
         }
         return view
     }
@@ -90,18 +94,7 @@ import UIKit
     /// Minimum intrinsicContentSize.height to use if the table view uses auto dimension.
     @IBInspectable open var minimumHeight: CGFloat = 0.0
     
-    /// Override to give different nib for each cell style
-    @IBInspectable open var nibName: String?
-    
     open var style: UITableViewCell.CellStyle = .default
-    
-    // MARK: - Functions
-    
-    // TODO: Move to NibReplaceable:
-    
-    @objc open func replacedByNibView() -> UIView {
-        return replacedByNibView(fromNibNamed: nibName ?? type(of: self).nibName)
-    }
     
     // MARK: - Init
     
@@ -274,10 +267,10 @@ import UIKit
     
 }
 
-extension NibTableViewCell: NibReplaceable {
+@objc public extension NibTableViewCell {
     
-    open var placeholderViews: [UIView] {
-        return [textLabel, detailTextLabel, tertiaryTextLabel, actionView].compactMap { $0 }
+    @objc func replacedByNibViewForInit() -> Self {
+        return replacedByNibView()
     }
     
 }

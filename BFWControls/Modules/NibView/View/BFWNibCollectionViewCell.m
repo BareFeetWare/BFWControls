@@ -15,7 +15,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        NibCollectionViewCell *nibView = (NibCollectionViewCell *)[(NibCollectionViewCell *)self replacedByNibView];
+        NibCollectionViewCell *nibView = [(NibCollectionViewCell *)self replacedByNibViewForInit];
         if (nibView != self) {
             nibView.frame = super.frame;
             self = nibView;

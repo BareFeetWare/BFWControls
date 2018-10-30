@@ -9,22 +9,24 @@
 
 import UIKit
 
-open class NibCollectionViewCell: BFWNibCollectionViewCell {
-    
-    // TODO: Move to NibReplaceable:
-    
-    @objc open func replacedByNibView() -> UIView {
-        return replacedByNibView(fromNibNamed: type(of: self).nibName)
-    }
+open class NibCollectionViewCell: BFWNibCollectionViewCell, NibReplaceable {
     
     // MARK: - Init
     
     open override func awakeAfter(using coder: NSCoder) -> Any? {
         let view = replacedByNibView()
         if view != self {
-            (view as? NibReplaceable)?.removePlaceholders()
+            view.removePlaceholders()
         }
         return view
+    }
+    
+}
+
+@objc public extension NibCollectionViewCell {
+    
+    @objc func replacedByNibViewForInit() -> Self {
+        return replacedByNibView()
     }
     
 }

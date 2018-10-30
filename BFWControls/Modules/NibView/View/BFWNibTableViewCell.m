@@ -17,7 +17,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        NibTableViewCell *nibView = (NibTableViewCell *)[(NibTableViewCell *)self replacedByNibView];
+        NibTableViewCell *nibView = [(NibTableViewCell *)self replacedByNibViewForInit];
         if (nibView != self) {
             nibView.frame = super.frame;
             self = nibView;
