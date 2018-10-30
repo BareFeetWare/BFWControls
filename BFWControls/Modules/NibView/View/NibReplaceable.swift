@@ -30,14 +30,7 @@ open override func awakeAfter(using coder: NSCoder) -> Any? {
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    if (self) {
-        NibView *nibView = (NibView *)[(NibView *)self replacedByNibViewForInit];
-        if (nibView != self) {
-            nibView.frame = super.frame;
-            self = nibView;
-        }
-    }
-    return self;
+    return [(NibView *)self replacedByNibViewForInit];
 }
 */
 
