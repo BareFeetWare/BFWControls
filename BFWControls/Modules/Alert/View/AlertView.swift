@@ -171,7 +171,7 @@ import UIKit
     
     // MARK: - NibView
     
-    open var placeholderViews: [UIView] {
+    open override var placeholderViews: [UIView] {
         return [titleLabel, messageLabel].compactMap { $0 }
     }
     

@@ -9,6 +9,14 @@ import UIKit
 
 open class NibView: BFWNibView, NibReplaceable {
     
+    // MARK: - NibReplaceable
+    
+    @IBInspectable open var nibName: String?
+    
+    open var placeholderViews: [UIView] {
+        return []
+    }
+
     // MARK: - Variables & Functions
     
     private let autoSize = CGSize(width: UITableView.automaticDimension,
@@ -19,7 +27,7 @@ open class NibView: BFWNibView, NibReplaceable {
         return self.autoSize
     }()
     
-    static func sizeFromNib() -> CGSize {
+    public static var sizeFromNib: CGSize {
         let size: CGSize
         let key = NSStringFromClass(self)
         if let reuseSize = sizeForKeyDictionary[key] {
@@ -84,7 +92,7 @@ open class NibView: BFWNibView, NibReplaceable {
         if intrinsicSize != autoSize {
             return intrinsicSize
         } else {
-            return type(of: self).sizeFromNib()
+            return type(of: self).sizeFromNib
         }
     }
     

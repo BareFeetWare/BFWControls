@@ -12,11 +12,13 @@ import UIKit
 @IBDesignable open class NibTableViewCell: BFWNibTableViewCell, NibReplaceable {
     
     // MARK: - NibReplaceable
-
+    
+    @IBInspectable open var nibName: String?
+    
     open var placeholderViews: [UIView] {
         return [textLabel, detailTextLabel, tertiaryTextLabel, actionView].compactMap { $0 }
     }
-
+    
     // MARK: - IBOutlets
     
     #if !TARGET_INTERFACE_BUILDER
