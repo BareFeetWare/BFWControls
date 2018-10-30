@@ -15,14 +15,7 @@
 // Init in Objective C so it can return a replacement for self.
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    if (self) {
-        NibView *nibView = (NibView *)[(NibView *)self replacedByNibViewForInit];
-        if (nibView != self) {
-            nibView.frame = super.frame;
-            self = nibView;
-        }
-    }
-    return self;
+    return [(NibView *)self replacedByNibViewForInit];
 }
 
 @end
