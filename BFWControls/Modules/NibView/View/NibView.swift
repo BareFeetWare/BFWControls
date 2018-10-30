@@ -81,11 +81,10 @@ open class NibView: BFWNibView, NibReplaceable {
     // MARK: - UIView overrides
     
     open override func awakeAfter(using coder: NSCoder) -> Any? {
-        let view = replacedByNibView()
-        if view != self {
-            view.removePlaceholders()
-        }
-        return view
+        guard let nibView = replacedByNibView()
+            else { return self }
+        nibView.removePlaceholders()
+        return nibView
     }
     
     open override var intrinsicContentSize: CGSize {
@@ -117,7 +116,7 @@ open class NibView: BFWNibView, NibReplaceable {
 
 @objc public extension NibView {
     
-    @objc func replacedByNibViewForInit() -> Self {
+    @objc func replacedByNibViewForInit() -> Self? {
         return replacedByNibView()
     }
     

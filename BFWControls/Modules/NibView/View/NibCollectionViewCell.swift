@@ -14,18 +14,17 @@ open class NibCollectionViewCell: BFWNibCollectionViewCell, NibReplaceable {
     // MARK: - Init
     
     open override func awakeAfter(using coder: NSCoder) -> Any? {
-        let view = replacedByNibView()
-        if view != self {
-            view.removePlaceholders()
-        }
-        return view
+        guard let nibView = replacedByNibView()
+            else { return self }
+        nibView.removePlaceholders()
+        return nibView
     }
     
 }
 
 @objc public extension NibCollectionViewCell {
     
-    @objc func replacedByNibViewForInit() -> Self {
+    @objc func replacedByNibViewForInit() -> Self? {
         return replacedByNibView()
     }
     

@@ -9,20 +9,20 @@
 /*
 // Implement in conforming class:
 
- // For runtime:
+// For runtime:
+ 
 open override func awakeAfter(using coder: NSCoder) -> Any? {
-    let view = replacedByNibView()
-    if view != self {
-        view.removePlaceholders()
-    }
-    return view
+    guard let nibView = replacedByNibView()
+        else { return self }
+    nibView.removePlaceholders()
+    return nibView
 }
 
 // For Interface Builder, IBDesignable:
 
 @objc public extension NibView {
     
-    @objc func replacedByNibViewForInit() -> Self {
+    @objc func replacedByNibViewForInit() -> Self? {
         return replacedByNibView()
     }
     
@@ -112,11 +112,10 @@ public extension NibReplaceable {
     
     // MARK: - Instance functions
     
-    public func replacedByNibView(fromNibNamed nibName: String? = nil, in bundle: Bundle? = nil) -> Self {
-        guard let nibView = type(of: self).nibView(fromNibNamed: nibName, in: bundle)
-            else { return self }
-        nibView.copyProperties(from: self)
-        nibView.copyConstraints(from: self)
+    public func replacedByNibView(fromNibNamed nibName: String? = nil, in bundle: Bundle? = nil) -> Self? {
+        let nibView = type(of: self).nibView(fromNibNamed: nibName, in: bundle)
+        nibView?.copyProperties(from: self)
+        nibView?.copyConstraints(from: self)
         return nibView
     }
     

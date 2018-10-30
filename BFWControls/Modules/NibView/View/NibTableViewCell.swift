@@ -51,12 +51,11 @@ import UIKit
     }
     
     open override func awakeAfter(using coder: NSCoder) -> Any? {
-        let view = replacedByNibView()
-        if view != self {
-            view.copySubviewProperties(from: self)
-            view.removePlaceholders()
-        }
-        return view
+        guard let nibView = replacedByNibView()
+            else { return self }
+        nibView.copySubviewProperties(from: self)
+        nibView.removePlaceholders()
+        return nibView
     }
     
     #endif // !TARGET_INTERFACE_BUILDER
@@ -271,7 +270,7 @@ import UIKit
 
 @objc public extension NibTableViewCell {
     
-    @objc func replacedByNibViewForInit() -> Self {
+    @objc func replacedByNibViewForInit() -> Self? {
         return replacedByNibView()
     }
     
