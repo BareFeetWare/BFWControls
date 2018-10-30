@@ -27,13 +27,13 @@ open class NibView: BFWNibView, NibReplaceable {
         return self.autoSize
     }()
     
-    public static var sizeFromNib: CGSize {
-        let size: CGSize
+    public static var sizeFromNib: CGSize? {
+        let size: CGSize?
         let key = NSStringFromClass(self)
         if let reuseSize = sizeForKeyDictionary[key] {
             size = reuseSize
         } else {
-            size = nibView()?.frame.size ?? .zero
+            size = nibView()?.frame.size
             sizeForKeyDictionary[key] = size
         }
         return size
@@ -91,7 +91,7 @@ open class NibView: BFWNibView, NibReplaceable {
         if intrinsicSize != autoSize {
             return intrinsicSize
         } else {
-            return type(of: self).sizeFromNib
+            return type(of: self).sizeFromNib ?? .zero
         }
     }
     
