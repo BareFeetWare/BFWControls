@@ -9,46 +9,7 @@ import UIKit
 
 public extension UIView {
     
-    // MARK: - Class variables
-    
-    /// Prevents recursive call by loadNibNamed to itself. Safe as a static var since it is always called on the main thread, ie synchronously.
-    private static var loadingStack: [AnyClass] = []
-    
-    static var isLoadingFromNib: Bool {
-        return loadingStack.last == self
-    }
-
-    public static var bundle: Bundle? {
-        return Bundle(for: self)
-    }
-    
-    static var classNameComponents: [String] {
-        let fullClassName = NSStringFromClass(self) // Note: String(describing: self) does not include the moduleName prefix.
-        return fullClassName.components(separatedBy: ".")
-    }
-    
-    static var nibName: String {
-        // Remove the <ProjectName>. prefix that Swift adds:
-        return classNameComponents.last!
-    }
-    
-    static var moduleName: String? {
-        let components = classNameComponents
-        return components.count > 1
-            ? components.first!
-            : nil
-    }
-    
-    static var sizeFromNib: CGSize? {
-        return (
-            bundle?
-                .loadNibNamed(nibName, owner:nil, options: [:])?
-                .first as? UIView
-            )?
-            .frame.size
-    }
-    
-    // MARK: - Instance functions
+    // MARK: - Functions
     
     func copyConstraints(from view: UIView) {
         translatesAutoresizingMaskIntoConstraints = view.translatesAutoresizingMaskIntoConstraints
@@ -79,54 +40,6 @@ public extension UIView {
                 setContentHuggingPriority(view.contentHuggingPriority(for: axis), for: axis)
             }
         }
-    }
-    
-    // TODO: Remove this. Consolidate with the new nibView(fromNibNamed) functions below:
-    
-    @objc var viewFromNib: UIView? {
-        guard let bundle = type(of: self).bundle
-            else { return nil }
-        let nibName = type(of: self).nibName
-        return view(fromNibNamed: nibName, in: bundle)
-    }
-    
-    func view(fromNibNamed nibName: String, in bundle: Bundle) -> UIView? {
-        guard let nibViews = bundle.loadNibNamed(nibName, owner: nil, options: nil),
-            let nibView = nibViews.first(where: { type(of: $0) == type(of: self) } ) as? UIView
-            else {
-                debugPrint("**** error: Could not find an instance of class \(type(of: self)) in \(nibName) xib")
-                return nil
-        }
-        nibView.copyProperties(from: self)
-        nibView.copyConstraints(from: self)
-        return nibView
-    }
-
-    // TODO: Remove above
-    
-    static func nibView(fromNibNamed nibName: String? = nil, in bundle: Bundle? = nil) -> UIView? {
-        guard loadingStack.last != self
-            else { return nil }
-        loadingStack.append(self)
-        defer {
-            loadingStack.removeLast()
-        }
-        let bundle = bundle ?? self.bundle!
-        let nibName = nibName ?? self.nibName
-        guard let nibViews = bundle.loadNibNamed(nibName, owner: nil, options: nil),
-            let nibView = nibViews.first(where: { type(of: $0) == self } ) as? UIView
-            else {
-                fatalError("Could not find an instance of class \(self) in \(nibName) xib")
-        }
-        return nibView
-    }
-    
-    @objc func replacedByNibView(fromNibNamed nibName: String? = nil, in bundle: Bundle? = nil) -> UIView {
-        guard let nibView = type(of: self).nibView(fromNibNamed: nibName, in: bundle)
-            else { return self }
-        nibView.copyProperties(from: self)
-        nibView.copyConstraints(from: self)
-        return nibView
     }
     
     var copied: UIView {
