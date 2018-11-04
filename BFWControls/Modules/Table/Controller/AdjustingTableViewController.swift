@@ -13,8 +13,6 @@ open class AdjustingTableViewController: UITableViewController {
     
     // MARK: - Variables
     
-    @IBInspectable open var isStickyHeader: Bool = false
-    @IBInspectable open var isStickyFooter: Bool = false
     @IBInspectable open var filledUsingLastCell: Bool = false
     @IBInspectable open var intrinsicHeightCells: Bool = false
     
@@ -117,28 +115,6 @@ open class AdjustingTableViewController: UITableViewController {
         }
     }
     
-    private func stickHeaderAndFooterIfNeeded() {
-        if isStickyHeader,
-            let stickyView = tableView.tableHeaderView
-        {
-            stickyView.frame.origin.y = max(0, tableView.contentOffset.y - tableView.contentInset.top)
-            // Keep on top, so cells scroll underneath it:
-            tableView.addSubview(stickyView)
-        }
-        if isStickyFooter,
-            let stickyView = tableView.tableFooterView
-        {
-            let insets: UIEdgeInsets
-            if #available(iOS 11.0, *) {
-                insets = tableView.adjustedContentInset
-            } else {
-                insets = tableView.contentInset
-            }
-            stickyView.frame.origin.y = tableView.bounds.size.height + tableView.contentOffset.y - stickyView.bounds.size.height - insets.bottom
-            tableView.addSubview(stickyView)
-        }
-    }
-    
     // MARK: - UIViewController
     
     open override func viewDidLoad() {
@@ -147,11 +123,6 @@ open class AdjustingTableViewController: UITableViewController {
             tableView.estimatedRowHeight = 44.0
         }
         NotificationCenter.default.addObserver(self, selector: #selector(AdjustingTableViewController.UIApplicationDidChangeStatusBarFrameHandler(for:)), name: UIApplication.didChangeStatusBarFrameNotification, object: nil)
-    }
-    
-    open override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        stickHeaderAndFooterIfNeeded()
     }
     
     deinit {

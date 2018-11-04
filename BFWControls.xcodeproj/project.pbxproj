@@ -125,6 +125,8 @@
 		E2EB09C71FE4C61E001DC697 /* UISegmentedControl+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EB09C61FE4C61E001DC697 /* UISegmentedControl+Convenience.swift */; };
 		E2F1606320BE006800A54D6A /* BFWNibTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = E2F1606120BE006800A54D6A /* BFWNibTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E2F1606420BE006800A54D6A /* BFWNibTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F1606220BE006800A54D6A /* BFWNibTableViewCell.m */; };
+		E2F5D918218EFF2400794394 /* AdjustableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F5D917218EFF2400794394 /* AdjustableTableView.swift */; };
+		E2F5D91A218F015000794394 /* UITableView+Adjustable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F5D919218F015000794394 /* UITableView+Adjustable.swift */; };
 		E2F8CB3C2172EB5A00715750 /* UIView+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F8CB3B2172EB5A00715750 /* UIView+Log.swift */; };
 /* End PBXBuildFile section */
 
@@ -250,6 +252,8 @@
 		E2EB09C61FE4C61E001DC697 /* UISegmentedControl+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Convenience.swift"; sourceTree = "<group>"; };
 		E2F1606120BE006800A54D6A /* BFWNibTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFWNibTableViewCell.h; sourceTree = "<group>"; };
 		E2F1606220BE006800A54D6A /* BFWNibTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFWNibTableViewCell.m; sourceTree = "<group>"; };
+		E2F5D917218EFF2400794394 /* AdjustableTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustableTableView.swift; sourceTree = "<group>"; };
+		E2F5D919218F015000794394 /* UITableView+Adjustable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Adjustable.swift"; sourceTree = "<group>"; };
 		E2F8CB3B2172EB5A00715750 /* UIView+Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Log.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -625,11 +629,13 @@
 		E28BA95A1E96402500D5DE3D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E2F5D917218EFF2400794394 /* AdjustableTableView.swift */,
 				E2BFE8F61F296CD900BAEC16 /* CustomTableViewCell.swift */,
 				E2DA04D71FEC953C00A2B602 /* DesignableTableViewCell.swift */,
 				E2EB09AF1FE335EF001DC697 /* FullWidthImageView.swift */,
 				E2320B2C1FDF6A49000E940E /* UITableViewCell+Separator.swift */,
 				E28BA95B1E96402500D5DE3D /* UIView+Table.swift */,
+				E2F5D919218F015000794394 /* UITableView+Adjustable.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1119,6 +1125,7 @@
 				E28BA9951E96402500D5DE3D /* AutoNextViewController.swift in Sources */,
 				E28BA9911E96402500D5DE3D /* TextAttributes.swift in Sources */,
 				E2F1606420BE006800A54D6A /* BFWNibTableViewCell.m in Sources */,
+				E2F5D918218EFF2400794394 /* AdjustableTableView.swift in Sources */,
 				E28BA9721E96402500D5DE3D /* AlertViewOverlay.swift in Sources */,
 				E2DA04D81FEC953C00A2B602 /* DesignableTableViewCell.swift in Sources */,
 				E2037AA5209851F8001E0BBA /* UITableViewCell+Copy.swift in Sources */,
@@ -1163,6 +1170,7 @@
 				E28BA98D1E96402500D5DE3D /* StatusTextFieldNibView.swift in Sources */,
 				E28BA9961E96402500D5DE3D /* SegueHandlerType.swift in Sources */,
 				E24682211F24820B007285DB /* ShadableView.swift in Sources */,
+				E2F5D91A218F015000794394 /* UITableView+Adjustable.swift in Sources */,
 				E28BA9891E96402500D5DE3D /* NibTableViewHeaderFooterView.swift in Sources */,
 				E28BA9831E96402500D5DE3D /* BFWNibView.m in Sources */,
 				E28BA9941E96402500D5DE3D /* UIView+Table.swift in Sources */,
