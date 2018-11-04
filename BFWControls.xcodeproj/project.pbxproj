@@ -894,10 +894,10 @@
 		E28BA9F21E964D4500D5DE3D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E28BA9F31E964D4500D5DE3D /* Table.storyboard */,
-				A1BD33A11EEA2F9800D217F6 /* ExcludeCellDemoViewController.swift */,
 				A1BD33B81EEAC9A400D217F6 /* DynamicCellDemoViewController.swift */,
 				A11CF2291EEC2F4D00020C0C /* DynamicHeightCellViewController.swift */,
+				A1BD33A11EEA2F9800D217F6 /* ExcludeCellDemoViewController.swift */,
+				E28BA9F31E964D4500D5DE3D /* Table.storyboard */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
