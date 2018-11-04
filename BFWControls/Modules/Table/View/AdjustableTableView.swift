@@ -9,12 +9,30 @@
 
 import UIKit
 
-@IBDesignable class AdjustableTableView: UITableView, Adjustable {
+@IBDesignable open class AdjustableTableView: UITableView, Adjustable {
     
     // MARK: - Variables
     
     @IBInspectable open var isStickyHeader: Bool = false
     @IBInspectable open var isStickyFooter: Bool = false
+    
+    @IBInspectable open var isHiddenTrailingCells: Bool {
+        get {
+            return tableFooterView != nil
+        }
+        set {
+            if newValue {
+                if tableFooterView == nil {
+                    // Don't show empty trailing cells:
+                    tableFooterView = UIView()
+                }
+            } else {
+                if tableFooterView?.bounds.size.height == 0.0 {
+                    tableFooterView = nil
+                }
+            }
+        }
+    }
     
     // MARK: - Functions
     
@@ -27,9 +45,24 @@ import UIKit
         }
     }
     
+    // MARK - Init
+    
+    public override init(frame: CGRect, style: UITableView.Style) {
+        super.init(frame: frame, style: style)
+        commonInit()
+    }
+    
+    public required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
+    }
+    
+    open func commonInit() {
+    }
+    
     // MARK: - UIView
     
-    override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         stickHeaderAndFooterIfNeeded()
     }
