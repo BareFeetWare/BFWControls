@@ -44,13 +44,19 @@ public protocol Adjustable where Self: UITableView {
 public extension Adjustable {
     
     private var bestContentInset: UIEdgeInsets {
-        let insets: UIEdgeInsets
+        var inset: UIEdgeInsets
         if #available(iOS 11.0, *) {
-            insets = adjustedContentInset
+            inset = adjustedContentInset
+            // TODO: More robust without magic number.
+            let hasBottomBar = layoutMargins.bottom > 44.0
+            if !hasBottomBar {
+                // Allow to extend outside of safe area so no cells appear below footer.
+                inset.bottom = contentInset.bottom
+            }
         } else {
-            insets = contentInset
+            inset = contentInset
         }
-        return insets
+        return inset
     }
     
     public func stickHeader() {
