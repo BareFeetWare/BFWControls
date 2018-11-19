@@ -69,6 +69,11 @@ open class NibView: BFWNibView, NibReplaceable {
         commonInit()
     }
     
+    public init() {
+        super.init(frame: CGRect(origin: .zero, size: type(of: self).sizeFromNib ?? .zero))
+        commonInit()
+    }
+    
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()

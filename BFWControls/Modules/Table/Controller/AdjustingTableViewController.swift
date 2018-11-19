@@ -122,7 +122,7 @@ open class AdjustingTableViewController: UITableViewController {
         if intrinsicHeightCells || filledUsingLastCell {
             tableView.estimatedRowHeight = 44.0
         }
-        NotificationCenter.default.addObserver(self, selector: #selector(StaticTableViewController.UIApplicationDidChangeStatusBarFrameHandler(for:)), name: UIApplication.didChangeStatusBarFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AdjustingTableViewController.UIApplicationDidChangeStatusBarFrameHandler(for:)), name: UIApplication.didChangeStatusBarFrameNotification, object: nil)
     }
     
     deinit {
