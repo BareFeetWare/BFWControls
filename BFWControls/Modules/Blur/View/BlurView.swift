@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class BlurView: UIView {
+@IBDesignable open class BlurView: UIView {
     
     @IBInspectable open var blurRadius: CGFloat = 10.0 {
         didSet {
@@ -32,7 +32,13 @@ open class BlurView: UIView {
                                  maskImage: nil)
     }
     
-    //MARK: UIView
+    // MARK: UIView
+    
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        // Redraw if resized:
+        setNeedsDisplay()
+    }
     
     #if TARGET_INTERFACE_BUILDER
     // Dont draw anything, so it is transparent.
