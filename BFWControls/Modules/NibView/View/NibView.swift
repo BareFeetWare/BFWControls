@@ -16,7 +16,7 @@ open class NibView: BFWNibView, NibReplaceable {
     open var placeholderViews: [UIView] {
         return []
     }
-
+    
     // MARK: - Variables & Functions
     
     private let autoSize = CGSize(width: UITableView.automaticDimension,
@@ -54,7 +54,7 @@ open class NibView: BFWNibView, NibReplaceable {
     
     fileprivate var needsUpdateView = true
     private static var sizeForKeyDictionary = [String: CGSize]()
-
+    
     fileprivate func updateViewIfNeeded() {
         if needsUpdateView {
             needsUpdateView = false
@@ -77,11 +77,12 @@ open class NibView: BFWNibView, NibReplaceable {
     /// Convenience called by init(frame:) and init(coder:). Override in subclasses if required.
     open func commonInit() {
     }
-
+    
     // MARK: - UIView overrides
     
     open override func awakeAfter(using coder: NSCoder) -> Any? {
-        guard let nibView = replacedByNibView()
+        guard subviews.isEmpty,
+            let nibView = replacedByNibView()
             else { return self }
         nibView.removePlaceholders()
         return nibView
