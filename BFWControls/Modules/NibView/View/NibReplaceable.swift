@@ -67,7 +67,25 @@ public extension NibReplaceable {
     // MARK: - Static variables
     
     static var isLoadingFromNib: Bool {
-        return Storage.loadingStack.last == self
+        get {
+            return Storage.loadingStack.last == self
+        }
+        set {
+            // TODO: Move stack logic to a type, eg UniqueStack.
+            if newValue {
+                guard !Storage.loadingStack.contains(where: { $0 == self })
+                    else {
+                        fatalError("loadingStack tried to append \(self) but laodingStack already contains \(self)")
+                }
+                Storage.loadingStack.append(self)
+            } else {
+                guard Storage.loadingStack.last == self
+                    else {
+                        fatalError("loadingStack tried to remove \(self) but last item is \(Storage.loadingStack.last.map { String(describing: $0) } ?? "nil" )")
+                }
+                Storage.loadingStack.removeLast()
+            }
+        }
     }
     
     static var bundle: Bundle? {
@@ -94,18 +112,18 @@ public extension NibReplaceable {
     // MARK: - Static functions
     
     static func nibView(fromNibNamed nibName: String? = nil, in bundle: Bundle? = nil) -> Self? {
-        guard Storage.loadingStack.last != self
+        guard !isLoadingFromNib
             else { return nil }
-        Storage.loadingStack.append(self)
+        isLoadingFromNib = true
         defer {
-            Storage.loadingStack.removeLast()
+            isLoadingFromNib = false
         }
         let bundle = bundle ?? self.bundle!
         let nibName = nibName ?? self.nibName
         guard let nibViews = bundle.loadNibNamed(nibName, owner: nil, options: nil),
             let nibView = nibViews.first(where: { type(of: $0) == self } ) as? Self
             else {
-                fatalError("Could not find an instance of class \(self) in \(nibName) xib")
+                fatalError("\(#function) Could not find an instance of class \(self) in \(nibName) xib")
         }
         return nibView
     }
