@@ -9,12 +9,6 @@ import UIKit
 
 open class NibCellView: NibView, TextLabelProvider {
     
-    // MARK: - NibReplaceable
-    
-    open override var placeholderViews: [UIView] {
-        return [textLabel, detailTextLabel].compactMap { $0 }
-    }
-    
     // MARK: - IBOutlets
     
     @IBOutlet open weak var textLabel: UILabel?
@@ -73,6 +67,12 @@ open class NibCellView: NibView, TextLabelProvider {
         set {
             separatorView?.isHidden = !newValue
         }
+    }
+    
+    // MARK: - NibReplaceable
+    
+    open override var placeholderViews: [UIView] {
+        return [textLabel, detailTextLabel].compactMap { $0 }
     }
     
 }
