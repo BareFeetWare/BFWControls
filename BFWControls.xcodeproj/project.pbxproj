@@ -105,7 +105,7 @@
 		E28BA9F81E964D4500D5DE3D /* Layout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9E61E964D4500D5DE3D /* Layout.storyboard */; };
 		E28BA9F91E964D4500D5DE3D /* Morph.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9E91E964D4500D5DE3D /* Morph.storyboard */; };
 		E28BA9FA1E964D4500D5DE3D /* MorphTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9EA1E964D4500D5DE3D /* MorphTableViewController.swift */; };
-		E28BA9FB1E964D4500D5DE3D /* NibView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9ED1E964D4500D5DE3D /* NibView.storyboard */; };
+		E28BA9FB1E964D4500D5DE3D /* NibReplaceable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9ED1E964D4500D5DE3D /* NibReplaceable.storyboard */; };
 		E28BA9FC1E964D4500D5DE3D /* AvatarCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9EF1E964D4500D5DE3D /* AvatarCellView.swift */; };
 		E28BA9FD1E964D4500D5DE3D /* AvatarCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9F01E964D4500D5DE3D /* AvatarCellView.xib */; };
 		E28BA9FE1E964D4500D5DE3D /* Table.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9F31E964D4500D5DE3D /* Table.storyboard */; };
@@ -237,7 +237,7 @@
 		E28BA9E61E964D4500D5DE3D /* Layout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Layout.storyboard; sourceTree = "<group>"; };
 		E28BA9E91E964D4500D5DE3D /* Morph.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Morph.storyboard; sourceTree = "<group>"; };
 		E28BA9EA1E964D4500D5DE3D /* MorphTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorphTableViewController.swift; sourceTree = "<group>"; };
-		E28BA9ED1E964D4500D5DE3D /* NibView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NibView.storyboard; sourceTree = "<group>"; };
+		E28BA9ED1E964D4500D5DE3D /* NibReplaceable.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NibReplaceable.storyboard; sourceTree = "<group>"; };
 		E28BA9EF1E964D4500D5DE3D /* AvatarCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarCellView.swift; sourceTree = "<group>"; };
 		E28BA9F01E964D4500D5DE3D /* AvatarCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AvatarCellView.xib; sourceTree = "<group>"; };
 		E28BA9F31E964D4500D5DE3D /* Table.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Table.storyboard; sourceTree = "<group>"; };
@@ -776,7 +776,7 @@
 				E28BA9E11E964D4500D5DE3D /* Developer */,
 				E28BA9E41E964D4500D5DE3D /* Layout */,
 				E28BA9E71E964D4500D5DE3D /* Morph */,
-				E28BA9EB1E964D4500D5DE3D /* NibView */,
+				E28BA9EB1E964D4500D5DE3D /* NibReplaceable */,
 				E28BA9F11E964D4500D5DE3D /* Table */,
 				E22477E61ECBCAA7004A7802 /* Transition */,
 			);
@@ -865,21 +865,21 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		E28BA9EB1E964D4500D5DE3D /* NibView */ = {
+		E28BA9EB1E964D4500D5DE3D /* NibReplaceable */ = {
 			isa = PBXGroup;
 			children = (
 				E28BA9EC1E964D4500D5DE3D /* Controller */,
 				E22FEA7821A2D786000DB707 /* Model */,
 				E28BA9EE1E964D4500D5DE3D /* View */,
 			);
-			path = NibView;
+			path = NibReplaceable;
 			sourceTree = "<group>";
 		};
 		E28BA9EC1E964D4500D5DE3D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				E22FEA7221A2D69A000DB707 /* BackgroundNavigationController.swift */,
-				E28BA9ED1E964D4500D5DE3D /* NibView.storyboard */,
+				E28BA9ED1E964D4500D5DE3D /* NibReplaceable.storyboard */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1102,7 +1102,7 @@
 				E29BD11F2186C28A000D3176 /* CenteredTableViewCell.xib in Resources */,
 				E22FEA7A21A2D7B5000DB707 /* Background.xcassets in Resources */,
 				E28BA9F51E964D4500D5DE3D /* Carousel.storyboard in Resources */,
-				E28BA9FB1E964D4500D5DE3D /* NibView.storyboard in Resources */,
+				E28BA9FB1E964D4500D5DE3D /* NibReplaceable.storyboard in Resources */,
 				E28BA9F71E964D4500D5DE3D /* Developer.storyboard in Resources */,
 				E28BA9F61E964D4500D5DE3D /* SampleCarousel.plist in Resources */,
 				E28BA9F81E964D4500D5DE3D /* Layout.storyboard in Resources */,
