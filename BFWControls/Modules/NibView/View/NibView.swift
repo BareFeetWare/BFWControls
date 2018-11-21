@@ -27,18 +27,6 @@ open class NibView: BFWNibView, NibReplaceable {
         return self.autoSize
     }()
     
-    public static var sizeFromNib: CGSize? {
-        let size: CGSize?
-        let key = NSStringFromClass(self)
-        if let reuseSize = sizeForKeyDictionary[key] {
-            size = reuseSize
-        } else {
-            size = nibView()?.frame.size
-            sizeForKeyDictionary[key] = size
-        }
-        return size
-    }
-    
     // MARK: - UpdateView mechanism
     
     /// Override in subclasses and call super. Update view and subview properties that are affected by properties of this class.
@@ -53,7 +41,6 @@ open class NibView: BFWNibView, NibReplaceable {
     // MARK: - Private variables and functions.
     
     fileprivate var needsUpdateView = true
-    private static var sizeForKeyDictionary = [String: CGSize]()
     
     fileprivate func updateViewIfNeeded() {
         if needsUpdateView {
