@@ -443,7 +443,7 @@
 				E26002B22170649300F4BA98 /* IBLog */,
 				E28BA9351E96402500D5DE3D /* Layer */,
 				E28BA93B1E96402500D5DE3D /* Layout */,
-				E28BA9401E96402500D5DE3D /* NibView */,
+				E28BA9401E96402500D5DE3D /* NibReplaceable */,
 				E2E08F702157292200316653 /* Overlay */,
 				E2A87BC71EFEA2940069E41F /* Shadable */,
 				E28BA9511E96402500D5DE3D /* Styled */,
@@ -574,12 +574,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		E28BA9401E96402500D5DE3D /* NibView */ = {
+		E28BA9401E96402500D5DE3D /* NibReplaceable */ = {
 			isa = PBXGroup;
 			children = (
 				E28BA9411E96402500D5DE3D /* View */,
 			);
-			path = NibView;
+			path = NibReplaceable;
 			sourceTree = "<group>";
 		};
 		E28BA9411E96402500D5DE3D /* View */ = {
@@ -609,9 +609,9 @@
 				E28BA94C1E96402500D5DE3D /* StatusTextField.swift */,
 				E28BA94D1E96402500D5DE3D /* StatusTextFieldNibView.swift */,
 				E2E5CABC1F4323EA003E0054 /* TextLabelProvider.swift */,
+				E235411021A2FB7E00DB9DA2 /* UIButton+Copy.swift */,
 				E296435F2104570D007598D3 /* UIStackView+Joined.swift */,
 				E2037AA4209851F8001E0BBA /* UITableViewCell+Copy.swift */,
-				E235411021A2FB7E00DB9DA2 /* UIButton+Copy.swift */,
 				E28BA94F1E96402500D5DE3D /* UIView+Copy.swift */,
 				E24D5CC220FEB45200600102 /* UIView+UIImage.swift */,
 			);
