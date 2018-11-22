@@ -17,6 +17,7 @@ FOUNDATION_EXPORT const unsigned char BFWControlsVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <BFWControls/PublicHeader.h>
 
 #import <BFWControls/BFWNibView.h>
+#import <BFWControls/BFWNibButton.h>
 #import <BFWControls/BFWNibTableViewCell.h>
 #import <BFWControls/BFWNibCollectionViewCell.h>
 #import <BFWControls/UIImageEffects.h>

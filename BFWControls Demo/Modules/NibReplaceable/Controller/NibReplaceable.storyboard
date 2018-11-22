@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -47,8 +48,35 @@
                                             <segue destination="sIR-Yb-Rtk" kind="show" id="21w-l7-i1v"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="inq-A1-c04" detailTextLabel="ogo-hX-6Jl" style="IBUITableViewCellStyleSubtitle" id="qje-lg-cHt">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="3aq-07-soP" detailTextLabel="eYZ-BO-eTk" style="IBUITableViewCellStyleSubtitle" id="TLj-w5-GMT">
                                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TLj-w5-GMT" id="tcg-hp-H8k">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="NibButton" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3aq-07-soP">
+                                                    <rect key="frame" x="16" y="5" width="77.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subclass of UIButton" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eYZ-BO-eTk">
+                                                    <rect key="frame" x="16" y="25.5" width="119" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="mM7-PW-Nbe" kind="show" id="K1l-P0-lIK"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="inq-A1-c04" detailTextLabel="ogo-hX-6Jl" style="IBUITableViewCellStyleSubtitle" id="qje-lg-cHt">
+                                        <rect key="frame" x="0.0" y="88" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qje-lg-cHt" id="EVK-Cv-Fmf">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -75,7 +103,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="kdd-bS-QNr" detailTextLabel="wYb-kQ-AkE" style="IBUITableViewCellStyleSubtitle" id="fXc-Gk-Ia4">
-                                        <rect key="frame" x="0.0" y="88" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="132" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fXc-Gk-Ia4" id="sN0-Rq-3oa">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -106,7 +134,7 @@
                             <tableViewSection headerTitle="Deprecated" id="rG3-vs-s4c">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="xFI-Gm-BKf" detailTextLabel="9Hi-su-tIT" style="IBUITableViewCellStyleSubtitle" id="wZd-r0-GjB">
-                                        <rect key="frame" x="0.0" y="160" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="204" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wZd-r0-GjB" id="TGH-Xu-cOB">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -133,7 +161,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Yk2-0C-reb" style="IBUITableViewCellStyleDefault" id="cR2-yG-vr0">
-                                        <rect key="frame" x="0.0" y="204" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="248" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cR2-yG-vr0" id="bUc-1j-DIe">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -271,6 +299,71 @@
             </objects>
             <point key="canvasLocation" x="1318" y="1417"/>
         </scene>
+        <!--NibView-->
+        <scene sceneID="Co6-dl-cdh">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ggS-zo-DYZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="mM7-PW-Nbe" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RdR-Os-EjM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <sections>
+                            <tableViewSection id="kpP-XU-HSi">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="0BC-Se-JDR" style="IBUITableViewCellStyleDefault" id="kgD-ov-4ZD">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kgD-ov-4ZD" id="gPW-BT-jth">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="NibButton" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0BC-Se-JDR">
+                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="oka-Gd-rqH" kind="show" id="W1k-b4-cQ9"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="QQ6-PV-PlY" style="IBUITableViewCellStyleDefault" id="u5W-wF-XM2">
+                                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="u5W-wF-XM2" id="qoj-Jl-xKa">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="NibButtons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QQ6-PV-PlY">
+                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="r03-5D-Zgq" kind="show" id="6Eo-Id-kDY"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="mM7-PW-Nbe" id="uJf-UF-dro"/>
+                            <outlet property="delegate" destination="mM7-PW-Nbe" id="cNE-VU-GWU"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="NibView" id="UyA-xA-P6U"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="150" y="-663"/>
+        </scene>
         <!--BackgroundView-->
         <scene sceneID="v14-wR-4yn">
             <objects>
@@ -321,6 +414,118 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="URm-NC-bIT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1993" y="-2126"/>
+        </scene>
+        <!--NibButton-->
+        <scene sceneID="hnL-RU-Hvx">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V7m-jk-ht4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="oka-Gd-rqH" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="few-lR-FTm"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qla-Is-iwW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cSv-i3-aY6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aAZ-yi-aG4" customClass="TileButton" customModule="BFWControls_Demo" customModuleProvider="target">
+                                <rect key="frame" x="139.5" y="283" width="96" height="101"/>
+                                <state key="normal" title="Normal" image="discover"/>
+                                <state key="highlighted" title="Highlighted" image="discover highlighted">
+                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aAZ-yi-aG4" firstAttribute="centerY" secondItem="cSv-i3-aY6" secondAttribute="centerY" id="SqX-CC-OXe"/>
+                            <constraint firstItem="aAZ-yi-aG4" firstAttribute="centerX" secondItem="cSv-i3-aY6" secondAttribute="centerX" id="UJQ-DF-YnE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="NibButton" id="vsW-EE-zl1"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1041" y="-1371"/>
+        </scene>
+        <!--NibButton-->
+        <scene sceneID="2jR-rv-H6Y">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tsr-Ir-ksc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="r03-5D-Zgq" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7ir-J5-poU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <sections>
+                            <tableViewSection headerTitle="TileButton" id="OGw-bG-r8d">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="280" id="1El-TQ-y1o">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="280"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1El-TQ-y1o" id="yzO-aT-SD6">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="279.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ibo-mO-2yx">
+                                                    <rect key="frame" x="16" y="11" width="343" height="258"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Y0i-Cu-RGB">
+                                                            <rect key="frame" x="0.0" y="0.0" width="343" height="125"/>
+                                                            <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPI-lf-NnP" customClass="TileButton" customModule="BFWControls_Demo" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="109" height="125"/>
+                                                                    <state key="normal" title="One"/>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cb-wd-AYG" customClass="TileButton" customModule="BFWControls_Demo" customModuleProvider="target">
+                                                                    <rect key="frame" x="117" y="0.0" width="109" height="125"/>
+                                                                    <state key="normal" title="Two"/>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="511-k7-gce" customClass="TileButton" customModule="BFWControls_Demo" customModuleProvider="target">
+                                                                    <rect key="frame" x="234" y="0.0" width="109" height="125"/>
+                                                                    <state key="normal" title="Three"/>
+                                                                </button>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ffi-QX-n8D">
+                                                            <rect key="frame" x="0.0" y="133" width="343" height="125"/>
+                                                            <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTk-QN-Cky" customClass="TileButton" customModule="BFWControls_Demo" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="109" height="125"/>
+                                                                    <state key="normal" title="Four"/>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ol-eN-MLS" customClass="TileButton" customModule="BFWControls_Demo" customModuleProvider="target">
+                                                                    <rect key="frame" x="117" y="0.0" width="109" height="125"/>
+                                                                    <state key="normal" title="Five"/>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68N-KS-bds" customClass="TileButton" customModule="BFWControls_Demo" customModuleProvider="target">
+                                                                    <rect key="frame" x="234" y="0.0" width="109" height="125"/>
+                                                                    <state key="normal" title="Six"/>
+                                                                </button>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ibo-mO-2yx" secondAttribute="trailing" id="1OK-Jg-fPF"/>
+                                                <constraint firstItem="ibo-mO-2yx" firstAttribute="leading" secondItem="yzO-aT-SD6" secondAttribute="leadingMargin" id="21o-NK-6La"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ibo-mO-2yx" secondAttribute="bottom" id="MKt-VP-cAC"/>
+                                                <constraint firstItem="ibo-mO-2yx" firstAttribute="top" secondItem="yzO-aT-SD6" secondAttribute="topMargin" id="ZiY-Ls-nxG"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="r03-5D-Zgq" id="QUa-pR-GYL"/>
+                            <outlet property="delegate" destination="r03-5D-Zgq" id="VPy-sx-1nR"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="NibButton" id="5b5-vw-yxn"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="1041" y="-662"/>
         </scene>
         <!--Background Navigation Controller-->
         <scene sceneID="FO3-Go-rne">
@@ -745,5 +950,7 @@
     </scenes>
     <resources>
         <image name="Tom" width="127" height="127"/>
+        <image name="discover" width="24" height="24"/>
+        <image name="discover highlighted" width="24" height="24"/>
     </resources>
 </document>

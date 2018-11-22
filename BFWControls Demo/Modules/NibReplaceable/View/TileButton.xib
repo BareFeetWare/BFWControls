@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="rfb-Gk-vQr" customClass="TileButton" customModule="BFWControls_Demo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="96" height="101"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Bmh-Tr-oDm">
+                    <rect key="frame" x="26" y="14.5" width="44" height="72.5"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kxK-dX-LeY">
+                            <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="XkH-z4-AHJ"/>
+                                <constraint firstAttribute="width" constant="44" id="nwF-8h-46E"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[Title]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHI-OQ-Zle">
+                            <rect key="frame" x="0.0" y="52" width="44" height="20.5"/>
+                            <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Bmh-Tr-oDm" firstAttribute="centerY" secondItem="rfb-Gk-vQr" secondAttribute="centerY" id="6ew-pS-9fA"/>
+                <constraint firstItem="Bmh-Tr-oDm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XB2-DH-unt" secondAttribute="leading" id="Azl-br-gAr"/>
+                <constraint firstItem="Bmh-Tr-oDm" firstAttribute="top" relation="greaterThanOrEqual" secondItem="XB2-DH-unt" secondAttribute="top" id="aoA-LQ-KDf"/>
+                <constraint firstItem="Bmh-Tr-oDm" firstAttribute="centerX" secondItem="rfb-Gk-vQr" secondAttribute="centerX" id="rXU-Gk-5xj"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="XB2-DH-unt"/>
+            <connections>
+                <outlet property="imageView" destination="kxK-dX-LeY" id="Avc-TV-TLJ"/>
+                <outlet property="titleLabel" destination="FHI-OQ-Zle" id="3rz-Fe-IIr"/>
+            </connections>
+            <point key="canvasLocation" x="171.19999999999999" y="-99.400299850074973"/>
+        </view>
+    </objects>
+</document>
