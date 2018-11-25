@@ -7,6 +7,14 @@
 //  Free to use at your own risk, with acknowledgement to BareFeetWare.
 //
 
+/*
+ To use NibButton:
+ 1. Create your own subclass of NibButton.
+ 2. Create a xib file, containing a UIView, with the same file name of your subclass.
+ 3. Set the class of the UIView in your xib to your NibButton subclass.
+ 4. Connect the outlets titleLabel and imageView to subviews in your xib.
+ */
+
 import UIKit
 
 @IBDesignable open class NibButton: BFWNibButton, NibReplaceable {
