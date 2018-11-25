@@ -27,7 +27,6 @@
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="[Title]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHI-OQ-Zle">
                             <rect key="frame" x="0.0" y="52" width="45.5" height="20.5"/>
-                            <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>

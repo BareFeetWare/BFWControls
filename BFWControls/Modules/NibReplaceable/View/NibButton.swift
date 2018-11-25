@@ -63,18 +63,103 @@ import UIKit
         guard let nibView = replacedByNibView()
             else { return self }
         nibView.copySubviewProperties(from: self)
-        nibView.removePlaceholders()
+        // Pass through taps to the button, not intercepted by subviews:
+        nibView.subviews.forEach { $0.isUserInteractionEnabled = false }
+        nibView.isNibReplacement = true
         return nibView
     }
     
-    open override func awakeFromNib() {
-        super.awakeFromNib()
+    open override func didMoveToSuperview() {
+        super.didMoveToWindow()
+        updateForCurrentState()
     }
     
     // MARK: - Private variables
     
     private var overridingTitleLabel: UILabel?
     private var overridingImageView: UIImageView?
+    private var titleForState: [UInt : String] = [:]
+    private var attributedTitleForState: [UInt : NSAttributedString] = [:]
+    private var imageForState: [UInt : UIImage] = [:]
+    private var isNibReplacement = false
+    
+    // MARK: - Functions
+    
+    private func overridingTitle(for state: UIControl.State) -> String? {
+        return titleForState[state.rawValue] ?? titleForState[UIControl.State.normal.rawValue]
+    }
+    
+    private func overridingAttributedTitle(for state: UIControl.State) -> NSAttributedString? {
+        return attributedTitleForState[state.rawValue] ?? attributedTitleForState[UIControl.State.normal.rawValue]
+    }
+    
+    private func overridingImage(for state: UIControl.State) -> UIImage? {
+        return imageForState[state.rawValue] ?? imageForState[UIControl.State.normal.rawValue]
+    }
+    
+    private func updateForCurrentState() {
+        if let title = overridingAttributedTitle(for: state) {
+            titleLabel?.attributedText = title
+        } else {
+            titleLabel?.text = overridingTitle(for: state)
+        }
+        titleLabel?.textColor = titleColor(for: state)
+        titleLabel?.shadowColor = titleShadowColor(for: state)
+        imageView?.image = overridingImage(for: state)
+    }
+    
+    // MARK: - UIButton overrides
+    
+    open override var isHighlighted: Bool {
+        didSet {
+            updateForCurrentState()
+        }
+    }
+    
+    open override var isSelected: Bool {
+        didSet {
+            updateForCurrentState()
+        }
+    }
+    
+    open override var isEnabled: Bool {
+        didSet {
+            updateForCurrentState()
+        }
+    }
+    
+    open override func title(for state: UIControl.State) -> String? {
+        return isNibReplacement
+            ? overridingTitle(for: state)
+            : super.title(for: state)
+    }
+    
+    open override func attributedTitle(for state: UIControl.State) -> NSAttributedString? {
+        return isNibReplacement
+            ? overridingAttributedTitle(for: state)
+            : super.attributedTitle(for: state)
+    }
+    
+    open override func image(for state: UIControl.State) -> UIImage? {
+        return isNibReplacement
+            ? overridingImage(for: state)
+            : super.image(for: state)
+    }
+    
+    open override func setTitle(_ title: String?, for state: UIControl.State) {
+        titleForState[state.rawValue] = title
+        super.setTitle(nil, for: state)
+    }
+    
+    open override func setAttributedTitle(_ title: NSAttributedString?, for state: UIControl.State) {
+        attributedTitleForState[state.rawValue] = title
+        super.setAttributedTitle(nil, for: state)
+    }
+    
+    open override func setImage(_ image: UIImage?, for state: UIControl.State) {
+        imageForState[state.rawValue] = image
+        super.setImage(nil, for: state)
+    }
     
     // MARK: - UIView overrides
     

@@ -11,5 +11,13 @@ import BFWControls
 
 class TileButton: NibButton {
 
+    open override var isHighlighted: Bool {
+        didSet {
+            // Testing selected state:
+            if isHighlighted != oldValue && !isHighlighted {
+                isSelected = !isSelected
+            }
+        }
+    }
 
 }

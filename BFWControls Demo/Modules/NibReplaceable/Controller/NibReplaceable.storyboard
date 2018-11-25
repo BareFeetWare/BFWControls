@@ -302,7 +302,6 @@
         <!--NibView-->
         <scene sceneID="Co6-dl-cdh">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ggS-zo-DYZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="mM7-PW-Nbe" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RdR-Os-EjM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -311,7 +310,7 @@
                         <sections>
                             <tableViewSection id="kpP-XU-HSi">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="0BC-Se-JDR" style="IBUITableViewCellStyleDefault" id="kgD-ov-4ZD">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="0BC-Se-JDR" detailTextLabel="z4q-Hf-HEe" style="IBUITableViewCellStyleSubtitle" id="kgD-ov-4ZD">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kgD-ov-4ZD" id="gPW-BT-jth">
@@ -319,9 +318,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="NibButton" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0BC-Se-JDR">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
+                                                    <rect key="frame" x="16" y="5" width="77.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subclass: TileButton" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="z4q-Hf-HEe">
+                                                    <rect key="frame" x="16" y="25.5" width="116" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -331,17 +337,24 @@
                                             <segue destination="oka-Gd-rqH" kind="show" id="W1k-b4-cQ9"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="QQ6-PV-PlY" style="IBUITableViewCellStyleDefault" id="u5W-wF-XM2">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="QQ6-PV-PlY" detailTextLabel="FTZ-a1-eIQ" style="IBUITableViewCellStyleSubtitle" id="u5W-wF-XM2">
                                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="u5W-wF-XM2" id="qoj-Jl-xKa">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="NibButtons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QQ6-PV-PlY">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="NibButton - Multiple" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QQ6-PV-PlY">
+                                                    <rect key="frame" x="16" y="5" width="154.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subclass: TileButton" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FTZ-a1-eIQ">
+                                                    <rect key="frame" x="16" y="25.5" width="116" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -361,6 +374,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="NibView" id="UyA-xA-P6U"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ggS-zo-DYZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="150" y="-663"/>
         </scene>
@@ -415,10 +429,9 @@
             </objects>
             <point key="canvasLocation" x="1993" y="-2126"/>
         </scene>
-        <!--NibButton-->
+        <!--TileButton-->
         <scene sceneID="hnL-RU-Hvx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="V7m-jk-ht4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="oka-Gd-rqH" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="few-lR-FTm"/>
@@ -429,10 +442,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aAZ-yi-aG4" customClass="TileButton" customModule="BFWControls_Demo" customModuleProvider="target">
-                                <rect key="frame" x="139.5" y="283" width="96" height="101"/>
+                                <rect key="frame" x="137.5" y="283.5" width="100" height="100"/>
                                 <state key="normal" title="Normal" image="discover"/>
+                                <state key="disabled" title="Disabled"/>
+                                <state key="selected" title="Selected" image="discover highlighted"/>
                                 <state key="highlighted" title="Highlighted" image="discover highlighted">
-                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                             </button>
                         </subviews>
@@ -442,15 +457,15 @@
                             <constraint firstItem="aAZ-yi-aG4" firstAttribute="centerX" secondItem="cSv-i3-aY6" secondAttribute="centerX" id="UJQ-DF-YnE"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="NibButton" id="vsW-EE-zl1"/>
+                    <navigationItem key="navigationItem" title="TileButton" id="vsW-EE-zl1"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V7m-jk-ht4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1041" y="-1371"/>
         </scene>
         <!--NibButton-->
         <scene sceneID="2jR-rv-H6Y">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Tsr-Ir-ksc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="r03-5D-Zgq" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7ir-J5-poU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -472,34 +487,46 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Y0i-Cu-RGB">
                                                             <rect key="frame" x="0.0" y="0.0" width="343" height="125"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPI-lf-NnP" customClass="TileButton" customModule="BFWControls_Demo" customModuleProvider="target">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPI-lf-NnP" customClass="TileButton" customModule="BFWControls_Demo" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="109" height="125"/>
-                                                                    <state key="normal" title="One"/>
+                                                                    <state key="normal" title="One" image="discover"/>
+                                                                    <state key="selected" title="Selected" image="discover highlighted"/>
+                                                                    <state key="highlighted" title="Highlighted" image="discover highlighted"/>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cb-wd-AYG" customClass="TileButton" customModule="BFWControls_Demo" customModuleProvider="target">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cb-wd-AYG" customClass="TileButton" customModule="BFWControls_Demo" customModuleProvider="target">
                                                                     <rect key="frame" x="117" y="0.0" width="109" height="125"/>
-                                                                    <state key="normal" title="Two"/>
+                                                                    <state key="normal" title="Two" image="discover"/>
+                                                                    <state key="selected" title="Selected" image="discover highlighted"/>
+                                                                    <state key="highlighted" title="Highlighted" image="discover highlighted"/>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="511-k7-gce" customClass="TileButton" customModule="BFWControls_Demo" customModuleProvider="target">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="511-k7-gce" customClass="TileButton" customModule="BFWControls_Demo" customModuleProvider="target">
                                                                     <rect key="frame" x="234" y="0.0" width="109" height="125"/>
-                                                                    <state key="normal" title="Three"/>
+                                                                    <state key="normal" title="Three" image="discover"/>
+                                                                    <state key="selected" title="Selected" image="discover highlighted"/>
+                                                                    <state key="highlighted" title="Highlighted" image="discover highlighted"/>
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ffi-QX-n8D">
                                                             <rect key="frame" x="0.0" y="133" width="343" height="125"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTk-QN-Cky" customClass="TileButton" customModule="BFWControls_Demo" customModuleProvider="target">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTk-QN-Cky" customClass="TileButton" customModule="BFWControls_Demo" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="109" height="125"/>
-                                                                    <state key="normal" title="Four"/>
+                                                                    <state key="normal" title="Four" image="discover"/>
+                                                                    <state key="selected" title="Selected" image="discover highlighted"/>
+                                                                    <state key="highlighted" title="Highlighted" image="discover highlighted"/>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ol-eN-MLS" customClass="TileButton" customModule="BFWControls_Demo" customModuleProvider="target">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ol-eN-MLS" customClass="TileButton" customModule="BFWControls_Demo" customModuleProvider="target">
                                                                     <rect key="frame" x="117" y="0.0" width="109" height="125"/>
-                                                                    <state key="normal" title="Five"/>
+                                                                    <state key="normal" title="Five" image="discover"/>
+                                                                    <state key="selected" title="Selected" image="discover highlighted"/>
+                                                                    <state key="highlighted" title="Highlighted" image="discover highlighted"/>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68N-KS-bds" customClass="TileButton" customModule="BFWControls_Demo" customModuleProvider="target">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68N-KS-bds" customClass="TileButton" customModule="BFWControls_Demo" customModuleProvider="target">
                                                                     <rect key="frame" x="234" y="0.0" width="109" height="125"/>
-                                                                    <state key="normal" title="Six"/>
+                                                                    <state key="normal" title="Six" image="discover"/>
+                                                                    <state key="selected" title="Selected" image="discover highlighted"/>
+                                                                    <state key="highlighted" title="Highlighted" image="discover highlighted"/>
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
@@ -524,6 +551,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="NibButton" id="5b5-vw-yxn"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tsr-Ir-ksc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1041" y="-662"/>
         </scene>
