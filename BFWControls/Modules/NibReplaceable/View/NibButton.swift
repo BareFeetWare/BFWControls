@@ -108,12 +108,14 @@ import UIKit
     private func updateForCurrentState() {
         if let title = overridingAttributedTitle(for: state) {
             titleLabel?.attributedText = title
-        } else {
-            titleLabel?.text = overridingTitle(for: state)
+        } else if let title = overridingTitle(for: state) {
+            titleLabel?.text = title
         }
         titleLabel?.textColor = titleColor(for: state)
         titleLabel?.shadowColor = titleShadowColor(for: state)
-        imageView?.image = overridingImage(for: state)
+        if let image = overridingImage(for: state) {
+            imageView?.image = image
+        }
     }
     
     // MARK: - UIButton overrides
