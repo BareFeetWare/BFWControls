@@ -19,13 +19,25 @@
 		E2037AA5209851F8001E0BBA /* UITableViewCell+Copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2037AA4209851F8001E0BBA /* UITableViewCell+Copy.swift */; };
 		E207BCAA1EADE577007BB14F /* UIImage+BFW.swift in Sources */ = {isa = PBXBuildFile; fileRef = E207BCA91EADE577007BB14F /* UIImage+BFW.swift */; };
 		E212B38B20D8776700A5E677 /* InputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E212B38A20D8776600A5E677 /* InputValidator.swift */; };
+		E21C688021A52E4600BADF78 /* Icon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E21C687F21A52E4600BADF78 /* Icon.xcassets */; };
 		E22097701F4185B500400079 /* NibCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E220976F1F4185B500400079 /* NibCollectionViewCell.swift */; };
 		E22477EA1ECBCAA7004A7802 /* Transition.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E22477E81ECBCAA7004A7802 /* Transition.storyboard */; };
 		E22477EB1ECBCAA7004A7802 /* TransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22477E91ECBCAA7004A7802 /* TransitionViewController.swift */; };
 		E226BD07209C3AD700652E86 /* NibReplaceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E226BD06209C3AD600652E86 /* NibReplaceable.swift */; };
 		E22A98EC2107E52500572A85 /* UIViewController+SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22A98EB2107E52500572A85 /* UIViewController+SegmentedControl.swift */; };
 		E22FD1B21EC564AD0043171C /* UIViewController+Dismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FD1B11EC564AD0043171C /* UIViewController+Dismiss.swift */; };
+		E22FEA7321A2D69A000DB707 /* BackgroundNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FEA7221A2D69A000DB707 /* BackgroundNavigationController.swift */; };
+		E22FEA7521A2D6CA000DB707 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FEA7421A2D6CA000DB707 /* BackgroundView.swift */; };
+		E22FEA7721A2D6E1000DB707 /* BackgroundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E22FEA7621A2D6E1000DB707 /* BackgroundView.xib */; };
+		E22FEA7A21A2D7B5000DB707 /* Background.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E22FEA7921A2D7B5000DB707 /* Background.xcassets */; };
+		E22FEA7C21A2DEFC000DB707 /* BackgroundTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22FEA7B21A2DEFC000DB707 /* BackgroundTableView.swift */; };
 		E2320B2D1FDF6A49000E940E /* UITableViewCell+Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2320B2C1FDF6A49000E940E /* UITableViewCell+Separator.swift */; };
+		E235410721A2EE7D00DB9DA2 /* NibButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235410621A2EE7D00DB9DA2 /* NibButton.swift */; };
+		E235410921A2EFE600DB9DA2 /* TileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235410821A2EFE600DB9DA2 /* TileButton.swift */; };
+		E235410B21A2F06100DB9DA2 /* TileButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = E235410A21A2F06000DB9DA2 /* TileButton.xib */; };
+		E235410E21A2F84900DB9DA2 /* BFWNibButton.h in Headers */ = {isa = PBXBuildFile; fileRef = E235410C21A2F84900DB9DA2 /* BFWNibButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E235410F21A2F84900DB9DA2 /* BFWNibButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E235410D21A2F84900DB9DA2 /* BFWNibButton.m */; };
+		E235411121A2FB7E00DB9DA2 /* UIButton+Copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235411021A2FB7E00DB9DA2 /* UIButton+Copy.swift */; };
 		E2430DC62161D7DD00DE95AE /* HidingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2430DC52161D7DD00DE95AE /* HidingStackView.swift */; };
 		E24682211F24820B007285DB /* ShadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24682201F24820B007285DB /* ShadableView.swift */; };
 		E24D5CBF20FEAE4F00600102 /* NibContainerSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24D5CBE20FEAE4F00600102 /* NibContainerSegmentedControl.swift */; };
@@ -100,7 +112,7 @@
 		E28BA9F81E964D4500D5DE3D /* Layout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9E61E964D4500D5DE3D /* Layout.storyboard */; };
 		E28BA9F91E964D4500D5DE3D /* Morph.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9E91E964D4500D5DE3D /* Morph.storyboard */; };
 		E28BA9FA1E964D4500D5DE3D /* MorphTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9EA1E964D4500D5DE3D /* MorphTableViewController.swift */; };
-		E28BA9FB1E964D4500D5DE3D /* NibView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9ED1E964D4500D5DE3D /* NibView.storyboard */; };
+		E28BA9FB1E964D4500D5DE3D /* NibReplaceable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9ED1E964D4500D5DE3D /* NibReplaceable.storyboard */; };
 		E28BA9FC1E964D4500D5DE3D /* AvatarCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9EF1E964D4500D5DE3D /* AvatarCellView.swift */; };
 		E28BA9FD1E964D4500D5DE3D /* AvatarCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9F01E964D4500D5DE3D /* AvatarCellView.xib */; };
 		E28BA9FE1E964D4500D5DE3D /* Table.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9F31E964D4500D5DE3D /* Table.storyboard */; };
@@ -142,13 +154,25 @@
 		E2037AA4209851F8001E0BBA /* UITableViewCell+Copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Copy.swift"; sourceTree = "<group>"; };
 		E207BCA91EADE577007BB14F /* UIImage+BFW.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+BFW.swift"; sourceTree = "<group>"; };
 		E212B38A20D8776600A5E677 /* InputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidator.swift; sourceTree = "<group>"; };
+		E21C687F21A52E4600BADF78 /* Icon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icon.xcassets; sourceTree = "<group>"; };
 		E220976F1F4185B500400079 /* NibCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibCollectionViewCell.swift; sourceTree = "<group>"; };
 		E22477E81ECBCAA7004A7802 /* Transition.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Transition.storyboard; sourceTree = "<group>"; };
 		E22477E91ECBCAA7004A7802 /* TransitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionViewController.swift; sourceTree = "<group>"; };
 		E226BD06209C3AD600652E86 /* NibReplaceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibReplaceable.swift; sourceTree = "<group>"; };
 		E22A98EB2107E52500572A85 /* UIViewController+SegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SegmentedControl.swift"; sourceTree = "<group>"; };
 		E22FD1B11EC564AD0043171C /* UIViewController+Dismiss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Dismiss.swift"; sourceTree = "<group>"; };
+		E22FEA7221A2D69A000DB707 /* BackgroundNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundNavigationController.swift; sourceTree = "<group>"; };
+		E22FEA7421A2D6CA000DB707 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		E22FEA7621A2D6E1000DB707 /* BackgroundView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackgroundView.xib; sourceTree = "<group>"; };
+		E22FEA7921A2D7B5000DB707 /* Background.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Background.xcassets; sourceTree = "<group>"; };
+		E22FEA7B21A2DEFC000DB707 /* BackgroundTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTableView.swift; sourceTree = "<group>"; };
 		E2320B2C1FDF6A49000E940E /* UITableViewCell+Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Separator.swift"; sourceTree = "<group>"; };
+		E235410621A2EE7D00DB9DA2 /* NibButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibButton.swift; sourceTree = "<group>"; };
+		E235410821A2EFE600DB9DA2 /* TileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileButton.swift; sourceTree = "<group>"; };
+		E235410A21A2F06000DB9DA2 /* TileButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TileButton.xib; sourceTree = "<group>"; };
+		E235410C21A2F84900DB9DA2 /* BFWNibButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFWNibButton.h; sourceTree = "<group>"; };
+		E235410D21A2F84900DB9DA2 /* BFWNibButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFWNibButton.m; sourceTree = "<group>"; };
+		E235411021A2FB7E00DB9DA2 /* UIButton+Copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Copy.swift"; sourceTree = "<group>"; };
 		E2430DC52161D7DD00DE95AE /* HidingStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HidingStackView.swift; sourceTree = "<group>"; };
 		E24682201F24820B007285DB /* ShadableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadableView.swift; sourceTree = "<group>"; };
 		E24D5CBE20FEAE4F00600102 /* NibContainerSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibContainerSegmentedControl.swift; sourceTree = "<group>"; };
@@ -227,7 +251,7 @@
 		E28BA9E61E964D4500D5DE3D /* Layout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Layout.storyboard; sourceTree = "<group>"; };
 		E28BA9E91E964D4500D5DE3D /* Morph.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Morph.storyboard; sourceTree = "<group>"; };
 		E28BA9EA1E964D4500D5DE3D /* MorphTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorphTableViewController.swift; sourceTree = "<group>"; };
-		E28BA9ED1E964D4500D5DE3D /* NibView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NibView.storyboard; sourceTree = "<group>"; };
+		E28BA9ED1E964D4500D5DE3D /* NibReplaceable.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NibReplaceable.storyboard; sourceTree = "<group>"; };
 		E28BA9EF1E964D4500D5DE3D /* AvatarCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarCellView.swift; sourceTree = "<group>"; };
 		E28BA9F01E964D4500D5DE3D /* AvatarCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AvatarCellView.xib; sourceTree = "<group>"; };
 		E28BA9F31E964D4500D5DE3D /* Table.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Table.storyboard; sourceTree = "<group>"; };
@@ -307,6 +331,15 @@
 				E22477E91ECBCAA7004A7802 /* TransitionViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		E22FEA7821A2D786000DB707 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E22FEA7921A2D7B5000DB707 /* Background.xcassets */,
+				E21C687F21A52E4600BADF78 /* Icon.xcassets */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		E26002B22170649300F4BA98 /* IBLog */ = {
@@ -410,7 +443,7 @@
 				E26002B22170649300F4BA98 /* IBLog */,
 				E28BA9351E96402500D5DE3D /* Layer */,
 				E28BA93B1E96402500D5DE3D /* Layout */,
-				E28BA9401E96402500D5DE3D /* NibView */,
+				E28BA9401E96402500D5DE3D /* NibReplaceable */,
 				E2E08F702157292200316653 /* Overlay */,
 				E2A87BC71EFEA2940069E41F /* Shadable */,
 				E28BA9511E96402500D5DE3D /* Styled */,
@@ -541,24 +574,27 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		E28BA9401E96402500D5DE3D /* NibView */ = {
+		E28BA9401E96402500D5DE3D /* NibReplaceable */ = {
 			isa = PBXGroup;
 			children = (
 				E28BA9411E96402500D5DE3D /* View */,
 			);
-			path = NibView;
+			path = NibReplaceable;
 			sourceTree = "<group>";
 		};
 		E28BA9411E96402500D5DE3D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E28BA9A61E96457100D5DE3D /* BFWNibView.h */,
-				E28BA9431E96402500D5DE3D /* BFWNibView.m */,
-				E2F1606120BE006800A54D6A /* BFWNibTableViewCell.h */,
-				E2F1606220BE006800A54D6A /* BFWNibTableViewCell.m */,
+				E235410C21A2F84900DB9DA2 /* BFWNibButton.h */,
+				E235410D21A2F84900DB9DA2 /* BFWNibButton.m */,
 				A1EDD9B52105E8AE00A76119 /* BFWNibCollectionViewCell.h */,
 				A1EDD9B62105E8AE00A76119 /* BFWNibCollectionViewCell.m */,
+				E2F1606120BE006800A54D6A /* BFWNibTableViewCell.h */,
+				E2F1606220BE006800A54D6A /* BFWNibTableViewCell.m */,
+				E28BA9A61E96457100D5DE3D /* BFWNibView.h */,
+				E28BA9431E96402500D5DE3D /* BFWNibView.m */,
 				E28BA9441E96402500D5DE3D /* ImageNibCellView.swift */,
+				E235410621A2EE7D00DB9DA2 /* NibButton.swift */,
 				E28BA9461E96402500D5DE3D /* NibCellView.swift */,
 				E26E1F961F9C34F90008BACB /* NibCellViewContainer.swift */,
 				E220976F1F4185B500400079 /* NibCollectionViewCell.swift */,
@@ -573,6 +609,7 @@
 				E28BA94C1E96402500D5DE3D /* StatusTextField.swift */,
 				E28BA94D1E96402500D5DE3D /* StatusTextFieldNibView.swift */,
 				E2E5CABC1F4323EA003E0054 /* TextLabelProvider.swift */,
+				E235411021A2FB7E00DB9DA2 /* UIButton+Copy.swift */,
 				E296435F2104570D007598D3 /* UIStackView+Joined.swift */,
 				E2037AA4209851F8001E0BBA /* UITableViewCell+Copy.swift */,
 				E28BA94F1E96402500D5DE3D /* UIView+Copy.swift */,
@@ -758,7 +795,7 @@
 				E28BA9E11E964D4500D5DE3D /* Developer */,
 				E28BA9E41E964D4500D5DE3D /* Layout */,
 				E28BA9E71E964D4500D5DE3D /* Morph */,
-				E28BA9EB1E964D4500D5DE3D /* NibView */,
+				E28BA9EB1E964D4500D5DE3D /* NibReplaceable */,
 				E28BA9F11E964D4500D5DE3D /* Table */,
 				E22477E61ECBCAA7004A7802 /* Transition */,
 			);
@@ -847,19 +884,21 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		E28BA9EB1E964D4500D5DE3D /* NibView */ = {
+		E28BA9EB1E964D4500D5DE3D /* NibReplaceable */ = {
 			isa = PBXGroup;
 			children = (
 				E28BA9EC1E964D4500D5DE3D /* Controller */,
+				E22FEA7821A2D786000DB707 /* Model */,
 				E28BA9EE1E964D4500D5DE3D /* View */,
 			);
-			path = NibView;
+			path = NibReplaceable;
 			sourceTree = "<group>";
 		};
 		E28BA9EC1E964D4500D5DE3D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E28BA9ED1E964D4500D5DE3D /* NibView.storyboard */,
+				E22FEA7221A2D69A000DB707 /* BackgroundNavigationController.swift */,
+				E28BA9ED1E964D4500D5DE3D /* NibReplaceable.storyboard */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -874,11 +913,16 @@
 				E2D6C7B7204BC3C300144DF6 /* AvatarContentTableViewCell.swift */,
 				E2E40F0F2091B7CF005D0AA5 /* AvatarTableViewCell.swift */,
 				E2E40F102091B7CF005D0AA5 /* AvatarTableViewCell.xib */,
+				E22FEA7B21A2DEFC000DB707 /* BackgroundTableView.swift */,
+				E22FEA7421A2D6CA000DB707 /* BackgroundView.swift */,
+				E22FEA7621A2D6E1000DB707 /* BackgroundView.xib */,
 				E29BD11C2186C28A000D3176 /* CenteredTableViewCell.swift */,
 				E29BD11D2186C28A000D3176 /* CenteredTableViewCell.xib */,
 				E29BD1162186BF7B000D3176 /* RoundedImageTableViewCell.swift */,
 				E29BD1172186BF7B000D3176 /* RoundedImageTableViewCell.xib */,
 				E29BD1182186BF7B000D3176 /* RoundedImageView.swift */,
+				E235410821A2EFE600DB9DA2 /* TileButton.swift */,
+				E235410A21A2F06000DB9DA2 /* TileButton.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -967,6 +1011,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E28BA9A11E9643BC00D5DE3D /* BFWControls.h in Headers */,
+				E235410E21A2F84900DB9DA2 /* BFWNibButton.h in Headers */,
 				E28BA9A81E96457100D5DE3D /* BFWNibView.h in Headers */,
 				E2F1606320BE006800A54D6A /* BFWNibTableViewCell.h in Headers */,
 				A1EDD9B72105E8AE00A76119 /* BFWNibCollectionViewCell.h in Headers */,
@@ -1075,14 +1120,18 @@
 				E28BA9FD1E964D4500D5DE3D /* AvatarCellView.xib in Resources */,
 				E28BA9FE1E964D4500D5DE3D /* Table.storyboard in Resources */,
 				E29BD11A2186BF7B000D3176 /* RoundedImageTableViewCell.xib in Resources */,
+				E21C688021A52E4600BADF78 /* Icon.xcassets in Resources */,
 				E2E40F122091B7CF005D0AA5 /* AvatarTableViewCell.xib in Resources */,
 				E29BD11F2186C28A000D3176 /* CenteredTableViewCell.xib in Resources */,
+				E22FEA7A21A2D7B5000DB707 /* Background.xcassets in Resources */,
 				E28BA9F51E964D4500D5DE3D /* Carousel.storyboard in Resources */,
-				E28BA9FB1E964D4500D5DE3D /* NibView.storyboard in Resources */,
+				E28BA9FB1E964D4500D5DE3D /* NibReplaceable.storyboard in Resources */,
 				E28BA9F71E964D4500D5DE3D /* Developer.storyboard in Resources */,
 				E28BA9F61E964D4500D5DE3D /* SampleCarousel.plist in Resources */,
+				E235410B21A2F06100DB9DA2 /* TileButton.xib in Resources */,
 				E28BA9F81E964D4500D5DE3D /* Layout.storyboard in Resources */,
 				E28BA9F41E964D4500D5DE3D /* Alerts.storyboard in Resources */,
+				E22FEA7721A2D6E1000DB707 /* BackgroundView.xib in Resources */,
 				E28BA9F91E964D4500D5DE3D /* Morph.storyboard in Resources */,
 				E22477EA1ECBCAA7004A7802 /* Transition.storyboard in Resources */,
 				E2640392211CF4A900A4204C /* ArcTableViewCell.xib in Resources */,
@@ -1102,6 +1151,7 @@
 				E28BA98F1E96402500D5DE3D /* UIView+Copy.swift in Sources */,
 				E28BA96E1E96402500D5DE3D /* ActionSheetView.swift in Sources */,
 				E28BA9771E96402500D5DE3D /* BlurView.swift in Sources */,
+				E235411121A2FB7E00DB9DA2 /* UIButton+Copy.swift in Sources */,
 				E28BA9981E96402500D5DE3D /* DismissAndPushSegue.swift in Sources */,
 				E212B38B20D8776700A5E677 /* InputValidator.swift in Sources */,
 				E28BA9761E96402500D5DE3D /* Binding.swift in Sources */,
@@ -1111,6 +1161,7 @@
 				E2EB09B01FE335EF001DC697 /* FullWidthImageView.swift in Sources */,
 				E2E5CABD1F4323EA003E0054 /* TextLabelProvider.swift in Sources */,
 				E28BA99D1E96402500D5DE3D /* TranslationTransitioningController.swift in Sources */,
+				E235410721A2EE7D00DB9DA2 /* NibButton.swift in Sources */,
 				E26002B5217064C400F4BA98 /* IBLog.swift in Sources */,
 				E28BA97C1E96402500D5DE3D /* DesignableView.swift in Sources */,
 				E28BA97B1E96402500D5DE3D /* DesignableButton.swift in Sources */,
@@ -1171,6 +1222,7 @@
 				E28BA9961E96402500D5DE3D /* SegueHandlerType.swift in Sources */,
 				E24682211F24820B007285DB /* ShadableView.swift in Sources */,
 				E2F5D91A218F015000794394 /* UITableView+Adjustable.swift in Sources */,
+				E235410F21A2F84900DB9DA2 /* BFWNibButton.m in Sources */,
 				E28BA9891E96402500D5DE3D /* NibTableViewHeaderFooterView.swift in Sources */,
 				E28BA9831E96402500D5DE3D /* BFWNibView.m in Sources */,
 				E28BA9941E96402500D5DE3D /* UIView+Table.swift in Sources */,
@@ -1183,14 +1235,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2D6C7B8204BC3C300144DF6 /* AvatarContentTableViewCell.swift in Sources */,
+				E235410921A2EFE600DB9DA2 /* TileButton.swift in Sources */,
 				E28BA9FA1E964D4500D5DE3D /* MorphTableViewController.swift in Sources */,
 				E29BD11E2186C28A000D3176 /* CenteredTableViewCell.swift in Sources */,
+				E22FEA7321A2D69A000DB707 /* BackgroundNavigationController.swift in Sources */,
 				A1BD33B91EEAC9A400D217F6 /* DynamicCellDemoViewController.swift in Sources */,
 				E26403782116B14800A4204C /* AvatarTableViewCell.swift in Sources */,
 				A1EDD9BB2105EAAA00A76119 /* AvatarCollectionViewCell.swift in Sources */,
+				E22FEA7521A2D6CA000DB707 /* BackgroundView.swift in Sources */,
 				E28BA9FC1E964D4500D5DE3D /* AvatarCellView.swift in Sources */,
 				E29BD11B2186BF7B000D3176 /* RoundedImageView.swift in Sources */,
 				A1BD33A21EEA2F9800D217F6 /* ExcludeCellDemoViewController.swift in Sources */,
+				E22FEA7C21A2DEFC000DB707 /* BackgroundTableView.swift in Sources */,
 				E28BA9D41E964CB200D5DE3D /* AppDelegate.swift in Sources */,
 				A11CF22A1EEC2F4D00020C0C /* DynamicHeightCellViewController.swift in Sources */,
 				A1E0C3561EE9257A009F4ED3 /* SegueHandlerType.swift in Sources */,

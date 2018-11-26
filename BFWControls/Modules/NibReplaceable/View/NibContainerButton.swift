@@ -7,6 +7,7 @@
 
 import UIKit
 
+@available(*, deprecated, message: "Use NibButton instead.")
 open class NibContainerButton: UIButton {
     
     // MARK: - NibView container

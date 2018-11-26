@@ -34,11 +34,13 @@ open override func awakeAfter(using coder: NSCoder) -> Any? {
 }
 */
 
+// Storage required since a protocol extension can not store variables.
 fileprivate class Storage {
     
     /// Prevents recursive call by loadNibNamed to itself. Safe as a static var since it is always called on the main thread, ie synchronously.
     static var loadingStack: [AnyClass] = []
-    
+    static var sizeForKeyDictionary = [String: CGSize]()
+
 }
 
 public protocol NibReplaceable where Self: UIView {
@@ -53,9 +55,9 @@ public protocol NibReplaceable where Self: UIView {
 
 public extension NibReplaceable {
     
-    // MARK: - Variable defaults that can be overridden
+    // MARK: - Protocol variable defaults that can be overridden
     
-    /// Override to give different nib for each cell style
+    /// Override to give different nib for each cell style or for a particular instance
     public var nibName: String? {
         return nil
     }
@@ -107,6 +109,18 @@ public extension NibReplaceable {
     static var nibName: String {
         // Remove the <ProjectName>. prefix that Swift adds:
         return classNameComponents.last!
+    }
+    
+    public static var sizeFromNib: CGSize? {
+        let size: CGSize?
+        let key = NSStringFromClass(self)
+        if let reuseSize = Storage.sizeForKeyDictionary[key] {
+            size = reuseSize
+        } else {
+            size = nibView()?.frame.size
+            Storage.sizeForKeyDictionary[key] = size
+        }
+        return size
     }
     
     // MARK: - Static functions
