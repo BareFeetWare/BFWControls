@@ -22,7 +22,7 @@
                     <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="S4d-QG-Dgr">
                         <rect key="frame" x="16" y="15" width="343" height="50"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kHz-HR-TGh" customClass="RoundedImageView" customModule="BFWControls">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="kHz-HR-TGh" customClass="RoundedImageView" customModule="BFWControls">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="80L-YN-0vP"/>
@@ -64,4 +64,7 @@
             <point key="canvasLocation" x="34" y="67"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="placeholder" width="64" height="64"/>
+    </resources>
 </document>
