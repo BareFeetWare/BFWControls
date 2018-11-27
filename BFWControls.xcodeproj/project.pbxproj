@@ -121,9 +121,9 @@
 		E29643602104570D007598D3 /* UIStackView+Joined.swift in Sources */ = {isa = PBXBuildFile; fileRef = E296435F2104570D007598D3 /* UIStackView+Joined.swift */; };
 		E29BD1192186BF7B000D3176 /* RoundedImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29BD1162186BF7B000D3176 /* RoundedImageTableViewCell.swift */; };
 		E29BD11A2186BF7B000D3176 /* RoundedImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E29BD1172186BF7B000D3176 /* RoundedImageTableViewCell.xib */; };
-		E29BD11B2186BF7B000D3176 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29BD1182186BF7B000D3176 /* RoundedImageView.swift */; };
 		E29BD11E2186C28A000D3176 /* CenteredTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29BD11C2186C28A000D3176 /* CenteredTableViewCell.swift */; };
 		E29BD11F2186C28A000D3176 /* CenteredTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E29BD11D2186C28A000D3176 /* CenteredTableViewCell.xib */; };
+		E2A55F1D21ACBF7D00812DC6 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29BD1182186BF7B000D3176 /* RoundedImageView.swift */; };
 		E2A87BCA1EFEA2F80069E41F /* Shadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A87BC91EFEA2F80069E41F /* Shadable.swift */; };
 		E2B3E5841F26EA5C002539E6 /* ReplaceInNavigationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B3E5831F26EA5C002539E6 /* ReplaceInNavigationSegue.swift */; };
 		E2BFE8F71F296CD900BAEC16 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BFE8F61F296CD900BAEC16 /* CustomTableViewCell.swift */; };
@@ -549,6 +549,7 @@
 			children = (
 				E28BA9371E96402500D5DE3D /* DesignableButton.swift */,
 				E28BA9381E96402500D5DE3D /* DesignableView.swift */,
+				E29BD1182186BF7B000D3176 /* RoundedImageView.swift */,
 				E28BA93A1E96402500D5DE3D /* UIView+Transform.swift */,
 			);
 			path = View;
@@ -920,7 +921,6 @@
 				E29BD11D2186C28A000D3176 /* CenteredTableViewCell.xib */,
 				E29BD1162186BF7B000D3176 /* RoundedImageTableViewCell.swift */,
 				E29BD1172186BF7B000D3176 /* RoundedImageTableViewCell.xib */,
-				E29BD1182186BF7B000D3176 /* RoundedImageView.swift */,
 				E235410821A2EFE600DB9DA2 /* TileButton.swift */,
 				E235410A21A2F06000DB9DA2 /* TileButton.xib */,
 			);
@@ -1165,6 +1165,7 @@
 				E26002B5217064C400F4BA98 /* IBLog.swift in Sources */,
 				E28BA97C1E96402500D5DE3D /* DesignableView.swift in Sources */,
 				E28BA97B1E96402500D5DE3D /* DesignableButton.swift in Sources */,
+				E2A55F1D21ACBF7D00812DC6 /* RoundedImageView.swift in Sources */,
 				E28BA9B51E964B5200D5DE3D /* UIImageEffects.m in Sources */,
 				E28BA9971E96402500D5DE3D /* DismissAndPresentSegue.swift in Sources */,
 				E226BD07209C3AD700652E86 /* NibReplaceable.swift in Sources */,
@@ -1244,7 +1245,6 @@
 				A1EDD9BB2105EAAA00A76119 /* AvatarCollectionViewCell.swift in Sources */,
 				E22FEA7521A2D6CA000DB707 /* BackgroundView.swift in Sources */,
 				E28BA9FC1E964D4500D5DE3D /* AvatarCellView.swift in Sources */,
-				E29BD11B2186BF7B000D3176 /* RoundedImageView.swift in Sources */,
 				A1BD33A21EEA2F9800D217F6 /* ExcludeCellDemoViewController.swift in Sources */,
 				E22FEA7C21A2DEFC000DB707 /* BackgroundTableView.swift in Sources */,
 				E28BA9D41E964CB200D5DE3D /* AppDelegate.swift in Sources */,
