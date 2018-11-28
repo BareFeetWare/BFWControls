@@ -18,7 +18,7 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Bmh-Tr-oDm">
                     <rect key="frame" x="27.5" y="14" width="45.5" height="72.5"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="kxK-dX-LeY">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="kxK-dX-LeY">
                             <rect key="frame" x="0.5" y="0.0" width="44" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="XkH-z4-AHJ"/>
@@ -50,4 +50,7 @@
             <point key="canvasLocation" x="171.19999999999999" y="-99.400299850074973"/>
         </view>
     </objects>
+    <resources>
+        <image name="placeholder" width="64" height="64"/>
+    </resources>
 </document>
