@@ -678,7 +678,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" image="Tom" id="X1c-Tq-uK2" customClass="RoundedImageView" customModule="BFWControls_Demo" customModuleProvider="target">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" image="Tom" id="X1c-Tq-uK2">
                                                     <rect key="frame" x="16" y="11" width="50" height="47.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>

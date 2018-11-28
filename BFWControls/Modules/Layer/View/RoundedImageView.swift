@@ -7,15 +7,15 @@
 
 import UIKit
 
-@IBDesignable class RoundedImageView: UIImageView {
+@IBDesignable open class RoundedImageView: UIImageView {
     
-    override func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = min(bounds.size.width / 2, bounds.size.height / 2)
         layer.masksToBounds = true
     }
     
-    @IBInspectable var isBordered: Bool {
+    @IBInspectable open var isBordered: Bool {
         get {
             return layer.borderWidth != 0.0
         }
