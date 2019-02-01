@@ -64,7 +64,6 @@
 		E28BA9731E96402500D5DE3D /* AlertViewOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9261E96402500D5DE3D /* AlertViewOverlay.xib */; };
 		E28BA9741E96402500D5DE3D /* StaticAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9271E96402500D5DE3D /* StaticAlertView.swift */; };
 		E28BA9751E96402500D5DE3D /* StaticAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9281E96402500D5DE3D /* StaticAlertView.xib */; };
-		E28BA9761E96402500D5DE3D /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA92C1E96402500D5DE3D /* Binding.swift */; };
 		E28BA9771E96402500D5DE3D /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA92F1E96402500D5DE3D /* BlurView.swift */; };
 		E28BA97A1E96402500D5DE3D /* CarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9341E96402500D5DE3D /* CarouselViewController.swift */; };
 		E28BA97B1E96402500D5DE3D /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9371E96402500D5DE3D /* DesignableButton.swift */; };
@@ -201,7 +200,6 @@
 		E28BA9261E96402500D5DE3D /* AlertViewOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewOverlay.xib; sourceTree = "<group>"; };
 		E28BA9271E96402500D5DE3D /* StaticAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticAlertView.swift; sourceTree = "<group>"; };
 		E28BA9281E96402500D5DE3D /* StaticAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaticAlertView.xib; sourceTree = "<group>"; };
-		E28BA92C1E96402500D5DE3D /* Binding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		E28BA92F1E96402500D5DE3D /* BlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		E28BA9341E96402500D5DE3D /* CarouselViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselViewController.swift; sourceTree = "<group>"; };
 		E28BA9371E96402500D5DE3D /* DesignableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableButton.swift; sourceTree = "<group>"; };
@@ -438,7 +436,6 @@
 			children = (
 				E28BA91D1E96402500D5DE3D /* Alert */,
 				E26EE11D210DCFC800E0781D /* Animation */,
-				E28BA92A1E96402500D5DE3D /* Binding */,
 				E28BA92D1E96402500D5DE3D /* Blur */,
 				E28BA9321E96402500D5DE3D /* Carousel */,
 				E2EB09C41FE4C5D1001DC697 /* Controls */,
@@ -487,22 +484,6 @@
 				E28BA9281E96402500D5DE3D /* StaticAlertView.xib */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		E28BA92A1E96402500D5DE3D /* Binding */ = {
-			isa = PBXGroup;
-			children = (
-				E28BA92B1E96402500D5DE3D /* Controller */,
-			);
-			path = Binding;
-			sourceTree = "<group>";
-		};
-		E28BA92B1E96402500D5DE3D /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				E28BA92C1E96402500D5DE3D /* Binding.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		E28BA92D1E96402500D5DE3D /* Blur */ = {
@@ -1166,7 +1147,6 @@
 				E235411121A2FB7E00DB9DA2 /* UIButton+Copy.swift in Sources */,
 				E28BA9981E96402500D5DE3D /* DismissAndPushSegue.swift in Sources */,
 				E212B38B20D8776700A5E677 /* InputValidator.swift in Sources */,
-				E28BA9761E96402500D5DE3D /* Binding.swift in Sources */,
 				E2BFE8F71F296CD900BAEC16 /* CustomTableViewCell.swift in Sources */,
 				E28BA98B1E96402500D5DE3D /* NibView.swift in Sources */,
 				E29569B0208EA44000E48077 /* NibTableViewCell.swift in Sources */,
