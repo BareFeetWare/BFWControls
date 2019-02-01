@@ -10,28 +10,7 @@
 import UIKit
 
 public extension UIView {
-    
-    public func copyDescendantConstraints(from fromView: UIView) {
-        var fromItems: [NSObject] = [fromView]
-        var toItems: [NSObject] = [self]
-        var toSubviewConstraints = [NSLayoutConstraint]()
-        for fromSubview in fromView.subviews {
-            if let toSubview = subview(matching: fromSubview) {
-                fromItems.append(fromSubview)
-                toItems.append(toSubview)
-                toSubviewConstraints += toSubview.constraints
-            }
-        }
-        let oldConstraints = (constraints + toSubviewConstraints).filter { constraint in
-            constraint.onlyIncludes(items: toItems)
-        }
-        let copiedConstraints = oldConstraints.map { oldConstraint in
-            oldConstraint.constraint(byReplacing: toItems, with: fromItems)
-        }
-        NSLayoutConstraint.deactivate(oldConstraints)
-        NSLayoutConstraint.activate(copiedConstraints)
-    }
-    
+        
     public func pinToSuperviewEdges() {
         pin(to: superview!,
             attributes: [.left, .right, .top, .bottom],

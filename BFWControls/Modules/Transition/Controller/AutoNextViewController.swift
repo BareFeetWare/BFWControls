@@ -25,12 +25,6 @@ open class AutoNextViewController: UIViewController {
             self.performSegue(withIdentifier: self.segueIdentifier, sender: nil)
         }
     }
-    
-    open override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let morphSegue = segue as? MorphSegue {
-            morphSegue.duration = duration
-        }
-    }
 
 }
 

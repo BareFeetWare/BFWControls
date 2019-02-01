@@ -91,13 +91,11 @@
 		E28BA9961E96402500D5DE3D /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA95F1E96402500D5DE3D /* SegueHandlerType.swift */; };
 		E28BA9971E96402500D5DE3D /* DismissAndPresentSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9611E96402500D5DE3D /* DismissAndPresentSegue.swift */; };
 		E28BA9981E96402500D5DE3D /* DismissAndPushSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9621E96402500D5DE3D /* DismissAndPushSegue.swift */; };
-		E28BA9991E96402500D5DE3D /* MorphSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9631E96402500D5DE3D /* MorphSegue.swift */; };
 		E28BA99A1E96402500D5DE3D /* OpenURLSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9641E96402500D5DE3D /* OpenURLSegue.swift */; };
 		E28BA99B1E96402500D5DE3D /* TranslationAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9651E96402500D5DE3D /* TranslationAnimationController.swift */; };
 		E28BA99C1E96402500D5DE3D /* TranslationNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9661E96402500D5DE3D /* TranslationNavigationDelegate.swift */; };
 		E28BA99D1E96402500D5DE3D /* TranslationTransitioningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9671E96402500D5DE3D /* TranslationTransitioningController.swift */; };
 		E28BA99E1E96402500D5DE3D /* UIViewController+Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9681E96402500D5DE3D /* UIViewController+Segue.swift */; };
-		E28BA99F1E96402500D5DE3D /* UIViewMorphExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9691E96402500D5DE3D /* UIViewMorphExtensions.swift */; };
 		E28BA9A01E96402500D5DE3D /* DefaultsHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA96C1E96402500D5DE3D /* DefaultsHandlerType.swift */; };
 		E28BA9A11E9643BC00D5DE3D /* BFWControls.h in Headers */ = {isa = PBXBuildFile; fileRef = E28BA9141E963F7900D5DE3D /* BFWControls.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E28BA9A81E96457100D5DE3D /* BFWNibView.h in Headers */ = {isa = PBXBuildFile; fileRef = E28BA9A61E96457100D5DE3D /* BFWNibView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -110,8 +108,6 @@
 		E28BA9F61E964D4500D5DE3D /* SampleCarousel.plist in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9E01E964D4500D5DE3D /* SampleCarousel.plist */; };
 		E28BA9F71E964D4500D5DE3D /* Developer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9E31E964D4500D5DE3D /* Developer.storyboard */; };
 		E28BA9F81E964D4500D5DE3D /* Layout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9E61E964D4500D5DE3D /* Layout.storyboard */; };
-		E28BA9F91E964D4500D5DE3D /* Morph.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9E91E964D4500D5DE3D /* Morph.storyboard */; };
-		E28BA9FA1E964D4500D5DE3D /* MorphTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9EA1E964D4500D5DE3D /* MorphTableViewController.swift */; };
 		E28BA9FB1E964D4500D5DE3D /* NibReplaceable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9ED1E964D4500D5DE3D /* NibReplaceable.storyboard */; };
 		E28BA9FC1E964D4500D5DE3D /* AvatarCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9EF1E964D4500D5DE3D /* AvatarCellView.swift */; };
 		E28BA9FD1E964D4500D5DE3D /* AvatarCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9F01E964D4500D5DE3D /* AvatarCellView.xib */; };
@@ -227,13 +223,11 @@
 		E28BA95F1E96402500D5DE3D /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandlerType.swift; sourceTree = "<group>"; };
 		E28BA9611E96402500D5DE3D /* DismissAndPresentSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissAndPresentSegue.swift; sourceTree = "<group>"; };
 		E28BA9621E96402500D5DE3D /* DismissAndPushSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissAndPushSegue.swift; sourceTree = "<group>"; };
-		E28BA9631E96402500D5DE3D /* MorphSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorphSegue.swift; sourceTree = "<group>"; };
 		E28BA9641E96402500D5DE3D /* OpenURLSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenURLSegue.swift; sourceTree = "<group>"; };
 		E28BA9651E96402500D5DE3D /* TranslationAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationAnimationController.swift; sourceTree = "<group>"; };
 		E28BA9661E96402500D5DE3D /* TranslationNavigationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationNavigationDelegate.swift; sourceTree = "<group>"; };
 		E28BA9671E96402500D5DE3D /* TranslationTransitioningController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationTransitioningController.swift; sourceTree = "<group>"; };
 		E28BA9681E96402500D5DE3D /* UIViewController+Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Segue.swift"; sourceTree = "<group>"; };
-		E28BA9691E96402500D5DE3D /* UIViewMorphExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewMorphExtensions.swift; sourceTree = "<group>"; };
 		E28BA96C1E96402500D5DE3D /* DefaultsHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsHandlerType.swift; sourceTree = "<group>"; };
 		E28BA9A61E96457100D5DE3D /* BFWNibView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFWNibView.h; sourceTree = "<group>"; };
 		E28BA9AD1E964A8300D5DE3D /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
@@ -248,8 +242,6 @@
 		E28BA9E01E964D4500D5DE3D /* SampleCarousel.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SampleCarousel.plist; sourceTree = "<group>"; };
 		E28BA9E31E964D4500D5DE3D /* Developer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Developer.storyboard; sourceTree = "<group>"; };
 		E28BA9E61E964D4500D5DE3D /* Layout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Layout.storyboard; sourceTree = "<group>"; };
-		E28BA9E91E964D4500D5DE3D /* Morph.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Morph.storyboard; sourceTree = "<group>"; };
-		E28BA9EA1E964D4500D5DE3D /* MorphTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorphTableViewController.swift; sourceTree = "<group>"; };
 		E28BA9ED1E964D4500D5DE3D /* NibReplaceable.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NibReplaceable.storyboard; sourceTree = "<group>"; };
 		E28BA9EF1E964D4500D5DE3D /* AvatarCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarCellView.swift; sourceTree = "<group>"; };
 		E28BA9F01E964D4500D5DE3D /* AvatarCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AvatarCellView.xib; sourceTree = "<group>"; };
@@ -687,7 +679,6 @@
 			children = (
 				E28BA9611E96402500D5DE3D /* DismissAndPresentSegue.swift */,
 				E28BA9621E96402500D5DE3D /* DismissAndPushSegue.swift */,
-				E28BA9631E96402500D5DE3D /* MorphSegue.swift */,
 				E28BA9641E96402500D5DE3D /* OpenURLSegue.swift */,
 				E2D4D3D4205A4734004AE487 /* PushFirstSegue.swift */,
 				E2B3E5831F26EA5C002539E6 /* ReplaceInNavigationSegue.swift */,
@@ -696,7 +687,6 @@
 				E28BA9671E96402500D5DE3D /* TranslationTransitioningController.swift */,
 				E22FD1B11EC564AD0043171C /* UIViewController+Dismiss.swift */,
 				E28BA9681E96402500D5DE3D /* UIViewController+Segue.swift */,
-				E28BA9691E96402500D5DE3D /* UIViewMorphExtensions.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -778,7 +768,6 @@
 				E28BA9DD1E964D4500D5DE3D /* Carousel */,
 				E28BA9E11E964D4500D5DE3D /* Developer */,
 				E28BA9E41E964D4500D5DE3D /* Layout */,
-				E28BA9E71E964D4500D5DE3D /* Morph */,
 				E28BA9EB1E964D4500D5DE3D /* NibReplaceable */,
 				E28BA9F11E964D4500D5DE3D /* Table */,
 				E22477E61ECBCAA7004A7802 /* Transition */,
@@ -847,23 +836,6 @@
 			isa = PBXGroup;
 			children = (
 				E28BA9E61E964D4500D5DE3D /* Layout.storyboard */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		E28BA9E71E964D4500D5DE3D /* Morph */ = {
-			isa = PBXGroup;
-			children = (
-				E28BA9E81E964D4500D5DE3D /* Controller */,
-			);
-			path = Morph;
-			sourceTree = "<group>";
-		};
-		E28BA9E81E964D4500D5DE3D /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				E28BA9E91E964D4500D5DE3D /* Morph.storyboard */,
-				E28BA9EA1E964D4500D5DE3D /* MorphTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1124,7 +1096,6 @@
 				E28BA9F81E964D4500D5DE3D /* Layout.storyboard in Resources */,
 				E28BA9F41E964D4500D5DE3D /* Alerts.storyboard in Resources */,
 				E22FEA7721A2D6E1000DB707 /* BackgroundView.xib in Resources */,
-				E28BA9F91E964D4500D5DE3D /* Morph.storyboard in Resources */,
 				E27AC57A21AE709100495591 /* Image.xcassets in Resources */,
 				E22477EA1ECBCAA7004A7802 /* Transition.storyboard in Resources */,
 				E2640392211CF4A900A4204C /* ArcTableViewCell.xib in Resources */,
@@ -1193,7 +1164,6 @@
 				E2A87BCA1EFEA2F80069E41F /* Shadable.swift in Sources */,
 				E28BA9921E96402500D5DE3D /* StyledText.swift in Sources */,
 				E24FFA1C20D7244A00A36699 /* UIApplication+Unwind.swift in Sources */,
-				E28BA99F1E96402500D5DE3D /* UIViewMorphExtensions.swift in Sources */,
 				E28BA9741E96402500D5DE3D /* StaticAlertView.swift in Sources */,
 				E2B3E5841F26EA5C002539E6 /* ReplaceInNavigationSegue.swift in Sources */,
 				E2430DC62161D7DD00DE95AE /* HidingStackView.swift in Sources */,
@@ -1209,7 +1179,6 @@
 				E22097701F4185B500400079 /* NibCollectionViewCell.swift in Sources */,
 				E28BA99A1E96402500D5DE3D /* OpenURLSegue.swift in Sources */,
 				E28BA9801E96402500D5DE3D /* PileView.swift in Sources */,
-				E28BA9991E96402500D5DE3D /* MorphSegue.swift in Sources */,
 				E28BA99B1E96402500D5DE3D /* TranslationAnimationController.swift in Sources */,
 				E28BA98D1E96402500D5DE3D /* StatusTextFieldNibView.swift in Sources */,
 				E28BA9961E96402500D5DE3D /* SegueHandlerType.swift in Sources */,
@@ -1229,7 +1198,6 @@
 			files = (
 				E2D6C7B8204BC3C300144DF6 /* AvatarContentTableViewCell.swift in Sources */,
 				E235410921A2EFE600DB9DA2 /* TileButton.swift in Sources */,
-				E28BA9FA1E964D4500D5DE3D /* MorphTableViewController.swift in Sources */,
 				E29BD11E2186C28A000D3176 /* CenteredTableViewCell.swift in Sources */,
 				E22FEA7321A2D69A000DB707 /* BackgroundNavigationController.swift in Sources */,
 				A1BD33B91EEAC9A400D217F6 /* DynamicCellDemoViewController.swift in Sources */,
