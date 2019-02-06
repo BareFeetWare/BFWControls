@@ -11,7 +11,7 @@ import UIKit
 
 public extension UIViewController {
     
-    public func canPerformSegue(identifier: String) -> Bool {
+    func canPerformSegue(identifier: String) -> Bool {
         var can = false
         if let templates = self.value(forKey: "storyboardSegueTemplates") as? NSArray
         {

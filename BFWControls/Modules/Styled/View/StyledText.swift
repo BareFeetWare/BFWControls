@@ -173,7 +173,7 @@ fileprivate extension Bundle {
         return path
     }
     
-    fileprivate func urls(forResourcesWithExtensions fileExtensions: [String]) -> [URL] {
+    func urls(forResourcesWithExtensions fileExtensions: [String]) -> [URL] {
         return fileExtensions.reduce([URL]()) { (fileURLs, fileExtension) in
             let moreURLs = urls(
                 forResourcesWithExtension: fileExtension,
@@ -295,7 +295,7 @@ public extension UIFont {
         return font
     }
 
-    public func addingSymbolicTraits(_ symbolicTraits: UIFontDescriptor.SymbolicTraits) -> UIFont {
+    func addingSymbolicTraits(_ symbolicTraits: UIFontDescriptor.SymbolicTraits) -> UIFont {
         guard !symbolicTraits.isEmpty
             else { return self }
         var combinedTraits = fontDescriptor.symbolicTraits

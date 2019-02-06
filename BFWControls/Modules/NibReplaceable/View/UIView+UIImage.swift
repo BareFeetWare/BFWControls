@@ -12,7 +12,7 @@ import UIKit
 public extension UIView {
     
     // Based on https://gist.github.com/stakes/de024878ce3cc43d7ee6
-    public func image(size: CGSize? = nil) -> UIImage {
+    func image(size: CGSize? = nil) -> UIImage {
         if #available(iOS 10.0, *) {
             let renderer = UIGraphicsImageRenderer(size: size ?? bounds.size)
             return renderer.image { rendererContext in

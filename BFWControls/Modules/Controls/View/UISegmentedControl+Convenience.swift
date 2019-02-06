@@ -10,7 +10,8 @@
 import UIKit
 
 public extension UISegmentedControl {
-    public var selectedTitle: String {
+    
+    var selectedTitle: String {
         get {
             return titleForSegment(at: selectedSegmentIndex)!
         }
@@ -20,4 +21,5 @@ public extension UISegmentedControl {
             selectedSegmentIndex = index
         }
     }
+    
 }

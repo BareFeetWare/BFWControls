@@ -21,17 +21,17 @@ public extension DefaultsHandlerType where Key.RawValue == String {
     
     // MARK: - Set/Remove
     
-    public static func setValue(_ value: Any?, for key: Key) {
+    static func setValue(_ value: Any?, for key: Key) {
         defaults.setValue(value, forKey: key.rawValue)
     }
     
-    public static func removeObject(for key: Key) {
+    static func removeObject(for key: Key) {
         defaults.removeObject(forKey: key.rawValue)
     }
     
     // MARK: - Get
     
-    public static func value(for key: Key) -> Any? {
+    static func value(for key: Key) -> Any? {
         return defaults.value(forKey: key.rawValue) as Any?
     }
     
@@ -39,11 +39,11 @@ public extension DefaultsHandlerType where Key.RawValue == String {
         return defaults.array(forKey: key.rawValue)
     }
     
-    public static func bool(for key: Key) -> Bool {
+    static func bool(for key: Key) -> Bool {
         return defaults.bool(forKey: key.rawValue)
     }
     
-    public static func date(for key: Key) -> Date? {
+    static func date(for key: Key) -> Date? {
         return defaults.value(forKey: key.rawValue) as? Date
     }
     
@@ -51,7 +51,7 @@ public extension DefaultsHandlerType where Key.RawValue == String {
         return defaults.data(forKey: key.rawValue)
     }
     
-    public static func double(for key: Key) -> Double? {
+    static func double(for key: Key) -> Double? {
         return defaults.double(forKey: key.rawValue)
     }
     
@@ -59,7 +59,7 @@ public extension DefaultsHandlerType where Key.RawValue == String {
         return defaults.value(forKey: key.rawValue) as? Int
     }
     
-    public static func string(for key: Key) -> String? {
+    static func string(for key: Key) -> String? {
         return defaults.string(forKey: key.rawValue)
     }
     

@@ -58,11 +58,11 @@ public extension NibReplaceable {
     // MARK: - Protocol variable defaults that can be overridden
     
     /// Override to give different nib for each cell style or for a particular instance
-    public var nibName: String? {
+    var nibName: String? {
         return nil
     }
     
-    public var placeholderViews: [UIView] {
+    var placeholderViews: [UIView] {
         return []
     }
     
@@ -111,7 +111,7 @@ public extension NibReplaceable {
         return classNameComponents.last!
     }
     
-    public static var sizeFromNib: CGSize? {
+    static var sizeFromNib: CGSize? {
         let size: CGSize?
         let key = NSStringFromClass(self)
         if let reuseSize = Storage.sizeForKeyDictionary[key] {
@@ -144,14 +144,14 @@ public extension NibReplaceable {
     
     // MARK: - Instance functions
     
-    public func replacedByNibView(fromNibNamed nibName: String? = nil, in bundle: Bundle? = nil) -> Self? {
+    func replacedByNibView(fromNibNamed nibName: String? = nil, in bundle: Bundle? = nil) -> Self? {
         let nibView = type(of: self).nibView(fromNibNamed: nibName, in: bundle)
         nibView?.copyProperties(from: self)
         nibView?.copyConstraints(from: self)
         return nibView
     }
     
-    public func isPlaceholderString(_ string: String?) -> Bool {
+    func isPlaceholderString(_ string: String?) -> Bool {
         return string != nil && string!.isPlaceholder
     }
     

@@ -59,7 +59,7 @@ public extension Adjustable {
         return inset
     }
     
-    public func stickHeader() {
+    func stickHeader() {
         if let stickyView = tableHeaderView {
             stickyView.frame.origin.y = max(0, contentOffset.y + bestContentInset.top)
             // Keep on top, so cells scroll underneath it:
@@ -67,7 +67,7 @@ public extension Adjustable {
         }
     }
     
-    public func stickFooter() {
+    func stickFooter() {
         if let stickyView = tableFooterView {
             stickyView.frame.origin.y = bounds.size.height + contentOffset.y - stickyView.bounds.size.height - bestContentInset.bottom
             // Keep on top, so cells scroll underneath it:

@@ -27,7 +27,7 @@ public extension UITableViewCell {
     }
     
     /// Hides the separator in a cell in a table view that is showing cell separators.
-    @IBInspectable public var isSeparatorHidden: Bool {
+    @IBInspectable var isSeparatorHidden: Bool {
         get {
             return separatorInset.right == hiddenInsetRight
         }
@@ -36,11 +36,11 @@ public extension UITableViewCell {
         }
     }
 
-    public func updateIsSeparatorHidden() {
+    func updateIsSeparatorHidden() {
         update(isSeparatorHidden: isSeparatorHidden)
     }
     
-    public func update(isSeparatorHidden: Bool) {
+    func update(isSeparatorHidden: Bool) {
         if isSeparatorHidden {
             if separatorInset.right != hiddenInsetRight {
                 separatorInset = hiddenInset

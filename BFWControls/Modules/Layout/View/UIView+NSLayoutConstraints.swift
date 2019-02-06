@@ -11,28 +11,28 @@ import UIKit
 
 public extension UIView {
         
-    public func pinToSuperviewEdges() {
+    func pinToSuperviewEdges() {
         pin(to: superview!,
             attributes: [.left, .right, .top, .bottom],
             secondAttributes: [.left, .right, .top, .bottom]
         )
     }
     
-    public func pinToSuperviewMargins() {
+    func pinToSuperviewMargins() {
         pin(to: superview!,
             attributes: [.left, .right, .top, .bottom],
             secondAttributes: [.leftMargin, .rightMargin, .topMargin, .bottomMargin]
         )
     }
     
-    public func pinToSuperview(with inset: CGFloat) {
+    func pinToSuperview(with inset: CGFloat) {
         pin(to: superview!,
             attributes: [.left, .right, .top, .bottom],
             secondAttributes: [.left, .right, .top, .bottom],
             constants: [inset, -inset, inset, -inset])
     }
     
-    public func pin(to view: UIView,
+    func pin(to view: UIView,
                     attributes: [NSLayoutConstraint.Attribute],
                     secondAttributes: [NSLayoutConstraint.Attribute],
                     constants: [CGFloat] = [0, 0, 0, 0])
@@ -54,7 +54,7 @@ public extension UIView {
         translatesAutoresizingMaskIntoConstraints = false
     }
     
-    public func activateOnlyConstraintsWithFirstVisible(in views: [UIView]) {
+    func activateOnlyConstraintsWithFirstVisible(in views: [UIView]) {
         var firstMatchedView: UIView?
         for view in views {
             let isFirstMatch = firstMatchedView == nil && !(view.isHidden)
@@ -69,13 +69,13 @@ public extension UIView {
         }
     }
     
-    public func constraints(with view: UIView) -> [NSLayoutConstraint]? {
+    func constraints(with view: UIView) -> [NSLayoutConstraint]? {
         return commonAncestor(with: view)?.constraints.filter { constraint in
             constraint.isBetween(item: self, otherItem: view)
         }
     }
     
-    public var siblingAndSuperviewConstraints: [NSLayoutConstraint]? {
+    var siblingAndSuperviewConstraints: [NSLayoutConstraint]? {
         return superview?.constraints.filter { constraint in
             var include = false
             if let firstItem = constraint.firstItem as? NSObject,
@@ -88,7 +88,7 @@ public extension UIView {
         }
     }
     
-    public func deactivateConstraintsIfHidden() {
+    func deactivateConstraintsIfHidden() {
         if let siblingAndSuperviewConstraints = siblingAndSuperviewConstraints {
             if isHidden {
                 NSLayoutConstraint.deactivate(siblingAndSuperviewConstraints)
@@ -98,7 +98,7 @@ public extension UIView {
         }
     }
     
-    public func addConstraint(toBypass sibling: UIView) {
+    func addConstraint(toBypass sibling: UIView) {
         if let superview = superview,
             superview == sibling.superview,
             let gapConstraint: NSLayoutConstraint = sibling
@@ -125,7 +125,7 @@ public extension UIView {
         }
     }
     
-    public var widthMultiplier: CGFloat? {
+    var widthMultiplier: CGFloat? {
         get {
             return widthConstraint?.multiplier
         }
@@ -140,7 +140,7 @@ public extension UIView {
         }
     }
     
-    public var widthConstraint: NSLayoutConstraint? {
+    var widthConstraint: NSLayoutConstraint? {
         get {
             var widthConstraint: NSLayoutConstraint?
             if let superview = superview {

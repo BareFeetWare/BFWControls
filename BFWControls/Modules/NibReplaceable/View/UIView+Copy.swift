@@ -112,7 +112,7 @@ extension UIView: Morphable {
 
 public extension UILabel {
 
-    public override func copyProperties(from view: UIView) {
+    override func copyProperties(from view: UIView) {
         super.copyProperties(from: view)
         guard let label = view as? UILabel
             else { return }
@@ -138,7 +138,7 @@ public extension UILabel {
         tintColor = label.tintColor
     }
     
-    public override func copyNonDefaultProperties(from view: UIView) {
+    override func copyNonDefaultProperties(from view: UIView) {
         super.copyNonDefaultProperties(from: view)
         guard let label = view as? UILabel
             else { return }
@@ -153,7 +153,7 @@ public extension UILabel {
 
 public extension UIImageView {
 
-    public override func copyProperties(from view: UIView) {
+    override func copyProperties(from view: UIView) {
         super.copyProperties(from: view)
         guard let imageView = view as? UIImageView
             else { return }
@@ -163,7 +163,7 @@ public extension UIImageView {
         animationImages = imageView.animationImages
     }
     
-    public override func copyNonDefaultProperties(from view: UIView) {
+    override func copyNonDefaultProperties(from view: UIView) {
         super.copyNonDefaultProperties(from: view)
         guard let imageView = view as? UIImageView
             else { return }

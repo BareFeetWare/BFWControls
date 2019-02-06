@@ -11,15 +11,15 @@ import Foundation
 
 public extension NSAttributedString {
     
-    public func keepingTraitsAndColorButAdding(attributes: TextAttributes) -> NSAttributedString {
+    func keepingTraitsAndColorButAdding(attributes: TextAttributes) -> NSAttributedString {
         return addingAttributes(attributes, isKeepingTraits: true, isKeepingColor: true)
     }
     
-    public func keepingTraitsButAdding(attributes: TextAttributes) -> NSAttributedString {
+    func keepingTraitsButAdding(attributes: TextAttributes) -> NSAttributedString {
         return addingAttributes(attributes, isKeepingTraits: true, isKeepingColor: false)
     }
 
-    public func addingAttributes(
+    func addingAttributes(
         _ attributes: TextAttributes,
         isKeepingTraits: Bool = false,
         isKeepingColor: Bool = false

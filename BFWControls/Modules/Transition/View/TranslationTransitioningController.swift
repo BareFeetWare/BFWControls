@@ -77,7 +77,7 @@ open class TranslationTransitioningController: NSObject, UIViewControllerTransit
 
 public extension UIViewController {
     
-    @IBOutlet public var transitioningDelegateOutlet: NSObject? {
+    @IBOutlet var transitioningDelegateOutlet: NSObject? {
         get {
             return transitioningDelegate as? NSObject
         }

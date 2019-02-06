@@ -9,7 +9,7 @@
 
 public extension UIViewController {
         
-    public var frontViewController: UIViewController {
+    var frontViewController: UIViewController {
         let frontViewController = presentedViewController
             ?? navigationController?.topViewController
             ?? (self as? UINavigationController)?.topViewController
@@ -19,7 +19,7 @@ public extension UIViewController {
             : frontViewController.frontViewController
     }
 
-    public func unwindToSelf(animated: Bool, completion: (() -> Void)? = nil) {
+    func unwindToSelf(animated: Bool, completion: (() -> Void)? = nil) {
         if let _ = presentedViewController {
             dismiss(animated: animated) { [weak self] in
                 guard let strongSelf = self

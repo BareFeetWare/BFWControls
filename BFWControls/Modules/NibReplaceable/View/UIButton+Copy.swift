@@ -11,7 +11,7 @@ import UIKit
 
 public extension UIButton {
     
-    @objc public func copySubviewProperties(from sourceButton: UIButton) {
+    @objc func copySubviewProperties(from sourceButton: UIButton) {
         // TODO: Cycle through all state combinations?
         for state: UIControl.State in [.normal, .highlighted, .selected] {
             if let title = sourceButton.attributedTitle(for: state) {

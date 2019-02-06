@@ -11,11 +11,11 @@ import UIKit
 
 public extension UIViewController {
     
-    @IBAction public func dismiss(_ sender: UIControl?) {
+    @IBAction func dismiss(_ sender: UIControl?) {
         dismiss(animated: true) {}
     }
     
-    @objc public func removeDismiss() {
+    @objc func removeDismiss() {
         // TODO: Cater for multiple leftBarButtonItems.
         if let selector = navigationItem.leftBarButtonItem?.action,
             selector == #selector(UIViewController.dismiss(_:))
@@ -24,11 +24,11 @@ public extension UIViewController {
         }
     }
     
-    public var firstViewController: UIViewController {
+    var firstViewController: UIViewController {
         return (self as? UINavigationController)?.viewControllers.first ?? self
     }
     
-    public var readiedForPush: UIViewController {
+    var readiedForPush: UIViewController {
         removeDismiss()
         return firstViewController
     }

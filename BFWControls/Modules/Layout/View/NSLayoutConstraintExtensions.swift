@@ -11,7 +11,7 @@ import UIKit
 
 public extension NSLayoutConstraint {
     
-    public func constraint(with multiplier: CGFloat) -> NSLayoutConstraint {
+    func constraint(with multiplier: CGFloat) -> NSLayoutConstraint {
         let constraint = NSLayoutConstraint(
             item: firstItem!,
             attribute: firstAttribute,
@@ -24,7 +24,7 @@ public extension NSLayoutConstraint {
         return constraint
     }
     
-    public func constraint(byReplacing oldItems: [NSObject], with newItems: [NSObject]) -> NSLayoutConstraint {
+    func constraint(byReplacing oldItems: [NSObject], with newItems: [NSObject]) -> NSLayoutConstraint {
         let newFirstItem: AnyObject
         if let firstIndex = oldItems.index(of: firstItem as! NSObject) {
             newFirstItem = newItems[firstIndex]
@@ -51,7 +51,7 @@ public extension NSLayoutConstraint {
         return constraint
     }
     
-    public func isBetween(item: NSObject, otherItem: NSObject) -> Bool {
+    func isBetween(item: NSObject, otherItem: NSObject) -> Bool {
         var isBetween = false
         if let firstItem = firstItem as? NSObject,
             let secondItem = secondItem as? NSObject
@@ -62,7 +62,7 @@ public extension NSLayoutConstraint {
         return isBetween
     }
     
-    public func attribute(for view: AnyObject) -> NSLayoutConstraint.Attribute? {
+    func attribute(for view: AnyObject) -> NSLayoutConstraint.Attribute? {
         let attribute: NSLayoutConstraint.Attribute?
         if let firstItem = firstItem,
             firstItem === view
@@ -78,7 +78,7 @@ public extension NSLayoutConstraint {
         return attribute
     }
     
-    public func otherItem(if view: UIView) -> AnyObject? {
+    func otherItem(if view: UIView) -> AnyObject? {
         var otherItem: AnyObject?
         if firstItem as? UIView == view {
             otherItem = secondItem
@@ -88,7 +88,7 @@ public extension NSLayoutConstraint {
         return otherItem
     }
     
-    public func onlyIncludes(items: [NSObject]) -> Bool {
+    func onlyIncludes(items: [NSObject]) -> Bool {
         var include = false
         if let firstItem = firstItem as? NSObject,
             items.contains(firstItem)

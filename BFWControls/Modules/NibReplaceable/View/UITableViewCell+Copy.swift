@@ -11,7 +11,7 @@ import UIKit
 
 public extension UITableViewCell {
     
-    @objc public func copySubviewProperties(from sourceCell: UITableViewCell) {
+    @objc func copySubviewProperties(from sourceCell: UITableViewCell) {
         if let sourceLabel = sourceCell.textLabel {
             textLabel?.copyNonDefaultProperties(from: sourceLabel)
         }

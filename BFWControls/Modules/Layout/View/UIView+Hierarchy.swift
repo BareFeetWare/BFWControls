@@ -11,7 +11,7 @@ import UIKit
 
 public extension UIView {
     
-    public func commonAncestor(with view: UIView) -> UIView? {
+    func commonAncestor(with view: UIView) -> UIView? {
         var ancestor: UIView?
         if isDescendant(of: view) {
             ancestor = view
@@ -29,7 +29,7 @@ public extension UIView {
         return ancestor
     }
     
-    public func descendant(inOtherAncestor otherAncestorView: UIView,
+    func descendant(inOtherAncestor otherAncestorView: UIView,
                            matchingDescendant descendantView: UIView) -> UIView?
     {
         guard let indicies = descendantView.hierarchyIndexArray(in: self)
@@ -46,7 +46,7 @@ public extension UIView {
         return subview
     }
     
-    public func hierarchyIndexArray(in ancestorView: UIView) -> [Int]? {
+    func hierarchyIndexArray(in ancestorView: UIView) -> [Int]? {
         var indicies: [Int]? = []
         var subview: UIView? = self
         while subview != ancestorView {

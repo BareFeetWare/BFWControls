@@ -72,18 +72,18 @@ public protocol SegueHandlerType {
 
 public extension SegueHandlerType where Self: UIViewController, SegueIdentifier.RawValue == String {
     
-    public func performSegue(_ segueIdentifier: SegueIdentifier, sender: Any?) {
+    func performSegue(_ segueIdentifier: SegueIdentifier, sender: Any?) {
         performSegue(withIdentifier: segueIdentifier.rawValue, sender: sender)
     }
     
     /// To perform the segue after already queued UI actions. For instance, use in an unwind segue to perform a forward segue after viewDidAppear has finished.
-    public func performOnMainQueueSegue(_ segueIdentifier: SegueIdentifier, sender: Any?) {
+    func performOnMainQueueSegue(_ segueIdentifier: SegueIdentifier, sender: Any?) {
         DispatchQueue.main.async { [weak self] in
             self?.performSegue(segueIdentifier, sender: sender)
         }
     }
     
-    public func segueIdentifier(forIdentifier identifier: String?) -> SegueIdentifier? {
+    func segueIdentifier(forIdentifier identifier: String?) -> SegueIdentifier? {
         return identifier.flatMap { SegueIdentifier(rawValue: $0) }
     }
     

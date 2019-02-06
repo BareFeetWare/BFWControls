@@ -13,15 +13,15 @@ public protocol Overlay where Self: UIView {}
 
 public extension UIView {
     
-    public func firstSubview<T: UIView>(ofType: T.Type) -> T? {
+    func firstSubview<T: UIView>(ofType: T.Type) -> T? {
         return subviews.first { $0 is T } as? T
     }
     
-    public var overlay: (UIView & Overlay)? {
+    var overlay: (UIView & Overlay)? {
         return subviews.first { $0 is Overlay } as? UIView & Overlay
     }
     
-    public func addOneOverlay(_ overlay: (UIView & Overlay)?) {
+    func addOneOverlay(_ overlay: (UIView & Overlay)?) {
         subviews.filter { $0 is Overlay && type(of: $0) != type(of: overlay) }
             .forEach { $0.removeFromSuperview() }
         if let overlay = overlay, self.overlay == nil {
@@ -30,7 +30,7 @@ public extension UIView {
         }
     }
     
-    public func addOneOverlay<T: Overlay>(ofType overlayType: T.Type?) {
+    func addOneOverlay<T: Overlay>(ofType overlayType: T.Type?) {
         subviews.filter { $0 is Overlay && type(of: $0) != overlayType }
             .forEach { $0.removeFromSuperview() }
         if overlayType != nil, self.overlay == nil {
@@ -40,12 +40,12 @@ public extension UIView {
         }
     }
     
-    @objc public func removeOverlays() {
+    @objc func removeOverlays() {
         subviews.filter { $0 is Overlay }
             .forEach { $0.removeFromSuperview() }
     }
     
-    public func addOneOverlay(_ overlay: UIView & Overlay, timeInterval: TimeInterval) {
+    func addOneOverlay(_ overlay: UIView & Overlay, timeInterval: TimeInterval) {
         addOneOverlay(overlay)
         let timer: Timer
         if #available(iOS 10.0, *) {

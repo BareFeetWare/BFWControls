@@ -13,8 +13,8 @@ import UIKit
 public extension UIStackView {
     
     /// Returns a string containing the stack view's labels' text, using the specified separators.
-    public func textJoinedFromSubviews(columnSeparator: String = ":",
-                                       rowSeparator: String = ",") -> String?
+    func textJoinedFromSubviews(columnSeparator: String = ":",
+                                rowSeparator: String = ",") -> String?
     {
         return subviews
             .map {
@@ -27,9 +27,9 @@ public extension UIStackView {
     }
     
     /// Updates the stack view's subviews so each label contains a component when the string is separated using the specified separators.
-    public func updateSubviews(fromString string: String,
-                               columnSeparator: String = ":",
-                               rowSeparator: String = ",")
+    func updateSubviews(fromString string: String,
+                        columnSeparator: String = ":",
+                        rowSeparator: String = ",")
     {
         let rowStrings = string.components(separatedBy: rowSeparator)
         let oldRowCount = subviews.count

@@ -23,7 +23,7 @@ open class ReplaceInNavigationSegue: UIStoryboardSegue {
 
 public extension UIViewController {
     
-    public func replaceInNavigation(with replacerViewController: UIViewController) {
+    func replaceInNavigation(with replacerViewController: UIViewController) {
         guard var viewControllers = navigationController?.viewControllers
             else { return }
         viewControllers[viewControllers.count - 1] = replacerViewController.readiedForPush

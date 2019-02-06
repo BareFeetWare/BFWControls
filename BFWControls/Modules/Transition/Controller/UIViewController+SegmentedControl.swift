@@ -11,7 +11,7 @@ import UIKit
 
 public extension UIViewController {
     
-    @IBAction public func switchTabBarItem(segmentedControl: UISegmentedControl) {
+    @IBAction func switchTabBarItem(segmentedControl: UISegmentedControl) {
         guard let tabBarController = (self as? UITabBarController)
             ?? children.first as? UITabBarController
             ?? self.tabBarController

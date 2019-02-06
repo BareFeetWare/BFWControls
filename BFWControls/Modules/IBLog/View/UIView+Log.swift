@@ -11,7 +11,7 @@ import UIKit
 
 public extension Optional where Wrapped: UIView {
     
-    public var shortDescription: String {
+    var shortDescription: String {
         guard let self = self
             else { return "nil" }
         return self.shortDescription
@@ -21,13 +21,13 @@ public extension Optional where Wrapped: UIView {
 
 public extension UIView {
     
-    @objc public var shortDescription: String {
+    @objc var shortDescription: String {
         let superviewConstraints = superview.flatMap { constraints(with: $0) }
         let constraintsString: String = superviewConstraints.map { String($0.count) } ?? "nil"
         return "\(type(of: self)) \(Unmanaged.passUnretained(self).toOpaque()); frame = \(self.frame); constraints to superview: \(constraintsString)"
     }
     
-    public func recursiveDescription(indent: Int = 0) -> String {
+    func recursiveDescription(indent: Int = 0) -> String {
         return String(repeating: "  ", count: indent)
             + "\(shortDescription)\n"
             + subviews
@@ -39,7 +39,7 @@ public extension UIView {
 
 public extension UILabel {
     
-    public override var shortDescription: String {
+    override var shortDescription: String {
         return super.shortDescription + "; text = \(self.text ?? "nil")"
     }
     
@@ -47,7 +47,7 @@ public extension UILabel {
 
 public extension UIImageView {
     
-    public override var shortDescription: String {
+    override var shortDescription: String {
         return super.shortDescription + "; image = \(image == nil ? "nil" : "not nil")"
     }
     
