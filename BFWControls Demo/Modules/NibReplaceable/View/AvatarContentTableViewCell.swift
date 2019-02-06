@@ -12,7 +12,7 @@ import BFWControls
 
 @IBDesignable class AvatarContentTableViewCell: NibContentTableViewCell {
     
-    override func contentSubview(for style: UITableViewCellStyle) -> UIView {
+    override func contentSubview(for style: UITableViewCell.CellStyle) -> UIView {
         return AvatarCellView()
     }
     
