@@ -26,7 +26,15 @@ Pod::Spec.new do |s|
   #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description  = <<-DESC
-  BFWControls contains many features to simplify building apps visually, especially when using Interface Builder.
+A framework to simplify building apps using Interface Builder.
+
+Some useful resources:
+
+- "Build an App Like Lego" tutorials - Steps through building an app visually, by building components, using BFWControls' NibTableViewCell. Assumes no coding or Xcode knowledge. https://medium.com/@barefeettom/build-app-lego-tutorial-1-58de8e84798d
+- Video of presentation at CocoaHeads Sydney (16 minutes): http://www.barefeetware.com/presentation/20181127_CocoaHeads_Sydney.mp4
+- Video of presentation at CocoaHeads New York City (18 minutes): http://www.barefeetware.com/presentation/20180809_Xcode_Lego_NYCCocoaHeads.mp4
+
+BFWControls contains many features to simplify building apps visually, especially when using Interface Builder. Features include:
 - NibReplaceable protocol with NibView, NibTableViewCell classes:
     Loading xib layouts into subclasses with no extra code.
 - Adjustable protocol for UITableView:
