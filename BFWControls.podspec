@@ -16,8 +16,8 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "BFWControls"
-  s.version      = "3.0.0"
-  s.summary      = "Common and interesting visual elements and controls."
+  s.version      = "3.0.1"
+  s.summary      = "A framework to simplify building apps using Interface Builder."
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -25,24 +25,25 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
-NibReplaceable protocol with NibView, NibTableViewCell classes:
+  BFWControls contains many features to simplify building apps visually, especially when using Interface Builder.
+- NibReplaceable protocol with NibView, NibTableViewCell classes:
     Loading xib layouts into subclasses with no extra code.
-Adjustable protocol for UITableView:
+- Adjustable protocol for UITableView:
     Sticky header and footer that remain stationery while the table scrolls.
-HidingStackView:
+- HidingStackView:
     A stack view that hides any subviews that have invisible contents (eg UILabel.text == nil and UIImageView.image == nil) or a UIStackView subview that has all of its subviews hidden. When a stack view has a hidden subview, it removes it from the arrangedSubviews, so the space it occupied is freed, essentially shrinking any unused space.
-UIView+NSLayoutConstraint:
+- UIView+NSLayoutConstraint:
     Convenient AutoLayout functions like pinToSuperviewEdges(), pinToSuperview(with inset: CGFloat)
-StaticTableViewController:
+- StaticTableViewController:
     excludedCells: easy dynamic show/hide cells and sections
-SegueHandlerType protocol:
+- SegueHandlerType protocol:
     enum SegueIdentifier
-UIApplication:
+- UIApplication:
     unwindToBackmostViewController()
-UIViewController+Unwind
+- UIViewController+Unwind
     unwindToSelf()
     frontViewController
-DefaultsHandlerType protocol:
+- DefaultsHandlerType protocol:
     Expose UserDefaults as named variables
                    DESC
 
