@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "BFWControls"
-  s.version      = "3.0.1"
+  s.version      = "3.0.2"
   s.summary      = "A framework to simplify building apps using Interface Builder."
 
   # This description is used to generate tags and improve search results.
@@ -24,6 +24,7 @@ Pod::Spec.new do |s|
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
+
   s.description  = <<-DESC
   BFWControls contains many features to simplify building apps visually, especially when using Interface Builder.
 - NibReplaceable protocol with NibView, NibTableViewCell classes:
@@ -47,7 +48,7 @@ Pod::Spec.new do |s|
     Expose UserDefaults as named variables
                    DESC
 
-  s.homepage     = "https://github.com/BareFeetWare/BFWControls"
+  s.homepage     = "https://bitbucket.org/BareFeetWare/BFWControls"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -84,7 +85,9 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
+
   s.platform     = :ios, "9.0"
+  s.swift_version = "4.2"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
@@ -113,7 +116,7 @@ Pod::Spec.new do |s|
   #s.source_files  = "Classes", "Classes/**/*.{h,m}"
   #s.exclude_files = "Classes/Exclude"
 
-  s.source_files  = "BFWControls"
+  s.source_files  = "BFWControls", "BFWControls/**/*.{swift,h,m}"
 
   # s.public_header_files = "Classes/**/*.h"
 
