@@ -31,6 +31,30 @@ import UIKit
         addConstraint(heightConstraint!)
     }
     
+    private var subviewFrames: [CGRect] {
+        var subviewFrames: [CGRect] = []
+        var startPoint = CGPoint.zero
+        var maxRowHeight = CGFloat(0.0)
+        for subview in subviews {
+            let subviewSize = subview.sizeThatFits(.noIntrinsicMetric)
+            var leftGap = startPoint.x == 0.0 ? 0.0 : gapWidth
+            let availableWidth = bounds.size.width - startPoint.x
+            if availableWidth < subviewSize.width + leftGap {
+                // Move to start of next row
+                startPoint.y += maxRowHeight + gapHeight
+                startPoint.x = 0.0
+                maxRowHeight = 0.0
+                leftGap = 0.0
+            }
+            maxRowHeight = max(maxRowHeight, subviewSize.height)
+            let subviewFrame = CGRect(origin: CGPoint(x: startPoint.x + leftGap, y: startPoint.y),
+                                      size: subviewSize)
+            subviewFrames.append(subviewFrame)
+            startPoint.x += leftGap + subviewSize.width
+        }
+        return subviewFrames
+    }
+    
     // MARK: - Init
     
     public override init(frame: CGRect) {
@@ -60,25 +84,8 @@ import UIKit
     }
     
     open override func layoutSubviews() {
-        var startPoint = CGPoint.zero
-        var maxRowHeight = CGFloat(0.0)
-        for subview in subviews {
-            subview.layoutIfNeeded()
-            var leftGap = startPoint.x == 0.0 ? 0.0 : gapWidth
-            let availableWidth = frame.size.width - startPoint.x
-            if availableWidth < subview.bounds.size.width + leftGap {
-                // Move to start of next row
-                startPoint.y += maxRowHeight + gapHeight
-                startPoint.x = 0.0
-                maxRowHeight = 0.0
-                leftGap = 0.0
-            }
-            subview.frame.origin.x = startPoint.x + leftGap
-            subview.frame.origin.y = startPoint.y
-            startPoint.x += leftGap + subview.bounds.size.width
-            maxRowHeight = max(maxRowHeight, subview.bounds.size.height)
-        }
-        heightConstraint?.constant = subviews.last?.frame.maxY ?? 0.0
+        zip(subviews, subviewFrames).forEach { $0.frame = $1 }
+        heightConstraint?.constant = subviewFrames.last?.maxY ?? 0.0
         super.layoutSubviews()
     }
     
