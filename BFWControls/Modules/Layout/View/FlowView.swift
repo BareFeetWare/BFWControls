@@ -31,14 +31,14 @@ import UIKit
         addConstraint(heightConstraint!)
     }
     
-    private var subviewFrames: [CGRect] {
+    private func subviewFramesThatFit(_ size: CGSize) -> [CGRect] {
         var subviewFrames: [CGRect] = []
         var startPoint = CGPoint.zero
         var maxRowHeight = CGFloat(0.0)
         for subview in subviews {
             let subviewSize = subview.sizeThatFits(.noIntrinsicMetric)
             var leftGap = startPoint.x == 0.0 ? 0.0 : gapWidth
-            let availableWidth = bounds.size.width - startPoint.x
+            let availableWidth = size.width - startPoint.x
             if availableWidth < subviewSize.width + leftGap {
                 // Move to start of next row
                 startPoint.y += maxRowHeight + gapHeight
@@ -84,6 +84,7 @@ import UIKit
     }
     
     open override func layoutSubviews() {
+        let subviewFrames = subviewFramesThatFit(bounds.size)
         zip(subviews, subviewFrames).forEach { $0.frame = $1 }
         heightConstraint?.constant = subviewFrames.last?.maxY ?? 0.0
         super.layoutSubviews()
