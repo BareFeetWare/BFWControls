@@ -16,20 +16,17 @@ import UIKit
     @IBInspectable var gapWidth: CGFloat = 0.0
     @IBInspectable var gapHeight: CGFloat = 0.0
     
-    private var heightConstraint: NSLayoutConstraint?
+    private lazy var heightConstraint: NSLayoutConstraint = {
+        NSLayoutConstraint(item: self,
+                           attribute: .height,
+                           relatedBy: .equal,
+                           toItem: nil,
+                           attribute: .height,
+                           multiplier: 1.0,
+                           constant: 100.0)
+    }()
     
     // MARK: - Functions
-    
-    func addHeightConstraint() {
-        heightConstraint = NSLayoutConstraint(item: self,
-                                              attribute: .height,
-                                              relatedBy: .equal,
-                                              toItem: nil,
-                                              attribute: .height,
-                                              multiplier: 1.0,
-                                              constant: 100.0)
-        addConstraint(heightConstraint!)
-    }
     
     private func subviewFramesThatFit(_ size: CGSize) -> [CGRect] {
         var subviewFrames: [CGRect] = []
@@ -55,23 +52,6 @@ import UIKit
         return subviewFrames
     }
     
-    // MARK: - Init
-    
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
-    }
-    
-    public required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        commonInit()
-    }
-    
-    private func commonInit() {
-        translatesAutoresizingMaskIntoConstraints = false
-        addHeightConstraint()
-    }
-    
     // MARK: - UIView
     
     open override var intrinsicContentSize: CGSize {
@@ -85,9 +65,10 @@ import UIKit
     
     open override func layoutSubviews() {
         let subviewFrames = subviewFramesThatFit(bounds.size)
-        zip(subviews, subviewFrames).forEach { $0.frame = $1 }
-        heightConstraint?.constant = subviewFrames.last?.maxY ?? 0.0
+        heightConstraint.constant = subviewFrames.last?.maxY ?? 0.0
+        heightConstraint.isActive = true
         super.layoutSubviews()
+        zip(subviews, subviewFrames).forEach { $0.frame = $1 }
     }
     
 }
