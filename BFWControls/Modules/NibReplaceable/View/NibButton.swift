@@ -25,7 +25,7 @@ import UIKit
     
     // MARK: - NibReplaceable
     
-    @IBInspectable open var nibName: String?
+    open var nibName: String?
     
     open var placeholderViews: [UIView] {
         return [titleLabel].compactMap { $0 }

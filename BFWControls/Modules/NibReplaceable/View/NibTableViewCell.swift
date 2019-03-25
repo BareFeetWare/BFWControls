@@ -13,7 +13,7 @@ import UIKit
     
     // MARK: - NibReplaceable
     
-    @IBInspectable open var nibName: String?
+    open var nibName: String?
     
     open var placeholderViews: [UIView] {
         return [textLabel, detailTextLabel, tertiaryTextLabel, actionView].compactMap { $0 }

@@ -11,7 +11,7 @@ open class NibView: BFWNibView, NibReplaceable {
     
     // MARK: - NibReplaceable
     
-    @IBInspectable open var nibName: String?
+    open var nibName: String?
     
     open var placeholderViews: [UIView] {
         return []
