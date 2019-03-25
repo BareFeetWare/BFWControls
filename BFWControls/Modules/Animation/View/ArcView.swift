@@ -158,6 +158,7 @@ private extension UIView.AnimationCurve {
         case .easeIn: return .easeIn
         case .easeOut: return .easeOut
         case .easeInOut: return .easeInEaseOut
+        @unknown default: fatalError("Unknown UIView.AnimationCurve: \(self)")
         }
     }
     

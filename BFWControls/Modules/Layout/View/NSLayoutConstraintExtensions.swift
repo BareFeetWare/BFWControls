@@ -26,14 +26,14 @@ public extension NSLayoutConstraint {
     
     func constraint(byReplacing oldItems: [NSObject], with newItems: [NSObject]) -> NSLayoutConstraint {
         let newFirstItem: AnyObject
-        if let firstIndex = oldItems.index(of: firstItem as! NSObject) {
+        if let firstIndex = oldItems.firstIndex(of: firstItem as! NSObject) {
             newFirstItem = newItems[firstIndex]
         } else {
             newFirstItem = firstItem!
         }
         let newSecondItem: AnyObject?
         if let secondItem = secondItem,
-            let secondIndex = oldItems.index(of: secondItem as! NSObject)
+            let secondIndex = oldItems.firstIndex(of: secondItem as! NSObject)
         {
             newSecondItem = newItems[secondIndex]
         } else {

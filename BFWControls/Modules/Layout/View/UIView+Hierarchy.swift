@@ -50,7 +50,7 @@ public extension UIView {
         var indicies: [Int]? = []
         var subview: UIView? = self
         while subview != ancestorView {
-            if let index = subview?.superview?.subviews.index(of: subview!) {
+            if let index = subview?.superview?.subviews.firstIndex(of: subview!) {
                 indicies?.append(index)
                 subview = subview?.superview
             } else {

@@ -19,7 +19,7 @@ import UIKit
     //MARK: Accessors
     open var blurredImage: UIImage? {
         guard let subviews = superview?.subviews,
-            let previousIndex = subviews.index(of: self).map({ $0 - 1 }),
+            let previousIndex = subviews.firstIndex(of: self).map({ $0 - 1 }),
             subviews.indices.contains(previousIndex)
             else { return nil }
         let contentImage = UIImage.snapshot(of: subviews[previousIndex],
