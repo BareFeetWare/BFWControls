@@ -127,6 +127,7 @@
 		E2C75D3822786B31009F163C /* Bundle+Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C75D3722786B31009F163C /* Bundle+Resources.swift */; };
 		E2C75D3A22790C5B009F163C /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C75D3922790C5B009F163C /* UIColor+Hex.swift */; };
 		E2C75D3C22790D30009F163C /* UIFont+Weight.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C75D3B22790D30009F163C /* UIFont+Weight.swift */; };
+		E2C75D3E2279120B009F163C /* UIFont+Chain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C75D3D2279120A009F163C /* UIFont+Chain.swift */; };
 		E2D4D3D5205A4734004AE487 /* PushFirstSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D4D3D4205A4734004AE487 /* PushFirstSegue.swift */; };
 		E2D6C7B8204BC3C300144DF6 /* AvatarContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D6C7B7204BC3C300144DF6 /* AvatarContentTableViewCell.swift */; };
 		E2D775CA2277FD940010BBE9 /* DemoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D775C92277FD940010BBE9 /* DemoTableView.swift */; };
@@ -270,6 +271,7 @@
 		E2C75D3722786B31009F163C /* Bundle+Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Resources.swift"; sourceTree = "<group>"; };
 		E2C75D3922790C5B009F163C /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		E2C75D3B22790D30009F163C /* UIFont+Weight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Weight.swift"; sourceTree = "<group>"; };
+		E2C75D3D2279120A009F163C /* UIFont+Chain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Chain.swift"; sourceTree = "<group>"; };
 		E2D4D3D4205A4734004AE487 /* PushFirstSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushFirstSegue.swift; sourceTree = "<group>"; };
 		E2D6C7B7204BC3C300144DF6 /* AvatarContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarContentTableViewCell.swift; sourceTree = "<group>"; };
 		E2D775C92277FD940010BBE9 /* DemoTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTableView.swift; sourceTree = "<group>"; };
@@ -631,6 +633,7 @@
 				E28BA9561E96402500D5DE3D /* StyledText.swift */,
 				E28BA9541E96402500D5DE3D /* TextAttributes.swift */,
 				E2C75D3922790C5B009F163C /* UIColor+Hex.swift */,
+				E2C75D3D2279120A009F163C /* UIFont+Chain.swift */,
 				E2C75D35227869F3009F163C /* UIFont+Register.swift */,
 				E2C75D3B22790D30009F163C /* UIFont+Weight.swift */,
 			);
@@ -1206,6 +1209,7 @@
 				E28BA9801E96402500D5DE3D /* PileView.swift in Sources */,
 				E28BA99B1E96402500D5DE3D /* TranslationAnimationController.swift in Sources */,
 				E2C75D3C22790D30009F163C /* UIFont+Weight.swift in Sources */,
+				E2C75D3E2279120B009F163C /* UIFont+Chain.swift in Sources */,
 				E28BA98D1E96402500D5DE3D /* StatusTextFieldNibView.swift in Sources */,
 				E28BA9961E96402500D5DE3D /* SegueHandlerType.swift in Sources */,
 				E24682211F24820B007285DB /* ShadableView.swift in Sources */,
