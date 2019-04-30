@@ -123,6 +123,10 @@
 		E2A87BCA1EFEA2F80069E41F /* Shadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A87BC91EFEA2F80069E41F /* Shadable.swift */; };
 		E2B3E5841F26EA5C002539E6 /* ReplaceInNavigationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B3E5831F26EA5C002539E6 /* ReplaceInNavigationSegue.swift */; };
 		E2BFE8F71F296CD900BAEC16 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BFE8F61F296CD900BAEC16 /* CustomTableViewCell.swift */; };
+		E2C75D36227869F3009F163C /* UIFont+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C75D35227869F3009F163C /* UIFont+Register.swift */; };
+		E2C75D3822786B31009F163C /* Bundle+Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C75D3722786B31009F163C /* Bundle+Resources.swift */; };
+		E2C75D3A22790C5B009F163C /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C75D3922790C5B009F163C /* UIColor+Hex.swift */; };
+		E2C75D3C22790D30009F163C /* UIFont+Weight.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C75D3B22790D30009F163C /* UIFont+Weight.swift */; };
 		E2D4D3D5205A4734004AE487 /* PushFirstSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D4D3D4205A4734004AE487 /* PushFirstSegue.swift */; };
 		E2D6C7B8204BC3C300144DF6 /* AvatarContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D6C7B7204BC3C300144DF6 /* AvatarContentTableViewCell.swift */; };
 		E2D775CA2277FD940010BBE9 /* DemoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D775C92277FD940010BBE9 /* DemoTableView.swift */; };
@@ -262,6 +266,10 @@
 		E2A87BC91EFEA2F80069E41F /* Shadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shadable.swift; sourceTree = "<group>"; };
 		E2B3E5831F26EA5C002539E6 /* ReplaceInNavigationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplaceInNavigationSegue.swift; sourceTree = "<group>"; };
 		E2BFE8F61F296CD900BAEC16 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		E2C75D35227869F3009F163C /* UIFont+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Register.swift"; sourceTree = "<group>"; };
+		E2C75D3722786B31009F163C /* Bundle+Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Resources.swift"; sourceTree = "<group>"; };
+		E2C75D3922790C5B009F163C /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		E2C75D3B22790D30009F163C /* UIFont+Weight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Weight.swift"; sourceTree = "<group>"; };
 		E2D4D3D4205A4734004AE487 /* PushFirstSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushFirstSegue.swift; sourceTree = "<group>"; };
 		E2D6C7B7204BC3C300144DF6 /* AvatarContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarContentTableViewCell.swift; sourceTree = "<group>"; };
 		E2D775C92277FD940010BBE9 /* DemoTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTableView.swift; sourceTree = "<group>"; };
@@ -610,7 +618,6 @@
 			isa = PBXGroup;
 			children = (
 				E28BA9521E96402500D5DE3D /* Model */,
-				E28BA9551E96402500D5DE3D /* View */,
 			);
 			path = Styled;
 			sourceTree = "<group>";
@@ -618,19 +625,16 @@
 		E28BA9521E96402500D5DE3D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E2C75D3722786B31009F163C /* Bundle+Resources.swift */,
 				E28BA9531E96402500D5DE3D /* Dictionary+StyledText.swift */,
 				E2037A99209815BB001E0BBA /* NSAttributedString+TextAttributes.swift */,
+				E28BA9561E96402500D5DE3D /* StyledText.swift */,
 				E28BA9541E96402500D5DE3D /* TextAttributes.swift */,
+				E2C75D3922790C5B009F163C /* UIColor+Hex.swift */,
+				E2C75D35227869F3009F163C /* UIFont+Register.swift */,
+				E2C75D3B22790D30009F163C /* UIFont+Weight.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		E28BA9551E96402500D5DE3D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E28BA9561E96402500D5DE3D /* StyledText.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		E28BA9571E96402500D5DE3D /* Table */ = {
@@ -1143,9 +1147,11 @@
 				E28BA99D1E96402500D5DE3D /* TranslationTransitioningController.swift in Sources */,
 				E235410721A2EE7D00DB9DA2 /* NibButton.swift in Sources */,
 				E26002B5217064C400F4BA98 /* IBLog.swift in Sources */,
+				E2C75D3822786B31009F163C /* Bundle+Resources.swift in Sources */,
 				E28BA97C1E96402500D5DE3D /* DesignableView.swift in Sources */,
 				E28BA97B1E96402500D5DE3D /* DesignableButton.swift in Sources */,
 				E2A55F1D21ACBF7D00812DC6 /* RoundedImageView.swift in Sources */,
+				E2C75D3A22790C5B009F163C /* UIColor+Hex.swift in Sources */,
 				E28BA9B51E964B5200D5DE3D /* UIImageEffects.m in Sources */,
 				E28BA9971E96402500D5DE3D /* DismissAndPresentSegue.swift in Sources */,
 				E226BD07209C3AD700652E86 /* NibReplaceable.swift in Sources */,
@@ -1155,6 +1161,7 @@
 				A1EDD9B82105E8AE00A76119 /* BFWNibCollectionViewCell.m in Sources */,
 				E28BA99C1E96402500D5DE3D /* TranslationNavigationDelegate.swift in Sources */,
 				E28BA9951E96402500D5DE3D /* AutoNextViewController.swift in Sources */,
+				E2C75D36227869F3009F163C /* UIFont+Register.swift in Sources */,
 				E28BA9911E96402500D5DE3D /* TextAttributes.swift in Sources */,
 				E2F1606420BE006800A54D6A /* BFWNibTableViewCell.m in Sources */,
 				E2D775D5227808F80010BBE9 /* BFWNibTableViewHeaderFooterView.m in Sources */,
@@ -1198,6 +1205,7 @@
 				E28BA99A1E96402500D5DE3D /* OpenURLSegue.swift in Sources */,
 				E28BA9801E96402500D5DE3D /* PileView.swift in Sources */,
 				E28BA99B1E96402500D5DE3D /* TranslationAnimationController.swift in Sources */,
+				E2C75D3C22790D30009F163C /* UIFont+Weight.swift in Sources */,
 				E28BA98D1E96402500D5DE3D /* StatusTextFieldNibView.swift in Sources */,
 				E28BA9961E96402500D5DE3D /* SegueHandlerType.swift in Sources */,
 				E24682211F24820B007285DB /* ShadableView.swift in Sources */,
