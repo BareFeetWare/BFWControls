@@ -87,7 +87,7 @@ import UIKit
     }
     
     open func index(of button: UIButton) -> Int? {
-        return buttons.index(of: button)
+        return buttons.firstIndex(of: button)
     }
     
     open func button(forTitle title: String) -> UIButton? {

@@ -15,9 +15,12 @@
 		A1EDD9B82105E8AE00A76119 /* BFWNibCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EDD9B62105E8AE00A76119 /* BFWNibCollectionViewCell.m */; };
 		A1EDD9BB2105EAAA00A76119 /* AvatarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EDD9B92105EAAA00A76119 /* AvatarCollectionViewCell.swift */; };
 		A1EDD9BC2105EAAA00A76119 /* AvatarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EDD9BA2105EAAA00A76119 /* AvatarCollectionViewCell.xib */; };
+		E2003B3322471830006D1277 /* FlowView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2003B3222471830006D1277 /* FlowView.storyboard */; };
+		E2003B3522471891006D1277 /* Layout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2003B3422471891006D1277 /* Layout.storyboard */; };
 		E2037A9A209815BB001E0BBA /* NSAttributedString+TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2037A99209815BB001E0BBA /* NSAttributedString+TextAttributes.swift */; };
 		E2037AA5209851F8001E0BBA /* UITableViewCell+Copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2037AA4209851F8001E0BBA /* UITableViewCell+Copy.swift */; };
 		E207BCAA1EADE577007BB14F /* UIImage+BFW.swift in Sources */ = {isa = PBXBuildFile; fileRef = E207BCA91EADE577007BB14F /* UIImage+BFW.swift */; };
+		E210F5D4224335B600726C7D /* FlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E210F5D3224335B600726C7D /* FlowView.swift */; };
 		E212B38B20D8776700A5E677 /* InputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E212B38A20D8776600A5E677 /* InputValidator.swift */; };
 		E21C688021A52E4600BADF78 /* Icon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E21C687F21A52E4600BADF78 /* Icon.xcassets */; };
 		E22097701F4185B500400079 /* NibCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E220976F1F4185B500400079 /* NibCollectionViewCell.swift */; };
@@ -107,7 +110,7 @@
 		E28BA9F51E964D4500D5DE3D /* Carousel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9DF1E964D4500D5DE3D /* Carousel.storyboard */; };
 		E28BA9F61E964D4500D5DE3D /* SampleCarousel.plist in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9E01E964D4500D5DE3D /* SampleCarousel.plist */; };
 		E28BA9F71E964D4500D5DE3D /* Developer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9E31E964D4500D5DE3D /* Developer.storyboard */; };
-		E28BA9F81E964D4500D5DE3D /* Layout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9E61E964D4500D5DE3D /* Layout.storyboard */; };
+		E28BA9F81E964D4500D5DE3D /* PileView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9E61E964D4500D5DE3D /* PileView.storyboard */; };
 		E28BA9FB1E964D4500D5DE3D /* NibReplaceable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9ED1E964D4500D5DE3D /* NibReplaceable.storyboard */; };
 		E28BA9FC1E964D4500D5DE3D /* AvatarCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28BA9EF1E964D4500D5DE3D /* AvatarCellView.swift */; };
 		E28BA9FD1E964D4500D5DE3D /* AvatarCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E28BA9F01E964D4500D5DE3D /* AvatarCellView.xib */; };
@@ -156,9 +159,12 @@
 		A1EDD9B62105E8AE00A76119 /* BFWNibCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFWNibCollectionViewCell.m; sourceTree = "<group>"; };
 		A1EDD9B92105EAAA00A76119 /* AvatarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCollectionViewCell.swift; sourceTree = "<group>"; };
 		A1EDD9BA2105EAAA00A76119 /* AvatarCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AvatarCollectionViewCell.xib; sourceTree = "<group>"; };
+		E2003B3222471830006D1277 /* FlowView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FlowView.storyboard; sourceTree = "<group>"; };
+		E2003B3422471891006D1277 /* Layout.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Layout.storyboard; sourceTree = "<group>"; };
 		E2037A99209815BB001E0BBA /* NSAttributedString+TextAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+TextAttributes.swift"; sourceTree = "<group>"; };
 		E2037AA4209851F8001E0BBA /* UITableViewCell+Copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Copy.swift"; sourceTree = "<group>"; };
 		E207BCA91EADE577007BB14F /* UIImage+BFW.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+BFW.swift"; sourceTree = "<group>"; };
+		E210F5D3224335B600726C7D /* FlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowView.swift; sourceTree = "<group>"; };
 		E212B38A20D8776600A5E677 /* InputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidator.swift; sourceTree = "<group>"; };
 		E21C687F21A52E4600BADF78 /* Icon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icon.xcassets; sourceTree = "<group>"; };
 		E220976F1F4185B500400079 /* NibCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -251,7 +257,7 @@
 		E28BA9DF1E964D4500D5DE3D /* Carousel.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Carousel.storyboard; sourceTree = "<group>"; };
 		E28BA9E01E964D4500D5DE3D /* SampleCarousel.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SampleCarousel.plist; sourceTree = "<group>"; };
 		E28BA9E31E964D4500D5DE3D /* Developer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Developer.storyboard; sourceTree = "<group>"; };
-		E28BA9E61E964D4500D5DE3D /* Layout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Layout.storyboard; sourceTree = "<group>"; };
+		E28BA9E61E964D4500D5DE3D /* PileView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PileView.storyboard; sourceTree = "<group>"; };
 		E28BA9ED1E964D4500D5DE3D /* NibReplaceable.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NibReplaceable.storyboard; sourceTree = "<group>"; };
 		E28BA9EF1E964D4500D5DE3D /* AvatarCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarCellView.swift; sourceTree = "<group>"; };
 		E28BA9F01E964D4500D5DE3D /* AvatarCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AvatarCellView.xib; sourceTree = "<group>"; };
@@ -561,6 +567,7 @@
 		E28BA93C1E96402500D5DE3D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E210F5D3224335B600726C7D /* FlowView.swift */,
 				E2430DC52161D7DD00DE95AE /* HidingStackView.swift */,
 				E28BA93D1E96402500D5DE3D /* NSLayoutConstraintExtensions.swift */,
 				E28BA93E1E96402500D5DE3D /* PileView.swift */,
@@ -854,7 +861,9 @@
 		E28BA9E51E964D4500D5DE3D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E28BA9E61E964D4500D5DE3D /* Layout.storyboard */,
+				E2003B3222471830006D1277 /* FlowView.storyboard */,
+				E2003B3422471891006D1277 /* Layout.storyboard */,
+				E28BA9E61E964D4500D5DE3D /* PileView.storyboard */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1051,24 +1060,24 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = BareFeetWare;
 				TargetAttributes = {
 					E28BA9101E963F7800D5DE3D = {
 						CreatedOnToolsVersion = 8.3;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 					E28BA9B91E964BED00D5DE3D = {
 						CreatedOnToolsVersion = 8.3;
-						LastSwiftMigration = 0930;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = E28BA90B1E963F7800D5DE3D /* Build configuration list for PBXProject "BFWControls" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -1109,6 +1118,7 @@
 				E2D775CE2277FE8E0010BBE9 /* DemoTableViewHeaderFooterView.xib in Resources */,
 				E29BD11A2186BF7B000D3176 /* RoundedImageTableViewCell.xib in Resources */,
 				E21C688021A52E4600BADF78 /* Icon.xcassets in Resources */,
+				E2003B3322471830006D1277 /* FlowView.storyboard in Resources */,
 				E2E40F122091B7CF005D0AA5 /* AvatarTableViewCell.xib in Resources */,
 				E29BD11F2186C28A000D3176 /* CenteredTableViewCell.xib in Resources */,
 				E22FEA7A21A2D7B5000DB707 /* Background.xcassets in Resources */,
@@ -1117,11 +1127,12 @@
 				E28BA9F71E964D4500D5DE3D /* Developer.storyboard in Resources */,
 				E28BA9F61E964D4500D5DE3D /* SampleCarousel.plist in Resources */,
 				E235410B21A2F06100DB9DA2 /* TileButton.xib in Resources */,
-				E28BA9F81E964D4500D5DE3D /* Layout.storyboard in Resources */,
+				E28BA9F81E964D4500D5DE3D /* PileView.storyboard in Resources */,
 				E28BA9F41E964D4500D5DE3D /* Alerts.storyboard in Resources */,
 				E22FEA7721A2D6E1000DB707 /* BackgroundView.xib in Resources */,
 				E27AC57A21AE709100495591 /* Image.xcassets in Resources */,
 				E22477EA1ECBCAA7004A7802 /* Transition.storyboard in Resources */,
+				E2003B3522471891006D1277 /* Layout.storyboard in Resources */,
 				E2640392211CF4A900A4204C /* ArcTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1184,6 +1195,7 @@
 				E28BA9701E96402500D5DE3D /* AlertView.swift in Sources */,
 				E28BA9841E96402500D5DE3D /* ImageNibCellView.swift in Sources */,
 				E24D5CC320FEB45300600102 /* UIView+UIImage.swift in Sources */,
+				E210F5D4224335B600726C7D /* FlowView.swift in Sources */,
 				E26403822119CE4B00A4204C /* AdjustingTableViewController.swift in Sources */,
 				E28BA9851E96402500D5DE3D /* NibContainerButton.swift in Sources */,
 				E28BA98A1E96402500D5DE3D /* NibTextField.swift in Sources */,
@@ -1255,6 +1267,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1306,6 +1319,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1316,6 +1330,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1359,6 +1374,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1381,7 +1397,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.barefeetware.BFWControls;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1400,7 +1415,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.barefeetware.BFWControls;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -1412,7 +1426,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.barefeetware.BFWControls-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1424,7 +1437,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.barefeetware.BFWControls-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

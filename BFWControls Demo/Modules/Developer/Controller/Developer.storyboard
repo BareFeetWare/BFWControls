@@ -137,7 +137,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="oja-PH-eqQ" kind="show" id="D5o-cl-OB2"/>
+                                            <segue destination="oja-PH-eqQ" kind="show" customClass="PushFirstSegue" customModule="BFWControls" id="D5o-cl-OB2"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="23t-LR-Fij" style="IBUITableViewCellStyleDefault" id="4Lt-2u-vRa">
