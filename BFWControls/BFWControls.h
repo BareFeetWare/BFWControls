@@ -19,5 +19,6 @@ FOUNDATION_EXPORT const unsigned char BFWControlsVersionString[];
 #import <BFWControls/BFWNibView.h>
 #import <BFWControls/BFWNibButton.h>
 #import <BFWControls/BFWNibTableViewCell.h>
+#import <BFWControls/BFWNibTableViewHeaderFooterView.h>
 #import <BFWControls/BFWNibCollectionViewCell.h>
 #import <BFWControls/UIImageEffects.h>

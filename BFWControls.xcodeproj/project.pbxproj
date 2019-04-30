@@ -125,6 +125,11 @@
 		E2BFE8F71F296CD900BAEC16 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BFE8F61F296CD900BAEC16 /* CustomTableViewCell.swift */; };
 		E2D4D3D5205A4734004AE487 /* PushFirstSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D4D3D4205A4734004AE487 /* PushFirstSegue.swift */; };
 		E2D6C7B8204BC3C300144DF6 /* AvatarContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D6C7B7204BC3C300144DF6 /* AvatarContentTableViewCell.swift */; };
+		E2D775CA2277FD940010BBE9 /* DemoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D775C92277FD940010BBE9 /* DemoTableView.swift */; };
+		E2D775CC2277FDF00010BBE9 /* DemoTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D775CB2277FDF00010BBE9 /* DemoTableViewHeaderFooterView.swift */; };
+		E2D775CE2277FE8E0010BBE9 /* DemoTableViewHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2D775CD2277FE8E0010BBE9 /* DemoTableViewHeaderFooterView.xib */; };
+		E2D775D4227808F80010BBE9 /* BFWNibTableViewHeaderFooterView.h in Headers */ = {isa = PBXBuildFile; fileRef = E2D775D2227808F80010BBE9 /* BFWNibTableViewHeaderFooterView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E2D775D5227808F80010BBE9 /* BFWNibTableViewHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D775D3227808F80010BBE9 /* BFWNibTableViewHeaderFooterView.m */; };
 		E2DA04D81FEC953C00A2B602 /* DesignableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DA04D71FEC953C00A2B602 /* DesignableTableViewCell.swift */; };
 		E2E08F732157294700316653 /* UIView+Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E08F722157294700316653 /* UIView+Overlay.swift */; };
 		E2E40F122091B7CF005D0AA5 /* AvatarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E40F102091B7CF005D0AA5 /* AvatarTableViewCell.xib */; };
@@ -259,6 +264,11 @@
 		E2BFE8F61F296CD900BAEC16 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		E2D4D3D4205A4734004AE487 /* PushFirstSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushFirstSegue.swift; sourceTree = "<group>"; };
 		E2D6C7B7204BC3C300144DF6 /* AvatarContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarContentTableViewCell.swift; sourceTree = "<group>"; };
+		E2D775C92277FD940010BBE9 /* DemoTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTableView.swift; sourceTree = "<group>"; };
+		E2D775CB2277FDF00010BBE9 /* DemoTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
+		E2D775CD2277FE8E0010BBE9 /* DemoTableViewHeaderFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoTableViewHeaderFooterView.xib; sourceTree = "<group>"; };
+		E2D775D2227808F80010BBE9 /* BFWNibTableViewHeaderFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFWNibTableViewHeaderFooterView.h; sourceTree = "<group>"; };
+		E2D775D3227808F80010BBE9 /* BFWNibTableViewHeaderFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFWNibTableViewHeaderFooterView.m; sourceTree = "<group>"; };
 		E2DA04D71FEC953C00A2B602 /* DesignableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableTableViewCell.swift; sourceTree = "<group>"; };
 		E2E08F722157294700316653 /* UIView+Overlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Overlay.swift"; sourceTree = "<group>"; };
 		E2E40F0F2091B7CF005D0AA5 /* AvatarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarTableViewCell.swift; sourceTree = "<group>"; };
@@ -567,6 +577,8 @@
 				A1EDD9B62105E8AE00A76119 /* BFWNibCollectionViewCell.m */,
 				E2F1606120BE006800A54D6A /* BFWNibTableViewCell.h */,
 				E2F1606220BE006800A54D6A /* BFWNibTableViewCell.m */,
+				E2D775D2227808F80010BBE9 /* BFWNibTableViewHeaderFooterView.h */,
+				E2D775D3227808F80010BBE9 /* BFWNibTableViewHeaderFooterView.m */,
 				E28BA9A61E96457100D5DE3D /* BFWNibView.h */,
 				E28BA9431E96402500D5DE3D /* BFWNibView.m */,
 				E28BA9441E96402500D5DE3D /* ImageNibCellView.swift */,
@@ -875,10 +887,13 @@
 				E22FEA7621A2D6E1000DB707 /* BackgroundView.xib */,
 				E29BD11C2186C28A000D3176 /* CenteredTableViewCell.swift */,
 				E29BD11D2186C28A000D3176 /* CenteredTableViewCell.xib */,
+				E2D775C92277FD940010BBE9 /* DemoTableView.swift */,
 				E29BD1162186BF7B000D3176 /* RoundedImageTableViewCell.swift */,
 				E29BD1172186BF7B000D3176 /* RoundedImageTableViewCell.xib */,
 				E235410821A2EFE600DB9DA2 /* TileButton.swift */,
 				E235410A21A2F06000DB9DA2 /* TileButton.xib */,
+				E2D775CB2277FDF00010BBE9 /* DemoTableViewHeaderFooterView.swift */,
+				E2D775CD2277FE8E0010BBE9 /* DemoTableViewHeaderFooterView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -978,6 +993,7 @@
 				E235410E21A2F84900DB9DA2 /* BFWNibButton.h in Headers */,
 				E28BA9A81E96457100D5DE3D /* BFWNibView.h in Headers */,
 				E2F1606320BE006800A54D6A /* BFWNibTableViewCell.h in Headers */,
+				E2D775D4227808F80010BBE9 /* BFWNibTableViewHeaderFooterView.h in Headers */,
 				A1EDD9B72105E8AE00A76119 /* BFWNibCollectionViewCell.h in Headers */,
 				E28BA9B41E964B5200D5DE3D /* UIImageEffects.h in Headers */,
 			);
@@ -1083,6 +1099,7 @@
 				E2640386211BB5B300A4204C /* ArcView.storyboard in Resources */,
 				E28BA9FD1E964D4500D5DE3D /* AvatarCellView.xib in Resources */,
 				E28BA9FE1E964D4500D5DE3D /* Table.storyboard in Resources */,
+				E2D775CE2277FE8E0010BBE9 /* DemoTableViewHeaderFooterView.xib in Resources */,
 				E29BD11A2186BF7B000D3176 /* RoundedImageTableViewCell.xib in Resources */,
 				E21C688021A52E4600BADF78 /* Icon.xcassets in Resources */,
 				E2E40F122091B7CF005D0AA5 /* AvatarTableViewCell.xib in Resources */,
@@ -1140,6 +1157,7 @@
 				E28BA9951E96402500D5DE3D /* AutoNextViewController.swift in Sources */,
 				E28BA9911E96402500D5DE3D /* TextAttributes.swift in Sources */,
 				E2F1606420BE006800A54D6A /* BFWNibTableViewCell.m in Sources */,
+				E2D775D5227808F80010BBE9 /* BFWNibTableViewHeaderFooterView.m in Sources */,
 				E2F5D918218EFF2400794394 /* AdjustableTableView.swift in Sources */,
 				E28BA9721E96402500D5DE3D /* AlertViewOverlay.swift in Sources */,
 				E2DA04D81FEC953C00A2B602 /* DesignableTableViewCell.swift in Sources */,
@@ -1196,11 +1214,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2D775CA2277FD940010BBE9 /* DemoTableView.swift in Sources */,
 				E2D6C7B8204BC3C300144DF6 /* AvatarContentTableViewCell.swift in Sources */,
 				E235410921A2EFE600DB9DA2 /* TileButton.swift in Sources */,
 				E29BD11E2186C28A000D3176 /* CenteredTableViewCell.swift in Sources */,
 				E22FEA7321A2D69A000DB707 /* BackgroundNavigationController.swift in Sources */,
 				A1BD33B91EEAC9A400D217F6 /* DynamicCellDemoViewController.swift in Sources */,
+				E2D775CC2277FDF00010BBE9 /* DemoTableViewHeaderFooterView.swift in Sources */,
 				E26403782116B14800A4204C /* AvatarTableViewCell.swift in Sources */,
 				A1EDD9BB2105EAAA00A76119 /* AvatarCollectionViewCell.swift in Sources */,
 				E22FEA7521A2D6CA000DB707 /* BackgroundView.swift in Sources */,

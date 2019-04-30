@@ -8,18 +8,30 @@
 
 import UIKit
 
-open class NibTableViewHeaderFooterView: UITableViewHeaderFooterView {
+open class NibTableViewHeaderFooterView: BFWNibTableViewHeaderFooterView, NibReplaceable {
     
-    // MARK: - NibView container
+    // MARK: - NibReplaceable
     
-    private func addContentSubview() {
-        contentView.addSubview(nibView)
-        nibView.pinToSuperviewEdges()
+    open var nibName: String?
+    
+    open var placeholderViews: [UIView] {
+        return [textLabel].compactMap { $0 }
     }
     
-    open var nibView: NibView {
-        fatalError("Concrete subclass must provide nibView.")
+    // MARK: - IBOutlets
+    
+    @IBOutlet open override var textLabel: UILabel? {
+        get {
+            return overridingTextLabel
+        }
+        set {
+            overridingTextLabel = newValue
+        }
     }
+    
+    // MARK: - Private variables
+    
+    private var overridingTextLabel: UILabel?
     
     // MARK: - Init
     
@@ -33,14 +45,23 @@ open class NibTableViewHeaderFooterView: UITableViewHeaderFooterView {
         commonInit()
     }
     
+    /// Convenience called by init(frame:) and init(coder:). Override in subclasses if required.
     open func commonInit() {
-        addContentSubview()
     }
     
-    // MARK: - UITableViewHeaderFooterView
+    open override func awakeAfter(using coder: NSCoder) -> Any? {
+        guard let nibView = replacedByNibView()
+            else { return self }
+        nibView.removePlaceholders()
+        return nibView
+    }
     
-    open override var textLabel: UILabel? {
-        return (nibView as? TextLabelProvider)?.textLabel
+}
+
+@objc public extension NibTableViewHeaderFooterView {
+    
+    @objc func replacedByNibViewForInit() -> Self? {
+        return replacedByNibView()
     }
     
 }
