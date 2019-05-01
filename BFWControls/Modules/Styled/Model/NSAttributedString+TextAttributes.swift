@@ -11,6 +11,18 @@ import Foundation
 
 public extension NSAttributedString {
     
+    func addingAttributes(_ attributes: TextAttributes, range: NSRange) -> NSAttributedString {
+        let attributedString = NSMutableAttributedString(attributedString: self)
+        attributedString.addAttributes(attributes, range: range)
+        return NSAttributedString(attributedString: attributedString)
+    }
+    
+    /// Adding attributes to the part of the string matching the regex.
+    func addingAttributes(_ attributes: TextAttributes, toStringMatchingRegex regex: String) -> NSAttributedString {
+        let range = NSString(string: string).range(of: regex, options: .regularExpression)
+        return addingAttributes(attributes, range: range)
+    }
+    
     func keepingTraitsAndColorButAdding(attributes: TextAttributes) -> NSAttributedString {
         return addingAttributes(attributes, isKeepingTraits: true, isKeepingColor: true)
     }
@@ -18,7 +30,7 @@ public extension NSAttributedString {
     func keepingTraitsButAdding(attributes: TextAttributes) -> NSAttributedString {
         return addingAttributes(attributes, isKeepingTraits: true, isKeepingColor: false)
     }
-
+    
     func addingAttributes(
         _ attributes: TextAttributes,
         isKeepingTraits: Bool = false,
