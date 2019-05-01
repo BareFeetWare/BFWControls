@@ -47,14 +47,14 @@ public extension UIFont {
     
     // Register if needed.
     
-    public static func registerFontsIfNeeded(in bundle: Bundle) {
+    static func registerFontsIfNeeded(in bundle: Bundle) {
         if !registeredFontBundles.contains(bundle) {
             registeredFontBundles += [bundle]
             registerFonts(in: bundle)
         }
     }
     
-    public static func registerFontsInAllBundles() {
+    static func registerFontsInAllBundles() {
         (Bundle.allBundles + Bundle.allFrameworks)
             .forEach { bundle in
                 registerFontsIfNeeded(in: bundle)
@@ -69,5 +69,5 @@ public extension UIFont {
                                           .process,
                                           nil)
     }
-
+    
 }
