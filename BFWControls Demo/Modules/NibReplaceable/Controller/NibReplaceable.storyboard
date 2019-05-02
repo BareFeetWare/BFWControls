@@ -620,7 +620,7 @@
                     <navigationItem key="navigationItem" title="BackgroundView" id="0NQ-7T-DdB">
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="JB5-2r-yTQ">
                             <connections>
-                                <action selector="dismiss:" destination="8Di-Vv-zac" id="pz9-6e-JaK"/>
+                                <action selector="passiveDismiss:" destination="8Di-Vv-zac" id="pz9-6e-JaK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

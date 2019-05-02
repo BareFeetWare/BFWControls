@@ -2529,7 +2529,7 @@
                     <navigationItem key="navigationItem" title="Sticky in Tab" id="srg-nr-WFs">
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="FuO-fy-aMB">
                             <connections>
-                                <action selector="dismiss:" destination="oaz-Sm-asx" id="I25-fY-3aZ"/>
+                                <action selector="passiveDismiss:" destination="oaz-Sm-asx" id="I25-fY-3aZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -11,14 +11,14 @@ import UIKit
 
 public extension UIViewController {
     
-    @IBAction func dismiss(_ sender: UIControl?) {
+    @IBAction func passiveDismiss(_ sender: UIControl?) {
         dismiss(animated: true) {}
     }
     
     @objc func removeDismiss() {
         // TODO: Cater for multiple leftBarButtonItems.
         if let selector = navigationItem.leftBarButtonItem?.action,
-            selector == #selector(UIViewController.dismiss(_:))
+            selector == #selector(UIViewController.passiveDismiss(_:))
         {
             navigationItem.leftBarButtonItem = nil
         }
