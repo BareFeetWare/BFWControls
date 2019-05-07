@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "BFWControls"
-  s.version      = "3.0.7"
+  s.version      = "3.1.1"
   s.summary      = "A framework to simplify building apps using Interface Builder."
 
   # This description is used to generate tags and improve search results.
@@ -95,7 +95,7 @@ BFWControls contains many features to simplify building apps visually, especiall
   # s.platform     = :ios
 
   s.platform     = :ios, "9.0"
-  s.swift_version = "4.2"
+  s.swift_version = "5.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
