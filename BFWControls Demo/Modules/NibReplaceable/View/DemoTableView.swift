@@ -10,11 +10,9 @@ import UIKit
 
 @IBDesignable class DemoTableView: UITableView {
     
-    override func dequeueReusableHeaderFooterView(withIdentifier identifier: String) -> UITableViewHeaderFooterView? {
-        return super.dequeueReusableHeaderFooterView(withIdentifier: identifier) ?? DemoTableViewHeaderFooterView()
-    }
+    // MARK: - Init
     
-    override init(frame: CGRect, style: UITableViewStyle) {
+    override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         commonInit()
     }
@@ -28,6 +26,12 @@ import UIKit
         guard let sectionHeaderHeight = DemoTableViewHeaderFooterView.sizeFromNib?.height
             else { return }
         self.sectionHeaderHeight = sectionHeaderHeight
+    }
+    
+    // MARK: - UITableView
+    
+    override func dequeueReusableHeaderFooterView(withIdentifier identifier: String) -> UITableViewHeaderFooterView? {
+        return super.dequeueReusableHeaderFooterView(withIdentifier: identifier) ?? DemoTableViewHeaderFooterView()
     }
     
 }
