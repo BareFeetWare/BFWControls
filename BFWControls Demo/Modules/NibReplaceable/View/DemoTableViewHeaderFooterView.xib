@@ -29,6 +29,7 @@
                     <constraints>
                         <constraint firstItem="vEh-VI-hdG" firstAttribute="bottom" secondItem="Bud-eR-5td" secondAttribute="bottomMargin" id="5SC-Dr-CpT"/>
                         <constraint firstItem="vEh-VI-hdG" firstAttribute="leading" secondItem="Bud-eR-5td" secondAttribute="leadingMargin" id="DCl-3V-bDY"/>
+                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="vEh-VI-hdG" secondAttribute="trailing" id="zXZ-Jt-aXz"/>
                     </constraints>
                 </view>
             </subviews>

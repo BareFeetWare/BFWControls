@@ -56,6 +56,20 @@ open class NibTableViewHeaderFooterView: BFWNibTableViewHeaderFooterView, NibRep
         return nibView
     }
     
+    // MARK: - UITableViewHeaderFooterView
+    
+    open override var frame: CGRect {
+        get {
+            return super.frame
+        }
+        set {
+            // Prevent constraint error, which seems to be an Apple bug.
+            // See: https://stackoverflow.com/questions/17581550/uitableviewheaderfooterview-subclass-with-auto-layout-and-section-reloading-won
+            guard newValue.size.width != 0.0 else { return }
+            super.frame = newValue
+        }
+    }
+    
 }
 
 @objc public extension NibTableViewHeaderFooterView {
