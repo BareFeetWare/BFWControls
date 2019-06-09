@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class NibCellView: NibView, TextLabelProvider {
+open class NibCellView: NibView, TextLabelsGettable {
     
     // MARK: - IBOutlets
     
