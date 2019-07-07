@@ -57,7 +57,7 @@ open class NibContainerButton: UIButton {
     // MARK: - UIButton
     
     open override var titleLabel: UILabel? {
-        return (nibView as? TextLabelProvider)?.textLabel
+        return (nibView as? TextLabelsGettable)?.textLabel
     }
     
 }

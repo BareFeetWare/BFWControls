@@ -1,5 +1,5 @@
 //
-//  TextLabelProvider.swift
+//  TextLabelsGettable.swift
 //  BFWControls
 //
 //  Created by Tom Brodhurst-Hill on 15/8/17.
@@ -8,7 +8,9 @@
 
 import UIKit
 
-public protocol TextLabelProvider {
+public protocol TextLabelsGettable {
     var textLabel: UILabel? { get }
     var detailTextLabel: UILabel? { get }
 }
+
+extension UITableViewCell: TextLabelsGettable {}
